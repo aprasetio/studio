@@ -1,29 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useTranslations } from 'next-intl';
-import { Globe } from 'lucide-react';
-
-import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 
 export default function Header() {
-  const t = useTranslations('Header');
-  const pathname = usePathname();
-
-  const getLocalizedPath = (locale: string) => {
-    if (!pathname) return `/${locale}`;
-    const segments = pathname.split('/');
-    segments[1] = locale;
-    return segments.join('/') || `/${locale}`;
-  }
-
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center">
@@ -50,28 +29,6 @@ export default function Header() {
             </svg>
             <span className="font-bold font-headline">VersoKit</span>
           </Link>
-        </div>
-        <div className="flex flex-1 items-center justify-end space-x-2">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Globe className="h-[1.2rem] w-[1.2rem]" />
-                <span className="sr-only">{t('changeLanguage')}</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem asChild>
-                <Link href={getLocalizedPath('en')}>
-                  {t('english')}
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href={getLocalizedPath('id')}>
-                  {t('indonesian')}
-                </Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
         </div>
       </div>
     </header>

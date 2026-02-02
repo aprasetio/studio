@@ -2,7 +2,6 @@
 
 import { useRef, useState, useCallback } from 'react';
 import html2canvas from 'html2canvas';
-import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { FootballPitch, type Player } from '@/components/football-pitch';
 import { Download } from 'lucide-react';
@@ -58,7 +57,6 @@ const formations: Record<string, Player[]> = {
 
 
 export function LineupBuilder() {
-  const t = useTranslations('LineupBuilder');
   const canvasRef = useRef<HTMLDivElement>(null);
   const [formation, setFormation] = useState('4-4-2');
   const [players, setPlayers] = useState<Player[]>(formations[formation]);
@@ -101,10 +99,10 @@ export function LineupBuilder() {
     <div className="container mx-auto p-4 flex flex-col items-center gap-6">
        <div className="w-full max-w-lg flex flex-col sm:flex-row gap-4 items-center justify-between p-4 bg-card rounded-lg shadow-md">
         <div className='flex items-center gap-2'>
-            <label htmlFor="formation-select" className="text-sm font-medium">{t('formation')}:</label>
+            <label htmlFor="formation-select" className="text-sm font-medium">Formasi:</label>
             <Select value={formation} onValueChange={handleFormationChange}>
                 <SelectTrigger id="formation-select" className="w-[180px]">
-                    <SelectValue placeholder={t('selectFormation')} />
+                    <SelectValue placeholder="Pilih formasi" />
                 </SelectTrigger>
                 <SelectContent>
                     {Object.keys(formations).map(key => (
@@ -115,7 +113,7 @@ export function LineupBuilder() {
         </div>
         <Button onClick={downloadImage} className="bg-accent hover:bg-accent/90 text-accent-foreground">
           <Download className="mr-2 h-4 w-4" />
-          {t('downloadButton')}
+          Unduh sebagai Gambar
         </Button>
       </div>
 
