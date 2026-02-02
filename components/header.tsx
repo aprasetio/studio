@@ -1,6 +1,7 @@
 'use client';
 
-import { Link, usePathname } from 'next-intl/navigation';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Globe } from 'lucide-react';
 
@@ -15,6 +16,13 @@ import {
 export default function Header() {
   const t = useTranslations('Header');
   const pathname = usePathname();
+
+  const getLocalizedPath = (locale: string) => {
+    if (!pathname) return `/${locale}`;
+    const segments = pathname.split('/');
+    segments[1] = locale;
+    return segments.join('/') || `/${locale}`;
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -53,12 +61,12 @@ export default function Header() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem asChild>
-                <Link href={pathname} locale="en">
+                <Link href={getLocalizedPath('en')}>
                   {t('english')}
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href={pathname} locale="id">
+                <Link href={getLocalizedPath('id')}>
                   {t('indonesian')}
                 </Link>
               </DropdownMenuItem>

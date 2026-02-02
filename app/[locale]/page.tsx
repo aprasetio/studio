@@ -1,8 +1,8 @@
 import { useTranslations } from 'next-intl';
-import { Link } from 'next-intl/navigation';
+import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, SoccerBall, ClipboardList } from 'lucide-react';
+import { ArrowRight, Goal, ClipboardList } from 'lucide-react';
 import Header from '@/components/header';
 
 export default function DashboardPage() {
@@ -19,7 +19,7 @@ export default function DashboardPage() {
       title: t('lineupTitle'),
       description: t('lineupDescription'),
       href: '/tools/lineup-builder',
-      icon: <SoccerBall className="h-10 w-10 text-primary" />,
+      icon: <Goal className="h-10 w-10 text-primary" />,
     },
   ];
 
