@@ -1,0 +1,32 @@
+{
+  "Dashboard": {
+    "title": "Dasbor VersoKit",
+    "subtitle": "Toolkit Lengkap Anda",
+    "futsalTitle": "Papan Skor Futsal",
+    "futsalDescription": "Papan skor sederhana dan efektif untuk pertandingan futsal Anda.",
+    "lineupTitle": "Penyusun Formasi",
+    "lineupDescription": "Buat dan visualisasikan formasi tim sepak bola Anda."
+  },
+  "FutsalScoreboard": {
+    "title": "Papan Skor Futsal",
+    "home": "KANDANG",
+    "away": "TANDANG",
+    "score": "Skor",
+    "fouls": "Pelanggaran",
+    "timer": "Waktu",
+    "start": "Mulai",
+    "pause": "Jeda",
+    "reset": "Atur Ulang"
+  },
+  "LineupBuilder": {
+    "title": "Penyusun Formasi Sepak Bola",
+    "downloadButton": "Unduh sebagai Gambar",
+    "formation": "Formasi",
+    "selectFormation": "Pilih formasi"
+  },
+  "Header": {
+    "changeLanguage": "Ganti bahasa",
+    "english": "Inggris",
+    "indonesian": "Indonesia"
+  }
+}

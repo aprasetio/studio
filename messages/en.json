@@ -1,0 +1,32 @@
+{
+  "Dashboard": {
+    "title": "VersoKit Dashboard",
+    "subtitle": "Your All-in-One Toolkit",
+    "futsalTitle": "Futsal Scoreboard",
+    "futsalDescription": "A simple and effective scoreboard for your futsal matches.",
+    "lineupTitle": "Lineup Builder",
+    "lineupDescription": "Create and visualize your football team's lineup."
+  },
+  "FutsalScoreboard": {
+    "title": "Futsal Scoreboard",
+    "home": "HOME",
+    "away": "AWAY",
+    "score": "Score",
+    "fouls": "Fouls",
+    "timer": "Timer",
+    "start": "Start",
+    "pause": "Pause",
+    "reset": "Reset"
+  },
+  "LineupBuilder": {
+    "title": "Football Lineup Builder",
+    "downloadButton": "Download as Image",
+    "formation": "Formation",
+    "selectFormation": "Select formation"
+  },
+  "Header": {
+    "changeLanguage": "Change language",
+    "english": "English",
+    "indonesian": "Indonesian"
+  }
+}
