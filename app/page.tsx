@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, ClipboardList, Goal, Trophy, Package, LayoutDashboard } from 'lucide-react';
+import { ArrowRight, ClipboardList, Goal, Trophy, Package, LayoutDashboard, Calendar } from 'lucide-react';
 
 export default function DashboardPage() {
   const tools = [
@@ -18,10 +18,16 @@ export default function DashboardPage() {
       icon: <Goal className="h-10 w-10 text-primary" />,
     },
     {
+      title: 'Generator Turnamen',
+      description: 'Buat jadwal Round Robin dan klasemen otomatis untuk liga Anda.',
+      href: '/tools/tournament',
+      icon: <Trophy className="h-10 w-10 text-primary" />,
+    },
+    {
       title: 'Papan Skor Universal',
       description: 'Papan skor serbaguna untuk voli, bulu tangkis, dan tenis meja.',
       href: '/tools/scoreboard',
-      icon: <Trophy className="h-10 w-10 text-primary" />,
+      icon: <Calendar className="h-10 w-10 text-primary" />,
     },
     {
       title: 'Inventaris',

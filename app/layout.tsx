@@ -16,6 +16,7 @@ export default function RootLayout({
   const navLinks = [
     { href: '/tools/futsal', label: 'Futsal' },
     { href: '/tools/lineup-builder', label: 'Lineup' },
+    { href: '/tools/tournament', label: 'Turnamen' },
     { href: '/tools/scoreboard', label: 'Papan Skor' },
     { href: '/tools/inventory', label: 'Inventaris' },
     { href: '/tools/kanban', label: 'Kanban' },
@@ -28,7 +29,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased flex min-h-screen flex-col bg-background">
+      <body className="font-body antialiased flex min-h-screen flex-col bg-background text-foreground">
         <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <div className="container mx-auto flex h-16 items-center justify-between px-4">
             <Link href="/" className="flex items-center space-x-2 transition-transform hover:scale-105">
@@ -37,7 +38,7 @@ export default function RootLayout({
                 <path d="M32,96v64a8,8,0,0,0,8,8H216a8,8,0,0,0,8-8V96" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16" />
                 <path d="M168,168V64a40,40,0,0,0-80,0v96" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16" />
               </svg>
-              <span className="text-xl font-black tracking-tighter text-foreground uppercase">VersoKit</span>
+              <span className="text-xl font-black tracking-tighter uppercase">VersoKit</span>
             </Link>
             
             <nav className="hidden lg:flex items-center space-x-8 text-sm font-bold uppercase tracking-widest text-muted-foreground">
@@ -49,11 +50,10 @@ export default function RootLayout({
             </nav>
 
             <div className="lg:hidden text-xs font-bold text-muted-foreground animate-pulse">
-              GESER MENU &rarr;
+              MENU &rarr;
             </div>
           </div>
           
-          {/* Scrollable Mobile Navigation */}
           <div className="lg:hidden border-t bg-muted/10">
             <div className="flex space-x-8 px-4 py-3 overflow-x-auto no-scrollbar scroll-smooth">
               {navLinks.map((link) => (
@@ -69,7 +69,7 @@ export default function RootLayout({
           {children}
         </main>
 
-        <footer className="border-t bg-card py-10">
+        <footer className="border-t bg-card py-10 mt-auto">
           <div className="container mx-auto px-4 text-center space-y-2">
             <p className="text-sm font-medium text-muted-foreground">
               © 2024 <span className="font-bold text-foreground">VersoKit</span> | Built with <span className="text-primary font-bold">Project IDX</span>
