@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useRef, useMemo } from 'react';
@@ -22,6 +21,7 @@ import {
 } from 'lucide-react';
 import { useLang } from '@/components/Providers';
 import { toast } from '@/hooks/use-toast';
+import { cn } from '@/lib/utils';
 
 interface Match {
   id: string;
