@@ -58,11 +58,11 @@ export default function InvoiceMakerPage() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>{t('business_name')}</Label>
-                <Input value={businessName} onChange={(e) => setBusinessName(e.target.value)} placeholder="Toko Olahraga Jaya" />
+                <Input value={businessName} onChange={(e) => setBusinessName(e.target.value)} placeholder="Nama Bisnis Anda" />
               </div>
               <div className="space-y-2">
                 <Label>{t('client_name')}</Label>
-                <Input value={clientName} onChange={(e) => setClientName(e.target.value)} placeholder="Bpk. Budi Santoso" />
+                <Input value={clientName} onChange={(e) => setClientName(e.target.value)} placeholder="Nama Klien" />
               </div>
             </div>
             
@@ -77,7 +77,7 @@ export default function InvoiceMakerPage() {
                 <div key={item.id} className="grid grid-cols-12 gap-2 items-end">
                   <div className="col-span-6">
                     <Input 
-                      placeholder="Nama Barang/Jasa" 
+                      placeholder="Nama Barang" 
                       value={item.name} 
                       onChange={(e) => updateItem(item.id, 'name', e.target.value)} 
                     />
@@ -123,17 +123,17 @@ export default function InvoiceMakerPage() {
             <div className="flex justify-between items-start border-b-4 border-black pb-8 mb-12">
               <div>
                 <h2 className="text-4xl font-black uppercase tracking-tighter leading-none mb-2">INVOICE</h2>
-                <p className="text-gray-500 font-sans font-bold uppercase tracking-widest text-xs">VersoKit Billing System</p>
+                <p className="text-gray-500 font-sans font-bold uppercase tracking-widest text-xs">VersoKit Billing</p>
               </div>
               <div className="text-right">
-                <p className="font-black text-xl uppercase">{businessName || 'NAMA BISNIS ANDA'}</p>
+                <p className="font-black text-xl uppercase">{businessName || 'NAMA BISNIS'}</p>
                 <p className="font-sans font-bold text-xs text-gray-500">Tanggal: {date}</p>
               </div>
             </div>
 
             {/* Client Info */}
             <div className="mb-12">
-              <p className="text-xs font-sans font-bold text-gray-400 uppercase tracking-widest mb-1">DITAGIHKAN KEPADA:</p>
+              <p className="text-xs font-sans font-bold text-gray-400 uppercase tracking-widest mb-1">TAGIHAN UNTUK:</p>
               <p className="text-2xl font-black uppercase">{clientName || 'NAMA KLIEN'}</p>
             </div>
 
