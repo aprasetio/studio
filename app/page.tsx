@@ -3,7 +3,19 @@
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, ClipboardList, Goal, Trophy, Package, LayoutDashboard, Calendar, FileSpreadsheet, Calculator } from 'lucide-react';
+import { 
+  ArrowRight, 
+  ClipboardList, 
+  Goal, 
+  Trophy, 
+  Package, 
+  LayoutDashboard, 
+  Calendar, 
+  FileSpreadsheet, 
+  Calculator,
+  Receipt,
+  CalendarDays
+} from 'lucide-react';
 import { useLang } from '@/components/Providers';
 
 export default function DashboardPage() {
@@ -33,6 +45,18 @@ export default function DashboardPage() {
       description: 'Papan skor serbaguna untuk voli, bulu tangkis, dan tenis meja.',
       href: '/tools/scoreboard',
       icon: <Calendar className="h-10 w-10 text-primary" />,
+    },
+    {
+      title: t('invoice'),
+      description: 'Buat invoice profesional dan simpan sebagai PDF untuk klien Anda.',
+      href: '/tools/invoice',
+      icon: <Receipt className="h-10 w-10 text-primary" />,
+    },
+    {
+      title: t('shift'),
+      description: 'Kelola jadwal kerja mingguan tim Anda dengan sistem shift visual.',
+      href: '/tools/shift',
+      icon: <CalendarDays className="h-10 w-10 text-primary" />,
     },
     {
       title: t('csv_helper'),
