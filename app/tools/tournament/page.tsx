@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Trophy, Plus, Trash2, Play } from 'lucide-react';
+import { SeoContent } from '@/components/seo-content';
+import { SmartAd } from '@/components/smart-ad';
 
 interface Match {
   home: string;
@@ -57,11 +59,19 @@ export default function TournamentMakerPage() {
         }
       }
       generatedRounds.push({ matches });
-      // Rotate participants
       const last = tempParticipants.pop()!;
       tempParticipants.splice(1, 0, last);
     }
     setRounds(generatedRounds);
+  };
+
+  const seoData = {
+    title: "About Our Tournament Maker",
+    features: ["Round Robin Logic", "Instant Generation", "No Login"],
+    faq: [
+      { q: "How many teams?", a: "You can add an unlimited number of teams or participants." },
+      { q: "Can I save it?", a: "The participant list auto-saves to your device's local storage." }
+    ]
   };
 
   return (
@@ -132,6 +142,10 @@ export default function TournamentMakerPage() {
           ))}
         </div>
       )}
+
+      <SmartAd />
+
+      <SeoContent {...seoData} />
     </div>
   );
 }

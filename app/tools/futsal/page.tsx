@@ -1,13 +1,23 @@
-
 'use client';
 
 import React from 'react';
 import { FutsalScoreboard } from '@/components/futsal-scoreboard';
 import { DataControl } from '@/components/DataControl';
 import { useLang } from '@/components/Providers';
+import { SeoContent } from '@/components/seo-content';
+import { SmartAd } from '@/components/smart-ad';
 
 export default function FutsalPage() {
   const { t } = useLang();
+
+  const seoData = {
+    title: "About Our Futsal Scoreboard",
+    features: ["Offline Timer", "Foul Counter", "Full Screen Mode"],
+    faq: [
+      { q: "Is this free?", a: "Yes, VersoKit tools are completely free to use." },
+      { q: "Does it need internet?", a: "No, this tool works entirely offline once loaded in your browser." }
+    ]
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground p-4 flex flex-col items-center pt-10">
@@ -17,6 +27,10 @@ export default function FutsalPage() {
       </div>
       
       <FutsalScoreboard />
+      
+      <SmartAd />
+      
+      <SeoContent {...seoData} />
     </div>
   );
 }
