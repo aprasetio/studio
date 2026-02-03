@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -60,48 +61,35 @@ export default function UniversalScoreboardPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        {/* Home Section */}
         <Card className="flex flex-col overflow-hidden border-none shadow-2xl rounded-[2rem]">
-          <div className="bg-primary p-6 text-center text-primary-foreground">
+          <div className="bg-blue-800 p-6 text-center text-white">
             <h2 className="text-4xl font-black tracking-[0.2em]">KANDANG</h2>
           </div>
           <div className="flex flex-1 flex-col items-center justify-center bg-blue-50/50 p-10 dark:bg-blue-950/10">
             <div className="mb-10 flex flex-col items-center">
-              <span className="text-xs font-black uppercase tracking-[0.3em] text-primary/60 mb-4">Set Menang</span>
+              <span className="text-xs font-black uppercase tracking-[0.3em] text-blue-800/60 mb-4">Set Menang</span>
               <div className="flex items-center gap-6">
                 <Button variant="outline" size="icon" onClick={() => setSetsHome(Math.max(0, setsHome - 1))} className="h-10 w-10 rounded-full border-2">
                   <Minus className="h-5 w-5" />
                 </Button>
-                <span className="text-6xl font-black text-primary tabular-nums">{setsHome}</span>
+                <span className="text-6xl font-black text-blue-800 tabular-nums">{setsHome}</span>
                 <Button variant="outline" size="icon" onClick={() => setSetsHome(setsHome + 1)} className="h-10 w-10 rounded-full border-2">
                   <Plus className="h-5 w-5" />
                 </Button>
               </div>
             </div>
             
-            <div className="my-10 text-[12rem] md:text-[18rem] font-black leading-none text-primary tabular-nums tracking-tighter drop-shadow-2xl">
+            <div className="my-10 text-[12rem] md:text-[18rem] font-black leading-none text-blue-800 tabular-nums tracking-tighter drop-shadow-2xl">
               {scoreHome}
             </div>
 
             <div className="flex w-full gap-6">
-              <Button 
-                variant="outline" 
-                className="h-24 flex-1 text-3xl font-black border-4" 
-                onClick={() => setScoreHome(Math.max(0, scoreHome - 1))}
-              >
-                -1
-              </Button>
-              <Button 
-                className="h-24 flex-1 bg-primary text-4xl font-black hover:bg-primary/90 shadow-xl" 
-                onClick={() => setScoreHome(scoreHome + 1)}
-              >
-                +1
-              </Button>
+              <Button variant="outline" className="h-24 flex-1 text-3xl font-black border-4" onClick={() => setScoreHome(Math.max(0, scoreHome - 1))}>-1</Button>
+              <Button className="h-24 flex-1 bg-blue-800 text-4xl font-black hover:bg-blue-700 shadow-xl text-white" onClick={() => setScoreHome(scoreHome + 1)}>+1</Button>
             </div>
           </div>
         </Card>
 
-        {/* Away Section */}
         <Card className="flex flex-col overflow-hidden border-none shadow-2xl rounded-[2rem]">
           <div className="bg-orange-600 p-6 text-center text-white">
             <h2 className="text-4xl font-black tracking-[0.2em]">TANDANG</h2>
@@ -125,19 +113,8 @@ export default function UniversalScoreboardPage() {
             </div>
 
             <div className="flex w-full gap-6">
-              <Button 
-                variant="outline" 
-                className="h-24 flex-1 text-3xl font-black border-4" 
-                onClick={() => setScoreAway(Math.max(0, scoreAway - 1))}
-              >
-                -1
-              </Button>
-              <Button 
-                className="h-24 flex-1 bg-orange-600 text-4xl font-black hover:bg-orange-500 shadow-xl" 
-                onClick={() => setScoreAway(scoreAway + 1)}
-              >
-                +1
-              </Button>
+              <Button variant="outline" className="h-24 flex-1 text-3xl font-black border-4" onClick={() => setScoreAway(Math.max(0, scoreAway - 1))}>-1</Button>
+              <Button className="h-24 flex-1 bg-orange-600 text-4xl font-black hover:bg-orange-500 shadow-xl text-white" onClick={() => setScoreAway(scoreAway + 1)}>+1</Button>
             </div>
           </div>
         </Card>
@@ -145,10 +122,9 @@ export default function UniversalScoreboardPage() {
 
       <div className="flex flex-col items-center justify-center gap-6">
         <div className="flex items-center justify-center gap-4 rounded-2xl bg-muted p-6 text-sm font-black uppercase tracking-[0.2em] text-muted-foreground border w-full">
-          <Trophy className="h-5 w-5 text-primary" /> Target Set: {targetScore} Poin
+          <Trophy className="h-5 w-5 text-blue-600" /> Target Set: {targetScore} Poin
         </div>
         
-        {/* Ad Integration */}
         <SmartAd />
       </div>
     </div>

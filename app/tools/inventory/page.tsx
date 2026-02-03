@@ -55,7 +55,7 @@ export default function InventoryPage() {
       <Card className="w-full shadow-xl rounded-3xl overflow-hidden border-2">
         <CardHeader className="bg-muted/30 p-8 border-b">
           <CardTitle className="text-xl font-black flex items-center gap-3 uppercase tracking-wider">
-            <PlusCircle className="h-6 w-6 text-primary" />
+            <PlusCircle className="h-6 w-6 text-blue-600" />
             Tambah Peralatan Baru
           </CardTitle>
         </CardHeader>
@@ -66,10 +66,10 @@ export default function InventoryPage() {
                 placeholder="Nama Barang (Contoh: Bola Mikasa, Rompi Biru...)"
                 value={newItemName}
                 onChange={(e) => setNewItemName(e.target.value)}
-                className="h-14 text-lg font-medium px-6 rounded-xl focus-visible:ring-primary"
+                className="h-14 text-lg font-medium px-6 rounded-xl focus-visible:ring-blue-600"
               />
             </div>
-            <Button type="submit" className="h-14 px-10 bg-primary font-black uppercase tracking-widest rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+            <Button type="submit" className="h-14 px-10 bg-blue-800 text-white font-black uppercase tracking-widest rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-900/20">
               Tambah ke Daftar
             </Button>
           </form>
@@ -89,7 +89,7 @@ export default function InventoryPage() {
               <CardContent className="p-0">
                 <div className="flex flex-col sm:flex-row items-center justify-between">
                   <div className="flex items-center gap-6 p-8 w-full sm:w-auto">
-                    <div className="p-4 bg-primary/10 rounded-2xl group-hover:bg-primary group-hover:text-white transition-colors">
+                    <div className="p-4 bg-blue-100 rounded-2xl group-hover:bg-blue-800 group-hover:text-white transition-colors">
                       <Package className="h-7 w-7" />
                     </div>
                     <div>
@@ -103,7 +103,7 @@ export default function InventoryPage() {
                       <Button 
                         variant="outline" 
                         size="icon" 
-                        className="h-12 w-12 rounded-full border-2 border-destructive/20 hover:bg-destructive hover:text-white transition-all shadow-sm"
+                        className="h-12 w-12 rounded-full border-2 border-red-500/20 hover:bg-red-600 hover:text-white transition-all shadow-sm"
                         onClick={() => updateQuantity(item.id, -1)}
                       >
                         <Minus className="h-6 w-6" />
@@ -126,7 +126,7 @@ export default function InventoryPage() {
                     <Button 
                       variant="ghost" 
                       size="icon" 
-                      className="h-12 w-12 text-muted-foreground hover:text-destructive hover:bg-destructive/5 rounded-xl transition-colors"
+                      className="h-12 w-12 text-muted-foreground hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors"
                       onClick={() => deleteItem(item.id)}
                     >
                       <Trash2 className="h-6 w-6" />

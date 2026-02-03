@@ -10,7 +10,7 @@ const withPWA = withPWAInit({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Your standard Next.js config here
+  reactStrictMode: true,
 };
 
 export default withPWA(nextConfig);

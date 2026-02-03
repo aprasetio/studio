@@ -1,3 +1,4 @@
+
 "use client";
 import React, { useState, useEffect } from 'react';
 import { SmartAd } from '@/components/smart-ad';
@@ -21,14 +22,14 @@ export default function FutsalPage() {
       <h1 className="text-2xl font-black mb-6 text-yellow-400 uppercase tracking-[0.2em]">PAPAN SKOR FUTSAL</h1>
       
       <div className="bg-black border-4 border-gray-800 p-8 rounded-3xl w-full max-w-md text-center mb-8 shadow-2xl relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-600 to-transparent opacity-50"></div>
         <div className="text-8xl font-mono font-black text-red-600 drop-shadow-[0_0_20px_rgba(220,38,38,0.4)] tracking-tighter tabular-nums">
           {fmt(time)}
         </div>
         <button 
           onClick={() => setRun(!run)} 
           className={`mt-8 px-10 py-4 rounded-2xl font-black text-xl w-full transition-all active:scale-95 uppercase tracking-widest shadow-lg ${
-            run ? 'bg-orange-600 hover:bg-orange-500' : 'bg-primary hover:bg-primary/90'
+            run ? 'bg-orange-600 hover:bg-orange-500' : 'bg-blue-600 hover:bg-blue-500'
           }`}
         >
           {run ? 'JEDA' : 'MULAI'}
@@ -55,7 +56,6 @@ export default function FutsalPage() {
         Reset Papan Skor
       </button>
 
-      {/* Ad Integration */}
       <SmartAd />
     </div>
   );
