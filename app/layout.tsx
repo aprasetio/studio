@@ -8,8 +8,8 @@ import { LangToggle } from '@/components/LangToggle';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'VersoKit',
-  description: 'Toolkit Lengkap untuk Olahraga',
+  title: "VersoKit - Free Online Tools for Sports, Construction & Business",
+  description: "A collection of free, offline-ready tools: Futsal Scoreboard, Tournament Bracket, Construction Calculator, Invoice Maker, and more. No login required.",
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
