@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
@@ -26,6 +27,8 @@ const translations: TranslationDictionary = {
     calculator: "Kalkulator Material",
     invoice: "Pembuat Invoice",
     shift: "Jadwal Shift",
+    image_compressor: "Kompres Gambar",
+    split_bill: "Patungan / Split Bill",
     export: "Ekspor CSV",
     import: "Impor CSV",
     reset: "Reset",
@@ -90,6 +93,8 @@ const translations: TranslationDictionary = {
     calculator: "Material Calculator",
     invoice: "Invoice Maker",
     shift: "Shift Roster",
+    image_compressor: "Image Compressor",
+    split_bill: "Split Bill / Shared Cost",
     export: "Export CSV",
     import: "Import CSV",
     reset: "Reset",

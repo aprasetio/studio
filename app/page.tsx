@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -14,7 +15,9 @@ import {
   FileSpreadsheet, 
   Calculator,
   Receipt,
-  CalendarDays
+  CalendarDays,
+  Image as ImageIcon,
+  Banknote
 } from 'lucide-react';
 import { useLang } from '@/components/Providers';
 
@@ -42,7 +45,7 @@ export default function DashboardPage() {
     },
     {
       title: t('scoreboard'),
-      description: 'Papan skor serbaguna untuk voli, bulu tangkis, dan tenis meja.',
+      description: 'Papan skor serbaguna untuk voli, bulu tamkis, dan tenis meja.',
       href: '/tools/scoreboard',
       icon: <Calendar className="h-10 w-10 text-primary" />,
     },
@@ -57,6 +60,18 @@ export default function DashboardPage() {
       description: 'Kelola jadwal kerja mingguan tim Anda dengan sistem shift visual.',
       href: '/tools/shift',
       icon: <CalendarDays className="h-10 w-10 text-primary" />,
+    },
+    {
+      title: t('image_compressor'),
+      description: 'Kompres ukuran file gambar langsung di browser tanpa upload.',
+      href: '/tools/image-compressor',
+      icon: <ImageIcon className="h-10 w-10 text-primary" />,
+    },
+    {
+      title: t('split_bill'),
+      description: 'Hitung patungan makan atau biaya tim dengan rincian untuk WA.',
+      href: '/tools/split-bill',
+      icon: <Banknote className="h-10 w-10 text-primary" />,
     },
     {
       title: t('csv_helper'),
