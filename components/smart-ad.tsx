@@ -3,13 +3,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { WifiOff } from 'lucide-react';
-
-/**
- * @fileOverview A smart ad component that handles offline states for PWAs.
- */
+import { useLang } from '@/components/Providers';
 
 export function SmartAd() {
   const [isOnline, setIsOnline] = useState(true);
+  const { t } = useLang();
 
   useEffect(() => {
     if (typeof navigator !== 'undefined') {
@@ -33,18 +31,18 @@ export function SmartAd() {
       <div className="w-full h-[100px] bg-gradient-to-r from-gray-800 to-gray-900 flex flex-col items-center justify-center text-white rounded-lg shadow-md p-4 text-center mx-auto my-6 animate-in fade-in zoom-in duration-300">
         <div className="flex items-center gap-2 mb-1">
           <WifiOff className="h-5 w-5 text-gray-400" />
-          <span className="text-sm font-bold uppercase tracking-wider">⚡ Mode Offline Aktif</span>
+          <span className="text-sm font-bold uppercase tracking-wider">⚡ {t('offline')}</span>
         </div>
         <p className="text-xs font-medium opacity-80">
-          Aplikasi tetap berjalan lancar! Dukung kami saat Online kembali.
+          Aplikasi tetap berjalan lancar! {t('support')}.
         </p>
       </div>
     );
   }
 
   return (
-    <div className="w-full h-[100px] bg-gray-100 flex items-center justify-center text-xs text-gray-400 border border-gray-200 rounded-lg mx-auto my-6 overflow-hidden relative group transition-all hover:border-gray-300">
-      <div className="absolute top-1 left-2 text-[8px] font-black text-gray-300 uppercase tracking-widest">
+    <div className="w-full h-[100px] bg-muted/30 flex items-center justify-center text-xs text-muted-foreground border border-border rounded-lg mx-auto my-6 overflow-hidden relative group transition-all hover:border-primary/30">
+      <div className="absolute top-1 left-2 text-[8px] font-black text-muted-foreground/50 uppercase tracking-widest">
         ADVERTISEMENT
       </div>
       

@@ -1,5 +1,5 @@
 
-"use client";
+'use client';
 
 import React, { useState } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
@@ -8,6 +8,8 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Plus, Minus, Trash2, Package, PlusCircle } from 'lucide-react';
 import { SmartAd } from '@/components/smart-ad';
+import { DataControl } from '@/components/DataControl';
+import { useLang } from '@/components/Providers';
 
 interface InventoryItem {
   id: number;
@@ -16,6 +18,7 @@ interface InventoryItem {
 }
 
 export default function InventoryPage() {
+  const { t } = useLang();
   const [items, setItems] = useLocalStorage<InventoryItem[]>('versokit-inventory', []);
   const [newItemName, setNewItemName] = useState('');
 
@@ -45,32 +48,35 @@ export default function InventoryPage() {
 
   return (
     <div className="flex flex-col items-center p-6 md:p-12 lg:p-16 max-w-5xl mx-auto w-full gap-10">
-      <div className="text-center space-y-3">
-        <h1 className="text-4xl font-black tracking-tighter text-foreground uppercase">
-          Manajemen Inventaris
-        </h1>
-        <p className="text-muted-foreground font-medium">Pantau peralatan olahraga Anda dengan sistem stok digital</p>
+      <div className="flex flex-col md:flex-row w-full items-center justify-between gap-6">
+        <div className="text-center md:text-left space-y-3">
+          <h1 className="text-4xl font-black tracking-tighter text-foreground uppercase">
+            {t('inventory')}
+          </h1>
+          <p className="text-muted-foreground font-medium">Pantau peralatan olahraga Anda dengan sistem stok digital</p>
+        </div>
+        <DataControl storageKey="versokit-inventory" type="array" />
       </div>
 
-      <Card className="w-full shadow-xl rounded-3xl overflow-hidden border-2">
+      <Card className="w-full shadow-xl rounded-3xl overflow-hidden border-2 bg-card">
         <CardHeader className="bg-muted/30 p-8 border-b">
           <CardTitle className="text-xl font-black flex items-center gap-3 uppercase tracking-wider">
-            <PlusCircle className="h-6 w-6 text-blue-600" />
-            Tambah Peralatan Baru
+            <PlusCircle className="h-6 w-6 text-primary" />
+            {t('add_item')}
           </CardTitle>
         </CardHeader>
         <CardContent className="p-8">
           <form onSubmit={addItem} className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1">
               <Input
-                placeholder="Nama Barang (Contoh: Bola Mikasa, Rompi Biru...)"
+                placeholder="Nama Barang..."
                 value={newItemName}
                 onChange={(e) => setNewItemName(e.target.value)}
-                className="h-14 text-lg font-medium px-6 rounded-xl focus-visible:ring-blue-600"
+                className="h-14 text-lg font-medium px-6 rounded-xl focus-visible:ring-primary"
               />
             </div>
-            <Button type="submit" className="h-14 px-10 bg-blue-800 text-white font-black uppercase tracking-widest rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-900/20">
-              Tambah ke Daftar
+            <Button type="submit" className="h-14 px-10 bg-primary text-primary-foreground font-black uppercase tracking-widest rounded-xl hover:bg-primary/90 transition-all shadow-lg">
+              {t('add')}
             </Button>
           </form>
         </CardContent>
@@ -81,20 +87,19 @@ export default function InventoryPage() {
           <div className="flex flex-col items-center justify-center py-24 bg-muted/20 rounded-[2.5rem] border-4 border-dashed border-muted">
             <Package className="h-16 w-16 text-muted-foreground mb-6 opacity-30" />
             <p className="text-xl font-black text-muted-foreground uppercase tracking-widest">Belum ada barang</p>
-            <p className="text-sm text-muted-foreground/60 mt-2 font-medium">Gunakan form di atas untuk memulai stok Anda.</p>
           </div>
         ) : (
           items.map((item) => (
-            <Card key={item.id} className="overflow-hidden border-none shadow-lg hover:shadow-2xl transition-all duration-300 rounded-3xl group">
+            <Card key={item.id} className="overflow-hidden border-none shadow-lg hover:shadow-2xl transition-all duration-300 rounded-3xl group bg-card">
               <CardContent className="p-0">
                 <div className="flex flex-col sm:flex-row items-center justify-between">
                   <div className="flex items-center gap-6 p-8 w-full sm:w-auto">
-                    <div className="p-4 bg-blue-100 rounded-2xl group-hover:bg-blue-800 group-hover:text-white transition-colors">
+                    <div className="p-4 bg-primary/10 rounded-2xl group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                       <Package className="h-7 w-7" />
                     </div>
                     <div>
                       <h3 className="text-2xl font-black text-foreground uppercase tracking-tight">{item.name}</h3>
-                      <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mt-1">Status: Tersedia</p>
+                      <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mt-1">{t('status')}: Tersedia</p>
                     </div>
                   </div>
 
@@ -103,7 +108,7 @@ export default function InventoryPage() {
                       <Button 
                         variant="outline" 
                         size="icon" 
-                        className="h-12 w-12 rounded-full border-2 border-red-500/20 hover:bg-red-600 hover:text-white transition-all shadow-sm"
+                        className="h-12 w-12 rounded-full border-2 border-destructive/20 hover:bg-destructive hover:text-destructive-foreground transition-all shadow-sm"
                         onClick={() => updateQuantity(item.id, -1)}
                       >
                         <Minus className="h-6 w-6" />
@@ -126,7 +131,7 @@ export default function InventoryPage() {
                     <Button 
                       variant="ghost" 
                       size="icon" 
-                      className="h-12 w-12 text-muted-foreground hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors"
+                      className="h-12 w-12 text-muted-foreground hover:text-destructive hover:bg-destructive/5 rounded-xl transition-colors"
                       onClick={() => deleteItem(item.id)}
                     >
                       <Trash2 className="h-6 w-6" />
