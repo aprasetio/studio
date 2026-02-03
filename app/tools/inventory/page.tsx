@@ -1,12 +1,13 @@
+
 "use client";
 
 import React, { useState } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Plus, Minus, Trash2, Package, PlusCircle } from 'lucide-react';
+import { SmartAd } from '@/components/smart-ad';
 
 interface InventoryItem {
   id: number;
@@ -137,6 +138,8 @@ export default function InventoryPage() {
           ))
         )}
       </div>
+      
+      <SmartAd />
     </div>
   );
 }
