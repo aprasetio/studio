@@ -1,10 +1,9 @@
-
 'use client';
 
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, ClipboardList, Goal, Trophy, Package, LayoutDashboard, Calendar } from 'lucide-react';
+import { ArrowRight, ClipboardList, Goal, Trophy, Package, LayoutDashboard, Calendar, FileSpreadsheet, Calculator } from 'lucide-react';
 import { useLang } from '@/components/Providers';
 
 export default function DashboardPage() {
@@ -25,7 +24,7 @@ export default function DashboardPage() {
     },
     {
       title: t('tournament'),
-      description: 'Buat jadwal Round Robin dan klasemen otomatis untuk liga Anda.',
+      description: 'Pembuat jadwal Round Robin instan untuk liga dan turnamen sosial.',
       href: '/tools/tournament',
       icon: <Trophy className="h-10 w-10 text-primary" />,
     },
@@ -34,6 +33,18 @@ export default function DashboardPage() {
       description: 'Papan skor serbaguna untuk voli, bulu tangkis, dan tenis meja.',
       href: '/tools/scoreboard',
       icon: <Calendar className="h-10 w-10 text-primary" />,
+    },
+    {
+      title: t('csv_helper'),
+      description: 'Bersihkan dan proses file CSV Anda secara lokal tanpa upload.',
+      href: '/tools/csv-helper',
+      icon: <FileSpreadsheet className="h-10 w-10 text-primary" />,
+    },
+    {
+      title: t('calculator'),
+      description: 'Kalkulator kebutuhan material cat, keramik, dan estimasi biaya.',
+      href: '/tools/calculator',
+      icon: <Calculator className="h-10 w-10 text-primary" />,
     },
     {
       title: t('inventory'),
@@ -50,7 +61,7 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center gap-12 p-6 md:p-12 lg:p-24">
+    <div className="flex flex-col items-center justify-center gap-12 p-6 md:p-12 lg:p-20">
       <div className="text-center space-y-4 max-w-2xl">
         <h1 className="font-headline text-5xl font-black tracking-tighter text-foreground md:text-7xl uppercase">
           {t('title')} {t('dashboard')}
@@ -60,22 +71,22 @@ export default function DashboardPage() {
         </p>
       </div>
 
-      <div className="grid w-full max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid w-full max-w-7xl gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {tools.map((tool) => (
           <Card key={tool.href} className="flex flex-col overflow-hidden transition-all duration-300 hover:translate-y-[-8px] hover:shadow-2xl border-2 hover:border-primary/20 bg-card">
             <CardHeader className="flex-row items-center gap-6 p-8">
-              <div className="p-3 bg-primary/5 rounded-2xl">
+              <div className="p-3 bg-primary/5 rounded-2xl shrink-0">
                 {tool.icon}
               </div>
               <div className="space-y-1">
-                <CardTitle className="font-headline text-2xl font-bold tracking-tight uppercase">{tool.title}</CardTitle>
-                <CardDescription className="text-sm font-medium leading-relaxed">{tool.description}</CardDescription>
+                <CardTitle className="font-headline text-xl font-bold tracking-tight uppercase leading-tight">{tool.title}</CardTitle>
+                <CardDescription className="text-xs font-medium leading-relaxed line-clamp-2">{tool.description}</CardDescription>
               </div>
             </CardHeader>
             <CardContent className="mt-auto flex justify-end p-8 pt-0">
               <Button asChild variant="ghost" className="group text-primary font-bold hover:bg-primary/5">
-                <Link href={tool.href} className="flex items-center">
-                  Buka Alat <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <Link href={tool.href} className="flex items-center text-xs uppercase tracking-widest">
+                  Buka Alat <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
             </CardContent>

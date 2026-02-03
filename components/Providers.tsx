@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
@@ -22,7 +21,9 @@ const translations: TranslationDictionary = {
     scoreboard: "Papan Skor Universal",
     inventory: "Inventaris",
     kanban: "Kanban Board",
-    tournament: "Generator Turnamen",
+    tournament: "Pembuat Turnamen",
+    csv_helper: "Pembersih CSV",
+    calculator: "Kalkulator Material",
     export: "Ekspor CSV",
     import: "Impor CSV",
     reset: "Reset",
@@ -47,6 +48,14 @@ const translations: TranslationDictionary = {
     team_name: "Nama Tim",
     add_item: "Tambah Barang",
     stock: "Stok",
+    add_player: "Tambah Peserta",
+    generate: "Buat Jadwal",
+    dimensions: "Dimensi",
+    area: "Luas",
+    cost: "Estimasi Biaya",
+    preview: "Pratinjau",
+    remove_dupes: "Hapus Duplikat",
+    download: "Unduh",
   },
   en: {
     title: "VersoKit",
@@ -57,7 +66,9 @@ const translations: TranslationDictionary = {
     scoreboard: "Universal Scoreboard",
     inventory: "Inventory",
     kanban: "Kanban Board",
-    tournament: "Tournament Generator",
+    tournament: "Tournament Maker",
+    csv_helper: "CSV Cleaner",
+    calculator: "Material Calculator",
     export: "Export CSV",
     import: "Import CSV",
     reset: "Reset",
@@ -82,6 +93,14 @@ const translations: TranslationDictionary = {
     team_name: "Team Name",
     add_item: "Add Item",
     stock: "Stock",
+    add_player: "Add Participant",
+    generate: "Generate Schedule",
+    dimensions: "Dimensions",
+    area: "Area",
+    cost: "Estimated Cost",
+    preview: "Preview",
+    remove_dupes: "Remove Duplicates",
+    download: "Download",
   }
 };
 
