@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card } from '@/components/ui/card';
 import { Plus, Minus, RotateCcw, Trash2, Trophy } from 'lucide-react';
+import { SmartAd } from '@/components/smart-ad';
 
 export default function UniversalScoreboardPage() {
   const [scoreHome, setScoreHome] = useState(0);
@@ -142,8 +143,13 @@ export default function UniversalScoreboardPage() {
         </Card>
       </div>
 
-      <div className="flex items-center justify-center gap-4 rounded-2xl bg-muted p-6 text-sm font-black uppercase tracking-[0.2em] text-muted-foreground border">
-        <Trophy className="h-5 w-5 text-primary" /> Target Set: {targetScore} Poin
+      <div className="flex flex-col items-center justify-center gap-6">
+        <div className="flex items-center justify-center gap-4 rounded-2xl bg-muted p-6 text-sm font-black uppercase tracking-[0.2em] text-muted-foreground border w-full">
+          <Trophy className="h-5 w-5 text-primary" /> Target Set: {targetScore} Poin
+        </div>
+        
+        {/* Ad Integration */}
+        <SmartAd />
       </div>
     </div>
   );
