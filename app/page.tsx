@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Goal, ClipboardList } from 'lucide-react';
+import { ArrowRight, ClipboardList, Goal } from 'lucide-react';
 import Header from '@/components/header';
 
 export default function DashboardPage() {

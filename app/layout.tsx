@@ -4,7 +4,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'VersoKit',
-  description: 'Your All-in-One Toolkit for Sports',
+  description: 'Toolkit Lengkap Anda untuk Olahraga',
 };
 
 export default function RootLayout({
