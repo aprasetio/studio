@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ClipboardList, Goal, Trophy, Package, LayoutDashboard } from 'lucide-react';
-import Header from '@/components/header';
 
 export default function DashboardPage() {
   const tools = [
@@ -19,7 +18,7 @@ export default function DashboardPage() {
       icon: <Goal className="h-10 w-10 text-primary" />,
     },
     {
-      title: 'Universal Scoreboard',
+      title: 'Papan Skor Universal',
       description: 'Papan skor serbaguna untuk voli, bulu tangkis, dan tenis meja.',
       href: '/tools/scoreboard',
       icon: <Trophy className="h-10 w-10 text-primary" />,
@@ -39,34 +38,38 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="flex min-h-screen w-full flex-col bg-background">
-      <Header />
-      <main className="flex flex-1 flex-col items-center justify-center gap-8 p-4 md:p-8">
-        <div className="text-center">
-          <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground md:text-5xl">Dasbor VersoKit</h1>
-          <p className="mt-4 text-lg text-muted-foreground">Toolkit Lengkap Anda untuk Olahraga</p>
-        </div>
-        <div className="grid w-full max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {tools.map((tool) => (
-            <Card key={tool.href} className="flex flex-col overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl">
-              <CardHeader className="flex-row items-center gap-4 p-6">
+    <div className="flex flex-col items-center justify-center gap-12 p-6 md:p-12 lg:p-24">
+      <div className="text-center space-y-4 max-w-2xl">
+        <h1 className="font-headline text-5xl font-black tracking-tighter text-foreground md:text-7xl uppercase">
+          Dasbor VersoKit
+        </h1>
+        <p className="text-xl text-muted-foreground font-medium">
+          Toolkit Lengkap Anda untuk Manajemen Olahraga yang Lebih Efisien
+        </p>
+      </div>
+
+      <div className="grid w-full max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {tools.map((tool) => (
+          <Card key={tool.href} className="flex flex-col overflow-hidden transition-all duration-300 hover:translate-y-[-8px] hover:shadow-2xl border-2 hover:border-primary/20">
+            <CardHeader className="flex-row items-center gap-6 p-8">
+              <div className="p-3 bg-primary/5 rounded-2xl">
                 {tool.icon}
-                <div>
-                  <CardTitle className="font-headline text-xl">{tool.title}</CardTitle>
-                  <CardDescription className="mt-1">{tool.description}</CardDescription>
-                </div>
-              </CardHeader>
-              <CardContent className="mt-auto flex justify-end p-6 pt-0">
-                <Button asChild variant="ghost" className="text-primary hover:text-primary">
-                  <Link href={tool.href}>
-                    Buka alat <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </main>
+              </div>
+              <div className="space-y-1">
+                <CardTitle className="font-headline text-2xl font-bold tracking-tight uppercase">{tool.title}</CardTitle>
+                <CardDescription className="text-sm font-medium leading-relaxed">{tool.description}</CardDescription>
+              </div>
+            </CardHeader>
+            <CardContent className="mt-auto flex justify-end p-8 pt-0">
+              <Button asChild variant="ghost" className="group text-primary font-bold hover:bg-primary/5">
+                <Link href={tool.href} className="flex items-center">
+                  Buka Alat <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 }
