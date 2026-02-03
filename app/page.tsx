@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, ClipboardList, Goal, Trophy } from 'lucide-react';
+import { ArrowRight, ClipboardList, Goal, Trophy, Package } from 'lucide-react';
 import Header from '@/components/header';
 
 export default function DashboardPage() {
@@ -24,6 +24,12 @@ export default function DashboardPage() {
       href: '/tools/scoreboard',
       icon: <Trophy className="h-10 w-10 text-primary" />,
     },
+    {
+      title: 'Inventaris',
+      description: 'Pantau stok peralatan olahraga seperti bola, rompi, dan cone.',
+      href: '/tools/inventory',
+      icon: <Package className="h-10 w-10 text-primary" />,
+    },
   ];
 
   return (
@@ -34,7 +40,7 @@ export default function DashboardPage() {
           <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground md:text-5xl">Dasbor VersoKit</h1>
           <p className="mt-4 text-lg text-muted-foreground">Toolkit Lengkap Anda untuk Olahraga</p>
         </div>
-        <div className="grid w-full max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid w-full max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
           {tools.map((tool) => (
             <Card key={tool.href} className="flex flex-col overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl">
               <CardHeader className="flex-row items-center gap-4 p-6">
