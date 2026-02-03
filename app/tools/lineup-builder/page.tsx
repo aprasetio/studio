@@ -17,23 +17,16 @@ export default function LineupPage() {
           <div className="absolute top-1/2 left-1/2 w-20 h-20 border-2 border-white/50 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
           
           {/* Pemain Demo (4-4-2) */}
-          {/* Penyerang */}
           <div className="absolute top-[15%] left-[35%] -translate-x-1/2 w-10 h-10 bg-red-600 rounded-full border-2 border-white text-white flex items-center justify-center font-bold shadow-lg">9</div>
           <div className="absolute top-[15%] left-[65%] -translate-x-1/2 w-10 h-10 bg-red-600 rounded-full border-2 border-white text-white flex items-center justify-center font-bold shadow-lg">10</div>
-          
-          {/* Gelandang */}
           <div className="absolute top-[40%] left-[20%] -translate-x-1/2 w-10 h-10 bg-red-600 rounded-full border-2 border-white text-white flex items-center justify-center font-bold shadow-lg">11</div>
           <div className="absolute top-[42%] left-[40%] -translate-x-1/2 w-10 h-10 bg-red-600 rounded-full border-2 border-white text-white flex items-center justify-center font-bold shadow-lg">8</div>
           <div className="absolute top-[42%] left-[60%] -translate-x-1/2 w-10 h-10 bg-red-600 rounded-full border-2 border-white text-white flex items-center justify-center font-bold shadow-lg">4</div>
           <div className="absolute top-[40%] left-[80%] -translate-x-1/2 w-10 h-10 bg-red-600 rounded-full border-2 border-white text-white flex items-center justify-center font-bold shadow-lg">7</div>
-          
-          {/* Bek */}
           <div className="absolute top-[70%] left-[15%] -translate-x-1/2 w-10 h-10 bg-red-600 rounded-full border-2 border-white text-white flex items-center justify-center font-bold shadow-lg">3</div>
           <div className="absolute top-[72%] left-[38%] -translate-x-1/2 w-10 h-10 bg-red-600 rounded-full border-2 border-white text-white flex items-center justify-center font-bold shadow-lg">5</div>
           <div className="absolute top-[72%] left-[62%] -translate-x-1/2 w-10 h-10 bg-red-600 rounded-full border-2 border-white text-white flex items-center justify-center font-bold shadow-lg">6</div>
           <div className="absolute top-[70%] left-[85%] -translate-x-1/2 w-10 h-10 bg-red-600 rounded-full border-2 border-white text-white flex items-center justify-center font-bold shadow-lg">2</div>
-
-          {/* Kiper */}
           <div className="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-10 h-10 bg-yellow-400 rounded-full border-2 border-white text-black flex items-center justify-center font-bold shadow-lg">1</div>
         </div>
 
