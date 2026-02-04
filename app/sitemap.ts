@@ -1,3 +1,4 @@
+
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -17,6 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'image-compressor',
     'split-bill',
     'csv-helper',
+    'pdf-merge',
+    'image-to-pdf',
   ];
 
   const toolEntries = tools.map((tool) => ({

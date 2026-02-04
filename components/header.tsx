@@ -49,6 +49,8 @@ export default function Header() {
       label: t('cat_utilities'),
       icon: <Wrench className="h-4 w-4 mr-2" />,
       items: [
+        { href: '/tools/pdf-merge', label: t('pdf_merge') },
+        { href: '/tools/image-to-pdf', label: t('image_to_pdf') },
         { href: '/tools/calculator', label: t('calculator') },
         { href: '/tools/csv-helper', label: t('csv_helper') },
         { href: '/tools/image-compressor', label: t('image_compressor') },

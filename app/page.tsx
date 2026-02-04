@@ -17,7 +17,9 @@ import {
   Receipt,
   CalendarDays,
   Image as ImageIcon,
-  Banknote
+  Banknote,
+  FileStack,
+  FileType
 } from 'lucide-react';
 import { useLang } from '@/components/Providers';
 
@@ -48,6 +50,18 @@ export default function DashboardPage() {
       description: 'Papan skor serbaguna untuk voli, bulu tamkis, dan tenis meja.',
       href: '/tools/scoreboard',
       icon: <Calendar className="h-10 w-10 text-primary" />,
+    },
+    {
+      title: t('pdf_merge'),
+      description: 'Gabungkan beberapa file PDF menjadi satu dokumen secara offline.',
+      href: '/tools/pdf-merge',
+      icon: <FileStack className="h-10 w-10 text-primary" />,
+    },
+    {
+      title: t('image_to_pdf'),
+      description: 'Ubah koleksi gambar JPG/PNG Anda menjadi dokumen PDF.',
+      href: '/tools/image-to-pdf',
+      icon: <FileType className="h-10 w-10 text-primary" />,
     },
     {
       title: t('invoice'),
