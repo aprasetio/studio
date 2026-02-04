@@ -15,14 +15,14 @@ interface TranslationDictionary {
 const translations: TranslationDictionary = {
   id: {
     title: "VersoKit",
-    subtitle: "Toolkit Lengkap untuk Olahraga",
+    subtitle: "Toolkit Lengkap untuk Olahraga & Bisnis",
     dashboard: "Dasbor",
     futsal: "Papan Skor Futsal",
     lineup: "Penyusun Formasi",
-    scoreboard: "Papan Skor Universal",
+    scoreboard: "Skor Universal",
     inventory: "Inventaris",
-    kanban: "Kanban Board",
-    tournament: "Pembuat Turnamen",
+    kanban: "Papan Tugas",
+    tournament: "Manajer Turnamen",
     csv_helper: "Pembersih CSV",
     calculator: "Kalkulator Material",
     invoice: "Pembuat Invoice",
@@ -77,24 +77,28 @@ const translations: TranslationDictionary = {
     thu: "Kam",
     fri: "Jum",
     sat: "Sab",
-    sun: "Min"
+    sun: "Min",
+    cat_sports: "Olahraga",
+    cat_business: "Bisnis",
+    cat_utilities: "Alat Bantu",
+    tools: "Alat"
   },
   en: {
     title: "VersoKit",
-    subtitle: "Complete Toolkit for Sports",
+    subtitle: "Complete Toolkit for Sports & Business",
     dashboard: "Dashboard",
     futsal: "Futsal Scoreboard",
     lineup: "Lineup Builder",
     scoreboard: "Universal Scoreboard",
     inventory: "Inventory",
     kanban: "Kanban Board",
-    tournament: "Tournament Maker",
+    tournament: "Tournament Manager",
     csv_helper: "CSV Cleaner",
     calculator: "Material Calculator",
     invoice: "Invoice Maker",
     shift: "Shift Roster",
     image_compressor: "Image Compressor",
-    split_bill: "Split Bill / Shared Cost",
+    split_bill: "Split Bill",
     export: "Export CSV",
     import: "Import CSV",
     reset: "Reset",
@@ -143,7 +147,11 @@ const translations: TranslationDictionary = {
     thu: "Thu",
     fri: "Fri",
     sat: "Sat",
-    sun: "Sun"
+    sun: "Sun",
+    cat_sports: "Sports",
+    cat_business: "Business",
+    cat_utilities: "Utilities",
+    tools: "Tools"
   }
 };
 
