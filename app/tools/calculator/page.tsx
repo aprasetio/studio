@@ -7,6 +7,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calculator, Ruler, Droplets, Banknote } from 'lucide-react';
+import { SeoContent } from '@/components/seo-content';
+import { SmartAd } from '@/components/smart-ad';
 
 export default function MaterialCalculatorPage() {
   const { t } = useLang();
@@ -23,14 +25,31 @@ export default function MaterialCalculatorPage() {
   const litersNeeded = Math.ceil(totalArea / 10);
   const totalCost = litersNeeded * (parseFloat(price) || 0);
 
+  const seoData = {
+    title: "Material Calculator",
+    description: "Accurately estimate the amount of paint and materials needed for your renovation or construction project.",
+    steps: [
+      "Select the specific calculation tab (e.g., Paint Estimator).",
+      "Enter the dimensions (width and height) of your wall or floor.",
+      "Input the number of openings like doors or windows to subtract from the total area.",
+      "See the instant material volume and cost estimates based on your inputs."
+    ],
+    article: "Avoid material waste with this **Construction Material Calculator**. Designed for contractors and DIY renovators, it accurately estimates paint liters and material quantities needed for any room size. Works offline at the construction site, making it a perfect companion for field work. By using standard coverage ratios, it provides a reliable baseline for your purchasing decisions.",
+    faq: [
+      { q: "How accurate is the paint estimation?", a: "The tool uses a standard ratio of 10m² per liter. However, coverage can vary depending on the paint type and wall texture." },
+      { q: "Can I use this for flooring tiles?", a: "The current version focuses on wall area and paint, but you can use the total area result to calculate tiles manually based on box coverage." },
+      { q: "Does the calculation include a waste margin?", a: "It provides exact numbers; we recommend adding a 5-10% buffer to your final purchase for safety." }
+    ]
+  };
+
   return (
-    <div className="flex flex-col items-center p-6 md:p-12 max-w-4xl mx-auto w-full gap-8">
+    <div className="flex flex-col items-center p-6 md:p-12 max-w-7xl mx-auto w-full gap-8">
       <div className="text-center space-y-2">
         <h1 className="text-3xl font-black uppercase tracking-tighter text-foreground">{t('calculator')}</h1>
         <p className="text-muted-foreground font-medium">Hitung kebutuhan cat dan biaya material dengan mudah</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mx-auto">
         <Card className="shadow-lg border-2">
           <CardHeader>
             <CardTitle className="text-xl font-bold flex items-center gap-2 uppercase">
@@ -92,6 +111,9 @@ export default function MaterialCalculatorPage() {
           </CardContent>
         </Card>
       </div>
+
+      <SmartAd />
+      <SeoContent {...seoData} />
     </div>
   );
 }

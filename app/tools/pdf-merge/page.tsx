@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useRef } from 'react';
@@ -8,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { FileStack, Download, Trash2, Plus, FileText, Loader2 } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
+import { SeoContent } from '@/components/seo-content';
+import { SmartAd } from '@/components/smart-ad';
 
 export default function PDFMergePage() {
   const { t } = useLang();
@@ -74,14 +75,31 @@ export default function PDFMergePage() {
     }
   };
 
+  const seoData = {
+    title: "PDF Merger",
+    description: "Combine multiple PDF documents into a single file quickly and securely in your browser.",
+    steps: [
+      "Select multiple PDF files from your device.",
+      "Reorder the files in the list if needed by removing and re-adding.",
+      "Click the 'Merge PDF' button to start the process.",
+      "The merged document will be generated and downloaded instantly."
+    ],
+    article: "Combine PDF files securely. Unlike other sites, this **Privacy-First PDF Merger** processes files locally on your device. Perfect for merging contracts, reports, or assignments without risking data leaks. Since your files never leave your computer, you can merge sensitive documents with peace of mind.",
+    faq: [
+      { q: "Is there a file size limit?", a: "The limit is based on your browser's available memory. Usually, merging several large documents works fine." },
+      { q: "Are my files uploaded to your server?", a: "No. The merging process happens entirely in your browser using JavaScript. We never see your files." },
+      { q: "Can I merge password-protected PDFs?", a: "Currently, you must remove the password before merging for the tool to access the pages." }
+    ]
+  };
+
   return (
-    <div className="flex flex-col items-center p-6 md:p-12 max-w-4xl mx-auto w-full gap-8">
+    <div className="flex flex-col items-center p-6 md:p-12 max-w-7xl mx-auto w-full gap-8">
       <div className="text-center space-y-2">
         <h1 className="text-3xl font-black uppercase tracking-tighter text-foreground">{t('pdf_merge')}</h1>
         <p className="text-muted-foreground font-medium">Gabungkan beberapa dokumen PDF menjadi satu secara instan dan privat</p>
       </div>
 
-      <Card className="w-full shadow-lg border-2">
+      <Card className="w-full max-w-4xl shadow-lg border-2">
         <CardHeader className="flex flex-row items-center justify-between border-b bg-muted/30">
           <CardTitle className="text-lg font-black flex items-center gap-2 uppercase">
             <FileStack className="h-5 w-5 text-primary" />
@@ -142,6 +160,9 @@ export default function PDFMergePage() {
           )}
         </CardContent>
       </Card>
+
+      <SmartAd />
+      <SeoContent {...seoData} />
     </div>
   );
 }

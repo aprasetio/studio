@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState } from 'react';
@@ -9,6 +8,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
 import { Image as ImageIcon, Download, Upload, Zap, ShieldCheck } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
+import { SeoContent } from '@/components/seo-content';
+import { SmartAd } from '@/components/smart-ad';
 
 export default function ImageCompressorPage() {
   const { t } = useLang();
@@ -65,8 +66,25 @@ export default function ImageCompressorPage() {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
   };
 
+  const seoData = {
+    title: "Image Compressor",
+    description: "Reduce the file size of your JPG, PNG, and WebP images without compromising privacy.",
+    steps: [
+      "Select or drag an image (JPG, PNG, or WebP) into the upload area.",
+      "Adjust the quality slider to find the balance between size and detail.",
+      "Click the 'Compress' button to process the image locally.",
+      "Download the compressed image once the processing is complete."
+    ],
+    article: "Optimize images for web or email without losing quality. This **Offline Image Compressor** reduces file size drastically while keeping your photos private. No server upload means zero privacy risk. Since all processing happens using your browser's power, your images stay on your device at all times. Ideal for web developers and users with slow internet connections.",
+    faq: [
+      { q: "Will I lose image quality?", a: "Compression always involves some loss of data, but at 80-90% quality, the difference is often invisible to the naked eye." },
+      { q: "Is there a limit on image dimensions?", a: "The tool automatically resizes images to a maximum of 1920px to ensure optimal web performance." },
+      { q: "Which formats are supported?", a: "We support JPG, PNG, and WebP formats for both input and output." }
+    ]
+  };
+
   return (
-    <div className="flex flex-col items-center p-6 md:p-12 max-w-5xl mx-auto w-full gap-8">
+    <div className="flex flex-col items-center p-6 md:p-12 max-w-7xl mx-auto w-full gap-8">
       <div className="text-center space-y-3">
         <h1 className="text-4xl font-black uppercase tracking-tighter text-foreground">{t('image_compressor')}</h1>
         <div className="flex items-center justify-center gap-2 text-green-600 font-bold text-sm uppercase tracking-widest bg-green-50 px-4 py-1 rounded-full border border-green-100">
@@ -75,7 +93,7 @@ export default function ImageCompressorPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-5xl mx-auto">
         <Card className="shadow-lg border-2">
           <CardHeader>
             <CardTitle className="text-xl font-bold flex items-center gap-2 uppercase">
@@ -184,6 +202,9 @@ export default function ImageCompressorPage() {
           </CardContent>
         </Card>
       </div>
+
+      <SmartAd />
+      <SeoContent {...seoData} />
     </div>
   );
 }
