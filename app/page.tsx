@@ -28,84 +28,98 @@ export default function DashboardPage() {
 
   const tools = [
     {
+      id: 'futsal',
       title: t('futsal'),
       description: 'Papan skor sederhana dan efektif untuk pertandingan futsal Anda.',
       href: '/tools/futsal',
       icon: <ClipboardList className="h-10 w-10 text-primary" />,
     },
     {
+      id: 'lineup',
       title: t('lineup'),
       description: 'Buat dan visualisasikan formasi tim sepak bola Anda.',
       href: '/tools/lineup-builder',
       icon: <Goal className="h-10 w-10 text-primary" />,
     },
     {
+      id: 'tournament',
       title: t('tournament'),
       description: 'Pembuat jadwal Round Robin instan untuk liga dan turnamen sosial.',
       href: '/tools/tournament',
       icon: <Trophy className="h-10 w-10 text-primary" />,
     },
     {
+      id: 'scoreboard',
       title: t('scoreboard'),
       description: 'Papan skor serbaguna untuk voli, bulu tamkis, dan tenis meja.',
       href: '/tools/scoreboard',
       icon: <Calendar className="h-10 w-10 text-primary" />,
     },
     {
+      id: 'pdf-merge',
       title: t('pdf_merge'),
       description: 'Gabungkan beberapa file PDF menjadi satu dokumen secara offline.',
       href: '/tools/pdf-merge',
       icon: <FileStack className="h-10 w-10 text-primary" />,
     },
     {
+      id: 'image-to-pdf',
       title: t('image_to_pdf'),
       description: 'Ubah koleksi gambar JPG/PNG Anda menjadi dokumen PDF.',
       href: '/tools/image-to-pdf',
       icon: <FileType className="h-10 w-10 text-primary" />,
     },
     {
+      id: 'invoice',
       title: t('invoice'),
       description: 'Buat invoice profesional dan simpan sebagai PDF untuk klien Anda.',
       href: '/tools/invoice',
       icon: <Receipt className="h-10 w-10 text-primary" />,
     },
     {
+      id: 'shift',
       title: t('shift'),
       description: 'Kelola jadwal kerja mingguan tim Anda dengan sistem shift visual.',
       href: '/tools/shift',
       icon: <CalendarDays className="h-10 w-10 text-primary" />,
     },
     {
+      id: 'image-compressor',
       title: t('image_compressor'),
       description: 'Kompres ukuran file gambar langsung di browser tanpa upload.',
       href: '/tools/image-compressor',
       icon: <ImageIcon className="h-10 w-10 text-primary" />,
     },
     {
+      id: 'split-bill',
       title: t('split_bill'),
       description: 'Hitung patungan makan atau biaya tim dengan rincian untuk WA.',
       href: '/tools/split-bill',
       icon: <Banknote className="h-10 w-10 text-primary" />,
     },
     {
+      id: 'csv-helper',
       title: t('csv_helper'),
       description: 'Bersihkan dan proses file CSV Anda secara lokal tanpa upload.',
       href: '/tools/csv-helper',
       icon: <FileSpreadsheet className="h-10 w-10 text-primary" />,
     },
     {
+      id: 'calculator',
       title: t('calculator'),
       description: 'Kalkulator kebutuhan material cat, keramik, dan estimasi biaya.',
       href: '/tools/calculator',
       icon: <Calculator className="h-10 w-10 text-primary" />,
     },
     {
+      id: 'inventory',
       title: t('inventory'),
       description: 'Pantau stok peralatan olahraga seperti bola, rompi, dan cone.',
       href: '/tools/inventory',
       icon: <Package className="h-10 w-10 text-primary" />,
     },
     {
+      id: 'kanban',
       title: t('kanban'),
       description: 'Kelola tugas dan rencana tim Anda dengan papan kanban sederhana.',
       href: '/tools/kanban',
@@ -126,7 +140,7 @@ export default function DashboardPage() {
 
       <div className="grid w-full max-w-7xl gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {tools.map((tool) => (
-          <Card key={tool.href} className="flex flex-col overflow-hidden transition-all duration-300 hover:translate-y-[-8px] hover:shadow-2xl border-2 hover:border-primary/20 bg-card">
+          <Card key={tool.id} className="flex flex-col overflow-hidden transition-all duration-300 hover:translate-y-[-8px] hover:shadow-2xl border-2 hover:border-primary/20 bg-card">
             <CardHeader className="flex-row items-center gap-6 p-8">
               <div className="p-3 bg-primary/5 rounded-2xl shrink-0">
                 {tool.icon}

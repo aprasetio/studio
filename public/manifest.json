@@ -1,14 +1,12 @@
 
 {
-  "name": "VersoKit - Sports Utility",
+  "name": "VersoKit",
   "short_name": "VersoKit",
-  "description": "Toolkit Lengkap Anda untuk Olahraga",
-  "theme_color": "#111827",
-  "background_color": "#111827",
-  "display": "standalone",
-  "orientation": "portrait",
-  "scope": "/",
+  "description": "Your All-in-One Toolkit for Sports, Construction & Business",
   "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#111827",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
