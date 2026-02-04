@@ -22,6 +22,8 @@ import {
 import { useLang } from '@/components/Providers';
 import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
+import { SeoContent } from '@/components/seo-content';
+import { SmartAd } from '@/components/smart-ad';
 
 interface Match {
   id: string;
@@ -52,7 +54,6 @@ export default function TournamentManagerPage() {
   const [newTeam, setNewTeam] = useState('');
   const standingsRef = useRef<HTMLDivElement>(null);
 
-  // --- Logic: Team Management ---
   const addTeam = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newTeam.trim()) return;
@@ -68,7 +69,6 @@ export default function TournamentManagerPage() {
     setTeams(teams.filter((_, i) => i !== index));
   };
 
-  // --- Logic: Round Robin (Circle Method) ---
   const generateTournament = () => {
     if (teams.length < 2) {
       toast({ title: "Minimal butuh 2 tim", variant: "destructive" });
@@ -102,7 +102,6 @@ export default function TournamentManagerPage() {
           });
         }
       }
-      // Rotate teams (keep first team fixed)
       const last = tempTeams.pop()!;
       tempTeams.splice(1, 0, last);
     }
@@ -119,7 +118,6 @@ export default function TournamentManagerPage() {
     }
   };
 
-  // --- Logic: Scoring ---
   const updateScore = (id: string, side: 'H' | 'A', value: string) => {
     const val = value === '' ? null : parseInt(value);
     setFixtures(prev => prev.map(m => 
@@ -127,7 +125,6 @@ export default function TournamentManagerPage() {
     ));
   };
 
-  // --- Logic: Standings Calculation ---
   const standings = useMemo(() => {
     const stats: Record<string, Standing> = {};
     teams.forEach(team => {
@@ -177,6 +174,23 @@ export default function TournamentManagerPage() {
     link.download = `klasemen-${Date.now()}.png`;
     link.href = canvas.toDataURL();
     link.click();
+  };
+
+  const seoData = {
+    title: "Tournament Manager Pro",
+    description: "Organize and manage Round Robin tournaments for any sport with automatic fixtures and standings calculation.",
+    steps: [
+      "Enter the names of all participating teams or players.",
+      "Click 'Generate' to create a fair Round Robin schedule.",
+      "Enter match results in the 'Matches' tab as games are played.",
+      "Switch to the 'Standings' tab to view auto-updated league rankings."
+    ],
+    article: "Organizing a **Round Robin Tournament** shouldn't be hard. This generator automatically creates fixtures for Padel, Pickleball, or Futsal. The best part? It calculates the **League Standings** automatically based on the scores you input, tracking points, goals, and goal difference. No login required, and it handles both even and odd team counts by automatically assigning 'BYE' rounds.",
+    faq: [
+      { q: "How many teams can I manage?", a: "The system can handle any number of teams. Large counts will generate more rounds as expected in a true round-robin format." },
+      { q: "What happens if I have an odd number of teams?", a: "The tool automatically handles this by assigning one team a 'BYE' (rest) for each round, ensuring a fair schedule for everyone." },
+      { q: "Can I share the league table?", a: "Yes, you can click the 'Download Gambar Klasemen' button to save a professional-looking image of the table to share on social media or chat groups." }
+    ]
   };
 
   return (
@@ -343,6 +357,10 @@ export default function TournamentManagerPage() {
           </Tabs>
         </div>
       )}
+      
+      <SmartAd />
+      
+      <SeoContent {...seoData} />
     </div>
   );
 }

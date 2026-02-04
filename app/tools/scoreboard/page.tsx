@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from 'react';
@@ -20,6 +19,7 @@ import {
 import { SmartAd } from '@/components/smart-ad';
 import { DataControl } from '@/components/DataControl';
 import { useLang } from '@/components/Providers';
+import { SeoContent } from '@/components/seo-content';
 
 interface ScoreboardState {
   matchName: string;
@@ -66,9 +66,25 @@ export default function UniversalScoreboardPage() {
     }
   };
 
+  const seoData = {
+    title: "Universal Scoreboard Pro",
+    description: "A versatile point and set tracker for multi-sport matches including Volleyball, Badminton, and Table Tennis.",
+    steps: [
+      "Set the target score for each set (e.g., 21 for Badminton, 25 for Volleyball).",
+      "Click the large score numbers or +/- buttons to add points.",
+      "Update the 'Set Menang' counter manually when a team wins a set.",
+      "Use 'Reset Poin' to start a new set while keeping the overall set score."
+    ],
+    article: "A versatile **Universal Scoreboard** for Volleyball, Badminton, and Table Tennis. Unlike simple counters, this tool tracks both 'Sets' and 'Points', making it ideal for official matches where keeping track of set victories is crucial. It features a bold, high-contrast interface designed to be visible from across a court or gym hall.",
+    faq: [
+      { q: "What sports are supported by this scoreboard?", a: "Any sport that uses a points-per-set system, such as Volleyball, Badminton, Table Tennis, and Tennis." },
+      { q: "Is it mobile friendly?", a: "Yes, the interface is optimized for full-screen use on smartphones and tablets, with large touch targets for scorers." },
+      { q: "Does it save my progress?", a: "Yes, all match data is automatically saved to your browser's local storage, so you won't lose the score if you accidentally refresh the page." }
+    ]
+  };
+
   return (
     <div className="flex flex-col p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-8">
-      {/* Header Controls */}
       <div className="flex flex-col gap-6 bg-card p-6 md:p-8 rounded-[2.5rem] shadow-xl border-2">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="space-y-2 w-full md:w-auto">
@@ -116,9 +132,7 @@ export default function UniversalScoreboardPage() {
         </div>
       </div>
 
-      {/* Main Scoreboard Display */}
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        {/* Home Team */}
         <Card className="flex flex-col overflow-hidden border-none shadow-2xl rounded-[3rem] bg-card group">
           <div className="bg-primary p-6 text-center text-primary-foreground relative">
             <Input 
@@ -174,7 +188,6 @@ export default function UniversalScoreboardPage() {
           </div>
         </Card>
 
-        {/* Away Team */}
         <Card className="flex flex-col overflow-hidden border-none shadow-2xl rounded-[3rem] bg-card group">
           <div className="bg-accent p-6 text-center text-accent-foreground relative">
             <Input 
@@ -238,6 +251,8 @@ export default function UniversalScoreboardPage() {
         </div>
         
         <SmartAd />
+        
+        <SeoContent {...seoData} />
       </div>
     </div>
   );

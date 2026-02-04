@@ -18,6 +18,8 @@ import {
 } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
+import { SeoContent } from '@/components/seo-content';
+import { SmartAd } from '@/components/smart-ad';
 
 interface Player {
   id: string;
@@ -40,8 +42,8 @@ const COLORS = [
 export default function LineupBuilderPage() {
   const [hasMounted, setHasMounted] = useState(false);
   const [players, setPlayers] = useLocalStorage<Player[]>('versokit-lineup-players', [
-    { id: '1', name: 'Player 1', number: '1', x: 50, y: 90, color: '#eab308' },
-    { id: '2', name: 'Player 2', number: '4', x: 50, y: 70, color: '#3b82f6' },
+    { id: '1', name: 'PLAYER 1', number: '1', x: 50, y: 90, color: '#eab308' },
+    { id: '2', name: 'PLAYER 2', number: '4', x: 50, y: 70, color: '#3b82f6' },
   ]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -57,7 +59,7 @@ export default function LineupBuilderPage() {
   const addPlayer = () => {
     const newPlayer: Player = {
       id: Date.now().toString(),
-      name: `Player ${players.length + 1}`,
+      name: `PLAYER ${players.length + 1}`,
       number: (players.length + 1).toString(),
       x: 50,
       y: 50,
@@ -99,7 +101,6 @@ export default function LineupBuilderPage() {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    // Convert to percentage
     const xPct = Math.max(5, Math.min(95, (x / rect.width) * 100));
     const yPct = Math.max(5, Math.min(95, (y / rect.height) * 100));
 
@@ -116,8 +117,8 @@ export default function LineupBuilderPage() {
     
     try {
       const canvas = await html2canvas(pitchRef.current, {
-        backgroundColor: '#15803d', // Match pitch color
-        scale: 2, // High quality
+        backgroundColor: '#15803d',
+        scale: 2,
       });
       
       const link = document.createElement('a');
@@ -128,6 +129,23 @@ export default function LineupBuilderPage() {
     } catch (err) {
       toast({ title: "Gagal!", description: "Tidak dapat mengunduh gambar.", variant: "destructive" });
     }
+  };
+
+  const seoData = {
+    title: "Football Lineup Builder",
+    description: "Create, visualize, and share your football team's tactical formations with our professional lineup creator.",
+    steps: [
+      "Choose your basic formation strategy (e.g., 4-4-2, 4-3-3).",
+      "Drag players manually to any position on the green pitch.",
+      "Click a player to edit their jersey Name, Number, and Color.",
+      "Click 'Download Formasi' to save your creation as a high-quality PNG image."
+    ],
+    article: "Visualizing football tactics is essential for coaches and fans alike. Our **Lineup Builder** allows you to create professional squad graphics instantly. Whether for Instagram stories, YouTube thumbnails, or pre-match tactical briefings, this tool works entirely offline and protects your strategy privacy. You have full control over player positioning, colors, and squad details.",
+    faq: [
+      { q: "Is this lineup builder free?", a: "Yes, VersoKit tools are free to use for all sports enthusiasts." },
+      { q: "Can I use it for any formation?", a: "Absolutely! You can drag players to any specific coordinate on the pitch, allowing for unique custom tactics like asymmetrical formations." },
+      { q: "Does it work on mobile?", a: "Yes, the tool is fully optimized for touch screens, allowing you to drag players with your finger." }
+    ]
   };
 
   if (!hasMounted) {
@@ -142,7 +160,6 @@ export default function LineupBuilderPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full">
-        {/* Pitch Area */}
         <div className="lg:col-span-7 flex flex-col gap-4">
           <div 
             ref={pitchRef}
@@ -150,7 +167,6 @@ export default function LineupBuilderPage() {
             onPointerUp={handlePointerUp}
             className="relative aspect-[3/4] w-full bg-green-700 border-[6px] border-white/80 rounded-2xl overflow-hidden shadow-2xl select-none touch-none"
           >
-            {/* Pitch Markings */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.1)_100%)]"></div>
             <div className="absolute top-0 left-[15%] right-[15%] h-[15%] border-b-2 border-x-2 border-white/40"></div>
             <div className="absolute bottom-0 left-[15%] right-[15%] h-[15%] border-t-2 border-x-2 border-white/40"></div>
@@ -158,7 +174,6 @@ export default function LineupBuilderPage() {
             <div className="absolute top-1/2 left-1/2 w-32 h-32 border-2 border-white/20 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
             <div className="absolute top-1/2 left-1/2 w-1.5 h-1.5 bg-white/40 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
 
-            {/* Players */}
             {players.map((player) => (
               <div
                 key={player.id}
@@ -184,7 +199,6 @@ export default function LineupBuilderPage() {
               </div>
             ))}
 
-            {/* Logo/Watermark for Export */}
             <div className="absolute bottom-4 right-4 opacity-20 flex items-center gap-1 pointer-events-none">
                <span className="text-white font-black text-xs uppercase tracking-widest">VersoKit</span>
             </div>
@@ -196,7 +210,6 @@ export default function LineupBuilderPage() {
           </Button>
         </div>
 
-        {/* Controls Area */}
         <div className="lg:col-span-5 space-y-6">
           <Card className="shadow-lg border-2">
             <CardHeader className="border-b bg-muted/30">
@@ -285,6 +298,10 @@ export default function LineupBuilderPage() {
           </Card>
         </div>
       </div>
+      
+      <SmartAd />
+      
+      <SeoContent {...seoData} />
     </div>
   );
 }
