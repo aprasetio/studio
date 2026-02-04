@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import html2canvas from 'html2canvas';
 import { useLocalStorage } from 'usehooks-ts';
 import { Button } from '@/components/ui/button';
@@ -38,6 +38,7 @@ const COLORS = [
 ];
 
 export default function LineupBuilderPage() {
+  const [hasMounted, setHasMounted] = useState(false);
   const [players, setPlayers] = useLocalStorage<Player[]>('versokit-lineup-players', [
     { id: '1', name: 'Player 1', number: '1', x: 50, y: 90, color: '#eab308' },
     { id: '2', name: 'Player 2', number: '4', x: 50, y: 70, color: '#3b82f6' },
@@ -46,6 +47,10 @@ export default function LineupBuilderPage() {
   const [isDragging, setIsDragging] = useState(false);
   const pitchRef = useRef<HTMLDivElement>(null);
   const dragInfo = useRef<{ playerId: string; startX: number; startY: number } | null>(null);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   const selectedPlayer = players.find(p => p.id === selectedId);
 
@@ -124,6 +129,10 @@ export default function LineupBuilderPage() {
       toast({ title: "Gagal!", description: "Tidak dapat mengunduh gambar.", variant: "destructive" });
     }
   };
+
+  if (!hasMounted) {
+    return <div className="min-h-screen bg-background" />;
+  }
 
   return (
     <div className="flex flex-col items-center p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-8">
