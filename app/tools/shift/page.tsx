@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 import { useLang } from '@/components/Providers';
 import { Button } from '@/components/ui/button';
@@ -58,6 +58,11 @@ export default function ShiftRosterPage() {
   const { t, lang } = useLang();
   const [employees, setEmployees] = useLocalStorage<EmployeeShift[]>('versokit-shift-data', []);
   const [newName, setNewName] = useState('');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const addEmployee = (e: React.FormEvent) => {
     e.preventDefault();
@@ -82,7 +87,6 @@ export default function ShiftRosterPage() {
     setEmployees(employees.map(emp => {
       if (emp.id === empId) {
         const rawShift = emp.shifts[day] || 'OFF';
-        // Handle potential legacy data that might be lowercase or invalid
         const currentShift = (shiftOrder.includes(rawShift) ? rawShift : 'OFF') as ShiftType;
         const nextIndex = (shiftOrder.indexOf(currentShift) + 1) % shiftOrder.length;
         return {
@@ -152,7 +156,7 @@ export default function ShiftRosterPage() {
                 </tr>
               </thead>
               <tbody>
-                {employees.length === 0 ? (
+                {!mounted || employees.length === 0 ? (
                   <tr>
                     <td colSpan={9} className="py-20 text-center opacity-30">
                       <CalendarDays className="h-12 w-12 mx-auto mb-4" />
@@ -165,7 +169,6 @@ export default function ShiftRosterPage() {
                       <td className="p-4 font-bold uppercase tracking-tight text-sm border-r">{emp.name}</td>
                       {DAYS.map(day => {
                         const shiftKey = emp.shifts[day] || 'OFF';
-                        // Provide defensive fallback for config retrieval
                         const config = SHIFT_CONFIG[shiftKey] || SHIFT_CONFIG['OFF'];
                         return (
                           <td key={day} className="p-2 border-r">
