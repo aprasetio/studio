@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -19,12 +18,15 @@ import {
   Image as ImageIcon,
   Banknote,
   FileStack,
-  FileType
+  FileType,
+  ShieldCheck,
+  Zap,
+  WifiOff
 } from 'lucide-react';
 import { useLang } from '@/components/Providers';
 
 export default function DashboardPage() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
 
   const tools = [
     {
@@ -138,7 +140,27 @@ export default function DashboardPage() {
         </p>
       </div>
 
-      <div className="grid w-full max-w-7xl gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {/* Trust Badge Section */}
+      <div className="flex flex-wrap items-center justify-center gap-8 py-6 px-10 bg-muted/30 rounded-[3rem] border-2 border-dashed border-muted-foreground/10 max-w-4xl w-full">
+        <div className="flex items-center gap-2 text-primary">
+          <Zap className="h-5 w-5" />
+          <span className="text-xs font-black uppercase tracking-widest">{lang === 'en' ? 'Fast' : 'Cepat'}</span>
+        </div>
+        <div className="flex items-center gap-2 text-green-600">
+          <ShieldCheck className="h-5 w-5" />
+          <span className="text-xs font-black uppercase tracking-widest">{lang === 'en' ? 'Secure' : 'Aman'}</span>
+        </div>
+        <div className="flex items-center gap-2 text-orange-600">
+          <WifiOff className="h-5 w-5" />
+          <span className="text-xs font-black uppercase tracking-widest">{lang === 'en' ? 'Offline-Ready' : 'Siap Offline'}</span>
+        </div>
+        <div className="h-4 w-px bg-muted-foreground/20 hidden md:block" />
+        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest text-center">
+          {lang === 'en' ? 'Data never leaves your device' : 'Data tidak pernah meninggalkan perangkat Anda'}
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 w-full max-w-7xl gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {tools.map((tool) => (
           <Card key={tool.id} className="flex flex-col overflow-hidden transition-all duration-300 hover:translate-y-[-8px] hover:shadow-2xl border-2 hover:border-primary/20 bg-card">
             <CardHeader className="flex-row items-center gap-6 p-8">

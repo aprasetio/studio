@@ -169,6 +169,11 @@ export default function InvoiceMakerPage() {
               </div>
             </div>
 
+            {/* Privacy Footer for PDF */}
+            <div className="mt-8 pt-4 border-t text-center text-[8px] text-gray-400 print:block hidden uppercase tracking-widest font-sans font-bold">
+              🔒 Securely generated on device by VersoKit.com. No data was sent to any server.
+            </div>
+
             {/* Footer Invoice */}
             <div className="mt-20 pt-8 border-t text-center">
               <p className="text-[10px] font-sans font-bold text-gray-300 uppercase tracking-[0.4em]">Terima kasih atas kerja sama Anda</p>
