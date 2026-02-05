@@ -20,6 +20,7 @@ import { SmartAd } from '@/components/smart-ad';
 import { DataControl } from '@/components/DataControl';
 import { useLang } from '@/components/Providers';
 import { SeoContent } from '@/components/seo-content';
+import { SEO_DATA } from '@/lib/seo-content';
 
 interface ScoreboardState {
   matchName: string;
@@ -34,7 +35,7 @@ interface ScoreboardState {
 }
 
 export default function UniversalScoreboardPage() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [state, setState] = useLocalStorage<ScoreboardState>('versokit-universal-scoreboard', {
     matchName: 'Pertandingan Persahabatan',
     sportType: 'Voli',
@@ -46,6 +47,8 @@ export default function UniversalScoreboardPage() {
     setsAway: 0,
     targetScore: 25,
   });
+
+  const seoData = SEO_DATA.scoreboard[lang];
 
   const updateState = (updates: Partial<ScoreboardState>) => {
     setState(prev => ({ ...prev, ...updates }));
@@ -64,23 +67,6 @@ export default function UniversalScoreboardPage() {
         setsAway: 0,
       });
     }
-  };
-
-  const seoData = {
-    title: "Universal Scoreboard Pro",
-    description: "A versatile point and set tracker for multi-sport matches including Volleyball, Badminton, and Table Tennis.",
-    steps: [
-      "Set the target score for each set (e.g., 21 for Badminton, 25 for Volleyball).",
-      "Click the large score numbers or +/- buttons to add points.",
-      "Update the 'Set Menang' counter manually when a team wins a set.",
-      "Use 'Reset Poin' to start a new set while keeping the overall set score."
-    ],
-    article: "A versatile **Universal Scoreboard** for Volleyball, Badminton, and Table Tennis. Unlike simple counters, this tool tracks both 'Sets' and 'Points', making it ideal for official matches where keeping track of set victories is crucial. It features a bold, high-contrast interface designed to be visible from across a court or gym hall.",
-    faq: [
-      { q: "What sports are supported by this scoreboard?", a: "Any sport that uses a points-per-set system, such as Volleyball, Badminton, Table Tennis, and Tennis." },
-      { q: "Is it mobile friendly?", a: "Yes, the interface is optimized for full-screen use on smartphones and tablets, with large touch targets for scorers." },
-      { q: "Does it save my progress?", a: "Yes, all match data is automatically saved to your browser's local storage, so you won't lose the score if you accidentally refresh the page." }
-    ]
   };
 
   return (

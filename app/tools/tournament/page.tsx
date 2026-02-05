@@ -24,6 +24,7 @@ import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { SeoContent } from '@/components/seo-content';
 import { SmartAd } from '@/components/smart-ad';
+import { SEO_DATA } from '@/lib/seo-content';
 
 interface Match {
   id: string;
@@ -47,12 +48,14 @@ interface Standing {
 }
 
 export default function TournamentManagerPage() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [teams, setTeams] = useLocalStorage<string[]>('versokit-tournament-teams', []);
   const [fixtures, setFixtures] = useLocalStorage<Match[]>('versokit-tournament-fixtures', []);
   const [view, setView] = useLocalStorage<'setup' | 'play'>('versokit-tournament-view', 'setup');
   const [newTeam, setNewTeam] = useState('');
   const standingsRef = useRef<HTMLDivElement>(null);
+
+  const seoData = SEO_DATA.tournament[lang];
 
   const addTeam = (e: React.FormEvent) => {
     e.preventDefault();
@@ -174,23 +177,6 @@ export default function TournamentManagerPage() {
     link.download = `klasemen-${Date.now()}.png`;
     link.href = canvas.toDataURL();
     link.click();
-  };
-
-  const seoData = {
-    title: "Tournament Manager Pro",
-    description: "Organize and manage Round Robin tournaments for any sport with automatic fixtures and standings calculation.",
-    steps: [
-      "Enter the names of all participating teams or players.",
-      "Click 'Generate' to create a fair Round Robin schedule.",
-      "Enter match results in the 'Matches' tab as games are played.",
-      "Switch to the 'Standings' tab to view auto-updated league rankings."
-    ],
-    article: "Organizing a **Round Robin Tournament** shouldn't be hard. This generator automatically creates fixtures for Padel, Pickleball, or Futsal. The best part? It calculates the **League Standings** automatically based on the scores you input, tracking points, goals, and goal difference. No login required, and it handles both even and odd team counts by automatically assigning 'BYE' rounds.",
-    faq: [
-      { q: "How many teams can I manage?", a: "The system can handle any number of teams. Large counts will generate more rounds as expected in a true round-robin format." },
-      { q: "What happens if I have an odd number of teams?", a: "The tool automatically handles this by assigning one team a 'BYE' (rest) for each round, ensuring a fair schedule for everyone." },
-      { q: "Can I share the league table?", a: "Yes, you can click the 'Download Gambar Klasemen' button to save a professional-looking image of the table to share on social media or chat groups." }
-    ]
   };
 
   return (

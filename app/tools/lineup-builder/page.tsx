@@ -20,6 +20,8 @@ import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { SeoContent } from '@/components/seo-content';
 import { SmartAd } from '@/components/smart-ad';
+import { useLang } from '@/components/Providers';
+import { SEO_DATA } from '@/lib/seo-content';
 
 interface Player {
   id: string;
@@ -40,6 +42,7 @@ const COLORS = [
 ];
 
 export default function LineupBuilderPage() {
+  const { lang } = useLang();
   const [hasMounted, setHasMounted] = useState(false);
   const [players, setPlayers] = useLocalStorage<Player[]>('versokit-lineup-players', [
     { id: '1', name: 'PLAYER 1', number: '1', x: 50, y: 90, color: '#eab308' },
@@ -54,6 +57,7 @@ export default function LineupBuilderPage() {
     setHasMounted(true);
   }, []);
 
+  const seoData = SEO_DATA.lineup[lang];
   const selectedPlayer = players.find(p => p.id === selectedId);
 
   const addPlayer = () => {
@@ -129,23 +133,6 @@ export default function LineupBuilderPage() {
     } catch (err) {
       toast({ title: "Gagal!", description: "Tidak dapat mengunduh gambar.", variant: "destructive" });
     }
-  };
-
-  const seoData = {
-    title: "Football Lineup Builder",
-    description: "Create, visualize, and share your football team's tactical formations with our professional lineup creator.",
-    steps: [
-      "Choose your basic formation strategy (e.g., 4-4-2, 4-3-3).",
-      "Drag players manually to any position on the green pitch.",
-      "Click a player to edit their jersey Name, Number, and Color.",
-      "Click 'Download Formasi' to save your creation as a high-quality PNG image."
-    ],
-    article: "Visualizing football tactics is essential for coaches and fans alike. Our **Lineup Builder** allows you to create professional squad graphics instantly. Whether for Instagram stories, YouTube thumbnails, or pre-match tactical briefings, this tool works entirely offline and protects your strategy privacy. You have full control over player positioning, colors, and squad details.",
-    faq: [
-      { q: "Is this lineup builder free?", a: "Yes, VersoKit tools are free to use for all sports enthusiasts." },
-      { q: "Can I use it for any formation?", a: "Absolutely! You can drag players to any specific coordinate on the pitch, allowing for unique custom tactics like asymmetrical formations." },
-      { q: "Does it work on mobile?", a: "Yes, the tool is fully optimized for touch screens, allowing you to drag players with your finger." }
-    ]
   };
 
   if (!hasMounted) {
