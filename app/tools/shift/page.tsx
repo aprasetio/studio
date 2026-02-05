@@ -10,7 +10,7 @@ import { Plus, Trash2, CalendarDays, UserPlus } from 'lucide-react';
 import { DataControl } from '@/components/DataControl';
 import { SeoContent } from '@/components/seo-content';
 
-type ShiftType = 'off' | 'morning' | 'afternoon' | 'night';
+type ShiftType = 'OFF' | 'MOR' | 'AFT' | 'NIG';
 
 interface EmployeeShift {
   id: string;
@@ -18,17 +18,44 @@ interface EmployeeShift {
   shifts: { [key: string]: ShiftType }; // 'mon', 'tue', etc.
 }
 
-const SHIFT_CONFIG: { [key in ShiftType]: { label: string; color: string; icon: string } } = {
-  off: { label: 'OFF', color: 'bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400', icon: '⚪' },
-  morning: { label: 'MOR', color: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-950/50 dark:text-yellow-400', icon: '🟡' },
-  afternoon: { label: 'AFT', color: 'bg-blue-100 text-blue-700 dark:bg-blue-950/50 dark:text-blue-400', icon: '🔵' },
-  night: { label: 'NIG', color: 'bg-slate-800 text-slate-100 dark:bg-slate-100 dark:text-slate-900', icon: '⚫' }
+const SHIFT_CONFIG: { 
+  [key in ShiftType]: { 
+    label: { en: string; id: string }; 
+    full: { en: string; id: string }; 
+    color: string; 
+    icon: string 
+  } 
+} = {
+  OFF: { 
+    label: { en: 'OFF', id: 'LBR' }, 
+    full: { en: 'Off / Rest', id: 'Libur' }, 
+    color: 'bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400', 
+    icon: '⚪' 
+  },
+  MOR: { 
+    label: { en: 'MOR', id: 'PAGI' }, 
+    full: { en: 'Morning', id: 'Pagi' }, 
+    color: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-950/50 dark:text-yellow-400', 
+    icon: '🟡' 
+  },
+  AFT: { 
+    label: { en: 'AFT', id: 'SIANG' }, 
+    full: { en: 'Afternoon', id: 'Siang' }, 
+    color: 'bg-blue-100 text-blue-700 dark:bg-blue-950/50 dark:text-blue-400', 
+    icon: '🔵' 
+  },
+  NIG: { 
+    label: { en: 'NIG', id: 'MLM' }, 
+    full: { en: 'Night', id: 'Malam' }, 
+    color: 'bg-slate-800 text-slate-100 dark:bg-slate-100 dark:text-slate-900', 
+    icon: '⚫' 
+  }
 };
 
 const DAYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'] as const;
 
 export default function ShiftRosterPage() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [employees, setEmployees] = useLocalStorage<EmployeeShift[]>('versokit-shift-data', []);
   const [newName, setNewName] = useState('');
 
@@ -39,7 +66,7 @@ export default function ShiftRosterPage() {
     const newEmp: EmployeeShift = {
       id: Date.now().toString(),
       name: newName.trim(),
-      shifts: DAYS.reduce((acc, day) => ({ ...acc, [day]: 'off' as ShiftType }), {})
+      shifts: DAYS.reduce((acc, day) => ({ ...acc, [day]: 'OFF' as ShiftType }), {})
     };
 
     setEmployees([...employees, newEmp]);
@@ -51,10 +78,10 @@ export default function ShiftRosterPage() {
   };
 
   const cycleShift = (empId: string, day: string) => {
-    const shiftOrder: ShiftType[] = ['off', 'morning', 'afternoon', 'night'];
+    const shiftOrder: ShiftType[] = ['OFF', 'MOR', 'AFT', 'NIG'];
     setEmployees(employees.map(emp => {
       if (emp.id === empId) {
-        const currentShift = emp.shifts[day];
+        const currentShift = emp.shifts[day] || 'OFF';
         const nextIndex = (shiftOrder.indexOf(currentShift) + 1) % shiftOrder.length;
         return {
           ...emp,
@@ -95,12 +122,15 @@ export default function ShiftRosterPage() {
               </Button>
             </form>
 
-            <div className="mt-8 p-4 bg-muted/50 rounded-2xl space-y-2">
-              <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest mb-2">Legenda Shift:</p>
-              {Object.entries(SHIFT_CONFIG).map(([key, config]) => (
-                <div key={key} className="flex items-center gap-3 text-xs font-bold uppercase">
-                  <span>{config.icon}</span>
-                  <span>{config.label}</span>
+            <div className="mt-8 p-4 bg-muted/50 rounded-2xl space-y-3">
+              <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest mb-1">Legenda Shift:</p>
+              {(Object.keys(SHIFT_CONFIG) as ShiftType[]).map((key) => (
+                <div key={key} className="flex items-center gap-3">
+                  <span className="text-sm">{SHIFT_CONFIG[key].icon}</span>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] font-black uppercase">{SHIFT_CONFIG[key].label[lang]}</span>
+                    <span className="text-[9px] font-medium opacity-60 uppercase">{SHIFT_CONFIG[key].full[lang]}</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -132,15 +162,15 @@ export default function ShiftRosterPage() {
                     <tr key={emp.id} className="border-b group hover:bg-muted/30 transition-colors">
                       <td className="p-4 font-bold uppercase tracking-tight text-sm border-r">{emp.name}</td>
                       {DAYS.map(day => {
-                        const shift = emp.shifts[day];
-                        const config = SHIFT_CONFIG[shift];
+                        const shiftKey = emp.shifts[day] || 'OFF';
+                        const config = SHIFT_CONFIG[shiftKey];
                         return (
                           <td key={day} className="p-2 border-r">
                             <button
                               onClick={() => cycleShift(emp.id, day)}
                               className={`w-full h-12 rounded-xl flex items-center justify-center font-black text-[10px] transition-all transform active:scale-95 shadow-sm border ${config.color}`}
                             >
-                              {config.label}
+                              {config.label[lang]}
                             </button>
                           </td>
                         );
