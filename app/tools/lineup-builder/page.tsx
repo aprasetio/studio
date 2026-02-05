@@ -20,8 +20,6 @@ import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { SeoContent } from '@/components/seo-content';
 import { SmartAd } from '@/components/smart-ad';
-import { useLang } from '@/components/Providers';
-import { SEO_DATA } from '@/lib/seo-content';
 
 interface Player {
   id: string;
@@ -42,7 +40,6 @@ const COLORS = [
 ];
 
 export default function LineupBuilderPage() {
-  const { lang } = useLang();
   const [hasMounted, setHasMounted] = useState(false);
   const [players, setPlayers] = useLocalStorage<Player[]>('versokit-lineup-players', [
     { id: '1', name: 'PLAYER 1', number: '1', x: 50, y: 90, color: '#eab308' },
@@ -57,7 +54,6 @@ export default function LineupBuilderPage() {
     setHasMounted(true);
   }, []);
 
-  const seoData = SEO_DATA.lineup[lang];
   const selectedPlayer = players.find(p => p.id === selectedId);
 
   const addPlayer = () => {
@@ -288,7 +284,7 @@ export default function LineupBuilderPage() {
       
       <SmartAd />
       
-      <SeoContent {...seoData} />
+      <SeoContent toolId="lineup" />
     </div>
   );
 }

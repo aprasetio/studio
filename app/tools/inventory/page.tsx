@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState } from 'react';
@@ -10,6 +9,7 @@ import { Plus, Minus, Trash2, Package, PlusCircle } from 'lucide-react';
 import { SmartAd } from '@/components/smart-ad';
 import { DataControl } from '@/components/DataControl';
 import { useLang } from '@/components/Providers';
+import { SeoContent } from '@/components/seo-content';
 
 interface InventoryItem {
   id: number;
@@ -145,6 +145,8 @@ export default function InventoryPage() {
       </div>
       
       <SmartAd />
+
+      <SeoContent toolId="inventory" />
     </div>
   );
 }

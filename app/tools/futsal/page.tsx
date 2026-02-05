@@ -6,11 +6,9 @@ import { DataControl } from '@/components/DataControl';
 import { useLang } from '@/components/Providers';
 import { SeoContent } from '@/components/seo-content';
 import { SmartAd } from '@/components/smart-ad';
-import { SEO_DATA } from '@/lib/seo-content';
 
 export default function FutsalPage() {
-  const { t, lang } = useLang();
-  const seoData = SEO_DATA.futsal[lang];
+  const { t } = useLang();
 
   return (
     <div className="min-h-screen bg-background text-foreground p-4 flex flex-col items-center pt-10">
@@ -23,7 +21,7 @@ export default function FutsalPage() {
       
       <SmartAd />
       
-      <SeoContent {...seoData} />
+      <SeoContent toolId="futsal" />
     </div>
   );
 }

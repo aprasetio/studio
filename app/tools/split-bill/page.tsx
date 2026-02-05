@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState } from 'react';
@@ -9,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Users, Receipt, Send, Banknote, Percent } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
+import { SeoContent } from '@/components/seo-content';
 
 export default function SplitBillPage() {
   const { t } = useLang();
@@ -19,7 +19,7 @@ export default function SplitBillPage() {
 
   const billValue = parseFloat(totalBill) || 0;
   const taxValue = parseFloat(taxPercent) || 0;
-  const totalWithTax = billValue + (billValue * (taxValue / 100));
+  const totalWithTax = billValue + ( billValue * (taxValue / 100));
   
   const participants = names.split(',').map(n => n.trim()).filter(n => n !== '');
   const amountPerPerson = participants.length > 0 ? Math.ceil(totalWithTax / participants.length) : 0;
@@ -134,6 +134,8 @@ export default function SplitBillPage() {
           </CardContent>
         </Card>
       </div>
+
+      <SeoContent toolId="split-bill" />
     </div>
   );
 }

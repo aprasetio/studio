@@ -24,7 +24,6 @@ import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { SeoContent } from '@/components/seo-content';
 import { SmartAd } from '@/components/smart-ad';
-import { SEO_DATA } from '@/lib/seo-content';
 
 interface Match {
   id: string;
@@ -48,14 +47,12 @@ interface Standing {
 }
 
 export default function TournamentManagerPage() {
-  const { t, lang } = useLang();
+  const { t } = useLang();
   const [teams, setTeams] = useLocalStorage<string[]>('versokit-tournament-teams', []);
   const [fixtures, setFixtures] = useLocalStorage<Match[]>('versokit-tournament-fixtures', []);
   const [view, setView] = useLocalStorage<'setup' | 'play'>('versokit-tournament-view', 'setup');
   const [newTeam, setNewTeam] = useState('');
   const standingsRef = useRef<HTMLDivElement>(null);
-
-  const seoData = SEO_DATA.tournament[lang];
 
   const addTeam = (e: React.FormEvent) => {
     e.preventDefault();
@@ -346,7 +343,7 @@ export default function TournamentManagerPage() {
       
       <SmartAd />
       
-      <SeoContent {...seoData} />
+      <SeoContent toolId="tournament" />
     </div>
   );
 }

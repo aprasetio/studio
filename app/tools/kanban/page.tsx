@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState } from 'react';
@@ -6,9 +5,10 @@ import { useLocalStorage } from 'usehooks-ts';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
-import { Plus, Trash2, ChevronRight, ChevronLeft, ClipboardList } from 'lucide-react';
+import { Plus, Trash2, ChevronRight, ChevronLeft } from 'lucide-react';
 import { DataControl } from '@/components/DataControl';
 import { useLang } from '@/components/Providers';
+import { SeoContent } from '@/components/seo-content';
 
 type Status = 'todo' | 'progress' | 'done';
 
@@ -140,6 +140,8 @@ export default function KanbanPage() {
           </div>
         ))}
       </div>
+
+      <SeoContent toolId="kanban" />
     </div>
   );
 }

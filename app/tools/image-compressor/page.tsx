@@ -66,23 +66,6 @@ export default function ImageCompressorPage() {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
   };
 
-  const seoData = {
-    title: "Image Compressor",
-    description: "Reduce the file size of your JPG, PNG, and WebP images without compromising privacy.",
-    steps: [
-      "Select or drag an image (JPG, PNG, or WebP) into the upload area.",
-      "Adjust the quality slider to find the balance between size and detail.",
-      "Click the 'Compress' button to process the image locally.",
-      "Download the compressed image once the processing is complete."
-    ],
-    article: "Optimize images for web or email without losing quality. This **Offline Image Compressor** reduces file size drastically while keeping your photos private. No server upload means zero privacy risk. Since all processing happens using your browser's power, your images stay on your device at all times. Ideal for web developers and users with slow internet connections.",
-    faq: [
-      { q: "Will I lose image quality?", a: "Compression always involves some loss of data, but at 80-90% quality, the difference is often invisible to the naked eye." },
-      { q: "Is there a limit on image dimensions?", a: "The tool automatically resizes images to a maximum of 1920px to ensure optimal web performance." },
-      { q: "Which formats are supported?", a: "We support JPG, PNG, and WebP formats for both input and output." }
-    ]
-  };
-
   return (
     <div className="flex flex-col items-center p-6 md:p-12 max-w-7xl mx-auto w-full gap-8">
       <div className="text-center space-y-3">
@@ -204,7 +187,7 @@ export default function ImageCompressorPage() {
       </div>
 
       <SmartAd />
-      <SeoContent {...seoData} />
+      <SeoContent toolId="image-compressor" />
     </div>
   );
 }

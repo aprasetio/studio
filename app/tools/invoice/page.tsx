@@ -40,23 +40,6 @@ export default function InvoiceMakerPage() {
 
   const grandTotal = items.reduce((sum, item) => sum + (item.qty * item.price), 0);
 
-  const seoData = {
-    title: "Invoice Maker",
-    description: "A professional and private tool for freelancers and small businesses to generate PDF invoices instantly.",
-    steps: [
-      "Fill in your business details and the client's information.",
-      "Add line items including the name, quantity, and unit price.",
-      "Review the live preview on the right side of the screen.",
-      "Click the 'Print' button to save the invoice as a professional PDF document."
-    ],
-    article: "Freelancers and SMBs need a quick way to generate receipts. This **Free Invoice Generator** runs entirely in your browser. Your financial data is private and never uploaded to any server. Create professional PDFs in seconds. The tool is designed to be lightweight and efficient, allowing you to manage your billing without complex software.",
-    faq: [
-      { q: "Is my data stored on your servers?", a: "No. All invoice data is processed locally in your browser and is not uploaded to any server, ensuring 100% privacy." },
-      { q: "Can I use this for official business?", a: "Yes, the generated PDF follows a standard professional invoice format suitable for small businesses and freelancers." },
-      { q: "Is there a limit to how many items I can add?", a: "There is no hard limit, but the layout is optimized for a single-page PDF output." }
-    ]
-  };
-
   return (
     <div className="flex flex-col items-center p-6 md:p-12 max-w-7xl mx-auto w-full gap-8 print:p-0">
       <div className="text-center space-y-2 print:hidden">
@@ -196,7 +179,7 @@ export default function InvoiceMakerPage() {
 
       <div className="print:hidden w-full">
         <SmartAd />
-        <SeoContent {...seoData} />
+        <SeoContent toolId="invoice" />
       </div>
     </div>
   );

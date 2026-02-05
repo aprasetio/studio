@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useRef } from 'react';
@@ -6,8 +5,9 @@ import { PDFDocument } from 'pdf-lib';
 import { useLang } from '@/components/Providers';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Image as ImageIcon, Download, Trash2, Plus, FileText, Loader2, FileType } from 'lucide-react';
+import { Image as ImageIcon, Trash2, Plus, Loader2, FileType } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
+import { SeoContent } from '@/components/seo-content';
 
 export default function ImageToPDFPage() {
   const { t } = useLang();
@@ -162,6 +162,8 @@ export default function ImageToPDFPage() {
           )}
         </CardContent>
       </Card>
+
+      <SeoContent toolId="image-to-pdf" />
     </div>
   );
 }

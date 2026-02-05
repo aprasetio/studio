@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Plus, Trash2, CalendarDays, UserPlus } from 'lucide-react';
 import { DataControl } from '@/components/DataControl';
+import { SeoContent } from '@/components/seo-content';
 
 type ShiftType = 'off' | 'morning' | 'afternoon' | 'night';
 
@@ -162,6 +163,8 @@ export default function ShiftRosterPage() {
           </div>
         </Card>
       </div>
+
+      <SeoContent toolId="shift" />
     </div>
   );
 }

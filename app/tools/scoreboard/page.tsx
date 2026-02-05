@@ -20,7 +20,6 @@ import { SmartAd } from '@/components/smart-ad';
 import { DataControl } from '@/components/DataControl';
 import { useLang } from '@/components/Providers';
 import { SeoContent } from '@/components/seo-content';
-import { SEO_DATA } from '@/lib/seo-content';
 
 interface ScoreboardState {
   matchName: string;
@@ -35,7 +34,7 @@ interface ScoreboardState {
 }
 
 export default function UniversalScoreboardPage() {
-  const { t, lang } = useLang();
+  const { t } = useLang();
   const [state, setState] = useLocalStorage<ScoreboardState>('versokit-universal-scoreboard', {
     matchName: 'Pertandingan Persahabatan',
     sportType: 'Voli',
@@ -47,8 +46,6 @@ export default function UniversalScoreboardPage() {
     setsAway: 0,
     targetScore: 25,
   });
-
-  const seoData = SEO_DATA.scoreboard[lang];
 
   const updateState = (updates: Partial<ScoreboardState>) => {
     setState(prev => ({ ...prev, ...updates }));
@@ -238,7 +235,7 @@ export default function UniversalScoreboardPage() {
         
         <SmartAd />
         
-        <SeoContent {...seoData} />
+        <SeoContent toolId="scoreboard" />
       </div>
     </div>
   );
