@@ -81,7 +81,9 @@ export default function ShiftRosterPage() {
     const shiftOrder: ShiftType[] = ['OFF', 'MOR', 'AFT', 'NIG'];
     setEmployees(employees.map(emp => {
       if (emp.id === empId) {
-        const currentShift = emp.shifts[day] || 'OFF';
+        const rawShift = emp.shifts[day] || 'OFF';
+        // Handle potential legacy data that might be lowercase or invalid
+        const currentShift = (shiftOrder.includes(rawShift) ? rawShift : 'OFF') as ShiftType;
         const nextIndex = (shiftOrder.indexOf(currentShift) + 1) % shiftOrder.length;
         return {
           ...emp,
@@ -163,7 +165,8 @@ export default function ShiftRosterPage() {
                       <td className="p-4 font-bold uppercase tracking-tight text-sm border-r">{emp.name}</td>
                       {DAYS.map(day => {
                         const shiftKey = emp.shifts[day] || 'OFF';
-                        const config = SHIFT_CONFIG[shiftKey];
+                        // Provide defensive fallback for config retrieval
+                        const config = SHIFT_CONFIG[shiftKey] || SHIFT_CONFIG['OFF'];
                         return (
                           <td key={day} className="p-2 border-r">
                             <button
