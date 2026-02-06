@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Users, Receipt, Send, Banknote, Percent, RotateCcw } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import { SeoContent } from '@/components/seo-content';
+import { DataPersistence } from '@/components/DataPersistence';
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -188,6 +189,15 @@ export default function SplitBillPage() {
     toast({ title: t('copied'), description: lang === 'id' ? "Tempel di WhatsApp sekarang." : "Paste in WhatsApp now." });
   };
 
+  const splitBillState = { totalBill, taxPercent, names, bankInfo };
+
+  const handleRestore = (data: any) => {
+    if (data.totalBill !== undefined) setTotalBill(data.totalBill);
+    if (data.taxPercent !== undefined) setTaxPercent(data.taxPercent);
+    if (data.names !== undefined) setNames(data.names);
+    if (data.bankInfo !== undefined) setBankInfo(data.bankInfo);
+  };
+
   return (
     <div className="flex flex-col items-center p-6 md:p-12 max-w-4xl mx-auto w-full gap-8">
       <div className="text-center space-y-2">
@@ -246,46 +256,54 @@ export default function SplitBillPage() {
           </CardContent>
         </Card>
 
-        <Card className="shadow-2xl border-2 bg-primary/5 flex flex-col">
-          <CardHeader>
-            <CardTitle className="text-xl font-bold flex items-center gap-2 uppercase">
-              <Banknote className="h-5 w-5 text-primary" />
-              {t('calculate')}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-8 flex-1 flex flex-col">
-            <div className="flex flex-col items-center justify-center p-8 bg-primary text-primary-foreground rounded-[2rem] shadow-xl gap-2 transform transition-transform hover:scale-105">
-              <span className="font-bold uppercase tracking-[0.2em] text-[10px] opacity-70">{t('per_person')}:</span>
-              <div className="text-4xl md:text-5xl font-black tabular-nums">
-                Rp {amountPerPerson.toLocaleString('id-ID')}
+        <div className="space-y-8 flex flex-col">
+          <Card className="shadow-2xl border-2 bg-primary/5 flex flex-col flex-1">
+            <CardHeader>
+              <CardTitle className="text-xl font-bold flex items-center gap-2 uppercase">
+                <Banknote className="h-5 w-5 text-primary" />
+                {t('calculate')}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-8 flex-1 flex flex-col">
+              <div className="flex flex-col items-center justify-center p-8 bg-primary text-primary-foreground rounded-[2rem] shadow-xl gap-2 transform transition-transform hover:scale-105">
+                <span className="font-bold uppercase tracking-[0.2em] text-[10px] opacity-70">{t('per_person')}:</span>
+                <div className="text-4xl md:text-5xl font-black tabular-nums">
+                  Rp {amountPerPerson.toLocaleString('id-ID')}
+                </div>
               </div>
-            </div>
 
-            <div className="space-y-4">
-              <div className="flex justify-between items-center p-4 bg-card rounded-2xl border border-primary/10">
-                <span className="text-xs font-black uppercase tracking-widest text-muted-foreground">{t('subtotal_tax')}</span>
-                <span className="font-bold">Rp {totalWithTax.toLocaleString('id-ID')}</span>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center p-4 bg-card rounded-2xl border border-primary/10">
+                  <span className="text-xs font-black uppercase tracking-widest text-muted-foreground">{t('subtotal_tax')}</span>
+                  <span className="font-bold">Rp {totalWithTax.toLocaleString('id-ID')}</span>
+                </div>
+                <div className="flex justify-between items-center p-4 bg-card rounded-2xl border border-primary/10">
+                  <span className="text-xs font-black uppercase tracking-widest text-muted-foreground">{t('participants_count')}</span>
+                  <span className="font-bold">{participants.length}</span>
+                </div>
               </div>
-              <div className="flex justify-between items-center p-4 bg-card rounded-2xl border border-primary/10">
-                <span className="text-xs font-black uppercase tracking-widest text-muted-foreground">{t('participants_count')}</span>
-                <span className="font-bold">{participants.length}</span>
-              </div>
-            </div>
 
-            <div className="mt-auto pt-6">
-              <Button 
-                onClick={copyForWA} 
-                className="w-full h-16 bg-green-600 hover:bg-green-700 text-lg font-black uppercase tracking-[0.1em] shadow-xl text-white rounded-2xl transition-all active:scale-95"
-              >
-                <Send className="mr-2 h-6 w-6" />
-                {t('copy_wa')}
-              </Button>
-              <p className="text-[10px] text-center mt-3 text-muted-foreground font-bold uppercase tracking-widest">
-                {lang === 'id' ? 'Klik untuk menyalin teks format rapi' : 'Click to copy neatly formatted text'}
-              </p>
-            </div>
-          </CardContent>
-        </Card>
+              <div className="mt-auto pt-6">
+                <Button 
+                  onClick={copyForWA} 
+                  className="w-full h-16 bg-green-600 hover:bg-green-700 text-lg font-black uppercase tracking-[0.1em] shadow-xl text-white rounded-2xl transition-all active:scale-95"
+                >
+                  <Send className="mr-2 h-6 w-6" />
+                  {t('copy_wa')}
+                </Button>
+                <p className="text-[10px] text-center mt-3 text-muted-foreground font-bold uppercase tracking-widest">
+                  {lang === 'id' ? 'Klik untuk menyalin teks format rapi' : 'Click to copy neatly formatted text'}
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <DataPersistence 
+            data={splitBillState} 
+            onRestore={handleRestore} 
+            fileNamePrefix="versokit-splitbill" 
+          />
+        </div>
       </div>
 
       <SeoContent toolId="split-bill" />

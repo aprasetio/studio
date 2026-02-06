@@ -22,6 +22,7 @@ import { cn } from '@/lib/utils';
 import { SeoContent } from '@/components/seo-content';
 import { SmartAd } from '@/components/smart-ad';
 import { useLang } from '@/components/Providers';
+import { DataPersistence } from '@/components/DataPersistence';
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -293,6 +294,12 @@ export default function LineupBuilderPage() {
     }
   };
 
+  const handleRestore = (data: any) => {
+    if (Array.isArray(data)) {
+      setPlayers(data);
+    }
+  };
+
   if (!hasMounted) {
     return <div className="min-h-screen bg-background" />;
   }
@@ -446,6 +453,12 @@ export default function LineupBuilderPage() {
                 </div>
              </CardContent>
           </Card>
+
+          <DataPersistence 
+            data={players} 
+            onRestore={handleRestore} 
+            fileNamePrefix="versokit-lineup" 
+          />
         </div>
       </div>
       

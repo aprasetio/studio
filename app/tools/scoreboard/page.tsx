@@ -20,6 +20,7 @@ import { SmartAd } from '@/components/smart-ad';
 import { DataControl } from '@/components/DataControl';
 import { useLang } from '@/components/Providers';
 import { SeoContent } from '@/components/seo-content';
+import { DataPersistence } from '@/components/DataPersistence';
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -209,6 +210,12 @@ export default function UniversalScoreboardPage() {
     });
   };
 
+  const handleRestore = (data: any) => {
+    if (data) {
+      setState(data);
+    }
+  };
+
   return (
     <div className="flex flex-col p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-8">
       <div className="flex flex-col gap-6 bg-card p-6 md:p-8 rounded-[2.5rem] shadow-xl border-2">
@@ -381,6 +388,12 @@ export default function UniversalScoreboardPage() {
           {t('victory_target')}: {state.targetScore} {globalT('score')}
         </div>
         
+        <DataPersistence 
+          data={state} 
+          onRestore={handleRestore} 
+          fileNamePrefix="versokit-scoreboard" 
+        />
+
         <SmartAd />
         
         <SeoContent toolId="scoreboard" />
