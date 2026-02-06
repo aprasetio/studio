@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -21,7 +22,8 @@ import {
   FileType,
   ShieldCheck,
   Zap,
-  WifiOff
+  WifiOff,
+  Wallet
 } from 'lucide-react';
 import { useLang } from '@/components/Providers';
 import { SEO_DATA } from '@/lib/seo-content';
@@ -33,7 +35,7 @@ export default function DashboardPage() {
     en: "⚡ Fast. 🔒 Secure. ✈️ Offline-Ready. Data never leaves your device.",
     id: "⚡ Cepat. 🔒 Aman. ✈️ Bisa Offline. Data tidak meninggalkan perangkat.",
     es: "⚡ Rápido. 🔒 Seguro. ✈️ Offline. Los datos nunca salen de su dispositivo.",
-    pt: "⚡ Rápido. 🔒 Seguro. ✈️ Offline. Os datos nunca saem do seu dispositivo.",
+    pt: "⚡ Rápido. 🔒 Seguro. ✈️ Offline. Os dados nunca saem do seu dispositivo.",
     de: "⚡ Schnell. 🔒 Sicher. ✈️ Offline. Daten verlassen niemals Ihr Gerät.",
     fr: "⚡ Rapide. 🔒 Sécurisé. ✈️ Hors ligne. Les données restent sur l'appareil.",
     it: "⚡ Veloce. 🔒 Sicuro. ✈️ Offline. I dati non lasciano mai il dispositivo."
@@ -46,6 +48,13 @@ export default function DashboardPage() {
       description: 'Papan skor sederhana dan efektif untuk pertandingan futsal Anda.',
       href: '/tools/futsal',
       icon: <ClipboardList className="h-10 w-10 text-primary" />,
+    },
+    {
+      id: 'budget-planner',
+      title: t('budget_planner'),
+      description: 'Atur keuangan Anda dengan metode budget berbasis nol secara offline.',
+      href: '/tools/budget-planner',
+      icon: <Wallet className="h-10 w-10 text-primary" />,
     },
     {
       id: 'lineup',

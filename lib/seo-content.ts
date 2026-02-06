@@ -1,3 +1,4 @@
+
 /**
  * Centralized SEO Content for VersoKit tools.
  * Supports: en, id, es, pt, de, fr, it.
@@ -18,6 +19,57 @@ export interface SeoCollection {
 }
 
 export const SEO_DATA: SeoCollection = {
+  "budget-planner": {
+    en: {
+      title: "Zero-Based Budget Planner",
+      description: "Allocate every dollar of your income to categories using the proven envelope budgeting method.",
+      steps: ["Enter your monthly income.", "Create category groups.", "Assign budgets to items.", "Reach zero 'To be Budgeted'."],
+      article: "Zero-based budgeting means your income minus your expenses equals zero. This gives every dollar a job, helping you save more and spend intentionally.",
+      faq: [{ q: "What is Zero-Based?", a: "It's a method where you account for every single dollar of income until none is left unassigned." }]
+    },
+    id: {
+      title: "Perencana Anggaran",
+      description: "Alokasikan setiap rupiah pendapatan Anda ke kategori menggunakan metode envelope budgeting yang terbukti.",
+      steps: ["Isi pendapatan bulanan.", "Buat grup kategori.", "Masukkan anggaran tiap item.", "Pastikan 'Siap Dianggarkan' menjadi nol."],
+      article: "Anggaran berbasis nol berarti pendapatan dikurangi pengeluaran sama dengan nol. Ini memberikan tugas pada setiap rupiah, membantu Anda menabung lebih banyak.",
+      faq: [{ q: "Apa itu Zero-Based?", a: "Metode di mana Anda mencatat setiap rupiah pendapatan sampai tidak ada yang tersisa tanpa tugas." }]
+    },
+    es: {
+      title: "Planificador de Presupuesto",
+      description: "Asigne cada moneda de sus ingresos a categorías utilizando el método de presupuesto base cero.",
+      steps: ["Ingresar ingresos.", "Crear grupos.", "Asignar presupuesto.", "Llegar a cero."],
+      article: "El presupuesto base cero significa que sus ingresos menos sus gastos equivalen a cero. Dale un trabajo a cada peso.",
+      faq: [{ q: "¿Es seguro?", a: "Sí, todos los datos se procesan localmente." }]
+    },
+    pt: {
+      title: "Planejador de Orçamento",
+      description: "Aloque cada centavo de sua renda em categorias usando o método de orçamento base zero.",
+      steps: ["Insira sua renda.", "Crie grupos.", "Defina orçamentos.", "Zere o saldo."],
+      article: "Orçamento base zero significa que sua renda menos suas despesas é igual a zero. Dê uma função a cada real.",
+      faq: [{ q: "O que é base zero?", a: "É um método onde cada real tem um destino específico definido por você." }]
+    },
+    de: {
+      title: "Budget-Planer",
+      description: "Weisen Sie jeden Euro Ihres Einkommens Kategorien zu, indem Sie die Zero-Based-Budgeting-Methode verwenden.",
+      steps: ["Einkommen eingeben.", "Gruppen erstellen.", "Budgets zuweisen.", "Auf Null kommen."],
+      article: "Zero-Based Budgeting bedeutet, dass Ihr Einkommen minus Ihrer Ausgaben Null ergibt. Geben Sie jedem Euro eine Aufgabe.",
+      faq: [{ q: "Warum Null?", a: "Damit jeder Cent verplant ist und Sie bewusster konsumieren." }]
+    },
+    fr: {
+      title: "Planificateur de Budget",
+      description: "Allouez chaque euro de votre revenu à des catégories en utilisant la méthode du budget base zéro.",
+      steps: ["Saisir revenus.", "Créer groupes.", "Allouer budgets.", "Arriver à zéro."],
+      article: "Le budget base zéro signifie que vos revenus moins vos dépenses égalent zéro. Donnez une mission à chaque euro.",
+      faq: [{ q: "Confidentialité ?", a: "Données locales uniquement." }]
+    },
+    it: {
+      title: "Pianificatore Budget",
+      description: "Alloca ogni euro del tuo reddito alle categorie utilizzando il metodo del budget a base zero.",
+      steps: ["Inserisci entrate.", "Crea gruppi.", "Assegna budget.", "Arriva a zero."],
+      article: "Il budget a base zero significa che il tuo reddito meno le tue uscite è pari a zero. Dai un compito a ogni euro.",
+      faq: [{ q: "È gratuito?", a: "Sì, totalmente gratuito e offline." }]
+    }
+  },
   futsal: {
     en: {
       title: "Futsal Scoreboard",
@@ -306,7 +358,7 @@ export const SEO_DATA: SeoCollection = {
       title: "Kanban-Board",
       description: "Verwalten Sie Teamaufgaben und Pläne mit einem einfachen visuellen Kanban-Board.",
       steps: ["Aufgaben adden.", "Verschieben.", "Abschließen.", "Löschen."],
-      article: "Visuelles Projektmanagement für bessere Organisation im Team.",
+      article: "Visuelles Projektmanagement für bessere organisation im Team.",
       faq: [{ q: "Spalten?", a: "To Do, In Arbeit, Erledigt." }]
     },
     fr: {
@@ -555,7 +607,7 @@ export const SEO_DATA: SeoCollection = {
       description: "Converta sua coleção de imagens JPG/PNG em um documento PDF.",
       steps: ["Subir imagens.", "Ordenar.", "Converter."],
       article: "Transforme suas fotos em um documento PDF organizado e profissional.",
-      faq: [{ q: "Privacidade?", a: "Suas fotos não são enviadas para a nuvem." }]
+      faq: [{ q: "Privacidade?", a: "Suas fotos não sono enviadas para a nuvem." }]
     },
     de: {
       title: "Bild zu PDF",

@@ -39,6 +39,7 @@ export default function Header() {
       label: t('cat_business'),
       icon: <Briefcase className="h-4 w-4 mr-2" />,
       items: [
+        { href: '/tools/budget-planner', label: t('budget_planner') },
         { href: '/tools/invoice', label: t('invoice') },
         { href: '/tools/shift', label: t('shift') },
         { href: '/tools/inventory', label: t('inventory') },

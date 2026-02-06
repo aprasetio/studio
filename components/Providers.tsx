@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
@@ -17,6 +18,7 @@ const translations: TranslationDictionary = {
     subtitle: "Toolkit Lengkap untuk Olahraga & Bisnis",
     dashboard: "Dasbor",
     futsal: "Papan Skor Futsal",
+    budget_planner: "Rencana Anggaran",
     lineup: "Penyusun Formasi",
     scoreboard: "Skor Universal",
     inventory: "Inventaris",
@@ -75,6 +77,7 @@ const translations: TranslationDictionary = {
     subtitle: "Complete Toolkit for Sports & Business",
     dashboard: "Dashboard",
     futsal: "Futsal Scoreboard",
+    budget_planner: "Budget Planner",
     lineup: "Lineup Builder",
     scoreboard: "Universal Scoreboard",
     inventory: "Inventory",
@@ -133,6 +136,7 @@ const translations: TranslationDictionary = {
     subtitle: "Herramientas para Deportes y Negocios",
     dashboard: "Tablero",
     futsal: "Pizarra Futsal",
+    budget_planner: "Presupuesto",
     lineup: "Alineaciones",
     scoreboard: "Marcador Universal",
     inventory: "Inventario",
@@ -191,6 +195,7 @@ const translations: TranslationDictionary = {
     subtitle: "Ferramentas para Esportes e Negócios",
     dashboard: "Painel",
     futsal: "Placar Futsal",
+    budget_planner: "Orçamento",
     lineup: "Escalação",
     scoreboard: "Placar Universal",
     inventory: "Inventário",
@@ -249,6 +254,7 @@ const translations: TranslationDictionary = {
     subtitle: "Toolkit für Sport & Business",
     dashboard: "Dashboard",
     futsal: "Futsal-Scoreboard",
+    budget_planner: "Budget-Planer",
     lineup: "Aufstellung",
     scoreboard: "Universal-Scoreboard",
     inventory: "Inventar",
@@ -307,6 +313,7 @@ const translations: TranslationDictionary = {
     subtitle: "Outils Sport & Business",
     dashboard: "Tableau",
     futsal: "Score Futsal",
+    budget_planner: "Budget",
     lineup: "Composition",
     scoreboard: "Score Universel",
     inventory: "Inventaire",
@@ -365,6 +372,7 @@ const translations: TranslationDictionary = {
     subtitle: "Strumenti Sport e Business",
     dashboard: "Dashboard",
     futsal: "Tabellone Futsal",
+    budget_planner: "Budget",
     lineup: "Formazione",
     scoreboard: "Score Universale",
     inventory: "Inventario",
