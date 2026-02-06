@@ -24,6 +24,7 @@ import {
   WifiOff
 } from 'lucide-react';
 import { useLang } from '@/components/Providers';
+import { SEO_DATA } from '@/lib/seo-content';
 
 export default function DashboardPage() {
   const { t, lang } = useLang();
@@ -32,7 +33,7 @@ export default function DashboardPage() {
     en: "⚡ Fast. 🔒 Secure. ✈️ Offline-Ready. Data never leaves your device.",
     id: "⚡ Cepat. 🔒 Aman. ✈️ Bisa Offline. Data tidak meninggalkan perangkat.",
     es: "⚡ Rápido. 🔒 Seguro. ✈️ Offline. Los datos nunca salen de su dispositivo.",
-    pt: "⚡ Rápido. 🔒 Seguro. ✈️ Offline. Os dados nunca saem do seu dispositivo.",
+    pt: "⚡ Rápido. 🔒 Seguro. ✈️ Offline. Os datos nunca saem do seu dispositivo.",
     de: "⚡ Schnell. 🔒 Sicher. ✈️ Offline. Daten verlassen niemals Ihr Gerät.",
     fr: "⚡ Rapide. 🔒 Sécurisé. ✈️ Hors ligne. Les données restent sur l'appareil.",
     it: "⚡ Veloce. 🔒 Sicuro. ✈️ Offline. I dati non lasciano mai il dispositivo."
@@ -191,26 +192,32 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid grid-cols-1 w-full max-w-7xl gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {tools.map((tool) => (
-          <Card key={tool.id} className="flex flex-col overflow-hidden transition-all duration-300 hover:translate-y-[-8px] hover:shadow-2xl border-2 hover:border-primary/20 bg-card">
-            <CardHeader className="flex-row items-center gap-6 p-8">
-              <div className="p-3 bg-primary/5 rounded-2xl shrink-0">
-                {tool.icon}
-              </div>
-              <div className="space-y-1">
-                <CardTitle className="font-headline text-xl font-bold tracking-tight uppercase leading-tight">{tool.title}</CardTitle>
-                <CardDescription className="text-xs font-medium leading-relaxed line-clamp-2">{tool.description}</CardDescription>
-              </div>
-            </CardHeader>
-            <CardContent className="mt-auto flex justify-end p-8 pt-0">
-              <Button asChild variant="ghost" className="group text-primary font-bold hover:bg-primary/5">
-                <Link href={tool.href} className="flex items-center text-xs uppercase tracking-widest">
-                  {lang === 'id' ? 'Buka Alat' : 'Open Tool'} <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
-            </CardContent>
-          </Card>
-        ))}
+        {tools.map((tool) => {
+          const localizedData = SEO_DATA[tool.id]?.[lang] || SEO_DATA[tool.id]?.['en'];
+          const displayTitle = localizedData?.title || tool.title;
+          const displayDesc = localizedData?.description || tool.description;
+
+          return (
+            <Card key={tool.id} className="flex flex-col overflow-hidden transition-all duration-300 hover:translate-y-[-8px] hover:shadow-2xl border-2 hover:border-primary/20 bg-card">
+              <CardHeader className="flex-row items-center gap-6 p-8">
+                <div className="p-3 bg-primary/5 rounded-2xl shrink-0">
+                  {tool.icon}
+                </div>
+                <div className="space-y-1">
+                  <CardTitle className="font-headline text-xl font-bold tracking-tight uppercase leading-tight">{displayTitle}</CardTitle>
+                  <CardDescription className="text-xs font-medium leading-relaxed line-clamp-2">{displayDesc}</CardDescription>
+                </div>
+              </CardHeader>
+              <CardContent className="mt-auto flex justify-end p-8 pt-0">
+                <Button asChild variant="ghost" className="group text-primary font-bold hover:bg-primary/5">
+                  <Link href={tool.href} className="flex items-center text-xs uppercase tracking-widest">
+                    {lang === 'id' ? 'Buka Alat' : 'Open Tool'} <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
     </div>
   );
