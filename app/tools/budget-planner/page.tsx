@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo, useEffect, useRef } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 import { useLang } from '@/components/Providers';
 import { Button } from '@/components/ui/button';
@@ -18,7 +18,6 @@ import {
   X,
   PieChart as PieChartIcon,
   Download,
-  Settings2,
   CalendarClock,
   BellRing,
   CheckCircle2,
@@ -69,7 +68,7 @@ const UI_TEXT: Record<string, any> = {
     all_done: "All money has a job!",
     over_budget: "You've budgeted more than you have!",
     new_group: "New Category Group",
-    new_item: "New Item",
+    new_item: "New Item Name",
     transactions: "Transactions",
     add_tx: "Add Transaction",
     date: "Date",
@@ -96,7 +95,10 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Process All",
     rule_added: "Recurring rule added",
     manage_recurring: "Manage Recurring",
-    add_rule: "Add Rule"
+    add_rule: "Add Rule",
+    monthly_bills: "Monthly Bills",
+    daily_expenses: "Daily Expenses",
+    savings: "Savings"
   },
   id: {
     to_be_budgeted: "Siap Dianggarkan",
@@ -110,7 +112,7 @@ const UI_TEXT: Record<string, any> = {
     all_done: "Semua uang sudah dialokasikan!",
     over_budget: "Anggaran melebihi pendapatan!",
     new_group: "Grup Kategori Baru",
-    new_item: "Item Baru",
+    new_item: "Nama Item Baru",
     transactions: "Transaksi",
     add_tx: "Tambah Transaksi",
     date: "Tanggal",
@@ -137,7 +139,10 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Proses Semua",
     rule_added: "Jadwal rutin ditambahkan",
     manage_recurring: "Kelola Rutin",
-    add_rule: "Tambah Jadwal"
+    add_rule: "Tambah Jadwal",
+    monthly_bills: "Tagihan Bulanan",
+    daily_expenses: "Kebutuhan Harian",
+    savings: "Tabungan"
   },
   es: {
     to_be_budgeted: "Por Asignar",
@@ -178,7 +183,10 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Procesar Todo",
     rule_added: "Regla recurrente añadida",
     manage_recurring: "Gestionar Recurrentes",
-    add_rule: "Añadir Regla"
+    add_rule: "Añadir Regla",
+    monthly_bills: "Gastos Fijos",
+    daily_expenses: "Gastos Diarios",
+    savings: "Ahorros"
   },
   pt: {
     to_be_budgeted: "Para Atribuir",
@@ -219,7 +227,10 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Processar Tudo",
     rule_added: "Regra recurrente adicionada",
     manage_recurring: "Gerenciar Recorrentes",
-    add_rule: "Add Regra"
+    add_rule: "Add Regra",
+    monthly_bills: "Contas Mensais",
+    daily_expenses: "Gastos Diários",
+    savings: "Reservas"
   },
   de: {
     to_be_budgeted: "Zu verplanen",
@@ -260,7 +271,10 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Alle verarbeiten",
     rule_added: "Wiederkehrende Regel hinzugefügt",
     manage_recurring: "Wiederkehrende verwalten",
-    add_rule: "Regel hinzufügen"
+    add_rule: "Regel hinzufügen",
+    monthly_bills: "Fixkosten",
+    daily_expenses: "Alltag",
+    savings: "Sparen"
   },
   fr: {
     to_be_budgeted: "À budgétiser",
@@ -301,7 +315,10 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Tout traiter",
     rule_added: "Règle récurrente ajoutée",
     manage_recurring: "Gérer Récurrents",
-    add_rule: "Ajouter Règle"
+    add_rule: "Ajouter Règle",
+    monthly_bills: "Factures fixes",
+    daily_expenses: "Vie courante",
+    savings: "Épargne"
   },
   it: {
     to_be_budgeted: "Da Assegnare",
@@ -342,7 +359,10 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Elabora Tutto",
     rule_added: "Regola ricorrente aggiunta",
     manage_recurring: "Gestisci Ricorrenti",
-    add_rule: "Aggiungi Regola"
+    add_rule: "Aggiungi Regola",
+    monthly_bills: "Spese Fisse",
+    daily_expenses: "Spese Quotidiane",
+    savings: "Risparmio"
   }
 };
 
@@ -443,6 +463,26 @@ export default function BudgetPlannerPage() {
 
   const monthKey = format(currentMonth, 'yyyy-MM');
 
+  // Currency Helper
+  const getCurrencyConfig = (lang: string) => {
+    switch(lang) {
+      case 'id': return { symbol: 'Rp', position: 'prefix', locale: 'id-ID', currency: 'IDR' };
+      case 'es': case 'pt': case 'de': case 'fr': case 'it': 
+        return { symbol: '€', position: 'suffix', locale: 'de-DE', currency: 'EUR' };
+      case 'en': default: 
+        return { symbol: '$', position: 'prefix', locale: 'en-US', currency: 'USD' };
+    }
+  };
+
+  const currencyConfig = getCurrencyConfig(lang);
+  const formatValue = (val: number) => {
+    return val.toLocaleString(currencyConfig.locale, { 
+      style: 'currency', 
+      currency: currencyConfig.currency,
+      maximumFractionDigits: 0 
+    });
+  };
+
   // Calculations
   const monthTransactions = useMemo(() => {
     const start = startOfMonth(currentMonth);
@@ -462,13 +502,15 @@ export default function BudgetPlannerPage() {
 
   // Chart Data
   const chartData = useMemo(() => {
+    const items = state.items || [];
+    const groups = state.groups || [];
     const expenses = monthTransactions.filter(tx => tx.itemId !== 'inflow');
     if (expenses.length === 0) return [];
 
     const groupTotals: Record<string, number> = {};
     expenses.forEach(tx => {
-      const item = state.items.find(i => i.id === tx.itemId);
-      const group = state.groups.find(g => g.id === item?.groupId);
+      const item = items.find(i => i.id === tx.itemId);
+      const group = groups.find(g => g.id === item?.groupId);
       const groupName = group?.name || 'Other';
       groupTotals[groupName] = (groupTotals[groupName] || 0) + tx.amount;
     });
@@ -514,25 +556,25 @@ export default function BudgetPlannerPage() {
   };
 
   const addGroup = () => {
-    const name = prompt(t('new_group'));
-    if (!name) return;
+    const name = window.prompt(t('new_group'));
+    if (!name || name.trim() === '') return;
     setState(prev => ({
       ...prev,
-      groups: [...(prev.groups || []), { id: Date.now().toString(), name }]
+      groups: [...(prev.groups || []), { id: `group-${Date.now()}`, name: name.trim() }]
     }));
   };
 
   const addItem = (groupId: string) => {
-    const name = prompt(t('new_item'));
-    if (!name) return;
+    const name = window.prompt(t('new_item'));
+    if (!name || name.trim() === '') return;
     setState(prev => ({
       ...prev,
-      items: [...(prev.items || []), { id: Date.now().toString(), groupId, name }]
+      items: [...(prev.items || []), { id: `item-${Date.now()}`, groupId, name: name.trim() }]
     }));
   };
 
   const deleteItem = (itemId: string) => {
-    if (!confirm('Delete item?')) return;
+    if (!window.confirm(globalT('delete') + '?')) return;
     setState(prev => ({
       ...prev,
       items: (prev.items || []).filter(i => i.id !== itemId)
@@ -543,7 +585,7 @@ export default function BudgetPlannerPage() {
     if (!newTx.payee || !newTx.amount) return;
     
     const tx: Transaction = {
-      id: Date.now().toString(),
+      id: `tx-${Date.now()}`,
       date: newTx.date!,
       amount: newTx.amount!,
       itemId: newTx.itemId!,
@@ -576,7 +618,7 @@ export default function BudgetPlannerPage() {
   const addRecurringRule = () => {
     if (!newRule.payee || !newRule.amount) return;
     const rule: RecurringRule = {
-      id: Date.now().toString(),
+      id: `rule-${Date.now()}`,
       payee: newRule.payee!,
       itemId: newRule.itemId!,
       amount: newRule.amount!,
@@ -624,7 +666,7 @@ export default function BudgetPlannerPage() {
       recurringRules: updatedRules
     }));
 
-    toast({ title: t('all_done'), description: `${pendingRules.length} bills processed.` });
+    toast({ title: t('all_done'), description: `${pendingRules.length} items processed.` });
   };
 
   const exportCSV = () => {
@@ -636,7 +678,8 @@ export default function BudgetPlannerPage() {
 
     const headers = ["Date", "Payee", "Category", "Amount", "Description"];
     const rows = transactions.map(tx => {
-      const item = state.items.find(i => i.id === tx.itemId);
+      const items = state.items || [];
+      const item = items.find(i => i.id === tx.itemId);
       const categoryName = tx.itemId === 'inflow' ? 'Income' : (item?.name || 'Other');
       return [
         tx.date,
@@ -666,9 +709,6 @@ export default function BudgetPlannerPage() {
   };
 
   if (!mounted) return null;
-
-  const currencySymbol = lang === 'id' ? 'Rp' : '$';
-  const locale = lang === 'id' ? 'id-ID' : 'en-US';
 
   return (
     <div className="flex flex-col items-center p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-8">
@@ -712,7 +752,7 @@ export default function BudgetPlannerPage() {
         )}>
           <span className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80">{t('to_be_budgeted')}</span>
           <span className="text-4xl font-black tabular-nums">
-            {toBeBudgeted.toLocaleString(locale, { style: 'currency', currency: lang === 'id' ? 'IDR' : 'USD', maximumFractionDigits: 0 })}
+            {formatValue(toBeBudgeted)}
           </span>
           <p className="text-[9px] font-bold uppercase mt-1">
             {toBeBudgeted === 0 ? t('all_done') : toBeBudgeted < 0 ? t('over_budget') : ''}
@@ -740,7 +780,7 @@ export default function BudgetPlannerPage() {
                       <Input value={newRule.payee} onChange={e => setNewRule({...newRule, payee: e.target.value})} placeholder="Netflix, Rent..." />
                     </div>
                     <div className="space-y-1">
-                      <Label className="text-xs font-bold uppercase">{t('amount')}</Label>
+                      <Label className="text-xs font-bold uppercase">{t('amount')} ({currencyConfig.symbol})</Label>
                       <Input type="number" value={newRule.amount || ''} onChange={e => setNewRule({...newRule, amount: parseFloat(e.target.value) || 0})} />
                     </div>
                     <div className="space-y-1">
@@ -776,7 +816,7 @@ export default function BudgetPlannerPage() {
                         </div>
                       </div>
                       <div className="flex items-center gap-4">
-                        <span className="font-black tabular-nums">{rule.amount.toLocaleString()}</span>
+                        <span className="font-black tabular-nums">{formatValue(rule.amount)}</span>
                         <Button variant="ghost" size="icon" onClick={() => deleteRecurringRule(rule.id)} className="h-8 w-8 text-muted-foreground hover:text-destructive transition-colors">
                           <Trash2 className="h-4 w-4" />
                         </Button>
@@ -813,10 +853,10 @@ export default function BudgetPlannerPage() {
                     <SelectTrigger><SelectValue /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="inflow" className="font-bold text-green-600">{t('inflow')}</SelectItem>
-                      {state.groups.map(group => (
+                      {(state.groups || []).map(group => (
                         <React.Fragment key={group.id}>
                           <div className="px-2 py-1.5 text-xs font-black uppercase text-muted-foreground opacity-50">{group.name}</div>
-                          {state.items.filter(i => i.groupId === group.id).map(item => (
+                          {(state.items || []).filter(i => i.groupId === group.id).map(item => (
                             <SelectItem key={item.id} value={item.id}>{item.name}</SelectItem>
                           ))}
                         </React.Fragment>
@@ -825,7 +865,7 @@ export default function BudgetPlannerPage() {
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label>{t('amount')} ({currencySymbol})</Label>
+                  <Label>{t('amount')} ({currencyConfig.symbol})</Label>
                   <Input type="number" placeholder={t('amount_placeholder')} value={newTx.amount || ''} onChange={(e) => setNewTx({...newTx, amount: parseFloat(e.target.value) || 0})} />
                 </div>
                 <div className="space-y-2">
@@ -844,7 +884,7 @@ export default function BudgetPlannerPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full">
         {/* Budget Table */}
         <div className="lg:col-span-2 space-y-8">
-          {state.groups.map(group => (
+          {(state.groups || []).map(group => (
             <Card key={group.id} className="overflow-hidden border-2 shadow-lg rounded-3xl">
               <CardHeader className="bg-muted/30 py-4 px-6 border-b flex flex-row items-center justify-between">
                 <CardTitle className="text-sm font-black uppercase tracking-widest text-primary">{group.name}</CardTitle>
@@ -865,7 +905,7 @@ export default function BudgetPlannerPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      {state.items.filter(i => i.groupId === group.id).map(item => {
+                      {(state.items || []).filter(i => i.groupId === group.id).map(item => {
                         const budgeted = monthlyBudgets[item.id] || 0;
                         const activity = getItemActivity(item.id);
                         const available = budgeted - activity;
@@ -966,7 +1006,8 @@ export default function BudgetPlannerPage() {
                   <div className="divide-y">
                     {monthTransactions.map(tx => {
                       const isIncome = tx.itemId === 'inflow';
-                      const item = state.items.find(i => i.id === tx.itemId);
+                      const items = state.items || [];
+                      const item = items.find(i => i.id === tx.itemId);
                       return (
                         <div key={tx.id} className="p-4 hover:bg-muted/30 transition-colors flex items-center justify-between group">
                           <div className="space-y-1">
@@ -982,7 +1023,7 @@ export default function BudgetPlannerPage() {
                           </div>
                           <div className="flex items-center gap-4">
                             <span className={cn("text-sm font-black tabular-nums", isIncome ? "text-green-600" : "text-foreground")}>
-                              {isIncome ? '+' : '-'}{tx.amount.toLocaleString()}
+                              {isIncome ? '+' : '-'}{formatValue(tx.amount)}
                             </span>
                             <Button variant="ghost" size="icon" onClick={() => deleteTransaction(tx.id)} className="h-8 w-8 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
                               <X className="h-4 w-4" />
@@ -1011,11 +1052,11 @@ export default function BudgetPlannerPage() {
               </div>
               <div className="flex items-center justify-between text-green-600">
                 <span className="text-xs font-bold uppercase">{globalT('extra')}</span>
-                <span className="font-black tabular-nums">+{inflowFromTransactions.toLocaleString()}</span>
+                <span className="font-black tabular-nums">+{formatValue(inflowFromTransactions)}</span>
               </div>
               <div className="pt-4 border-t-2 border-dashed flex items-center justify-between">
                 <span className="text-xs font-black uppercase tracking-widest">TOTAL</span>
-                <span className="text-xl font-black tabular-nums">{totalMonthlyIncome.toLocaleString()}</span>
+                <span className="text-xl font-black tabular-nums">{formatValue(totalMonthlyIncome)}</span>
               </div>
             </CardContent>
           </Card>
