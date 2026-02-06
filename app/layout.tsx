@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import Link from 'next/link';
 import Header from '@/components/header';
 import { Toaster } from '@/components/ui/toaster';
 import { Providers } from '@/components/Providers';
@@ -40,11 +41,34 @@ export default function RootLayout({
             {children}
           </main>
 
-          <footer className="border-t bg-card py-10 mt-auto">
-            <div className="container mx-auto px-4 text-center space-y-2">
-              <p className="text-sm font-medium text-muted-foreground">
-                © 2024 <span className="font-bold text-foreground">VersoKit</span> | Built with <span className="text-primary font-bold">Project IDX</span>
-              </p>
+          <footer className="border-t bg-card py-12 mt-auto">
+            <div className="container mx-auto px-4 space-y-8">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="flex items-center space-x-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="h-6 w-6 text-primary">
+                    <rect width="256" height="256" fill="none" />
+                    <path d="M32,96v64a8,8,0,0,0,8,8H216a8,8,0,0,0,8-8V96" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16" />
+                    <path d="M168,168V64a40,40,0,0,0-80,0v96" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16" />
+                  </svg>
+                  <span className="text-lg font-black tracking-tighter uppercase">VersoKit</span>
+                </div>
+                
+                <nav className="flex flex-wrap items-center justify-center gap-6 text-xs font-bold uppercase tracking-[0.15em] text-muted-foreground">
+                  <Link href="/legal/about" className="hover:text-primary transition-colors">About Us</Link>
+                  <Link href="/legal/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+                  <Link href="/legal/terms" className="hover:text-primary transition-colors">Terms</Link>
+                  <Link href="/legal/contact" className="hover:text-primary transition-colors">Contact</Link>
+                </nav>
+              </div>
+
+              <div className="pt-8 border-t border-muted text-center space-y-2">
+                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
+                  © 2024 <span className="text-foreground">VersoKit</span> | All-in-One Toolkit
+                </p>
+                <p className="text-[9px] text-muted-foreground/50 font-medium uppercase tracking-[0.2em]">
+                  Built with <span className="text-primary font-bold">Project IDX</span>
+                </p>
+              </div>
             </div>
           </footer>
           <Toaster />
