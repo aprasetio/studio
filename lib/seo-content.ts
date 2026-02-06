@@ -19,6 +19,22 @@ export interface SeoCollection {
 }
 
 export const SEO_DATA: SeoCollection = {
+  "tennis": {
+    en: {
+      title: "Tennis Match Generator",
+      description: "Balanced doubles matchmaking for social tennis clubs based on skill level and play time.",
+      steps: ["Add players and skill levels.", "Set court count and duration.", "Click Generate Schedule.", "Enter scores to update leaderboard."],
+      article: "Our Fair Play algorithm ensures every player gets equal court time while balancing teams by skill. Perfect for clubs with odd numbers of players.",
+      faq: [{ q: "How is it fair?", a: "The algorithm prioritizes players who have played the fewest rounds first." }]
+    },
+    id: {
+      title: "Pembuat Jadwal Tenis",
+      description: "Matchmaking ganda seimbang untuk klub tenis berdasarkan tingkat keahlian dan waktu bermain.",
+      steps: ["Tambah pemain dan level skill.", "Atur jumlah lapangan.", "Klik Buat Jadwal.", "Isi skor untuk update klasemen."],
+      article: "Algoritma Fair Play kami memastikan setiap pemain mendapatkan waktu bermain yang sama sambil menyeimbangkan tim berdasarkan skill.",
+      faq: [{ q: "Bagaimana cara kerjanya?", a: "Algoritma memprioritaskan pemain yang paling sedikit bermain untuk masuk ke babak berikutnya." }]
+    }
+  },
   "budget-planner": {
     en: {
       title: "Zero-Based Budget Planner",
@@ -111,7 +127,7 @@ export const SEO_DATA: SeoCollection = {
       description: "Un tableau d'affichage numérique simple et efficace pour vos matchs de futsal.",
       steps: ["Régler le temps.", "Démarrer.", "Ajouter les buts.", "Suivre les fautes (Rouge à 5)."],
       article: "Tableau de score professionnel pour le Futsal avec compteurs de fautes conformes à la FIFA.",
-      faq: [{ q: "Fonctionne hors ligne ?", a: "Oui, fonctionne 100% sans connexion après chargement." }]
+      faq: [{ q: "Fonctionne hors ligne ?", a: "Oui, fonctionne 100% tanpa koneksi setelah pemuatan." }]
     },
     it: {
       title: "Tabellone Futsal",
@@ -213,7 +229,7 @@ export const SEO_DATA: SeoCollection = {
       description: "Tableau de score polyvalent pour le volley-ball, le badminton et le tennis de table.",
       steps: ["Régler l'objectif.", "Ajouter points.", "Reset par set."],
       article: "Tableau de score polyvalent pour Volleyball, Badminton et Tennis de Table.",
-      faq: [{ q: "Multi-sports ?", a: "Oui, adapté à tous les sports de filet." }]
+      faq: [{ q: "Multi-sports ?", a: "Oui, adapté à tutti i sport di rete." }]
     },
     it: {
       title: "Tabellone Universale",
@@ -400,28 +416,28 @@ export const SEO_DATA: SeoCollection = {
     },
     pt: {
       title: "Calculadora de Materiais",
-      description: "Calcule necessidades de tinta, pisos e estime custos de materiais facilmente.",
+      description: "Calcule uma estimativa de gastos com tinta e cerâmica.",
       steps: ["Inserir medidas.", "Preço unitário.", "Ver volume.", "Ver custo total."],
       article: "Estime a quantidade de tinta ou pisos para sua reforma instantaneamente.",
       faq: [{ q: "Métricas?", a: "Calcula em metros quadrados." }]
     },
     de: {
       title: "Material-Rechner",
-      description: "Berechnen Sie ganz einfach den Bedarf an Farbe und Fliesen und schätzen Sie die Materialkosten.",
+      description: "Berechnen Sie ganz einfach den Bedarf an Farbe und Fliesen.",
       steps: ["Maße eingeben.", "Preis pro Einheit.", "Volumen sehen.", "Gesamtkosten."],
       article: "Berechnen Sie den Bedarf an Farbe oder Fliesen für Ihr Renovierungsprojekt.",
       faq: [{ q: "Genau?", a: "Basiert auf Standard-Verbrauchswerten." }]
     },
     fr: {
       title: "Calculateur de Matériaux",
-      description: "Calculez facilement vos besoins en peinture, en carrelage et estimez le coût des matériaux.",
+      description: "Calculez facilement vos besoins en peinture, en carrelage.",
       steps: ["Saisir dimensions.", "Prix unitaire.", "Volume requis.", "Coût total."],
       article: "Estimez vos besoins en peinture ou carrelage pour vos travaux.",
       faq: [{ q: "Unité ?", a: "Calculs en mètres et litres." }]
     },
     it: {
       title: "Calcolatrice Materiali",
-      description: "Calcola facilmente le esigenze di vernice, piastrelle e stima i costi dei materiali.",
+      description: "Calcola facilmente le esigenze di vernice, piastrelle.",
       steps: ["Inserisci misure.", "Prezzo unitario.", "Vedi volume.", "Costo totale."],
       article: "Calcola quanta vernice o piastrelle ti servono per la ristrutturazione.",
       faq: [{ q: "Facile?", a: "Inserisci i metri e fa tutto lui." }]
@@ -453,26 +469,26 @@ export const SEO_DATA: SeoCollection = {
       title: "Gerador de Faturas",
       description: "Crie faturas profissionais e salve-as como PDF para seus clientes.",
       steps: ["Dados da empresa.", "Adicionar itens.", "Ver prévia.", "Salvar em PDF."],
-      article: "Crie faturas e recibos profissionais na hora. Seus dados financeiros são privados.",
+      article: "Crie faturas e recibos profissionais na hora. Seus dati financeiros sono privati.",
       faq: [{ q: "Profissional?", a: "Sim, layout limpo e elegante." }]
     },
     de: {
       title: "Rechnungs-Ersteller",
-      description: "Erstellen Sie professionelle Rechnungen und speichern Sie diese als PDF für Ihre Kunden.",
+      description: "Erstellen Sie professionelle Rechnungen und speichern Sie diese als PDF.",
       steps: ["Details ausfüllen.", "Posten adden.", "Vorschau prüfen.", "Als PDF drucken."],
       article: "Erstellen Sie professionelle Rechnungen direkt im Browser. 100% Datenschutz.",
       faq: [{ q: "Sprache?", a: "Das PDF wird basierend auf Ihren Eingaben erstellt." }]
     },
     fr: {
       title: "Créateur de Factures",
-      description: "Créez des factures professionnelles et enregistrez-les au format PDF pour vos clients.",
+      description: "Créez des factures professionnelles et enregistrez-les au format PDF.",
       steps: ["Saisir infos.", "Ajouter articles.", "Aperçu.", "Imprimer PDF."],
       article: "Créez des factures professionnelles. Vos données financières restent privées.",
       faq: [{ q: "Gratuit ?", a: "Oui, sans aucun frais caché." }]
     },
     it: {
       title: "Generatore Fatture",
-      description: "Crea fatture professionali e savale come PDF per i tuoi clienti.",
+      description: "Crea fatture professionali e savale come PDF.",
       steps: ["Inserisci dati.", "Aggiungi voci.", "Anteprima.", "Salva PDF."],
       article: "Crea fatture professionali velocemente. Massima privacy per i tuoi dati.",
       faq: [{ q: "Si stampa?", a: "Sì, clicca Stampa per salvare in PDF." }]
@@ -509,21 +525,21 @@ export const SEO_DATA: SeoCollection = {
     },
     de: {
       title: "Schichtplan",
-      description: "Verwalten Sie den wöchentlichen Arbeitsplan Ihres Teams mit einem visuellen Schichtsystem.",
+      description: "Verwalten Sie den wöchentlichen Arbeitsplan Ihres Teams.",
       steps: ["Mitarbeiter adden.", "Schicht wählen.", "Plan prüfen.", "Download Bild."],
       article: "Planen Sie die wöchentlichen Schichten Ihres Teams ganz einfach visuell.",
       faq: [{ q: "Export?", a: "Kann als PNG-Bild exportiert werden." }]
     },
     fr: {
       title: "Planning de Shifts",
-      description: "Gérez le planning de travail hebdomadaire de votre équipe avec un système visuel.",
+      description: "Gérez le planning de travail hebdomadaire de votre équipe.",
       steps: ["Ajouter staff.", "Changer shifts.", "Voir planning.", "Télécharger."],
       article: "Gérez les plannings hebdomadaires de votre équipe en quelques clics.",
       faq: [{ q: "Privé ?", a: "Données locales uniquement." }]
     },
     it: {
       title: "Turni Lavoro",
-      description: "Gestisci l'orario di lavoro settimanale del tuo team con un sistema di turni visivo.",
+      description: "Gestisci l'orario di lavoro settimanale del tuo team.",
       steps: ["Aggiungi staff.", "Cambia turno.", "Vedi piano.", "Scarica Immagine."],
       article: "Gestisci i turni settimanali dei dipendenti in modo semplice e visivo.",
       faq: [{ q: "Watermark?", a: "Include il marchio VersoKit sull'immagine." }]
@@ -569,7 +585,7 @@ export const SEO_DATA: SeoCollection = {
       title: "Fusionner PDF",
       description: "Fusionnez plusieurs fichiers PDF en un seul document hors ligne.",
       steps: ["Choisir PDFs.", "Ordonner.", "Fusionner."],
-      article: "Combinez vos documents PDF en toute sécurité sans upload serveur.",
+      article: "Combinez vos documents PDF en toute sicurezza senza upload serveur.",
       faq: [{ q: "Rapide ?", a: "Traitement instantané en local." }]
     },
     it: {
@@ -648,35 +664,35 @@ export const SEO_DATA: SeoCollection = {
     },
     es: {
       title: "Compresor de Imágenes",
-      description: "Comprime el tamaño del archivo de imagen directamente en el navegador sin subirlo.",
+      description: "Comprime el tamaño del archivo de imagen directamente en el navegador.",
       steps: ["Elegir imagen.", "Ajustar calidad.", "Comprimir."],
       article: "Reduce el peso de tus fotos sin subirlas a ningún servidor.",
       faq: [{ q: "¿Privado?", a: "Sí, todo ocurre en tu navegador." }]
     },
     pt: {
       title: "Compressor de Imagens",
-      description: "Comprima o tamanho do arquivo de imagem diretamente no navegador sem fazer upload.",
+      description: "Comprima o tamanho do arquivo de imagem sem fazer upload.",
       steps: ["Escolher imagem.", "Ajustar qualidade.", "Comprimir."],
       article: "Reduza o tamanho de suas fotos mantendo a privacidade total.",
       faq: [{ q: "Rapidez?", a: "Processamento instantâneo." }]
     },
     de: {
       title: "Bild-Kompressor",
-      description: "Komprimieren Sie die Bilddateigröße direkt im Browser, ohne sie hochzuladen.",
+      description: "Komprimieren Sie die Bilddateigröße direkt im Browser.",
       steps: ["Bild wählen.", "Qualität regeln.", "Komprimieren."],
       article: "Verkleinern Sie Bilder ohne Cloud-Upload. 100% Datenschutz.",
       faq: [{ q: "Verlust?", a: "Qualität ist über den Slider einstellbar." }]
     },
     fr: {
       title: "Compresseur d'Image",
-      description: "Compressez la taille du fichier image directement dans le navigateur sans téléchargement.",
+      description: "Compressez la taille du fichier image directement dans le navigateur.",
       steps: ["Choisir image.", "Régler qualité.", "Compresser."],
-      article: "Réduisez la taille de vos fichiers images localement et rapidement.",
+      article: "Réduisez la taille de vos fichiers images localement et rapidamente.",
       faq: [{ q: "Poids ?", a: "Gagnez jusqu'à 90% de place." }]
     },
     it: {
       title: "Comprimi Immagine",
-      description: "Comprimi le dimensioni del file immagine direttamente nel browser senza caricare nulla.",
+      description: "Comprimi le dimensioni del file immagine senza caricare nulla.",
       steps: ["Scegli immagine.", "Regola qualità.", "Comprimi."],
       article: "Riduci il peso delle tue foto senza caricarle online.",
       faq: [{ q: "Privato?", a: "Certo, i file non lasciano il PC." }]
@@ -702,7 +718,7 @@ export const SEO_DATA: SeoCollection = {
       description: "Calcula el reparto de comidas o los gastos del equipo con detalles para WA.",
       steps: ["Total cuenta.", "Impuestos.", "Nombres.", "Copiar a WA."],
       article: "Calcula cuánto debe pagar cada uno y comparte el resumen por WhatsApp.",
-      faq: [{ q: "¿Sirve para grupos?", a: "Sí, ideal para cenas o deportes." }]
+      faq: [{ q: "¿Sirve para gruppi?", a: "Sí, ideal para cenas o deportes." }]
     },
     pt: {
       title: "Dividir Conta",
@@ -764,14 +780,14 @@ export const SEO_DATA: SeoCollection = {
     },
     de: {
       title: "CSV-Reiniger",
-      description: "Bereinigen und verarbeiten Sie Ihre CSV-Dateien lokal, ohne sie hochzuladen.",
+      description: "Bereinigen und verarbeiten Sie Ihre CSV-Dateien lokal.",
       steps: ["CSV hochladen.", "Datenvorschau.", "Duplikate löschen.", "Bereinigte CSV laden."],
       article: "Verarbeiten Sie große CSV-Datensätze direkt im Browser.",
       faq: [{ q: "Datenschutz?", a: "100% lokal verarbeitet." }]
     },
     fr: {
       title: "Nettoyeur CSV",
-      description: "Nettoyez et traitez vos fichiers CSV localement sans téléchargement.",
+      description: "Nettoyez et traitez vos fichiers CSV localement senza téléchargement.",
       steps: ["Charger CSV.", "Aperçu.", "Supprimer doublons.", "Télécharger CSV propre."],
       article: "Traitez vos fichiers CSV volumineux directement dans votre navigateur.",
       faq: [{ q: "Confidentialité ?", a: "Vos fichiers ne sont jamais envoyés au serveur." }]

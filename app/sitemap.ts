@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // List of all tools currently implemented in the app
   const tools = [
     'futsal',
+    'tennis',
     'lineup-builder',
     'scoreboard',
     'tournament',

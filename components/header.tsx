@@ -30,6 +30,7 @@ export default function Header() {
       icon: <Trophy className="h-4 w-4 mr-2" />,
       items: [
         { href: '/tools/futsal', label: t('futsal') },
+        { href: '/tools/tennis', label: 'Tennis Match Generator' },
         { href: '/tools/lineup-builder', label: t('lineup') },
         { href: '/tools/tournament', label: t('tournament') },
         { href: '/tools/scoreboard', label: t('scoreboard') },

@@ -23,7 +23,8 @@ import {
   ShieldCheck,
   Zap,
   WifiOff,
-  Wallet
+  Wallet,
+  Activity
 } from 'lucide-react';
 import { useLang } from '@/components/Providers';
 import { SEO_DATA } from '@/lib/seo-content';
@@ -48,6 +49,13 @@ export default function DashboardPage() {
       description: 'Papan skor sederhana dan efektif untuk pertandingan futsal Anda.',
       href: '/tools/futsal',
       icon: <ClipboardList className="h-10 w-10 text-primary" />,
+    },
+    {
+      id: 'tennis',
+      title: 'Tennis Match Gen',
+      description: 'Generate balanced tennis double matches based on skill and play time.',
+      href: '/tools/tennis',
+      icon: <Activity className="h-10 w-10 text-primary" />,
     },
     {
       id: 'budget-planner',
