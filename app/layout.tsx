@@ -1,8 +1,8 @@
-
 import type { Metadata, Viewport } from 'next';
 import Header from '@/components/header';
 import { Toaster } from '@/components/ui/toaster';
 import { Providers } from '@/components/Providers';
+import { Analytics } from '@vercel/analytics/react';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -48,6 +48,7 @@ export default function RootLayout({
             </div>
           </footer>
           <Toaster />
+          <Analytics />
         </Providers>
       </body>
     </html>
