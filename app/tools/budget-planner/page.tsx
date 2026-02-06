@@ -18,14 +18,12 @@ import {
   X,
   PieChart as PieChartIcon,
   Download,
-  Upload,
   Settings2,
   CalendarClock,
   BellRing,
   CheckCircle2,
   FileSpreadsheet,
-  FileJson,
-  ShieldAlert
+  Database
 } from 'lucide-react';
 import { 
   Dialog, 
@@ -43,7 +41,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from '@/components/ui/label';
-import { DataControl } from '@/components/DataControl';
+import { DataPersistence } from '@/components/DataPersistence';
 import { SeoContent } from '@/components/seo-content';
 import { SmartAd } from '@/components/smart-ad';
 import { format, addMonths, addWeeks, subMonths, startOfMonth, endOfMonth, isWithinInterval, isBefore, parseISO } from 'date-fns';
@@ -86,11 +84,8 @@ const UI_TEXT: Record<string, any> = {
     payee_placeholder: "Who did you pay?",
     amount_placeholder: "0.00",
     analysis_title: "Spending Analysis",
-    export_json: "Backup JSON",
-    import_json: "Restore JSON",
-    export_csv: "Export to CSV (Excel)",
+    export_csv: "Export Report (.csv)",
     data_mgmt: "Data Management",
-    import_warn: "This will overwrite all current budget data. Continue?",
     no_data: "No spending data this month",
     recurring_btn: "Recurring Bills",
     frequency: "Frequency",
@@ -101,9 +96,7 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Process All",
     rule_added: "Recurring rule added",
     manage_recurring: "Manage Recurring",
-    add_rule: "Add Rule",
-    restore_success: "Data restored successfully!",
-    invalid_file: "Invalid backup file!"
+    add_rule: "Add Rule"
   },
   id: {
     to_be_budgeted: "Siap Dianggarkan",
@@ -132,11 +125,8 @@ const UI_TEXT: Record<string, any> = {
     payee_placeholder: "Bayar ke siapa?",
     amount_placeholder: "0",
     analysis_title: "Analisa Pengeluaran",
-    export_json: "Simpan Backup JSON",
-    import_json: "Pulihkan Backup",
-    export_csv: "Ekspor ke CSV (Excel)",
+    export_csv: "Ekspor Laporan (.csv)",
     data_mgmt: "Manajemen Data",
-    import_warn: "Ini akan menimpa seluruh data anggaran saat ini. Lanjutkan?",
     no_data: "Belum ada data pengeluaran bulan ini",
     recurring_btn: "Tagihan Rutin",
     frequency: "Frekuensi",
@@ -147,9 +137,7 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Proses Semua",
     rule_added: "Jadwal rutin ditambahkan",
     manage_recurring: "Kelola Rutin",
-    add_rule: "Tambah Jadwal",
-    restore_success: "Data berhasil dipulihkan!",
-    invalid_file: "File cadangan tidak valid!"
+    add_rule: "Tambah Jadwal"
   },
   es: {
     to_be_budgeted: "Por Asignar",
@@ -178,11 +166,8 @@ const UI_TEXT: Record<string, any> = {
     payee_placeholder: "¿A quién pagaste?",
     amount_placeholder: "0.00",
     analysis_title: "Análisis de Gastos",
-    export_json: "Respaldar JSON",
-    import_json: "Restaurar JSON",
-    export_csv: "Exportar a CSV",
+    export_csv: "Exportar Reporte (.csv)",
     data_mgmt: "Gestión de Datos",
-    import_warn: "Esto sobrescribirá todos los datos. ¿Continuar?",
     no_data: "Sin datos este mes",
     recurring_btn: "Facturas Recurrentes",
     frequency: "Frecuencia",
@@ -193,9 +178,7 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Procesar Todo",
     rule_added: "Regla recurrente añadida",
     manage_recurring: "Gestionar Recurrentes",
-    add_rule: "Añadir Regla",
-    restore_success: "¡Datos restaurados con éxito!",
-    invalid_file: "¡Archivo de respaldo no válido!"
+    add_rule: "Añadir Regla"
   },
   pt: {
     to_be_budgeted: "Para Atribuir",
@@ -224,11 +207,8 @@ const UI_TEXT: Record<string, any> = {
     payee_placeholder: "Quem recebeu?",
     amount_placeholder: "0,00",
     analysis_title: "Análise de Gastos",
-    export_json: "Exportar JSON",
-    import_json: "Importar JSON",
-    export_csv: "Exportar para CSV",
+    export_csv: "Exportar Relatório (.csv)",
     data_mgmt: "Gestão de Dados",
-    import_warn: "Isso irá sobrescrever todos os dados. Continuar?",
     no_data: "Sem gastos este mês",
     recurring_btn: "Contas Recorrentes",
     frequency: "Frequência",
@@ -239,9 +219,7 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Processar Tudo",
     rule_added: "Regra recurrente adicionada",
     manage_recurring: "Gerenciar Recorrentes",
-    add_rule: "Add Regra",
-    restore_success: "Dados restaurados com sucesso!",
-    invalid_file: "Arquivo de backup inválido!"
+    add_rule: "Add Regra"
   },
   de: {
     to_be_budgeted: "Zu verplanen",
@@ -270,11 +248,8 @@ const UI_TEXT: Record<string, any> = {
     payee_placeholder: "An wen?",
     amount_placeholder: "0,00",
     analysis_title: "Ausgaben-Analyse",
-    export_json: "JSON Backup",
-    import_json: "JSON Restore",
-    export_csv: "CSV Export",
+    export_csv: "Bericht exportieren (.csv)",
     data_mgmt: "Datenverwaltung",
-    import_warn: "Dies wird alle Daten überschreiben. Fortfahren?",
     no_data: "Keine Daten diesen Monat",
     recurring_btn: "Wiederkehrende Rechnungen",
     frequency: "Häufigkeit",
@@ -285,9 +260,7 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Alle verarbeiten",
     rule_added: "Wiederkehrende Regel hinzugefügt",
     manage_recurring: "Wiederkehrende verwalten",
-    add_rule: "Regel hinzufügen",
-    restore_success: "Daten erfolgreich wiederhergestellt!",
-    invalid_file: "Ungültige Backup-Datei!"
+    add_rule: "Regel hinzufügen"
   },
   fr: {
     to_be_budgeted: "À budgétiser",
@@ -316,11 +289,8 @@ const UI_TEXT: Record<string, any> = {
     payee_placeholder: "Qui avez-vous payé ?",
     amount_placeholder: "0,00",
     analysis_title: "Analyse des Dépenses",
-    export_json: "Sauvegarde JSON",
-    import_json: "Restaurer JSON",
-    export_csv: "Exporter en CSV",
+    export_csv: "Exporter Rapport (.csv)",
     data_mgmt: "Gestion des Données",
-    import_warn: "Cela écrasera toutes les données. Continuer ?",
     no_data: "Aucune dépense ce mois",
     recurring_btn: "Factures Récurrentes",
     frequency: "Fréquence",
@@ -331,9 +301,7 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Tout traiter",
     rule_added: "Règle récurrente ajoutée",
     manage_recurring: "Gérer Récurrents",
-    add_rule: "Ajouter Règle",
-    restore_success: "Données restaurées avec succès !",
-    invalid_file: "Fichier de sauvegarde invalide !"
+    add_rule: "Ajouter Règle"
   },
   it: {
     to_be_budgeted: "Da Assegnare",
@@ -352,7 +320,7 @@ const UI_TEXT: Record<string, any> = {
     add_tx: "Aggiungi Transazione",
     date: "Data",
     amount: "Importo",
-    desc: "Descrizione",
+    desc: "Description",
     save: "Salva",
     cancel: "Annulla",
     payee: "Beneficiario",
@@ -362,11 +330,8 @@ const UI_TEXT: Record<string, any> = {
     payee_placeholder: "Chi hai pagato?",
     amount_placeholder: "0,00",
     analysis_title: "Analisi Spese",
-    export_json: "Backup JSON",
-    import_json: "Ripristina JSON",
-    export_csv: "Esporta in CSV",
+    export_csv: "Esporta Report (.csv)",
     data_mgmt: "Gestione Dati",
-    import_warn: "Questo sovrascriverà tutti i dati. Continuare?",
     no_data: "Nessuna spesa questo mese",
     recurring_btn: "Spese Ricorrenti",
     frequency: "Frequenza",
@@ -377,9 +342,7 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Elabora Tutto",
     rule_added: "Regola ricorrente aggiunta",
     manage_recurring: "Gestisci Ricorrenti",
-    add_rule: "Aggiungi Regola",
-    restore_success: "Dati ripristinati con successo!",
-    invalid_file: "File di backup non valido!"
+    add_rule: "Aggiungi Regola"
   }
 };
 
@@ -455,8 +418,6 @@ export default function BudgetPlannerPage() {
   const [currentMonth, setCurrentMonth] = useState(startOfMonth(new Date()));
   const [state, setState] = useLocalStorage<BudgetState>('versokit-budget-v1', DEFAULT_STATE);
   
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
   // Transaction Modal State
   const [isTxOpen, setIsTxOpen] = useState(false);
   const [newTx, setNewTx] = useState<Partial<Transaction>>({
@@ -477,9 +438,6 @@ export default function BudgetPlannerPage() {
     frequency: 'monthly',
     nextDueDate: format(new Date(), 'yyyy-MM-dd')
   });
-
-  // Data Mgmt State
-  const [isDataOpen, setIsDataOpen] = useState(false);
 
   useEffect(() => { setMounted(true); }, []);
 
@@ -615,7 +573,6 @@ export default function BudgetPlannerPage() {
     }));
   };
 
-  // Recurring Handlers
   const addRecurringRule = () => {
     if (!newRule.payee || !newRule.amount) return;
     const rule: RecurringRule = {
@@ -643,7 +600,6 @@ export default function BudgetPlannerPage() {
     let newTransactions: Transaction[] = [];
 
     pendingRules.forEach(rule => {
-      // 1. Create Transaction
       newTransactions.push({
         id: `rec-${rule.id}-${Date.now()}`,
         date: rule.nextDueDate,
@@ -653,7 +609,6 @@ export default function BudgetPlannerPage() {
         description: rule.description
       });
 
-      // 2. Update Rule Date
       const idx = updatedRules.findIndex(r => r.id === rule.id);
       if (idx !== -1) {
         const nextDate = rule.frequency === 'monthly' 
@@ -670,41 +625,6 @@ export default function BudgetPlannerPage() {
     }));
 
     toast({ title: t('all_done'), description: `${pendingRules.length} bills processed.` });
-  };
-
-  // Data Management
-  const exportJSON = () => {
-    const dataStr = JSON.stringify(state, null, 2);
-    const blob = new Blob([dataStr], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const linkElement = document.createElement('a');
-    linkElement.setAttribute('href', url);
-    linkElement.setAttribute('download', `versokit-budget-backup-${format(new Date(), 'yyyy-MM-dd')}.json`);
-    linkElement.click();
-    URL.revokeObjectURL(url);
-  };
-
-  const importJSON = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    if (!confirm(t('import_warn'))) return;
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      try {
-        const json = JSON.parse(event.target?.result as string);
-        // Validation
-        if (!json.groups || !json.items || !json.transactions) {
-          toast({ title: t('invalid_file'), variant: "destructive" });
-          return;
-        }
-        setState(json);
-        toast({ title: t('restore_success') });
-        setTimeout(() => window.location.reload(), 500);
-      } catch (error) {
-        toast({ title: t('invalid_file'), variant: "destructive" });
-      }
-    };
-    reader.readAsText(file);
   };
 
   const exportCSV = () => {
@@ -735,6 +655,14 @@ export default function BudgetPlannerPage() {
     link.setAttribute('download', `budget-report-${format(new Date(), 'yyyy-MM-dd')}.csv`);
     link.click();
     URL.revokeObjectURL(url);
+  };
+
+  const handleRestore = (data: any) => {
+    if (data && (data.groups || data.items || data.transactions)) {
+      setState(data);
+    } else {
+      toast({ title: "Invalid data format", variant: "destructive" });
+    }
   };
 
   if (!mounted) return null;
@@ -791,161 +719,125 @@ export default function BudgetPlannerPage() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-3 items-end">
-          <div className="flex gap-2">
-            <Dialog open={isRecurringOpen} onOpenChange={setIsRecurringOpen}>
-              <DialogTrigger asChild>
-                <Button variant="outline" className="h-12 border-2 font-black uppercase tracking-widest text-[10px] rounded-2xl">
-                  <CalendarClock className="mr-2 h-4 w-4" /> {t('recurring_btn')}
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="rounded-[2rem] sm:max-w-xl">
-                <DialogHeader>
-                  <DialogTitle className="text-2xl font-black uppercase tracking-tighter">{t('manage_recurring')}</DialogTitle>
-                </DialogHeader>
-                
-                <div className="space-y-6 py-4">
-                  <div className="space-y-4 p-4 bg-muted/30 rounded-2xl border-2 border-dashed">
-                    <h4 className="font-black uppercase tracking-widest text-[10px] opacity-50">{t('add_rule')}</h4>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-1">
-                        <Label className="text-xs font-bold uppercase">{t('payee')}</Label>
-                        <Input value={newRule.payee} onChange={e => setNewRule({...newRule, payee: e.target.value})} placeholder="Netflix, Rent..." />
-                      </div>
-                      <div className="space-y-1">
-                        <Label className="text-xs font-bold uppercase">{t('amount')}</Label>
-                        <Input type="number" value={newRule.amount || ''} onChange={e => setNewRule({...newRule, amount: parseFloat(e.target.value) || 0})} />
-                      </div>
-                      <div className="space-y-1">
-                        <Label className="text-xs font-bold uppercase">{t('frequency')}</Label>
-                        <Select value={newRule.frequency} onValueChange={v => setNewRule({...newRule, frequency: v as any})}>
-                          <SelectTrigger><SelectValue /></SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="monthly">{t('monthly')}</SelectItem>
-                            <SelectItem value="weekly">{t('weekly')}</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div className="space-y-1">
-                        <Label className="text-xs font-bold uppercase">{t('next_due')}</Label>
-                        <Input type="date" value={newRule.nextDueDate} onChange={e => setNewRule({...newRule, nextDueDate: e.target.value})} />
-                      </div>
+        <div className="flex gap-2">
+          <Dialog open={isRecurringOpen} onOpenChange={setIsRecurringOpen}>
+            <DialogTrigger asChild>
+              <Button variant="outline" className="h-12 border-2 font-black uppercase tracking-widest text-[10px] rounded-2xl">
+                <CalendarClock className="mr-2 h-4 w-4" /> {t('recurring_btn')}
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="rounded-[2rem] sm:max-w-xl">
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-black uppercase tracking-tighter">{t('manage_recurring')}</DialogTitle>
+              </DialogHeader>
+              
+              <div className="space-y-6 py-4">
+                <div className="space-y-4 p-4 bg-muted/30 rounded-2xl border-2 border-dashed">
+                  <h4 className="font-black uppercase tracking-widest text-[10px] opacity-50">{t('add_rule')}</h4>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <Label className="text-xs font-bold uppercase">{t('payee')}</Label>
+                      <Input value={newRule.payee} onChange={e => setNewRule({...newRule, payee: e.target.value})} placeholder="Netflix, Rent..." />
                     </div>
-                    <Button onClick={addRecurringRule} className="w-full bg-primary font-black uppercase tracking-widest mt-2">{globalT('add')}</Button>
-                  </div>
-
-                  <div className="max-h-[300px] overflow-y-auto space-y-2 pr-2">
-                    {(state.recurringRules || []).map(rule => (
-                      <div key={rule.id} className="p-4 bg-card border-2 rounded-2xl flex items-center justify-between group">
-                        <div className="space-y-1">
-                          <h5 className="font-black uppercase tracking-tight text-sm">{rule.payee}</h5>
-                          <div className="flex gap-2 items-center">
-                            <span className="text-[10px] font-bold px-2 py-0.5 bg-primary/10 text-primary rounded-full uppercase tracking-widest">
-                              {rule.frequency === 'monthly' ? t('monthly') : t('weekly')}
-                            </span>
-                            <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
-                              {t('next_due')}: {rule.nextDueDate}
-                            </span>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-4">
-                          <span className="font-black tabular-nums">{rule.amount.toLocaleString()}</span>
-                          <Button variant="ghost" size="icon" onClick={() => deleteRecurringRule(rule.id)} className="h-8 w-8 text-muted-foreground hover:text-destructive transition-colors">
-                            <Trash2 className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </DialogContent>
-            </Dialog>
-
-            <Dialog open={isTxOpen} onOpenChange={setIsTxOpen}>
-              <DialogTrigger asChild>
-                <Button className="h-12 px-6 bg-accent hover:bg-accent/90 text-white font-black uppercase tracking-widest rounded-2xl shadow-xl">
-                  <Plus className="mr-2 h-5 w-5" /> {t('add_tx')}
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="rounded-[2rem] sm:max-w-md">
-                <DialogHeader>
-                  <DialogTitle className="text-2xl font-black uppercase tracking-tighter">{t('add_tx')}</DialogTitle>
-                </DialogHeader>
-                <div className="space-y-4 py-4">
-                  <div className="space-y-2">
-                    <Label>{t('date')}</Label>
-                    <Input type="date" value={newTx.date} onChange={(e) => setNewTx({...newTx, date: e.target.value})} />
-                  </div>
-                  <div className="space-y-2">
-                    <Label>{t('payee')}</Label>
-                    <Input placeholder={t('payee_placeholder')} value={newTx.payee} onChange={(e) => setNewTx({...newTx, payee: e.target.value})} />
-                  </div>
-                  <div className="space-y-2">
-                    <Label>{t('category')}</Label>
-                    <Select value={newTx.itemId} onValueChange={(val) => setNewTx({...newTx, itemId: val})}>
-                      <SelectTrigger><SelectValue /></SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="inflow" className="font-bold text-green-600">{t('inflow')}</SelectItem>
-                        {state.groups.map(group => (
-                          <React.Fragment key={group.id}>
-                            <div className="px-2 py-1.5 text-xs font-black uppercase text-muted-foreground opacity-50">{group.name}</div>
-                            {state.items.filter(i => i.groupId === group.id).map(item => (
-                              <SelectItem key={item.id} value={item.id}>{item.name}</SelectItem>
-                            ))}
-                          </React.Fragment>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label>{t('amount')} ({currencySymbol})</Label>
-                    <Input type="number" placeholder={t('amount_placeholder')} value={newTx.amount || ''} onChange={(e) => setNewTx({...newTx, amount: parseFloat(e.target.value) || 0})} />
-                  </div>
-                  <div className="space-y-2">
-                    <Label>{t('desc')}</Label>
-                    <Input value={newTx.description} onChange={(e) => setNewTx({...newTx, description: e.target.value})} />
-                  </div>
-                </div>
-                <DialogFooter>
-                  <Button onClick={addTransaction} className="w-full h-12 font-black uppercase tracking-widest">{t('save')}</Button>
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
-
-            <Dialog open={isDataOpen} onOpenChange={setIsDataOpen}>
-              <DialogTrigger asChild>
-                <Button variant="outline" size="icon" className="h-12 w-12 rounded-2xl border-2">
-                  <Settings2 className="h-5 w-5" />
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="rounded-[2rem] sm:max-w-md">
-                <DialogHeader>
-                  <DialogTitle className="text-2xl font-black uppercase tracking-tighter">{t('data_mgmt')}</DialogTitle>
-                </DialogHeader>
-                <div className="space-y-4 py-6">
-                  <div className="grid grid-cols-1 gap-3">
-                    <Button onClick={exportJSON} variant="outline" className="h-14 justify-start px-6 border-2 font-black uppercase tracking-widest">
-                      <FileJson className="mr-3 h-5 w-5 text-blue-600" /> {t('export_json')}
-                    </Button>
-                    <Button onClick={exportCSV} variant="outline" className="h-14 justify-start px-6 border-2 font-black uppercase tracking-widest">
-                      <FileSpreadsheet className="mr-3 h-5 w-5 text-green-600" /> {t('export_csv')}
-                    </Button>
-                    <div className="pt-4 border-t-2 border-dashed mt-4">
-                      <p className="text-[10px] font-black uppercase tracking-widest text-destructive mb-3 flex items-center gap-2">
-                        <ShieldAlert className="h-3 w-3" /> Danger Zone
-                      </p>
-                      <Button onClick={() => fileInputRef.current?.click()} variant="destructive" className="w-full h-14 font-black uppercase tracking-widest shadow-lg shadow-destructive/20">
-                        <Upload className="mr-3 h-5 w-5" /> {t('import_json')}
-                      </Button>
-                      <p className="text-[9px] font-bold text-muted-foreground uppercase text-center mt-2 px-4">{t('import_warn')}</p>
+                    <div className="space-y-1">
+                      <Label className="text-xs font-bold uppercase">{t('amount')}</Label>
+                      <Input type="number" value={newRule.amount || ''} onChange={e => setNewRule({...newRule, amount: parseFloat(e.target.value) || 0})} />
+                    </div>
+                    <div className="space-y-1">
+                      <Label className="text-xs font-bold uppercase">{t('frequency')}</Label>
+                      <Select value={newRule.frequency} onValueChange={v => setNewRule({...newRule, frequency: v as any})}>
+                        <SelectTrigger><SelectValue /></SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="monthly">{t('monthly')}</SelectItem>
+                          <SelectItem value="weekly">{t('weekly')}</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="space-y-1">
+                      <Label className="text-xs font-bold uppercase">{t('next_due')}</Label>
+                      <Input type="date" value={newRule.nextDueDate} onChange={e => setNewRule({...newRule, nextDueDate: e.target.value})} />
                     </div>
                   </div>
+                  <Button onClick={addRecurringRule} className="w-full bg-primary font-black uppercase tracking-widest mt-2">{globalT('add')}</Button>
                 </div>
-                <input type="file" ref={fileInputRef} onChange={importJSON} className="hidden" accept=".json" />
-              </DialogContent>
-            </Dialog>
-          </div>
-          <DataControl storageKey="versokit-budget-v1" type="object" />
+
+                <div className="max-h-[300px] overflow-y-auto space-y-2 pr-2">
+                  {(state.recurringRules || []).map(rule => (
+                    <div key={rule.id} className="p-4 bg-card border-2 rounded-2xl flex items-center justify-between group">
+                      <div className="space-y-1">
+                        <h5 className="font-black uppercase tracking-tight text-sm">{rule.payee}</h5>
+                        <div className="flex gap-2 items-center">
+                          <span className="text-[10px] font-bold px-2 py-0.5 bg-primary/10 text-primary rounded-full uppercase tracking-widest">
+                            {rule.frequency === 'monthly' ? t('monthly') : t('weekly')}
+                          </span>
+                          <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
+                            {t('next_due')}: {rule.nextDueDate}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-4">
+                        <span className="font-black tabular-nums">{rule.amount.toLocaleString()}</span>
+                        <Button variant="ghost" size="icon" onClick={() => deleteRecurringRule(rule.id)} className="h-8 w-8 text-muted-foreground hover:text-destructive transition-colors">
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
+
+          <Dialog open={isTxOpen} onOpenChange={setIsTxOpen}>
+            <DialogTrigger asChild>
+              <Button className="h-12 px-6 bg-accent hover:bg-accent/90 text-white font-black uppercase tracking-widest rounded-2xl shadow-xl">
+                <Plus className="mr-2 h-5 w-5" /> {t('add_tx')}
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="rounded-[2rem] sm:max-w-md">
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-black uppercase tracking-tighter">{t('add_tx')}</DialogTitle>
+              </DialogHeader>
+              <div className="space-y-4 py-4">
+                <div className="space-y-2">
+                  <Label>{t('date')}</Label>
+                  <Input type="date" value={newTx.date} onChange={(e) => setNewTx({...newTx, date: e.target.value})} />
+                </div>
+                <div className="space-y-2">
+                  <Label>{t('payee')}</Label>
+                  <Input placeholder={t('payee_placeholder')} value={newTx.payee} onChange={(e) => setNewTx({...newTx, payee: e.target.value})} />
+                </div>
+                <div className="space-y-2">
+                  <Label>{t('category')}</Label>
+                  <Select value={newTx.itemId} onValueChange={(val) => setNewTx({...newTx, itemId: val})}>
+                    <SelectTrigger><SelectValue /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="inflow" className="font-bold text-green-600">{t('inflow')}</SelectItem>
+                      {state.groups.map(group => (
+                        <React.Fragment key={group.id}>
+                          <div className="px-2 py-1.5 text-xs font-black uppercase text-muted-foreground opacity-50">{group.name}</div>
+                          {state.items.filter(i => i.groupId === group.id).map(item => (
+                            <SelectItem key={item.id} value={item.id}>{item.name}</SelectItem>
+                          ))}
+                        </React.Fragment>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label>{t('amount')} ({currencySymbol})</Label>
+                  <Input type="number" placeholder={t('amount_placeholder')} value={newTx.amount || ''} onChange={(e) => setNewTx({...newTx, amount: parseFloat(e.target.value) || 0})} />
+                </div>
+                <div className="space-y-2">
+                  <Label>{t('desc')}</Label>
+                  <Input value={newTx.description} onChange={(e) => setNewTx({...newTx, description: e.target.value})} />
+                </div>
+              </div>
+              <DialogFooter>
+                <Button onClick={addTransaction} className="w-full h-12 font-black uppercase tracking-widest">{t('save')}</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
 
@@ -1126,6 +1018,41 @@ export default function BudgetPlannerPage() {
                 <span className="text-xl font-black tabular-nums">{totalMonthlyIncome.toLocaleString()}</span>
               </div>
             </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      {/* Data Management Section */}
+      <div className="w-full space-y-6 mt-8 border-t-4 border-dashed pt-12">
+        <div className="flex items-center gap-3 text-muted-foreground mb-4">
+          <Database className="h-6 w-6" />
+          <h2 className="text-2xl font-black uppercase tracking-tighter text-foreground">{t('data_mgmt')}</h2>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          <DataPersistence 
+            data={state} 
+            onRestore={handleRestore} 
+            fileNamePrefix="versokit-budget" 
+          />
+
+          <Card className="bg-card border-2 rounded-[2rem] p-6 md:p-8 space-y-6 shadow-sm">
+            <div className="flex items-center gap-3 border-b pb-4">
+              <div className="p-2 bg-green-50 rounded-xl text-green-600">
+                <FileSpreadsheet className="h-5 w-5" />
+              </div>
+              <h3 className="font-black uppercase tracking-tight text-lg">Excel Reporting</h3>
+            </div>
+            <p className="text-xs text-muted-foreground font-medium uppercase tracking-widest">
+              One-way export for viewing transactions in Excel or Google Sheets.
+            </p>
+            <Button 
+              onClick={exportCSV} 
+              variant="outline"
+              className="w-full h-14 font-black uppercase tracking-widest text-xs border-2 border-green-200 text-green-700 hover:bg-green-50"
+            >
+              <Download className="mr-2 h-4 w-4" /> {t('export_csv')}
+            </Button>
           </Card>
         </div>
       </div>
