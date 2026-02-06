@@ -4,6 +4,7 @@ import Header from '@/components/header';
 import { Toaster } from '@/components/ui/toaster';
 import { Providers } from '@/components/Providers';
 import { Analytics } from '@vercel/analytics/next';
+import FooterLinks from '@/components/footer-links';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -53,12 +54,7 @@ export default function RootLayout({
                   <span className="text-lg font-black tracking-tighter uppercase">VersoKit</span>
                 </div>
                 
-                <nav className="flex flex-wrap items-center justify-center gap-6 text-xs font-bold uppercase tracking-[0.15em] text-muted-foreground">
-                  <Link href="/legal/about" className="hover:text-primary transition-colors">About Us</Link>
-                  <Link href="/legal/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
-                  <Link href="/legal/terms" className="hover:text-primary transition-colors">Terms</Link>
-                  <Link href="/legal/contact" className="hover:text-primary transition-colors">Contact</Link>
-                </nav>
+                <FooterLinks />
               </div>
 
               <div className="pt-8 border-t border-muted text-center space-y-2">
