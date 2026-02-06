@@ -4,9 +4,110 @@ import { useEffect, useRef } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Minus, Plus, Play, Pause, RotateCcw, Timer, History } from 'lucide-react';
+import { Minus, Plus, Play, Pause, RotateCcw, History } from 'lucide-react';
 import { useLang } from '@/components/Providers';
 import { cn } from '@/lib/utils';
+
+const UI_TEXT: Record<string, any> = {
+  en: {
+    home: "HOME",
+    away: "AWAY",
+    period: "PERIOD",
+    foul: "FOULS",
+    start: "START",
+    pause: "PAUSE",
+    reset: "RESET",
+    timer_settings: "TIMER PRESETS",
+    minutes: "MINS",
+    second_penalty: "SECOND PENALTY!",
+    round: "ROUND",
+    time: "TIME"
+  },
+  id: {
+    home: "KANDANG",
+    away: "TANDANG",
+    period: "BABAK",
+    foul: "PELANGGARAN",
+    start: "MULAI",
+    pause: "JEDA",
+    reset: "RESET",
+    timer_settings: "PENGATURAN WAKTU",
+    minutes: "MENIT",
+    second_penalty: "PENALTI KEDUA!",
+    round: "BABAK",
+    time: "WAKTU"
+  },
+  es: {
+    home: "LOCAL",
+    away: "VISITANTE",
+    period: "PERIODO",
+    foul: "FALTAS",
+    start: "INICIAR",
+    pause: "PAUSA",
+    reset: "REINICIAR",
+    timer_settings: "PREAJUSTES",
+    minutes: "MIN",
+    second_penalty: "¡DOBLE PENALTI!",
+    round: "TIEMPO",
+    time: "TIEMPO"
+  },
+  pt: {
+    home: "MANDANTE",
+    away: "VISITANTE",
+    period: "PERÍODO",
+    foul: "FALTAS",
+    start: "INICIAR",
+    pause: "PAUSA",
+    reset: "RESETAR",
+    timer_settings: "PREDEFINIÇÕES",
+    minutes: "MIN",
+    second_penalty: "TIRO LIVRE!",
+    round: "TEMPO",
+    time: "TEMPO"
+  },
+  de: {
+    home: "HEIM",
+    away: "GAST",
+    period: "HALBZEIT",
+    foul: "FOULS",
+    start: "START",
+    pause: "PAUSE",
+    reset: "RESET",
+    timer_settings: "TIMER-PRESETS",
+    minutes: "MIN",
+    second_penalty: "ZEHNMETER!",
+    round: "HALBZEIT",
+    time: "ZEIT"
+  },
+  fr: {
+    home: "DOMICILE",
+    away: "EXTÉRIEUR",
+    period: "PÉRIODE",
+    foul: "FAUTES",
+    start: "DÉMARRER",
+    pause: "PAUSE",
+    reset: "RÉINITIALISER",
+    timer_settings: "RÉGLAGES TIMER",
+    minutes: "MIN",
+    second_penalty: "JET FRANC!",
+    round: "PÉRIODE",
+    time: "TEMPS"
+  },
+  it: {
+    home: "CASA",
+    away: "TRASFERTA",
+    period: "PERIODO",
+    foul: "FALLI",
+    start: "INIZIA",
+    pause: "PAUSA",
+    reset: "RESET",
+    timer_settings: "PRESET TIMER",
+    minutes: "MIN",
+    second_penalty: "TIRO LIBERO!",
+    round: "TEMPO",
+    time: "TEMPO"
+  }
+};
 
 const PRESETS = [
   { label: '20:00', seconds: 20 * 60 },
@@ -25,7 +126,10 @@ type ScoreState = {
 };
 
 export function FutsalScoreboard() {
-  const { t } = useLang();
+  const { lang, t: globalT } = useLang();
+  
+  const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
+
   const [state, setState] = useLocalStorage<ScoreState>('futsal-scoreboard-state', {
     homeScore: 0,
     awayScore: 0,
@@ -104,7 +208,7 @@ export function FutsalScoreboard() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <CardTitle className="text-2xl font-black uppercase tracking-widest text-primary flex items-center gap-3">
               <History className="h-6 w-6" />
-              {t('futsal')} PRO
+              {globalT('futsal')} PRO
             </CardTitle>
             <div className="flex items-center gap-2">
               <Button 
@@ -112,14 +216,13 @@ export function FutsalScoreboard() {
                 onClick={nextPeriod}
                 className="font-bold uppercase text-xs"
               >
-                {state.period === 1 ? "BABAK 1" : "BABAK 2"}
+                {t('round')} {state.period}
               </Button>
             </div>
           </div>
         </CardHeader>
         
         <CardContent className="p-0">
-          {/* Main Timer Display */}
           <div className="flex flex-col items-center justify-center bg-black/5 py-10 border-b relative">
             <h3 className="text-xs font-black text-muted-foreground uppercase tracking-[0.5em] mb-2">{t('time')}</h3>
             <p className={cn(
@@ -129,7 +232,6 @@ export function FutsalScoreboard() {
               {formatTime(state.time)}
             </p>
             
-            {/* Timer Controls */}
             <div className="flex flex-wrap justify-center items-center gap-4 mt-8">
               <div className="flex gap-2 mr-4 border-r pr-4 border-muted-foreground/20">
                 {PRESETS.map((p) => (
@@ -163,6 +265,7 @@ export function FutsalScoreboard() {
               bgClass="bg-blue-50/30"
               onUpdateScore={(d) => updateValue('homeScore', d)} 
               onUpdateFouls={(d) => updateValue('homeFouls', d)} 
+              labels={{ score: t('score'), fouls: t('foul'), danger: t('second_penalty') }}
             />
             <TeamPanel 
               side={t('away')} 
@@ -172,6 +275,7 @@ export function FutsalScoreboard() {
               bgClass="bg-orange-50/30"
               onUpdateScore={(d) => updateValue('awayScore', d)} 
               onUpdateFouls={(d) => updateValue('awayFouls', d)} 
+              labels={{ score: t('score'), fouls: t('foul'), danger: t('second_penalty') }}
             />
           </div>
         </CardContent>
@@ -188,19 +292,18 @@ interface TeamPanelProps {
   bgClass: string;
   onUpdateScore: (d: number) => void;
   onUpdateFouls: (d: number) => void;
+  labels: { score: string; fouls: string; danger: string };
 }
 
-const TeamPanel = ({ side, score, fouls, colorClass, bgClass, onUpdateScore, onUpdateFouls }: TeamPanelProps) => {
-  const { t } = useLang();
+const TeamPanel = ({ side, score, fouls, colorClass, bgClass, onUpdateScore, onUpdateFouls, labels }: TeamPanelProps) => {
   const isFoulDanger = fouls >= 5;
 
   return (
     <div className={cn("p-10 space-y-10 text-center", bgClass)}>
         <h2 className={cn("text-4xl font-black tracking-widest uppercase", colorClass)}>{side}</h2>
         
-        {/* Score Section */}
         <div className="space-y-4">
-            <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-[0.3em]">{t('score')}</h3>
+            <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-[0.3em]">{labels.score}</h3>
             <div className="flex items-center justify-center gap-8">
                 <Button variant="outline" size="icon" className="h-14 w-14 rounded-full border-2" onClick={() => onUpdateScore(-1)}><Minus /></Button>
                 <p className="text-9xl font-black w-32 tabular-nums text-foreground drop-shadow-sm">{score}</p>
@@ -208,9 +311,8 @@ const TeamPanel = ({ side, score, fouls, colorClass, bgClass, onUpdateScore, onU
             </div>
         </div>
 
-        {/* Fouls Section */}
         <div className="pt-8 border-t border-muted-foreground/10 space-y-4">
-            <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-[0.3em]">{t('fouls')}</h3>
+            <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-[0.3em]">{labels.fouls}</h3>
             <div className="flex items-center justify-center gap-6">
                 <Button variant="ghost" size="icon" className="h-12 w-12 rounded-full" onClick={() => onUpdateFouls(-1)}><Minus /></Button>
                 <div className="flex flex-col items-center">
@@ -221,7 +323,7 @@ const TeamPanel = ({ side, score, fouls, colorClass, bgClass, onUpdateScore, onU
                     {fouls}
                   </p>
                   {isFoulDanger && (
-                    <span className="text-[10px] font-black text-destructive uppercase tracking-tighter mt-1">PENALTI KEDUA!</span>
+                    <span className="text-[10px] font-black text-destructive uppercase tracking-tighter mt-1">{labels.danger}</span>
                   )}
                 </div>
                 <Button variant="ghost" size="icon" className="h-12 w-12 rounded-full" onClick={() => onUpdateFouls(1)}><Plus /></Button>

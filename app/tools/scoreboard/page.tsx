@@ -12,14 +12,143 @@ import {
   RotateCcw, 
   Trash2, 
   Trophy, 
-  Settings2, 
   Edit3,
-  Dribbble
+  Dribbble,
+  ArrowLeftRight
 } from 'lucide-react';
 import { SmartAd } from '@/components/smart-ad';
 import { DataControl } from '@/components/DataControl';
 import { useLang } from '@/components/Providers';
 import { SeoContent } from '@/components/seo-content';
+
+const UI_TEXT: Record<string, any> = {
+  en: {
+    set: "SET",
+    target: "TARGET SCORE",
+    reset_all: "RESET ALL",
+    reset_points: "RESET POINTS",
+    winner: "WINNER",
+    swap: "SWAP SIDES",
+    match_name: "MATCH NAME",
+    sport_type: "SPORT TYPE",
+    home: "HOME",
+    away: "AWAY",
+    sets_won: "SETS WON",
+    victory_target: "VICTORY TARGET",
+    match: "MATCH",
+    type: "SPORT",
+    default_match: "Friendly Match",
+    default_sport: "Volleyball"
+  },
+  id: {
+    set: "SET",
+    target: "TARGET POIN",
+    reset_all: "RESET SEMUA",
+    reset_points: "RESET POIN",
+    winner: "PEMENANG",
+    swap: "TUKAR POSISI",
+    match_name: "NAMA PERTANDINGAN",
+    sport_type: "JENIS OLAHRAGA",
+    home: "KANDANG",
+    away: "TANDANG",
+    sets_won: "SET MENANG",
+    victory_target: "TARGET KEMENANGAN",
+    match: "PERTANDINGAN",
+    type: "OLAHRAGA",
+    default_match: "Pertandingan Persahabatan",
+    default_sport: "Voli"
+  },
+  es: {
+    set: "SET",
+    target: "PUNTOS OBJETIVO",
+    reset_all: "REINICIAR TODO",
+    reset_points: "REINICIAR PUNTOS",
+    winner: "GANADOR",
+    swap: "CAMBIAR LADOS",
+    match_name: "NOMBRE PARTIDO",
+    sport_type: "TIPO DE DEPORTE",
+    home: "LOCAL",
+    away: "VISITANTE",
+    sets_won: "SETS GANADOS",
+    victory_target: "OBJETIVO DE VICTORIA",
+    match: "PARTIDO",
+    type: "DEPORTE",
+    default_match: "Partido Amistoso",
+    default_sport: "Voleibol"
+  },
+  pt: {
+    set: "SET",
+    target: "META DE PONTOS",
+    reset_all: "RESETAR TUDO",
+    reset_points: "RESETAR PONTOS",
+    winner: "VENCEDOR",
+    swap: "TROCAR LADOS",
+    match_name: "NOME DA PARTIDA",
+    sport_type: "TIPO DE ESPORTE",
+    home: "MANDANTE",
+    away: "VISITANTE",
+    sets_won: "SETS GANHOS",
+    victory_target: "META DE VITÓRIA",
+    match: "PARTIDA",
+    type: "ESPORTE",
+    default_match: "Partida Amistosa",
+    default_sport: "Voleibol"
+  },
+  de: {
+    set: "SATZ",
+    target: "ZIELPUNKTE",
+    reset_all: "ALLES ZURÜCKSETZEN",
+    reset_points: "PUNKTE ZURÜCKSETZEN",
+    winner: "SIEGER",
+    swap: "SEITEN WECHSELN",
+    match_name: "SPIELNAME",
+    sport_type: "SPORTART",
+    home: "HEIM",
+    away: "GAST",
+    sets_won: "SÄTZE GEWONNEN",
+    victory_target: "SIEGZIEL",
+    match: "SPIEL",
+    type: "SPORT",
+    default_match: "Freundschaftsspiel",
+    default_sport: "Volleyball"
+  },
+  fr: {
+    set: "SET",
+    target: "SCORE CIBLE",
+    reset_all: "TOUT RÉINITIALISER",
+    reset_points: "RESET POINTS",
+    winner: "VAINQUEUR",
+    swap: "CHANGER DE CÔTÉ",
+    match_name: "NOM DU MATCH",
+    sport_type: "TYPE DE SPORT",
+    home: "DOMICILE",
+    away: "EXTÉRIEUR",
+    sets_won: "SETS GAGNÉS",
+    victory_target: "OBJECTIF DE VICTOIRE",
+    match: "MATCH",
+    type: "SPORT",
+    default_match: "Match Amical",
+    default_sport: "Volleyball"
+  },
+  it: {
+    set: "SET",
+    target: "TARGET PUNTEGGIO",
+    reset_all: "RESET TUTTO",
+    reset_points: "RESET PUNTI",
+    winner: "VINCITORE",
+    swap: "SCAMBIA CAMPO",
+    match_name: "NOME PARTITA",
+    sport_type: "TIPO DI SPORT",
+    home: "CASA",
+    away: "TRASFERTA",
+    sets_won: "SET VINTI",
+    victory_target: "TARGET VITTORIA",
+    match: "PARTITA",
+    type: "SPORT",
+    default_match: "Partita Amichevole",
+    default_sport: "Pallavolo"
+  }
+};
 
 interface ScoreboardState {
   matchName: string;
@@ -34,12 +163,15 @@ interface ScoreboardState {
 }
 
 export default function UniversalScoreboardPage() {
-  const { t } = useLang();
+  const { lang, t: globalT } = useLang();
+  
+  const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
+
   const [state, setState] = useLocalStorage<ScoreboardState>('versokit-universal-scoreboard', {
-    matchName: 'Pertandingan Persahabatan',
-    sportType: 'Voli',
-    homeTeam: 'KANDANG',
-    awayTeam: 'TANDANG',
+    matchName: t('default_match'),
+    sportType: t('default_sport'),
+    homeTeam: t('home'),
+    awayTeam: t('away'),
     scoreHome: 0,
     scoreAway: 0,
     setsHome: 0,
@@ -56,7 +188,7 @@ export default function UniversalScoreboardPage() {
   };
 
   const fullReset = () => {
-    if (confirm("Reset seluruh papan skor?")) {
+    if (confirm(t('reset_all') + "?")) {
       updateState({
         scoreHome: 0,
         scoreAway: 0,
@@ -66,6 +198,17 @@ export default function UniversalScoreboardPage() {
     }
   };
 
+  const swapSides = () => {
+    updateState({
+      homeTeam: state.awayTeam,
+      awayTeam: state.homeTeam,
+      scoreHome: state.scoreAway,
+      scoreAway: state.scoreHome,
+      setsHome: state.setsAway,
+      setsAway: state.setsHome,
+    });
+  };
+
   return (
     <div className="flex flex-col p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-8">
       <div className="flex flex-col gap-6 bg-card p-6 md:p-8 rounded-[2.5rem] shadow-xl border-2">
@@ -73,30 +216,35 @@ export default function UniversalScoreboardPage() {
           <div className="space-y-2 w-full md:w-auto">
             <div className="flex items-center gap-2 text-primary font-black uppercase tracking-widest text-xs">
               <Dribbble className="h-4 w-4" />
-              {t('scoreboard')} Pro
+              {globalT('scoreboard')} PRO
             </div>
             <div className="flex flex-col gap-1">
               <Input 
                 value={state.matchName} 
                 onChange={(e) => updateState({ matchName: e.target.value })}
                 className="text-2xl md:text-3xl font-black uppercase tracking-tighter border-none bg-transparent p-0 h-auto focus-visible:ring-0"
-                placeholder="Nama Pertandingan..."
+                placeholder={t('match_name') + "..."}
               />
               <Input 
                 value={state.sportType} 
                 onChange={(e) => updateState({ sportType: e.target.value })}
                 className="text-sm font-bold text-muted-foreground border-none bg-transparent p-0 h-auto focus-visible:ring-0 uppercase tracking-widest"
-                placeholder="Jenis Olahraga (Voli, Badminton, dll)..."
+                placeholder={t('sport_type') + "..."}
               />
             </div>
           </div>
           
-          <DataControl storageKey="versokit-universal-scoreboard" type="object" />
+          <div className="flex items-center gap-2">
+            <Button variant="ghost" size="sm" onClick={swapSides} className="font-bold uppercase tracking-widest text-[10px]">
+               <ArrowLeftRight className="h-4 w-4 mr-2" /> {t('swap')}
+            </Button>
+            <DataControl storageKey="versokit-universal-scoreboard" type="object" />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6 border-t border-dashed">
           <div className="space-y-2">
-            <Label className="text-[10px] font-black uppercase tracking-widest opacity-60">Target Skor Per Set</Label>
+            <Label className="text-[10px] font-black uppercase tracking-widest opacity-60">{t('target')}</Label>
             <Input 
               type="number" 
               value={state.targetScore} 
@@ -106,10 +254,10 @@ export default function UniversalScoreboardPage() {
           </div>
           <div className="flex items-end gap-2 md:col-span-2">
             <Button variant="outline" onClick={resetPoints} className="flex-1 h-12 font-bold border-2 rounded-xl">
-              <RotateCcw className="mr-2 h-4 w-4" /> Reset Poin
+              <RotateCcw className="mr-2 h-4 w-4" /> {t('reset_points')}
             </Button>
             <Button variant="destructive" onClick={fullReset} className="flex-1 h-12 font-bold rounded-xl shadow-lg shadow-destructive/20">
-              <Trash2 className="mr-2 h-4 w-4" /> Reset Semua
+              <Trash2 className="mr-2 h-4 w-4" /> {t('reset_all')}
             </Button>
           </div>
         </div>
@@ -127,7 +275,7 @@ export default function UniversalScoreboardPage() {
           </div>
           <div className="flex flex-1 flex-col items-center justify-center p-8 md:p-12 space-y-8">
             <div className="flex flex-col items-center gap-4">
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary opacity-60">Set Menang</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary opacity-60">{t('sets_won')}</span>
               <div className="flex items-center gap-6">
                 <Button 
                   variant="outline" 
@@ -182,7 +330,7 @@ export default function UniversalScoreboardPage() {
           </div>
           <div className="flex flex-1 flex-col items-center justify-center p-8 md:p-12 space-y-8">
             <div className="flex flex-col items-center gap-4">
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent opacity-60">Set Menang</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent opacity-60">{t('sets_won')}</span>
               <div className="flex items-center gap-6">
                 <Button 
                   variant="outline" 
@@ -230,7 +378,7 @@ export default function UniversalScoreboardPage() {
       <div className="flex flex-col items-center justify-center gap-6">
         <div className="flex items-center justify-center gap-4 rounded-3xl bg-muted p-6 text-sm font-black uppercase tracking-[0.2em] text-muted-foreground border-2 w-full shadow-inner">
           <Trophy className="h-6 w-6 text-primary animate-bounce" /> 
-          Target Kemenangan: {state.targetScore} Poin
+          {t('victory_target')}: {state.targetScore} {globalT('score')}
         </div>
         
         <SmartAd />
