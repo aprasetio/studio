@@ -23,17 +23,45 @@ export function SeoContent({ toolId }: SeoContentProps) {
 
   const { title, description, steps, article, faq } = content;
 
+  const privacyText = {
+    en: "Your data is processed 100% locally on your device. No files are ever uploaded to our servers.",
+    id: "Data Anda diproses 100% secara lokal di perangkat ini. Tidak ada file yang diupload ke server kami.",
+    es: "Tus datos se procesan 100% localmente en tu dispositivo. No se suben archivos a nuestros servidores.",
+    pt: "Seus dados são processados 100% localmente no seu dispositivo. Nenhum arquivo é enviado para nossos servidores.",
+    de: "Ihre Daten werden zu 100% lokal auf Ihrem Gerät verarbeitet. Es werden niemals Dateien auf unsere Server hochgeladen.",
+    fr: "Vos données sont traitées à 100% localement sur votre appareil. Aucun fichier n'est jamais téléchargé sur nos serveurs.",
+    it: "I tuoi dati vengono elaborati al 100% localmente sul tuo dispositivo. Nessun file viene mai caricato sui nostri server."
+  };
+
+  const privacyTitle = {
+    en: "Privacy Guaranteed",
+    id: "Jaminan Privasi",
+    es: "Privacidad Garantizada",
+    pt: "Privacidade Garantida",
+    de: "Datenschutz Garantiert",
+    fr: "Confidentialité Garantie",
+    it: "Privacy Garantita"
+  };
+
+  const aboutTitle = {
+    en: "About", id: "Tentang", es: "Acerca de", pt: "Sobre", de: "Über", fr: "À propos de", it: "Informazioni su"
+  };
+
+  const howToTitle = {
+    en: "How to Use", id: "Cara Penggunaan", es: "Cómo usar", pt: "Como usar", de: "Anleitung", fr: "Comment utiliser", it: "Come usare"
+  };
+
+  const faqTitle = {
+    en: "FAQ", id: "Pertanyaan Umum", es: "Preguntas Frecuentes", pt: "Perguntas Frequentes", de: "Häufig gestellte Fragen", fr: "Questions Fréquentes", it: "Domande Frequenti"
+  };
+
   return (
     <section className="w-full max-w-5xl mx-auto mt-20 mb-10 space-y-12 animate-in fade-in duration-700">
       {/* Privacy Assurance Box */}
       <div className="bg-green-50 border-2 border-green-200 p-6 rounded-[2rem] flex items-center gap-4 shadow-sm">
         <ShieldCheck className="h-8 w-8 text-green-600 shrink-0" />
         <p className="text-sm font-bold text-green-800">
-          {lang === 'en' ? (
-            <>🔒 <strong>Privacy Guaranteed:</strong> Your data is processed 100% locally on your device. No files are ever uploaded to our servers.</>
-          ) : (
-            <>🔒 <strong>Jaminan Privasi:</strong> Data Anda diproses 100% secara lokal di perangkat ini. Tidak ada file yang diupload ke server kami.</>
-          )}
+          🔒 <strong>{(privacyTitle as any)[lang] || privacyTitle.en}:</strong> {(privacyText as any)[lang] || privacyText.en}
         </p>
       </div>
 
@@ -42,7 +70,7 @@ export function SeoContent({ toolId }: SeoContentProps) {
         <div className="bg-card p-8 rounded-[2.5rem] border-2 border-primary/5 shadow-sm space-y-4">
           <div className="flex items-center gap-3 text-primary">
             <Info className="h-6 w-6" />
-            <h2 className="text-2xl font-black uppercase tracking-tighter">About {title}</h2>
+            <h2 className="text-2xl font-black uppercase tracking-tighter">{(aboutTitle as any)[lang] || aboutTitle.en} {title}</h2>
           </div>
           {description && (
             <p className="text-muted-foreground font-medium leading-relaxed">
@@ -61,7 +89,7 @@ export function SeoContent({ toolId }: SeoContentProps) {
         <div className="bg-primary/5 p-8 rounded-[2.5rem] border-2 border-primary/10 space-y-6">
           <div className="flex items-center gap-3 text-primary">
             <ListOrdered className="h-6 w-6" />
-            <h2 className="text-2xl font-black uppercase tracking-tighter">How to Use</h2>
+            <h2 className="text-2xl font-black uppercase tracking-tighter">{(howToTitle as any)[lang] || howToTitle.en}</h2>
           </div>
           <ol className="space-y-4">
             {steps?.map((step, index) => (
@@ -84,7 +112,7 @@ export function SeoContent({ toolId }: SeoContentProps) {
           <div className="flex items-center justify-center gap-3 text-primary/60 mb-8">
             <HelpCircle className="h-6 w-6" />
             <h3 className="text-xl font-black uppercase tracking-[0.2em]">
-              {lang === 'id' ? 'Pertanyaan Umum' : 'Frequently Asked Questions'}
+              {(faqTitle as any)[lang] || faqTitle.en}
             </h3>
           </div>
           
