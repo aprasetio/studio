@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useMemo, useEffect, useRef } from 'react';
@@ -218,10 +217,10 @@ const UI_TEXT: Record<string, any> = {
     frequency: "Frequência",
     monthly: "Mensal",
     weekly: "Semanal",
-    next_due: "Próximo Vencimento",
+    next_due: "Próximo Vencimiento",
     pending_alert: "Você tem contas recorrentes pendentes.",
     process_all: "Processar Tudo",
-    rule_added: "Regra recorrente adicionada",
+    rule_added: "Regra recurrente adicionada",
     manage_recurring: "Gerenciar Recorrentes",
     add_rule: "Add Regra"
   },
@@ -456,7 +455,8 @@ export default function BudgetPlannerPage() {
   const monthTransactions = useMemo(() => {
     const start = startOfMonth(currentMonth);
     const end = endOfMonth(currentMonth);
-    return state.transactions.filter(tx => {
+    const transactions = state.transactions || [];
+    return transactions.filter(tx => {
       const d = new Date(tx.date);
       return isWithinInterval(d, { start, end });
     });
@@ -464,7 +464,8 @@ export default function BudgetPlannerPage() {
 
   const pendingRules = useMemo(() => {
     const today = format(new Date(), 'yyyy-MM-dd');
-    return state.recurringRules.filter(rule => !isBefore(parseISO(today), parseISO(rule.nextDueDate)));
+    const rules = state.recurringRules || [];
+    return rules.filter(rule => !isBefore(parseISO(today), parseISO(rule.nextDueDate)));
   }, [state.recurringRules]);
 
   // Chart Data
@@ -483,15 +484,15 @@ export default function BudgetPlannerPage() {
     return Object.entries(groupTotals).map(([name, value]) => ({ name, value }));
   }, [monthTransactions, state.items, state.groups]);
 
-  const baseMonthlyIncome = state.income[monthKey] || 0;
+  const baseMonthlyIncome = (state.income && state.income[monthKey]) || 0;
   const inflowFromTransactions = monthTransactions
     .filter(tx => tx.itemId === 'inflow')
     .reduce((sum, tx) => sum + tx.amount, 0);
   
   const totalMonthlyIncome = baseMonthlyIncome + inflowFromTransactions;
-  const monthlyBudgets = state.budgets[monthKey] || {};
+  const monthlyBudgets = (state.budgets && state.budgets[monthKey]) || {};
   
-  const totalBudgeted = Object.values(monthlyBudgets).reduce((sum, val) => sum + val, 0);
+  const totalBudgeted = Object.values(monthlyBudgets).reduce((sum, val) => sum + (val as number), 0);
   const toBeBudgeted = totalMonthlyIncome - totalBudgeted;
 
   const getItemActivity = (itemId: string) => {
@@ -505,7 +506,7 @@ export default function BudgetPlannerPage() {
     const amount = parseFloat(val) || 0;
     setState(prev => ({
       ...prev,
-      income: { ...prev.income, [monthKey]: amount }
+      income: { ...(prev.income || {}), [monthKey]: amount }
     }));
   };
 
@@ -514,8 +515,8 @@ export default function BudgetPlannerPage() {
     setState(prev => ({
       ...prev,
       budgets: {
-        ...prev.budgets,
-        [monthKey]: { ...prev.budgets[monthKey], [itemId]: amount }
+        ...(prev.budgets || {}),
+        [monthKey]: { ...(prev.budgets?.[monthKey] || {}), [itemId]: amount }
       }
     }));
   };
@@ -525,7 +526,7 @@ export default function BudgetPlannerPage() {
     if (!name) return;
     setState(prev => ({
       ...prev,
-      groups: [...prev.groups, { id: Date.now().toString(), name }]
+      groups: [...(prev.groups || []), { id: Date.now().toString(), name }]
     }));
   };
 
@@ -534,7 +535,7 @@ export default function BudgetPlannerPage() {
     if (!name) return;
     setState(prev => ({
       ...prev,
-      items: [...prev.items, { id: Date.now().toString(), groupId, name }]
+      items: [...(prev.items || []), { id: Date.now().toString(), groupId, name }]
     }));
   };
 
@@ -542,7 +543,7 @@ export default function BudgetPlannerPage() {
     if (!confirm('Delete item?')) return;
     setState(prev => ({
       ...prev,
-      items: prev.items.filter(i => i.id !== itemId)
+      items: (prev.items || []).filter(i => i.id !== itemId)
     }));
   };
 
@@ -560,7 +561,7 @@ export default function BudgetPlannerPage() {
 
     setState(prev => ({
       ...prev,
-      transactions: [tx, ...prev.transactions]
+      transactions: [tx, ...(prev.transactions || [])]
     }));
 
     setIsTxOpen(false);
@@ -576,7 +577,7 @@ export default function BudgetPlannerPage() {
   const deleteTransaction = (id: string) => {
     setState(prev => ({
       ...prev,
-      transactions: prev.transactions.filter(t => t.id !== id)
+      transactions: (prev.transactions || []).filter(t => t.id !== id)
     }));
   };
 
@@ -592,19 +593,19 @@ export default function BudgetPlannerPage() {
       frequency: newRule.frequency as any,
       nextDueDate: newRule.nextDueDate!
     };
-    setState(prev => ({ ...prev, recurringRules: [...prev.recurringRules, rule] }));
+    setState(prev => ({ ...prev, recurringRules: [...(prev.recurringRules || []), rule] }));
     setIsRecurringOpen(false);
     toast({ title: t('rule_added') });
   };
 
   const deleteRecurringRule = (id: string) => {
-    setState(prev => ({ ...prev, recurringRules: prev.recurringRules.filter(r => r.id !== id) }));
+    setState(prev => ({ ...prev, recurringRules: (prev.recurringRules || []).filter(r => r.id !== id) }));
   };
 
   const processPendingRecurring = () => {
     if (pendingRules.length === 0) return;
 
-    let updatedRules = [...state.recurringRules];
+    let updatedRules = [...(state.recurringRules || [])];
     let newTransactions: Transaction[] = [];
 
     pendingRules.forEach(rule => {
@@ -630,7 +631,7 @@ export default function BudgetPlannerPage() {
 
     setState(prev => ({
       ...prev,
-      transactions: [...newTransactions, ...prev.transactions],
+      transactions: [...newTransactions, ...(prev.transactions || [])],
       recurringRules: updatedRules
     }));
 
@@ -758,11 +759,11 @@ export default function BudgetPlannerPage() {
                         <Input type="date" value={newRule.nextDueDate} onChange={e => setNewRule({...newRule, nextDueDate: e.target.value})} />
                       </div>
                     </div>
-                    <Button onClick={addRecurringRule} className="w-full bg-primary font-black uppercase tracking-widest mt-2">{t('add')}</Button>
+                    <Button onClick={addRecurringRule} className="w-full bg-primary font-black uppercase tracking-widest mt-2">{globalT('add')}</Button>
                   </div>
 
                   <div className="max-h-[300px] overflow-y-auto space-y-2 pr-2">
-                    {state.recurringRules.map(rule => (
+                    {(state.recurringRules || []).map(rule => (
                       <div key={rule.id} className="p-4 bg-card border-2 rounded-2xl flex items-center justify-between group">
                         <div className="space-y-1">
                           <h5 className="font-black uppercase tracking-tight text-sm">{rule.payee}</h5>
