@@ -5,11 +5,63 @@ import { useLocalStorage } from 'usehooks-ts';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Plus, Minus, Trash2, Package, PlusCircle } from 'lucide-react';
+import { Plus, Minus, Trash2, Package, PlusCircle, Search } from 'lucide-react';
 import { SmartAd } from '@/components/smart-ad';
 import { DataControl } from '@/components/DataControl';
 import { useLang } from '@/components/Providers';
 import { SeoContent } from '@/components/seo-content';
+
+const UI_TEXT: Record<string, any> = {
+  en: {
+    subtitle: "Track your sports equipment and business stock digitally",
+    placeholder: "Item name...",
+    no_items: "No items yet",
+    available: "Available",
+    search: "Search items..."
+  },
+  id: {
+    subtitle: "Pantau peralatan olahraga dan stok bisnis Anda secara digital",
+    placeholder: "Nama barang...",
+    no_items: "Belum ada barang",
+    available: "Tersedia",
+    search: "Cari barang..."
+  },
+  es: {
+    subtitle: "Controle su equipo deportivo y stock de negocios digitalmente",
+    placeholder: "Nombre del artículo...",
+    no_items: "Aún no hay artículos",
+    available: "Disponible",
+    search: "Buscar artículos..."
+  },
+  pt: {
+    subtitle: "Acompanhe seu equipamento esportivo e estoque comercial digitalmente",
+    placeholder: "Nome do item...",
+    no_items: "Ainda não há itens",
+    available: "Disponível",
+    search: "Buscar itens..."
+  },
+  de: {
+    subtitle: "Verfolgen Sie Ihre Sportausrüstung und Ihren Geschäftsbestand digital",
+    placeholder: "Artikelname...",
+    no_items: "Noch keine Artikel",
+    available: "Verfügbar",
+    search: "Artikel suchen..."
+  },
+  fr: {
+    subtitle: "Suivez votre équipement sportif et votre stock commercial numériquement",
+    placeholder: "Nom de l'article...",
+    no_items: "Pas encore d'articles",
+    available: "Disponible",
+    search: "Rechercher des articles..."
+  },
+  it: {
+    subtitle: "Monitora digitalmente le tue attrezzature sportive e lo stock aziendale",
+    placeholder: "Nome dell'articolo...",
+    no_items: "Nessun articolo ancora",
+    available: "Disponibile",
+    search: "Cerca articoli..."
+  }
+};
 
 interface InventoryItem {
   id: number;
@@ -18,9 +70,12 @@ interface InventoryItem {
 }
 
 export default function InventoryPage() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const ui = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
+  
   const [items, setItems] = useLocalStorage<InventoryItem[]>('versokit-inventory', []);
   const [newItemName, setNewItemName] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   const addItem = (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,6 +101,10 @@ export default function InventoryPage() {
     setItems(items.filter(item => item.id !== id));
   };
 
+  const filteredItems = items.filter(item => 
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="flex flex-col items-center p-6 md:p-12 lg:p-16 max-w-5xl mx-auto w-full gap-10">
       <div className="flex flex-col md:flex-row w-full items-center justify-between gap-6">
@@ -53,43 +112,55 @@ export default function InventoryPage() {
           <h1 className="text-4xl font-black tracking-tighter text-foreground uppercase">
             {t('inventory')}
           </h1>
-          <p className="text-muted-foreground font-medium">Pantau peralatan olahraga Anda dengan sistem stok digital</p>
+          <p className="text-muted-foreground font-medium">{ui('subtitle')}</p>
         </div>
         <DataControl storageKey="versokit-inventory" type="array" />
       </div>
 
-      <Card className="w-full shadow-xl rounded-3xl overflow-hidden border-2 bg-card">
-        <CardHeader className="bg-muted/30 p-8 border-b">
-          <CardTitle className="text-xl font-black flex items-center gap-3 uppercase tracking-wider">
-            <PlusCircle className="h-6 w-6 text-primary" />
-            {t('add_item')}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-8">
-          <form onSubmit={addItem} className="flex flex-col sm:flex-row gap-4">
-            <div className="flex-1">
-              <Input
-                placeholder="Nama Barang..."
-                value={newItemName}
-                onChange={(e) => setNewItemName(e.target.value)}
-                className="h-14 text-lg font-medium px-6 rounded-xl focus-visible:ring-primary"
-              />
-            </div>
-            <Button type="submit" className="h-14 px-10 bg-primary text-primary-foreground font-black uppercase tracking-widest rounded-xl hover:bg-primary/90 transition-all shadow-lg">
-              {t('add')}
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
+      <div className="w-full space-y-6">
+        <Card className="w-full shadow-xl rounded-3xl overflow-hidden border-2 bg-card">
+          <CardHeader className="bg-muted/30 p-8 border-b">
+            <CardTitle className="text-xl font-black flex items-center gap-3 uppercase tracking-wider">
+              <PlusCircle className="h-6 w-6 text-primary" />
+              {t('add_item')}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-8">
+            <form onSubmit={addItem} className="flex flex-col sm:flex-row gap-4">
+              <div className="flex-1">
+                <Input
+                  placeholder={ui('placeholder')}
+                  value={newItemName}
+                  onChange={(e) => setNewItemName(e.target.value)}
+                  className="h-14 text-lg font-medium px-6 rounded-xl focus-visible:ring-primary"
+                />
+              </div>
+              <Button type="submit" className="h-14 px-10 bg-primary text-primary-foreground font-black uppercase tracking-widest rounded-xl hover:bg-primary/90 transition-all shadow-lg">
+                {t('add')}
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+
+        <div className="relative w-full">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+          <Input 
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder={ui('search')}
+            className="pl-12 h-12 rounded-2xl border-2"
+          />
+        </div>
+      </div>
 
       <div className="w-full grid gap-6">
-        {items.length === 0 ? (
+        {filteredItems.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-24 bg-muted/20 rounded-[2.5rem] border-4 border-dashed border-muted">
             <Package className="h-16 w-16 text-muted-foreground mb-6 opacity-30" />
-            <p className="text-xl font-black text-muted-foreground uppercase tracking-widest">Belum ada barang</p>
+            <p className="text-xl font-black text-muted-foreground uppercase tracking-widest">{ui('no_items')}</p>
           </div>
         ) : (
-          items.map((item) => (
+          filteredItems.map((item) => (
             <Card key={item.id} className="overflow-hidden border-none shadow-lg hover:shadow-2xl transition-all duration-300 rounded-3xl group bg-card">
               <CardContent className="p-0">
                 <div className="flex flex-col sm:flex-row items-center justify-between">
@@ -99,7 +170,7 @@ export default function InventoryPage() {
                     </div>
                     <div>
                       <h3 className="text-2xl font-black text-foreground uppercase tracking-tight">{item.name}</h3>
-                      <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mt-1">{t('status')}: Tersedia</p>
+                      <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mt-1">{t('status')}: {ui('available')}</p>
                     </div>
                   </div>
 
