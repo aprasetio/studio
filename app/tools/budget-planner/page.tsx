@@ -918,7 +918,7 @@ export default function BudgetPlannerPage() {
                                 type="number"
                                 value={budgeted || ''}
                                 onChange={(e) => updateBudget(item.id, e.target.value)}
-                                className="h-9 text-right font-bold focus:ring-primary border-none bg-transparent hover:bg-muted/50"
+                                className="h-9 text-right font-bold focus:ring-primary border-2 border-transparent hover:border-muted-foreground/20 focus:border-primary bg-transparent rounded-lg transition-all"
                                 placeholder="0"
                               />
                             </td>
