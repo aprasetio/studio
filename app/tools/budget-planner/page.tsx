@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 import { useLang } from '@/components/Providers';
 import { Button } from '@/components/ui/button';
@@ -13,12 +13,14 @@ import {
   ChevronLeft, 
   ChevronRight, 
   PlusCircle, 
-  ArrowUpCircle, 
-  ArrowDownCircle,
   History,
   Receipt,
   Wallet,
-  X
+  X,
+  PieChart as PieChartIcon,
+  Download,
+  Upload,
+  Settings2
 } from 'lucide-react';
 import { 
   Dialog, 
@@ -41,6 +43,14 @@ import { SeoContent } from '@/components/seo-content';
 import { SmartAd } from '@/components/smart-ad';
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, isWithinInterval } from 'date-fns';
 import { cn } from '@/lib/utils';
+import { 
+  PieChart, 
+  Pie, 
+  Cell, 
+  Tooltip as RechartsTooltip, 
+  ResponsiveContainer, 
+  Legend 
+} from 'recharts';
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -68,7 +78,12 @@ const UI_TEXT: Record<string, any> = {
     history: "Recent Transactions",
     empty_trans: "No transactions yet",
     payee_placeholder: "Who did you pay?",
-    amount_placeholder: "0.00"
+    amount_placeholder: "0.00",
+    analysis_title: "Spending Analysis",
+    export_json: "Backup JSON",
+    import_json: "Restore JSON",
+    import_warn: "This will overwrite all budget data. Continue?",
+    no_data: "No spending data this month"
   },
   id: {
     to_be_budgeted: "Siap Dianggarkan",
@@ -95,7 +110,12 @@ const UI_TEXT: Record<string, any> = {
     history: "Riwayat Transaksi",
     empty_trans: "Belum ada transaksi",
     payee_placeholder: "Bayar ke siapa?",
-    amount_placeholder: "0"
+    amount_placeholder: "0",
+    analysis_title: "Analisa Pengeluaran",
+    export_json: "Simpan Backup",
+    import_json: "Buka Backup",
+    import_warn: "Ini akan menimpa seluruh data anggaran. Lanjutkan?",
+    no_data: "Belum ada data pengeluaran bulan ini"
   },
   es: {
     to_be_budgeted: "Por Asignar",
@@ -108,21 +128,26 @@ const UI_TEXT: Record<string, any> = {
     total_income: "Ingreso Total",
     all_done: "¡Todo el dinero tiene trabajo!",
     over_budget: "¡Has presupuestado de más!",
-    new_group: "Nuevo Grupo de Categoría",
+    new_group: "Nuevo Grupo",
     new_item: "Nuevo Item",
     transactions: "Transacciones",
     add_tx: "Añadir Transacción",
     date: "Fecha",
     amount: "Monto",
     desc: "Descripción",
-    save: "Guardar Transacción",
+    save: "Guardar",
     cancel: "Cancelar",
     payee: "Beneficiario",
     inflow: "Ingreso: Listo para asignar",
-    history: "Transacciones Recientes",
-    empty_trans: "No hay transacciones aún",
+    history: "Recientes",
+    empty_trans: "Sin transacciones",
     payee_placeholder: "¿A quién pagaste?",
-    amount_placeholder: "0.00"
+    amount_placeholder: "0.00",
+    analysis_title: "Análisis de Gastos",
+    export_json: "Respaldar JSON",
+    import_json: "Restaurar JSON",
+    import_warn: "Esto sobrescribirá todos los datos. ¿Continuar?",
+    no_data: "Sin datos este mes"
   },
   pt: {
     to_be_budgeted: "Para Atribuir",
@@ -142,14 +167,19 @@ const UI_TEXT: Record<string, any> = {
     date: "Data",
     amount: "Valor",
     desc: "Descrição",
-    save: "Salvar Transação",
+    save: "Salvar",
     cancel: "Cancelar",
     payee: "Favorecido",
     inflow: "Renda: Pronto para Atribuir",
-    history: "Transações Recentes",
+    history: "Recentes",
     empty_trans: "Sem transações",
     payee_placeholder: "Quem recebeu?",
-    amount_placeholder: "0,00"
+    amount_placeholder: "0,00",
+    analysis_title: "Análise de Gastos",
+    export_json: "Exportar JSON",
+    import_json: "Importar JSON",
+    import_warn: "Isso irá sobrescrever todos os dados. Continuar?",
+    no_data: "Sem gastos este mês"
   },
   de: {
     to_be_budgeted: "Zu verplanen",
@@ -173,10 +203,15 @@ const UI_TEXT: Record<string, any> = {
     cancel: "Abbrechen",
     payee: "Zahlungsempfänger",
     inflow: "Einkommen: Bereit",
-    history: "Letzte Transaktionen",
+    history: "Verlauf",
     empty_trans: "Keine Transaktionen",
     payee_placeholder: "An wen?",
-    amount_placeholder: "0,00"
+    amount_placeholder: "0,00",
+    analysis_title: "Ausgaben-Analyse",
+    export_json: "JSON Backup",
+    import_json: "JSON Restore",
+    import_warn: "Dies wird alle Daten überschreiben. Fortfahren?",
+    no_data: "Keine Daten diesen Monat"
   },
   fr: {
     to_be_budgeted: "À budgétiser",
@@ -200,10 +235,15 @@ const UI_TEXT: Record<string, any> = {
     cancel: "Annuler",
     payee: "Bénéficiaire",
     inflow: "Revenu : À assigner",
-    history: "Transactions Récentes",
+    history: "Récent",
     empty_trans: "Aucune transaction",
     payee_placeholder: "Qui avez-vous payé ?",
-    amount_placeholder: "0,00"
+    amount_placeholder: "0,00",
+    analysis_title: "Analyse des Dépenses",
+    export_json: "Sauvegarde JSON",
+    import_json: "Restaurer JSON",
+    import_warn: "Cela écrasera toutes les données. Continuer ?",
+    no_data: "Aucune dépense ce mois"
   },
   it: {
     to_be_budgeted: "Da Assegnare",
@@ -227,10 +267,15 @@ const UI_TEXT: Record<string, any> = {
     cancel: "Annulla",
     payee: "Beneficiario",
     inflow: "Entrate: Da Assegnare",
-    history: "Transazioni Recenti",
+    history: "Recenti",
     empty_trans: "Nessuna transazione",
     payee_placeholder: "Chi hai pagato?",
-    amount_placeholder: "0,00"
+    amount_placeholder: "0,00",
+    analysis_title: "Analisi Spese",
+    export_json: "Backup JSON",
+    import_json: "Ripristina JSON",
+    import_warn: "Questo sovrascriverà tutti i dati. Continuare?",
+    no_data: "Nessuna spesa questo mese"
   }
 };
 
@@ -284,6 +329,8 @@ const DEFAULT_STATE: BudgetState = {
   transactions: []
 };
 
+const CHART_COLORS = ['#1E3A8A', '#EA580C', '#10B981', '#F59E0B', '#6366F1', '#EC4899', '#14B8A6'];
+
 export default function BudgetPlannerPage() {
   const { lang, t: globalT } = useLang();
   const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
@@ -292,6 +339,9 @@ export default function BudgetPlannerPage() {
   const [currentMonth, setCurrentMonth] = useState(startOfMonth(new Date()));
   const [state, setState] = useLocalStorage<BudgetState>('versokit-budget-v1', DEFAULT_STATE);
   
+  // File Input Ref for JSON Restore
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   // Transaction Modal State
   const [isTxOpen, setIsTxOpen] = useState(false);
   const [newTx, setNewTx] = useState<Partial<Transaction>>({
@@ -315,6 +365,22 @@ export default function BudgetPlannerPage() {
       return isWithinInterval(d, { start, end });
     });
   }, [state.transactions, currentMonth]);
+
+  // Chart Data: Total Spending per Category Group
+  const chartData = useMemo(() => {
+    const expenses = monthTransactions.filter(tx => tx.itemId !== 'inflow');
+    if (expenses.length === 0) return [];
+
+    const groupTotals: Record<string, number> = {};
+    expenses.forEach(tx => {
+      const item = state.items.find(i => i.id === tx.itemId);
+      const group = state.groups.find(g => g.id === item?.groupId);
+      const groupName = group?.name || 'Other';
+      groupTotals[groupName] = (groupTotals[groupName] || 0) + tx.amount;
+    });
+
+    return Object.entries(groupTotals).map(([name, value]) => ({ name, value }));
+  }, [monthTransactions, state.items, state.groups]);
 
   // Total Income = Manual base income + Inflow transactions for this month
   const baseMonthlyIncome = state.income[monthKey] || 0;
@@ -414,13 +480,42 @@ export default function BudgetPlannerPage() {
     }));
   };
 
+  // Data Management: JSON Export/Import
+  const exportJSON = () => {
+    const dataStr = JSON.stringify(state, null, 2);
+    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+    const linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', `versokit-budget-backup-${format(new Date(), 'yyyy-MM-dd')}.json`);
+    linkElement.click();
+  };
+
+  const importJSON = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!confirm(t('import_warn'))) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const json = JSON.parse(event.target?.result as string);
+        setState(json);
+        window.location.reload(); // Refresh to ensure storage sync
+      } catch (error) {
+        alert('Invalid JSON file.');
+      }
+    };
+    reader.readAsText(file);
+  };
+
   if (!mounted) return null;
 
   const currencySymbol = lang === 'id' ? 'Rp' : '$';
   const locale = lang === 'id' ? 'id-ID' : 'en-US';
 
   return (
-    <div className="flex flex-col items-center p-4 md:p-8 lg:p-12 max-w-6xl mx-auto w-full gap-8">
+    <div className="flex flex-col items-center p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-8">
       {/* Header & Month Selector */}
       <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 bg-card p-6 rounded-[2.5rem] shadow-xl border-2">
         <div className="flex items-center gap-4">
@@ -451,77 +546,88 @@ export default function BudgetPlannerPage() {
         </div>
 
         <div className="flex flex-col gap-3 items-end">
-          <Dialog open={isTxOpen} onOpenChange={setIsTxOpen}>
-            <DialogTrigger asChild>
-              <Button className="h-12 px-6 bg-accent hover:bg-accent/90 text-white font-black uppercase tracking-widest rounded-2xl shadow-xl">
-                <Plus className="mr-2 h-5 w-5" /> {t('add_tx')}
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="rounded-[2rem] sm:max-w-md">
-              <DialogHeader>
-                <DialogTitle className="text-2xl font-black uppercase tracking-tighter">{t('add_tx')}</DialogTitle>
-              </DialogHeader>
-              <div className="space-y-4 py-4">
-                <div className="space-y-2">
-                  <Label>{t('date')}</Label>
-                  <Input 
-                    type="date" 
-                    value={newTx.date} 
-                    onChange={(e) => setNewTx({...newTx, date: e.target.value})}
-                  />
+          <div className="flex gap-2">
+            <Dialog open={isTxOpen} onOpenChange={setIsTxOpen}>
+              <DialogTrigger asChild>
+                <Button className="h-12 px-6 bg-accent hover:bg-accent/90 text-white font-black uppercase tracking-widest rounded-2xl shadow-xl">
+                  <Plus className="mr-2 h-5 w-5" /> {t('add_tx')}
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="rounded-[2rem] sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-black uppercase tracking-tighter">{t('add_tx')}</DialogTitle>
+                </DialogHeader>
+                <div className="space-y-4 py-4">
+                  <div className="space-y-2">
+                    <Label>{t('date')}</Label>
+                    <Input 
+                      type="date" 
+                      value={newTx.date} 
+                      onChange={(e) => setNewTx({...newTx, date: e.target.value})}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>{t('payee')}</Label>
+                    <Input 
+                      placeholder={t('payee_placeholder')}
+                      value={newTx.payee}
+                      onChange={(e) => setNewTx({...newTx, payee: e.target.value})}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>{t('category')}</Label>
+                    <Select 
+                      value={newTx.itemId} 
+                      onValueChange={(val) => setNewTx({...newTx, itemId: val})}
+                    >
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="inflow" className="font-bold text-green-600">{t('inflow')}</SelectItem>
+                        {state.groups.map(group => (
+                          <React.Fragment key={group.id}>
+                            <div className="px-2 py-1.5 text-xs font-black uppercase text-muted-foreground opacity-50">{group.name}</div>
+                            {state.items.filter(i => i.groupId === group.id).map(item => (
+                              <SelectItem key={item.id} value={item.id}>{item.name}</SelectItem>
+                            ))}
+                          </React.Fragment>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-2">
+                    <Label>{t('amount')} ({currencySymbol})</Label>
+                    <Input 
+                      type="number" 
+                      placeholder={t('amount_placeholder')}
+                      value={newTx.amount || ''}
+                      onChange={(e) => setNewTx({...newTx, amount: parseFloat(e.target.value) || 0})}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>{t('desc')}</Label>
+                    <Input 
+                      value={newTx.description}
+                      onChange={(e) => setNewTx({...newTx, description: e.target.value})}
+                    />
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <Label>{t('payee')}</Label>
-                  <Input 
-                    placeholder={t('payee_placeholder')}
-                    value={newTx.payee}
-                    onChange={(e) => setNewTx({...newTx, payee: e.target.value})}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label>{t('category')}</Label>
-                  <Select 
-                    value={newTx.itemId} 
-                    onValueChange={(val) => setNewTx({...newTx, itemId: val})}
-                  >
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="inflow" className="font-bold text-green-600">{t('inflow')}</SelectItem>
-                      {state.groups.map(group => (
-                        <React.Fragment key={group.id}>
-                          <div className="px-2 py-1.5 text-xs font-black uppercase text-muted-foreground opacity-50">{group.name}</div>
-                          {state.items.filter(i => i.groupId === group.id).map(item => (
-                            <SelectItem key={item.id} value={item.id}>{item.name}</SelectItem>
-                          ))}
-                        </React.Fragment>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="space-y-2">
-                  <Label>{t('amount')} ({currencySymbol})</Label>
-                  <Input 
-                    type="number" 
-                    placeholder={t('amount_placeholder')}
-                    value={newTx.amount || ''}
-                    onChange={(e) => setNewTx({...newTx, amount: parseFloat(e.target.value) || 0})}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label>{t('desc')}</Label>
-                  <Input 
-                    value={newTx.description}
-                    onChange={(e) => setNewTx({...newTx, description: e.target.value})}
-                  />
-                </div>
-              </div>
-              <DialogFooter>
-                <Button onClick={addTransaction} className="w-full h-12 font-black uppercase tracking-widest">{t('save')}</Button>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
+                <DialogFooter>
+                  <Button onClick={addTransaction} className="w-full h-12 font-black uppercase tracking-widest">{t('save')}</Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+            <div className="flex gap-1">
+               <Button variant="outline" size="icon" onClick={exportJSON} title={t('export_json')} className="h-12 w-12 rounded-2xl border-2">
+                 <Download className="h-5 w-5" />
+               </Button>
+               <Button variant="outline" size="icon" onClick={() => fileInputRef.current?.click()} title={t('import_json')} className="h-12 w-12 rounded-2xl border-2">
+                 <Upload className="h-5 w-5" />
+               </Button>
+               <input type="file" ref={fileInputRef} onChange={importJSON} className="hidden" accept=".json" />
+            </div>
+          </div>
           <DataControl storageKey="versokit-budget-v1" type="object" />
         </div>
       </div>
@@ -600,8 +706,62 @@ export default function BudgetPlannerPage() {
           </Button>
         </div>
 
-        {/* Transaction History */}
-        <div className="space-y-6">
+        {/* Right Column: Visualization & Summary */}
+        <div className="space-y-8">
+          {/* Analysis Chart */}
+          <Card className="shadow-xl border-2 rounded-[2.5rem] overflow-hidden bg-card">
+            <CardHeader className="bg-primary/5 p-6 border-b">
+              <CardTitle className="text-sm font-black uppercase tracking-widest text-primary flex items-center gap-2">
+                <PieChartIcon className="h-4 w-4" />
+                {t('analysis_title')}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-6">
+              <div className="h-[250px] w-full flex flex-col items-center justify-center">
+                {chartData.length > 0 ? (
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <Pie
+                        data={chartData}
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={60}
+                        outerRadius={80}
+                        paddingAngle={5}
+                        dataKey="value"
+                      >
+                        {chartData.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={CHART_COLORS[index % CHART_COLORS.length]} stroke="none" />
+                        ))}
+                      </Pie>
+                      <RechartsTooltip 
+                        contentStyle={{ 
+                          borderRadius: '16px', 
+                          border: 'none', 
+                          boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)',
+                          fontSize: '12px',
+                          fontWeight: 'bold',
+                          textTransform: 'uppercase'
+                        }}
+                      />
+                      <Legend 
+                        verticalAlign="bottom" 
+                        iconType="circle" 
+                        formatter={(value) => <span className="text-[10px] font-bold uppercase tracking-tight text-muted-foreground">{value}</span>}
+                      />
+                    </PieChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <div className="flex flex-col items-center gap-2 text-muted-foreground opacity-40">
+                    <PieChartIcon className="h-12 w-12" />
+                    <p className="text-[10px] font-black uppercase tracking-widest">{t('no_data')}</p>
+                  </div>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Transaction History */}
           <Card className="shadow-xl border-2 rounded-[2rem] overflow-hidden">
             <CardHeader className="bg-primary p-6 text-white">
               <CardTitle className="text-lg font-black uppercase tracking-widest flex items-center gap-2">
@@ -610,7 +770,7 @@ export default function BudgetPlannerPage() {
               </CardTitle>
             </CardHeader>
             <CardContent className="p-0">
-              <div className="max-h-[600px] overflow-y-auto">
+              <div className="max-h-[400px] overflow-y-auto">
                 {monthTransactions.length === 0 ? (
                   <div className="py-20 text-center flex flex-col items-center gap-3 opacity-30">
                     <Receipt className="h-12 w-12" />
@@ -626,7 +786,7 @@ export default function BudgetPlannerPage() {
                           <div className="space-y-1">
                             <div className="flex items-center gap-2">
                               <span className="text-[10px] font-black uppercase tracking-widest opacity-40">{format(new Date(tx.date), 'dd MMM')}</span>
-                              <h4 className="font-black text-sm uppercase tracking-tight truncate max-w-[150px]">{tx.payee}</h4>
+                              <h4 className="font-black text-sm uppercase tracking-tight truncate max-w-[120px]">{tx.payee}</h4>
                             </div>
                             <div className="flex items-center gap-2">
                               <span className={cn(
@@ -635,7 +795,6 @@ export default function BudgetPlannerPage() {
                               )}>
                                 {isIncome ? t('inflow').split(':')[0] : item?.name}
                               </span>
-                              {tx.description && <p className="text-[10px] text-muted-foreground italic truncate max-w-[100px]">{tx.description}</p>}
                             </div>
                           </div>
                           <div className="flex items-center gap-4">
@@ -658,6 +817,7 @@ export default function BudgetPlannerPage() {
             </CardContent>
           </Card>
 
+          {/* Income Summary */}
           <Card className="shadow-lg border-2 bg-primary/5 rounded-[2rem]">
             <CardHeader className="p-6 border-b">
               <CardTitle className="text-sm font-black uppercase tracking-widest text-primary flex items-center gap-2">
