@@ -22,7 +22,10 @@ import {
   Settings2,
   CalendarClock,
   BellRing,
-  CheckCircle2
+  CheckCircle2,
+  FileSpreadsheet,
+  FileJson,
+  ShieldAlert
 } from 'lucide-react';
 import { 
   Dialog, 
@@ -85,7 +88,9 @@ const UI_TEXT: Record<string, any> = {
     analysis_title: "Spending Analysis",
     export_json: "Backup JSON",
     import_json: "Restore JSON",
-    import_warn: "This will overwrite all budget data. Continue?",
+    export_csv: "Export to CSV (Excel)",
+    data_mgmt: "Data Management",
+    import_warn: "This will overwrite all current budget data. Continue?",
     no_data: "No spending data this month",
     recurring_btn: "Recurring Bills",
     frequency: "Frequency",
@@ -96,7 +101,9 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Process All",
     rule_added: "Recurring rule added",
     manage_recurring: "Manage Recurring",
-    add_rule: "Add Rule"
+    add_rule: "Add Rule",
+    restore_success: "Data restored successfully!",
+    invalid_file: "Invalid backup file!"
   },
   id: {
     to_be_budgeted: "Siap Dianggarkan",
@@ -125,9 +132,11 @@ const UI_TEXT: Record<string, any> = {
     payee_placeholder: "Bayar ke siapa?",
     amount_placeholder: "0",
     analysis_title: "Analisa Pengeluaran",
-    export_json: "Simpan Backup",
-    import_json: "Buka Backup",
-    import_warn: "Ini akan menimpa seluruh data anggaran. Lanjutkan?",
+    export_json: "Simpan Backup JSON",
+    import_json: "Pulihkan Backup",
+    export_csv: "Ekspor ke CSV (Excel)",
+    data_mgmt: "Manajemen Data",
+    import_warn: "Ini akan menimpa seluruh data anggaran saat ini. Lanjutkan?",
     no_data: "Belum ada data pengeluaran bulan ini",
     recurring_btn: "Tagihan Rutin",
     frequency: "Frekuensi",
@@ -138,7 +147,9 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Proses Semua",
     rule_added: "Jadwal rutin ditambahkan",
     manage_recurring: "Kelola Rutin",
-    add_rule: "Tambah Jadwal"
+    add_rule: "Tambah Jadwal",
+    restore_success: "Data berhasil dipulihkan!",
+    invalid_file: "File cadangan tidak valid!"
   },
   es: {
     to_be_budgeted: "Por Asignar",
@@ -169,6 +180,8 @@ const UI_TEXT: Record<string, any> = {
     analysis_title: "Análisis de Gastos",
     export_json: "Respaldar JSON",
     import_json: "Restaurar JSON",
+    export_csv: "Exportar a CSV",
+    data_mgmt: "Gestión de Datos",
     import_warn: "Esto sobrescribirá todos los datos. ¿Continuar?",
     no_data: "Sin datos este mes",
     recurring_btn: "Facturas Recurrentes",
@@ -180,7 +193,9 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Procesar Todo",
     rule_added: "Regla recurrente añadida",
     manage_recurring: "Gestionar Recurrentes",
-    add_rule: "Añadir Regla"
+    add_rule: "Añadir Regla",
+    restore_success: "¡Datos restaurados con éxito!",
+    invalid_file: "¡Archivo de respaldo no válido!"
   },
   pt: {
     to_be_budgeted: "Para Atribuir",
@@ -211,6 +226,8 @@ const UI_TEXT: Record<string, any> = {
     analysis_title: "Análise de Gastos",
     export_json: "Exportar JSON",
     import_json: "Importar JSON",
+    export_csv: "Exportar para CSV",
+    data_mgmt: "Gestão de Dados",
     import_warn: "Isso irá sobrescrever todos os dados. Continuar?",
     no_data: "Sem gastos este mês",
     recurring_btn: "Contas Recorrentes",
@@ -222,7 +239,9 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Processar Tudo",
     rule_added: "Regra recurrente adicionada",
     manage_recurring: "Gerenciar Recorrentes",
-    add_rule: "Add Regra"
+    add_rule: "Add Regra",
+    restore_success: "Dados restaurados com sucesso!",
+    invalid_file: "Arquivo de backup inválido!"
   },
   de: {
     to_be_budgeted: "Zu verplanen",
@@ -253,6 +272,8 @@ const UI_TEXT: Record<string, any> = {
     analysis_title: "Ausgaben-Analyse",
     export_json: "JSON Backup",
     import_json: "JSON Restore",
+    export_csv: "CSV Export",
+    data_mgmt: "Datenverwaltung",
     import_warn: "Dies wird alle Daten überschreiben. Fortfahren?",
     no_data: "Keine Daten diesen Monat",
     recurring_btn: "Wiederkehrende Rechnungen",
@@ -264,7 +285,9 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Alle verarbeiten",
     rule_added: "Wiederkehrende Regel hinzugefügt",
     manage_recurring: "Wiederkehrende verwalten",
-    add_rule: "Regel hinzufügen"
+    add_rule: "Regel hinzufügen",
+    restore_success: "Daten erfolgreich wiederhergestellt!",
+    invalid_file: "Ungültige Backup-Datei!"
   },
   fr: {
     to_be_budgeted: "À budgétiser",
@@ -295,6 +318,8 @@ const UI_TEXT: Record<string, any> = {
     analysis_title: "Analyse des Dépenses",
     export_json: "Sauvegarde JSON",
     import_json: "Restaurer JSON",
+    export_csv: "Exporter en CSV",
+    data_mgmt: "Gestion des Données",
     import_warn: "Cela écrasera toutes les données. Continuer ?",
     no_data: "Aucune dépense ce mois",
     recurring_btn: "Factures Récurrentes",
@@ -306,7 +331,9 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Tout traiter",
     rule_added: "Règle récurrente ajoutée",
     manage_recurring: "Gérer Récurrents",
-    add_rule: "Ajouter Règle"
+    add_rule: "Ajouter Règle",
+    restore_success: "Données restaurées avec succès !",
+    invalid_file: "Fichier de sauvegarde invalide !"
   },
   it: {
     to_be_budgeted: "Da Assegnare",
@@ -331,12 +358,14 @@ const UI_TEXT: Record<string, any> = {
     payee: "Beneficiario",
     inflow: "Entrate: Da Assegnare",
     history: "Recenti",
-    empty_trans: "Nessuna transazione",
+    empty_trans: "Nessuna trasazione",
     payee_placeholder: "Chi hai pagato?",
     amount_placeholder: "0,00",
     analysis_title: "Analisi Spese",
     export_json: "Backup JSON",
     import_json: "Ripristina JSON",
+    export_csv: "Esporta in CSV",
+    data_mgmt: "Gestione Dati",
     import_warn: "Questo sovrascriverà tutti i dati. Continuare?",
     no_data: "Nessuna spesa questo mese",
     recurring_btn: "Spese Ricorrenti",
@@ -348,7 +377,9 @@ const UI_TEXT: Record<string, any> = {
     process_all: "Elabora Tutto",
     rule_added: "Regola ricorrente aggiunta",
     manage_recurring: "Gestisci Ricorrenti",
-    add_rule: "Aggiungi Regola"
+    add_rule: "Aggiungi Regola",
+    restore_success: "Dati ripristinati con successo!",
+    invalid_file: "File di backup non valido!"
   }
 };
 
@@ -446,6 +477,9 @@ export default function BudgetPlannerPage() {
     frequency: 'monthly',
     nextDueDate: format(new Date(), 'yyyy-MM-dd')
   });
+
+  // Data Mgmt State
+  const [isDataOpen, setIsDataOpen] = useState(false);
 
   useEffect(() => { setMounted(true); }, []);
 
@@ -641,11 +675,13 @@ export default function BudgetPlannerPage() {
   // Data Management
   const exportJSON = () => {
     const dataStr = JSON.stringify(state, null, 2);
-    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+    const blob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
     const linkElement = document.createElement('a');
-    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('href', url);
     linkElement.setAttribute('download', `versokit-budget-backup-${format(new Date(), 'yyyy-MM-dd')}.json`);
     linkElement.click();
+    URL.revokeObjectURL(url);
   };
 
   const importJSON = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -656,13 +692,49 @@ export default function BudgetPlannerPage() {
     reader.onload = (event) => {
       try {
         const json = JSON.parse(event.target?.result as string);
+        // Validation
+        if (!json.groups || !json.items || !json.transactions) {
+          toast({ title: t('invalid_file'), variant: "destructive" });
+          return;
+        }
         setState(json);
-        window.location.reload();
+        toast({ title: t('restore_success') });
+        setTimeout(() => window.location.reload(), 500);
       } catch (error) {
-        alert('Invalid JSON file.');
+        toast({ title: t('invalid_file'), variant: "destructive" });
       }
     };
     reader.readAsText(file);
+  };
+
+  const exportCSV = () => {
+    const transactions = state.transactions || [];
+    if (transactions.length === 0) {
+      toast({ title: t('empty_trans'), variant: "destructive" });
+      return;
+    }
+
+    const headers = ["Date", "Payee", "Category", "Amount", "Description"];
+    const rows = transactions.map(tx => {
+      const item = state.items.find(i => i.id === tx.itemId);
+      const categoryName = tx.itemId === 'inflow' ? 'Income' : (item?.name || 'Other');
+      return [
+        tx.date,
+        `"${tx.payee.replace(/"/g, '""')}"`,
+        `"${categoryName}"`,
+        tx.amount,
+        `"${(tx.description || '').replace(/"/g, '""')}"`
+      ].join(",");
+    });
+
+    const csvContent = [headers.join(","), ...rows].join("\n");
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', `budget-report-${format(new Date(), 'yyyy-MM-dd')}.csv`);
+    link.click();
+    URL.revokeObjectURL(url);
   };
 
   if (!mounted) return null;
@@ -839,15 +911,39 @@ export default function BudgetPlannerPage() {
                 </DialogFooter>
               </DialogContent>
             </Dialog>
-            <div className="flex gap-1">
-               <Button variant="outline" size="icon" onClick={exportJSON} title={t('export_json')} className="h-12 w-12 rounded-2xl border-2">
-                 <Download className="h-5 w-5" />
-               </Button>
-               <Button variant="outline" size="icon" onClick={() => fileInputRef.current?.click()} title={t('import_json')} className="h-12 w-12 rounded-2xl border-2">
-                 <Upload className="h-5 w-5" />
-               </Button>
-               <input type="file" ref={fileInputRef} onChange={importJSON} className="hidden" accept=".json" />
-            </div>
+
+            <Dialog open={isDataOpen} onOpenChange={setIsDataOpen}>
+              <DialogTrigger asChild>
+                <Button variant="outline" size="icon" className="h-12 w-12 rounded-2xl border-2">
+                  <Settings2 className="h-5 w-5" />
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="rounded-[2rem] sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-black uppercase tracking-tighter">{t('data_mgmt')}</DialogTitle>
+                </DialogHeader>
+                <div className="space-y-4 py-6">
+                  <div className="grid grid-cols-1 gap-3">
+                    <Button onClick={exportJSON} variant="outline" className="h-14 justify-start px-6 border-2 font-black uppercase tracking-widest">
+                      <FileJson className="mr-3 h-5 w-5 text-blue-600" /> {t('export_json')}
+                    </Button>
+                    <Button onClick={exportCSV} variant="outline" className="h-14 justify-start px-6 border-2 font-black uppercase tracking-widest">
+                      <FileSpreadsheet className="mr-3 h-5 w-5 text-green-600" /> {t('export_csv')}
+                    </Button>
+                    <div className="pt-4 border-t-2 border-dashed mt-4">
+                      <p className="text-[10px] font-black uppercase tracking-widest text-destructive mb-3 flex items-center gap-2">
+                        <ShieldAlert className="h-3 w-3" /> Danger Zone
+                      </p>
+                      <Button onClick={() => fileInputRef.current?.click()} variant="destructive" className="w-full h-14 font-black uppercase tracking-widest shadow-lg shadow-destructive/20">
+                        <Upload className="mr-3 h-5 w-5" /> {t('import_json')}
+                      </Button>
+                      <p className="text-[9px] font-bold text-muted-foreground uppercase text-center mt-2 px-4">{t('import_warn')}</p>
+                    </div>
+                  </div>
+                </div>
+                <input type="file" ref={fileInputRef} onChange={importJSON} className="hidden" accept=".json" />
+              </DialogContent>
+            </Dialog>
           </div>
           <DataControl storageKey="versokit-budget-v1" type="object" />
         </div>
