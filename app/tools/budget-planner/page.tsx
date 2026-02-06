@@ -20,7 +20,10 @@ import {
   PieChart as PieChartIcon,
   Download,
   Upload,
-  Settings2
+  Settings2,
+  CalendarClock,
+  BellRing,
+  CheckCircle2
 } from 'lucide-react';
 import { 
   Dialog, 
@@ -41,7 +44,7 @@ import { Label } from '@/components/ui/label';
 import { DataControl } from '@/components/DataControl';
 import { SeoContent } from '@/components/seo-content';
 import { SmartAd } from '@/components/smart-ad';
-import { format, addMonths, subMonths, startOfMonth, endOfMonth, isWithinInterval } from 'date-fns';
+import { format, addMonths, addWeeks, subMonths, startOfMonth, endOfMonth, isWithinInterval, isBefore, parseISO } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { 
   PieChart, 
@@ -51,6 +54,7 @@ import {
   ResponsiveContainer, 
   Legend 
 } from 'recharts';
+import { toast } from '@/hooks/use-toast';
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -83,7 +87,17 @@ const UI_TEXT: Record<string, any> = {
     export_json: "Backup JSON",
     import_json: "Restore JSON",
     import_warn: "This will overwrite all budget data. Continue?",
-    no_data: "No spending data this month"
+    no_data: "No spending data this month",
+    recurring_btn: "Recurring Bills",
+    frequency: "Frequency",
+    monthly: "Monthly",
+    weekly: "Weekly",
+    next_due: "Next Due",
+    pending_alert: "You have pending recurring bills.",
+    process_all: "Process All",
+    rule_added: "Recurring rule added",
+    manage_recurring: "Manage Recurring",
+    add_rule: "Add Rule"
   },
   id: {
     to_be_budgeted: "Siap Dianggarkan",
@@ -115,7 +129,17 @@ const UI_TEXT: Record<string, any> = {
     export_json: "Simpan Backup",
     import_json: "Buka Backup",
     import_warn: "Ini akan menimpa seluruh data anggaran. Lanjutkan?",
-    no_data: "Belum ada data pengeluaran bulan ini"
+    no_data: "Belum ada data pengeluaran bulan ini",
+    recurring_btn: "Tagihan Rutin",
+    frequency: "Frekuensi",
+    monthly: "Bulanan",
+    weekly: "Mingguan",
+    next_due: "Jadwal Berikutnya",
+    pending_alert: "Ada tagihan rutin jatuh tempo.",
+    process_all: "Proses Semua",
+    rule_added: "Jadwal rutin ditambahkan",
+    manage_recurring: "Kelola Rutin",
+    add_rule: "Tambah Jadwal"
   },
   es: {
     to_be_budgeted: "Por Asignar",
@@ -147,7 +171,17 @@ const UI_TEXT: Record<string, any> = {
     export_json: "Respaldar JSON",
     import_json: "Restaurar JSON",
     import_warn: "Esto sobrescribirá todos los datos. ¿Continuar?",
-    no_data: "Sin datos este mes"
+    no_data: "Sin datos este mes",
+    recurring_btn: "Facturas Recurrentes",
+    frequency: "Frecuencia",
+    monthly: "Mensual",
+    weekly: "Semanal",
+    next_due: "Próximo Vencimiento",
+    pending_alert: "Tienes facturas recurrentes pendientes.",
+    process_all: "Procesar Todo",
+    rule_added: "Regla recurrente añadida",
+    manage_recurring: "Gestionar Recurrentes",
+    add_rule: "Añadir Regla"
   },
   pt: {
     to_be_budgeted: "Para Atribuir",
@@ -179,7 +213,17 @@ const UI_TEXT: Record<string, any> = {
     export_json: "Exportar JSON",
     import_json: "Importar JSON",
     import_warn: "Isso irá sobrescrever todos os dados. Continuar?",
-    no_data: "Sem gastos este mês"
+    no_data: "Sem gastos este mês",
+    recurring_btn: "Contas Recorrentes",
+    frequency: "Frequência",
+    monthly: "Mensal",
+    weekly: "Semanal",
+    next_due: "Próximo Vencimento",
+    pending_alert: "Você tem contas recorrentes pendentes.",
+    process_all: "Processar Tudo",
+    rule_added: "Regra recorrente adicionada",
+    manage_recurring: "Gerenciar Recorrentes",
+    add_rule: "Add Regra"
   },
   de: {
     to_be_budgeted: "Zu verplanen",
@@ -211,7 +255,17 @@ const UI_TEXT: Record<string, any> = {
     export_json: "JSON Backup",
     import_json: "JSON Restore",
     import_warn: "Dies wird alle Daten überschreiben. Fortfahren?",
-    no_data: "Keine Daten diesen Monat"
+    no_data: "Keine Daten diesen Monat",
+    recurring_btn: "Wiederkehrende Rechnungen",
+    frequency: "Häufigkeit",
+    monthly: "Monatlich",
+    weekly: "Wöchentlich",
+    next_due: "Nächste Fälligkeit",
+    pending_alert: "Sie haben ausstehende wiederkehrende Rechnungen.",
+    process_all: "Alle verarbeiten",
+    rule_added: "Wiederkehrende Regel hinzugefügt",
+    manage_recurring: "Wiederkehrende verwalten",
+    add_rule: "Regel hinzufügen"
   },
   fr: {
     to_be_budgeted: "À budgétiser",
@@ -243,7 +297,17 @@ const UI_TEXT: Record<string, any> = {
     export_json: "Sauvegarde JSON",
     import_json: "Restaurer JSON",
     import_warn: "Cela écrasera toutes les données. Continuer ?",
-    no_data: "Aucune dépense ce mois"
+    no_data: "Aucune dépense ce mois",
+    recurring_btn: "Factures Récurrentes",
+    frequency: "Fréquence",
+    monthly: "Mensuel",
+    weekly: "Hebdomadaire",
+    next_due: "Prochaine Échéance",
+    pending_alert: "Vous avez des factures récurrentes en attente.",
+    process_all: "Tout traiter",
+    rule_added: "Règle récurrente ajoutée",
+    manage_recurring: "Gérer Récurrents",
+    add_rule: "Ajouter Règle"
   },
   it: {
     to_be_budgeted: "Da Assegnare",
@@ -275,7 +339,17 @@ const UI_TEXT: Record<string, any> = {
     export_json: "Backup JSON",
     import_json: "Ripristina JSON",
     import_warn: "Questo sovrascriverà tutti i dati. Continuare?",
-    no_data: "Nessuna spesa questo mese"
+    no_data: "Nessuna spesa questo mese",
+    recurring_btn: "Spese Ricorrenti",
+    frequency: "Frequenza",
+    monthly: "Mensile",
+    weekly: "Settimanale",
+    next_due: "Prossima Scadenza",
+    pending_alert: "Hai spese ricorrenti in sospeso.",
+    process_all: "Elabora Tutto",
+    rule_added: "Regola ricorrente aggiunta",
+    manage_recurring: "Gestisci Ricorrenti",
+    add_rule: "Aggiungi Regola"
   }
 };
 
@@ -305,12 +379,23 @@ interface Transaction {
   description: string;
 }
 
+interface RecurringRule {
+  id: string;
+  payee: string;
+  itemId: string;
+  amount: number;
+  description: string;
+  frequency: 'weekly' | 'monthly';
+  nextDueDate: string; // YYYY-MM-DD
+}
+
 interface BudgetState {
   income: { [monthKey: string]: number }; // Manual base income
   groups: CategoryGroup[];
   items: BudgetItem[];
   budgets: MonthlyBudget;
   transactions: Transaction[];
+  recurringRules: RecurringRule[];
 }
 
 const DEFAULT_STATE: BudgetState = {
@@ -326,7 +411,8 @@ const DEFAULT_STATE: BudgetState = {
     { id: 'i4', groupId: 'g2', name: 'Transport' }
   ],
   budgets: {},
-  transactions: []
+  transactions: [],
+  recurringRules: []
 };
 
 const CHART_COLORS = ['#1E3A8A', '#EA580C', '#10B981', '#F59E0B', '#6366F1', '#EC4899', '#14B8A6'];
@@ -339,7 +425,6 @@ export default function BudgetPlannerPage() {
   const [currentMonth, setCurrentMonth] = useState(startOfMonth(new Date()));
   const [state, setState] = useLocalStorage<BudgetState>('versokit-budget-v1', DEFAULT_STATE);
   
-  // File Input Ref for JSON Restore
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Transaction Modal State
@@ -350,6 +435,17 @@ export default function BudgetPlannerPage() {
     itemId: 'inflow',
     payee: '',
     description: ''
+  });
+
+  // Recurring Modal State
+  const [isRecurringOpen, setIsRecurringOpen] = useState(false);
+  const [newRule, setNewRule] = useState<Partial<RecurringRule>>({
+    payee: '',
+    itemId: 'i1',
+    amount: 0,
+    description: '',
+    frequency: 'monthly',
+    nextDueDate: format(new Date(), 'yyyy-MM-dd')
   });
 
   useEffect(() => { setMounted(true); }, []);
@@ -366,7 +462,12 @@ export default function BudgetPlannerPage() {
     });
   }, [state.transactions, currentMonth]);
 
-  // Chart Data: Total Spending per Category Group
+  const pendingRules = useMemo(() => {
+    const today = format(new Date(), 'yyyy-MM-dd');
+    return state.recurringRules.filter(rule => !isBefore(parseISO(today), parseISO(rule.nextDueDate)));
+  }, [state.recurringRules]);
+
+  // Chart Data
   const chartData = useMemo(() => {
     const expenses = monthTransactions.filter(tx => tx.itemId !== 'inflow');
     if (expenses.length === 0) return [];
@@ -382,7 +483,6 @@ export default function BudgetPlannerPage() {
     return Object.entries(groupTotals).map(([name, value]) => ({ name, value }));
   }, [monthTransactions, state.items, state.groups]);
 
-  // Total Income = Manual base income + Inflow transactions for this month
   const baseMonthlyIncome = state.income[monthKey] || 0;
   const inflowFromTransactions = monthTransactions
     .filter(tx => tx.itemId === 'inflow')
@@ -480,7 +580,64 @@ export default function BudgetPlannerPage() {
     }));
   };
 
-  // Data Management: JSON Export/Import
+  // Recurring Handlers
+  const addRecurringRule = () => {
+    if (!newRule.payee || !newRule.amount) return;
+    const rule: RecurringRule = {
+      id: Date.now().toString(),
+      payee: newRule.payee!,
+      itemId: newRule.itemId!,
+      amount: newRule.amount!,
+      description: newRule.description || '',
+      frequency: newRule.frequency as any,
+      nextDueDate: newRule.nextDueDate!
+    };
+    setState(prev => ({ ...prev, recurringRules: [...prev.recurringRules, rule] }));
+    setIsRecurringOpen(false);
+    toast({ title: t('rule_added') });
+  };
+
+  const deleteRecurringRule = (id: string) => {
+    setState(prev => ({ ...prev, recurringRules: prev.recurringRules.filter(r => r.id !== id) }));
+  };
+
+  const processPendingRecurring = () => {
+    if (pendingRules.length === 0) return;
+
+    let updatedRules = [...state.recurringRules];
+    let newTransactions: Transaction[] = [];
+
+    pendingRules.forEach(rule => {
+      // 1. Create Transaction
+      newTransactions.push({
+        id: `rec-${rule.id}-${Date.now()}`,
+        date: rule.nextDueDate,
+        amount: rule.amount,
+        itemId: rule.itemId,
+        payee: rule.payee,
+        description: rule.description
+      });
+
+      // 2. Update Rule Date
+      const idx = updatedRules.findIndex(r => r.id === rule.id);
+      if (idx !== -1) {
+        const nextDate = rule.frequency === 'monthly' 
+          ? addMonths(parseISO(rule.nextDueDate), 1)
+          : addWeeks(parseISO(rule.nextDueDate), 1);
+        updatedRules[idx] = { ...updatedRules[idx], nextDueDate: format(nextDate, 'yyyy-MM-dd') };
+      }
+    });
+
+    setState(prev => ({
+      ...prev,
+      transactions: [...newTransactions, ...prev.transactions],
+      recurringRules: updatedRules
+    }));
+
+    toast({ title: t('all_done'), description: `${pendingRules.length} bills processed.` });
+  };
+
+  // Data Management
   const exportJSON = () => {
     const dataStr = JSON.stringify(state, null, 2);
     const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
@@ -493,15 +650,13 @@ export default function BudgetPlannerPage() {
   const importJSON = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-
     if (!confirm(t('import_warn'))) return;
-
     const reader = new FileReader();
     reader.onload = (event) => {
       try {
         const json = JSON.parse(event.target?.result as string);
         setState(json);
-        window.location.reload(); // Refresh to ensure storage sync
+        window.location.reload();
       } catch (error) {
         alert('Invalid JSON file.');
       }
@@ -516,6 +671,24 @@ export default function BudgetPlannerPage() {
 
   return (
     <div className="flex flex-col items-center p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-8">
+      {/* Recurring Alert Banner */}
+      {pendingRules.length > 0 && (
+        <div className="w-full bg-orange-50 border-2 border-orange-200 p-4 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-4 animate-in fade-in slide-in-from-top duration-500 shadow-sm">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-orange-500 text-white rounded-xl shadow-lg">
+              <BellRing className="h-5 w-5 animate-bounce" />
+            </div>
+            <div>
+              <p className="font-black uppercase tracking-tight text-orange-900 text-sm">{t('pending_alert')}</p>
+              <p className="text-[10px] font-bold text-orange-700/70 uppercase tracking-widest">{pendingRules.length} items waiting</p>
+            </div>
+          </div>
+          <Button onClick={processPendingRecurring} className="bg-orange-600 hover:bg-orange-700 text-white font-black uppercase tracking-widest text-xs h-10 px-6 rounded-xl shadow-lg shadow-orange-200">
+            <CheckCircle2 className="mr-2 h-4 w-4" /> {t('process_all')}
+          </Button>
+        </div>
+      )}
+
       {/* Header & Month Selector */}
       <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 bg-card p-6 rounded-[2.5rem] shadow-xl border-2">
         <div className="flex items-center gap-4">
@@ -547,6 +720,74 @@ export default function BudgetPlannerPage() {
 
         <div className="flex flex-col gap-3 items-end">
           <div className="flex gap-2">
+            <Dialog open={isRecurringOpen} onOpenChange={setIsRecurringOpen}>
+              <DialogTrigger asChild>
+                <Button variant="outline" className="h-12 border-2 font-black uppercase tracking-widest text-[10px] rounded-2xl">
+                  <CalendarClock className="mr-2 h-4 w-4" /> {t('recurring_btn')}
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="rounded-[2rem] sm:max-w-xl">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-black uppercase tracking-tighter">{t('manage_recurring')}</DialogTitle>
+                </DialogHeader>
+                
+                <div className="space-y-6 py-4">
+                  <div className="space-y-4 p-4 bg-muted/30 rounded-2xl border-2 border-dashed">
+                    <h4 className="font-black uppercase tracking-widest text-[10px] opacity-50">{t('add_rule')}</h4>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-1">
+                        <Label className="text-xs font-bold uppercase">{t('payee')}</Label>
+                        <Input value={newRule.payee} onChange={e => setNewRule({...newRule, payee: e.target.value})} placeholder="Netflix, Rent..." />
+                      </div>
+                      <div className="space-y-1">
+                        <Label className="text-xs font-bold uppercase">{t('amount')}</Label>
+                        <Input type="number" value={newRule.amount || ''} onChange={e => setNewRule({...newRule, amount: parseFloat(e.target.value) || 0})} />
+                      </div>
+                      <div className="space-y-1">
+                        <Label className="text-xs font-bold uppercase">{t('frequency')}</Label>
+                        <Select value={newRule.frequency} onValueChange={v => setNewRule({...newRule, frequency: v as any})}>
+                          <SelectTrigger><SelectValue /></SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="monthly">{t('monthly')}</SelectItem>
+                            <SelectItem value="weekly">{t('weekly')}</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div className="space-y-1">
+                        <Label className="text-xs font-bold uppercase">{t('next_due')}</Label>
+                        <Input type="date" value={newRule.nextDueDate} onChange={e => setNewRule({...newRule, nextDueDate: e.target.value})} />
+                      </div>
+                    </div>
+                    <Button onClick={addRecurringRule} className="w-full bg-primary font-black uppercase tracking-widest mt-2">{t('add')}</Button>
+                  </div>
+
+                  <div className="max-h-[300px] overflow-y-auto space-y-2 pr-2">
+                    {state.recurringRules.map(rule => (
+                      <div key={rule.id} className="p-4 bg-card border-2 rounded-2xl flex items-center justify-between group">
+                        <div className="space-y-1">
+                          <h5 className="font-black uppercase tracking-tight text-sm">{rule.payee}</h5>
+                          <div className="flex gap-2 items-center">
+                            <span className="text-[10px] font-bold px-2 py-0.5 bg-primary/10 text-primary rounded-full uppercase tracking-widest">
+                              {rule.frequency === 'monthly' ? t('monthly') : t('weekly')}
+                            </span>
+                            <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
+                              {t('next_due')}: {rule.nextDueDate}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <span className="font-black tabular-nums">{rule.amount.toLocaleString()}</span>
+                          <Button variant="ghost" size="icon" onClick={() => deleteRecurringRule(rule.id)} className="h-8 w-8 text-muted-foreground hover:text-destructive transition-colors">
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
+
             <Dialog open={isTxOpen} onOpenChange={setIsTxOpen}>
               <DialogTrigger asChild>
                 <Button className="h-12 px-6 bg-accent hover:bg-accent/90 text-white font-black uppercase tracking-widest rounded-2xl shadow-xl">
@@ -560,29 +801,16 @@ export default function BudgetPlannerPage() {
                 <div className="space-y-4 py-4">
                   <div className="space-y-2">
                     <Label>{t('date')}</Label>
-                    <Input 
-                      type="date" 
-                      value={newTx.date} 
-                      onChange={(e) => setNewTx({...newTx, date: e.target.value})}
-                    />
+                    <Input type="date" value={newTx.date} onChange={(e) => setNewTx({...newTx, date: e.target.value})} />
                   </div>
                   <div className="space-y-2">
                     <Label>{t('payee')}</Label>
-                    <Input 
-                      placeholder={t('payee_placeholder')}
-                      value={newTx.payee}
-                      onChange={(e) => setNewTx({...newTx, payee: e.target.value})}
-                    />
+                    <Input placeholder={t('payee_placeholder')} value={newTx.payee} onChange={(e) => setNewTx({...newTx, payee: e.target.value})} />
                   </div>
                   <div className="space-y-2">
                     <Label>{t('category')}</Label>
-                    <Select 
-                      value={newTx.itemId} 
-                      onValueChange={(val) => setNewTx({...newTx, itemId: val})}
-                    >
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
+                    <Select value={newTx.itemId} onValueChange={(val) => setNewTx({...newTx, itemId: val})}>
+                      <SelectTrigger><SelectValue /></SelectTrigger>
                       <SelectContent>
                         <SelectItem value="inflow" className="font-bold text-green-600">{t('inflow')}</SelectItem>
                         {state.groups.map(group => (
@@ -598,19 +826,11 @@ export default function BudgetPlannerPage() {
                   </div>
                   <div className="space-y-2">
                     <Label>{t('amount')} ({currencySymbol})</Label>
-                    <Input 
-                      type="number" 
-                      placeholder={t('amount_placeholder')}
-                      value={newTx.amount || ''}
-                      onChange={(e) => setNewTx({...newTx, amount: parseFloat(e.target.value) || 0})}
-                    />
+                    <Input type="number" placeholder={t('amount_placeholder')} value={newTx.amount || ''} onChange={(e) => setNewTx({...newTx, amount: parseFloat(e.target.value) || 0})} />
                   </div>
                   <div className="space-y-2">
                     <Label>{t('desc')}</Label>
-                    <Input 
-                      value={newTx.description}
-                      onChange={(e) => setNewTx({...newTx, description: e.target.value})}
-                    />
+                    <Input value={newTx.description} onChange={(e) => setNewTx({...newTx, description: e.target.value})} />
                   </div>
                 </div>
                 <DialogFooter>
@@ -706,9 +926,8 @@ export default function BudgetPlannerPage() {
           </Button>
         </div>
 
-        {/* Right Column: Visualization & Summary */}
+        {/* Right Column */}
         <div className="space-y-8">
-          {/* Analysis Chart */}
           <Card className="shadow-xl border-2 rounded-[2.5rem] overflow-hidden bg-card">
             <CardHeader className="bg-primary/5 p-6 border-b">
               <CardTitle className="text-sm font-black uppercase tracking-widest text-primary flex items-center gap-2">
@@ -721,34 +940,13 @@ export default function BudgetPlannerPage() {
                 {chartData.length > 0 ? (
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
-                      <Pie
-                        data={chartData}
-                        cx="50%"
-                        cy="50%"
-                        innerRadius={60}
-                        outerRadius={80}
-                        paddingAngle={5}
-                        dataKey="value"
-                      >
+                      <Pie data={chartData} cx="50%" cy="50%" innerRadius={60} outerRadius={80} paddingAngle={5} dataKey="value">
                         {chartData.map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={CHART_COLORS[index % CHART_COLORS.length]} stroke="none" />
                         ))}
                       </Pie>
-                      <RechartsTooltip 
-                        contentStyle={{ 
-                          borderRadius: '16px', 
-                          border: 'none', 
-                          boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)',
-                          fontSize: '12px',
-                          fontWeight: 'bold',
-                          textTransform: 'uppercase'
-                        }}
-                      />
-                      <Legend 
-                        verticalAlign="bottom" 
-                        iconType="circle" 
-                        formatter={(value) => <span className="text-[10px] font-bold uppercase tracking-tight text-muted-foreground">{value}</span>}
-                      />
+                      <RechartsTooltip contentStyle={{ borderRadius: '16px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)', fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase' }} />
+                      <Legend verticalAlign="bottom" iconType="circle" formatter={(value) => <span className="text-[10px] font-bold uppercase tracking-tight text-muted-foreground">{value}</span>} />
                     </PieChart>
                   </ResponsiveContainer>
                 ) : (
@@ -761,7 +959,6 @@ export default function BudgetPlannerPage() {
             </CardContent>
           </Card>
 
-          {/* Transaction History */}
           <Card className="shadow-xl border-2 rounded-[2rem] overflow-hidden">
             <CardHeader className="bg-primary p-6 text-white">
               <CardTitle className="text-lg font-black uppercase tracking-widest flex items-center gap-2">
@@ -789,19 +986,13 @@ export default function BudgetPlannerPage() {
                               <h4 className="font-black text-sm uppercase tracking-tight truncate max-w-[120px]">{tx.payee}</h4>
                             </div>
                             <div className="flex items-center gap-2">
-                              <span className={cn(
-                                "text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter",
-                                isIncome ? "bg-green-100 text-green-700" : "bg-muted text-muted-foreground"
-                              )}>
+                              <span className={cn("text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter", isIncome ? "bg-green-100 text-green-700" : "bg-muted text-muted-foreground")}>
                                 {isIncome ? t('inflow').split(':')[0] : item?.name}
                               </span>
                             </div>
                           </div>
                           <div className="flex items-center gap-4">
-                            <span className={cn(
-                              "text-sm font-black tabular-nums",
-                              isIncome ? "text-green-600" : "text-foreground"
-                            )}>
+                            <span className={cn("text-sm font-black tabular-nums", isIncome ? "text-green-600" : "text-foreground")}>
                               {isIncome ? '+' : '-'}{tx.amount.toLocaleString()}
                             </span>
                             <Button variant="ghost" size="icon" onClick={() => deleteTransaction(tx.id)} className="h-8 w-8 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
@@ -817,7 +1008,6 @@ export default function BudgetPlannerPage() {
             </CardContent>
           </Card>
 
-          {/* Income Summary */}
           <Card className="shadow-lg border-2 bg-primary/5 rounded-[2rem]">
             <CardHeader className="p-6 border-b">
               <CardTitle className="text-sm font-black uppercase tracking-widest text-primary flex items-center gap-2">
@@ -828,13 +1018,7 @@ export default function BudgetPlannerPage() {
             <CardContent className="p-6 space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-muted-foreground uppercase">{globalT('base')}</span>
-                <Input 
-                  type="number" 
-                  value={baseMonthlyIncome || ''} 
-                  onChange={(e) => updateBaseIncome(e.target.value)}
-                  className="w-28 h-8 font-bold text-right border-none bg-transparent"
-                  placeholder="0"
-                />
+                <Input type="number" value={baseMonthlyIncome || ''} onChange={(e) => updateBaseIncome(e.target.value)} className="w-28 h-8 font-bold text-right border-none bg-transparent" placeholder="0" />
               </div>
               <div className="flex items-center justify-between text-green-600">
                 <span className="text-xs font-bold uppercase">{globalT('extra')}</span>
