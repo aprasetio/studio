@@ -5,7 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
+      disallow: ['/api/'],
     },
-    sitemap: 'https://versokit.idx.app/sitemap.xml',
+    sitemap: 'https://versokit.com/sitemap.xml',
   };
 }

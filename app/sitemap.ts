@@ -1,8 +1,7 @@
-
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://versokit.idx.app';
+  const baseUrl = 'https://versokit.com';
   
   // List of all tools currently implemented in the app
   const tools = [
@@ -21,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'csv-helper',
     'pdf-merge',
     'image-to-pdf',
+    'budget-planner'
   ];
 
   const toolEntries = tools.map((tool) => ({
@@ -28,6 +28,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.8,
+  }));
+
+  const legalPages = ['about', 'privacy', 'terms', 'contact'].map((page) => ({
+    url: `${baseUrl}/legal/${page}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.3,
   }));
 
   return [
@@ -38,5 +45,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     ...toolEntries,
+    ...legalPages,
   ];
 }
