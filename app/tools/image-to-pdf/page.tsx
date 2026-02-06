@@ -9,8 +9,90 @@ import { Image as ImageIcon, Trash2, Plus, Loader2, FileType } from 'lucide-reac
 import { toast } from '@/hooks/use-toast';
 import { SeoContent } from '@/components/seo-content';
 
+const UI_TEXT: Record<string, any> = {
+  en: {
+    gallery: "Image Gallery",
+    add_image: "Add Image",
+    processing: "Processing...",
+    convert: "Convert to PDF",
+    prompt: "Drag or Click to Add Images",
+    supports: "Supports JPG & PNG",
+    footer_msg: "Each image will become a separate page in the final PDF file.",
+    skip_msg: "Some files skipped. Only JPG and PNG allowed.",
+    success_msg: "Success! Images converted to PDF."
+  },
+  id: {
+    gallery: "Galeri Gambar",
+    add_image: "Tambah Gambar",
+    processing: "Memproses...",
+    convert: "Convert ke PDF",
+    prompt: "Seret atau Klik untuk Tambah Gambar",
+    supports: "Mendukung JPG & PNG",
+    footer_msg: "Setiap gambar akan menjadi halaman terpisah dalam file PDF akhir.",
+    skip_msg: "Beberapa file dilewati. Hanya JPG dan PNG yang diperbolehkan.",
+    success_msg: "Berhasil! Gambar telah dikonversi ke PDF."
+  },
+  es: {
+    gallery: "Galería de imágenes",
+    add_image: "Añadir imagen",
+    processing: "Procesando...",
+    convert: "Convertir a PDF",
+    prompt: "Arrastra o haz clic para añadir imágenes",
+    supports: "Soporta JPG y PNG",
+    footer_msg: "Cada imagen se convertirá en una página separada en el archivo PDF final.",
+    skip_msg: "Algunos archivos omitidos. Solo se permite JPG y PNG.",
+    success_msg: "¡Éxito! Imágenes convertidas a PDF."
+  },
+  pt: {
+    gallery: "Galeria de imagens",
+    add_image: "Adicionar imagem",
+    processing: "Processando...",
+    convert: "Converter para PDF",
+    prompt: "Arraste ou clique para adicionar imagens",
+    supports: "Suporta JPG e PNG",
+    footer_msg: "Cada imagem se tornará uma página separada no arquivo PDF final.",
+    skip_msg: "Alguns arquivos ignorados. Somente JPG e PNG permitidos.",
+    success_msg: "Sucesso! Imagens convertidas para PDF."
+  },
+  de: {
+    gallery: "Bildergalerie",
+    add_image: "Bild hinzufügen",
+    processing: "Wird bearbeitet...",
+    convert: "In PDF konvertieren",
+    prompt: "Bilder hierher ziehen oder klicken",
+    supports: "Unterstützt JPG & PNG",
+    footer_msg: "Jedes Bild wird zu einer separaten Seite in der endgültigen PDF-Datei.",
+    skip_msg: "Einige Dateien übersprungen. Nur JPG und PNG erlaubt.",
+    success_msg: "Erfolg! Bilder in PDF konvertiert."
+  },
+  fr: {
+    gallery: "Galerie d'images",
+    add_image: "Ajouter une image",
+    processing: "Traitement...",
+    convert: "Convertir en PDF",
+    prompt: "Faire glisser ou cliquer pour ajouter des images",
+    supports: "Supporte JPG & PNG",
+    footer_msg: "Chaque image deviendra une page distincte dans le fichier PDF final.",
+    skip_msg: "Certains fichiers ignorés. Seuls JPG et PNG sont autorisés.",
+    success_msg: "Succès ! Images converties en PDF."
+  },
+  it: {
+    gallery: "Galleria immagini",
+    add_image: "Aggiungi immagine",
+    processing: "Elaborazione...",
+    convert: "Converti in PDF",
+    prompt: "Trascina o fai clic per aggiungere immagini",
+    supports: "Supporta JPG e PNG",
+    footer_msg: "Ogni immagine diventerà una pagina separata nel file PDF finale.",
+    skip_msg: "Alcuni file ignorati. Sono ammessi solo JPG e PNG.",
+    success_msg: "Successo! Immagini convertite in PDF."
+  }
+};
+
 export default function ImageToPDFPage() {
-  const { t } = useLang();
+  const { t: globalT, lang } = useLang();
+  const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
+
   const [images, setImages] = useState<{ file: File; preview: string }[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -23,8 +105,8 @@ export default function ImageToPDFPage() {
     
     if (validImages.length < selectedFiles.length) {
       toast({ 
-        title: "Beberapa file dilewati", 
-        description: "Hanya file JPG dan PNG yang diperbolehkan.",
+        title: lang === 'id' ? "Beberapa file dilewati" : "Files Skipped", 
+        description: t('skip_msg'),
         variant: "destructive"
       });
     }
@@ -47,7 +129,7 @@ export default function ImageToPDFPage() {
 
   const convertToPDF = async () => {
     if (images.length === 0) {
-      toast({ title: "Pilih gambar", description: "Tambahkan setidaknya satu gambar.", variant: "destructive" });
+      toast({ title: lang === 'id' ? "Pilih gambar" : "Select Images", description: lang === 'id' ? "Tambahkan setidaknya satu gambar." : "Add at least one image.", variant: "destructive" });
       return;
     }
 
@@ -84,10 +166,10 @@ export default function ImageToPDFPage() {
       link.download = `versokit_images_${new Date().getTime()}.pdf`;
       link.click();
       
-      toast({ title: "Berhasil!", description: "Gambar telah dikonversi ke PDF." });
+      toast({ title: lang === 'id' ? "Berhasil!" : "Success!", description: t('success_msg') });
     } catch (error) {
       console.error(error);
-      toast({ title: "Gagal konversi", description: "Terjadi kesalahan saat memproses gambar.", variant: "destructive" });
+      toast({ title: lang === 'id' ? "Gagal konversi" : "Conversion Failed", description: lang === 'id' ? "Terjadi kesalahan saat memproses gambar." : "Error processing images.", variant: "destructive" });
     } finally {
       setIsProcessing(false);
     }
@@ -96,18 +178,18 @@ export default function ImageToPDFPage() {
   return (
     <div className="flex flex-col items-center p-6 md:p-12 max-w-5xl mx-auto w-full gap-8">
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-black uppercase tracking-tighter text-foreground">{t('image_to_pdf')}</h1>
-        <p className="text-muted-foreground font-medium">Ubah koleksi foto Anda menjadi dokumen PDF dalam sekejap</p>
+        <h1 className="text-3xl font-black uppercase tracking-tighter text-foreground">{globalT('image_to_pdf')}</h1>
+        <p className="text-muted-foreground font-medium">{lang === 'id' ? 'Ubah koleksi foto Anda menjadi dokumen PDF dalam sekejap' : 'Instantly turn your photos into PDF documents'}</p>
       </div>
 
       <Card className="w-full shadow-lg border-2">
         <CardHeader className="flex flex-row items-center justify-between border-b bg-muted/30">
           <CardTitle className="text-lg font-black flex items-center gap-2 uppercase">
             <ImageIcon className="h-5 w-5 text-primary" />
-            Galeri Gambar
+            {t('gallery')}
           </CardTitle>
           <Button onClick={() => fileInputRef.current?.click()} size="sm" variant="outline" className="font-bold">
-            <Plus className="h-4 w-4 mr-1" /> Tambah Gambar
+            <Plus className="h-4 w-4 mr-1" /> {t('add_image')}
           </Button>
           <input 
             type="file" 
@@ -144,10 +226,10 @@ export default function ImageToPDFPage() {
                   className="w-full h-16 bg-primary text-xl font-black uppercase tracking-[0.2em] shadow-xl"
                 >
                   {isProcessing ? <Loader2 className="mr-2 h-6 w-6 animate-spin" /> : <FileType className="mr-2 h-6 w-6" />}
-                  {isProcessing ? 'Memproses...' : 'Convert ke PDF'}
+                  {isProcessing ? t('processing') : t('convert')}
                 </Button>
                 <p className="text-[10px] text-center mt-3 text-muted-foreground font-bold uppercase tracking-widest">
-                  Setiap gambar akan menjadi halaman terpisah dalam file PDF akhir.
+                  {t('footer_msg')}
                 </p>
               </div>
             </div>
@@ -157,7 +239,7 @@ export default function ImageToPDFPage() {
               onClick={() => fileInputRef.current?.click()}
             >
               <ImageIcon className="h-16 w-16 mb-4" />
-              <p className="font-black uppercase tracking-widest text-sm text-center px-4">Seret atau Klik untuk Tambah Gambar<br/><span className="text-[10px] opacity-70">Mendukung JPG & PNG</span></p>
+              <p className="font-black uppercase tracking-widest text-sm text-center px-4">{t('prompt')}<br/><span className="text-[10px] opacity-70">{t('supports')}</span></p>
             </div>
           )}
         </CardContent>
