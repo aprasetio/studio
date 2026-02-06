@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Plus, Trash2, Printer, Receipt } from 'lucide-react';
 import { SeoContent } from '@/components/seo-content';
 import { SmartAd } from '@/components/smart-ad';
+import { DataPersistence } from '@/components/DataPersistence';
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -183,6 +184,14 @@ export default function InvoiceMakerPage() {
     setItems(items.map(item => item.id === id ? { ...item, [field]: value } : item));
   };
 
+  const handleRestore = (data: any) => {
+    if (data.businessName !== undefined) setBusinessName(data.businessName);
+    if (data.clientName !== undefined) setClientName(data.clientName);
+    if (data.date !== undefined) setDate(data.date);
+    if (data.items !== undefined) setItems(data.items);
+  };
+
+  const invoiceState = { businessName, clientName, date, items };
   const grandTotal = items.reduce((sum, item) => sum + (item.qty * item.price), 0);
 
   return (
@@ -194,74 +203,82 @@ export default function InvoiceMakerPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full items-start">
         {/* EDIT FORM */}
-        <Card className="shadow-lg border-2 print:hidden">
-          <CardHeader>
-            <CardTitle className="text-xl font-bold flex items-center gap-2 uppercase">
-              <Receipt className="h-5 w-5 text-primary" />
-              {t('editor_title')}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label>{globalT('business_name')}</Label>
-                <Input value={businessName} onChange={(e) => setBusinessName(e.target.value)} placeholder={t('business_placeholder')} />
-              </div>
-              <div className="space-y-2">
-                <Label>{globalT('client_name')}</Label>
-                <Input value={clientName} onChange={(e) => setClientName(e.target.value)} placeholder={t('client_placeholder')} />
-              </div>
-            </div>
-            
-            <div className="space-y-2">
-              <Label>{globalT('date')}</Label>
-              <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-            </div>
-
-            <div className="space-y-4 pt-4 border-t">
-              <Label className="text-lg font-bold uppercase tracking-widest">{globalT('item_name')}</Label>
-              {items.map((item) => (
-                <div key={item.id} className="grid grid-cols-12 gap-2 items-end">
-                  <div className="col-span-6">
-                    <Input 
-                      placeholder={t('item')} 
-                      value={item.name} 
-                      onChange={(e) => updateItem(item.id, 'name', e.target.value)} 
-                    />
-                  </div>
-                  <div className="col-span-2">
-                    <Input 
-                      type="number" 
-                      placeholder={t('qty')} 
-                      value={item.qty} 
-                      onChange={(e) => updateItem(item.id, 'qty', parseInt(e.target.value) || 0)} 
-                    />
-                  </div>
-                  <div className="col-span-3">
-                    <Input 
-                      type="number" 
-                      placeholder={t('rate')} 
-                      value={item.price} 
-                      onChange={(e) => updateItem(item.id, 'price', parseInt(e.target.value) || 0)} 
-                    />
-                  </div>
-                  <div className="col-span-1">
-                    <Button variant="ghost" size="icon" onClick={() => removeItem(item.id)} className="text-destructive">
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
-                  </div>
+        <div className="space-y-8 print:hidden">
+          <Card className="shadow-lg border-2">
+            <CardHeader>
+              <CardTitle className="text-xl font-bold flex items-center gap-2 uppercase">
+                <Receipt className="h-5 w-5 text-primary" />
+                {t('editor_title')}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label>{globalT('business_name')}</Label>
+                  <Input value={businessName} onChange={(e) => setBusinessName(e.target.value)} placeholder={t('business_placeholder')} />
                 </div>
-              ))}
-              <Button onClick={addItem} variant="outline" className="w-full border-dashed border-2">
-                <Plus className="h-4 w-4 mr-2" /> {globalT('add')}
-              </Button>
-            </div>
+                <div className="space-y-2">
+                  <Label>{globalT('client_name')}</Label>
+                  <Input value={clientName} onChange={(e) => setClientName(e.target.value)} placeholder={t('client_placeholder')} />
+                </div>
+              </div>
+              
+              <div className="space-y-2">
+                <Label>{globalT('date')}</Label>
+                <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+              </div>
 
-            <Button onClick={() => window.print()} className="w-full h-14 bg-primary text-xl font-black uppercase tracking-[0.2em] shadow-xl">
-              <Printer className="mr-2 h-6 w-6" /> {t('download')}
-            </Button>
-          </CardContent>
-        </Card>
+              <div className="space-y-4 pt-4 border-t">
+                <Label className="text-lg font-bold uppercase tracking-widest">{globalT('item_name')}</Label>
+                {items.map((item) => (
+                  <div key={item.id} className="grid grid-cols-12 gap-2 items-end">
+                    <div className="col-span-6">
+                      <Input 
+                        placeholder={t('item')} 
+                        value={item.name} 
+                        onChange={(e) => updateItem(item.id, 'name', e.target.value)} 
+                      />
+                    </div>
+                    <div className="col-span-2">
+                      <Input 
+                        type="number" 
+                        placeholder={t('qty')} 
+                        value={item.qty} 
+                        onChange={(e) => updateItem(item.id, 'qty', parseInt(e.target.value) || 0)} 
+                      />
+                    </div>
+                    <div className="col-span-3">
+                      <Input 
+                        type="number" 
+                        placeholder={t('rate')} 
+                        value={item.price} 
+                        onChange={(e) => updateItem(item.id, 'price', parseInt(e.target.value) || 0)} 
+                      />
+                    </div>
+                    <div className="col-span-1">
+                      <Button variant="ghost" size="icon" onClick={() => removeItem(item.id)} className="text-destructive">
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+                <Button onClick={addItem} variant="outline" className="w-full border-dashed border-2">
+                  <Plus className="h-4 w-4 mr-2" /> {globalT('add')}
+                </Button>
+              </div>
+
+              <Button onClick={() => window.print()} className="w-full h-14 bg-primary text-xl font-black uppercase tracking-[0.2em] shadow-xl">
+                <Printer className="mr-2 h-6 w-6" /> {t('download')}
+              </Button>
+            </CardContent>
+          </Card>
+
+          <DataPersistence 
+            data={invoiceState} 
+            onRestore={handleRestore} 
+            fileNamePrefix="versokit-invoice" 
+          />
+        </div>
 
         {/* PREVIEW */}
         <div className="w-full flex justify-center sticky top-24 print:static print:w-full">

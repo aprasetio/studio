@@ -7,8 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Plus, Trash2, CalendarDays, UserPlus, Image as ImageIcon, Download, ShieldCheck, Shuffle } from 'lucide-react';
-import { DataControl } from '@/components/DataControl';
 import { SeoContent } from '@/components/seo-content';
+import { DataPersistence } from '@/components/DataPersistence';
 import html2canvas from 'html2canvas';
 import { toast } from '@/hooks/use-toast';
 
@@ -251,6 +251,12 @@ export default function ShiftRosterPage() {
     toast({ title: t('randomize') });
   };
 
+  const handleRestore = (data: any) => {
+    if (Array.isArray(data)) {
+      setEmployees(data);
+    }
+  };
+
   const handleDownloadImage = async () => {
     if (!scheduleRef.current) return;
 
@@ -288,7 +294,7 @@ export default function ShiftRosterPage() {
           <Button variant="outline" onClick={handleDownloadImage} className="font-bold border-2">
             <ImageIcon className="mr-2 h-4 w-4" /> {t('download')}
           </Button>
-          <DataControl storageKey="versokit-shift-data" type="array" />
+          <DataPersistence data={employees} onRestore={handleRestore} fileNamePrefix="versokit-shift" />
         </div>
       </div>
 

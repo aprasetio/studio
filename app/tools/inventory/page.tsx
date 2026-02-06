@@ -7,9 +7,9 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Plus, Minus, Trash2, Package, PlusCircle, Search } from 'lucide-react';
 import { SmartAd } from '@/components/smart-ad';
-import { DataControl } from '@/components/DataControl';
 import { useLang } from '@/components/Providers';
 import { SeoContent } from '@/components/seo-content';
+import { DataPersistence } from '@/components/DataPersistence';
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -101,6 +101,12 @@ export default function InventoryPage() {
     setItems(items.filter(item => item.id !== id));
   };
 
+  const handleRestore = (data: any) => {
+    if (Array.isArray(data)) {
+      setItems(data);
+    }
+  };
+
   const filteredItems = items.filter(item => 
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -114,7 +120,7 @@ export default function InventoryPage() {
           </h1>
           <p className="text-muted-foreground font-medium">{ui('subtitle')}</p>
         </div>
-        <DataControl storageKey="versokit-inventory" type="array" />
+        <DataPersistence data={items} onRestore={handleRestore} fileNamePrefix="versokit-inventory" />
       </div>
 
       <div className="w-full space-y-6">

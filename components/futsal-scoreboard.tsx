@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Minus, Plus, Play, Pause, RotateCcw, History } from 'lucide-react';
 import { useLang } from '@/components/Providers';
 import { cn } from '@/lib/utils';
+import { DataPersistence } from '@/components/DataPersistence';
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -201,6 +202,12 @@ export function FutsalScoreboard() {
     }));
   };
 
+  const handleRestore = (data: any) => {
+    if (data) {
+      setState(data);
+    }
+  };
+
   return (
     <div className="container mx-auto p-4 max-w-5xl">
       <Card className="w-full shadow-2xl bg-card border-4 border-primary/10 overflow-hidden">
@@ -276,6 +283,14 @@ export function FutsalScoreboard() {
               onUpdateScore={(d) => updateValue('awayScore', d)} 
               onUpdateFouls={(d) => updateValue('awayFouls', d)} 
               labels={{ score: t('score'), fouls: t('foul'), danger: t('second_penalty') }}
+            />
+          </div>
+
+          <div className="p-6 bg-muted/10">
+            <DataPersistence 
+              data={state} 
+              onRestore={handleRestore} 
+              fileNamePrefix="versokit-futsal-state" 
             />
           </div>
         </CardContent>
