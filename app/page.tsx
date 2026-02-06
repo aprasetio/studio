@@ -28,6 +28,16 @@ import { useLang } from '@/components/Providers';
 export default function DashboardPage() {
   const { t, lang } = useLang();
 
+  const HERO_TEXT: Record<string, string> = {
+    en: "⚡ Fast. 🔒 Secure. ✈️ Offline-Ready. Data never leaves your device.",
+    id: "⚡ Cepat. 🔒 Aman. ✈️ Bisa Offline. Data tidak meninggalkan perangkat.",
+    es: "⚡ Rápido. 🔒 Seguro. ✈️ Offline. Los datos nunca salen de su dispositivo.",
+    pt: "⚡ Rápido. 🔒 Seguro. ✈️ Offline. Os dados nunca saem do seu dispositivo.",
+    de: "⚡ Schnell. 🔒 Sicher. ✈️ Offline. Daten verlassen niemals Ihr Gerät.",
+    fr: "⚡ Rapide. 🔒 Sécurisé. ✈️ Hors ligne. Les données restent sur l'appareil.",
+    it: "⚡ Veloce. 🔒 Sicuro. ✈️ Offline. I dati non lasciano mai il dispositivo."
+  };
+
   const tools = [
     {
       id: 'futsal',
@@ -129,6 +139,8 @@ export default function DashboardPage() {
     },
   ];
 
+  const currentHeroText = HERO_TEXT[lang] || HERO_TEXT['en'];
+
   return (
     <div className="flex flex-col items-center justify-center gap-12 p-6 md:p-12 lg:p-20">
       <div className="text-center space-y-4 max-w-2xl">
@@ -138,25 +150,43 @@ export default function DashboardPage() {
         <p className="text-xl text-muted-foreground font-medium">
           {t('subtitle')}
         </p>
+        <div className="pt-4 pb-2">
+           <p className="text-sm font-bold text-primary bg-primary/5 px-6 py-2 rounded-full border border-primary/10 inline-block">
+             {currentHeroText}
+           </p>
+        </div>
       </div>
 
       {/* Trust Badge Section */}
       <div className="flex flex-wrap items-center justify-center gap-8 py-6 px-10 bg-muted/30 rounded-[3rem] border-2 border-dashed border-muted-foreground/10 max-w-4xl w-full">
         <div className="flex items-center gap-2 text-primary">
           <Zap className="h-5 w-5" />
-          <span className="text-xs font-black uppercase tracking-widest">{lang === 'en' ? 'Fast' : 'Cepat'}</span>
+          <span className="text-xs font-black uppercase tracking-widest">
+            {lang === 'id' ? 'Cepat' : lang === 'es' || lang === 'pt' || lang === 'it' || lang === 'fr' ? 'Rápido' : 'Fast'}
+          </span>
         </div>
         <div className="flex items-center gap-2 text-green-600">
           <ShieldCheck className="h-5 w-5" />
-          <span className="text-xs font-black uppercase tracking-widest">{lang === 'en' ? 'Secure' : 'Aman'}</span>
+          <span className="text-xs font-black uppercase tracking-widest">
+            {lang === 'id' ? 'Aman' : lang === 'es' || lang === 'pt' || lang === 'it' ? 'Seguro' : lang === 'fr' ? 'Sécurisé' : lang === 'de' ? 'Sicher' : 'Secure'}
+          </span>
         </div>
         <div className="flex items-center gap-2 text-orange-600">
           <WifiOff className="h-5 w-5" />
-          <span className="text-xs font-black uppercase tracking-widest">{lang === 'en' ? 'Offline-Ready' : 'Siap Offline'}</span>
+          <span className="text-xs font-black uppercase tracking-widest">
+            {lang === 'id' ? 'Siap Offline' : lang === 'fr' ? 'Hors ligne' : 'Offline-Ready'}
+          </span>
         </div>
         <div className="h-4 w-px bg-muted-foreground/20 hidden md:block" />
         <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest text-center">
-          {lang === 'en' ? 'Data never leaves your device' : 'Data tidak pernah meninggalkan perangkat Anda'}
+          {lang === 'en' ? 'Data never leaves your device' : 
+           lang === 'id' ? 'Data tidak pernah meninggalkan perangkat' :
+           lang === 'es' ? 'Los datos nunca salen de su dispositivo' :
+           lang === 'pt' ? 'Os dados nunca saem do seu dispositivo' :
+           lang === 'de' ? 'Daten verlassen niemals Ihr Gerät' :
+           lang === 'fr' ? 'Les données restent sur l\'appareil' :
+           lang === 'it' ? 'I dati non lasciano mai il dispositivo' :
+           'Data never leaves your device'}
         </p>
       </div>
 
@@ -175,7 +205,7 @@ export default function DashboardPage() {
             <CardContent className="mt-auto flex justify-end p-8 pt-0">
               <Button asChild variant="ghost" className="group text-primary font-bold hover:bg-primary/5">
                 <Link href={tool.href} className="flex items-center text-xs uppercase tracking-widest">
-                  Buka Alat <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  {lang === 'id' ? 'Buka Alat' : 'Open Tool'} <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
             </CardContent>

@@ -23,46 +23,38 @@ export function SeoContent({ toolId }: SeoContentProps) {
 
   const { title, description, steps, article, faq } = content;
 
-  const privacyText = {
-    en: "Your data is processed 100% locally on your device. No files are ever uploaded to our servers.",
-    id: "Data Anda diproses 100% secara lokal di perangkat ini. Tidak ada file yang diupload ke server kami.",
-    es: "Tus datos se procesan 100% localmente en tu dispositivo. No se suben archivos a nuestros servidores.",
-    pt: "Seus dados são processados 100% localmente no seu dispositivo. Nenhum arquivo é enviado para nossos servidores.",
-    de: "Ihre Daten werden zu 100% lokal auf Ihrem Gerät verarbeitet. Es werden niemals Dateien auf unsere Server hochgeladen.",
-    fr: "Vos données sont traitées à 100% localement sur votre appareil. Aucun fichier n'est jamais téléchargé sur nos serveurs.",
-    it: "I tuoi dati vengono elaborati al 100% localmente sul tuo dispositivo. Nessun file viene mai caricato sui nostri server."
+  const PRIVACY_TEXT: Record<string, string> = {
+    en: "🔒 **Privacy Guaranteed:** Your data is processed 100% locally on your device. No files are sent to our servers.",
+    id: "🔒 **Jaminan Privasi:** Data Anda diproses 100% secara lokal di perangkat. Tidak ada file yang dikirim ke server.",
+    es: "🔒 **Privacidad Garantizada:** Sus datos se procesan 100% localmente. No se envían archivos al servidor.",
+    pt: "🔒 **Privacidade Garantida:** Seus dados são processados 100% localmente. Nenhum arquivo é enviado ao servidor.",
+    de: "🔒 **Privatsphäre Garantiert:** Ihre Daten werden zu 100% lokal verarbeitet. Keine Dateien werden an Server gesendet.",
+    fr: "🔒 **Confidentialité Garantie:** Vos données sont traitées 100% localement. Aucun fichier envoyé au serveur.",
+    it: "🔒 **Privacy Garantita:** I tuoi dati vengono elaborati al 100% localmente. Nessun file inviato al server."
   };
 
-  const privacyTitle = {
-    en: "Privacy Guaranteed",
-    id: "Jaminan Privasi",
-    es: "Privacidad Garantizada",
-    pt: "Privacidade Garantida",
-    de: "Datenschutz Garantiert",
-    fr: "Confidentialité Garantie",
-    it: "Privacy Garantita"
-  };
-
-  const aboutTitle = {
+  const aboutTitle: Record<string, string> = {
     en: "About", id: "Tentang", es: "Acerca de", pt: "Sobre", de: "Über", fr: "À propos de", it: "Informazioni su"
   };
 
-  const howToTitle = {
+  const howToTitle: Record<string, string> = {
     en: "How to Use", id: "Cara Penggunaan", es: "Cómo usar", pt: "Como usar", de: "Anleitung", fr: "Comment utiliser", it: "Come usare"
   };
 
-  const faqTitle = {
+  const faqTitle: Record<string, string> = {
     en: "FAQ", id: "Pertanyaan Umum", es: "Preguntas Frecuentes", pt: "Perguntas Frequentes", de: "Häufig gestellte Fragen", fr: "Questions Fréquentes", it: "Domande Frequenti"
   };
+
+  const currentPrivacyText = PRIVACY_TEXT[lang] || PRIVACY_TEXT['en'];
 
   return (
     <section className="w-full max-w-5xl mx-auto mt-20 mb-10 space-y-12 animate-in fade-in duration-700">
       {/* Privacy Assurance Box */}
       <div className="bg-green-50 border-2 border-green-200 p-6 rounded-[2rem] flex items-center gap-4 shadow-sm">
         <ShieldCheck className="h-8 w-8 text-green-600 shrink-0" />
-        <p className="text-sm font-bold text-green-800">
-          🔒 <strong>{(privacyTitle as any)[lang] || privacyTitle.en}:</strong> {(privacyText as any)[lang] || privacyText.en}
-        </p>
+        <div className="text-sm font-bold text-green-800">
+          <p>{currentPrivacyText.replace(/🔒 \*\*|\*\*/g, '')}</p>
+        </div>
       </div>
 
       {/* Intro & Guide Section */}
