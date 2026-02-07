@@ -13,55 +13,22 @@ import { DataPersistence } from '@/components/DataPersistence';
 import { ArticleSection } from '@/components/ArticleSection';
 
 const UI_TEXT: Record<string, any> = {
-  en: {
-    subtitle: "Track your sports equipment and business stock digitally",
-    placeholder: "Item name...",
-    no_items: "No items yet",
-    available: "Available",
-    search: "Search items..."
+  title: { en: "Stock Management", id: "Manajemen Stok", de: "Lagerverwaltung", es: "Gestión de Stock", pt: "Gestão de Estoque", fr: "Gestion des Stocks", it: "Gestione Scorte" },
+  add_item: { en: "Add Item", id: "Tambah Barang", de: "Artikel hinzufügen", es: "Añadir Artículo", pt: "Adicionar Item", fr: "Ajouter Article", it: "Aggiungi Articolo" },
+  stock_in: { en: "Stock In", id: "Stok Masuk", de: "Eingang", es: "Entrada", pt: "Entrada", fr: "Entrée", it: "Entrata" },
+  stock_out: { en: "Stock Out", id: "Stok Keluar", de: "Ausgang", es: "Salida", pt: "Saída", fr: "Sortie", it: "Uscita" },
+  low_stock: { en: "Low Stock", id: "Stok Menipis", de: "Niedriger Bestand", es: "Stock Bajo", pt: "Estoque Baixo", fr: "Stock Faible", it: "Scorte Basse" },
+  search: { en: "Search items...", id: "Cari barang...", de: "Suchen...", es: "Buscar...", pt: "Pesquisar...", fr: "Chercher...", it: "Cerca..." },
+  subtitle: { 
+    en: "Track your sports equipment and business stock digitally", 
+    id: "Pantau peralatan olahraga dan stok bisnis Anda secara digital",
+    de: "Verfolgen Sie Ihre Sportausrüstung und Ihren Geschäftsbestand digital",
+    es: "Controle su equipo deportivo y stock de negocios digitalmente",
+    pt: "Acompanhe seu equipamento esportivo e estoque comercial digitalmente",
+    fr: "Suivez votre équipement sportif et votre stock commercial numériquement",
+    it: "Monitora digitalmente le tue attrezzature sportive e lo stock aziendale"
   },
-  id: {
-    subtitle: "Pantau peralatan olahraga dan stok bisnis Anda secara digital",
-    placeholder: "Nama barang...",
-    no_items: "Belum ada barang",
-    available: "Tersedia",
-    search: "Cari barang..."
-  },
-  es: {
-    subtitle: "Controle su equipo deportivo y stock de negocios digitalmente",
-    placeholder: "Nombre del artículo...",
-    no_items: "Aún no hay artículos",
-    available: "Disponible",
-    search: "Buscar artículos..."
-  },
-  pt: {
-    subtitle: "Acompanhe seu equipamento esportivo e estoque comercial digitalmente",
-    placeholder: "Nome do item...",
-    no_items: "Ainda não há itens",
-    available: "Disponível",
-    search: "Buscar itens..."
-  },
-  de: {
-    subtitle: "Verfolgen Sie Ihre Sportausrüstung und Ihren Geschäftsbestand digital",
-    placeholder: "Artikelname...",
-    no_items: "Noch keine Artikel",
-    available: "Verfügbar",
-    search: "Artikel suchen..."
-  },
-  fr: {
-    subtitle: "Suivez votre équipement sportif et votre stock commercial numériquement",
-    placeholder: "Nom de l'article...",
-    no_items: "Pas encore d'articles",
-    available: "Disponible",
-    search: "Rechercher des articles..."
-  },
-  it: {
-    subtitle: "Monitora digitalmente le tue attrezzature sportive e lo stock aziendale",
-    placeholder: "Nome dell'articolo...",
-    no_items: "Nessun articolo ancora",
-    available: "Disponibile",
-    search: "Cerca articoli..."
-  }
+  available: { en: "Available", id: "Tersedia", de: "Verfügbar", es: "Disponible", pt: "Disponível", fr: "Disponible", it: "Disponibile" }
 };
 
 interface InventoryItem {
@@ -71,8 +38,8 @@ interface InventoryItem {
 }
 
 export default function InventoryPage() {
-  const { t, lang } = useLang();
-  const ui = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
+  const { lang } = useLang();
+  const t = (key: string) => UI_TEXT[key]?.[lang] || UI_TEXT[key]?.['en'] || key;
   
   const [items, setItems] = useLocalStorage<InventoryItem[]>('versokit-inventory', []);
   const [newItemName, setNewItemName] = useState('');
@@ -117,9 +84,9 @@ export default function InventoryPage() {
       <div className="flex flex-col md:flex-row w-full items-center justify-between gap-6">
         <div className="text-center md:text-left space-y-3">
           <h1 className="text-4xl font-black tracking-tighter text-foreground uppercase">
-            {t('inventory')}
+            {t('title')}
           </h1>
-          <p className="text-muted-foreground font-medium">{ui('subtitle')}</p>
+          <p className="text-muted-foreground font-medium">{t('subtitle')}</p>
         </div>
         <DataPersistence data={items} onRestore={handleRestore} fileNamePrefix="versokit-inventory" />
       </div>
@@ -136,14 +103,14 @@ export default function InventoryPage() {
             <form onSubmit={addItem} className="flex flex-col sm:flex-row gap-4">
               <div className="flex-1">
                 <Input
-                  placeholder={ui('placeholder')}
+                  placeholder={t('add_item')}
                   value={newItemName}
                   onChange={(e) => setNewItemName(e.target.value)}
                   className="h-14 text-lg font-medium px-6 rounded-xl focus-visible:ring-primary"
                 />
               </div>
               <Button type="submit" className="h-14 px-10 bg-primary text-primary-foreground font-black uppercase tracking-widest rounded-xl hover:bg-primary/90 transition-all shadow-lg">
-                {t('add')}
+                {t('add_item')}
               </Button>
             </form>
           </CardContent>
@@ -154,7 +121,7 @@ export default function InventoryPage() {
           <Input 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder={ui('search')}
+            placeholder={t('search')}
             className="pl-12 h-12 rounded-2xl border-2"
           />
         </div>
@@ -164,7 +131,7 @@ export default function InventoryPage() {
         {filteredItems.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-24 bg-muted/20 rounded-[2.5rem] border-4 border-dashed border-muted">
             <Package className="h-16 w-16 text-muted-foreground mb-6 opacity-30" />
-            <p className="text-xl font-black text-muted-foreground uppercase tracking-widest">{ui('no_items')}</p>
+            <p className="text-xl font-black text-muted-foreground uppercase tracking-widest">{t('subtitle')}</p>
           </div>
         ) : (
           filteredItems.map((item) => (
@@ -177,7 +144,7 @@ export default function InventoryPage() {
                     </div>
                     <div>
                       <h3 className="text-2xl font-black text-foreground uppercase tracking-tight">{item.name}</h3>
-                      <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mt-1">{t('status')}: {ui('available')}</p>
+                      <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mt-1">{t('available')}: {item.quantity}</p>
                     </div>
                   </div>
 

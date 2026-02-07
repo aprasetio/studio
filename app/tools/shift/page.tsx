@@ -16,139 +16,17 @@ import { toast } from '@/hooks/use-toast';
 type ShiftType = 'OFF' | 'MOR' | 'AFT' | 'NIG';
 
 const UI_TEXT: Record<string, any> = {
-  en: {
-    title: "Shift Scheduler Pro",
-    subtitle: "Manage your team's weekly schedule with ease",
-    month_year: "Month & Year",
-    employees: "Employees",
-    generate: "Generate Schedule",
-    download: "Download Image",
-    legend: "Shift Legend:",
-    morning: "Morning",
-    afternoon: "Afternoon",
-    night: "Night",
-    off: "Off / Rest",
-    randomize: "Randomize Shifts",
-    add_employee: "Add Employee",
-    placeholder: "Employee name...",
-    no_employees: "No employees added",
-    success_msg: "Shift roster image downloaded.",
-    fail_msg: "Failed to download image."
-  },
-  id: {
-    title: "Jadwal Shift Pro",
-    subtitle: "Kelola jadwal mingguan tim Anda dengan mudah",
-    month_year: "Bulan & Tahun",
-    employees: "Karyawan",
-    generate: "Buat Jadwal",
-    download: "Unduh Gambar",
-    legend: "Legenda Shift:",
-    morning: "Pagi",
-    afternoon: "Siang",
-    night: "Malam",
-    off: "Libur / Istirahat",
-    randomize: "Acak Otomatis",
-    add_employee: "Tambah Karyawan",
-    placeholder: "Nama karyawan...",
-    no_employees: "Belum ada karyawan",
-    success_msg: "Gambar jadwal telah diunduh.",
-    fail_msg: "Gagal mengunduh gambar jadwal."
-  },
-  es: {
-    title: "Programador de Turnos Pro",
-    subtitle: "Gestiona el horario semanal de tu equipo con facilidad",
-    month_year: "Mes y Año",
-    employees: "Empleados",
-    generate: "Generar Horario",
-    download: "Descargar Imagen",
-    legend: "Leyenda de Turnos:",
-    morning: "Mañana",
-    afternoon: "Tarde",
-    night: "Noche",
-    off: "Libre / Descanso",
-    randomize: "Aleatorizar",
-    add_employee: "Añadir Empleado",
-    placeholder: "Nombre del empleado...",
-    no_employees: "No hay empleados",
-    success_msg: "Imagen del horario descargada.",
-    fail_msg: "Error al descargar la imagen."
-  },
-  pt: {
-    title: "Escala de Turnos Pro",
-    subtitle: "Gerencie a escala semanal da sua equipe com facilidade",
-    month_year: "Mês e Ano",
-    employees: "Funcionários",
-    generate: "Gerar Escala",
-    download: "Baixar Imagem",
-    legend: "Legenda de Turnos:",
-    morning: "Manhã",
-    afternoon: "Tarde",
-    night: "Noite",
-    off: "Folga / Descanso",
-    randomize: "Aleatorizar",
-    add_employee: "Adicionar Funcionário",
-    placeholder: "Nome do funcionário...",
-    no_employees: "Nenhum funcionário",
-    success_msg: "Imagem da escala baixada.",
-    fail_msg: "Falha ao baixar imagem."
-  },
-  de: {
-    title: "Schichtplaner Pro",
-    subtitle: "Verwalten Sie den Wochenplan Ihres Teams mühelos",
-    month_year: "Monat & Jahr",
-    employees: "Mitarbeiter",
-    generate: "Plan erstellen",
-    download: "Bild herunterladen",
-    legend: "Schichtlegende:",
-    morning: "Morgen",
-    afternoon: "Nachmittag",
-    night: "Nacht",
-    off: "Frei / Pause",
-    randomize: "Zufällig",
-    add_employee: "Mitarbeiter hinzufügen",
-    placeholder: "Name des Mitarbeiters...",
-    no_employees: "Keine Mitarbeiter",
-    success_msg: "Schichtplan-Bild heruntergeladen.",
-    fail_msg: "Bild-Download fehlgeschlagen."
-  },
-  fr: {
-    title: "Planning de Shifts Pro",
-    subtitle: "Gérez facilement le planning hebdomadaire de votre équipe",
-    month_year: "Mois & Année",
-    employees: "Employés",
-    generate: "Générer Planning",
-    download: "Télécharger Image",
-    legend: "Légende des Shifts :",
-    morning: "Matin",
-    afternoon: "Après-midi",
-    night: "Nuit",
-    off: "Repos",
-    randomize: "Aléatoire",
-    add_employee: "Ajouter Employé",
-    placeholder: "Nom de l'employé...",
-    no_employees: "Aucun employé",
-    success_msg: "Image du planning téléchargée.",
-    fail_msg: "Échec du téléchargement de l'image."
-  },
-  it: {
-    title: "Pianificatore Turni Pro",
-    subtitle: "Gestisci i turni settimanali del tuo team con facilità",
-    month_year: "Mese e Anno",
-    employees: "Dipendenti",
-    generate: "Genera Piano",
-    download: "Scarica Immagine",
-    legend: "Legenda Turni:",
-    morning: "Mattina",
-    afternoon: "Pomeriggio",
-    night: "Notte",
-    off: "Libero",
-    randomize: "Casuale",
-    add_employee: "Aggiungi Dipendente",
-    placeholder: "Nome dipendente...",
-    no_employees: "Nessun dipendente",
-    success_msg: "Immagine del piano scaricata.",
-    fail_msg: "Errore nel download dell'immagine."
-  }
+  title: { en: "Shift Scheduler", id: "Jadwal Shift", de: "Schichtplaner", es: "Planificador de Turnos", pt: "Escala de Trabalho", fr: "Planning d'Équipe", it: "Pianificatore Turni" },
+  add_employee: { en: "Add Employee", id: "Tambah Karyawan", de: "Mitarbeiter hinzufügen", es: "Añadir Empleado", pt: "Adicionar Funcionário", fr: "Ajouter Employé", it: "Aggiungi Dipendente" },
+  morning: { en: "Morning", id: "Pagi", de: "Morgen", es: "Mañana", pt: "Manhã", fr: "Matin", it: "Mattina" },
+  afternoon: { en: "Afternoon", id: "Siang/Sore", de: "Nachmittag", es: "Tarde", pt: "Tarde", fr: "Après-midi", it: "Pomeriggio" },
+  night: { en: "Night", id: "Malam", de: "Nacht", es: "Noche", pt: "Noite", fr: "Nuit", it: "Notte" },
+  download: { en: "Download Schedule", id: "Unduh Jadwal", de: "Plan herunterladen", es: "Descargar Horario", pt: "Baixar Escala", fr: "Télécharger Planning", it: "Scarica Programma" },
+  subtitle: { en: "Manage your team's weekly schedule with ease", id: "Kelola jadwal mingguan tim Anda dengan mudah", de: "Verwalten Sie den Wochenplan Ihres Teams mühelos", es: "Gestiona el horario semanal de tu equipo con facilidad", pt: "Gerencie a escala semanal da sua equipe com facilidade", fr: "Gérez facilement le planning hebdomadaire de votre équipe", it: "Gestisci i turni settimanali del tuo team con facilità" },
+  randomize: { en: "Randomize", id: "Acak", de: "Zufällig", es: "Aleatorio", pt: "Aleatorizar", fr: "Aléatoire", it: "Casuale" },
+  employees: { en: "Employees", id: "Karyawan", de: "Mitarbeiter", es: "Empleados", pt: "Funcionários", fr: "Employés", it: "Dipendenti" },
+  legend: { en: "Shift Legend", id: "Legenda Shift", de: "Schichtlegende", es: "Leyenda de Turnos", pt: "Legenda de Turnos", fr: "Légende des Shifts", it: "Legenda Turni" },
+  off: { en: "Off", id: "Libur", de: "Frei", es: "Libre", pt: "Folga", fr: "Repos", it: "Libero" }
 };
 
 interface EmployeeShift {
@@ -159,43 +37,22 @@ interface EmployeeShift {
 
 const SHIFT_CONFIG: { 
   [key in ShiftType]: { 
-    label: { [lang: string]: string }; 
-    full: { [lang: string]: string }; 
+    labelKey: string; 
     color: string; 
     icon: string 
   } 
 } = {
-  OFF: { 
-    label: { en: 'OFF', id: 'LBR', es: 'LIB', pt: 'FOL', de: 'FREI', fr: 'REP', it: 'LIB' }, 
-    full: { en: 'Off / Rest', id: 'Libur', es: 'Libre', pt: 'Folga', de: 'Frei', fr: 'Repos', it: 'Libero' }, 
-    color: 'bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400', 
-    icon: '⚪' 
-  },
-  MOR: { 
-    label: { en: 'MOR', id: 'PAGI', es: 'MAÑ', pt: 'MAN', de: 'MOR', fr: 'MAT', it: 'MAT' }, 
-    full: { en: 'Morning', id: 'Pagi', es: 'Mañana', pt: 'Manhã', de: 'Morgen', fr: 'Matin', it: 'Mattina' }, 
-    color: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-950/50 dark:text-yellow-400', 
-    icon: '🟡' 
-  },
-  AFT: { 
-    label: { en: 'AFT', id: 'SIANG', es: 'TAR', pt: 'TAR', de: 'NAC', fr: 'APR', it: 'POM' }, 
-    full: { en: 'Afternoon', id: 'Siang', es: 'Tarde', pt: 'Tarde', de: 'Nachmittag', fr: 'Après-midi', it: 'Pomeriggio' }, 
-    color: 'bg-blue-100 text-blue-700 dark:bg-blue-950/50 dark:text-blue-400', 
-    icon: '🔵' 
-  },
-  NIG: { 
-    label: { en: 'NIG', id: 'MLM', es: 'NOC', pt: 'NOI', de: 'NAC', fr: 'NUI', it: 'NOT' }, 
-    full: { en: 'Night', id: 'Malam', es: 'Noche', pt: 'Noite', de: 'Nacht', fr: 'Nuit', it: 'Notte' }, 
-    color: 'bg-slate-800 text-slate-100 dark:bg-slate-100 dark:text-slate-900', 
-    icon: '⚫' 
-  }
+  OFF: { labelKey: 'off', color: 'bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400', icon: '⚪' },
+  MOR: { labelKey: 'morning', color: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-950/50 dark:text-yellow-400', icon: '🟡' },
+  AFT: { labelKey: 'afternoon', color: 'bg-blue-100 text-blue-700 dark:bg-blue-950/50 dark:text-blue-400', icon: '🔵' },
+  NIG: { labelKey: 'night', color: 'bg-slate-800 text-slate-100 dark:bg-slate-100 dark:text-slate-900', icon: '⚫' }
 };
 
 const DAYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'] as const;
 
 export default function ShiftRosterPage() {
-  const { t: globalT, lang } = useLang();
-  const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
+  const { lang, t: globalT } = useLang();
+  const t = (key: string) => UI_TEXT[key]?.[lang] || UI_TEXT[key]?.['en'] || key;
   
   const [employees, setEmployees] = useLocalStorage<EmployeeShift[]>('versokit-shift-data', []);
   const [newName, setNewName] = useState('');
@@ -275,9 +132,9 @@ export default function ShiftRosterPage() {
       link.href = data;
       link.click();
       
-      toast({ title: "Success!", description: t('success_msg') });
+      toast({ title: "Success!", description: "Schedule image downloaded." });
     } catch (error) {
-      toast({ title: "Error!", description: t('fail_msg'), variant: "destructive" });
+      toast({ title: "Error!", description: "Failed to download image.", variant: "destructive" });
     }
   };
 
@@ -311,12 +168,12 @@ export default function ShiftRosterPage() {
             <CardContent>
               <form onSubmit={addEmployee} className="space-y-4 print:hidden">
                 <Input 
-                  placeholder={t('placeholder')} 
+                  placeholder={t('employees')} 
                   value={newName} 
                   onChange={(e) => setNewName(e.target.value)} 
                 />
                 <Button type="submit" className="w-full font-black uppercase tracking-widest h-12">
-                  {globalT('add')}
+                  {t('add_employee')}
                 </Button>
               </form>
 
@@ -328,8 +185,7 @@ export default function ShiftRosterPage() {
                     <div key={key} className="flex items-center gap-3">
                       <span className="text-sm">{config.icon}</span>
                       <div className="flex flex-col">
-                        <span className="text-[10px] font-black uppercase">{config.label[lang] || config.label['en']}</span>
-                        <span className="text-[9px] font-medium opacity-60 uppercase">{config.full[lang] || config.full['en']}</span>
+                        <span className="text-[10px] font-black uppercase">{t(config.labelKey)}</span>
                       </div>
                     </div>
                   );
@@ -355,7 +211,7 @@ export default function ShiftRosterPage() {
                     <tr>
                       <td colSpan={9} className="py-24 text-center opacity-30">
                         <CalendarDays className="h-12 w-12 mx-auto mb-4" />
-                        <p className="font-black uppercase tracking-widest">{t('no_employees')}</p>
+                        <p className="font-black uppercase tracking-widest">{t('subtitle')}</p>
                       </td>
                     </tr>
                   ) : (
@@ -371,7 +227,7 @@ export default function ShiftRosterPage() {
                                 onClick={() => cycleShift(emp.id, day)}
                                 className={`w-full h-12 rounded-xl flex items-center justify-center font-black text-[10px] transition-all transform active:scale-95 shadow-sm border ${config.color}`}
                               >
-                                {config.label[lang] || config.label['en']}
+                                {t(config.labelKey).substring(0, 3).toUpperCase()}
                               </button>
                             </td>
                           );

@@ -13,146 +13,22 @@ import { DataPersistence } from '@/components/DataPersistence';
 import { ArticleSection } from '@/components/ArticleSection';
 
 const UI_TEXT: Record<string, any> = {
-  en: {
-    editor_title: "Invoice Editor",
-    business_placeholder: "Your Business Name",
-    client_placeholder: "Client Name",
-    invoice_title: "INVOICE",
-    from: "From",
-    to: "BILL TO",
-    date: "Date",
-    item: "Item Description",
-    qty: "Qty",
-    rate: "Rate",
-    amount: "Amount",
-    add_item: "Add Line Item",
-    subtotal: "Subtotal",
-    tax: "Tax",
-    total: "Total",
-    download: "Print / Save PDF",
-    footer_msg: "Thank you for your business",
-    privacy_badge: "🔒 Securely generated on device by VersoKit. No data sent to server."
-  },
-  id: {
-    editor_title: "Editor Invoice",
-    business_placeholder: "Nama Bisnis Anda",
-    client_placeholder: "Nama Klien",
-    invoice_title: "FAKTUR",
-    from: "Dari",
-    to: "TAGIHAN UNTUK",
-    date: "Tanggal",
-    item: "Deskripsi Barang",
-    qty: "Jml",
-    rate: "Harga",
-    amount: "Jumlah",
-    add_item: "Tambah Baris",
-    subtotal: "Subtotal",
-    tax: "Pajak",
-    total: "Total",
-    download: "Cetak / Simpan PDF",
-    footer_msg: "Terima kasih atas kerja sama Anda",
-    privacy_badge: "🔒 Dibuat aman di perangkat oleh VersoKit. Tidak ada data dikirim ke server."
-  },
-  es: {
-    editor_title: "Editor de Facturas",
-    business_placeholder: "Nombre de su Empresa",
-    client_placeholder: "Nombre del Cliente",
-    invoice_title: "FACTURA",
-    from: "De",
-    to: "FACTURAR A",
-    date: "Fecha",
-    item: "Descripción",
-    qty: "Cant",
-    rate: "Precio",
-    amount: "Total",
-    add_item: "Añadir Artículo",
-    subtotal: "Subtotal",
-    tax: "Impuesto",
-    total: "Total",
-    download: "Imprimir / Guardar PDF",
-    footer_msg: "Gracias por su preferencia",
-    privacy_badge: "🔒 Generado de forma segura en el dispositivo por VersoKit. Sin envío de datos."
-  },
-  pt: {
-    editor_title: "Editor de Faturas",
-    business_placeholder: "Nome da sua Empresa",
-    client_placeholder: "Nome do Cliente",
-    invoice_title: "FATURA",
-    from: "De",
-    to: "FATURAR A",
-    date: "Data",
-    item: "Descrição",
-    qty: "Qtd",
-    rate: "Preço",
-    amount: "Total",
-    add_item: "Adicionar Item",
-    subtotal: "Subtotal",
-    tax: "Imposto",
-    total: "Total",
-    download: "Imprimir / Salvar PDF",
-    footer_msg: "Obrigado pela sua preferência",
-    privacy_badge: "🔒 Gerado com segurança no dispositivo por VersoKit. Nenhum dado enviado."
-  },
-  de: {
-    editor_title: "Rechnungs-Editor",
-    business_placeholder: "Ihr Firmenname",
-    client_placeholder: "Kundenname",
-    invoice_title: "RECHNUNG",
-    from: "Von",
-    to: "RECHNUNG AN",
-    date: "Datum",
-    item: "Beschreibung",
-    qty: "Menge",
-    rate: "Preis",
-    amount: "Betrag",
-    add_item: "Artikel hinzufügen",
-    subtotal: "Zwischensumme",
-    tax: "Steuer",
-    total: "Gesamt",
-    download: "Drucken / PDF speichern",
-    footer_msg: "Vielen Dank für Ihren Auftrag",
-    privacy_badge: "🔒 Sicher auf dem Gerät durch VersoKit generiert. Keine Datenübertragung."
-  },
-  fr: {
-    editor_title: "Éditeur de Facture",
-    business_placeholder: "Nom de votre Entreprise",
-    client_placeholder: "Nom du Client",
-    invoice_title: "FACTURE",
-    from: "De",
-    to: "FACTURER À",
-    date: "Date",
-    item: "Description",
-    qty: "Qté",
-    rate: "Prix",
-    amount: "Montant",
-    add_item: "Ajouter un Article",
-    subtotal: "Sous-total",
-    tax: "Taxe",
-    total: "Total",
-    download: "Imprimer / Sauvegarder PDF",
-    footer_msg: "Merci pour votre confiance",
-    privacy_badge: "🔒 Généré en toute sécurité par VersoKit. Aucune donnée envoyée au serveur."
-  },
-  it: {
-    editor_title: "Editor Fattura",
-    business_placeholder: "Nome della tua Azienda",
-    client_placeholder: "Nome Cliente",
-    invoice_title: "FATTURA",
-    from: "Da",
-    to: "FATTURARE A",
-    date: "Data",
-    item: "Descrizione",
-    qty: "Qta",
-    rate: "Prezzo",
-    amount: "Importo",
-    add_item: "Aggiungi Articolo",
-    subtotal: "Totale parziale",
-    tax: "Tassa",
-    total: "Totale",
-    download: "Stampa / Salva PDF",
-    footer_msg: "Grazie per la vostra fiducia",
-    privacy_badge: "🔒 Generato in sicurezza sul dispositivo da VersoKit. Nessun dato inviato."
-  }
+  title: { en: "Invoice Generator", id: "Pembuat Faktur", de: "Rechnungsgenerator", es: "Generador de Facturas", pt: "Gerador de Faturas", fr: "Générateur de Factures", it: "Generatore Fatture" },
+  bill_to: { en: "Bill To", id: "Tagih Ke", de: "Rechnung an", es: "Facturar a", pt: "Faturar para", fr: "Facturer à", it: "Fatturare a" },
+  ship_to: { en: "Ship To", id: "Kirim Ke", de: "Lieferung an", es: "Enviar a", pt: "Enviar para", fr: "Expédier à", it: "Spedire a" },
+  item_desc: { en: "Item Description", id: "Deskripsi Barang", de: "Artikelbeschreibung", es: "Descripción del artículo", pt: "Descrição do Item", fr: "Description de l'article", it: "Descrizione Articolo" },
+  qty: { en: "Qty", id: "Jml", de: "Menge", es: "Cant.", pt: "Qtd", fr: "Qté", it: "Qtà" },
+  rate: { en: "Rate", id: "Harga", de: "Preis", es: "Precio", pt: "Preço", fr: "Prix", it: "Prezzo" },
+  amount: { en: "Amount", id: "Jumlah", de: "Betrag", es: "Importe", pt: "Valor", fr: "Montant", it: "Importo" },
+  subtotal: { en: "Subtotal", id: "Subtotal", de: "Zwischensumme", es: "Subtotal", pt: "Subtotal", fr: "Sous-total", it: "Subtotale" },
+  tax: { en: "Tax", id: "Pajak", de: "Steuer", es: "Impuesto", pt: "Imposto", fr: "Taxe", it: "Tassa" },
+  total: { en: "Total", id: "Total", de: "Gesamt", es: "Total", pt: "Total", fr: "Total", it: "Totale" },
+  download: { en: "Download PDF", id: "Unduh PDF", de: "PDF herunterladen", es: "Descargar PDF", pt: "Baixar PDF", fr: "Télécharger PDF", it: "Scarica PDF" },
+  add_item: { en: "+ Add Item", id: "+ Tambah Barang", de: "+ Artikel hinzufügen", es: "+ Añadir artículo", pt: "+ Adicionar Item", fr: "+ Ajouter un article", it: "+ Aggiungi Articolo" },
+  from: { en: "From", id: "Dari", de: "Von", es: "De", pt: "De", fr: "De", it: "Da" },
+  date: { en: "Date", id: "Tanggal", de: "Datum", es: "Fecha", pt: "Data", fr: "Date", it: "Data" },
+  business_name: { en: "Your Business", id: "Bisnis Anda", de: "Ihr Unternehmen", es: "Su Negocio", pt: "Seu Negócio", fr: "Votre Entreprise", it: "Tua Azienda" },
+  client_name: { en: "Client Name", id: "Nama Klien", de: "Kundenname", es: "Nombre del Cliente", pt: "Nome do Cliente", fr: "Nom du Client", it: "Nome Cliente" }
 };
 
 interface InvoiceItem {
@@ -164,7 +40,7 @@ interface InvoiceItem {
 
 export default function InvoiceMakerPage() {
   const { lang, t: globalT } = useLang();
-  const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
+  const t = (key: string) => UI_TEXT[key]?.[lang] || UI_TEXT[key]?.['en'] || key;
 
   const [businessName, setBusinessName] = useState('');
   const [clientName, setClientName] = useState('');
@@ -198,7 +74,7 @@ export default function InvoiceMakerPage() {
   return (
     <div className="flex flex-col items-center p-6 md:p-12 max-w-7xl mx-auto w-full gap-8 print:p-0">
       <div className="text-center space-y-2 print:hidden">
-        <h1 className="text-3xl font-black uppercase tracking-tighter text-foreground">{globalT('invoice')}</h1>
+        <h1 className="text-3xl font-black uppercase tracking-tighter text-foreground">{t('title')}</h1>
         <p className="text-muted-foreground font-medium">{lang === 'id' ? 'Buat invoice profesional dalam hitungan detik' : 'Create professional invoices in seconds'}</p>
       </div>
 
@@ -209,33 +85,33 @@ export default function InvoiceMakerPage() {
             <CardHeader>
               <CardTitle className="text-xl font-bold flex items-center gap-2 uppercase">
                 <Receipt className="h-5 w-5 text-primary" />
-                {t('editor_title')}
+                {t('title')}
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label>{globalT('business_name')}</Label>
-                  <Input value={businessName} onChange={(e) => setBusinessName(e.target.value)} placeholder={t('business_placeholder')} />
+                  <Label>{t('business_name')}</Label>
+                  <Input value={businessName} onChange={(e) => setBusinessName(e.target.value)} placeholder={t('business_name')} />
                 </div>
                 <div className="space-y-2">
-                  <Label>{globalT('client_name')}</Label>
-                  <Input value={clientName} onChange={(e) => setClientName(e.target.value)} placeholder={t('client_placeholder')} />
+                  <Label>{t('client_name')}</Label>
+                  <Input value={clientName} onChange={(e) => setClientName(e.target.value)} placeholder={t('client_name')} />
                 </div>
               </div>
               
               <div className="space-y-2">
-                <Label>{globalT('date')}</Label>
+                <Label>{t('date')}</Label>
                 <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
               </div>
 
               <div className="space-y-4 pt-4 border-t">
-                <Label className="text-lg font-bold uppercase tracking-widest">{globalT('item_name')}</Label>
+                <Label className="text-lg font-bold uppercase tracking-widest">{t('item_desc')}</Label>
                 {items.map((item) => (
                   <div key={item.id} className="grid grid-cols-12 gap-2 items-end">
                     <div className="col-span-6">
                       <Input 
-                        placeholder={t('item')} 
+                        placeholder={t('item_desc')} 
                         value={item.name} 
                         onChange={(e) => updateItem(item.id, 'name', e.target.value)} 
                       />
@@ -264,7 +140,7 @@ export default function InvoiceMakerPage() {
                   </div>
                 ))}
                 <Button onClick={addItem} variant="outline" className="w-full border-dashed border-2">
-                  <Plus className="h-4 w-4 mr-2" /> {globalT('add')}
+                  <Plus className="h-4 w-4 mr-2" /> {t('add_item')}
                 </Button>
               </div>
 
@@ -287,7 +163,7 @@ export default function InvoiceMakerPage() {
             {/* Header Invoice */}
             <div className="flex justify-between items-start border-b-4 border-black pb-8 mb-12">
               <div>
-                <h2 className="text-4xl font-black uppercase tracking-tighter leading-none mb-2">{t('invoice_title')}</h2>
+                <h2 className="text-4xl font-black uppercase tracking-tighter leading-none mb-2">{t('title')}</h2>
                 <p className="text-gray-500 font-sans font-bold uppercase tracking-widest text-xs">VersoKit Billing</p>
               </div>
               <div className="text-right">
@@ -298,7 +174,7 @@ export default function InvoiceMakerPage() {
 
             {/* Client Info */}
             <div className="mb-12">
-              <p className="text-xs font-sans font-bold text-gray-400 uppercase tracking-widest mb-1">{t('to')}:</p>
+              <p className="text-xs font-sans font-bold text-gray-400 uppercase tracking-widest mb-1">{t('bill_to')}:</p>
               <p className="text-2xl font-black uppercase">{clientName || (lang === 'id' ? 'NAMA KLIEN' : 'CLIENT NAME')}</p>
             </div>
 
@@ -306,10 +182,10 @@ export default function InvoiceMakerPage() {
             <table className="w-full text-left mb-auto">
               <thead>
                 <tr className="border-b-2 border-black font-sans text-[10px] font-black uppercase tracking-widest">
-                  <th className="py-4">{globalT('item_name')}</th>
+                  <th className="py-4">{t('item_desc')}</th>
                   <th className="py-4 text-center">{t('qty')}</th>
-                  <th className="py-4 text-right">{globalT('price')}</th>
-                  <th className="py-4 text-right">{globalT('total')}</th>
+                  <th className="py-4 text-right">{t('rate')}</th>
+                  <th className="py-4 text-right">{t('amount')}</th>
                 </tr>
               </thead>
               <tbody className="text-sm">
@@ -327,19 +203,19 @@ export default function InvoiceMakerPage() {
             {/* Summary */}
             <div className="mt-12 pt-8 border-t-4 border-black flex justify-end">
               <div className="text-right space-y-1">
-                <p className="text-xs font-sans font-bold text-gray-400 uppercase tracking-widest">{globalT('grand_total')}</p>
+                <p className="text-xs font-sans font-bold text-gray-400 uppercase tracking-widest">{t('total')}</p>
                 <p className="text-5xl font-black">Rp {grandTotal.toLocaleString('id-ID')}</p>
               </div>
             </div>
 
             {/* Privacy Footer for PDF */}
             <div className="mt-8 pt-4 border-t text-center text-[8px] text-gray-400 print:block hidden uppercase tracking-widest font-sans font-bold">
-              {t('privacy_badge')}
+              🔒 Securely generated on device by VersoKit. No data sent to server.
             </div>
 
             {/* Footer Invoice */}
             <div className="mt-20 pt-8 border-t text-center">
-              <p className="text-[10px] font-sans font-bold text-gray-300 uppercase tracking-[0.4em]">{t('footer_msg')}</p>
+              <p className="text-[10px] font-sans font-bold text-gray-300 uppercase tracking-[0.4em]">Thank you for your business</p>
             </div>
           </div>
         </div>
