@@ -54,23 +54,26 @@ const UI_TEXT: Record<string, any> = {
     subtitle: "Professional matchmaking & tournament management",
     config_title: "Configuration",
     roster_title: "Players",
-    generate: "Generate Auto-Schedule",
+    generate: "Generate Schedule",
     leaderboard: "Leaderboard",
     schedule: "Matches",
     points: "Pts",
     win_loss: "W-L",
     swap: "Swap Player",
-    reset: "Reset Tournament",
+    reset: "Reset All",
     add_player: "Add Player",
     export_csv: "Export CSV",
     custom_match: "Custom Match",
     edit_roster: "Manage Roster",
-    rebalance: "Rebalance Future Matches?",
     round: "Round",
     court: "Court",
     duration_total: "Total Duration",
     duration_match: "Match Duration",
     mins: "mins",
+    status_scheduled: "Scheduled",
+    status_finished: "Finished",
+    alert_regen: "Regenerate Schedule?",
+    msg_regen: "Current scores will be lost.",
     skills: { 1: "Newbie", 2: "Beginner", 3: "Intermediate", 4: "Advanced", 5: "Pro" }
   },
   id: {
@@ -78,24 +81,162 @@ const UI_TEXT: Record<string, any> = {
     subtitle: "Manajemen turnamen & matchmaking profesional",
     config_title: "Konfigurasi",
     roster_title: "Pemain",
-    generate: "Buat Jadwal Otomatis",
+    generate: "Buat Jadwal",
     leaderboard: "Klasemen",
     schedule: "Pertandingan",
     points: "Poin",
     win_loss: "M-K",
     swap: "Tukar Pemain",
-    reset: "Reset Turnamen",
+    reset: "Reset Semua",
     add_player: "Tambah Pemain",
     export_csv: "Ekspor CSV",
     custom_match: "Match Manual",
     edit_roster: "Kelola Roster",
-    rebalance: "Rebalance jadwal sisa?",
     round: "Babak",
     court: "Lap.",
     duration_total: "Durasi Sewa",
     duration_match: "Durasi Match",
     mins: "menit",
+    status_scheduled: "Terjadwal",
+    status_finished: "Selesai",
+    alert_regen: "Acak Ulang Jadwal?",
+    msg_regen: "Skor saat ini akan hilang.",
     skills: { 1: "Pemula", 2: "Belajar", 3: "Menengah", 4: "Mahir", 5: "Pro" }
+  },
+  es: {
+    title: "Generador de Partidos de Tenis Pro",
+    subtitle: "Gestión profesional de torneos y emparejamientos",
+    config_title: "Configuración",
+    roster_title: "Jugadores",
+    generate: "Generar Horario",
+    leaderboard: "Clasificación",
+    schedule: "Partidos",
+    points: "Pts",
+    win_loss: "G-P",
+    swap: "Cambiar Jugador",
+    reset: "Reiniciar Todo",
+    add_player: "Añadir Jugador",
+    export_csv: "Exportar CSV",
+    custom_match: "Partido Manual",
+    edit_roster: "Gestionar Lista",
+    round: "Ronda",
+    court: "Pista",
+    duration_total: "Duración Total",
+    duration_match: "Duración Partido",
+    mins: "min",
+    status_scheduled: "Programado",
+    status_finished: "Terminado",
+    alert_regen: "¿Regenerar Horario?",
+    msg_regen: "Las puntuaciones se perderán.",
+    skills: { 1: "Novato", 2: "Principiante", 3: "Intermedio", 4: "Avanzado", 5: "Pro" }
+  },
+  pt: {
+    title: "Gerador de Partidas de Tênis Pro",
+    subtitle: "Gestão profissional de torneios e matchmaking",
+    config_title: "Configuração",
+    roster_title: "Jogadores",
+    generate: "Gerar Horário",
+    leaderboard: "Classificação",
+    schedule: "Partidas",
+    points: "Pts",
+    win_loss: "V-D",
+    swap: "Trocar Jogador",
+    reset: "Reiniciar Tudo",
+    add_player: "Adicionar Jogador",
+    export_csv: "Exportar CSV",
+    custom_match: "Partida Manual",
+    edit_roster: "Gerir Lista",
+    round: "Rodada",
+    court: "Quadra",
+    duration_total: "Duração Total",
+    duration_match: "Duração Partida",
+    mins: "min",
+    status_scheduled: "Agendado",
+    status_finished: "Finalizado",
+    alert_regen: "Regenerar Horário?",
+    msg_regen: "As pontuações serão perdidas.",
+    skills: { 1: "Novato", 2: "Iniciante", 3: "Intermediário", 4: "Avançado", 5: "Pro" }
+  },
+  de: {
+    title: "Tennis-Match-Generator Pro",
+    subtitle: "Professionelles Matchmaking & Turnierverwaltung",
+    config_title: "Konfiguration",
+    roster_title: "Spieler",
+    generate: "Zeitplan erstellen",
+    leaderboard: "Rangliste",
+    schedule: "Spiele",
+    points: "Pkt",
+    win_loss: "S-N",
+    swap: "Spieler tauschen",
+    reset: "Alles zurücksetzen",
+    add_player: "Spieler hinzufügen",
+    export_csv: "CSV Exportieren",
+    custom_match: "Benutzerdefiniertes Match",
+    edit_roster: "Kader verwalten",
+    round: "Runde",
+    court: "Platz",
+    duration_total: "Gesamtdauer",
+    duration_match: "Matchdauer",
+    mins: "min",
+    status_scheduled: "Geplant",
+    status_finished: "Beendet",
+    alert_regen: "Zeitplan neu erstellen?",
+    msg_regen: "Aktuelle Spielstände gehen verloren.",
+    skills: { 1: "Neuling", 2: "Anfänger", 3: "Fortgeschritten", 4: "Profi", 5: "Meister" }
+  },
+  fr: {
+    title: "Générateur de Matchs Pro",
+    subtitle: "Gestion professionnelle de tournois",
+    config_title: "Configuration",
+    roster_title: "Joueurs",
+    generate: "Générer Planning",
+    leaderboard: "Classement",
+    schedule: "Matchs",
+    points: "Pts",
+    win_loss: "V-D",
+    swap: "Echanger",
+    reset: "Tout réinitialiser",
+    add_player: "Ajouter Joueur",
+    export_csv: "Exporter CSV",
+    custom_match: "Match Personnalisé",
+    edit_roster: "Gérer la Liste",
+    round: "Tour",
+    court: "Court",
+    duration_total: "Durée Totale",
+    duration_match: "Durée Match",
+    mins: "min",
+    status_scheduled: "Prévu",
+    status_finished: "Terminé",
+    alert_regen: "Régénérer le planning ?",
+    msg_regen: "Les scores actuels seront perdus.",
+    skills: { 1: "Débutant", 2: "Apprenti", 3: "Intermédiaire", 4: "Avancé", 5: "Pro" }
+  },
+  it: {
+    title: "Generatore Partite Pro",
+    subtitle: "Gestione tornei e matchmaking",
+    config_title: "Configurazione",
+    roster_title: "Giocatori",
+    generate: "Genera Programma",
+    leaderboard: "Classifica",
+    schedule: "Partite",
+    points: "Pti",
+    win_loss: "V-S",
+    swap: "Scambia",
+    reset: "Resetta Tutto",
+    add_player: "Aggiungi Giocatore",
+    export_csv: "Esporta CSV",
+    custom_match: "Partita Manuale",
+    edit_roster: "Gestisci Lista",
+    round: "Turno",
+    court: "Campo",
+    duration_total: "Durata Totale",
+    duration_match: "Durata Partita",
+    mins: "min",
+    status_scheduled: "Programmato",
+    status_finished: "Finito",
+    alert_regen: "Rigenerare Programma?",
+    msg_regen: "I punteggi attuali andranno persi.",
+    skills: { 1: "Novizio", 2: "Principiante", 3: "Intermedio", 4: "Avanzato", 5: "Pro" }
   }
 };
 
@@ -165,12 +306,12 @@ export default function TennisGeneratorPage() {
 
   const handleGenerate = () => {
     if (players.length < 4) {
-      toast({ title: "Min 4 players required", variant: "destructive" });
+      toast({ title: lang === 'id' ? "Min 4 pemain dibutuhkan" : "Min 4 players required", variant: "destructive" });
       return;
     }
-    if (schedule.length > 0 && !confirm("This will overwrite your current schedule. Scores will be lost. Continue?")) return;
+    if (schedule.length > 0 && !confirm(t('msg_regen'))) return;
     generateSchedule();
-    toast({ title: "Schedule Generated!" });
+    toast({ title: lang === 'id' ? "Jadwal Berhasil Dibuat!" : "Schedule Generated!" });
   };
 
   const handleAddCustom = () => {
@@ -178,7 +319,7 @@ export default function TennisGeneratorPage() {
     addCustomMatch(customPlayers[0], customPlayers[1], customPlayers[2], customPlayers[3], customRound, customCourt);
     setIsCustomMatchOpen(false);
     setCustomPlayers(['', '', '', '']);
-    toast({ title: "Custom Match Added" });
+    toast({ title: t('custom_match') });
   };
 
   const exportCSV = () => {
@@ -217,7 +358,7 @@ export default function TennisGeneratorPage() {
             <CardContent className="p-6 space-y-6">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <Label className="text-[10px] font-black uppercase opacity-60">Courts</Label>
+                  <Label className="text-[10px] font-black uppercase opacity-60">{t('court')}</Label>
                   <Input type="number" value={config.courts} onChange={e => setConfig({ courts: parseInt(e.target.value) || 1 })} />
                 </div>
                 <div className="space-y-1">
@@ -234,14 +375,14 @@ export default function TennisGeneratorPage() {
               </div>
 
               <div className="bg-primary/5 p-4 rounded-2xl border border-primary/10">
-                <p className="text-[10px] font-black uppercase text-primary/60 tracking-widest mb-1">Session Summary</p>
+                <p className="text-[10px] font-black uppercase text-primary/60 tracking-widest mb-1">{lang === 'id' ? 'Ringkasan Sesi' : 'Session Summary'}</p>
                 <div className="flex justify-between items-end">
                   <span className="text-2xl font-black text-primary">{Math.floor(config.totalDuration / config.matchDuration)}</span>
-                  <span className="text-xs font-bold text-muted-foreground uppercase">Total Rounds Possible</span>
+                  <span className="text-xs font-bold text-muted-foreground uppercase">{lang === 'id' ? 'Total Babak' : 'Total Rounds Possible'}</span>
                 </div>
               </div>
 
-              <Button onClick={handleGenerate} className="w-full bg-primary font-black uppercase tracking-widest h-12 shadow-lg">
+              <Button onClick={handleGenerate} className="w-full bg-primary text-primary-foreground font-black uppercase tracking-widest h-12 shadow-lg hover:bg-primary/90">
                 <Play className="mr-2 h-4 w-4" /> {t('generate')}
               </Button>
               
@@ -257,35 +398,35 @@ export default function TennisGeneratorPage() {
                     <div className="space-y-4 py-4">
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-1">
-                          <Label className="text-xs font-bold uppercase">Round</Label>
+                          <Label className="text-xs font-bold uppercase">{t('round')}</Label>
                           <Input type="number" value={customRound} onChange={e => setCustomRound(parseInt(e.target.value) || 1)} />
                         </div>
                         <div className="space-y-1">
-                          <Label className="text-xs font-bold uppercase">Court</Label>
+                          <Label className="text-xs font-bold uppercase">{t('court')}</Label>
                           <Input type="number" value={customCourt} onChange={e => setCustomCourt(parseInt(e.target.value) || 1)} />
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <Label className="text-xs font-bold uppercase">Team A</Label>
+                        <Label className="text-xs font-bold uppercase">{lang === 'id' ? 'Tim A' : 'Team A'}</Label>
                         <div className="grid grid-cols-2 gap-2">
                           {[0, 1].map(i => (
                             <Select key={i} value={customPlayers[i]} onValueChange={v => {
                               const cp = [...customPlayers]; cp[i] = v; setCustomPlayers(cp);
                             }}>
-                              <SelectTrigger className="font-bold"><SelectValue placeholder="Player" /></SelectTrigger>
+                              <SelectTrigger className="font-bold"><SelectValue placeholder={t('col_player')} /></SelectTrigger>
                               <SelectContent>{players.map(p => <SelectItem key={p.id} value={p.id}>{p.name}</SelectItem>)}</SelectContent>
                             </Select>
                           ))}
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <Label className="text-xs font-bold uppercase">Team B</Label>
+                        <Label className="text-xs font-bold uppercase">{lang === 'id' ? 'Tim B' : 'Team B'}</Label>
                         <div className="grid grid-cols-2 gap-2">
                           {[2, 3].map(i => (
                             <Select key={i} value={customPlayers[i]} onValueChange={v => {
                               const cp = [...customPlayers]; cp[i] = v; setCustomPlayers(cp);
                             }}>
-                              <SelectTrigger className="font-bold"><SelectValue placeholder="Player" /></SelectTrigger>
+                              <SelectTrigger className="font-bold"><SelectValue placeholder={t('col_player')} /></SelectTrigger>
                               <SelectContent>{players.map(p => <SelectItem key={p.id} value={p.id}>{p.name}</SelectItem>)}</SelectContent>
                             </Select>
                           ))}
@@ -317,7 +458,7 @@ export default function TennisGeneratorPage() {
                     <SelectTrigger className="font-bold flex-1"><SelectValue /></SelectTrigger>
                     <SelectContent>{[1,2,3,4,5].map(s => <SelectItem key={s} value={s.toString()}>{skills[s]}</SelectItem>)}</SelectContent>
                   </Select>
-                  <Button onClick={handleAddPlayer} className="bg-accent font-black uppercase tracking-widest h-10 px-6">
+                  <Button onClick={handleAddPlayer} className="bg-accent text-accent-foreground font-black uppercase tracking-widest h-10 px-6 hover:bg-accent/90">
                     <UserPlus className="h-4 w-4" />
                   </Button>
                 </div>
@@ -338,7 +479,7 @@ export default function TennisGeneratorPage() {
                           <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-primary"><Edit className="h-4 w-4" /></Button>
                         </DialogTrigger>
                         <DialogContent className="rounded-3xl max-w-sm">
-                          <DialogHeader><DialogTitle className="font-black uppercase">Edit {p.name}</DialogTitle></DialogHeader>
+                          <DialogHeader><DialogTitle className="font-black uppercase">{lang === 'id' ? 'Edit' : 'Edit'} {p.name}</DialogTitle></DialogHeader>
                           <div className="space-y-4 py-4">
                             <Input value={p.name} onChange={e => updatePlayer(p.id, { name: e.target.value.toUpperCase() })} className="font-bold uppercase" />
                             <Select value={p.skill.toString()} onValueChange={v => updatePlayer(p.id, { skill: parseInt(v) as SkillLevel })}>
@@ -427,14 +568,14 @@ export default function TennisGeneratorPage() {
         {/* LEADERBOARD */}
         <div className="lg:col-span-3 space-y-8">
           <Card className="shadow-xl border-2 rounded-[2.5rem] overflow-hidden sticky top-24">
-            <CardHeader className="bg-accent p-6 text-white border-b">
+            <CardHeader className="bg-accent p-6 text-accent-foreground border-b">
               <CardTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-2"><Trophy className="h-4 w-4" /> {t('leaderboard')}</CardTitle>
             </CardHeader>
             <CardContent className="p-0">
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead className="bg-muted/50 text-[10px] font-black uppercase tracking-widest text-muted-foreground border-b">
-                    <tr><th className="p-4 text-center w-10">#</th><th className="p-4 text-left">PLAYER</th><th className="p-4 text-center w-12 text-primary">{t('points')}</th></tr>
+                    <tr><th className="p-4 text-center w-10">#</th><th className="p-4 text-left">{t('col_player')}</th><th className="p-4 text-center w-12 text-primary">{t('points')}</th></tr>
                   </thead>
                   <tbody className="divide-y">
                     {leaderboard.map((p, i) => (
@@ -463,13 +604,13 @@ export default function TennisGeneratorPage() {
             <Select onValueChange={v => {
               if (swapData) swapPlayer(swapData.matchId, swapData.team, swapData.index, v);
               setSwapData(null);
-              toast({ title: "Player Swapped" });
+              toast({ title: lang === 'id' ? "Pemain Ditukar" : "Player Swapped" });
             }}>
-              <SelectTrigger className="font-bold"><SelectValue placeholder="Select New Player" /></SelectTrigger>
+              <SelectTrigger className="font-bold"><SelectValue placeholder={lang === 'id' ? "Pilih Pemain Baru" : "Select New Player"} /></SelectTrigger>
               <SelectContent>
                 {players.map(p => {
                   const schedCount = schedule.filter(m => m.status === 'scheduled' && (m.team1.includes(p.id) || m.team2.includes(p.id))).length;
-                  return <SelectItem key={p.id} value={p.id}>{p.name} (Sisa: {schedCount})</SelectItem>;
+                  return <SelectItem key={p.id} value={p.id}>{p.name} ({lang === 'id' ? 'Sisa' : 'Left'}: {schedCount})</SelectItem>;
                 })}
               </SelectContent>
             </Select>
