@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -29,7 +28,7 @@ export default function Header() {
       label: t('cat_sports'),
       icon: <Trophy className="h-4 w-4 mr-2" />,
       items: [
-        { href: '/tools/padel-americano', label: 'Padel Americano' },
+        { href: '/tools/americano', label: 'Americano Generator' },
         { href: '/tools/futsal', label: t('futsal') },
         { href: '/tools/tennis', label: 'Tennis Match Generator' },
         { href: '/tools/lineup-builder', label: t('lineup') },

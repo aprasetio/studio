@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useMemo } from 'react';
@@ -50,12 +49,12 @@ const TOOLS_DATA: Tool[] = [
   // Sports
   { 
     id: 'americano', 
-    href: '/tools/padel-americano', 
+    href: '/tools/americano', 
     icon: <Activity className="h-6 w-6" />, 
     category: 'sports', 
     isNew: true,
-    name: { en: "Padel Americano", id: "Padel Americano", es: "Padel Americano", de: "Padel Americano", pt: "Padel Americano", fr: "Padel Americano", it: "Padel Americano" },
-    desc: { en: "Fair partner rotation and scoring.", id: "Rotasi partner adil dan skor otomatis.", es: "Rotación de parejas y puntuación.", de: "Partner-Rotation und Wertung.", pt: "Rotação de parceiros e placar.", fr: "Rotation des partenaires et score.", it: "Rotazione partner e punteggio." }
+    name: { en: "Americano Generator", id: "Generator Americano", es: "Generator Americano", de: "Americano Generator", pt: "Gerador Americano", fr: "Générateur Americano", it: "Generatore Americano" },
+    desc: { en: "Fair partner rotation for Padel & Pickleball.", id: "Rotasi partner adil untuk Padel & Pickleball.", es: "Rotación de parejas para Pádel.", de: "Partner-Rotation für Padel & Pickleball.", pt: "Rotação de parceiros para Padel.", fr: "Rotation des partenaires.", it: "Rotazione partner." }
   },
   { 
     id: 'tennis', 
