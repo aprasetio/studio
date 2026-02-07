@@ -21,6 +21,7 @@ import { DataControl } from '@/components/DataControl';
 import { useLang } from '@/components/Providers';
 import { SeoContent } from '@/components/seo-content';
 import { DataPersistence } from '@/components/DataPersistence';
+import { ArticleSection } from '@/components/ArticleSection';
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -393,6 +394,8 @@ export default function UniversalScoreboardPage() {
           onRestore={handleRestore} 
           fileNamePrefix="versokit-scoreboard" 
         />
+
+        <ArticleSection toolId="scoreboard" />
 
         <SmartAd />
         

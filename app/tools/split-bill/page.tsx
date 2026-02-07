@@ -10,6 +10,7 @@ import { Users, Receipt, Send, Banknote, Percent, RotateCcw } from 'lucide-react
 import { toast } from '@/hooks/use-toast';
 import { SeoContent } from '@/components/seo-content';
 import { DataPersistence } from '@/components/DataPersistence';
+import { ArticleSection } from '@/components/ArticleSection';
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -305,6 +306,8 @@ export default function SplitBillPage() {
           />
         </div>
       </div>
+
+      <ArticleSection toolId="split-bill" />
 
       <SeoContent toolId="split-bill" />
     </div>
