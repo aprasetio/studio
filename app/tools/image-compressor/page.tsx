@@ -6,122 +6,136 @@ import { useLang } from '@/components/Providers';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
-import { Image as ImageIcon, Download, Upload, Zap, ShieldCheck } from 'lucide-react';
+import { Image as ImageIcon, Download, Upload, Zap, ShieldCheck, RotateCcw } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
-import { SeoContent } from '@/components/seo-content';
+import { SeoContent } from '@/components/SeoContent';
 import { SmartAd } from '@/components/smart-ad';
 import { ArticleSection } from '@/components/ArticleSection';
 
 const UI_TEXT: Record<string, any> = {
   en: {
-    upload_title: "Upload Image",
+    title: "Image Compressor",
+    upload: "Upload Image",
+    download: "Download Result",
+    reset: "Reset",
+    quality: "Quality",
+    original_size: "Original Size",
+    compressed_size: "Compressed Size",
     click_to_choose: "Click to Choose Image",
     supports: "Supports JPG, PNG, WebP",
-    original_size: "Original Size",
-    quality: "Quality",
     compress: "Compress",
     processing: "Processing...",
     result_title: "Compression Result",
-    new_size: "New Size",
     type: "Type",
     saving: "Smaller",
-    download: "Download",
     no_result: "No result yet"
   },
   id: {
-    upload_title: "Upload Gambar",
+    title: "Kompres Foto",
+    upload: "Unggah Gambar",
+    download: "Unduh Hasil",
+    reset: "Ulangi",
+    quality: "Kualitas",
+    original_size: "Ukuran Asli",
+    compressed_size: "Ukuran Kompres",
     click_to_choose: "Klik untuk Pilih Gambar",
     supports: "Mendukung JPG, PNG, WebP",
-    original_size: "Ukuran Asli",
-    quality: "Kualitas",
     compress: "Kompres",
     processing: "Memproses...",
     result_title: "Hasil Kompresi",
-    new_size: "Ukuran Baru",
     type: "Tipe",
     saving: "Lebih Kecil",
-    download: "Unduh",
     no_result: "Belum ada hasil"
   },
-  es: {
-    upload_title: "Subir Imagen",
-    click_to_choose: "Clic para elegir imagen",
-    supports: "Soporta JPG, PNG, WebP",
-    original_size: "Tamaño original",
-    quality: "Calidad",
-    compress: "Comprimir",
-    processing: "Procesando...",
-    result_title: "Resultado de compresión",
-    new_size: "Nuevo tamaño",
-    type: "Tipo",
-    saving: "Más pequeño",
-    download: "Descargar",
-    no_result: "Sin resultados"
-  },
-  pt: {
-    upload_title: "Carregar Imagem",
-    click_to_choose: "Clique para escolher imagem",
-    supports: "Suporta JPG, PNG, WebP",
-    original_size: "Tamanho original",
-    quality: "Qualidade",
-    compress: "Comprimir",
-    processing: "Processando...",
-    result_title: "Resultado da compressão",
-    new_size: "Novo tamanho",
-    type: "Tipo",
-    saving: "Menor",
-    download: "Baixar",
-    no_result: "Nenhum resultado"
-  },
   de: {
-    upload_title: "Bild hochladen",
+    title: "Bildkompressor",
+    upload: "Bild hochladen",
+    download: "Ergebnis herunterladen",
+    reset: "Zurücksetzen",
+    quality: "Qualität",
+    original_size: "Originalgröße",
+    compressed_size: "Komprimierte Größe",
     click_to_choose: "Klicken Sie hier, um ein Bild auszuwählen",
     supports: "Unterstützt JPG, PNG, WebP",
-    original_size: "Originalgröße",
-    quality: "Qualität",
     compress: "Komprimieren",
     processing: "Wird bearbeitet...",
     result_title: "Kompressionsergebnis",
-    new_size: "Neue Größe",
     type: "Typ",
     saving: "Kleiner",
-    download: "Herunterladen",
     no_result: "Noch kein Ergebnis"
   },
+  es: {
+    title: "Compresor de Imágenes",
+    upload: "Subir Imagen",
+    download: "Descargar Resultado",
+    reset: "Reiniciar",
+    quality: "Calidad",
+    original_size: "Tamaño Original",
+    compressed_size: "Tamaño Comprimido",
+    click_to_choose: "Clic para elegir imagen",
+    supports: "Soporta JPG, PNG, WebP",
+    compress: "Comprimir",
+    processing: "Procesando...",
+    result_title: "Resultado de compresión",
+    type: "Tipo",
+    saving: "Más pequeño",
+    no_result: "Sin resultados"
+  },
+  pt: {
+    title: "Compressor de Imagem",
+    upload: "Carregar Imagem",
+    download: "Baixar Resultado",
+    reset: "Reiniciar",
+    quality: "Qualidade",
+    original_size: "Tamanho Original",
+    compressed_size: "Tamanho Comprimido",
+    click_to_choose: "Clique para escolher imagem",
+    supports: "Suporta JPG, PNG, WebP",
+    compress: "Comprimir",
+    processing: "Processando...",
+    result_title: "Resultado da compressão",
+    type: "Tipo",
+    saving: "Menor",
+    no_result: "Nenhum resultado"
+  },
   fr: {
-    upload_title: "Charger l'image",
+    title: "Compresseur d'Image",
+    upload: "Télécharger Image",
+    download: "Télécharger Résultat",
+    reset: "Réinitialiser",
+    quality: "Qualité",
+    original_size: "Taille Originale",
+    compressed_size: "Taille Compressée",
     click_to_choose: "Cliquer pour choisir l'image",
     supports: "Supporte JPG, PNG, WebP",
-    original_size: "Taille originale",
-    quality: "Qualité",
     compress: "Compresser",
     processing: "Traitement...",
     result_title: "Résultat de la compression",
-    new_size: "Nouvelle taille",
     type: "Type",
     saving: "Plus petit",
-    download: "Télécharger",
     no_result: "Aucun résultat"
   },
   it: {
-    upload_title: "Carica immagine",
+    title: "Compressore Immagini",
+    upload: "Carica Immagine",
+    download: "Scarica Risultato",
+    reset: "Reset",
+    quality: "Qualità",
+    original_size: "Dimensione Originale",
+    compressed_size: "Dimensione Compressa",
     click_to_choose: "Fai clic per scegliere l'immagine",
     supports: "Supporta JPG, PNG, WebP",
-    original_size: "Dimensione originale",
-    quality: "Qualità",
     compress: "Comprimi",
     processing: "Elaborazione...",
     result_title: "Risultato della compressione",
-    new_size: "Nuova dimensione",
     type: "Tipo",
     saving: "Più piccolo",
-    download: "Scarica",
     no_result: "Nessun risultato"
   }
 };
 
 export default function ImageCompressorPage() {
-  const { t: globalT, lang } = useLang();
+  const { lang } = useLang();
   const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
 
   const [originalImage, setOriginalImage] = useState<File | null>(null);
@@ -135,6 +149,12 @@ export default function ImageCompressorPage() {
       setOriginalImage(file);
       setCompressedImage(null);
     }
+  };
+
+  const handleReset = () => {
+    setOriginalImage(null);
+    setCompressedImage(null);
+    setQuality([80]);
   };
 
   const compress = async () => {
@@ -180,7 +200,7 @@ export default function ImageCompressorPage() {
   return (
     <div className="flex flex-col items-center p-6 md:p-12 max-w-7xl mx-auto w-full gap-8">
       <div className="text-center space-y-3">
-        <h1 className="text-4xl font-black uppercase tracking-tighter text-foreground">{globalT('image_compressor')}</h1>
+        <h1 className="text-4xl font-black uppercase tracking-tighter text-foreground">{t('title')}</h1>
         <div className="flex items-center justify-center gap-2 text-green-600 font-bold text-sm uppercase tracking-widest bg-green-50 px-4 py-1 rounded-full border border-green-100">
           <ShieldCheck className="h-4 w-4" />
           100% Private & Offline
@@ -189,11 +209,16 @@ export default function ImageCompressorPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-5xl mx-auto">
         <Card className="shadow-lg border-2">
-          <CardHeader>
+          <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle className="text-xl font-bold flex items-center gap-2 uppercase">
               <Upload className="h-5 w-5 text-primary" />
-              {t('upload_title')}
+              {t('upload')}
             </CardTitle>
+            {originalImage && (
+              <Button variant="ghost" size="sm" onClick={handleReset} className="text-muted-foreground hover:text-destructive">
+                <RotateCcw className="h-4 w-4 mr-1" /> {t('reset')}
+              </Button>
+            )}
           </CardHeader>
           <CardContent className="space-y-8">
             <div 
@@ -270,7 +295,7 @@ export default function ImageCompressorPage() {
 
                 <div className="grid grid-cols-2 gap-4">
                    <div className="bg-muted/50 p-4 rounded-2xl text-center">
-                    <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-1">{t('new_size')}</p>
+                    <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-1">{t('compressed_size')}</p>
                     <p className="text-2xl font-black">{formatSize(compressedImage.size)}</p>
                   </div>
                   <div className="bg-muted/50 p-4 rounded-2xl text-center">

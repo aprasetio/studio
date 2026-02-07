@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLang } from '@/components/Providers';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Image as ImageIcon, Download, Upload, Maximize, ShieldCheck, Zap } from 'lucide-react';
+import { Image as ImageIcon, Download, Upload, Maximize, ShieldCheck, Zap, RotateCcw } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import { SeoContent } from '@/components/SeoContent';
 import { SmartAd } from '@/components/smart-ad';
@@ -18,31 +18,98 @@ const UI_TEXT: Record<string, any> = {
   en: {
     title: "Image Resizer",
     upload: "Upload Image",
+    download: "Download Result",
+    reset: "Reset",
+    quality: "Quality",
     width: "Width (px)",
     height: "Height (px)",
-    lock: "Lock Aspect Ratio",
-    quality: "Quality",
-    resize: "Resize & Download",
-    original: "Original",
-    new: "New Size",
+    lock_ratio: "Lock Aspect Ratio",
+    original_size: "Original",
+    compressed_size: "New Size",
     processing: "Processing..."
   },
   id: {
-    title: "Ubah Ukuran Gambar",
-    upload: "Upload Gambar",
+    title: "Ubah Ukuran Foto",
+    upload: "Unggah Gambar",
+    download: "Unduh Hasil",
+    reset: "Ulangi",
+    quality: "Kualitas",
     width: "Lebar (px)",
     height: "Tinggi (px)",
-    lock: "Kunci Rasio",
-    quality: "Kualitas",
-    resize: "Ubah & Unduh",
-    original: "Asli",
-    new: "Ukuran Baru",
+    lock_ratio: "Kunci Rasio Aspek",
+    original_size: "Asli",
+    compressed_size: "Ukuran Baru",
     processing: "Memproses..."
+  },
+  de: {
+    title: "Bildgröße ändern",
+    upload: "Bild hochladen",
+    download: "Ergebnis herunterladen",
+    reset: "Zurücksetzen",
+    quality: "Qualität",
+    width: "Breite (px)",
+    height: "Höhe (px)",
+    lock_ratio: "Seitenverhältnis sperren",
+    original_size: "Original",
+    compressed_size: "Neue Größe",
+    processing: "Verarbeitung..."
+  },
+  es: {
+    title: "Redimensionar Imagen",
+    upload: "Subir Imagen",
+    download: "Descargar Resultado",
+    reset: "Reiniciar",
+    quality: "Calidad",
+    width: "Ancho (px)",
+    height: "Alto (px)",
+    lock_ratio: "Bloquear Relación de Aspecto",
+    original_size: "Original",
+    compressed_size: "Nuevo Tamaño",
+    processing: "Procesando..."
+  },
+  pt: {
+    title: "Redimensionar Imagem",
+    upload: "Carregar Imagem",
+    download: "Baixar Resultado",
+    reset: "Reiniciar",
+    quality: "Qualidade",
+    width: "Largura (px)",
+    height: "Altura (px)",
+    lock_ratio: "Bloquear Proporção",
+    original_size: "Original",
+    compressed_size: "Novo Tamanho",
+    processing: "Processando..."
+  },
+  fr: {
+    title: "Redimensionner Image",
+    upload: "Télécharger Image",
+    download: "Télécharger Résultat",
+    reset: "Réinitialiser",
+    quality: "Qualité",
+    width: "Largeur (px)",
+    height: "Hauteur (px)",
+    lock_ratio: "Verrouiller Ratio",
+    original_size: "Original",
+    compressed_size: "Nouvelle Taille",
+    processing: "Traitement..."
+  },
+  it: {
+    title: "Ridimensiona Immagine",
+    upload: "Carica Immagine",
+    download: "Scarica Risultato",
+    reset: "Reset",
+    quality: "Qualità",
+    width: "Larghezza (px)",
+    height: "Altezza (px)",
+    lock_ratio: "Blocca Proporzioni",
+    original_size: "Originale",
+    compressed_size: "Nuova Dimensione",
+    processing: "Elaborazione..."
   }
 };
 
 export default function ImageResizerPage() {
-  const { lang, t: globalT } = useLang();
+  const { lang } = useLang();
   const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
 
   const [image, setImage] = useState<HTMLImageElement | null>(null);
@@ -73,10 +140,18 @@ export default function ImageResizerPage() {
     reader.readAsDataURL(file);
   };
 
+  const handleReset = () => {
+    setImage(null);
+    setOriginalFile(null);
+    setWidth(0);
+    setHeight(0);
+    setQuality([90]);
+  };
+
   const handleWidthChange = (val: string) => {
     const w = parseInt(val) || 0;
     setWidth(w);
-    if (lockRatio && w > 0) {
+    if (lockRatio && w > 0 && aspectRatio > 0) {
       setHeight(Math.round(w / aspectRatio));
     }
   };
@@ -84,7 +159,7 @@ export default function ImageResizerPage() {
   const handleHeightChange = (val: string) => {
     const h = parseInt(val) || 0;
     setHeight(h);
-    if (lockRatio && h > 0) {
+    if (lockRatio && h > 0 && aspectRatio > 0) {
       setWidth(Math.round(h * aspectRatio));
     }
   };
@@ -124,11 +199,16 @@ export default function ImageResizerPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-5xl">
         <Card className="shadow-lg border-2">
-          <CardHeader>
+          <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle className="text-xl font-bold flex items-center gap-2 uppercase">
               <Upload className="h-5 w-5 text-primary" />
               {t('upload')}
             </CardTitle>
+            {image && (
+              <Button variant="ghost" size="sm" onClick={handleReset} className="text-muted-foreground hover:text-destructive">
+                <RotateCcw className="h-4 w-4 mr-1" /> {t('reset')}
+              </Button>
+            )}
           </CardHeader>
           <CardContent className="space-y-6">
             <div 
@@ -155,7 +235,7 @@ export default function ImageResizerPage() {
 
                 <div className="flex items-center space-x-2">
                   <Checkbox id="lock" checked={lockRatio} onCheckedChange={(v) => setLockRatio(!!v)} />
-                  <label htmlFor="lock" className="text-xs font-bold uppercase cursor-pointer">{t('lock')}</label>
+                  <label htmlFor="lock" className="text-xs font-bold uppercase cursor-pointer">{t('lock_ratio')}</label>
                 </div>
 
                 <div className="space-y-4">
@@ -165,7 +245,7 @@ export default function ImageResizerPage() {
 
                 <Button onClick={handleResize} disabled={isProcessing} className="w-full h-14 bg-primary font-black uppercase tracking-[0.2em] shadow-xl">
                   {isProcessing ? <Zap className="mr-2 h-5 w-5 animate-pulse" /> : <Maximize className="mr-2 h-5 w-5" />}
-                  {isProcessing ? t('processing') : t('resize')}
+                  {isProcessing ? t('processing') : t('download')}
                 </Button>
               </div>
             )}
@@ -179,8 +259,8 @@ export default function ImageResizerPage() {
                 <img src={image.src} alt="Preview" className="max-w-full max-h-full object-contain" />
               </div>
               <div className="flex justify-between items-center text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
-                <span>{t('original')}: {image.width}x{image.height}</span>
-                <span className="text-primary">{t('new')}: {width}x{height}</span>
+                <span>{t('original_size')}: {image.width}x{image.height}</span>
+                <span className="text-primary">{t('compressed_size')}: {width}x{height}</span>
               </div>
             </div>
           ) : (

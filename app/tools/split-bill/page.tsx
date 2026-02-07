@@ -8,143 +8,143 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Users, Receipt, Send, Banknote, Percent, RotateCcw } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
-import { SeoContent } from '@/components/seo-content';
+import { SeoContent } from '@/components/SeoContent';
 import { DataPersistence } from '@/components/DataPersistence';
 import { ArticleSection } from '@/components/ArticleSection';
 
 const UI_TEXT: Record<string, any> = {
   en: {
     title: "Split Bill",
+    bill_details: "Bill Details",
     total_bill: "Total Bill Amount",
-    tax: "Tax/Service (%)",
+    tax: "Tax (%)",
+    service: "Service Charge (%)",
     add_person: "Participants",
     calculate: "Calculate Split",
     reset: "Reset",
-    result_title: "Bill Details",
+    per_person: "Per Person",
     name_placeholder: "Budi, Ani, Joko...",
-    price_placeholder: "Items Price",
     copy_wa: "Copy to WhatsApp",
     copied: "Copied!",
     share_intro: "Here is the bill detail:",
-    per_person: "Per Person",
-    participants_count: "Participants",
     pay_to: "Pay to:",
     transfer_msg: "Please transfer soon!",
-    subtotal_tax: "Subtotal + Tax"
+    subtotal_tax: "Subtotal + Fees",
+    participants_count: "Count"
   },
   id: {
-    title: "Hitung Patungan",
-    total_bill: "Total Tagihan",
-    tax: "Pajak/Layanan (%)",
+    title: "Bagi Tagihan",
+    bill_details: "Rincian Tagihan",
+    total_bill: "Total Nominal Tagihan",
+    tax: "Pajak (%)",
+    service: "Layanan (%)",
     add_person: "Peserta",
     calculate: "Hitung Pembagian",
-    reset: "Ulangi",
-    result_title: "Detail Tagihan",
+    reset: "Reset",
+    per_person: "Per Orang",
     name_placeholder: "Budi, Ani, Joko...",
-    price_placeholder: "Harga Makanan",
     copy_wa: "Salin ke WA",
     copied: "Tersalin!",
     share_intro: "Berikut detail tagihan:",
-    per_person: "Per Orang",
-    participants_count: "Jumlah Peserta",
     pay_to: "Bayar ke:",
     transfer_msg: "Silakan transfer segera ya!",
-    subtotal_tax: "Subtotal + Pajak"
-  },
-  es: {
-    title: "Dividir Cuenta",
-    total_bill: "Monto Total",
-    tax: "Impuestos/Servicio (%)",
-    add_person: "Participantes",
-    calculate: "Calcular División",
-    reset: "Reiniciar",
-    result_title: "Detalles de la Cuenta",
-    name_placeholder: "Budi, Ani, Joko...",
-    price_placeholder: "Precio de Items",
-    copy_wa: "Copiar a WhatsApp",
-    copied: "¡Copiado!",
-    share_intro: "Aquí están los detalles de la cuenta:",
-    per_person: "Por Persona",
-    participants_count: "Participantes",
-    pay_to: "Pagar a:",
-    transfer_msg: "¡Por favor transfiera pronto!",
-    subtotal_tax: "Subtotal + Impuestos"
-  },
-  pt: {
-    title: "Dividir Conta",
-    total_bill: "Valor Total da Conta",
-    tax: "Imposto/Serviço (%)",
-    add_person: "Participantes",
-    calculate: "Calcular Divisão",
-    reset: "Resetar",
-    result_title: "Detalhes da Conta",
-    name_placeholder: "Budi, Ani, Joko...",
-    price_placeholder: "Preço dos Itens",
-    copy_wa: "Copiar para WhatsApp",
-    copied: "Copiado!",
-    share_intro: "Aqui estão os detalhes da conta:",
-    per_person: "Por Pessoa",
-    participants_count: "Participantes",
-    pay_to: "Pagar para:",
-    transfer_msg: "Por favor, transfira em breve!",
-    subtotal_tax: "Subtotal + Imposto"
+    subtotal_tax: "Subtotal + Biaya",
+    participants_count: "Jumlah"
   },
   de: {
     title: "Rechnung teilen",
-    total_bill: "Gesamtbetrag",
-    tax: "Steuer/Service (%)",
-    add_person: "Teilnehmer",
+    bill_details: "Rechnungsdetails",
+    total_bill: "Gesamtrechnungsbetrag",
+    tax: "Steuer (%)",
+    service: "Servicegebühr (%)",
+    add_person: "Person hinzufügen",
     calculate: "Aufteilung berechnen",
     reset: "Zurücksetzen",
-    result_title: "Rechnungsdetails",
-    name_placeholder: "Budi, Ani, Joko...",
-    price_placeholder: "Preis der Artikel",
+    per_person: "Pro Person",
+    name_placeholder: "Hans, Peter, Lisa...",
     copy_wa: "In WhatsApp kopieren",
     copied: "Kopiert!",
     share_intro: "Hier sind die Rechnungsdetails:",
-    per_person: "Pro Person",
-    participants_count: "Teilnehmer",
     pay_to: "Zahlen an:",
     transfer_msg: "Bitte bald überweisen!",
-    subtotal_tax: "Zwischensumme + Steuer"
+    subtotal_tax: "Zwischensumme + Gebühren",
+    participants_count: "Anzahl"
+  },
+  es: {
+    title: "Dividir Cuenta",
+    bill_details: "Detalles de la Cuenta",
+    total_bill: "Monto Total",
+    tax: "Impuesto (%)",
+    service: "Servicio (%)",
+    add_person: "Añadir Persona",
+    calculate: "Calcular División",
+    reset: "Reiniciar",
+    per_person: "Por Persona",
+    name_placeholder: "Juan, Maria, Carlos...",
+    copy_wa: "Copiar a WhatsApp",
+    copied: "¡Copiado!",
+    share_intro: "Aquí están los detalles de la cuenta:",
+    pay_to: "Pagar a:",
+    transfer_msg: "¡Por favor transfiera pronto!",
+    subtotal_tax: "Subtotal + Tasas",
+    participants_count: "Total"
+  },
+  pt: {
+    title: "Dividir Conta",
+    bill_details: "Detalhes da Conta",
+    total_bill: "Valor Total",
+    tax: "Imposto (%)",
+    service: "Taxa de Serviço (%)",
+    add_person: "Adicionar Pessoa",
+    calculate: "Calcular Divisão",
+    reset: "Reiniciar",
+    per_person: "Por Pessoa",
+    name_placeholder: "João, Maria, Pedro...",
+    copy_wa: "Copiar para WhatsApp",
+    copied: "Copiado!",
+    share_intro: "Aqui estão os detalhes da conta:",
+    pay_to: "Pagar para:",
+    transfer_msg: "Por favor, transfira em breve!",
+    subtotal_tax: "Subtotal + Taxas",
+    participants_count: "Total"
   },
   fr: {
     title: "Partager l'Addition",
+    bill_details: "Détails de la Facture",
     total_bill: "Montant Total",
-    tax: "Taxe/Service (%)",
-    add_person: "Participants",
+    tax: "Taxe (%)",
+    service: "Service (%)",
+    add_person: "Ajouter Personne",
     calculate: "Calculer Partage",
     reset: "Réinitialiser",
-    result_title: "Détails de l'Addition",
-    name_placeholder: "Budi, Ani, Joko...",
-    price_placeholder: "Prix des Articles",
+    per_person: "Par Personne",
+    name_placeholder: "Jean, Marie, Paul...",
     copy_wa: "Copier vers WhatsApp",
     copied: "Copié !",
     share_intro: "Voici les détails de l'addition :",
-    per_person: "Par Personne",
-    participants_count: "Participants",
     pay_to: "Payer à :",
     transfer_msg: "Merci de transférer rapidement !",
-    subtotal_tax: "Sous-total + Taxe"
+    subtotal_tax: "Sous-total + Frais",
+    participants_count: "Nombre"
   },
   it: {
-    title: "Dividi il Conto",
+    title: "Dividi Conto",
+    bill_details: "Dettagli Conto",
     total_bill: "Importo Totale",
-    tax: "Tassa/Servizio (%)",
-    add_person: "Partecipanti",
+    tax: "Tasse (%)",
+    service: "Servizio (%)",
+    add_person: "Aggiungi Persona",
     calculate: "Calcola Divisione",
     reset: "Reset",
-    result_title: "Dettagli Conto",
-    name_placeholder: "Budi, Ani, Joko...",
-    price_placeholder: "Prezzo Articoli",
+    per_person: "A Persona",
+    name_placeholder: "Mario, Anna, Luca...",
     copy_wa: "Copia su WhatsApp",
     copied: "Copiato!",
     share_intro: "Ecco i dettagli del conto:",
-    per_person: "Per Persona",
-    participants_count: "Partecipanti",
     pay_to: "Paga a:",
     transfer_msg: "Si prega di trasferire presto!",
-    subtotal_tax: "Subtotale + Tassa"
+    subtotal_tax: "Subtotale + Oneri",
+    participants_count: "Totale"
   }
 };
 
@@ -154,19 +154,23 @@ export default function SplitBillPage() {
 
   const [totalBill, setTotalBill] = useState<string>('0');
   const [taxPercent, setTaxPercent] = useState<string>('0');
+  const [servicePercent, setServicePercent] = useState<string>('0');
   const [names, setNames] = useState<string>('');
   const [bankInfo, setBankInfo] = useState<string>('');
 
   const billValue = parseFloat(totalBill) || 0;
   const taxValue = parseFloat(taxPercent) || 0;
-  const totalWithTax = billValue + (billValue * (taxValue / 100));
+  const serviceValue = parseFloat(servicePercent) || 0;
+  
+  const totalWithFees = billValue + (billValue * (taxValue / 100)) + (billValue * (serviceValue / 100));
   
   const participants = names.split(',').map(n => n.trim()).filter(n => n !== '');
-  const amountPerPerson = participants.length > 0 ? Math.ceil(totalWithTax / participants.length) : 0;
+  const amountPerPerson = participants.length > 0 ? Math.ceil(totalWithFees / participants.length) : 0;
 
   const handleReset = () => {
     setTotalBill('0');
     setTaxPercent('0');
+    setServicePercent('0');
     setNames('');
     setBankInfo('');
   };
@@ -180,7 +184,7 @@ export default function SplitBillPage() {
     const message = `*${t('title').toUpperCase()}* 💸\n` +
       `--------------------------\n` +
       `${t('share_intro')}\n\n` +
-      `Total: *Rp ${totalWithTax.toLocaleString('id-ID')}*\n` +
+      `Total: *Rp ${totalWithFees.toLocaleString('id-ID')}*\n` +
       `${t('per_person')}: *Rp ${amountPerPerson.toLocaleString('id-ID')}*\n\n` +
       `*${t('add_person')} (${participants.length}):*\n` +
       `${participants.map(p => `• ${p}`).join('\n')}\n\n` +
@@ -190,11 +194,12 @@ export default function SplitBillPage() {
     toast({ title: t('copied'), description: lang === 'id' ? "Tempel di WhatsApp sekarang." : "Paste in WhatsApp now." });
   };
 
-  const splitBillState = { totalBill, taxPercent, names, bankInfo };
+  const splitBillState = { totalBill, taxPercent, servicePercent, names, bankInfo };
 
   const handleRestore = (data: any) => {
     if (data.totalBill !== undefined) setTotalBill(data.totalBill);
     if (data.taxPercent !== undefined) setTaxPercent(data.taxPercent);
+    if (data.servicePercent !== undefined) setServicePercent(data.servicePercent);
     if (data.names !== undefined) setNames(data.names);
     if (data.bankInfo !== undefined) setBankInfo(data.bankInfo);
   };
@@ -213,7 +218,7 @@ export default function SplitBillPage() {
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle className="text-xl font-bold flex items-center gap-2 uppercase">
               <Receipt className="h-5 w-5 text-primary" />
-              {t('result_title')}
+              {t('bill_details')}
             </CardTitle>
             <Button variant="ghost" size="sm" onClick={handleReset} className="text-muted-foreground hover:text-destructive">
               <RotateCcw className="h-4 w-4 mr-1" /> {t('reset')}
@@ -228,11 +233,20 @@ export default function SplitBillPage() {
               </div>
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="tax">{t('tax')}</Label>
-              <div className="relative">
-                <Percent className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                <Input id="tax" type="number" value={taxPercent} onChange={(e) => setTaxPercent(e.target.value)} className="pl-10 h-12" />
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="tax">{t('tax')}</Label>
+                <div className="relative">
+                  <Percent className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                  <Input id="tax" type="number" value={taxPercent} onChange={(e) => setTaxPercent(e.target.value)} className="pl-10 h-12" />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="service">{t('service')}</Label>
+                <div className="relative">
+                  <Percent className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                  <Input id="service" type="number" value={servicePercent} onChange={(e) => setServicePercent(e.target.value)} className="pl-10 h-12" />
+                </div>
               </div>
             </div>
 
@@ -276,7 +290,7 @@ export default function SplitBillPage() {
               <div className="space-y-4">
                 <div className="flex justify-between items-center p-4 bg-card rounded-2xl border border-primary/10">
                   <span className="text-xs font-black uppercase tracking-widest text-muted-foreground">{t('subtotal_tax')}</span>
-                  <span className="font-bold">Rp {totalWithTax.toLocaleString('id-ID')}</span>
+                  <span className="font-bold">Rp {totalWithFees.toLocaleString('id-ID')}</span>
                 </div>
                 <div className="flex justify-between items-center p-4 bg-card rounded-2xl border border-primary/10">
                   <span className="text-xs font-black uppercase tracking-widest text-muted-foreground">{t('participants_count')}</span>

@@ -1,12 +1,11 @@
 'use client';
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback } from 'react';
 import Cropper from 'react-easy-crop';
 import { useLang } from '@/components/Providers';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Label } from '@/components/ui/label';
-import { Crop, Upload, Download, Square, Monitor, User, ShieldCheck } from 'lucide-react';
+import { Crop, Upload, Download, Square, Monitor, User, ShieldCheck, RotateCcw } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import { SeoContent } from '@/components/SeoContent';
 import { SmartAd } from '@/components/smart-ad';
@@ -16,24 +15,93 @@ const UI_TEXT: Record<string, any> = {
   en: {
     title: "Image Cropper",
     upload: "Upload Image",
-    crop: "Crop & Download",
+    download: "Download Result",
+    reset: "Reset",
     presets: "Aspect Ratios",
     square: "Square (1:1)",
     landscape: "Landscape (16:9)",
     portrait: "Portrait (4:5)",
     free: "Freeform",
-    processing: "Cropping..."
+    processing: "Cropping...",
+    hint: "Drag to move, use mouse scroll or pinch to zoom."
   },
   id: {
-    title: "Potong Gambar",
-    upload: "Upload Gambar",
-    crop: "Potong & Unduh",
+    title: "Potong Foto",
+    upload: "Unggah Gambar",
+    download: "Unduh Hasil",
+    reset: "Ulangi",
     presets: "Rasio Dimensi",
     square: "Kotak (1:1)",
     landscape: "Landscape (16:9)",
     portrait: "Portrait (4:5)",
     free: "Bebas",
-    processing: "Memotong..."
+    processing: "Memotong...",
+    hint: "Seret untuk geser, gunakan scroll mouse atau pinch untuk zoom."
+  },
+  de: {
+    title: "Bild zuschneiden",
+    upload: "Bild hochladen",
+    download: "Ergebnis herunterladen",
+    reset: "Zurücksetzen",
+    presets: "Seitenverhältnisse",
+    square: "Quadrat (1:1)",
+    landscape: "Landschaft (16:9)",
+    portrait: "Porträt (4:5)",
+    free: "Freiform",
+    processing: "Zuschneiden...",
+    hint: "Ziehen zum Verschieben, Scrollen oder Zoomen."
+  },
+  es: {
+    title: "Cortar Imagen",
+    upload: "Subir Imagen",
+    download: "Descargar Resultado",
+    reset: "Reiniciar",
+    presets: "Relaciones de Aspecto",
+    square: "Cuadrado (1:1)",
+    landscape: "Horizontal (16:9)",
+    portrait: "Vertical (4:5)",
+    free: "Libre",
+    processing: "Cortando...",
+    hint: "Arrastra para mover, usa el scroll o pinza para zoom."
+  },
+  pt: {
+    title: "Cortar Imagem",
+    upload: "Carregar Imagem",
+    download: "Baixar Resultado",
+    reset: "Reiniciar",
+    presets: "Proporções",
+    square: "Quadrado (1:1)",
+    landscape: "Paisagem (16:9)",
+    portrait: "Retrato (4:5)",
+    free: "Livre",
+    processing: "Cortando...",
+    hint: "Arraste para mover, use o scroll ou pinça para zoom."
+  },
+  fr: {
+    title: "Rogner Image",
+    upload: "Télécharger Image",
+    download: "Télécharger Résultat",
+    reset: "Réinitialiser",
+    presets: "Ratios d'Aspect",
+    square: "Carré (1:1)",
+    landscape: "Paysage (16:9)",
+    portrait: "Portrait (4:5)",
+    free: "Libre",
+    processing: "Rognage...",
+    hint: "Faites glisser pour déplacer, scrollez pour zoomer."
+  },
+  it: {
+    title: "Ritaglia Immagine",
+    upload: "Carica Immagine",
+    download: "Scarica Risultato",
+    reset: "Reset",
+    presets: "Rapporti Aspetto",
+    square: "Quadrato (1:1)",
+    landscape: "Orizzontale (16:9)",
+    portrait: "Verticale (4:5)",
+    free: "Libero",
+    processing: "Ritaglio...",
+    hint: "Trascina per spostare, usa lo scroll per lo zoom."
   }
 };
 
@@ -60,6 +128,13 @@ export default function ImageCropperPage() {
     const reader = new FileReader();
     reader.onload = () => setImage(reader.result as string);
     reader.readAsDataURL(file);
+  };
+
+  const handleReset = () => {
+    setImage(null);
+    setCrop({ x: 0, y: 0 });
+    setZoom(1);
+    setAspect(1);
   };
 
   const getCroppedImg = async () => {
@@ -143,11 +218,16 @@ export default function ImageCropperPage() {
 
         <div className="lg:col-span-4 space-y-6">
           <Card className="shadow-lg border-2">
-            <CardHeader className="bg-muted/30 border-b">
+            <CardHeader className="bg-muted/30 border-b flex flex-row items-center justify-between">
               <CardTitle className="text-xs font-black uppercase tracking-widest flex items-center gap-2">
                 <Crop className="h-4 w-4 text-primary" />
                 {t('presets')}
               </CardTitle>
+              {image && (
+                <Button variant="ghost" size="sm" onClick={handleReset} className="h-8 text-muted-foreground">
+                  <RotateCcw className="h-3 w-3 mr-1" /> {t('reset')}
+                </Button>
+              )}
             </CardHeader>
             <CardContent className="p-6 space-y-4">
               <div className="grid grid-cols-2 gap-2">
@@ -171,7 +251,7 @@ export default function ImageCropperPage() {
                   disabled={!image || isProcessing}
                   className="w-full h-16 bg-accent hover:bg-accent/90 text-white font-black uppercase tracking-[0.2em] shadow-xl"
                 >
-                  {isProcessing ? t('processing') : t('crop')}
+                  {isProcessing ? t('processing') : t('download')}
                 </Button>
               </div>
             </CardContent>
@@ -179,7 +259,7 @@ export default function ImageCropperPage() {
 
           <Card className="shadow-md border-2 bg-primary/5 p-6">
             <p className="text-[10px] font-bold text-muted-foreground uppercase leading-relaxed text-center">
-              {lang === 'id' ? 'Seret untuk geser, gunakan scroll mouse atau pinch untuk zoom.' : 'Drag to move, use mouse scroll or pinch to zoom.'}
+              {t('hint')}
             </p>
           </Card>
         </div>
