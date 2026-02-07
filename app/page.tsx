@@ -53,8 +53,24 @@ const TOOLS_DATA: Tool[] = [
     icon: <Activity className="h-6 w-6" />, 
     category: 'sports', 
     isNew: true,
-    name: { en: "Americano Generator", id: "Generator Americano", es: "Generator Americano", de: "Americano Generator", pt: "Gerador Americano", fr: "Générateur Americano", it: "Generatore Americano" },
-    desc: { en: "Fair partner rotation for Padel & Pickleball.", id: "Rotasi partner adil untuk Padel & Pickleball.", es: "Rotación de parejas para Pádel.", de: "Partner-Rotation für Padel & Pickleball.", pt: "Rotação de parceiros para Padel.", fr: "Rotation des partenaires.", it: "Rotazione partner." }
+    name: {
+      en: "Americano Generator",
+      id: "Generator Americano",
+      de: "Americano Generator",
+      es: "Generador Americano",
+      pt: "Gerador Americano",
+      fr: "Générateur Americano",
+      it: "Generatore Americano"
+    },
+    desc: {
+      en: "Organize Padel or Pickleball tournaments. Auto-pairing & scoring.",
+      id: "Atur turnamen Padel atau Pickleball. Rotasi pasangan otomatis.",
+      de: "Organisieren Sie Padel- oder Pickleball-Turniere. Automatische Paarung.",
+      es: "Organiza torneos de Pádel o Pickleball. Emparejamiento automático.",
+      pt: "Organize torneios de Padel ou Pickleball. Emparelhamento automático.",
+      fr: "Organisez des tournois de Padel ou Pickleball. Appariement auto.",
+      it: "Organizza tornei di Padel o Pickleball. Abbinamento automatico."
+    }
   },
   { 
     id: 'tennis', 
@@ -175,7 +191,7 @@ const TOOLS_DATA: Tool[] = [
     icon: <ImageIcon className="h-6 w-6" />, 
     category: 'utilities',
     name: { en: "Image Compressor", id: "Kompres Foto", es: "Compresor de Imagen", de: "Bildkompressor", pt: "Compressor de Imagem", fr: "Compresseur d'Image", it: "Compressore Immagine" },
-    desc: { en: "Reduce file size without quality loss.", id: "Kecilkan file tanpa hilang kualitas.", es: "Reduce el tamaño del archivo.", de: "Dateigröße ohne Verlust reduzieren.", pt: "Reduza o tamanho do ficheiro.", fr: "Réduisez la taille du fichier.", it: "Riduci dimensione file." }
+    desc: { en: "Reduce file size without quality loss.", id: "Kecilkan file tanpa hilang kualitas.", es: "Reduce el tamaño del archivo.", de: "Dateigröße ohne Verlust reduzieren.", pt: "Reduza o tamanho do ficheiro.", fr: "Réduisez la taille du fichier.", it: "Riduci dimensiome file." }
   },
   { 
     id: 'pdf-merge', 
@@ -259,7 +275,7 @@ const UI_LABELS: Record<string, Record<string, string>> = {
   },
   cat_sports: { en: "Sports & Games", id: "Olahraga & Game", de: "Sport & Spiele", es: "Deportes y Juegos", pt: "Desportos e Jogos", fr: "Sports et Jeux", it: "Sport e Giochi" },
   cat_business: { en: "Business Tools", id: "Bisnis & Usaha", de: "Geschäftswerkzeuge", es: "Herramientas de Negocio", pt: "Ferramentas de Negócio", fr: "Outils de Business", it: "Strumenti di Business" },
-  cat_finance: { en: "Finance Tools", id: "Keuangan", de: "Finanzwerkzeuge", es: "Herramientas Financieras", pt: "Ferramentas Financeiras", fr: "Outils de Finance", it: "Strumenti di Finanza" },
+  cat_finance: { en: "Finance Tools", id: "Keuangan", de: "Finanzwerkzeuge", es: "Herramientas Financieras", pt: "Ferramentas Financieras", fr: "Outils de Finance", it: "Strumenti di Finanza" },
   cat_utilities: { en: "Files & Utilities", id: "File & Utilitas", de: "Dateien & Dienstprogramme", es: "Archivos y Utilidades", pt: "Ficheiros e Utilitários", fr: "Fichiers et Utilitaires", it: "File e Utility" },
   badge_new: { en: "NEW", id: "BARU", de: "NEU", es: "NUEVO", pt: "NOVO", fr: "NOUVEAU", it: "NUOVO" },
   private: { en: "100% Private", id: "100% Privat", de: "100% Privat", es: "100% Privado", pt: "100% Privado", fr: "100% Privé", it: "100% Privato" },
