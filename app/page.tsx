@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useMemo } from 'react';
@@ -47,6 +48,15 @@ interface Tool {
 
 const TOOLS_DATA: Tool[] = [
   // Sports
+  { 
+    id: 'americano', 
+    href: '/tools/padel-americano', 
+    icon: <Activity className="h-6 w-6" />, 
+    category: 'sports', 
+    isNew: true,
+    name: { en: "Padel Americano", id: "Padel Americano", es: "Padel Americano", de: "Padel Americano", pt: "Padel Americano", fr: "Padel Americano", it: "Padel Americano" },
+    desc: { en: "Fair partner rotation and scoring.", id: "Rotasi partner adil dan skor otomatis.", es: "Rotación de parejas y puntuación.", de: "Partner-Rotation und Wertung.", pt: "Rotação de parceiros e placar.", fr: "Rotation des partenaires et score.", it: "Rotazione partner e punteggio." }
+  },
   { 
     id: 'tennis', 
     href: '/tools/tennis', 
@@ -138,7 +148,7 @@ const TOOLS_DATA: Tool[] = [
     icon: <LayoutDashboard className="h-6 w-6" />, 
     category: 'business',
     name: { en: "Kanban Board", id: "Papan Tugas", es: "Tablero Kanban", de: "Kanban-Board", pt: "Quadro Kanban", fr: "Tableau Kanban", it: "Tabella Kanban" },
-    desc: { en: "Simple visual task management.", id: "Manajemen tugas visual sederhana.", es: "Gestión visual de tareas.", de: "Einfache Aufgabenverwaltung.", pt: "Gestão visual de tarefas.", fr: "Gestion visuelle des tâches.", it: "Gestione visiva dei compiti." }
+    desc: { en: "Simple visual task management.", id: "Manajemen tugas visual sederhana.", es: "Gestión visual de tareas.", de: "Einfache Aufgabenverwaltung.", pt: "Gestão visual de tareas.", fr: "Gestion visuelle des tâches.", it: "Gestione visiva dei compiti." }
   },
   
   // Utilities
@@ -198,7 +208,7 @@ const TOOLS_DATA: Tool[] = [
     icon: <CalcIcon className="h-6 w-6" />, 
     category: 'utilities',
     name: { en: "Material Calculator", id: "Kalkulator Material", es: "Calculadora de Materiales", de: "Materialrechner", pt: "Calculadora de Materiais", fr: "Calculateur de Matériaux", it: "Calcolatore Materiali" },
-    desc: { en: "Estimate paint and tiles for construction.", id: "Estimasi kebutuhan cat dan ubin.", es: "Estima pintura y azulejos.", de: "Farbe und Fliesen schätzen.", pt: "Estime tinta e azulejos.", fr: "Estimez peinture et carrelage.", it: "Stima pittura e piastrelle." }
+    desc: { en: "Estimate paint and tiles for construction.", id: "Estimasi kebutuhan cat dan ubin.", es: "Estima pintura y azulejos.", de: "Farbe und Fliesen schätzen.", pt: "Estime tinta e azulejos.", fr: "Estimez peinture et carrelage.", it: "Calcolatore Materiali" }
   },
 ];
 

@@ -1,3 +1,4 @@
+
 /**
  * Centralized SEO Content for VersoKit tools.
  * Supports: en, id, es, pt, de, fr, it.
@@ -18,6 +19,22 @@ export interface SeoCollection {
 }
 
 export const SEO_DATA: SeoCollection = {
+  "padel-americano": {
+    en: {
+      title: "Padel Americano Generator",
+      description: "Organize Padel tournaments with fair partner rotation and automatic scoring.",
+      steps: ["Add players and set target points.", "Shuffle names for a random start.", "Enter scores for each match.", "Check the individual leaderboard."],
+      article: "Padel Americano is a unique format where individual performance matters more than team stability. Our generator ensures every player rotates partners fairly.",
+      faq: [{ q: "What is 32 points scoring?", a: "In every match, 32 points are played in total. If you win 20, the opponent gets 12." }]
+    },
+    id: {
+      title: "Generator Padel Americano",
+      description: "Atur turnamen Padel dengan rotasi partner yang adil dan penghitungan skor otomatis.",
+      steps: ["Tambah pemain dan tentukan target poin.", "Acak nama untuk memulai secara random.", "Masukkan skor setiap pertandingan.", "Pantau klasemen individu secara real-time."],
+      article: "Padel Americano adalah format turnamen di mana setiap pemain akan berganti pasangan setiap babak. Skor akhir dihitung secara individu.",
+      faq: [{ q: "Apa itu skor 32 poin?", a: "Setiap pertandingan memainkan total 32 poin. Jika Anda menang 20, lawan mendapat 12." }]
+    }
+  },
   "tennis": {
     en: {
       title: "Tennis Match Generator",
