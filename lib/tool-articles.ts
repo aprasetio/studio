@@ -147,5 +147,113 @@ export const TOOL_ARTICLES: ArticleCollection = {
         }
       ]
     }
+  },
+  "inventory": {
+    en: {
+      title: "Mastering Small Business Stock Control",
+      sections: [
+        {
+          title: "The Importance of Stock Tracking",
+          content: "Keeping an accurate count of your inventory is the backbone of any successful small business. Our tool helps you avoid stockouts and overstocking by providing a clear, digital view of your items."
+        },
+        {
+          title: "The FIFO Method",
+          content: "<b>FIFO (First-In, First-Out)</b> is a simple but effective strategy where you sell the oldest stock first. By tracking your quantities regularly, you can ensure that nothing sits on the shelf for too long."
+        },
+        {
+          title: "Privacy First Stock Management",
+          content: "Your business data is your competitive advantage. That's why VersoKit processes everything 100% locally in your browser. No product lists, quantities, or prices are ever uploaded to a server."
+        }
+      ]
+    },
+    id: {
+      title: "Cara Mudah Mengelola Stok Barang UKM",
+      sections: [
+        {
+          title: "Pentingnya Pencatatan Stok",
+          content: "Mencatat stok masuk dan keluar secara teratur adalah kunci kesuksesan UKM. Alat kami membantu Anda memantau ketersediaan barang agar tidak pernah kehabisan stok saat pelanggan memesan."
+        },
+        {
+          title: "Strategi FIFO di Gudang",
+          content: "Gunakan metode <b>FIFO (First-In, First-Out)</b> dengan memastikan barang yang masuk lebih awal dijual terlebih dahulu. Catatan digital memudahkan Anda melihat barang mana yang sudah lama mengendap."
+        },
+        {
+          title: "Kelola Stok dengan Aman & Privat",
+          content: "Data stok barang Anda sangat rahasia. VersoKit menjamin data tetap di perangkat Anda secara offline, sehingga tidak ada risiko kebocoran data bisnis ke pihak luar."
+        }
+      ]
+    }
+  },
+  "shift": {
+    en: {
+      title: "Creating Fair Employee Schedules",
+      sections: [
+        {
+          title: "Balanced Shift Rotation",
+          content: "Rotating employees between morning, afternoon, and night shifts is essential to prevent burnout. A transparent roster ensures everyone feels the workload is shared fairly."
+        },
+        {
+          title: "Visualize Your Team Coverage",
+          content: "Our visual shift planner allows you to see at a glance if you have enough staff for every day of the week. Use the color-coded system to identify gaps in your schedule immediately."
+        },
+        {
+          title: "Ready for Group Sharing",
+          content: "Once your schedule is generated, download it as a high-quality image. It’s perfectly formatted for sharing in work group chats like WhatsApp or Slack."
+        }
+      ]
+    },
+    id: {
+      title: "Tips Membuat Jadwal Shift Karyawan yang Adil",
+      sections: [
+        {
+          title: "Pembagian Shift yang Seimbang",
+          content: "Membagi jadwal antara shift pagi, siang, dan malam secara adil sangat penting untuk menjaga kesehatan dan produktivitas karyawan. Roster yang transparan meminimalisir komplain dari staf."
+        },
+        {
+          title: "Visualisasi Jadwal Kerja",
+          content: "Sistem warna pada VersoKit memudahkan Anda melihat apakah cakupan tim sudah cukup untuk setiap hari. Anda bisa langsung mendeteksi jika ada hari yang kekurangan tenaga kerja."
+        },
+        {
+          title: "Format Rapi untuk Grup WA",
+          content: "Setelah jadwal selesai dibuat, Anda bisa mengunduhnya sebagai gambar. Format ini sangat rapi dan mudah dibaca saat dibagikan ke grup koordinasi kantor di WhatsApp."
+        }
+      ]
+    }
+  },
+  "lineup": {
+    en: {
+      title: "Football Tactics: Choosing the Right Formation",
+      sections: [
+        {
+          title: "4-4-2 vs 4-3-3",
+          content: "The classic <b>4-4-2</b> provides a balanced structure, while <b>4-3-3</b> is more offensive and dynamic. Choosing the right formation depends on your players' strengths and your tactical approach."
+        },
+        {
+          title: "Visualizing Roles",
+          content: "Using a lineup builder helps players visualize their starting positions and responsibilities on the pitch. It clears up confusion before the whistle blows."
+        },
+        {
+          title: "Professional Team Graphics",
+          content: "Create high-quality formation images for your social media or team briefing. A professional graphic builds team spirit and helps communicate your winning strategy."
+        }
+      ]
+    },
+    id: {
+      title: "Strategi & Formasi Sepak Bola Modern",
+      sections: [
+        {
+          title: "Panduan Memilih Formasi",
+          content: "Formasi <b>4-4-2</b> memberikan keseimbangan antara pertahanan dan serangan, sedangkan <b>4-3-3</b> lebih dinamis untuk menyerang. Pilih strategi yang paling sesuai dengan komposisi pemain Anda."
+        },
+        {
+          title: "Pentingnya Visualisasi Taktik",
+          content: "Melihat posisi mereka secara visual di lapangan membantu pemain memahami peran dan tanggung jawab masing-masing sebelum pertandingan dimulai."
+        },
+        {
+          title: "Bagikan Strategi ke Tim",
+          content: "Buat gambar formasi tim Anda secara instan dan bagikan ke grup WhatsApp tim. Tampilan profesional meningkatkan rasa percaya diri dan koordinasi tim saat bertanding."
+        }
+      ]
+    }
   }
 };

@@ -10,6 +10,7 @@ import { SmartAd } from '@/components/smart-ad';
 import { useLang } from '@/components/Providers';
 import { SeoContent } from '@/components/seo-content';
 import { DataPersistence } from '@/components/DataPersistence';
+import { ArticleSection } from '@/components/ArticleSection';
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -220,6 +221,8 @@ export default function InventoryPage() {
           ))
         )}
       </div>
+
+      <ArticleSection toolId="inventory" />
       
       <SmartAd />
 

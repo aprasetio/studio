@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Plus, Trash2, CalendarDays, UserPlus, Image as ImageIcon, Download, ShieldCheck, Shuffle } from 'lucide-react';
 import { SeoContent } from '@/components/seo-content';
 import { DataPersistence } from '@/components/DataPersistence';
+import { ArticleSection } from '@/components/ArticleSection';
 import html2canvas from 'html2canvas';
 import { toast } from '@/hooks/use-toast';
 
@@ -404,6 +405,8 @@ export default function ShiftRosterPage() {
           </div>
         </div>
       </div>
+
+      <ArticleSection toolId="shift" />
 
       <SeoContent toolId="shift" />
     </div>
