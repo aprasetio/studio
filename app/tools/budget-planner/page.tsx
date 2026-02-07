@@ -468,7 +468,6 @@ export default function BudgetPlannerPage() {
   const getGroupName = (originalName: string) => {
     const nameLower = originalName.toLowerCase();
     
-    // Check known default names in EN or ID to handle legacy stored data
     if (nameLower.includes('monthly bill') || nameLower.includes('tagihan bulanan') || nameLower.includes('bollette') || nameLower.includes('facturas mens')) {
       return t('monthly_bills');
     }
@@ -836,7 +835,7 @@ export default function BudgetPlannerPage() {
                       </div>
                       <div className="flex items-center gap-4">
                         <span className="font-black tabular-nums">{formatValue(rule.amount)}</span>
-                        <Button variant="ghost" size="icon" onClick={() => deleteRecurringRule(rule.id)} className="h-8 w-8 text-muted-foreground hover:text-destructive transition-colors">
+                        <Button variant="ghost" size="icon" onClick={() => deleteRecurringRule(rule.id)} className="h-8 w-8 text-red-500 hover:text-red-700 hover:bg-red-50 transition-colors">
                           <Trash2 className="h-4 w-4" />
                         </Button>
                       </div>
@@ -955,7 +954,7 @@ export default function BudgetPlannerPage() {
                               </span>
                             </td>
                             <td className="p-2 text-center">
-                              <Button variant="ghost" size="icon" onClick={() => deleteItem(item.id)} className="h-8 w-8 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
+                              <Button variant="ghost" size="icon" onClick={() => deleteItem(item.id)} className="h-8 w-8 text-red-500 hover:text-red-700 hover:bg-red-50 transition-colors">
                                 <Trash2 className="h-4 w-4" />
                               </Button>
                             </td>
@@ -1044,7 +1043,7 @@ export default function BudgetPlannerPage() {
                             <span className={cn("text-sm font-black tabular-nums", isIncome ? "text-green-600" : "text-foreground")}>
                               {isIncome ? '+' : '-'}{formatValue(tx.amount)}
                             </span>
-                            <Button variant="ghost" size="icon" onClick={() => deleteTransaction(tx.id)} className="h-8 w-8 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
+                            <Button variant="ghost" size="icon" onClick={() => deleteTransaction(tx.id)} className="h-8 w-8 text-red-500 hover:text-red-700 hover:bg-red-50 transition-colors">
                               <X className="h-4 w-4" />
                             </Button>
                           </div>
