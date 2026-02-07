@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useMemo, useEffect } from 'react';
@@ -9,22 +8,18 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { 
-  Trophy, 
+  Activity, 
   Users, 
   Play, 
   RotateCcw, 
-  Plus, 
-  Trash2, 
   ChevronRight,
   Settings2,
   CalendarDays,
   Medal,
-  Activity,
   CheckCircle2,
-  RefreshCw,
   Info
 } from 'lucide-react';
-import { useAmericanoStore, type SportMode } from './store';
+import { useAmericanoStore } from './store';
 import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { ArticleSection } from '@/components/ArticleSection';
@@ -73,6 +68,13 @@ export default function AmericanoPage() {
       return;
     }
     setupTournament(names);
+  };
+
+  const handleReset = () => {
+    if (window.confirm(t('reset_confirm'))) {
+      resetTournament();
+      toast({ title: "Tournament Reset" });
+    }
   };
 
   const handleNextRound = () => {
@@ -189,7 +191,7 @@ export default function AmericanoPage() {
               </div>
               <Button 
                 variant="outline" 
-                onClick={() => confirm(t('reset_confirm')) && resetTournament()} 
+                onClick={handleReset} 
                 className="text-destructive font-black uppercase text-[10px] border-2"
               >
                 <RotateCcw className="h-4 w-4 mr-2" /> {globalT('reset')}

@@ -177,7 +177,7 @@ export const useAmericanoStore = create<AmericanoState>()(
       }),
     }),
     {
-      name: 'versokit-americano-v2',
+      name: 'versokit-americano-v3',
       storage: createJSONStorage(() => localStorage),
     }
   )
