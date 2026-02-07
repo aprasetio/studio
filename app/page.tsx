@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -24,7 +23,9 @@ import {
   Zap,
   WifiOff,
   Wallet,
-  Activity
+  Activity,
+  Maximize,
+  Crop
 } from 'lucide-react';
 import { useLang } from '@/components/Providers';
 import { SEO_DATA } from '@/lib/seo-content';
@@ -36,7 +37,7 @@ export default function DashboardPage() {
     en: "⚡ Fast. 🔒 Secure. ✈️ Offline-Ready. Data never leaves your device.",
     id: "⚡ Cepat. 🔒 Aman. ✈️ Bisa Offline. Data tidak meninggalkan perangkat.",
     es: "⚡ Rápido. 🔒 Seguro. ✈️ Offline. Los datos nunca salen de su dispositivo.",
-    pt: "⚡ Rápido. 🔒 Seguro. ✈️ Offline. Os dados nunca saem do seu dispositivo.",
+    pt: "⚡ Rápido. 🔒 Seguro. ✈️ Offline. Os datos nunca saem do seu dispositivo.",
     de: "⚡ Schnell. 🔒 Sicher. ✈️ Offline. Daten verlassen niemals Ihr Gerät.",
     fr: "⚡ Rapide. 🔒 Sécurisé. ✈️ Hors ligne. Les données restent sur l'appareil.",
     it: "⚡ Veloce. 🔒 Sicuro. ✈️ Offline. I dati non lasciano mai il dispositivo."
@@ -46,112 +47,108 @@ export default function DashboardPage() {
     {
       id: 'futsal',
       title: t('futsal'),
-      description: 'Papan skor sederhana dan efektif untuk pertandingan futsal Anda.',
       href: '/tools/futsal',
       icon: <ClipboardList className="h-10 w-10 text-primary" />,
     },
     {
       id: 'tennis',
       title: 'Tennis Match Gen',
-      description: 'Generate balanced tennis double matches based on skill and play time.',
       href: '/tools/tennis',
       icon: <Activity className="h-10 w-10 text-primary" />,
     },
     {
       id: 'budget-planner',
       title: t('budget_planner'),
-      description: 'Atur keuangan Anda dengan metode budget berbasis nol secara offline.',
       href: '/tools/budget-planner',
       icon: <Wallet className="h-10 w-10 text-primary" />,
     },
     {
+      id: 'image-resizer',
+      title: t('image_resizer'),
+      href: '/tools/image-resizer',
+      icon: <Maximize className="h-10 w-10 text-primary" />,
+    },
+    {
+      id: 'image-cropper',
+      title: t('image_cropper'),
+      href: '/tools/image-cropper',
+      icon: <Crop className="h-10 w-10 text-primary" />,
+    },
+    {
+      id: 'image-compressor',
+      title: t('image_compressor'),
+      href: '/tools/image-compressor',
+      icon: <ImageIcon className="h-10 w-10 text-primary" />,
+    },
+    {
       id: 'lineup',
       title: t('lineup'),
-      description: 'Buat dan visualisasikan formasi tim sepak bola Anda.',
       href: '/tools/lineup-builder',
       icon: <Goal className="h-10 w-10 text-primary" />,
     },
     {
       id: 'tournament',
       title: t('tournament'),
-      description: 'Pembuat jadwal Round Robin instan untuk liga dan turnamen sosial.',
       href: '/tools/tournament',
       icon: <Trophy className="h-10 w-10 text-primary" />,
     },
     {
       id: 'scoreboard',
       title: t('scoreboard'),
-      description: 'Papan skor serbaguna untuk voli, bulu tamkis, dan tenis meja.',
       href: '/tools/scoreboard',
       icon: <Calendar className="h-10 w-10 text-primary" />,
     },
     {
       id: 'pdf-merge',
       title: t('pdf_merge'),
-      description: 'Gabungkan beberapa file PDF menjadi satu dokumen secara offline.',
       href: '/tools/pdf-merge',
       icon: <FileStack className="h-10 w-10 text-primary" />,
     },
     {
       id: 'image-to-pdf',
       title: t('image_to_pdf'),
-      description: 'Ubah koleksi gambar JPG/PNG Anda menjadi dokumen PDF.',
       href: '/tools/image-to-pdf',
       icon: <FileType className="h-10 w-10 text-primary" />,
     },
     {
       id: 'invoice',
       title: t('invoice'),
-      description: 'Buat invoice profesional dan simpan sebagai PDF untuk klien Anda.',
       href: '/tools/invoice',
       icon: <Receipt className="h-10 w-10 text-primary" />,
     },
     {
       id: 'shift',
       title: t('shift'),
-      description: 'Kelola jadwal kerja mingguan tim Anda dengan sistem shift visual.',
       href: '/tools/shift',
       icon: <CalendarDays className="h-10 w-10 text-primary" />,
     },
     {
-      id: 'image-compressor',
-      title: t('image_compressor'),
-      description: 'Kompres ukuran file gambar langsung di browser tanpa upload.',
-      href: '/tools/image-compressor',
-      icon: <ImageIcon className="h-10 w-10 text-primary" />,
-    },
-    {
       id: 'split-bill',
       title: t('split_bill'),
-      description: 'Hitung patungan makan atau biaya tim dengan rincian untuk WA.',
       href: '/tools/split-bill',
       icon: <Banknote className="h-10 w-10 text-primary" />,
     },
     {
       id: 'csv-helper',
       title: t('csv_helper'),
-      description: 'Bersihkan dan proses file CSV Anda secara lokal tanpa upload.',
       href: '/tools/csv-helper',
       icon: <FileSpreadsheet className="h-10 w-10 text-primary" />,
     },
     {
       id: 'calculator',
       title: t('calculator'),
-      description: 'Kalkulator kebutuhan material cat, keramik, dan estimasi biaya.',
       href: '/tools/calculator',
       icon: <Calculator className="h-10 w-10 text-primary" />,
     },
     {
       id: 'inventory',
       title: t('inventory'),
-      description: 'Pantau stok peralatan olahraga seperti bola, rompi, dan cone.',
       href: '/tools/inventory',
       icon: <Package className="h-10 w-10 text-primary" />,
     },
     {
       id: 'kanban',
       title: t('kanban'),
-      description: 'Kelola tugas dan rencana tim Anda dengan papan kanban sederhana.',
       href: '/tools/kanban',
       icon: <LayoutDashboard className="h-10 w-10 text-primary" />,
     },
@@ -180,31 +177,24 @@ export default function DashboardPage() {
         <div className="flex items-center gap-2 text-primary">
           <Zap className="h-5 w-5" />
           <span className="text-xs font-black uppercase tracking-widest">
-            {lang === 'id' ? 'Cepat' : lang === 'es' || lang === 'pt' || lang === 'it' || lang === 'fr' ? 'Rápido' : 'Fast'}
+            {lang === 'id' ? 'Cepat' : 'Fast'}
           </span>
         </div>
         <div className="flex items-center gap-2 text-green-600">
           <ShieldCheck className="h-5 w-5" />
           <span className="text-xs font-black uppercase tracking-widest">
-            {lang === 'id' ? 'Aman' : lang === 'es' || lang === 'pt' || lang === 'it' ? 'Seguro' : lang === 'fr' ? 'Sécurisé' : lang === 'de' ? 'Sicher' : 'Secure'}
+            {lang === 'id' ? 'Aman' : 'Secure'}
           </span>
         </div>
         <div className="flex items-center gap-2 text-orange-600">
           <WifiOff className="h-5 w-5" />
           <span className="text-xs font-black uppercase tracking-widest">
-            {lang === 'id' ? 'Siap Offline' : lang === 'fr' ? 'Hors ligne' : 'Offline-Ready'}
+            {lang === 'id' ? 'Siap Offline' : 'Offline-Ready'}
           </span>
         </div>
         <div className="h-4 w-px bg-muted-foreground/20 hidden md:block" />
         <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest text-center">
-          {lang === 'en' ? 'Data never leaves your device' : 
-           lang === 'id' ? 'Data tidak pernah meninggalkan perangkat' :
-           lang === 'es' ? 'Los datos nunca salen de su dispositivo' :
-           lang === 'pt' ? 'Os dados nunca saem do seu dispositivo' :
-           lang === 'de' ? 'Daten verlassen niemals Ihr Gerät' :
-           lang === 'fr' ? 'Les données restent sur l\'appareil' :
-           lang === 'it' ? 'I dati non lasciano mai il dispositivo' :
-           'Data never leaves your device'}
+          {lang === 'id' ? 'Data tidak pernah meninggalkan perangkat' : 'Data never leaves your device'}
         </p>
       </div>
 
@@ -212,7 +202,7 @@ export default function DashboardPage() {
         {tools.map((tool) => {
           const localizedData = SEO_DATA[tool.id]?.[lang] || SEO_DATA[tool.id]?.['en'];
           const displayTitle = localizedData?.title || tool.title;
-          const displayDesc = localizedData?.description || tool.description;
+          const displayDesc = localizedData?.description || '';
 
           return (
             <Card key={tool.id} className="flex flex-col overflow-hidden transition-all duration-300 hover:translate-y-[-8px] hover:shadow-2xl border-2 hover:border-primary/20 bg-card">

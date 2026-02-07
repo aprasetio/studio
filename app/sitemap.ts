@@ -1,30 +1,13 @@
 import { MetadataRoute } from 'next';
+import { SEO_DATA } from '@/lib/seo-content';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://versokit.com';
   
-  // List of all tools currently implemented in the app
-  const tools = [
-    'futsal',
-    'tennis',
-    'lineup-builder',
-    'scoreboard',
-    'tournament',
-    'inventory',
-    'kanban',
-    'calculator',
-    'invoice',
-    'shift',
-    'image-compressor',
-    'split-bill',
-    'csv-helper',
-    'pdf-merge',
-    'image-to-pdf',
-    'budget-planner'
-  ];
+  const toolKeys = Object.keys(SEO_DATA);
 
-  const toolEntries = tools.map((tool) => ({
-    url: `${baseUrl}/tools/${tool}`,
+  const toolEntries = toolKeys.map((tool) => ({
+    url: `${baseUrl}/tools/${tool === 'lineup' ? 'lineup-builder' : tool}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.8,
