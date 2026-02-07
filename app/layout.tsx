@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from 'next';
-import Link from 'next/link';
 import Header from '@/components/header';
 import { Toaster } from '@/components/ui/toaster';
 import { Providers } from '@/components/Providers';
@@ -8,18 +7,28 @@ import FooterLinks from '@/components/footer-links';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: "VersoKit - Free Online Tools for Sports, Construction & Business",
-  description: "A collection of free, offline-ready tools: Futsal Scoreboard, Tournament Bracket, Construction Calculator, Invoice Maker, and more. No login required.",
+  title: {
+    template: '%s | VersoKit',
+    default: 'VersoKit - Free Online Tools for Sports, Business & Productivity',
+  },
+  description: "A collection of free, privacy-first, and offline-ready tools: Futsal Scoreboard, Budget Planner, Invoice Maker, and more. No login required.",
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
     title: 'VersoKit',
   },
+  formatDetection: {
+    telephone: false,
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#111827',
+  themeColor: '#1e3a8a',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({
