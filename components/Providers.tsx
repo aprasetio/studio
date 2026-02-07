@@ -42,7 +42,7 @@ const translations: TranslationDictionary = {
     todo: "Rencana",
     progress: "Proses",
     done: "Selesai",
-    cat_sports: "Olahraga", cat_business: "Bisnis", cat_utilities: "Alat Bantu"
+    cat_sports: "Olahraga", cat_business: "Bisnis", cat_utilities: "Alat Bantu", cat_finance: "Keuangan"
   },
   en: {
     title: "VersoKit",
@@ -74,7 +74,7 @@ const translations: TranslationDictionary = {
     todo: "To Do",
     progress: "In Progress",
     done: "Done",
-    cat_sports: "Sports", cat_business: "Business", cat_utilities: "Utilities"
+    cat_sports: "Sports", cat_business: "Business", cat_utilities: "Utilities", cat_finance: "Finance"
   }
 };
 
