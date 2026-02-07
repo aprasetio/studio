@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useMemo, useEffect } from 'react';
@@ -23,7 +22,8 @@ import {
   RefreshCw,
   PlusCircle,
   Edit,
-  X
+  X,
+  Clock
 } from 'lucide-react';
 import {
   Select,
@@ -68,6 +68,9 @@ const UI_TEXT: Record<string, any> = {
     rebalance: "Rebalance Future Matches?",
     round: "Round",
     court: "Court",
+    duration_total: "Total Duration",
+    duration_match: "Match Duration",
+    mins: "mins",
     skills: { 1: "Newbie", 2: "Beginner", 3: "Intermediate", 4: "Advanced", 5: "Pro" }
   },
   id: {
@@ -89,6 +92,9 @@ const UI_TEXT: Record<string, any> = {
     rebalance: "Rebalance jadwal sisa?",
     round: "Babak",
     court: "Lap.",
+    duration_total: "Durasi Sewa",
+    duration_match: "Durasi Match",
+    mins: "menit",
     skills: { 1: "Pemula", 2: "Belajar", 3: "Menengah", 4: "Mahir", 5: "Pro" }
   }
 };
@@ -208,20 +214,37 @@ export default function TennisGeneratorPage() {
                 <Settings2 className="h-4 w-4" /> {t('config_title')}
               </CardTitle>
             </CardHeader>
-            <CardContent className="p-6 space-y-4">
+            <CardContent className="p-6 space-y-6">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <Label className="text-[10px] font-black uppercase opacity-60">Courts</Label>
                   <Input type="number" value={config.courts} onChange={e => setConfig({ courts: parseInt(e.target.value) || 1 })} />
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-[10px] font-black uppercase opacity-60">Match (min)</Label>
+                  <Label className="text-[10px] font-black uppercase opacity-60">{t('duration_match')} ({t('mins')})</Label>
                   <Input type="number" value={config.matchDuration} onChange={e => setConfig({ matchDuration: parseInt(e.target.value) || 30 })} />
                 </div>
               </div>
+              <div className="space-y-1">
+                <Label className="text-[10px] font-black uppercase opacity-60">{t('duration_total')} ({t('mins')})</Label>
+                <div className="flex items-center gap-2">
+                  <Clock className="h-4 w-4 text-muted-foreground" />
+                  <Input type="number" value={config.totalDuration} onChange={e => setConfig({ totalDuration: parseInt(e.target.value) || 120 })} />
+                </div>
+              </div>
+
+              <div className="bg-primary/5 p-4 rounded-2xl border border-primary/10">
+                <p className="text-[10px] font-black uppercase text-primary/60 tracking-widest mb-1">Session Summary</p>
+                <div className="flex justify-between items-end">
+                  <span className="text-2xl font-black text-primary">{Math.floor(config.totalDuration / config.matchDuration)}</span>
+                  <span className="text-xs font-bold text-muted-foreground uppercase">Total Rounds Possible</span>
+                </div>
+              </div>
+
               <Button onClick={handleGenerate} className="w-full bg-primary font-black uppercase tracking-widest h-12 shadow-lg">
                 <Play className="mr-2 h-4 w-4" /> {t('generate')}
               </Button>
+              
               <div className="flex gap-2">
                 <Dialog open={isCustomMatchOpen} onOpenChange={setIsCustomMatchOpen}>
                   <DialogTrigger asChild>
