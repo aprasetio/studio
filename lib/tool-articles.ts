@@ -21,6 +21,57 @@ export interface ArticleCollection {
 }
 
 export const TOOL_ARTICLES: ArticleCollection = {
+  "americano": {
+    en: {
+      title: "Americano Tournament Generator (Padel & Pickleball)",
+      sections: [
+        { title: "What is an Americano Tournament?", content: "Americano is a fair-play tournament format popular in Padel and Pickleball. In every round, you play with a **different partner** and against different opponents. The goal is to collect as many individual points as possible." },
+        { title: "Padel vs. Pickleball Mode", content: "This tool supports both! For **Padel**, use the 'Fixed Points' mode (e.g., play until total score is 32). For **Pickleball**, use the 'Race' mode (e.g., play to 21). The app handles partner rotation and bench management automatically." }
+      ]
+    },
+    id: {
+      title: "Generator Turnamen Americano (Padel & Pickleball)",
+      sections: [
+        { title: "Apa itu Turnamen Americano?", content: "Americano adalah format turnamen adil yang populer di Padel dan Pickleball. Di setiap ronde, Anda bermain dengan **pasangan berbeda** melawan musuh berbeda. Tujuannya adalah mengumpulkan poin individu sebanyak mungkin." },
+        { title: "Mode Padel vs Pickleball", content: "Alat ini mendukung keduanya! Untuk **Padel**, gunakan mode 'Poin Tetap' (misal: main sampai total 32). Untuk **Pickleball**, gunakan mode 'Race' (misal: main sampai skor 21). Aplikasi mengatur rotasi pasangan dan cadangan secara otomatis." }
+      ]
+    },
+    de: {
+      title: "Americano-Turnier-Generator (Padel & Pickleball)",
+      sections: [
+        { title: "Was ist ein Americano-Turnier?", content: "Americano ist ein Fair-Play-Turnierformat für Padel und Pickleball. In jeder Runde spielen Sie mit einem **neuen Partner** gegen neue Gegner. Ziel ist es, so viele Einzelpunkte wie möglich zu sammeln." },
+        { title: "Padel- und Pickleball-Modus", content: "Dieses Tool unterstützt beides! Für **Padel** nutzen Sie den Modus 'Feste Punkte' (z.B. bis 32). Für **Pickleball** den 'Race'-Modus (z.B. bis 21). Die App übernimmt automatisch die Partnerrotation." }
+      ]
+    },
+    es: {
+      title: "Generador de Torneos Americano (Pádel y Pickleball)",
+      sections: [
+        { title: "¿Qué es un Torneo Americano?", content: "El Americano es un formato de torneo popular en Pádel y Pickleball. En cada ronda, juegas con un **compañero diferente**. El objetivo es acumular la mayor cantidad de puntos individuales." },
+        { title: "Modo Pádel vs Pickleball", content: "¡Esta herramienta soporta ambos! Para **Pádel**, usa el modo 'Puntos Fijos' (ej. hasta 32). Para **Pickleball**, usa el modo 'Carrera' (ej. a 21). La app gestiona la rotación y los descansos automáticamente." }
+      ]
+    },
+    pt: {
+      title: "Gerador de Torneios Americano (Padel e Pickleball)",
+      sections: [
+        { title: "O que é um Torneio Americano?", content: "Americano é um formato popular no Padel e Pickleball. A cada rodada, você joga com um **parceiro diferente**. O objetivo é acumular o máximo de pontos individuais." },
+        { title: "Modo Padel vs Pickleball", content: "Esta ferramenta suporta ambos! Para **Padel**, use o modo 'Pontos Fixos' (ex: até 32). Para **Pickleball**, use o modo 'Corrida' (ex: até 21). O app gerencia a rotação automaticamente." }
+      ]
+    },
+    fr: {
+      title: "Générateur de Tournois Americano (Padel & Pickleball)",
+      sections: [
+        { title: "Qu'est-ce qu'un tournoi Americano ?", content: "L'Americano est un format populaire au Padel et au Pickleball. À chaque tour, vous jouez avec un **partenaire différent**. Le but est de collecter un maximum de points individuels." },
+        { title: "Mode Padel vs Pickleball", content: "Cet outil gère les deux ! Pour le **Padel**, utilisez le mode 'Points Fixes' (ex : jusqu'à 32). Pour le **Pickleball**, le mode 'Course' (ex : jusqu'à 21). L'application gère la rotation automatiquement." }
+      ]
+    },
+    it: {
+      title: "Generatore di Tornei Americano (Padel e Pickleball)",
+      sections: [
+        { title: "Cos'è un Torneo Americano?", content: "L'Americano è un formato popolare nel Padel e Pickleball. In ogni turno, giochi con un **partner diverso**. L'obiettivo è raccogliere il maggior numero di punti individuali." },
+        { title: "Modalità Padel vs Pickleball", content: "Questo strumento supporta entrambi! Per il **Padel**, usa la modalità 'Punti Fissi' (es. fino a 32). Per il **Pickleball**, la modalità 'Gara' (es. a 21). L'app gestisce la rotazione automaticamente." }
+      ]
+    }
+  },
   "padel-americano": {
     en: {
       title: "Padel Americano: The Ultimate Social Tournament Format",

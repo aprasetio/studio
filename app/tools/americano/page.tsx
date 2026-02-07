@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useMemo, useEffect } from 'react';
@@ -191,7 +192,7 @@ export default function AmericanoPage() {
                 onClick={() => confirm(t('reset_confirm')) && resetTournament()} 
                 className="text-destructive font-black uppercase text-[10px] border-2"
               >
-                <RotateCcw className="h-4 w-4 mr-2" /> {t('btn_reset')}
+                <RotateCcw className="h-4 w-4 mr-2" /> {globalT('reset')}
               </Button>
             </div>
 
@@ -320,9 +321,9 @@ export default function AmericanoPage() {
         </div>
       )}
 
-      <ArticleSection toolId="padel-americano" />
+      <ArticleSection toolId="americano" />
       <SmartAd />
-      <SeoContent toolId="padel-americano" />
+      <SeoContent toolId="americano" />
     </div>
   );
 }
