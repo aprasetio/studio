@@ -10,6 +10,7 @@ import { Image as ImageIcon, Download, Upload, Zap, ShieldCheck } from 'lucide-r
 import { toast } from '@/hooks/use-toast';
 import { SeoContent } from '@/components/seo-content';
 import { SmartAd } from '@/components/smart-ad';
+import { ArticleSection } from '@/components/ArticleSection';
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -295,6 +296,8 @@ export default function ImageCompressorPage() {
           </CardContent>
         </Card>
       </div>
+
+      <ArticleSection toolId="image-compressor" />
 
       <SmartAd />
       <SeoContent toolId="image-compressor" />
