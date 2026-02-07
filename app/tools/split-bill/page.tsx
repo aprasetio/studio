@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState } from 'react';
@@ -6,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Users, Receipt, Send, Banknote, Percent, RotateCcw } from 'lucide-react';
+import { Users, Receipt, Send, Banknote, Percent, RotateCcw, X } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import { SeoContent } from '@/components/SeoContent';
 import { DataPersistence } from '@/components/DataPersistence';
@@ -175,6 +176,11 @@ export default function SplitBillPage() {
     setBankInfo('');
   };
 
+  const removeParticipant = (index: number) => {
+    const updated = participants.filter((_, i) => i !== index);
+    setNames(updated.join(', '));
+  };
+
   const copyForWA = () => {
     if (participants.length === 0) {
       toast({ title: lang === 'id' ? "Masukkan nama peserta" : "Please enter participants", variant: "destructive" });
@@ -220,7 +226,7 @@ export default function SplitBillPage() {
               <Receipt className="h-5 w-5 text-primary" />
               {t('bill_details')}
             </CardTitle>
-            <Button variant="ghost" size="sm" onClick={handleReset} className="text-muted-foreground hover:text-destructive">
+            <Button variant="ghost" size="sm" onClick={handleReset} className="text-red-500 hover:text-red-700 transition-colors">
               <RotateCcw className="h-4 w-4 mr-1" /> {t('reset')}
             </Button>
           </CardHeader>
@@ -262,6 +268,24 @@ export default function SplitBillPage() {
                   className="w-full min-h-[100px] pl-10 pt-2 rounded-md border border-input bg-background text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 />
               </div>
+              
+              {/* Person List (Chips) */}
+              {participants.length > 0 && (
+                <div className="flex flex-wrap gap-2 pt-2 animate-in fade-in duration-300">
+                  {participants.map((p, i) => (
+                    <div key={i} className="flex items-center gap-1.5 bg-muted/50 border px-3 py-1.5 rounded-xl text-xs font-bold transition-all hover:bg-muted">
+                      {p}
+                      <button 
+                        onClick={() => removeParticipant(i)}
+                        className="text-red-500 hover:text-red-700 transition-colors"
+                        aria-label={`Remove ${p}`}
+                      >
+                        <X className="h-3.5 w-3.5" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="space-y-2 pt-4 border-t">

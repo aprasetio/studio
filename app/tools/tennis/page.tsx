@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useMemo, useEffect } from 'react';
@@ -21,7 +22,7 @@ import {
   ShieldCheck,
   RefreshCw,
   PlusCircle,
-  Edit,
+  Pencil,
   X,
   Clock
 } from 'lucide-react';
@@ -474,10 +475,12 @@ export default function TennisGeneratorPage() {
                         {skills[p.skill]}
                       </Badge>
                     </div>
-                    <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="flex gap-1">
                       <Dialog>
                         <DialogTrigger asChild>
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-primary"><Edit className="h-4 w-4" /></Button>
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-blue-500 hover:text-blue-700 hover:bg-blue-50 transition-colors">
+                            <Pencil className="h-4 w-4" />
+                          </Button>
                         </DialogTrigger>
                         <DialogContent className="rounded-3xl max-w-sm">
                           <DialogHeader><DialogTitle className="font-black uppercase">{lang === 'id' ? 'Edit' : 'Edit'} {p.name}</DialogTitle></DialogHeader>
@@ -490,7 +493,9 @@ export default function TennisGeneratorPage() {
                           </div>
                         </DialogContent>
                       </Dialog>
-                      <Button variant="ghost" size="icon" onClick={() => removePlayer(p.id)} className="h-8 w-8 text-muted-foreground hover:text-destructive"><Trash2 className="h-4 w-4" /></Button>
+                      <Button variant="ghost" size="icon" onClick={() => removePlayer(p.id)} className="h-8 w-8 text-red-500 hover:text-red-700 hover:bg-red-50 transition-colors">
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
                     </div>
                   </div>
                 ))}
@@ -523,7 +528,7 @@ export default function TennisGeneratorPage() {
                           <div key={m.id} className="p-4 bg-muted/10 rounded-2xl border-2 space-y-4 group relative">
                             <div className="flex justify-between items-center text-[9px] font-black uppercase text-muted-foreground opacity-50">
                               <span>{t('court')} {m.court} {m.type === 'manual' && '• MANUAL'}</span>
-                              <Button variant="ghost" size="icon" onClick={() => deleteMatch(m.id)} className="h-5 w-5 opacity-0 group-hover:opacity-100 transition-opacity"><X className="h-3 w-3" /></Button>
+                              <Button variant="ghost" size="icon" onClick={() => deleteMatch(m.id)} className="h-5 w-5"><X className="h-3 w-3" /></Button>
                             </div>
                             <div className="flex items-center gap-4">
                               <div className="flex-1 space-y-2">
@@ -532,7 +537,7 @@ export default function TennisGeneratorPage() {
                                   return (
                                     <div key={pid} className="flex items-center justify-end gap-2">
                                       <p className="text-xs font-black uppercase truncate">{p?.name || '?'}</p>
-                                      <Button variant="ghost" size="icon" className="h-6 w-6 opacity-0 group-hover:opacity-100" onClick={() => setSwapData({ matchId: m.id, team: 1, index: idx })}><RefreshCw className="h-3 w-3" /></Button>
+                                      <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => setSwapData({ matchId: m.id, team: 1, index: idx })}><RefreshCw className="h-3 w-3" /></Button>
                                     </div>
                                   );
                                 })}
@@ -547,7 +552,7 @@ export default function TennisGeneratorPage() {
                                   const p = players.find(x => x.id === pid);
                                   return (
                                     <div key={pid} className="flex items-center gap-2">
-                                      <Button variant="ghost" size="icon" className="h-6 w-6 opacity-0 group-hover:opacity-100" onClick={() => setSwapData({ matchId: m.id, team: 2, index: idx })}><RefreshCw className="h-3 w-3" /></Button>
+                                      <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => setSwapData({ matchId: m.id, team: 2, index: idx })}><RefreshCw className="h-3 w-3" /></Button>
                                       <p className="text-xs font-black uppercase truncate">{p?.name || '?'}</p>
                                     </div>
                                   );
@@ -576,7 +581,7 @@ export default function TennisGeneratorPage() {
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead className="bg-muted/50 text-[10px] font-black uppercase tracking-widest text-muted-foreground border-b">
-                    <tr><th className="p-4 text-center w-10">#</th><th className="p-4 text-left">{t('col_player')}</th><th className="p-4 text-center w-12 text-primary">{t('points')}</th></tr>
+                    <tr><th className="p-4 text-center w-10">#</th><th className="p-4 text-left">{globalT('col_player')}</th><th className="p-4 text-center w-12 text-primary">{t('points')}</th></tr>
                   </thead>
                   <tbody className="divide-y">
                     {leaderboard.map((p, i) => (

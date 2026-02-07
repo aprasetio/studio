@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -237,7 +238,7 @@ export default function ShiftRosterPage() {
                             variant="ghost" 
                             size="icon" 
                             onClick={() => removeEmployee(emp.id)}
-                            className="text-muted-foreground hover:text-destructive opacity-0 group-hover:opacity-100 transition-opacity"
+                            className="text-red-500 hover:text-red-700 hover:bg-red-50 transition-colors"
                           >
                             <Trash2 className="h-4 w-4" />
                           </Button>

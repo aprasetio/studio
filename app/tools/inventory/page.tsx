@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState } from 'react';
@@ -176,7 +177,7 @@ export default function InventoryPage() {
                     <Button 
                       variant="ghost" 
                       size="icon" 
-                      className="h-12 w-12 text-muted-foreground hover:text-destructive hover:bg-destructive/5 rounded-xl transition-colors"
+                      className="h-12 w-12 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-xl transition-colors"
                       onClick={() => deleteItem(item.id)}
                     >
                       <Trash2 className="h-6 w-6" />
