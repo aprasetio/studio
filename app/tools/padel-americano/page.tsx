@@ -37,53 +37,34 @@ import { SeoContent } from '@/components/SeoContent';
 import { SmartAd } from '@/components/smart-ad';
 
 const UI_TEXT: Record<string, any> = {
-  en: {
-    title: "Padel Americano Generator",
-    subtitle: "Rotating partners, fixed point scoring",
-    setup: "Tournament Setup",
-    active: "Tournament Dashboard",
-    players_count: "Number of Players",
-    courts: "Number of Courts",
-    target: "Target Points",
-    player_names: "Player Names",
-    start: "Start Tournament",
-    next_round: "Finish Round & Generate Next",
-    leaderboard: "Individual Leaderboard",
-    round: "Round",
-    court: "Court",
-    points: "Points",
-    diff: "Diff",
-    played: "MP",
-    bench: "On Bench",
-    add_player: "Add Player",
-    randomize: "Shuffle Names"
-  },
-  id: {
-    title: "Generator Padel Americano",
-    subtitle: "Partner bergantian, skor poin tetap",
-    setup: "Persiapan Turnamen",
-    active: "Dasbor Turnamen",
-    players_count: "Jumlah Pemain",
-    courts: "Jumlah Lapangan",
-    target: "Target Poin",
-    player_names: "Nama Pemain",
-    start: "Mulai Turnamen",
-    next_round: "Selesai & Babak Berikutnya",
-    leaderboard: "Klasemen Individu",
-    round: "Babak",
-    court: "Lap.",
-    points: "Poin",
-    diff: "Selisih",
-    played: "Main",
-    bench: "Cadangan",
-    add_player: "Tambah Pemain",
-    randomize: "Acak Nama"
-  }
+  title: { en: "Padel Americano Generator", id: "Generator Padel Americano", de: "Padel Americano Generator", es: "Generador de Pádel Americano", pt: "Gerador de Padel Americano", fr: "Générateur Padel Americano", it: "Generatore Padel Americano" },
+  config: { en: "Configuration", id: "Konfigurasi", de: "Konfiguration", es: "Configuración", pt: "Configuração", fr: "Configuration", it: "Configurazione" },
+  lbl_players: { en: "Player Names", id: "Nama Pemain", de: "Spielernamen", es: "Nombres de Jugadores", pt: "Nomes dos Jogadores", fr: "Noms des Joueurs", it: "Nomi dei Giocatori" },
+  lbl_courts: { en: "Number of Courts", id: "Jumlah Lapangan", de: "Anzahl Plätze", es: "Número de Pistas", pt: "Número de Quadras", fr: "Nombre de Terrains", it: "Numero di Campi" },
+  lbl_points: { en: "Target Points per Match", id: "Target Poin per Match", de: "Zielpunkte pro Match", es: "Puntos Objetivo", pt: "Pontos Alvo", fr: "Points Cibles", it: "Punti Obiettivo" },
+  btn_start: { en: "Start Tournament", id: "Mulai Turnamen", de: "Turnier starten", es: "Iniciar Torneo", pt: "Iniciar Torneio", fr: "Démarrer Tournoi", it: "Inizia Torneo" },
+  btn_next_round: { en: "Finish Round & Generate Next", id: "Selesai & Buat Ronde Berikutnya", de: "Runde beenden & Nächste", es: "Terminar Ronda y Generar Siguiente", pt: "Finalizar Rodada e Gerar Próxima", fr: "Terminer & Générer Suivant", it: "Finisci Turno & Genera Prossimo" },
+  btn_reset: { en: "Reset Tournament", id: "Reset Turnamen", de: "Turnier zurücksetzen", es: "Reiniciar Torneo", pt: "Reiniciar Torneio", fr: "Réinitialiser Tournoi", it: "Resetta Torneo" },
+  btn_randomize: { en: "Randomize Order", id: "Acak Urutan", de: "Reihenfolge mischen", es: "Orden Aleatorio", pt: "Ordem Aleatória", fr: "Ordre Aléatoire", it: "Ordine Casuale" },
+  round: { en: "Round", id: "Ronde", de: "Runde", es: "Ronda", pt: "Rodada", fr: "Tour", it: "Turno" },
+  court: { en: "Court", id: "Lapangan", de: "Platz", es: "Pista", pt: "Quadra", fr: "Terrain", it: "Campo" },
+  bench: { en: "Bench / Bye (Resting)", id: "Cadangan / Istirahat", de: "Pause / Bank", es: "Descanso / Banquillo", pt: "Descanso / Banco", fr: "Repos / Banc", it: "Riposo / Panchina" },
+  vs: { en: "vs", id: "vs", de: "gegen", es: "contra", pt: "vs", fr: "contre", it: "contro" },
+  rank: { en: "#", id: "#", de: "#", es: "#", pt: "#", fr: "#", it: "#" },
+  player: { en: "Player", id: "Pemain", de: "Spieler", es: "Jugador", pt: "Jogador", fr: "Joueur", it: "Giocatore" },
+  played: { en: "Played", id: "Main", de: "Gespielt", es: "Jugados", pt: "Jogados", fr: "Joués", it: "Giocate" },
+  points: { en: "Points", id: "Poin", de: "Punkte", es: "Puntos", pt: "Pontos", fr: "Points", it: "Punti" },
+  diff: { en: "Diff", id: "Selisih", de: "Diff", es: "Dif", pt: "Dif", fr: "Diff", it: "Diff" },
+  err_min_players: { en: "Minimum 4 players required", id: "Minimal 4 pemain", de: "Mindestens 4 Spieler", es: "Mínimo 4 jugadores", pt: "Mínimo 4 jogadores", fr: "Minimum 4 joueurs", it: "Minimo 4 giocatori" },
+  err_total_score: { en: "Please enter all scores", id: "Masukkan semua skor", de: "Bitte alle Ergebnisse eingeben", es: "Por favor, ingrese todos los puntajes", pt: "Por favor, insira todas as pontuações", fr: "Veuillez saisir tous les scores", it: "Inserisci tutti i punteggi" },
+  leaderboard: { en: "Individual Leaderboard", id: "Klasemen Individu", de: "Einzel-Rangliste", es: "Clasificación Individual", pt: "Classificação Individual", fr: "Classement Individuel", it: "Classifica Individuale" },
+  add_player: { en: "Add Player", id: "Tambah Pemain", de: "Spieler hinzufügen", es: "Añadir Jugador", pt: "Adicionar Jogador", fr: "Ajouter Joueur", it: "Aggiungi Giocatore" },
+  subtitle: { en: "Rotating partners, fixed point scoring", id: "Partner bergantian, skor poin tetap", de: "Wechselnde Partner, feste Punktwertung", es: "Compañeros rotativos, puntuación fija", pt: "Parceiros rotativos, pontuação fixa", fr: "Partenaires tournants, score fixe", it: "Partner a rotazione, punteggio fisso" }
 };
 
 export default function PadelAmericanoPage() {
   const { lang, t: globalT } = useLang();
-  const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
+  const t = (key: string) => UI_TEXT[key]?.[lang] || UI_TEXT[key]?.['en'] || key;
 
   const { 
     status, players, matches, currentRound, config,
@@ -99,7 +80,7 @@ export default function PadelAmericanoPage() {
   const handleStart = () => {
     const validNames = names.filter(n => n.trim() !== '');
     if (validNames.length < 4) {
-      toast({ title: "Min 4 players required", variant: "destructive" });
+      toast({ title: t('err_min_players'), variant: "destructive" });
       return;
     }
     setupTournament(validNames, setupConfig);
@@ -114,12 +95,12 @@ export default function PadelAmericanoPage() {
   const handleNextRound = () => {
     const roundMatches = matches.filter(m => m.round === currentRound);
     if (roundMatches.some(m => !m.isFinished)) {
-      toast({ title: "Please enter all scores", variant: "destructive" });
+      toast({ title: t('err_total_score'), variant: "destructive" });
       return;
     }
     const nextRoundMatches = generateNextRound(players, currentRound + 1, config);
     finishRound(nextRoundMatches);
-    toast({ title: `Round ${currentRound} Complete!` });
+    toast({ title: `${t('round')} ${currentRound} Complete!` });
   };
 
   const sortedLeaderboard = useMemo(() => {
@@ -143,13 +124,13 @@ export default function PadelAmericanoPage() {
           <Card className="shadow-xl border-2 rounded-[2.5rem]">
             <CardHeader className="bg-muted/30 border-b">
               <CardTitle className="text-lg font-black uppercase tracking-tight flex items-center gap-2 text-primary">
-                <Settings2 className="h-5 w-5" /> {t('setup')}
+                <Settings2 className="h-5 w-5" /> {t('config')}
               </CardTitle>
             </CardHeader>
             <CardContent className="p-8 space-y-6">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label className="text-xs font-bold uppercase opacity-60">{t('courts')}</Label>
+                  <Label className="text-xs font-bold uppercase opacity-60">{t('lbl_courts')}</Label>
                   <Input 
                     type="number" 
                     value={setupConfig.totalCourts} 
@@ -157,7 +138,7 @@ export default function PadelAmericanoPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label className="text-xs font-bold uppercase opacity-60">{t('target')}</Label>
+                  <Label className="text-xs font-bold uppercase opacity-60">{t('lbl_points')}</Label>
                   <Select 
                     value={setupConfig.targetPoints.toString()} 
                     onValueChange={v => setSetupConfig({...setupConfig, targetPoints: parseInt(v)})}
@@ -172,7 +153,7 @@ export default function PadelAmericanoPage() {
 
               <div className="pt-4 border-t">
                 <Button onClick={handleStart} className="w-full h-16 bg-primary text-white font-black uppercase tracking-[0.2em] shadow-xl rounded-2xl">
-                  <Play className="mr-2 h-6 w-6" /> {t('start')}
+                  <Play className="mr-2 h-6 w-6" /> {t('btn_start')}
                 </Button>
               </div>
             </CardContent>
@@ -181,10 +162,10 @@ export default function PadelAmericanoPage() {
           <Card className="shadow-xl border-2 rounded-[2.5rem]">
             <CardHeader className="bg-muted/30 border-b flex flex-row items-center justify-between">
               <CardTitle className="text-lg font-black uppercase tracking-tight flex items-center gap-2 text-primary">
-                <Users className="h-5 w-5" /> {t('player_names')}
+                <Users className="h-5 w-5" /> {t('lbl_players')}
               </CardTitle>
               <Button variant="ghost" size="sm" onClick={() => setNames([...names].sort(() => Math.random() - 0.5))} className="font-bold text-xs uppercase">
-                <Shuffle className="h-3 w-3 mr-1" /> {t('randomize')}
+                <Shuffle className="h-3 w-3 mr-1" /> {t('btn_randomize')}
               </Button>
             </CardHeader>
             <CardContent className="p-8 space-y-4 max-h-[500px] overflow-y-auto">
@@ -225,7 +206,7 @@ export default function PadelAmericanoPage() {
                 </div>
               </div>
               <Button variant="outline" onClick={resetTournament} className="text-destructive font-black uppercase text-[10px] border-2">
-                <RotateCcw className="h-4 w-4 mr-2" /> {globalT('reset')}
+                <RotateCcw className="h-4 w-4 mr-2" /> {t('btn_reset')}
               </Button>
             </div>
 
@@ -253,7 +234,7 @@ export default function PadelAmericanoPage() {
                           onChange={e => updateMatchScore(m.id, parseInt(e.target.value) || 0)}
                           className="w-16 h-16 text-center font-black text-2xl border-4 rounded-2xl bg-card"
                         />
-                        <span className="font-black opacity-20">VS</span>
+                        <span className="font-black opacity-20">{t('vs')}</span>
                         <div className="w-16 h-16 flex items-center justify-center font-black text-2xl border-4 rounded-2xl bg-muted/20 opacity-60">
                           {m.score2}
                         </div>
@@ -273,7 +254,7 @@ export default function PadelAmericanoPage() {
             </div>
 
             <Button onClick={handleNextRound} className="w-full h-20 bg-accent text-white font-black uppercase tracking-[0.2em] shadow-2xl rounded-[2rem] text-xl transform transition-transform hover:scale-[1.02] active:scale-95">
-              {t('next_round')} <ChevronRight className="ml-2 h-8 w-8" />
+              {t('btn_next_round')} <ChevronRight className="ml-2 h-8 w-8" />
             </Button>
           </div>
 
@@ -290,8 +271,8 @@ export default function PadelAmericanoPage() {
                   <table className="w-full">
                     <thead className="bg-muted/50 text-[9px] font-black uppercase tracking-widest text-muted-foreground border-b">
                       <tr>
-                        <th className="p-4 text-center w-10">#</th>
-                        <th className="p-4 text-left">PLAYER</th>
+                        <th className="p-4 text-center w-10">{t('rank')}</th>
+                        <th className="p-4 text-left">{t('player')}</th>
                         <th className="p-4 text-center">{t('played')}</th>
                         <th className="p-4 text-center">{t('diff')}</th>
                         <th className="p-4 text-center bg-primary/5 text-primary">PTS</th>
