@@ -10,6 +10,7 @@ import { Plus, Trash2, Printer, Receipt } from 'lucide-react';
 import { SeoContent } from '@/components/seo-content';
 import { SmartAd } from '@/components/smart-ad';
 import { DataPersistence } from '@/components/DataPersistence';
+import { ArticleSection } from '@/components/ArticleSection';
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -343,6 +344,8 @@ export default function InvoiceMakerPage() {
           </div>
         </div>
       </div>
+
+      <ArticleSection toolId="invoice" />
 
       <div className="print:hidden w-full">
         <SmartAd />

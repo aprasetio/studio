@@ -44,6 +44,7 @@ import {
 import { DataPersistence } from '@/components/DataPersistence';
 import { SeoContent } from '@/components/seo-content';
 import { SmartAd } from '@/components/smart-ad';
+import { ArticleSection } from '@/components/ArticleSection';
 import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { useTennisStore, type SkillLevel, type Player, type Match } from './store/useTennisStore';
@@ -617,6 +618,8 @@ export default function TennisGeneratorPage() {
           </div>
         </DialogContent>
       </Dialog>
+
+      <ArticleSection toolId="tennis" />
 
       <div className="w-full mt-12 pt-12 border-t-4 border-dashed">
         <DataPersistence data={{ config, players, schedule }} onRestore={(data) => {

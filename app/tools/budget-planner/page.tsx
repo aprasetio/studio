@@ -43,6 +43,7 @@ import { Label } from '@/components/ui/label';
 import { DataPersistence } from '@/components/DataPersistence';
 import { SeoContent } from '@/components/seo-content';
 import { SmartAd } from '@/components/smart-ad';
+import { ArticleSection } from '@/components/ArticleSection';
 import { format, addMonths, addWeeks, subMonths, startOfMonth, endOfMonth, isWithinInterval, isBefore, parseISO } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { 
@@ -225,7 +226,7 @@ const UI_TEXT: Record<string, any> = {
     next_due: "Próximo Vencimiento",
     pending_alert: "Você tem contas recorrentes pendentes.",
     process_all: "Processar Tudo",
-    rule_added: "Regra recurrente adicionada",
+    rule_added: "Regla recurrente adicionada",
     manage_recurring: "Gerenciar Recorrentes",
     add_rule: "Add Regra",
     monthly_bills: "Contas Mensais",
@@ -1048,7 +1049,7 @@ export default function BudgetPlannerPage() {
             <CardContent className="p-6 space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-muted-foreground uppercase">{globalT('base')}</span>
-                <Input type="number" value={baseMonthlyIncome || ''} onChange={(e) => updateBaseIncome(e.target.value)} className="w-28 h-8 font-bold text-right border-none bg-transparent" placeholder="0" />
+                <input type="number" value={baseMonthlyIncome || ''} onChange={(e) => updateBaseIncome(e.target.value)} className="w-28 h-8 font-bold text-right border-none bg-transparent" placeholder="0" />
               </div>
               <div className="flex items-center justify-between text-green-600">
                 <span className="text-xs font-bold uppercase">{globalT('extra')}</span>
@@ -1062,6 +1063,8 @@ export default function BudgetPlannerPage() {
           </Card>
         </div>
       </div>
+
+      <ArticleSection toolId="budget-planner" />
 
       {/* Data Management Section */}
       <div className="w-full space-y-6 mt-8 border-t-4 border-dashed pt-12">

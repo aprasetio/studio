@@ -5,6 +5,7 @@ import { FutsalScoreboard } from '@/components/futsal-scoreboard';
 import { useLang } from '@/components/Providers';
 import { SeoContent } from '@/components/seo-content';
 import { SmartAd } from '@/components/smart-ad';
+import { ArticleSection } from '@/components/ArticleSection';
 
 export default function FutsalPage() {
   const { t } = useLang();
@@ -16,6 +17,8 @@ export default function FutsalPage() {
       </div>
       
       <FutsalScoreboard />
+
+      <ArticleSection toolId="futsal" />
       
       <SmartAd />
       
