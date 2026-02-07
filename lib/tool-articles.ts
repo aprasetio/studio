@@ -159,10 +159,6 @@ export const TOOL_ARTICLES: ArticleCollection = {
         {
           title: "The FIFO Method",
           content: "<b>FIFO (First-In, First-Out)</b> is a simple but effective strategy where you sell the oldest stock first. By tracking your quantities regularly, you can ensure that nothing sits on the shelf for too long."
-        },
-        {
-          title: "Privacy First Stock Management",
-          content: "Your business data is your competitive advantage. That's why VersoKit processes everything 100% locally in your browser. No product lists, quantities, or prices are ever uploaded to a server."
         }
       ]
     },
@@ -176,10 +172,6 @@ export const TOOL_ARTICLES: ArticleCollection = {
         {
           title: "Strategi FIFO di Gudang",
           content: "Gunakan metode <b>FIFO (First-In, First-Out)</b> dengan memastikan barang yang masuk lebih awal dijual terlebih dahulu. Catatan digital memudahkan Anda melihat barang mana yang sudah lama mengendap."
-        },
-        {
-          title: "Kelola Stok dengan Aman & Privat",
-          content: "Data stok barang Anda sangat rahasia. VersoKit menjamin data tetap di perangkat Anda secara offline, sehingga tidak ada risiko kebocoran data bisnis ke pihak luar."
         }
       ]
     }
@@ -195,10 +187,6 @@ export const TOOL_ARTICLES: ArticleCollection = {
         {
           title: "Visualize Your Team Coverage",
           content: "Our visual shift planner allows you to see at a glance if you have enough staff for every day of the week. Use the color-coded system to identify gaps in your schedule immediately."
-        },
-        {
-          title: "Ready for Group Sharing",
-          content: "Once your schedule is generated, download it as a high-quality image. It’s perfectly formatted for sharing in work group chats like WhatsApp or Slack."
         }
       ]
     },
@@ -212,10 +200,6 @@ export const TOOL_ARTICLES: ArticleCollection = {
         {
           title: "Visualisasi Jadwal Kerja",
           content: "Sistem warna pada VersoKit memudahkan Anda melihat apakah cakupan tim sudah cukup untuk setiap hari. Anda bisa langsung mendeteksi jika ada hari yang kekurangan tenaga kerja."
-        },
-        {
-          title: "Format Rapi untuk Grup WA",
-          content: "Setelah jadwal selesai dibuat, Anda bisa mengunduhnya sebagai gambar. Format ini sangat rapi dan mudah dibaca saat dibagikan ke grup koordinasi kantor di WhatsApp."
         }
       ]
     }
@@ -231,10 +215,6 @@ export const TOOL_ARTICLES: ArticleCollection = {
         {
           title: "Visualizing Roles",
           content: "Using a lineup builder helps players visualize their starting positions and responsibilities on the pitch. It clears up confusion before the whistle blows."
-        },
-        {
-          title: "Professional Team Graphics",
-          content: "Create high-quality formation images for your social media or team briefing. A professional graphic builds team spirit and helps communicate your winning strategy."
         }
       ]
     },
@@ -248,10 +228,62 @@ export const TOOL_ARTICLES: ArticleCollection = {
         {
           title: "Pentingnya Visualisasi Taktik",
           content: "Melihat posisi mereka secara visual di lapangan membantu pemain memahami peran dan tanggung jawab masing-masing sebelum pertandingan dimulai."
+        }
+      ]
+    }
+  },
+  "split-bill": {
+    en: {
+      title: "Restaurant Bill Splitting Made Easy",
+      sections: [
+        {
+          title: "Handling Tax & Service Charges",
+          content: "Restaurant bills often come with additional fees like Tax and Service charges. Our calculator allows you to input a percentage that is automatically applied to each person's subtotal, ensuring the final sum is accurate down to the last cent."
         },
         {
-          title: "Bagikan Strategi ke Tim",
-          content: "Buat gambar formasi tim Anda secara instan dan bagikan ke grup WhatsApp tim. Tampilan profesional meningkatkan rasa percaya diri dan koordinasi tim saat bertanding."
+          title: "Splitting by Item vs. Evenly",
+          content: "While splitting a bill evenly is fast, it's not always fair. This tool is perfect for large groups where some guests might have ordered significantly more than others. By listing participants, you can ensure everyone pays for exactly what they consumed."
+        }
+      ]
+    },
+    id: {
+      title: "Cara Hitung Split Bill Tanpa Pusing",
+      sections: [
+        {
+          title: "Menangani Pajak dan Biaya Layanan",
+          content: "Tagihan restoran seringkali menyertakan pajak (Tax) dan biaya layanan (Service Charge). Kalkulator kami memungkinkan Anda memasukkan persentase biaya tersebut agar otomatis dibebankan secara adil kepada setiap peserta."
+        },
+        {
+          title: "Bagi Rata vs Bagi per Item",
+          content: "Meskipun bagi rata lebih cepat, pembagian per item jauh lebih adil untuk acara seperti Buka Bersama (Bukber) atau makan siang kantor. Alat ini membantu Anda memberikan rincian transparan yang siap dibagikan ke grup WhatsApp."
+        }
+      ]
+    }
+  },
+  "scoreboard": {
+    en: {
+      title: "Digital Scoreboard for Any Sport",
+      sections: [
+        {
+          title: "One Scoreboard, Many Sports",
+          content: "Whether you're playing Volleyball, Badminton, Table Tennis, or even a casual board game, this universal scoreboard is designed to adapt. Set your target score (e.g., 21 or 25) and track both points and sets won with a clean, high-contrast interface."
+        },
+        {
+          title: "High Visibility for Players",
+          content: "Designed for use on mobile phones, tablets, or even cast to a TV screen. The large typography ensures that players and spectators can see the score clearly from across the court, eliminating confusion and maintaining the flow of the game."
+        }
+      ]
+    },
+    id: {
+      title: "Papan Skor Digital Serbaguna (Badminton/Voli)",
+      sections: [
+        {
+          title: "Satu Papan untuk Semua Cabang",
+          content: "Baik Anda bermain Bulu Tangkis, Voli, Tenis Meja, atau bahkan permainan kartu, papan skor ini siap digunakan. Anda bisa mengatur target poin kemenangan (misal 21 atau 25) dan mencatat skor serta jumlah set yang dimenangkan dengan mudah."
+        },
+        {
+          title: "Visibilitas Tinggi untuk Pemain",
+          content: "Tampilan didesain agar terlihat jelas dari kejauhan. Sangat cocok digunakan di ponsel, tablet, atau dihubungkan ke layar TV lapangan agar pemain dan penonton bisa memantau skor tanpa gangguan iklan."
         }
       ]
     }
