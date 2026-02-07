@@ -25,6 +25,7 @@ import { ArticleSection } from '@/components/ArticleSection';
 
 const UI_TEXT: Record<string, any> = {
   en: {
+    title_universal: "Universal Scoreboard",
     set: "SET",
     target: "TARGET SCORE",
     reset_all: "RESET ALL",
@@ -43,6 +44,7 @@ const UI_TEXT: Record<string, any> = {
     default_sport: "Volleyball"
   },
   id: {
+    title_universal: "Papan Skor Universal",
     set: "SET",
     target: "TARGET POIN",
     reset_all: "RESET SEMUA",
@@ -61,6 +63,7 @@ const UI_TEXT: Record<string, any> = {
     default_sport: "Voli"
   },
   es: {
+    title_universal: "Marcador Universal",
     set: "SET",
     target: "PUNTOS OBJETIVO",
     reset_all: "REINICIAR TODO",
@@ -79,6 +82,7 @@ const UI_TEXT: Record<string, any> = {
     default_sport: "Voleibol"
   },
   pt: {
+    title_universal: "Placar Universal",
     set: "SET",
     target: "META DE PONTOS",
     reset_all: "RESETAR TUDO",
@@ -87,8 +91,8 @@ const UI_TEXT: Record<string, any> = {
     swap: "TROCAR LADOS",
     match_name: "NOME DA PARTIDA",
     sport_type: "TIPO DE ESPORTE",
-    home: "MANDANTE",
-    away: "VISITANTE",
+    home: "CASA",
+    away: "FORA",
     sets_won: "SETS GANHOS",
     victory_target: "META DE VITÓRIA",
     match: "PARTIDA",
@@ -97,6 +101,7 @@ const UI_TEXT: Record<string, any> = {
     default_sport: "Voleibol"
   },
   de: {
+    title_universal: "Universal-Anzeigetafel",
     set: "SATZ",
     target: "ZIELPUNKTE",
     reset_all: "ALLES ZURÜCKSETZEN",
@@ -115,6 +120,7 @@ const UI_TEXT: Record<string, any> = {
     default_sport: "Volleyball"
   },
   fr: {
+    title_universal: "Tableau de Score Universel",
     set: "SET",
     target: "SCORE CIBLE",
     reset_all: "TOUT RÉINITIALISER",
@@ -133,6 +139,7 @@ const UI_TEXT: Record<string, any> = {
     default_sport: "Volleyball"
   },
   it: {
+    title_universal: "Tabellone Universale",
     set: "SET",
     target: "TARGET PUNTEGGIO",
     reset_all: "RESET TUTTO",
@@ -142,7 +149,7 @@ const UI_TEXT: Record<string, any> = {
     match_name: "NOME PARTITA",
     sport_type: "TIPO DI SPORT",
     home: "CASA",
-    away: "TRASFERTA",
+    away: "OSPITI",
     sets_won: "SET VINTI",
     victory_target: "TARGET VITTORIA",
     match: "PARTITA",
@@ -224,7 +231,7 @@ export default function UniversalScoreboardPage() {
           <div className="space-y-2 w-full md:w-auto">
             <div className="flex items-center gap-2 text-primary font-black uppercase tracking-widest text-xs">
               <Dribbble className="h-4 w-4" />
-              {globalT('scoreboard')} PRO
+              {t('title_universal')} PRO
             </div>
             <div className="flex flex-col gap-1">
               <Input 
@@ -386,7 +393,7 @@ export default function UniversalScoreboardPage() {
       <div className="flex flex-col items-center justify-center gap-6">
         <div className="flex items-center justify-center gap-4 rounded-3xl bg-muted p-6 text-sm font-black uppercase tracking-[0.2em] text-muted-foreground border-2 w-full shadow-inner">
           <Trophy className="h-6 w-6 text-primary animate-bounce" /> 
-          {t('victory_target')}: {state.targetScore} {globalT('score')}
+          {t('victory_target')}: {state.targetScore}
         </div>
         
         <DataPersistence 

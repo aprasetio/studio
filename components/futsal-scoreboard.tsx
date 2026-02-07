@@ -22,7 +22,8 @@ const UI_TEXT: Record<string, any> = {
     minutes: "MINS",
     second_penalty: "SECOND PENALTY!",
     round: "ROUND",
-    time: "TIME"
+    time: "TIME",
+    score: "SCORE"
   },
   id: {
     home: "KANDANG",
@@ -36,7 +37,8 @@ const UI_TEXT: Record<string, any> = {
     minutes: "MENIT",
     second_penalty: "PENALTI KEDUA!",
     round: "BABAK",
-    time: "WAKTU"
+    time: "WAKTU",
+    score: "SKOR"
   },
   es: {
     home: "LOCAL",
@@ -50,11 +52,12 @@ const UI_TEXT: Record<string, any> = {
     minutes: "MIN",
     second_penalty: "¡DOBLE PENALTI!",
     round: "TIEMPO",
-    time: "TIEMPO"
+    time: "TIEMPO",
+    score: "PUNTOS"
   },
   pt: {
-    home: "MANDANTE",
-    away: "VISITANTE",
+    home: "CASA",
+    away: "FORA",
     period: "PERÍODO",
     foul: "FALTAS",
     start: "INICIAR",
@@ -64,7 +67,8 @@ const UI_TEXT: Record<string, any> = {
     minutes: "MIN",
     second_penalty: "TIRO LIVRE!",
     round: "TEMPO",
-    time: "TEMPO"
+    time: "TEMPO",
+    score: "PLACAR"
   },
   de: {
     home: "HEIM",
@@ -78,7 +82,8 @@ const UI_TEXT: Record<string, any> = {
     minutes: "MIN",
     second_penalty: "ZEHNMETER!",
     round: "HALBZEIT",
-    time: "ZEIT"
+    time: "ZEIT",
+    score: "STAND"
   },
   fr: {
     home: "DOMICILE",
@@ -92,11 +97,12 @@ const UI_TEXT: Record<string, any> = {
     minutes: "MIN",
     second_penalty: "JET FRANC!",
     round: "PÉRIODE",
-    time: "TEMPS"
+    time: "TEMPS",
+    score: "SCORE"
   },
   it: {
     home: "CASA",
-    away: "TRASFERTA",
+    away: "OSPITI",
     period: "PERIODO",
     foul: "FALLI",
     start: "INIZIA",
@@ -106,7 +112,8 @@ const UI_TEXT: Record<string, any> = {
     minutes: "MIN",
     second_penalty: "TIRO LIBERO!",
     round: "TEMPO",
-    time: "TEMPO"
+    time: "TEMPO",
+    score: "PUNTEGGIO"
   }
 };
 
@@ -215,7 +222,7 @@ export function FutsalScoreboard() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <CardTitle className="text-2xl font-black uppercase tracking-widest text-primary flex items-center gap-3">
               <History className="h-6 w-6" />
-              {globalT('futsal')} PRO
+              {t('home')} vs {t('away')}
             </CardTitle>
             <div className="flex items-center gap-2">
               <Button 
