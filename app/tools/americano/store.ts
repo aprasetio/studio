@@ -32,14 +32,14 @@ interface AmericanoState {
   matches: Match[];
   currentRound: number;
   status: 'setup' | 'active' | 'finished';
-  benchHistory: string[]; // History of player IDs who sat out
+  benchHistory: string[];
 
   // Actions
   setSportMode: (mode: SportMode) => void;
   setTargetScore: (score: number) => void;
   setupTournament: (names: string[]) => void;
   generateNextRound: () => void;
-  updateScore: (matchId: string, s1: number) => void;
+  updateScore: (matchId: string, s1: number, s2?: number) => void;
   finishMatch: (matchId: string) => void;
   resetTournament: () => void;
 }
@@ -57,7 +57,7 @@ export const useAmericanoStore = create<AmericanoState>()(
 
       setSportMode: (mode) => set({ 
         sportMode: mode, 
-        targetScore: mode === 'padel' ? 32 : 21 
+        targetScore: mode === 'padel' ? 32 : 11 
       }),
 
       setTargetScore: (score) => set({ targetScore: score }),
@@ -65,7 +65,7 @@ export const useAmericanoStore = create<AmericanoState>()(
       setupTournament: (names) => {
         const players: Player[] = names.map(name => ({
           id: `p-${Math.random().toString(36).substr(2, 9)}`,
-          name: name.toUpperCase(),
+          name: name.toUpperCase().trim(),
           totalPoints: 0,
           matchesPlayed: 0,
           pointsDiff: 0,
@@ -82,27 +82,22 @@ export const useAmericanoStore = create<AmericanoState>()(
       },
 
       generateNextRound: () => {
-        const { players, currentRound, targetScore } = get();
+        const { players, currentRound } = get();
         const nextRound = currentRound + 1;
         
         // 1. Determine Bench (if N % 4 != 0)
-        // Sort players by matches played (asc) to pick who sits out
         const sortedForBench = [...players].sort((a, b) => a.matchesPlayed - b.matchesPlayed);
         const sitOutCount = players.length % 4;
         const sittingOut = sortedForBench.slice(0, sitOutCount);
         const activePool = [...players].filter(p => !sittingOut.find(s => s.id === p.id));
 
-        // 2. Pairing Algorithm: Anchor Shift (Fixed Index 0)
-        // We rotate the active pool indices relative to round 1
+        // 2. Pairing Algorithm: Anchor Shift
         const n = activePool.length;
-        const indices = Array.from({ length: n }, (_, i) => i);
-        
-        // Rotation logic: Keep index 0 fixed, shift others by (round - 1)
         const shiftedIndices = [0];
         if (n > 1) {
-          const toRotate = indices.slice(1);
+          const indices = Array.from({ length: n - 1 }, (_, i) => i + 1);
           const rotation = (nextRound - 1) % (n - 1);
-          const rotated = [...toRotate.slice(-rotation), ...toRotate.slice(0, -rotation)];
+          const rotated = [...indices.slice(-rotation), ...indices.slice(0, -rotation)];
           shiftedIndices.push(...rotated);
         }
 
@@ -130,11 +125,13 @@ export const useAmericanoStore = create<AmericanoState>()(
         }));
       },
 
-      updateScore: (matchId, s1) => set((state) => {
-        const score2 = state.targetScore - s1;
+      updateScore: (matchId, s1, s2) => set((state) => {
+        const isPickle = state.sportMode === 'pickleball';
+        const finalS2 = isPickle ? (s2 ?? 0) : (state.targetScore - s1);
+        
         return {
           matches: state.matches.map(m => 
-            m.id === matchId ? { ...m, score1: s1, score2 } : m
+            m.id === matchId ? { ...m, score1: s1, score2: finalS2 } : m
           )
         };
       }),
@@ -180,7 +177,7 @@ export const useAmericanoStore = create<AmericanoState>()(
       }),
     }),
     {
-      name: 'versokit-americano-v1',
+      name: 'versokit-americano-v2',
       storage: createJSONStorage(() => localStorage),
     }
   )
