@@ -41,9 +41,9 @@ import {
 } from "@/components/ui/select";
 import { Label } from '@/components/ui/label';
 import { DataPersistence } from '@/components/DataPersistence';
-import { SeoContent } from '@/components/seo-content';
-import { SmartAd } from '@/components/smart-ad';
 import { ArticleSection } from '@/components/ArticleSection';
+import { SmartAd } from '@/components/smart-ad';
+import { SeoContent } from '@/components/SeoContent';
 import { format, addMonths, addWeeks, subMonths, startOfMonth, endOfMonth, isWithinInterval, isBefore, parseISO } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { 
@@ -98,7 +98,7 @@ const UI_TEXT: Record<string, any> = {
     manage_recurring: "Manage Recurring",
     add_rule: "Add Rule",
     monthly_bills: "Monthly Bills",
-    daily_expenses: "Daily Expenses",
+    daily_expenses: "Variable Expenses",
     savings: "Savings"
   },
   id: {
@@ -185,8 +185,8 @@ const UI_TEXT: Record<string, any> = {
     rule_added: "Regla recurrente añadida",
     manage_recurring: "Gestionar Recurrentes",
     add_rule: "Añadir Regla",
-    monthly_bills: "Gastos Fijos",
-    daily_expenses: "Gastos Diarios",
+    monthly_bills: "Facturas Mensuales",
+    daily_expenses: "Gastos Variables",
     savings: "Ahorros"
   },
   pt: {
@@ -199,7 +199,7 @@ const UI_TEXT: Record<string, any> = {
     add_item: "Add Item",
     total_income: "Renda Total",
     all_done: "Todo o dinheiro tem destino!",
-    over_budget: "Você orçou mais do que possui!",
+    over_budget: "Você orçou lebih dari yang Anda miliki!",
     new_group: "Novo Grupo",
     new_item: "Novo Item",
     transactions: "Transações",
@@ -230,8 +230,8 @@ const UI_TEXT: Record<string, any> = {
     manage_recurring: "Gerenciar Recorrentes",
     add_rule: "Add Regra",
     monthly_bills: "Contas Mensais",
-    daily_expenses: "Gastos Diários",
-    savings: "Reservas"
+    daily_expenses: "Despesas Variáveis",
+    savings: "Poupança"
   },
   de: {
     to_be_budgeted: "Zu verplanen",
@@ -273,9 +273,9 @@ const UI_TEXT: Record<string, any> = {
     rule_added: "Wiederkehrende Regel hinzugefügt",
     manage_recurring: "Wiederkehrende verwalten",
     add_rule: "Regel hinzufügen",
-    monthly_bills: "Fixkosten",
-    daily_expenses: "Alltag",
-    savings: "Sparen"
+    monthly_bills: "Monatliche Rechnungen",
+    daily_expenses: "Variable Kosten",
+    savings: "Ersparnisse"
   },
   fr: {
     to_be_budgeted: "À budgétiser",
@@ -317,8 +317,8 @@ const UI_TEXT: Record<string, any> = {
     rule_added: "Règle récurrente ajoutée",
     manage_recurring: "Gérer Récurrents",
     add_rule: "Ajouter Règle",
-    monthly_bills: "Factures fixes",
-    daily_expenses: "Vie courante",
+    monthly_bills: "Factures Mensuelles",
+    daily_expenses: "Dépenses Variables",
     savings: "Épargne"
   },
   it: {
@@ -361,8 +361,8 @@ const UI_TEXT: Record<string, any> = {
     rule_added: "Regola ricorrente aggiunta",
     manage_recurring: "Gestisci Ricorrenti",
     add_rule: "Aggiungi Regola",
-    monthly_bills: "Spese Fisse",
-    daily_expenses: "Spese Quotidiane",
+    monthly_bills: "Bollette Mensili",
+    daily_expenses: "Spese Variabili",
     savings: "Risparmio"
   }
 };
@@ -464,6 +464,24 @@ export default function BudgetPlannerPage() {
 
   const monthKey = format(currentMonth, 'yyyy-MM');
 
+  // Helper for visual translation of group names
+  const getGroupName = (originalName: string) => {
+    const nameLower = originalName.toLowerCase();
+    
+    // Check known default names in EN or ID to handle legacy stored data
+    if (nameLower.includes('monthly bill') || nameLower.includes('tagihan bulanan') || nameLower.includes('bollette') || nameLower.includes('facturas mens')) {
+      return t('monthly_bills');
+    }
+    if (nameLower.includes('variable') || nameLower.includes('daily') || nameLower.includes('pengeluaran harian') || nameLower.includes('kebutuhan harian') || nameLower.includes('spese var')) {
+      return t('daily_expenses');
+    }
+    if (nameLower.includes('saving') || nameLower.includes('tabungan') || nameLower.includes('épargne') || nameLower.includes('ersparnisse')) {
+      return t('savings');
+    }
+    
+    return originalName;
+  };
+
   // Currency Helper
   const getCurrencyConfig = (lang: string) => {
     switch(lang) {
@@ -512,7 +530,7 @@ export default function BudgetPlannerPage() {
     expenses.forEach(tx => {
       const item = items.find(i => i.id === tx.itemId);
       const group = groups.find(g => g.id === item?.groupId);
-      const groupName = group?.name || 'Other';
+      const groupName = group ? getGroupName(group.name) : 'Other';
       groupTotals[groupName] = (groupTotals[groupName] || 0) + tx.amount;
     });
 
@@ -856,7 +874,7 @@ export default function BudgetPlannerPage() {
                       <SelectItem value="inflow" className="font-bold text-green-600">{t('inflow')}</SelectItem>
                       {(state.groups || []).map(group => (
                         <React.Fragment key={group.id}>
-                          <div className="px-2 py-1.5 text-xs font-black uppercase text-muted-foreground opacity-50">{group.name}</div>
+                          <div className="px-2 py-1.5 text-xs font-black uppercase text-muted-foreground opacity-50">{getGroupName(group.name)}</div>
                           {(state.items || []).filter(i => i.groupId === group.id).map(item => (
                             <SelectItem key={item.id} value={item.id}>{item.name}</SelectItem>
                           ))}
@@ -888,7 +906,7 @@ export default function BudgetPlannerPage() {
           {(state.groups || []).map(group => (
             <Card key={group.id} className="overflow-hidden border-2 shadow-lg rounded-3xl">
               <CardHeader className="bg-muted/30 py-4 px-6 border-b flex flex-row items-center justify-between">
-                <CardTitle className="text-sm font-black uppercase tracking-widest text-primary">{group.name}</CardTitle>
+                <CardTitle className="text-sm font-black uppercase tracking-widest text-primary">{getGroupName(group.name)}</CardTitle>
                 <Button variant="ghost" size="sm" onClick={() => addItem(group.id)} className="h-8 text-[10px] font-bold uppercase">
                   <Plus className="h-3 w-3 mr-1" /> {t('add_item')}
                 </Button>
