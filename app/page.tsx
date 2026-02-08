@@ -15,7 +15,9 @@ import {
   Calculator, 
   Scaling, 
   Scissors,
-  LayoutGrid
+  ShieldCheck,
+  WifiOff,
+  Heart
 } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -44,7 +46,7 @@ const TOOLS_DATA: Tool[] = [
     href: "/tools/americano",
     isNew: true,
     name: { en: "Americano Generator", id: "Generator Americano", de: "Americano Generator", es: "Generador Americano", pt: "Gerador Americano", fr: "Générateur Americano", it: "Generatore Americano" },
-    desc: { en: "Padel & Pickleball tournament organizer. Auto-pairing.", id: "Atur turnamen Padel & Pickleball. Pasangan otomatis.", de: "Padel & Pickleball Turnierplaner. Automatische Paarung.", es: "Torneos de Pádel y Pickleball. Parejas automáticas.", pt: "Torneios de Padel e Pickleball. Pares automáticos.", fr: "Tournois Padel & Pickleball. Paires automatiques.", it: "Tornei Padel & Pickleball. Abbinamenti automatici." }
+    desc: { en: "Organize Padel or Pickleball tournaments. Auto-pairing & scoring.", id: "Atur turnamen Padel atau Pickleball. Rotasi pasangan otomatis.", de: "Organisieren Sie Padel- oder Pickleball-Turniere. Automatische Paarung.", es: "Organiza torneos de Pádel o Pickleball. Emparejamiento automático.", pt: "Organize torneios de Padel ou Pickleball. Emparelhamento automático.", fr: "Organisez des tournois de Padel ou Pickleball. Appariement auto.", it: "Organizza tornei di Padel o Pickleball. Abbinamento automatico." }
   },
   {
     id: "tennis",
@@ -157,15 +159,6 @@ const UI_LABELS: Record<string, Record<string, string>> = {
     fr: "VersoKit: Outils Quotidiens",
     it: "VersoKit: Strumenti Quotidiani"
   },
-  hero_subtitle: {
-    en: "Privacy-first • Offline-ready • Free forever",
-    id: "Privasi utama • Bisa Offline • Gratis selamanya",
-    de: "Datenschutz zuerst • Offline-bereit • Für immer kostenlos",
-    es: "Privacidad primero • Offline • Gratis para siempre",
-    pt: "Privacidade em primeiro lugar • Pronto offline • Grátis para sempre",
-    fr: "Confidentialité d'abord • Prêt pour le hors-ligne • Gratuit pour toujours",
-    it: "Privacy al primo posto • Pronto offline • Gratis per sempre"
-  },
   search_placeholder: {
     en: "Search for a tool (e.g., Invoice, Tennis)...",
     id: "Cari alat (misal: Invoice, Tenis)...",
@@ -196,8 +189,14 @@ const UI_LABELS: Record<string, Record<string, string>> = {
   cat_sports: { en: "Sports & Games", id: "Olahraga & Game", de: "Sport & Spiele", es: "Deportes y Juegos", pt: "Desportos e Jogos", fr: "Sports et Jeux", it: "Sport e Giochi" },
   cat_business: { en: "Business Tools", id: "Bisnis & Usaha", de: "Geschäftswerkzeuge", es: "Herramientas de Negocio", pt: "Ferramentas de Negócio", fr: "Outils de Business", it: "Strumenti di Business" },
   cat_finance: { en: "Finance & Budget", id: "Keuangan & Anggaran", de: "Finanz-Werkzeuge", es: "Finanzas y Presupuesto", pt: "Ferramentas Financeiras", fr: "Outils de Finance", it: "Strumenti Finanziari" },
-  cat_productivity: { en: "Productivity & Utilities", id: "Produktivitas & Utilitas", de: "Produktivität", es: "Productividad", pt: "Produtividade", fr: "Productivité", it: "Produttività" },
+  cat_productivity: { en: "Productivity & Utilities", id: "Produktivitas & Utilitas", de: "Produktivitas", es: "Productividad", pt: "Produtividade", fr: "Productivité", it: "Produttività" },
   badge_new: { en: "NEW", id: "BARU", de: "NEU", es: "NUEVO", pt: "NOVO", fr: "NOUVEAU", it: "NUOVO" }
+};
+
+const BADGE_TEXT = {
+  privacy: { en: "Privacy-first", id: "Privasi Utama", de: "Datenschutz", es: "Privacidad", pt: "Privacidade", fr: "Confidentialité", it: "Privacy" },
+  offline: { en: "Offline-ready", id: "Bisa Offline", de: "Offline-bereit", es: "Modo Offline", pt: "Modo Offline", fr: "Hors ligne", it: "Offline" },
+  free: { en: "Free forever", id: "Gratis Selamanya", de: "Kostenlos", es: "Gratis", pt: "Grátis", fr: "Gratuit", it: "Gratis" }
 };
 
 export default function ToolPortalPage() {
@@ -238,9 +237,27 @@ export default function ToolPortalPage() {
           <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter drop-shadow-xl animate-in fade-in slide-in-from-top duration-700">
             {getLabel('hero_title')}
           </h1>
-          <p className="text-xl md:text-2xl font-medium opacity-90 max-w-2xl mx-auto">
-            {getLabel('hero_subtitle')}
-          </p>
+
+          {/* Badge Pill Row */}
+          <div className="flex flex-wrap justify-center gap-3 mt-6 mb-8 animate-in fade-in slide-in-from-bottom duration-1000 delay-300">
+            {/* Badge 1: Privacy */}
+            <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-800/50 transition-transform hover:scale-105 cursor-default">
+              <ShieldCheck size={16} />
+              <span className="text-sm font-bold uppercase tracking-tight">{BADGE_TEXT.privacy[lang] || BADGE_TEXT.privacy.en}</span>
+            </div>
+
+            {/* Badge 2: Offline */}
+            <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 border border-blue-100 dark:border-blue-800/50 transition-transform hover:scale-105 cursor-default">
+              <WifiOff size={16} />
+              <span className="text-sm font-bold uppercase tracking-tight">{BADGE_TEXT.offline[lang] || BADGE_TEXT.offline.en}</span>
+            </div>
+
+            {/* Badge 3: Free */}
+            <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-400 border border-purple-100 dark:border-purple-800/50 transition-transform hover:scale-105 cursor-default">
+              <Heart size={16} />
+              <span className="text-sm font-bold uppercase tracking-tight">{BADGE_TEXT.free[lang] || BADGE_TEXT.free.en}</span>
+            </div>
+          </div>
 
           <div className="max-w-xl mx-auto relative group pt-4">
             <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none mt-4">
