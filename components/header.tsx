@@ -20,45 +20,75 @@ import {
   LayoutGrid
 } from 'lucide-react';
 
+const MENU_TEXT: Record<string, any> = {
+  // Categories
+  cat_sports: { en: "Sports", id: "Olahraga", de: "Sport", es: "Deportes", pt: "Esportes", fr: "Sports", it: "Sport" },
+  cat_business: { en: "Business", id: "Bisnis", de: "Geschäft", es: "Negocios", pt: "Negócios", fr: "Affaires", it: "Business" },
+  cat_utilities: { en: "Utilities", id: "Utilitas", de: "Dienstprogramme", es: "Utilidades", pt: "Utilitários", fr: "Utilitaires", it: "Utilità" },
+
+  // Tool Names
+  americano: { en: "Americano Generator", id: "Generator Americano", de: "Americano Generator", es: "Generador Americano", pt: "Gerador Americano", fr: "Générateur Americano", it: "Generatore Americano" },
+  futsal: { en: "Futsal Scoreboard", id: "Skor Futsal", de: "Futsal-Anzeige", es: "Marcador Futsal", pt: "Placar Futsal", fr: "Score Futsal", it: "Tabellone Calcetto" },
+  tennis: { en: "Tennis Generator", id: "Generator Tenis", de: "Tennis-Generator", es: "Generador Tenis", pt: "Gerador Tênis", fr: "Générateur Tennis", it: "Generatore Tennis" },
+  lineup: { en: "Lineup Builder", id: "Pembuat Formasi", de: "Aufstellungs-Tool", es: "Alineaciones", pt: "Escalação", fr: "Compo d'Équipe", it: "Formazione" },
+  tournament: { en: "Tournament Manager", id: "Manajer Turnamen", de: "Turniermanager", es: "Gestor Torneos", pt: "Gerente Torneio", fr: "Gestion Tournoi", it: "Gestore Torneo" },
+  scoreboard: { en: "Universal Scoreboard", id: "Papan Skor", de: "Anzeigetafel", es: "Marcador", pt: "Placar", fr: "Tableau de Score", it: "Tabellone" },
+  
+  budget: { en: "Budget Planner", id: "Perencana Anggaran", de: "Budgetplaner", es: "Presupuesto", pt: "Orçamento", fr: "Budget", it: "Pianificatore Budget" },
+  invoice: { en: "Invoice Maker", id: "Pembuat Invoice", de: "Rechnungsersteller", es: "Facturas", pt: "Faturas", fr: "Factures", it: "Fatturazione" },
+  shift: { en: "Shift Roster", id: "Jadwal Shift", de: "Schichtplan", es: "Turnos", pt: "Turnos", fr: "Planning", it: "Turni" },
+  inventory: { en: "Inventory", id: "Inventaris", de: "Inventar", es: "Inventario", pt: "Estoque", fr: "Stock", it: "Inventario" },
+  kanban: { en: "Kanban Board", id: "Papan Kanban", de: "Kanban Board", es: "Tablero Kanban", pt: "Quadro Kanban", fr: "Tableau Kanban", it: "Kanban Board" },
+
+  resizer: { en: "Image Resizer", id: "Ubah Ukuran", de: "Bildgröße", es: "Redimensionar", pt: "Redimensionar", fr: "Redimensionner", it: "Ridimensiona" },
+  cropper: { en: "Image Cropper", id: "Potong Foto", de: "Zuschneiden", es: "Recortar", pt: "Cortar", fr: "Rogner", it: "Ritaglia" },
+  compressor: { en: "Image Compressor", id: "Kompres Foto", de: "Bildkompressor", es: "Compresor", pt: "Compressor", fr: "Compresseur", it: "Compressore" },
+  pdf_merge: { en: "PDF Merge", id: "Gabung PDF", de: "PDF Zusammenfügen", es: "Combinar PDF", pt: "Combinar PDF", fr: "Fusion PDF", it: "Unisci PDF" },
+  image_to_pdf: { en: "Image to PDF", id: "Gambar ke PDF", de: "Bild zu PDF", es: "Imagen a PDF", pt: "Imagem para PDF", fr: "Image en PDF", it: "Immagine in PDF" },
+  calculator: { en: "Material Calc", id: "Kalkulator", de: "Baurechner", es: "Calculadora", pt: "Calculadora", fr: "Calculateur", it: "Calcolatore" },
+  csv_helper: { en: "CSV Cleaner", id: "Pembersih CSV", de: "CSV-Reiniger", es: "Limpiador CSV", pt: "Limpeza CSV", fr: "Nettoyeur CSV", it: "Pulitore CSV" },
+  split_bill: { en: "Split Bill", id: "Bagi Tagihan", de: "Rechnung teilen", es: "Dividir Cuenta", pt: "Dividir Conta", fr: "Partager l'Addition", it: "Dividi Conto" },
+};
+
 export default function Header() {
-  const { t } = useLang();
+  const { lang } = useLang();
 
   const categories = [
     {
-      label: t('cat_sports'),
+      label: MENU_TEXT.cat_sports[lang] || MENU_TEXT.cat_sports['en'],
       icon: <Trophy className="h-4 w-4 mr-2" />,
       items: [
-        { href: '/tools/americano', label: 'Americano Generator' },
-        { href: '/tools/futsal', label: t('futsal') },
-        { href: '/tools/tennis', label: 'Tennis Match Generator' },
-        { href: '/tools/lineup-builder', label: t('lineup') },
-        { href: '/tools/tournament', label: t('tournament') },
-        { href: '/tools/scoreboard', label: t('scoreboard') },
+        { href: '/tools/americano', label: MENU_TEXT.americano[lang] || MENU_TEXT.americano['en'] },
+        { href: '/tools/futsal', label: MENU_TEXT.futsal[lang] || MENU_TEXT.futsal['en'] },
+        { href: '/tools/tennis', label: MENU_TEXT.tennis[lang] || MENU_TEXT.tennis['en'] },
+        { href: '/tools/lineup-builder', label: MENU_TEXT.lineup[lang] || MENU_TEXT.lineup['en'] },
+        { href: '/tools/tournament', label: MENU_TEXT.tournament[lang] || MENU_TEXT.tournament['en'] },
+        { href: '/tools/scoreboard', label: MENU_TEXT.scoreboard[lang] || MENU_TEXT.scoreboard['en'] },
       ]
     },
     {
-      label: t('cat_business'),
+      label: MENU_TEXT.cat_business[lang] || MENU_TEXT.cat_business['en'],
       icon: <Briefcase className="h-4 w-4 mr-2" />,
       items: [
-        { href: '/tools/budget-planner', label: t('budget_planner') },
-        { href: '/tools/invoice', label: t('invoice') },
-        { href: '/tools/shift', label: t('shift') },
-        { href: '/tools/inventory', label: t('inventory') },
-        { href: '/tools/kanban', label: t('kanban') },
+        { href: '/tools/budget-planner', label: MENU_TEXT.budget[lang] || MENU_TEXT.budget['en'] },
+        { href: '/tools/invoice', label: MENU_TEXT.invoice[lang] || MENU_TEXT.invoice['en'] },
+        { href: '/tools/shift', label: MENU_TEXT.shift[lang] || MENU_TEXT.shift['en'] },
+        { href: '/tools/inventory', label: MENU_TEXT.inventory[lang] || MENU_TEXT.inventory['en'] },
+        { href: '/tools/kanban', label: MENU_TEXT.kanban[lang] || MENU_TEXT.kanban['en'] },
       ]
     },
     {
-      label: t('cat_utilities'),
+      label: MENU_TEXT.cat_utilities[lang] || MENU_TEXT.cat_utilities['en'],
       icon: <Wrench className="h-4 w-4 mr-2" />,
       items: [
-        { href: '/tools/image-resizer', label: t('image_resizer') },
-        { href: '/tools/image-cropper', label: t('image_cropper') },
-        { href: '/tools/image-compressor', label: t('image_compressor') },
-        { href: '/tools/pdf-merge', label: t('pdf_merge') },
-        { href: '/tools/image-to-pdf', label: t('image_to_pdf') },
-        { href: '/tools/calculator', label: t('calculator') },
-        { href: '/tools/csv-helper', label: t('csv_helper') },
-        { href: '/tools/split-bill', label: t('split_bill') },
+        { href: '/tools/image-resizer', label: MENU_TEXT.resizer[lang] || MENU_TEXT.resizer['en'] },
+        { href: '/tools/image-cropper', label: MENU_TEXT.cropper[lang] || MENU_TEXT.cropper['en'] },
+        { href: '/tools/image-compressor', label: MENU_TEXT.compressor[lang] || MENU_TEXT.compressor['en'] },
+        { href: '/tools/pdf-merge', label: MENU_TEXT.pdf_merge[lang] || MENU_TEXT.pdf_merge['en'] },
+        { href: '/tools/image-to-pdf', label: MENU_TEXT.image_to_pdf[lang] || MENU_TEXT.image_to_pdf['en'] },
+        { href: '/tools/calculator', label: MENU_TEXT.calculator[lang] || MENU_TEXT.calculator['en'] },
+        { href: '/tools/csv-helper', label: MENU_TEXT.csv_helper[lang] || MENU_TEXT.csv_helper['en'] },
+        { href: '/tools/split-bill', label: MENU_TEXT.split_bill[lang] || MENU_TEXT.split_bill['en'] },
       ]
     }
   ];
