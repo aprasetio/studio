@@ -149,9 +149,31 @@ const UI_TEXT: Record<string, any> = {
   }
 };
 
+const CURRENCY: Record<string, string> = {
+  en: '$',
+  id: 'Rp',
+  de: '€',
+  es: '€',
+  pt: 'R$',
+  fr: '€',
+  it: '€'
+};
+
+const LOCALES: Record<string, string> = {
+  en: 'en-US',
+  id: 'id-ID',
+  de: 'de-DE',
+  es: 'es-ES',
+  pt: 'pt-BR',
+  fr: 'fr-FR',
+  it: 'it-IT'
+};
+
 export default function SplitBillPage() {
   const { lang } = useLang();
   const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
+  const symbol = CURRENCY[lang] || '$';
+  const locale = LOCALES[lang] || 'en-US';
 
   const [totalBill, setTotalBill] = useState<string>('0');
   const [taxPercent, setTaxPercent] = useState<string>('0');
@@ -181,6 +203,13 @@ export default function SplitBillPage() {
     setNames(updated.join(', '));
   };
 
+  const formatCurrency = (val: number) => {
+    return val.toLocaleString(locale, { 
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2
+    });
+  };
+
   const copyForWA = () => {
     if (participants.length === 0) {
       toast({ title: lang === 'id' ? "Masukkan nama peserta" : "Please enter participants", variant: "destructive" });
@@ -190,8 +219,8 @@ export default function SplitBillPage() {
     const message = `*${t('title').toUpperCase()}* 💸\n` +
       `--------------------------\n` +
       `${t('share_intro')}\n\n` +
-      `Total: *Rp ${totalWithFees.toLocaleString('id-ID')}*\n` +
-      `${t('per_person')}: *Rp ${amountPerPerson.toLocaleString('id-ID')}*\n\n` +
+      `Total: *${symbol} ${formatCurrency(totalWithFees)}*\n` +
+      `${t('per_person')}: *${symbol} ${formatCurrency(amountPerPerson)}*\n\n` +
       `*${t('add_person')} (${participants.length}):*\n` +
       `${participants.map(p => `• ${p}`).join('\n')}\n\n` +
       (bankInfo ? `*${t('pay_to')}*\n${bankInfo}` : `*${t('transfer_msg')}*`);
@@ -233,7 +262,7 @@ export default function SplitBillPage() {
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="total">{t('total_bill')} (Rp)</Label>
+              <Label htmlFor="total">{t('total_bill')} ({symbol})</Label>
               <div className="relative">
                 <Banknote className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                 <Input id="total" type="number" value={totalBill} onChange={(e) => setTotalBill(e.target.value)} className="pl-10 h-12 text-lg font-bold" />
@@ -308,14 +337,14 @@ export default function SplitBillPage() {
               <div className="flex flex-col items-center justify-center p-8 bg-primary text-primary-foreground rounded-[2rem] shadow-xl gap-2 transform transition-transform hover:scale-105">
                 <span className="font-bold uppercase tracking-[0.2em] text-[10px] opacity-70">{t('per_person')}:</span>
                 <div className="text-4xl md:text-5xl font-black tabular-nums">
-                  Rp {amountPerPerson.toLocaleString('id-ID')}
+                  {symbol} {formatCurrency(amountPerPerson)}
                 </div>
               </div>
 
               <div className="space-y-4">
                 <div className="flex justify-between items-center p-4 bg-card rounded-2xl border border-primary/10">
                   <span className="text-xs font-black uppercase tracking-widest text-muted-foreground">{t('subtotal_tax')}</span>
-                  <span className="font-bold">Rp {totalWithFees.toLocaleString('id-ID')}</span>
+                  <span className="font-bold">{symbol} {formatCurrency(totalWithFees)}</span>
                 </div>
                 <div className="flex justify-between items-center p-4 bg-card rounded-2xl border border-primary/10">
                   <span className="text-xs font-black uppercase tracking-widest text-muted-foreground">{t('participants_count')}</span>
