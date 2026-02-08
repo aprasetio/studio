@@ -22,7 +22,8 @@ import {
   BellRing,
   CheckCircle2,
   FileSpreadsheet,
-  Database
+  Database,
+  Calculator
 } from 'lucide-react';
 import { 
   Dialog, 
@@ -55,6 +56,7 @@ import {
   Legend 
 } from 'recharts';
 import { toast } from '@/hooks/use-toast';
+import TrustBadges from '@/components/ui/TrustBadges';
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -99,7 +101,8 @@ const UI_TEXT: Record<string, any> = {
     add_rule: "Add Rule",
     monthly_bills: "Monthly Bills",
     daily_expenses: "Variable Expenses",
-    savings: "Savings"
+    savings: "Savings",
+    title: "Budget Planner"
   },
   id: {
     to_be_budgeted: "Siap Dianggarkan",
@@ -143,7 +146,8 @@ const UI_TEXT: Record<string, any> = {
     add_rule: "Tambah Jadwal",
     monthly_bills: "Tagihan Bulanan",
     daily_expenses: "Kebutuhan Harian",
-    savings: "Tabungan"
+    savings: "Tabungan",
+    title: "Perencana Anggaran"
   },
   es: {
     to_be_budgeted: "Por Asignar",
@@ -187,7 +191,8 @@ const UI_TEXT: Record<string, any> = {
     add_rule: "Añadir Regla",
     monthly_bills: "Facturas Mensuales",
     daily_expenses: "Gastos Variables",
-    savings: "Ahorros"
+    savings: "Ahorros",
+    title: "Presupuesto"
   },
   pt: {
     to_be_budgeted: "Para Atribuir",
@@ -231,7 +236,8 @@ const UI_TEXT: Record<string, any> = {
     add_rule: "Add Regra",
     monthly_bills: "Contas Mensais",
     daily_expenses: "Despesas Variáveis",
-    savings: "Poupança"
+    savings: "Poupança",
+    title: "Orçamento"
   },
   de: {
     to_be_budgeted: "Zu verplanen",
@@ -275,7 +281,8 @@ const UI_TEXT: Record<string, any> = {
     add_rule: "Regel hinzufügen",
     monthly_bills: "Monatliche Rechnungen",
     daily_expenses: "Variable Kosten",
-    savings: "Ersparnisse"
+    savings: "Ersparnisse",
+    title: "Budgetplaner"
   },
   fr: {
     to_be_budgeted: "À budgétiser",
@@ -319,7 +326,8 @@ const UI_TEXT: Record<string, any> = {
     add_rule: "Ajouter Règle",
     monthly_bills: "Factures Mensuelles",
     daily_expenses: "Dépenses Variables",
-    savings: "Épargne"
+    savings: "Épargne",
+    title: "Budget"
   },
   it: {
     to_be_budgeted: "Da Assegnare",
@@ -363,7 +371,8 @@ const UI_TEXT: Record<string, any> = {
     add_rule: "Aggiungi Regola",
     monthly_bills: "Bollette Mensili",
     daily_expenses: "Spese Variabili",
-    savings: "Risparmio"
+    savings: "Risparmio",
+    title: "Budget"
   }
 };
 
@@ -730,6 +739,14 @@ export default function BudgetPlannerPage() {
 
   return (
     <div className="flex flex-col items-center p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-8">
+      <div className="text-center space-y-2">
+        <h1 className="text-4xl font-black uppercase tracking-tighter text-foreground flex items-center justify-center gap-3">
+          <Calculator className="h-8 w-8 text-primary" />
+          {t('title')}
+        </h1>
+        <TrustBadges />
+      </div>
+
       {/* Recurring Alert Banner */}
       {pendingRules.length > 0 && (
         <div className="w-full bg-orange-50 border-2 border-orange-200 p-4 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-4 animate-in fade-in slide-in-from-top duration-500 shadow-sm">

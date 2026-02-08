@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState } from 'react';
@@ -9,9 +8,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Plus, Minus, Trash2, Package, PlusCircle, Search } from 'lucide-react';
 import { SmartAd } from '@/components/smart-ad';
 import { useLang } from '@/components/Providers';
-import { SeoContent } from '@/components/seo-content';
+import { SeoContent } from '@/components/SeoContent';
 import { DataPersistence } from '@/components/DataPersistence';
 import { ArticleSection } from '@/components/ArticleSection';
+import TrustBadges from '@/components/ui/TrustBadges';
 
 const UI_TEXT: Record<string, any> = {
   title: { en: "Stock Management", id: "Manajemen Stok", de: "Lagerverwaltung", es: "Gestión de Stock", pt: "Gestão de Estoque", fr: "Gestion des Stocks", it: "Gestione Scorte" },
@@ -82,13 +82,15 @@ export default function InventoryPage() {
 
   return (
     <div className="flex flex-col items-center p-6 md:p-12 lg:p-16 max-w-5xl mx-auto w-full gap-10">
-      <div className="flex flex-col md:flex-row w-full items-center justify-between gap-6">
-        <div className="text-center md:text-left space-y-3">
-          <h1 className="text-4xl font-black tracking-tighter text-foreground uppercase">
-            {t('title')}
-          </h1>
-          <p className="text-muted-foreground font-medium">{t('subtitle')}</p>
-        </div>
+      <div className="text-center space-y-2">
+        <h1 className="text-4xl font-black tracking-tighter text-foreground uppercase">
+          {t('title')}
+        </h1>
+        <TrustBadges />
+        <p className="text-muted-foreground font-medium">{t('subtitle')}</p>
+      </div>
+
+      <div className="flex flex-col md:flex-row w-full items-center justify-end gap-6 -mt-6">
         <DataPersistence data={items} onRestore={handleRestore} fileNamePrefix="versokit-inventory" />
       </div>
 

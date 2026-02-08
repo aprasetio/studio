@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -8,11 +7,12 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Plus, Trash2, CalendarDays, UserPlus, Image as ImageIcon, Download, ShieldCheck, Shuffle } from 'lucide-react';
-import { SeoContent } from '@/components/seo-content';
+import { SeoContent } from '@/components/SeoContent';
 import { DataPersistence } from '@/components/DataPersistence';
 import { ArticleSection } from '@/components/ArticleSection';
 import html2canvas from 'html2canvas';
 import { toast } from '@/hooks/use-toast';
+import TrustBadges from '@/components/ui/TrustBadges';
 
 type ShiftType = 'OFF' | 'MOR' | 'AFT' | 'NIG';
 
@@ -141,11 +141,13 @@ export default function ShiftRosterPage() {
 
   return (
     <div className="flex flex-col items-center p-6 md:p-12 max-w-7xl mx-auto w-full gap-8">
-      <div className="flex flex-col md:flex-row w-full items-center justify-between gap-6">
-        <div className="text-center md:text-left space-y-2">
-          <h1 className="text-3xl font-black uppercase tracking-tighter text-foreground">{t('title')}</h1>
-          <p className="text-muted-foreground font-medium">{t('subtitle')}</p>
-        </div>
+      <div className="text-center space-y-2">
+        <h1 className="text-3xl font-black uppercase tracking-tighter text-foreground">{t('title')}</h1>
+        <TrustBadges />
+        <p className="text-muted-foreground font-medium">{t('subtitle')}</p>
+      </div>
+
+      <div className="flex flex-col md:flex-row w-full items-center justify-end gap-6 -mt-6">
         <div className="flex flex-wrap items-center gap-2">
           <Button variant="outline" onClick={randomizeAll} className="font-bold border-2">
             <Shuffle className="mr-2 h-4 w-4" /> {t('randomize')}

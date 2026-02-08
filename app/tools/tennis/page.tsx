@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useMemo, useEffect } from 'react';
@@ -24,7 +23,8 @@ import {
   PlusCircle,
   Pencil,
   X,
-  Clock
+  Clock,
+  Activity
 } from 'lucide-react';
 import {
   Select,
@@ -43,12 +43,13 @@ import {
   DialogFooter
 } from '@/components/ui/dialog';
 import { DataPersistence } from '@/components/DataPersistence';
-import { SeoContent } from '@/components/seo-content';
+import { SeoContent } from '@/components/SeoContent';
 import { SmartAd } from '@/components/smart-ad';
 import { ArticleSection } from '@/components/ArticleSection';
 import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { useTennisStore, type SkillLevel, type Player, type Match } from './store/useTennisStore';
+import TrustBadges from '@/components/ui/TrustBadges';
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -344,7 +345,11 @@ export default function TennisGeneratorPage() {
   return (
     <div className="flex flex-col items-center p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-8">
       <div className="text-center space-y-2">
-        <h1 className="text-4xl font-black uppercase tracking-tighter text-foreground">{t('title')}</h1>
+        <h1 className="text-4xl font-black uppercase tracking-tighter text-foreground flex items-center justify-center gap-3">
+          <Activity className="h-8 w-8 text-primary" />
+          {t('title')}
+        </h1>
+        <TrustBadges />
         <p className="text-muted-foreground font-medium">{t('subtitle')}</p>
       </div>
 
@@ -415,7 +420,7 @@ export default function TennisGeneratorPage() {
                             <Select key={i} value={customPlayers[i]} onValueChange={v => {
                               const cp = [...customPlayers]; cp[i] = v; setCustomPlayers(cp);
                             }}>
-                              <SelectTrigger className="font-bold"><SelectValue placeholder={t('col_player')} /></SelectTrigger>
+                              <SelectTrigger className="font-bold"><SelectValue placeholder={globalT('col_player')} /></SelectTrigger>
                               <SelectContent>{players.map(p => <SelectItem key={p.id} value={p.id}>{p.name}</SelectItem>)}</SelectContent>
                             </Select>
                           ))}
@@ -428,7 +433,7 @@ export default function TennisGeneratorPage() {
                             <Select key={i} value={customPlayers[i]} onValueChange={v => {
                               const cp = [...customPlayers]; cp[i] = v; setCustomPlayers(cp);
                             }}>
-                              <SelectTrigger className="font-bold"><SelectValue placeholder={t('col_player')} /></SelectTrigger>
+                              <SelectTrigger className="font-bold"><SelectValue placeholder={globalT('col_player')} /></SelectTrigger>
                               <SelectContent>{players.map(p => <SelectItem key={p.id} value={p.id}>{p.name}</SelectItem>)}</SelectContent>
                             </Select>
                           ))}

@@ -7,10 +7,11 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Plus, Trash2, Printer, Receipt } from 'lucide-react';
-import { SeoContent } from '@/components/seo-content';
+import { SeoContent } from '@/components/SeoContent';
 import { SmartAd } from '@/components/smart-ad';
 import { DataPersistence } from '@/components/DataPersistence';
 import { ArticleSection } from '@/components/ArticleSection';
+import TrustBadges from '@/components/ui/TrustBadges';
 
 const UI_TEXT: Record<string, any> = {
   title: { en: "Invoice Generator", id: "Pembuat Faktur", de: "Rechnungsgenerator", es: "Generador de Facturas", pt: "Gerador de Faturas", fr: "Générateur de Factures", it: "Generatore Fatture" },
@@ -75,6 +76,7 @@ export default function InvoiceMakerPage() {
     <div className="flex flex-col items-center p-6 md:p-12 max-w-7xl mx-auto w-full gap-8 print:p-0">
       <div className="text-center space-y-2 print:hidden">
         <h1 className="text-3xl font-black uppercase tracking-tighter text-foreground">{t('title')}</h1>
+        <TrustBadges />
         <p className="text-muted-foreground font-medium">{lang === 'id' ? 'Buat invoice profesional dalam hitungan detik' : 'Create professional invoices in seconds'}</p>
       </div>
 

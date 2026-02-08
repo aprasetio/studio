@@ -13,6 +13,7 @@ import { toast } from '@/hooks/use-toast';
 import { SeoContent } from '@/components/SeoContent';
 import { SmartAd } from '@/components/smart-ad';
 import { ArticleSection } from '@/components/ArticleSection';
+import TrustBadges from '@/components/ui/TrustBadges';
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -191,10 +192,7 @@ export default function ImageResizerPage() {
     <div className="flex flex-col items-center p-6 md:p-12 max-w-7xl mx-auto w-full gap-8">
       <div className="text-center space-y-3">
         <h1 className="text-4xl font-black uppercase tracking-tighter text-foreground">{t('title')}</h1>
-        <div className="flex items-center justify-center gap-2 text-green-600 font-bold text-sm uppercase tracking-widest bg-green-50 px-4 py-1 rounded-full border border-green-100">
-          <ShieldCheck className="h-4 w-4" />
-          100% Private & Local
-        </div>
+        <TrustBadges />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-5xl">

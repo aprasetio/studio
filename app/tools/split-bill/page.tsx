@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState } from 'react';
@@ -12,6 +11,7 @@ import { toast } from '@/hooks/use-toast';
 import { SeoContent } from '@/components/SeoContent';
 import { DataPersistence } from '@/components/DataPersistence';
 import { ArticleSection } from '@/components/ArticleSection';
+import TrustBadges from '@/components/ui/TrustBadges';
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -214,6 +214,7 @@ export default function SplitBillPage() {
     <div className="flex flex-col items-center p-6 md:p-12 max-w-4xl mx-auto w-full gap-8">
       <div className="text-center space-y-2">
         <h1 className="text-4xl font-black uppercase tracking-tighter text-foreground">{t('title')}</h1>
+        <TrustBadges />
         <p className="text-muted-foreground font-medium italic">
           {lang === 'id' ? 'Bagi biaya bersama teman secara adil dan cepat' : 'Divide shared costs fairly and quickly'}
         </p>

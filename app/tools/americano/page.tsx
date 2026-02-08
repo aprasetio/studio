@@ -25,6 +25,7 @@ import { cn } from '@/lib/utils';
 import { ArticleSection } from '@/components/ArticleSection';
 import { SeoContent } from '@/components/SeoContent';
 import { SmartAd } from '@/components/smart-ad';
+import TrustBadges from '@/components/ui/TrustBadges';
 
 const UI_TEXT: Record<string, any> = {
   title: { en: "Americano Generator", id: "Generator Americano", de: "Americano Generator", es: "Generador Americano", pt: "Gerador Americano", fr: "Générateur Americano", it: "Generatore Americano" },
@@ -100,6 +101,7 @@ export default function AmericanoPage() {
           <Activity className="h-8 w-8 text-primary" />
           {t('title')}
         </h1>
+        <TrustBadges />
         <p className="text-muted-foreground font-medium uppercase tracking-widest text-[10px]">Professional Tournament Management</p>
       </div>
 
