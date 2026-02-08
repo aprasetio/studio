@@ -136,7 +136,10 @@ export default function Header() {
             <DropdownMenuTrigger className="lg:hidden p-2 hover:bg-muted rounded-full outline-none">
               <LayoutGrid className="h-6 w-6" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-64 rounded-2xl shadow-2xl border-2">
+            <DropdownMenuContent 
+              align="end" 
+              className="w-64 rounded-2xl shadow-2xl border-2 max-h-[80vh] overflow-y-auto overscroll-contain scrollbar-thin"
+            >
               {categories.map((cat, idx) => (
                 <div key={idx}>
                   <DropdownMenuLabel className="flex items-center text-[10px] font-black uppercase tracking-[0.2em] px-4 py-3 bg-muted/30">
