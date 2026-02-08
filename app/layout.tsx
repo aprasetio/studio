@@ -4,6 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { Providers } from '@/components/Providers';
 import { Analytics } from '@vercel/analytics/next';
 import FooterLinks from '@/components/footer-links';
+import FooterTagline from '@/components/footer-tagline';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -66,14 +67,7 @@ export default function RootLayout({
                 <FooterLinks />
               </div>
 
-              <div className="pt-8 border-t border-muted text-center space-y-2">
-                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
-                  © 2024 <span className="text-foreground">VersoKit</span> | All-in-One Toolkit
-                </p>
-                <p className="text-[9px] text-muted-foreground/50 font-medium uppercase tracking-[0.2em]">
-                  Built with <span className="text-primary font-bold">Project IDX</span>
-                </p>
-              </div>
+              <FooterTagline />
             </div>
           </footer>
           <Toaster />

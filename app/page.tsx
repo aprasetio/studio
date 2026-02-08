@@ -283,11 +283,23 @@ const UI_LABELS: Record<string, Record<string, string>> = {
   no_login: { en: "No Login", id: "Tanpa Login", de: "Kein Login", es: "Sin Registro", pt: "Sem Login", fr: "Sans Inscription", it: "Nessun Login" }
 };
 
+const TAGLINE: Record<string, string> = {
+  en: "Privacy-first • Offline-ready • Free forever",
+  id: "Privasi Utama • Bisa Offline • Gratis Selamanya",
+  de: "Datenschutz an erster Stelle • Offline nutzbar • Für immer kostenlos",
+  es: "Privacidad ante todo • Modo Offline • Gratis para siempre",
+  pt: "Privacidade em primeiro lugar • Funciona Offline • Grátis para sempre",
+  fr: "Confidentialité d'abord • Mode Hors Ligne • Gratuit pour toujours",
+  it: "Privacy al primo posto • Funziona Offline • Gratis per sempre"
+};
+
 export default function ToolPortalPage() {
   const { lang } = useLang();
   const [search, setSearch] = useState('');
 
   const getLabel = (key: string) => UI_LABELS[key][lang] || UI_LABELS[key]['en'];
+  const currentTagline = TAGLINE[lang] || TAGLINE['en'];
+  const taglineParts = currentTagline.split(' • ');
 
   const filteredTools = useMemo(() => {
     return TOOLS_DATA.filter(tool => {
@@ -324,6 +336,15 @@ export default function ToolPortalPage() {
           <p className="text-xl md:text-2xl font-medium opacity-90 max-w-2xl mx-auto">
             {getLabel('hero_subtitle')}
           </p>
+
+          <div className="flex flex-wrap gap-4 justify-center mt-6 text-sm font-black uppercase tracking-widest text-emerald-400 bg-emerald-400/10 px-6 py-3 rounded-full border border-emerald-400/20 w-fit mx-auto shadow-2xl backdrop-blur-sm animate-in zoom-in duration-500">
+            {taglineParts.map((part, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <ShieldCheck className="h-4 w-4" />
+                {part}
+              </div>
+            ))}
+          </div>
 
           <div className="max-w-xl mx-auto relative group pt-4">
             <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none mt-4">
