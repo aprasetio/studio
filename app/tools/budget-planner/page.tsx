@@ -108,31 +108,16 @@ const UI_TEXT: Record<string, any> = {
   }
 };
 
-const CURRENCY: Record<string, string> = {
-  en: '$',
-  id: 'Rp',
-  de: '€',
-  es: '€',
-  pt: 'R$',
-  fr: '€',
-  it: '€'
+const LOCALES: Record<string, string> = { 
+  en: 'en-US', id: 'id-ID', de: 'de-DE', es: 'es-ES', pt: 'pt-BR', fr: 'fr-FR', it: 'it-IT' 
 };
-
-const LOCALES: Record<string, string> = {
-  en: 'en-US',
-  id: 'id-ID',
-  de: 'de-DE',
-  es: 'es-ES',
-  pt: 'pt-BR',
-  fr: 'fr-FR',
-  it: 'it-IT'
+const CURRENCIES: Record<string, string> = { 
+  en: 'USD', id: 'IDR', de: 'EUR', es: 'EUR', pt: 'BRL', fr: 'EUR', it: 'EUR' 
 };
 
 export default function BudgetPlannerPage() {
   const { lang, t: globalT } = useLang();
   const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
-  const symbol = CURRENCY[lang] || '$';
-  const currentLocale = LOCALES[lang] || 'en-US';
 
   const [mounted, setMounted] = useState(false);
   const { 
@@ -150,18 +135,18 @@ export default function BudgetPlannerPage() {
     type: 'expense' as TransactionType
   });
 
-  // State for Covering Overspending
   const [coveringCategory, setCoveringCategory] = useState<Category | null>(null);
   const [sourceCategoryId, setSourceCategoryId] = useState<string>('');
 
   useEffect(() => { setMounted(true); }, []);
 
   const formatValue = (val: number) => {
-    return val.toLocaleString(currentLocale, { 
-      style: 'currency', 
-      currency: lang === 'id' ? 'IDR' : 'USD',
-      maximumFractionDigits: 0 
-    });
+    return new Intl.NumberFormat(LOCALES[lang] || 'en-US', {
+      style: 'currency',
+      currency: CURRENCIES[lang] || 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(val);
   };
 
   const inflowTotal = transactions
@@ -283,7 +268,7 @@ export default function BudgetPlannerPage() {
                   </div>
                 )}
                 <div className="space-y-2">
-                  <Label>{t('amount')} ({symbol})</Label>
+                  <Label>{t('amount')}</Label>
                   <Input type="number" value={newTx.amount || ''} onChange={(e) => setNewTx({...newTx, amount: parseFloat(e.target.value) || 0})} />
                 </div>
                 <div className="space-y-2">
@@ -330,10 +315,10 @@ export default function BudgetPlannerPage() {
                 <table className="w-full border-collapse">
                   <thead>
                     <tr className="border-b bg-muted/10 text-[10px] font-black uppercase tracking-widest text-muted-foreground">
-                      <th className="p-6 text-left">{t('category')}</th>
-                      <th className="p-6 text-right w-[140px]">{t('budgeted')}</th>
-                      <th className="p-6 text-right w-[140px]">{t('activity')}</th>
-                      <th className="p-6 text-right w-[140px]">{t('available')}</th>
+                      <th className="p-6 text-left min-w-[180px] sticky left-0 bg-card z-10">{t('category')}</th>
+                      <th className="p-6 text-right min-w-[160px]">{t('budgeted')}</th>
+                      <th className="p-6 text-right min-w-[140px]">{t('activity')}</th>
+                      <th className="p-6 text-right min-w-[140px]">{t('available')}</th>
                       <th className="p-6 w-12"></th>
                     </tr>
                   </thead>
@@ -342,13 +327,12 @@ export default function BudgetPlannerPage() {
                       const available = category.assigned + category.activity;
                       return (
                         <tr key={category.id} className="hover:bg-muted/5 transition-colors group">
-                          <td className="p-6">
+                          <td className="p-6 sticky left-0 bg-card z-10 border-r md:border-r-0">
                             <p className="font-black text-sm uppercase tracking-tight truncate max-w-[150px] md:max-w-none">{category.name}</p>
                             <span className="text-[9px] font-bold text-muted-foreground uppercase opacity-60">{category.type}</span>
                           </td>
                           <td className="p-4 align-middle">
                             <div className="relative group/input flex justify-end">
-                              <span className="absolute left-2 top-1/2 -translate-y-1/2 text-[10px] opacity-20 font-black">{symbol}</span>
                               <input 
                                 type="number"
                                 value={category.assigned === 0 ? '' : category.assigned}
@@ -359,7 +343,7 @@ export default function BudgetPlannerPage() {
                             </div>
                           </td>
                           <td className="p-6 text-right font-bold text-sm tabular-nums text-muted-foreground/60">
-                            {category.activity !== 0 ? category.activity.toLocaleString(currentLocale) : '—'}
+                            {category.activity !== 0 ? formatValue(category.activity) : '—'}
                           </td>
                           <td className="p-6 text-right">
                             <div className="flex flex-col items-end gap-1">
@@ -369,7 +353,7 @@ export default function BudgetPlannerPage() {
                                 available < 0 ? "text-red-500 animate-pulse" : 
                                 "text-gray-400"
                               )}>
-                                {available.toLocaleString(currentLocale)}
+                                {formatValue(available)}
                               </span>
                               {available < 0 && (
                                 <Button 
@@ -485,7 +469,7 @@ export default function BudgetPlannerPage() {
                             "text-sm font-black tabular-nums",
                             tx.type === 'income' ? "text-green-600" : "text-foreground"
                           )}>
-                            {tx.type === 'income' ? '+' : '-'}{tx.amount.toLocaleString(currentLocale)}
+                            {tx.type === 'income' ? '+' : '-'}{formatValue(tx.amount)}
                           </span>
                           <Button variant="ghost" size="icon" onClick={() => deleteTransaction(tx.id)} className="h-8 w-8 text-red-500">
                             <Trash2 className="h-4 w-4" />
