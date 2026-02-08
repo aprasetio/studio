@@ -238,13 +238,13 @@ const UI_LABELS: Record<string, Record<string, string>> = {
     it: "VersoKit: Strumenti Quotidiani"
   },
   hero_subtitle: {
-    en: "Privacy-first, Offline-ready, Free forever.",
-    id: "Privasi utama, Bisa Offline, Gratis selamanya.",
-    de: "Datenschutz zuerst, Offline-bereit, Für immer kostenlos.",
-    es: "Privacidad primero, Offline, Gratis para siempre.",
-    pt: "Privacidade em primeiro lugar, Pronto offline, Grátis para sempre.",
-    fr: "Confidentialité d'abord, Prêt pour le hors-ligne, Gratuit pour toujours.",
-    it: "Privacy al primo posto, Pronto offline, Gratis per sempre."
+    en: "Privacy-first • Offline-ready • Free forever",
+    id: "Privasi utama • Bisa Offline • Gratis selamanya",
+    de: "Datenschutz zuerst • Offline-bereit • Für immer kostenlos",
+    es: "Privacidad primero • Offline • Gratis para siempre",
+    pt: "Privacidade em primeiro lugar • Pronto offline • Grátis para sempre",
+    fr: "Confidentialité d'abord • Prêt pour le hors-ligne • Gratuit pour toujours",
+    it: "Privacy al primo posto • Pronto offline • Gratis per sempre"
   },
   search_placeholder: {
     en: "Search for a tool (e.g., Invoice, Tennis)...",
@@ -283,23 +283,11 @@ const UI_LABELS: Record<string, Record<string, string>> = {
   no_login: { en: "No Login", id: "Tanpa Login", de: "Kein Login", es: "Sin Registro", pt: "Sem Login", fr: "Sans Inscription", it: "Nessun Login" }
 };
 
-const TAGLINE: Record<string, string> = {
-  en: "Privacy-first • Offline-ready • Free forever",
-  id: "Privasi Utama • Bisa Offline • Gratis Selamanya",
-  de: "Datenschutz an erster Stelle • Offline nutzbar • Für immer kostenlos",
-  es: "Privacidad ante todo • Modo Offline • Gratis para siempre",
-  pt: "Privacidade em primeiro lugar • Funciona Offline • Grátis para sempre",
-  fr: "Confidentialité d'abord • Mode Hors Ligne • Gratuit pour toujours",
-  it: "Privacy al primo posto • Funziona Offline • Gratis per sempre"
-};
-
 export default function ToolPortalPage() {
   const { lang } = useLang();
   const [search, setSearch] = useState('');
 
   const getLabel = (key: string) => UI_LABELS[key][lang] || UI_LABELS[key]['en'];
-  const currentTagline = TAGLINE[lang] || TAGLINE['en'];
-  const taglineParts = currentTagline.split(' • ');
 
   const filteredTools = useMemo(() => {
     return TOOLS_DATA.filter(tool => {
@@ -337,15 +325,6 @@ export default function ToolPortalPage() {
             {getLabel('hero_subtitle')}
           </p>
 
-          <div className="flex flex-wrap gap-4 justify-center mt-6 text-sm font-black uppercase tracking-widest text-emerald-400 bg-emerald-400/10 px-6 py-3 rounded-full border border-emerald-400/20 w-fit mx-auto shadow-2xl backdrop-blur-sm animate-in zoom-in duration-500">
-            {taglineParts.map((part, i) => (
-              <div key={i} className="flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4" />
-                {part}
-              </div>
-            ))}
-          </div>
-
           <div className="max-w-xl mx-auto relative group pt-4">
             <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none mt-4">
               <Search className="h-6 w-6 text-muted-foreground group-focus-within:text-primary transition-colors" />
@@ -357,12 +336,6 @@ export default function ToolPortalPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-6 pt-4 text-xs font-black uppercase tracking-[0.2em]">
-            <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm"><ShieldCheck className="h-4 w-4" /> {getLabel('private')}</div>
-            <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm"><WifiOff className="h-4 w-4" /> {getLabel('offline')}</div>
-            <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm"><Zap className="h-4 w-4" /> {getLabel('no_login')}</div>
           </div>
         </div>
       </section>
