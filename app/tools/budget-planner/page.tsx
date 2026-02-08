@@ -35,6 +35,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from '@/components/ui/label';
+import { Badge } from '@/components/ui/badge';
 import { DataPersistence } from '@/components/DataPersistence';
 import { ArticleSection } from '@/components/ArticleSection';
 import { SmartAd } from '@/components/smart-ad';
