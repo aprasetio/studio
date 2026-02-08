@@ -53,7 +53,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
     pt: {
       title: "Gerador de Torneios Americano (Padel e Pickleball)",
       sections: [
-        { title: "Como funciona o torneio Americano", content: "Americano é um formato social para Padel e Pickleball. Você muda de parceiro a cada rodada. O aplicativo cuida dos emparelhamentos." },
+        { title: "Como funciona o torneio Americano", content: "Americano é um format social para Padel e Pickleball. Você muda de parceiro a cada rodada. O aplicativo cuida dos emparelhamentos." },
         { title: "Modo Padel vs Pickleball", content: "Para **Padel**, use 'Pontos Alvo' (ex: 32). Para **Pickleball**, use 'Corrida' (ex: até 11). O sistema gerencia o banco automaticamente para números ímpares de jogadores." }
       ]
     },
@@ -67,9 +67,129 @@ export const TOOL_ARTICLES: ArticleCollection = {
     it: {
       title: "Come funziona il torneo Americano",
       sections: [
-        { title: "Come funziona il torneo Americano", content: "L'Americano è un formato sociale per Padel e Pickleball. Cambi partner a ogni turno. L'app gestisce gli abbinamenti complessi." },
+        { title: "Come funziona il torneo Americano", content: "L'Americano est un formato sociale per Padel e Pickleball. Cambi partner a ogni turno. L'app gestisce gli abbinamenti complessi." },
         { title: "Modalità Padel vs Pickleball", content: "Per il **Padel**, usa 'Punti Obiettivo' (es. 32). Per il **Pickleball**, la modalità 'Gara' (es. a 11). Il sistema gestisce automaticamente la panchina se i giocatori sono dispari." }
       ]
+    }
+  },
+  "tennis": {
+    en: {
+      title: "Tennis Match Generator",
+      sections: [{ title: "Fair Match Generator", content: "Create balanced doubles matches effortlessly. Perfect for club social sessions." }]
+    },
+    id: {
+      title: "Generator Pertandingan Tenis",
+      sections: [{ title: "Tentang", content: "Generator Pertandingan Tenis. Buat pertandingan ganda yang seimbang dengan mudah. Cocok untuk klub sosial." }]
+    },
+    de: {
+      title: "Tennis-Match-Generator",
+      sections: [{ title: "Über", content: "Tennis-Match-Generator. Erstellen Sie mühelos ausgewogene Doppelspiele." }]
+    },
+    es: {
+      title: "Generador de Partidos de Tenis",
+      sections: [{ title: "Acerca de", content: "Generador de Partidos de Tenis. Crea partidos de dobles equilibrados sin esfuerzo." }]
+    },
+    pt: {
+      title: "Gerador de Partidas de Tênis",
+      sections: [{ title: "Sobre", content: "Gerador de Partidas de Tênis. Crie jogos de duplas equilibrados facilmente." }]
+    },
+    fr: {
+      title: "Générateur de Matchs de Tennis",
+      sections: [{ title: "À propos", content: "Générateur de Matchs de Tennis. Créez des matchs de double équilibrés." }]
+    },
+    it: {
+      title: "Generatore Partite Tennis",
+      sections: [{ title: "Informazioni", content: "Generatore Partite Tennis. Crea partite di doppio equilibrate senza sforzo." }]
+    }
+  },
+  "futsal": {
+    en: {
+      title: "Futsal Scoreboard",
+      sections: [{ title: "Digital Futsal Scoreboard", content: "Track score, period, fouls, and time. Fullscreen mode available." }]
+    },
+    id: {
+      title: "Papan Skor Futsal",
+      sections: [{ title: "Fitur", content: "Papan Skor Futsal Digital. Catat skor, babak, pelanggaran, dan waktu. Tersedia mode layar penuh." }]
+    },
+    de: {
+      title: "Futsal-Anzeigetafel",
+      sections: [{ title: "Features", content: "Digitale Futsal-Anzeigetafel. Verfolgen Sie Spielstand, Periode, Fouls und Zeit." }]
+    },
+    es: {
+      title: "Marcador de Fútbol Sala",
+      sections: [{ title: "Características", content: "Marcador de Fútbol Sala. Controla puntuación, periodo, faltas y tiempo." }]
+    },
+    pt: {
+      title: "Placar de Futsal",
+      sections: [{ title: "Características", content: "Placar de Futsal Digital. Acompanhe placar, período, faltas e tempo." }]
+    },
+    fr: {
+      title: "Tableau de Score Futsal",
+      sections: [{ title: "Caractéristiques", content: "Tableau de Score Futsal. Suivez le score, la période, les fautes et le temps." }]
+    },
+    it: {
+      title: "Tabellone Calcetto",
+      sections: [{ title: "Caratteristiche", content: "Tabellone Calcetto Digitale. Traccia punteggio, periodo, falli e tempo." }]
+    }
+  },
+  "lineup": {
+    en: {
+      title: "Lineup Builder",
+      sections: [{ title: "How it works", content: "Football Lineup Builder. Drag and drop players to create formations (4-4-2, 4-3-3). Download as image." }]
+    },
+    id: {
+      title: "Pembuat Formasi",
+      sections: [{ title: "Cara Penggunaan", content: "Pembuat Formasi Sepak Bola. Geser pemain untuk membuat formasi (4-4-2, etc). Unduh sebagai gambar." }]
+    },
+    de: {
+      title: "Aufstellungs-Planer",
+      sections: [{ title: "Anleitung", content: "Fußball-Aufstellungs-Planer. Erstellen Sie Formationen per Drag & Drop." }]
+    },
+    es: {
+      title: "Creador de Alineaciones",
+      sections: [{ title: "Cómo usar", content: "Creador de Alineaciones. Arrastra jugadores para crear formaciones." }]
+    },
+    pt: {
+      title: "Criador de Escalação",
+      sections: [{ title: "Como usar", content: "Criador de Escalação. Arraste jogadores para criar formações." }]
+    },
+    fr: {
+      title: "Créateur de Composition",
+      sections: [{ title: "Comment ça marche", content: "Créateur de Composition. Glissez-déposez les joueurs pour créer des formations." }]
+    },
+    it: {
+      title: "Generatore Formazione",
+      sections: [{ title: "Come funziona", content: "Generatore Formazione Calcio. Trascina i giocatori per creare formazioni." }]
+    }
+  },
+  "scoreboard": {
+    en: {
+      title: "Universal Scoreboard",
+      sections: [{ title: "Usage", content: "Simple Scoreboard. Use for Badminton, Volleyball, or Ping Pong. No ads, completely offline." }]
+    },
+    id: {
+      title: "Papan Skor Universal",
+      sections: [{ title: "Penggunaan", content: "Papan Skor Serbaguna. Gunakan untuk Badminton, Voli, atau Pingpong. Tanpa iklan, offline." }]
+    },
+    de: {
+      title: "Universal-Anzeigetafel",
+      sections: [{ title: "Nutzung", content: "Einfache Anzeigetafel. Für Badminton, Volleyball oder Tischtennis." }]
+    },
+    es: {
+      title: "Marcador Universal",
+      sections: [{ title: "Uso", content: "Marcador Universal. Úsalo para Bádminton, Voleibol o Ping Pong." }]
+    },
+    pt: {
+      title: "Placar Universal",
+      sections: [{ title: "Uso", content: "Placar Simples. Use para Badminton, Vôlei ou Ping Pong." }]
+    },
+    fr: {
+      title: "Tableau de Score Universel",
+      sections: [{ title: "Utilisation", content: "Tableau de Score Simple. Pour Badminton, Volley ou Ping Pong." }]
+    },
+    it: {
+      title: "Tabellone Universale",
+      sections: [{ title: "Utilizzo", content: "Tabellone Semplice. Usa per Badminton, Pallavolo o Ping Pong." }]
     }
   },
   "image-resizer": {
@@ -110,42 +230,6 @@ export const TOOL_ARTICLES: ArticleCollection = {
         {
           title: "Apa itu Padel Americano?",
           content: "Format turnamen ini unik karena Anda akan <b>berganti pasangan</b> di setiap babak. Sangat cocok untuk komunitas yang ingin semua anggotanya saling mengenal sambil tetap berkompetisi secara adil."
-        }
-      ]
-    }
-  },
-  "tennis": {
-    en: {
-      title: "Mastering Your Tennis Mixer with Our Match Generator",
-      sections: [
-        {
-          title: "How to Set Up Your Tournament",
-          content: "Setting up a social tennis session has never been easier. Start by entering your <b>Number of Players</b> and <b>Total Duration</b>. Our generator will automatically calculate how many rounds fit into your time slot. Add your players' names and assign their skill levels from 'Newbie' to 'Pro' to ensure the fairest possible match-ups."
-        },
-        {
-          title: "The Fair Play Algorithm Explained",
-          content: "Tired of the same people sitting out every round? Our proprietary <b>Fair Play Algorithm</b> prioritizes players who have played the fewest games first. When balancing teams, it uses a 'Best + Worst vs. Middle Two' logic, ensuring that even with mixed skill levels, every match is competitive and fun."
-        },
-        {
-          title: "Smart Swapping & Rebalancing",
-          content: "If a player needs to leave early or arrives late, use the <b>Swap</b> feature. You can replace a player in any scheduled match, and the tool will offer to rebalance all future games to maintain equal court time for the remaining roster."
-        }
-      ]
-    },
-    id: {
-      title: "Panduan Lengkap Generator Jadwal Tenis Ganda",
-      sections: [
-        {
-          title: "Cara Mengatur Turnamen Anda",
-          content: "Mengatur sesi tenis sosial kini lebih mudah. Mulailah dengan memasukkan <b>Jumlah Pemain</b> dan <b>Durasi Sewa Lapangan</b>. Generator kami akan menghitung otomatis berapa banyak babak yang tersedia. Masukkan nama pemain dan level skill mereka untuk hasil pembagian tim yang adil."
-        },
-        {
-          title: "Memahami Algoritma Fair Play",
-          content: "Algoritma kami memprioritaskan pemain yang paling sedikit bermain untuk masuk ke babak berikutnya. Ini memastikan semua orang mendapatkan waktu lapangan yang sama, sangat cocok untuk grup dengan jumlah pemain ganjil."
-        },
-        {
-          title: "Tips Mengelola Roster Pemain",
-          content: "Gunakan fitur <b>Ganti Pemain (Swap)</b> jika ada teman yang harus pulang lebih awal. Sistem akan menawarkan untuk mengacak ulang jadwal masa depan agar tetap adil bagi mereka yang masih bertahan."
         }
       ]
     }
@@ -210,34 +294,6 @@ export const TOOL_ARTICLES: ArticleCollection = {
         {
           title: "Komponen Penting dalam Faktur",
           content: "Pastikan invoice Anda memiliki Nama Bisnis, Nama Klien, Tanggal, Rincian Barang/Jasa, dan Total Harga agar proses pembayaran berjalan lancar tanpa hambatan administrasi."
-        }
-      ]
-    }
-  },
-  "futsal": {
-    en: {
-      title: "Digital Futsal Scoreboard: Pro Features for Local Matches",
-      sections: [
-        {
-          title: "Managing the Clock and Fouls",
-          content: "Standard Futsal rules require a 20-minute countdown. Our scoreboard includes presets for 10, 15, and 20 minutes. It also tracks team fouls, highlighting them in <b>red</b> once a team reaches the 5-foul limit (Second Penalty threshold)."
-        },
-        {
-          title: "Digital vs. Manual Scoring",
-          content: "Stop using paper or unreliable mobile apps. Our scoreboard is designed for large screens and TV displays, providing high visibility for players and spectators alike, even in high-intensity match environments."
-        }
-      ]
-    },
-    id: {
-      title: "Papan Skor Futsal Digital: Fitur Pro untuk Sparing",
-      sections: [
-        {
-          title: "Mengelola Waktu dan Pelanggaran",
-          content: "Gunakan pengatur waktu standar 20 menit dengan fitur jeda (pause) instan. Alat ini juga mencatat akumulasi pelanggaran (fouls) dan akan berubah menjadi <b>merah</b> saat tim mencapai 5 pelanggaran sebagai tanda penalti titik kedua."
-        },
-        {
-          title: "Tampilan untuk Layar Besar",
-          content: "Papan skor ini dioptimalkan untuk ditampilkan di TV atau monitor besar di lapangan, memberikan kemudahan bagi penonton dan pemain untuk melihat skor dan sisa waktu dengan jelas."
         }
       ]
     }
