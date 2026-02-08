@@ -1,15 +1,74 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
-import { Plus, Trash2, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Plus, Trash2, ChevronRight, ChevronLeft, LayoutGrid } from 'lucide-react';
 import { DataControl } from '@/components/DataControl';
 import { useLang } from '@/components/Providers';
-import { SeoContent } from '@/components/seo-content';
+import { SeoContent } from '@/components/SeoContent';
 import TrustBadges from '@/components/ui/TrustBadges';
+
+const UI_TEXT: Record<string, any> = {
+  en: {
+    todo: "To Do",
+    in_progress: "In Progress",
+    done: "Done",
+    add_card: "Add Card",
+    delete: "Delete",
+    placeholder: "Task description..."
+  },
+  id: {
+    todo: "Akan Dikerjakan",
+    in_progress: "Sedang Proses",
+    done: "Selesai",
+    add_card: "Tambah Kartu",
+    delete: "Hapus",
+    placeholder: "Deskripsi tugas..."
+  },
+  de: {
+    todo: "Zu tun",
+    in_progress: "In Bearbeitung",
+    done: "Erledigt",
+    add_card: "Karte hinzufügen",
+    delete: "Löschen",
+    placeholder: "Aufgabenbeschreibung..."
+  },
+  es: {
+    todo: "Por hacer",
+    in_progress: "En progreso",
+    done: "Hecho",
+    add_card: "Añadir tarjeta",
+    delete: "Eliminar",
+    placeholder: "Descripción de la tarea..."
+  },
+  pt: {
+    todo: "A fazer",
+    in_progress: "Em progresso",
+    done: "Concluído",
+    add_card: "Adicionar cartão",
+    delete: "Excluir",
+    placeholder: "Descrição da tarefa..."
+  },
+  fr: {
+    todo: "À faire",
+    in_progress: "En cours",
+    done: "Terminé",
+    add_card: "Ajouter une carte",
+    delete: "Supprimer",
+    placeholder: "Description de la tâche..."
+  },
+  it: {
+    todo: "Da fare",
+    in_progress: "In corso",
+    done: "Fatto",
+    add_card: "Aggiungi scheda",
+    delete: "Elimina",
+    placeholder: "Descrizione del compito..."
+  }
+};
 
 type Status = 'todo' | 'progress' | 'done';
 
@@ -20,13 +79,17 @@ interface Task {
 }
 
 export default function KanbanPage() {
-  const { t } = useLang();
+  const { lang, t: globalT } = useLang();
+  const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
   const [tasks, setTasks] = useLocalStorage<Task[]>('versokit-kanban-tasks', []);
   const [newTaskText, setNewTaskText] = useState('');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => { setMounted(true); }, []);
 
   const COLUMNS: { id: Status; label: string; color: string; hover: string }[] = [
     { id: 'todo', label: t('todo'), color: 'bg-slate-700', hover: 'hover:border-slate-500' },
-    { id: 'progress', label: t('progress'), color: 'bg-primary', hover: 'hover:border-primary/50' },
+    { id: 'progress', label: t('in_progress'), color: 'bg-primary', hover: 'hover:border-primary/50' },
     { id: 'done', label: t('done'), color: 'bg-green-700', hover: 'hover:border-green-500' },
   ];
 
@@ -61,15 +124,17 @@ export default function KanbanPage() {
     }));
   };
 
+  if (!mounted) return null;
+
   return (
     <div className="flex flex-col items-center p-6 md:p-12 lg:p-16 max-w-7xl mx-auto w-full gap-10">
       <div className="flex flex-col md:flex-row w-full items-center justify-between gap-6">
         <div className="text-center md:text-left space-y-3">
-          <h1 className="text-4xl font-black tracking-tighter text-foreground uppercase">
-            {t('kanban')}
+          <h1 className="text-4xl font-black tracking-tighter text-foreground uppercase flex items-center justify-center md:justify-start gap-3">
+            <LayoutGrid className="h-8 w-8 text-primary" />
+            {globalT('kanban')}
           </h1>
           <TrustBadges />
-          <p className="text-muted-foreground font-medium">Kelola strategi dan tugas tim dengan manajemen visual</p>
         </div>
         <DataControl storageKey="versokit-kanban-tasks" type="array" />
       </div>
@@ -77,7 +142,7 @@ export default function KanbanPage() {
       <div className="w-full max-w-xl">
         <form onSubmit={addTask} className="flex gap-3 bg-card p-2 rounded-2xl shadow-xl border-2">
           <Input
-            placeholder="Tambah tugas..."
+            placeholder={t('placeholder')}
             value={newTaskText}
             onChange={(e) => setNewTaskText(e.target.value)}
             className="flex-1 border-none bg-transparent h-12 text-lg font-medium focus-visible:ring-0"

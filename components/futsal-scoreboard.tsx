@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -134,8 +134,7 @@ type ScoreState = {
 };
 
 export function FutsalScoreboard() {
-  const { lang, t: globalT } = useLang();
-  
+  const { lang } = useLang();
   const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
 
   const [state, setState] = useLocalStorage<ScoreState>('futsal-scoreboard-state', {
@@ -148,7 +147,12 @@ export function FutsalScoreboard() {
     isRunning: false,
   });
 
+  const [mounted, setMounted] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (state.isRunning && state.time > 0) {
@@ -215,6 +219,8 @@ export function FutsalScoreboard() {
     }
   };
 
+  if (!mounted) return null;
+
   return (
     <div className="container mx-auto p-4 max-w-5xl">
       <Card className="w-full shadow-2xl bg-card border-4 border-primary/10 overflow-hidden">
@@ -230,7 +236,7 @@ export function FutsalScoreboard() {
                 onClick={nextPeriod}
                 className="font-bold uppercase text-xs"
               >
-                {t('round')} {state.period}
+                {t('period')} {state.period}
               </Button>
             </div>
           </div>
