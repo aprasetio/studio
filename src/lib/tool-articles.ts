@@ -1,3 +1,4 @@
+
 /**
  * Centralized SEO Article Repository for VersoKit tools.
  * Supports: en, id, es, pt, de, fr, it.
@@ -20,6 +21,75 @@ export interface ArticleCollection {
 }
 
 export const TOOL_ARTICLES: ArticleCollection = {
+  "americano": {
+    en: {
+      title: "Americano Tournament Generator (Padel & Pickleball)",
+      sections: [
+        { title: "How Americano Tournaments Work", content: "Americano is a social tournament format for Padel and Pickleball. You play with a different partner in every round. The app handles the complex math of pairing and scoring." },
+        { title: "Padel vs. Pickleball Modes", content: "For **Padel**, use 'Target Score' (e.g., 32 points total). For **Pickleball**, use 'Race Mode' (e.g., first to 11). The system automatically manages the bench if you have odd numbers of players (5, 6, 9, etc.)." }
+      ]
+    },
+    id: {
+      title: "Generator Turnamen Americano (Padel & Pickleball)",
+      sections: [
+        { title: "Cara Main Turnamen Americano", content: "Americano adalah format turnamen sosial untuk Padel dan Pickleball. Anda berganti pasangan setiap ronde. Aplikasi ini mengatur jadwal pasangan dan skor secara otomatis." },
+        { title: "Mode Padel vs Pickleball", content: "Untuk **Padel**, gunakan 'Target Poin' (misal: total 32). Untuk **Pickleball**, gunakan 'Mode Race' (misal: siapa cepat dapat 11). Sistem otomatis mengatur cadangan jika jumlah pemain ganjil." }
+      ]
+    },
+    de: {
+      title: "Americano-Turnier-Generator (Padel & Pickleball)",
+      sections: [
+        { title: "Wie Americano-Turniere funktionieren", content: "Americano ist ein soziales Turnierformat für Padel und Pickleball. Sie spielen in jeder Runde mit einem anderen Partner. Die App übernimmt die komplexe Paarung." },
+        { title: "Padel vs. Pickleball", content: "Für **Padel** nutzen Sie 'Zielpunktzahl' (z.B. 32). Für **Pickleball** den 'Race-Modus' (z.B. bis 11). Das System verwaltet automatisch die Ersatzbank bei ungeraden Spielerzahlen." }
+      ]
+    },
+    es: {
+      title: "Generador de Torneos Americano (Pádel y Pickleball)",
+      sections: [
+        { title: "Cómo funciona el torneo Americano", content: "El Americano es un formato social para Pádel y Pickleball. Cambias de pareja en cada ronda. La app gestiona los emparejamientos y puntuaciones." },
+        { title: "Modo Pádel vs Pickleball", content: "Para **Pádel**, usa 'Puntos Objetivo' (ej. 32). Para **Pickleball**, usa 'Carrera' (ej. a 11). El sistema gestiona automáticamente el banquillo si hay jugadores impares." }
+      ]
+    },
+    pt: {
+      title: "Gerador de Torneios Americano (Padel e Pickleball)",
+      sections: [
+        { title: "Como funciona o torneio Americano", content: "Americano é um formato social para Padel e Pickleball. Você muda de parceiro a cada rodada. O aplicativo cuida dos emparelhamentos." },
+        { title: "Modo Padel vs Pickleball", content: "Para **Padel**, use 'Pontos Alvo' (ex: 32). Para **Pickleball**, use 'Corrida' (ex: até 11). O sistema gerencia o banco automaticamente para números ímpares de jogadores." }
+      ]
+    },
+    fr: {
+      title: "Générateur de Tournois Americano (Padel & Pickleball)",
+      sections: [
+        { title: "Comment fonctionne un tournoi Americano", content: "L'Americano est un format populaire au Padel et au Pickleball. À chaque tour, vous jouez avec un **partenaire différent**. Le but est de collecter un maximum de points individuels." },
+        { title: "Mode Padel vs Pickleball", content: "Pour le **Padel**, utilisez 'Points Cibles' (ex : jusqu'à 32). Pour le **Pickleball**, le mode 'Course' (ex : jusqu'à 21). L'application gère la rotation automatiquement." }
+      ]
+    },
+    it: {
+      title: "Generatore di Tornei Americano (Padel e Pickleball)",
+      sections: [
+        { title: "Come funziona le torneo Americano", content: "L'Americano è un formato popolare nel Padel e Pickleball. In ogni turno, giochi con un **partner diverso**. L'obiettivo è raccogliere il maggior numero di punti individuali." },
+        { title: "Modalità Padel vs Pickleball", content: "Per il **Padel**, usa 'Punti Obiettivo' (es. 32). Per il **Pickleball**, la modalità 'Gara' (es. a 21). Il sistema gestisce automaticamente la panchina se i giocatori sono dispari." }
+      ]
+    }
+  },
+  "image-resizer": {
+    en: { title: "Image Resizer", sections: [{ title: "Privacy-First Resizing", content: "Resize images specifically for Instagram, TikTok, or Passports. Processed 100% in your browser." }] },
+    id: { title: "Ubah Ukuran Gambar", sections: [{ title: "Ubah Ukuran Aman", content: "Ubah ukuran foto khusus untuk Instagram, TikTok, atau Paspor. Diproses 100% di browser Anda, tanpa upload server." }] },
+    de: { title: "Bildgröße ändern", sections: [{ title: "Datenschutzfreundliche Größenänderung", content: "Bildgröße für Instagram oder Pässe ändern. 100% im Browser verarbeitet." }] },
+    es: { title: "Redimensionar Imagen", sections: [{ title: "Redimensionado Seguro", content: "Cambia el tamaño para Instagram o Pasaporte. Procesado 100% en tu navegador." }] },
+    pt: { title: "Redimensionar Imagem", sections: [{ title: "Redimensionamento Seguro", content: "Redimensione para Instagram ou Pasaporte. Processado 100% no navegador." }] },
+    fr: { title: "Redimensionner Image", sections: [{ title: "Redimensionnement Sécurisé", content: "Redimensionnez pour Instagram ou Passeport. Traité à 100% dans votre navigateur." }] },
+    it: { title: "Ridimensiona Immagine", sections: [{ title: "Ridimensionamento Sicuro", content: "Ridimensiona per Instagram o Passaporto. Elaborato al 100% nel browser." }] }
+  },
+  "image-cropper": {
+    en: { title: "Image Cropper", sections: [{ title: "Crop Photos Easily", content: "Crop your images to exact ratios (1:1, 16:9) instantly. No quality loss." }] },
+    id: { title: "Potong Gambar", sections: [{ title: "Potong Foto Mudah", content: "Potong gambar Anda ke rasio yang tepat (1:1, 16:9) secara instan. Tanpa mengurangi kualitas." }] },
+    de: { title: "Bild zuschneiden", sections: [{ title: "Bild einfach zuschneiden", content: "Schneiden Sie Ihre Bilder sofort auf das exakte Verhältnis (1:1, 16:9) zu. Kein Qualitätsverlust." }] },
+    es: { title: "Cortar Imagen", sections: [{ title: "Recortar fotos fácilmente", content: "Recorta tus imágenes a relaciones exactas (1:1, 16:9) al instante. Sin pérdida de calidad." }] },
+    pt: { title: "Cortar Imagem", sections: [{ title: "Recortar fotos facilmente", content: "Recorte as suas imagens para rácios exatos (1:1, 16:9) instantaneamente. Sem perda de qualidade." }] },
+    fr: { title: "Rogner Image", sections: [{ title: "Recadrer des photos facilement", content: "Recadrez instantanément vos images à des ratios exacts (1:1, 16:9). Aucune perte de qualité." }] },
+    it: { title: "Ritaglia Immagine", sections: [{ title: "Ritaglia foto facilmente", content: "Ritaglia istantaneamente le tue immagini in rapporti esatti (1:1, 16:9). Nessuna perdita di qualità." }] }
+  },
   "tennis": {
     en: {
       title: "Mastering Your Tennis Mixer with Our Match Generator",

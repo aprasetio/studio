@@ -25,52 +25,70 @@ export const TOOL_ARTICLES: ArticleCollection = {
     en: {
       title: "Americano Tournament Generator (Padel & Pickleball)",
       sections: [
-        { title: "What is an Americano Tournament?", content: "Americano is a fair-play tournament format popular in Padel and Pickleball. In every round, you play with a **different partner** and against different opponents. The goal is to collect as many individual points as possible." },
-        { title: "Padel vs. Pickleball Mode", content: "This tool supports both! For **Padel**, use the 'Fixed Points' mode (e.g., play until total score is 32). For **Pickleball**, use the 'Race' mode (e.g., play to 21). The app handles partner rotation and bench management automatically." }
+        { title: "How Americano Tournaments Work", content: "Americano is a social tournament format for Padel and Pickleball. You play with a different partner in every round. The app handles the complex math of pairing and scoring." },
+        { title: "Padel vs. Pickleball Modes", content: "For **Padel**, use 'Target Score' (e.g., 32 points total). For **Pickleball**, use 'Race Mode' (e.g., first to 11). The system automatically manages the bench if you have odd numbers of players (5, 6, 9, etc.)." }
       ]
     },
     id: {
       title: "Generator Turnamen Americano (Padel & Pickleball)",
       sections: [
-        { title: "Apa itu Turnamen Americano?", content: "Americano adalah format turnamen adil yang populer di Padel dan Pickleball. Di setiap ronde, Anda bermain dengan **pasangan berbeda** melawan musuh berbeda. Tujuannya adalah mengumpulkan poin individu sebanyak mungkin." },
-        { title: "Mode Padel vs Pickleball", content: "Alat ini mendukung keduanya! Untuk **Padel**, gunakan mode 'Poin Tetap' (misal: main sampai total 32). Untuk **Pickleball**, gunakan mode 'Race' (misal: main sampai skor 21). Aplikasi mengatur rotasi pasangan dan cadangan secara otomatis." }
+        { title: "Cara Main Turnamen Americano", content: "Americano adalah format turnamen sosial untuk Padel dan Pickleball. Anda berganti pasangan setiap ronde. Aplikasi ini mengatur jadwal pasangan dan skor secara otomatis." },
+        { title: "Mode Padel vs Pickleball", content: "Untuk **Padel**, gunakan 'Target Poin' (misal: total 32). Untuk **Pickleball**, gunakan 'Mode Race' (misal: siapa cepat dapat 11). Sistem otomatis mengatur cadangan jika jumlah pemain ganjil." }
       ]
     },
     de: {
       title: "Americano-Turnier-Generator (Padel & Pickleball)",
       sections: [
-        { title: "Was ist ein Americano-Turnier?", content: "Americano ist ein Fair-Play-Turnierformat für Padel und Pickleball. In jeder Runde spielen Sie mit einem **neuen Partner** gegen neue Gegner. Ziel ist es, so viele Einzelpunkte wie möglich zu sammeln." },
-        { title: "Padel- und Pickleball-Modus", content: "Dieses Tool unterstützt beides! Für **Padel** nutzen Sie den Modus 'Feste Punkte' (z.B. bis 32). Für **Pickleball** den 'Race'-Modus (z.B. bis 21). Die App übernimmt automatisch die Partnerrotation." }
+        { title: "Wie Americano-Turniere funktionieren", content: "Americano ist ein soziales Turnierformat für Padel und Pickleball. Sie spielen in jeder Runde mit einem anderen Partner. Die App übernimmt die komplexe Paarung." },
+        { title: "Padel vs. Pickleball", content: "Für **Padel** nutzen Sie 'Zielpunktzahl' (z.B. 32). Für **Pickleball** den 'Race-Modus' (z.B. bis 11). Das System verwaltet automatisch die Ersatzbank bei ungeraden Spielerzahlen." }
       ]
     },
     es: {
       title: "Generador de Torneos Americano (Pádel y Pickleball)",
       sections: [
-        { title: "¿Qué es un Torneo Americano?", content: "El Americano es un formato de torneo popular en Pádel y Pickleball. En cada ronda, juegas con un **compañero diferente**. El objetivo es acumular la mayor cantidad de puntos individuales." },
-        { title: "Modo Pádel vs Pickleball", content: "¡Esta herramienta soporta ambos! Para **Pádel**, usa el modo 'Puntos Fijos' (ej. hasta 32). Para **Pickleball**, usa el modo 'Carrera' (ej. a 21). La app gestiona la rotación y los descansos automáticamente." }
+        { title: "Cómo funciona el torneo Americano", content: "El Americano es un formato social para Pádel y Pickleball. Cambias de pareja en cada ronda. La app gestiona los emparejamientos y puntuaciones." },
+        { title: "Modo Pádel vs Pickleball", content: "Para **Pádel**, usa 'Puntos Objetivo' (ej. 32). Para **Pickleball**, usa 'Carrera' (ej. a 11). El sistema gestiona automáticamente el banquillo si hay jugadores impares." }
       ]
     },
     pt: {
       title: "Gerador de Torneios Americano (Padel e Pickleball)",
       sections: [
-        { title: "O que é um Torneio Americano?", content: "Americano é um formato popular no Padel e Pickleball. A cada rodada, você joga com um **parceiro diferente**. O objetivo é acumular o máximo de pontos individuais." },
-        { title: "Modo Padel vs Pickleball", content: "Esta ferramenta suporta ambos! Para **Padel**, use o modo 'Pontos Fixos' (ex: até 32). Para **Pickleball**, use o modo 'Corrida' (ex: até 21). O app gerencia a rotação automaticamente." }
+        { title: "Como funciona o torneio Americano", content: "Americano é um formato social para Padel e Pickleball. Você muda de parceiro a cada rodada. O aplicativo cuida dos emparelhamentos." },
+        { title: "Modo Padel vs Pickleball", content: "Para **Padel**, use 'Pontos Alvo' (ex: 32). Para **Pickleball**, use 'Corrida' (ex: até 11). O sistema gerencia o banco automaticamente para números ímpares de jogadores." }
       ]
     },
     fr: {
       title: "Générateur de Tournois Americano (Padel & Pickleball)",
       sections: [
-        { title: "Qu'est-ce qu'un tournoi Americano ?", content: "L'Americano est un format populaire au Padel et au Pickleball. À chaque tour, vous jouez avec un **partenaire différent**. Le but est de collecter un maximum de points individuels." },
-        { title: "Mode Padel vs Pickleball", content: "Cet outil gère les deux ! Pour le **Padel**, utilisez le mode 'Points Fixes' (ex : jusqu'à 32). Pour le **Pickleball**, le mode 'Course' (ex : jusqu'à 21). L'application gère la rotation automatiquement." }
+        { title: "Comment fonctionne un tournoi Americano", content: "L'Americano est un format populaire au Padel et au Pickleball. À chaque tour, vous jouez avec un **partenaire différent**. Le but est de collecter un maximum de points individuels." },
+        { title: "Mode Padel vs Pickleball", content: "Pour le **Padel**, utilisez 'Points Cibles' (ex : jusqu'à 32). Pour le **Pickleball**, le mode 'Course' (ex : jusqu'à 21). L'application gère la rotation automatiquement." }
       ]
     },
     it: {
       title: "Generatore di Tornei Americano (Padel e Pickleball)",
       sections: [
-        { title: "Cos'è un Torneo Americano?", content: "L'Americano è un formato popolare nel Padel e Pickleball. In ogni turno, giochi con un **partner diverso**. L'obiettivo è raccogliere il maggior numero di punti individuali." },
+        { title: "Come funziona il torneo Americano", content: "L'Americano è un formato popolare nel Padel e Pickleball. In ogni turno, giochi con un **partner diverso**. L'obiettivo è raccogliere il maggior numero di punti individuali." },
         { title: "Modalità Padel vs Pickleball", content: "Questo strumento supporta entrambi! Per il **Padel**, usa la modalità 'Punti Fissi' (es. fino a 32). Per il **Pickleball**, la modalità 'Gara' (es. a 21). L'app gestisce la rotazione automaticamente." }
       ]
     }
+  },
+  "image-resizer": {
+    en: { title: "Image Resizer", sections: [{ title: "Privacy-First Resizing", content: "Resize images specifically for Instagram, TikTok, or Passports. Processed 100% in your browser." }] },
+    id: { title: "Ubah Ukuran Gambar", sections: [{ title: "Ubah Ukuran Aman", content: "Ubah ukuran foto khusus untuk Instagram, TikTok, atau Paspor. Diproses 100% di browser Anda, tanpa upload server." }] },
+    de: { title: "Bildgröße ändern", sections: [{ title: "Datenschutzfreundliche Größenänderung", content: "Bildgröße für Instagram oder Pässe ändern. 100% im Browser verarbeitet." }] },
+    es: { title: "Redimensionar Imagen", sections: [{ title: "Redimensionado Seguro", content: "Cambia el tamaño para Instagram o Pasaporte. Procesado 100% en tu navegador." }] },
+    pt: { title: "Redimensionar Imagem", sections: [{ title: "Redimensionamento Seguro", content: "Redimensione para Instagram ou Pasaporte. Processado 100% no navegador." }] },
+    fr: { title: "Redimensionner Image", sections: [{ title: "Redimensionnement Sécurisé", content: "Redimensionnez pour Instagram ou Passeport. Traité à 100% dans votre navigateur." }] },
+    it: { title: "Ridimensiona Immagine", sections: [{ title: "Ridimensionamento Sicuro", content: "Ridimensiona per Instagram o Passaporto. Elaborato al 100% nel browser." }] }
+  },
+  "image-cropper": {
+    en: { title: "Image Cropper", sections: [{ title: "Crop Photos Easily", content: "Crop your images to exact ratios (1:1, 16:9) instantly. No quality loss." }] },
+    id: { title: "Potong Gambar", sections: [{ title: "Potong Foto Mudah", content: "Potong gambar Anda ke rasio yang tepat (1:1, 16:9) secara instan. Tanpa mengurangi kualitas." }] },
+    de: { title: "Bild zuschneiden", sections: [{ title: "Bild einfach zuschneiden", content: "Schneiden Sie Ihre Bilder sofort auf das exakte Verhältnis (1:1, 16:9) zu. Kein Qualitätsverlust." }] },
+    es: { title: "Cortar Imagen", sections: [{ title: "Recortar fotos fácilmente", content: "Recorta tus imágenes a relaciones exactas (1:1, 16:9) al instante. Sin pérdida de calidad." }] },
+    pt: { title: "Cortar Imagem", sections: [{ title: "Recortar fotos facilmente", content: "Recorte as suas imagens para rácios exatos (1:1, 16:9) instantaneamente. Sem perda de qualidade." }] },
+    fr: { title: "Rogner Image", sections: [{ title: "Recadrer des photos facilement", content: "Recadrez instantanément vos images à des ratios exacts (1:1, 16:9). Aucune perte de qualité." }] },
+    it: { title: "Ritaglia Immagine", sections: [{ title: "Ritaglia foto facilmente", content: "Ritaglia istantaneamente le tue immagini in rapporti esatti (1:1, 16:9). Nessuna perdita di qualità." }] }
   },
   "padel-americano": {
     en: {
@@ -92,66 +110,6 @@ export const TOOL_ARTICLES: ArticleCollection = {
         {
           title: "Apa itu Padel Americano?",
           content: "Format turnamen ini unik karena Anda akan <b>berganti pasangan</b> di setiap babak. Sangat cocok untuk komunitas yang ingin semua anggotanya saling mengenal sambil tetap berkompetisi secara adil."
-        }
-      ]
-    }
-  },
-  "image-resizer": {
-    en: {
-      title: "How to Properly Resize Images for the Web",
-      sections: [
-        {
-          title: "The Importance of Image Dimensions",
-          content: "Large images can significantly slow down your website. By resizing your photos to the exact width needed for your blog or social media profile, you improve loading speeds and user experience."
-        },
-        {
-          title: "Maintaining Aspect Ratio",
-          content: "Always keep the 'Lock Aspect Ratio' setting enabled to avoid stretching or squeezing your images. This ensures your photos look natural and professional after resizing."
-        },
-        {
-          title: "100% Privacy",
-          content: "VersoKit processes your images locally. Unlike online converters that upload your data, our tool works entirely in your browser memory."
-        }
-      ]
-    },
-    id: {
-      title: "Cara Mengubah Ukuran Gambar untuk Kebutuhan Online",
-      sections: [
-        {
-          title: "Pentingnya Dimensi Gambar",
-          content: "Gambar yang terlalu besar dapat memperlambat website Anda. Gunakan alat ini untuk menyesuaikan lebar dan tinggi gambar sesuai kebutuhan media sosial atau blog."
-        },
-        {
-          title: "Menjaga Rasio Gambar",
-          content: "Pastikan fitur 'Kunci Rasio' aktif agar gambar tidak terlihat gepeng atau tertarik. Ini menjaga kualitas visual foto Anda tetap profesional."
-        }
-      ]
-    }
-  },
-  "image-cropper": {
-    en: {
-      title: "Perfectly Cropped Photos for Social Media",
-      sections: [
-        {
-          title: "Why Use Aspect Ratio Presets?",
-          content: "Social media platforms have specific requirements. Instagram posts look best at 1:1 (Square), while Facebook cover photos or YouTube thumbnails require 16:9 (Landscape). Our presets make this effortless."
-        },
-        {
-          title: "Client-Side Processing",
-          content: "Your privacy matters. Our image cropper runs entirely on your device. Your sensitive documents or personal photos are never transmitted to our servers."
-        }
-      ]
-    },
-    id: {
-      title: "Potong Foto Sesuai Ukuran Media Sosial",
-      sections: [
-        {
-          title: "Menggunakan Preset Rasio",
-          content: "Setiap media sosial memiliki standar ukuran berbeda. Gunakan preset 1:1 untuk feed Instagram atau 16:9 untuk thumbnail video agar tampilan selalu pas."
-        },
-        {
-          title: "Privasi Terjamin",
-          content: "Proses pemotongan gambar dilakukan sepenuhnya di perangkat Anda. Foto tidak pernah dikirim ke server mana pun."
         }
       ]
     }
