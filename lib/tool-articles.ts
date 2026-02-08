@@ -39,7 +39,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
     de: {
       title: "Americano-Turnier-Generator (Padel & Pickleball)",
       sections: [
-        { title: "Wie Americano-Turniere funktionieren", content: "Americano ist ein soziales Turnierformat für Padel und Pickleball. Sie spielen in jeder Runde mit einem anderen Partner. Die App übernimmt die komplexe Paarung." },
+        { title: "Wie Americano-Turniere funktionieren", content: "Americano ist ein soziales Turnierformat für Padel and Pickleball. Sie spielen in jeder Runde mit einem anderen Partner. Die App übernimmt die komplexe Paarung." },
         { title: "Padel vs. Pickleball", content: "Für **Padel** nutzen Sie 'Zielpunktzahl' (z.B. 32). Für **Pickleball** den 'Race-Modus' (z.B. bis 11). Das System verwaltet automatisch die Ersatzbank bei ungeraden Spielerzahlen." }
       ]
     },
@@ -58,17 +58,17 @@ export const TOOL_ARTICLES: ArticleCollection = {
       ]
     },
     fr: {
-      title: "Générateur de Tournois Americano (Padel & Pickleball)",
+      title: "Comment fonctionne un tournoi Americano",
       sections: [
-        { title: "Comment fonctionne un tournoi Americano", content: "L'Americano est un format populaire au Padel et au Pickleball. À chaque tour, vous jouez avec un **partenaire différent**. Le but est de collecter un maximum de points individuels." },
-        { title: "Mode Padel vs Pickleball", content: "Pour le **Padel**, utilisez 'Points Cibles' (ex : jusqu'à 32). Pour le **Pickleball**, le mode 'Course' (ex : jusqu'à 21). L'application gère la rotation automatiquement." }
+        { title: "Comment fonctionne un tournoi Americano", content: "L'Americano est un format social pour le Padel et le Pickleball. Vous changez de partenaire à chaque tour. L'application gère les appariements complexes." },
+        { title: "Mode Padel vs Pickleball", content: "Pour le **Padel**, utilisez 'Points Cibles' (ex: 32). Pour le **Pickleball**, le mode 'Course' (ex: à 11). Le système gère automatiquement le banc pour les nombres impairs." }
       ]
     },
     it: {
-      title: "Generatore di Tornei Americano (Padel e Pickleball)",
+      title: "Come funziona il torneo Americano",
       sections: [
-        { title: "Come funziona il torneo Americano", content: "L'Americano è un formato popolare nel Padel e Pickleball. In ogni turno, giochi con un **partner diverso**. L'obiettivo è raccogliere il maggior numero di punti individuali." },
-        { title: "Modalità Padel vs Pickleball", content: "Questo strumento supporta entrambi! Per il **Padel**, usa la modalità 'Punti Fissi' (es. fino a 32). Per il **Pickleball**, la modalità 'Gara' (es. a 21). L'app gestisce la rotazione automaticamente." }
+        { title: "Come funziona il torneo Americano", content: "L'Americano è un formato sociale per Padel e Pickleball. Cambi partner a ogni turno. L'app gestisce gli abbinamenti complessi." },
+        { title: "Modalità Padel vs Pickleball", content: "Per il **Padel**, usa 'Punti Obiettivo' (es. 32). Per il **Pickleball**, la modalità 'Gara' (es. a 11). Il sistema gestisce automaticamente la panchina se i giocatori sono dispari." }
       ]
     }
   },
@@ -84,11 +84,11 @@ export const TOOL_ARTICLES: ArticleCollection = {
   "image-cropper": {
     en: { title: "Image Cropper", sections: [{ title: "Crop Photos Easily", content: "Crop your images to exact ratios (1:1, 16:9) instantly. No quality loss." }] },
     id: { title: "Potong Gambar", sections: [{ title: "Potong Foto Mudah", content: "Potong gambar Anda ke rasio yang tepat (1:1, 16:9) secara instan. Tanpa mengurangi kualitas." }] },
-    de: { title: "Bild zuschneiden", sections: [{ title: "Bild einfach zuschneiden", content: "Schneiden Sie Ihre Bilder sofort auf das exakte Verhältnis (1:1, 16:9) zu. Kein Qualitätsverlust." }] },
-    es: { title: "Cortar Imagen", sections: [{ title: "Recortar fotos fácilmente", content: "Recorta tus imágenes a relaciones exactas (1:1, 16:9) al instante. Sin pérdida de calidad." }] },
-    pt: { title: "Cortar Imagem", sections: [{ title: "Recortar fotos facilmente", content: "Recorte as suas imagens para rácios exatos (1:1, 16:9) instantaneamente. Sem perda de qualidade." }] },
-    fr: { title: "Rogner Image", sections: [{ title: "Recadrer des photos facilement", content: "Recadrez instantanément vos images à des ratios exacts (1:1, 16:9). Aucune perte de qualité." }] },
-    it: { title: "Ritaglia Immagine", sections: [{ title: "Ritaglia foto facilmente", content: "Ritaglia istantaneamente le tue immagini in rapporti esatti (1:1, 16:9). Nessuna perdita di qualità." }] }
+    de: { title: "Bild zuschneiden", sections: [{ title: "Fotos einfach zuschneiden", content: "Bilder sofort auf exakte Verhältnisse (1:1, 16:9) zuschneiden. Kein Qualitätsverlust." }] },
+    es: { title: "Cortar Imagen", sections: [{ title: "Recortar Fotos Fácilmente", content: "Recorta tus imágenes a ratios exactos (1:1, 16:9). Sin pérdida de calidad." }] },
+    pt: { title: "Cortar Imagem", sections: [{ title: "Cortar Fotos Facilmente", content: "Corte suas imagens em proporções exatas. Sem perda de qualidade." }] },
+    fr: { title: "Rogner Image", sections: [{ title: "Rogner Facilement", content: "Rognez vos images aux ratios exacts. Pas de perte de qualité." }] },
+    it: { title: "Ritaglia Immagine", sections: [{ title: "Ritaglia Foto Facilmente", content: "Ritaglia le tue immagini in rapporti esatti. Nessuna perdita di qualità." }] }
   },
   "padel-americano": {
     en: {
