@@ -26,7 +26,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
       title: "Americano Tournament Generator (Padel & Pickleball)",
       sections: [
         { title: "How Americano Tournaments Work", content: "Americano is a social tournament format for Padel and Pickleball. You play with a different partner in every round. The app handles the complex math of pairing and scoring." },
-        { title: "Padel vs. Pickleball Modes", content: "For **Padel**, use 'Target Score' (e.g., 32 points total). For **Pickleball**, use 'Race Mode' (e.g., first to 11). The system automatically manages the bench if you have odd numbers of players (5, 6, 9, etc.)." }
+        { title: "Padel vs. Pickleball Modes", content: "For **Padel**, use 'Target Score' (e.g., 32 points total). For **Pickleball**, use 'Race Mode' (e.g., first to 11). The system automatically manages the bench if you have odd numbers of players." }
       ]
     },
     id: {
@@ -39,392 +39,232 @@ export const TOOL_ARTICLES: ArticleCollection = {
     de: {
       title: "Americano-Turnier-Generator (Padel & Pickleball)",
       sections: [
-        { title: "Wie Americano-Turniere funktionieren", content: "Americano ist ein soziales Turnierformat für Padel and Pickleball. Sie spielen in jeder Runde mit einem anderen Partner. Die App übernimmt die komplexe Paarung." },
-        { title: "Padel vs. Pickleball", content: "Für **Padel** nutzen Sie 'Zielpunktzahl' (z.B. 32). Für **Pickleball** den 'Race-Modus' (z.B. bis 11). Das System verwaltet automatisch die Ersatzbank bei ungeraden Spielerzahlen." }
+        { title: "Wie Americano-Turniere funktionieren", content: "Americano ist ein soziales Turnierformat. Sie spielen in jeder Runde mit einem anderen Partner. Die App übernimmt die Paarung." },
+        { title: "Modi", content: "Wählen Sie zwischen Zielpunktzahl für Padel oder Race-Modus für Pickleball." }
       ]
     },
     es: {
-      title: "Generador de Torneos Americano (Pádel y Pickleball)",
+      title: "Generador de Torneos Americano",
       sections: [
-        { title: "Cómo funciona el torneo Americano", content: "El Americano es un formato social para Pádel y Pickleball. Cambias de pareja en cada ronda. La app gestiona los emparejamientos y puntuaciones." },
-        { title: "Modo Pádel vs Pickleball", content: "Para **Pádel**, usa 'Puntos Objetivo' (ej. 32). Para **Pickleball**, usa 'Carrera' (ej. a 11). El sistema gestiona automáticamente el banquillo si hay jugadores impares." }
+        { title: "Cómo funciona", content: "El Americano es un formato social donde cambias de pareja en cada ronda. La app gestiona los emparejamientos." },
+        { title: "Pádel vs Pickleball", content: "Soporta puntuación fija (Pádel) o carrera de puntos (Pickleball)." }
       ]
     },
     pt: {
-      title: "Gerador de Torneios Americano (Padel e Pickleball)",
+      title: "Gerador de Torneios Americano",
       sections: [
-        { title: "Como funciona o torneio Americano", content: "Americano é um formato social para Padel e Pickleball. Você muda de parceiro a cada rodada. O aplicativo cuida dos emparelhamentos." },
-        { title: "Modo Padel vs Pickleball", content: "Para **Padel**, use 'Pontos Alvo' (ex: 32). Para **Pickleball**, use 'Corrida' (ex: até 11). O sistema gerencia o banco automaticamente para números ímpares de jogadores." }
+        { title: "Como funciona", content: "Americano é um formato social onde você muda de parceiro a cada rodada. O app cuida da matemática." }
       ]
     },
     fr: {
-      title: "Comment fonctionne un tournoi Americano",
+      title: "Générateur de Tournois Americano",
       sections: [
-        { title: "Comment fonctionne un tournoi Americano", content: "L'Americano est un format social pour le Padel et le Pickleball. Vous changez de partenaire à chaque tour. L'application gère les appariements complexes." },
-        { title: "Mode Padel vs Pickleball", content: "Pour le **Padel**, utilisez 'Points Cibles' (ex: 32). Pour le **Pickleball**, le mode 'Course' (ex: à 11). Le système gère automatiquement le banc pour les nombres impairs." }
+        { title: "Fonctionnement", content: "L'Americano est un format social où vous changez de partenaire à chaque tour." }
       ]
     },
     it: {
-      title: "Come funziona il torneo Americano",
+      title: "Generatore Tornei Americano",
       sections: [
-        { title: "Come funziona il torneo Americano", content: "L'Americano è un formato sociale per Padel e Pickleball. Cambi partner a ogni turno. L'app gestisce gli abbinamenti complessi." },
-        { title: "Modalità Padel vs Pickleball", content: "Per il **Padel**, usa 'Punti Obiettivo' (es. 32). Per il **Pickleball**, la modalità 'Gara' (es. a 11). Il sistema gestisce automaticamente la panchina se i giocatori sono dispari." }
+        { title: "Come funziona", content: "L'Americano è un formato social in cui cambi partner ogni turno." }
       ]
-    }
-  },
-  "image-resizer": {
-    en: { title: "Image Resizer", sections: [{ title: "Privacy-First Resizing", content: "Resize images specifically for Instagram, TikTok, or Passports. Processed 100% in your browser." }] },
-    id: { title: "Ubah Ukuran Gambar", sections: [{ title: "Ubah Ukuran Aman", content: "Ubah ukuran foto khusus untuk Instagram, TikTok, atau Paspor. Diproses 100% di browser Anda, tanpa upload server." }] },
-    de: { title: "Bildgröße ändern", sections: [{ title: "Datenschutzfreundliche Größenänderung", content: "Bildgröße für Instagram oder Pässe ändern. 100% im Browser verarbeitet." }] },
-    es: { title: "Redimensionar Imagen", sections: [{ title: "Redimensionado Seguro", content: "Cambia el tamaño para Instagram o Pasaporte. Procesado 100% en tu navegador." }] },
-    pt: { title: "Redimensionar Imagem", sections: [{ title: "Redimensionamento Seguro", content: "Redimensione para Instagram ou Pasaporte. Processado 100% no navegador." }] },
-    fr: { title: "Redimensionner Image", sections: [{ title: "Redimensionnement Sécurisé", content: "Redimensionnez pour Instagram ou Passeport. Traité à 100% dans votre navigateur." }] },
-    it: { title: "Ridimensiona Immagine", sections: [{ title: "Ridimensionamento Sicuro", content: "Ridimensiona per Instagram o Passaporto. Elaborato al 100% nel browser." }] }
-  },
-  "image-cropper": {
-    en: { title: "Image Cropper", sections: [{ title: "Crop Photos Easily", content: "Crop your images to exact ratios (1:1, 16:9) instantly. No quality loss." }] },
-    id: { title: "Potong Gambar", sections: [{ title: "Potong Foto Mudah", content: "Potong gambar Anda ke rasio yang tepat (1:1, 16:9) secara instan. Tanpa mengurangi kualitas." }] },
-    de: { title: "Bild zuschneiden", sections: [{ title: "Fotos einfach zuschneiden", content: "Bilder sofort auf exakte Verhältnisse (1:1, 16:9) zuschneiden. Kein Qualitätsverlust." }] },
-    es: { title: "Cortar Imagen", sections: [{ title: "Recortar Fotos Fácilmente", content: "Recorta tus imágenes a ratios exactos (1:1, 16:9). Sin pérdida de calidad." }] },
-    pt: { title: "Cortar Imagem", sections: [{ title: "Cortar Fotos Facilmente", content: "Corte suas imagens em proporções exatas. Sem perda de qualidade." }] },
-    fr: { title: "Rogner Image", sections: [{ title: "Rogner Facilement", content: "Rognez vos images aux ratios exacts. Pas de perte de qualité." }] },
-    it: { title: "Ritaglia Immagine", sections: [{ title: "Ritaglia Foto Facilmente", content: "Ritaglia le tue immagini in rapporti esatti. Nessuna perdita di qualità." }] }
-  },
-  "padel-americano": {
-    en: {
-      title: "Padel Americano: The Ultimate Social Tournament Format",
-      sections: [
-        {
-          title: "What is Padel Americano?",
-          content: "Unlike traditional matches, Americano is a tournament where you play with a <b>new partner every round</b>. It's designed to be social, inclusive, and highly competitive since you collect points as an individual."
-        },
-        {
-          title: "The 32-Point Scoring Rule",
-          content: "Matches in Americano often play to a fixed number of points, typically 32. This means every single point counts! If Team A wins 20-12, those points are added directly to each player's individual tally."
-        }
-      ]
-    },
-    id: {
-      title: "Panduan Lengkap Turnamen Padel Americano",
-      sections: [
-        {
-          title: "Apa itu Padel Americano?",
-          content: "Format turnamen ini unik karena Anda akan <b>berganti pasangan</b> di setiap babak. Sangat cocok untuk komunitas yang ingin semua anggotanya saling mengenal sambil tetap berkompetisi secara adil."
-        }
-      ]
-    }
-  },
-  "tennis": {
-    en: {
-      title: "Mastering Your Tennis Mixer with Our Match Generator",
-      sections: [
-        {
-          title: "How to Set Up Your Tournament",
-          content: "Setting up a social tennis session has never been easier. Start by entering your <b>Number of Players</b> and <b>Total Duration</b>. Our generator will automatically calculate how many rounds fit into your time slot. Add your players' names and assign their skill levels from 'Newbie' to 'Pro' to ensure the fairest possible match-ups."
-        },
-        {
-          title: "The Fair Play Algorithm Explained",
-          content: "Tired of the same people sitting out every round? Our proprietary <b>Fair Play Algorithm</b> prioritizes players who have played the fewest games first. When balancing teams, it uses a 'Best + Worst vs. Middle Two' logic, ensuring that even with mixed skill levels, every match is competitive and fun."
-        },
-        {
-          title: "Smart Swapping & Rebalancing",
-          content: "If a player needs to leave early or arrives late, use the <b>Swap</b> feature. You can replace a player in any scheduled match, and the tool will offer to rebalance all future games to maintain equal court time for the remaining roster."
-        }
-      ]
-    },
-    id: {
-      title: "Panduan Lengkap Generator Jadwal Tenis Ganda",
-      sections: [
-        {
-          title: "Cara Mengatur Turnamen Anda",
-          content: "Mengatur sesi tenis sosial kini lebih mudah. Mulailah dengan memasukkan <b>Jumlah Pemain</b> dan <b>Durasi Sewa Lapangan</b>. Generator kami akan menghitung otomatis berapa banyak babak yang tersedia. Masukkan nama pemain dan level skill mereka untuk hasil pembagian tim yang adil."
-        },
-        {
-          title: "Memahami Algoritma Fair Play",
-          content: "Algoritma kami memprioritaskan pemain yang paling sedikit bermain untuk masuk ke babak berikutnya. Ini memastikan semua orang mendapatkan waktu lapangan yang sama, sangat cocok untuk grup dengan jumlah pemain ganjil."
-        },
-        {
-          title: "Tips Mengelola Roster Pemain",
-          content: "Gunakan fitur <b>Ganti Pemain (Swap)</b> jika ada teman yang harus pulang lebih awal. Sistem akan menawarkan untuk mengacak ulang jadwal masa depan agar tetap adil bagi mereka yang masih bertahan."
-        }
-      ]
-    },
-    de: {
-      title: "Tennis-Match-Generator",
-      sections: [{ title: "Fairer Match-Generator", content: "Tennis-Match-Generator. Erstellen Sie mühelos ausgewogene Doppelspiele. Perfekt für gesellige Club-Sessions." }]
-    },
-    es: {
-      title: "Generador de Partidos de Tenis",
-      sections: [{ title: "Generador de Partidos Justos", content: "Generador de Partidos de Tenis. Crea partidos de dobles equilibrados sin esfuerzo. Perfecto para sesiones sociales de clubes." }]
-    },
-    pt: {
-      title: "Gerador de Partidas de Tênis",
-      sections: [{ title: "Gerador de Partidas Justas", content: "Gerador de Partidas de Tênis. Crie jogos de duplas equilibrados facilmente. Perfeito para sessões sociais de clubes." }]
-    },
-    fr: {
-      title: "Générateur de Matchs de Tennis",
-      sections: [{ title: "Générateur de Matchs Équitables", content: "Générateur de Matchs de Tennis. Créez des matchs de double équilibrés sans effort. Parfait für die sozialen Sitzungen des Clubs." }]
-    },
-    it: {
-      title: "Generatore Partite Tennis",
-      sections: [{ title: "Generatore di Partite Eque", content: "Generatore Partite Tennis. Crea partite di doppio equilibrate senza sforzo. Perfetto per sessioni sociali di club." }]
     }
   },
   "budget-planner": {
     en: {
-      title: "Why Zero-Based Budgeting is the Key to Financial Freedom",
+      title: "Master Your Finances with Zero-Based Budgeting",
       sections: [
-        {
-          title: "Give Every Dollar a Job",
-          content: "Zero-Based Budgeting. Allocate every dollar to a category. Track expenses vs income. Our planner uses the method where your Income minus your Expenses should always equal zero."
-        }
+        { title: "The 50/30/20 Rule", content: "A popular method where you allocate 50% of income to Needs, 30% to Wants, and 20% to Savings or Debt. Our tool helps you visualize this split easily." },
+        { title: "Track Daily Expenses", content: "Input your daily spending to see your 'Available' balance update in real-time. This prevents overspending before the month ends." }
       ]
     },
     id: {
-      title: "Kuasai Keuangan dengan Metode Anggaran Berbasis Nol",
+      title: "Kuasai Keuangan dengan Anggaran Berbasis Nol",
       sections: [
-        {
-          title: "Berikan Tugas untuk Setiap Rupiah",
-          content: "Anggaran Berbasis Nol. Alokasikan setiap rupiah ke kategori. Lacak pengeluaran vs pemasukan. Metode ini memastikan setiap rupiah memiliki tugas."
-        }
+        { title: "Aturan 50/30/20", content: "Metode populer di mana Anda mengalokasikan 50% pendapatan untuk Kebutuhan, 30% Keinginan, dan 20% Tabungan. Alat kami membantu visualisasi ini." },
+        { title: "Lacak Pengeluaran Harian", content: "Masukkan pengeluaran harian untuk melihat saldo 'Tersedia' diperbarui secara real-time." }
       ]
     },
     de: {
-      title: "Nullbasiertes Budgetieren",
-      sections: [
-        {
-          title: "Jeden Euro zuweisen",
-          content: "Nullbasiertes Budgetieren. Weisen Sie jeden Euro einer Kategorie zu. Verfolgen Sie Ausgaben gegenüber Einnahmen."
-        }
-      ]
+      title: "Finanzen meistern mit Null-basierter Budgetierung",
+      sections: [{ title: "50/30/20-Regel", content: "50% Bedürfnisse, 30% Wünsche, 20% Sparen." }]
     },
     es: {
-      title: "Presupuesto Base Cero",
-      sections: [
-        {
-          title: "Asignar cada euro",
-          content: "Presupuesto Base Cero. Asigna cada euro a una categoría. Controla tus gastos frente a tus ingresos."
-        }
-      ]
+      title: "Domina tus Finanzas con Presupuesto Base Cero",
+      sections: [{ title: "Regla 50/30/20", content: "Asigna 50% a Necesidades, 30% a Deseos y 20% a Ahorros." }]
     },
     pt: {
-      title: "Orçamento Base Zero",
-      sections: [
-        {
-          title: "Alocar cada centavo",
-          content: "Orçamento Base Zero. Aloque cada centavo a uma categoria. Acompanhe despesas versus receitas."
-        }
-      ]
+      title: "Domine suas Finanças com Orçamento Base Zero",
+      sections: [{ title: "Regra 50/30/20", content: "50% Necessidades, 30% Desejos e 20% Poupança." }]
     },
     fr: {
-      title: "Budget Base Zéro",
-      sections: [
-        {
-          title: "Allouer chaque euro",
-          content: "Budget Base Zéro. Allouez chaque euro à une catégorie. Suivez vos dépenses par rapport à vos revenus."
-        }
-      ]
+      title: "Maîtrisez vos Finances avec le Budget Base Zéro",
+      sections: [{ title: "Règle 50/30/20", content: "50% Besoins, 30% Envies et 20% Épargne." }]
     },
     it: {
-      title: "Budget a Base Zero",
-      sections: [
-        {
-          title: "Assegna ogni euro",
-          content: "Budget a Base Zero. Assegna ogni euro a una categoria. Monitora le spese rispetto alle entrate."
-        }
-      ]
+      title: "Domina le tue Finanze con il Budget a Base Zero",
+      sections: [{ title: "Regola 50/30/20", content: "50% Bisogni, 30% Desideri e 20% Risparmio." }]
     }
   },
-  "invoice": {
+  "kanban": {
     en: {
-      title: "Professional PDF Invoicing for Freelancers",
+      title: "Increase Productivity with Kanban Boards",
       sections: [
-        {
-          title: "Free Invoice Generator",
-          content: "Create PDF invoices instantly in your browser. No data stored on servers. A professional invoice ensures you get paid faster."
-        }
+        { title: "Visualizing Workflow", content: "Kanban helps you see your work. By moving cards from 'To Do' to 'Done', you identify bottlenecks and focus on finishing tasks." },
+        { title: "Basics of the Kanban Method", content: "Focus on 'Work in Progress'. Limit how many items are in your active column to ensure high-quality output." }
       ]
     },
     id: {
-      title: "Cara Buat Invoice Profesional untuk Freelancer",
+      title: "Tingkatkan Produktivitas dengan Papan Kanban",
       sections: [
-        {
-          title: "Pembuat Invoice Gratis",
-          content: "Buat faktur PDF instan di browser. Data tidak disimpan di server. Invoice yang rapi membantu Anda terlihat profesional."
-        }
+        { title: "Visualisasi Alur Kerja", content: "Kanban membantu Anda melihat pekerjaan Anda. Dengan memindahkan kartu, Anda mengidentifikasi hambatan." },
+        { title: "Dasar Metode Kanban", content: "Fokus pada 'Pekerjaan yang Sedang Berjalan'. Batasi jumlah tugas aktif Anda." }
       ]
     },
     de: {
-      title: "Rechnungsgenerator",
-      sections: [
-        {
-          title: "Kostenloser Rechnungsgenerator",
-          content: "Kostenloser Rechnungsgenerator. Erstellen Sie PDF-Rechnungen sofort im Browser."
-        }
-      ]
+      title: "Produktivität steigern mit Kanban-Boards",
+      sections: [{ title: "Workflow-Visualisierung", content: "Verschieben Sie Aufgaben von 'To Do' nach 'Erledigt'." }]
     },
     es: {
-      title: "Generador de Facturas",
-      sections: [
-        {
-          title: "Generador de Facturas Gratis",
-          content: "Generador de Facturas Gratis. Crea facturas PDF al instante."
-        }
-      ]
+      title: "Aumenta la Productividad con Tableros Kanban",
+      sections: [{ title: "Visualización del Flujo", content: "Mueve tarjetas para ver el progreso de tus tareas." }]
     },
     pt: {
-      title: "Gerador de Faturas",
-      sections: [
-        {
-          title: "Gerador de Faturas Grátis",
-          content: "Gerador de Faturas Grátis. Crie faturas em PDF instantaneamente."
-        }
-      ]
+      title: "Aumente a Produtividade com Quadros Kanban",
+      sections: [{ title: "Visualização do Fluxo", content: "Mova cartões para acompanhar o progresso das tarefas." }]
     },
     fr: {
-      title: "Générateur de Factures",
-      sections: [
-        {
-          title: "Générateur de Factures Gratuit",
-          content: "Générateur de Factures Gratuit. Créez des factures PDF instantanément."
-        }
-      ]
+      title: "Boostez votre Productivité avec Kanban",
+      sections: [{ title: "Visualisation", content: "Déplacez les cartes pour suivre l'avancement." }]
     },
     it: {
-      title: "Generatore Fatture",
-      sections: [
-        {
-          title: "Generatore Fatture Gratuito",
-          content: "Generatore Fatture Gratuito. Crea fatture PDF istantaneamente."
-        }
-      ]
+      title: "Aumenta la Produttività con la Bacheca Kanban",
+      sections: [{ title: "Visualizzazione", content: "Sposta le schede per seguire i progressi." }]
     }
+  },
+  "image-compressor": {
+    en: {
+      title: "Secure Image Compression in Your Browser",
+      sections: [
+        { title: "Privacy-Focused Processing", content: "Unlike other tools, our compressor runs 100% on your device. Your photos are never uploaded to a server." },
+        { title: "Reduce KB Size", content: "Optimize your web images by reducing file size without visible quality loss. Perfect for SEO and faster site loading." }
+      ]
+    },
+    id: {
+      title: "Kompres Gambar Aman di Browser Anda",
+      sections: [
+        { title: "Pemrosesan Berbasis Privasi", content: "Foto Anda tidak pernah diunggah ke server. Semua proses terjadi di perangkat Anda." },
+        { title: "Kurangi Ukuran KB", content: "Optimalkan gambar web dengan mengurangi ukuran file tanpa mengurangi kualitas secara visual." }
+      ]
+    },
+    de: { title: "Sichere Bildkompression", sections: [{ title: "Privatsphäre", content: "Kein Server-Upload." }] },
+    es: { title: "Compresión de Imagen Segura", sections: [{ title: "Privacidad", content: "Sin subida al servidor." }] },
+    pt: { title: "Compressão de Imagem Segura", sections: [{ title: "Privacidade", content: "Sem upload para o servidor." }] },
+    fr: { title: "Compression d'Image Sécurisée", sections: [{ title: "Confidentialité", content: "Pas d'envoi sur serveur." }] },
+    it: { title: "Compressione Immagini Sicura", sections: [{ title: "Privacy", content: "Nessun caricamento su server." }] }
+  },
+  "pdf-merge": {
+    en: {
+      title: "Merge PDF Files Offline and Securely",
+      sections: [
+        { title: "Combine Files Privately", content: "Combine multiple PDF documents into one single file without risking your data on external servers." },
+        { title: "How to Merge", content: "Drag your files, arrange the order, and click merge. The result is generated instantly in your browser." }
+      ]
+    },
+    id: {
+      title: "Gabung File PDF Secara Offline dan Aman",
+      sections: [
+        { title: "Gabungkan File Secara Privat", content: "Gabungkan beberapa dokumen PDF menjadi satu file tanpa risiko data di server eksternal." },
+        { title: "Cara Menggabungkan", content: "Seret file Anda, atur urutan, dan klik gabungkan." }
+      ]
+    },
+    de: { title: "PDF sicher zusammenfügen", sections: [{ title: "Privat", content: "Alles im Browser." }] },
+    es: { title: "Combinar PDF de forma segura", sections: [{ title: "Privacidad", content: "Todo en el navegador." }] },
+    pt: { title: "Combinar PDF com segurança", sections: [{ title: "Privacidade", content: "Tudo no navegador." }] },
+    fr: { title: "Fusionner PDF en toute sécurité", sections: [{ title: "Confidentialité", content: "Tout dans le navigateur." }] },
+    it: { title: "Unisci PDF in sicurezza", sections: [{ title: "Privacy", content: "Tutto nel browser." }] }
+  },
+  "csv-helper": {
+    en: {
+      title: "Clean and Format CSV Data for Excel",
+      sections: [
+        { title: "Data Cleaning", content: "Remove duplicates and trim whitespace from your CSV files automatically to ensure your data is ready for analysis." },
+        { title: "Excel & Sheets Ready", content: "Export cleaned data that works perfectly with Microsoft Excel, Google Sheets, or any database." }
+      ]
+    },
+    id: {
+      title: "Bersihkan dan Format Data CSV untuk Excel",
+      sections: [
+        { title: "Pembersihan Data", content: "Hapus duplikat dan rapikan spasi dari file CSV Anda secara otomatis." },
+        { title: "Siap untuk Excel", content: "Ekspor data bersih yang berfungsi sempurna dengan Google Sheets atau Excel." }
+      ]
+    },
+    de: { title: "CSV-Daten für Excel reinigen", sections: [{ title: "Reinigung", content: "Duplikate entfernen." }] },
+    es: { title: "Limpiar datos CSV para Excel", sections: [{ title: "Limpieza", content: "Eliminar duplicados." }] },
+    pt: { title: "Limpar dados CSV para Excel", sections: [{ title: "Limpeza", content: "Remover duplicatas." }] },
+    fr: { title: "Nettoyer les données CSV pour Excel", sections: [{ title: "Nettoyage", content: "Supprimer les doublons." }] },
+    it: { title: "Pulire dati CSV per Excel", sections: [{ title: "Pulizia", content: "Rimuovi i duplicati." }] }
+  },
+  "calculator": {
+    en: {
+      title: "Calculate Construction Material and Volume",
+      sections: [
+        { title: "Accurate Estimations", content: "Enter your project dimensions to calculate the exact volume of paint or tiles needed for your renovation." },
+        { title: "Cost Planning", content: "Input price per unit to get a total cost estimation, helping you stay within budget for DIY projects." }
+      ]
+    },
+    id: {
+      title: "Hitung Material Konstruksi dan Volume",
+      sections: [
+        { title: "Estimasi Akurat", content: "Masukkan dimensi proyek untuk menghitung volume cat atau ubin yang dibutuhkan." },
+        { title: "Rencana Biaya", content: "Masukkan harga per unit untuk mendapatkan estimasi total biaya proyek." }
+      ]
+    },
+    de: { title: "Baumaterial berechnen", sections: [{ title: "Kosten", content: "Budget planen." }] },
+    es: { title: "Calcular materiales de construcción", sections: [{ title: "Costos", content: "Planifica tu presupuesto." }] },
+    pt: { title: "Calcular materiais de construção", sections: [{ title: "Custos", content: "Planeje seu orçamento." }] },
+    fr: { title: "Calculer les matériaux de construction", sections: [{ title: "Coûts", content: "Planifiez votre budget." }] },
+    it: { title: "Calcola materiali da costruzione", sections: [{ title: "Costi", content: "Pianifica il tuo budget." }] }
   },
   "futsal": {
     en: {
-      title: "Digital Futsal Scoreboard: Pro Features for Local Matches",
+      title: "Professional Futsal Scoreboard Rules",
       sections: [
-        {
-          title: "Digital Futsal Scoreboard",
-          content: "Track score, period, fouls, and time. Fullscreen mode available. Standard Futsal rules require a 20-minute countdown."
-        }
+        { title: "Foul Counter Rules", content: "In Futsal, the 6th foul results in a direct free kick (second penalty). Our board turns red at 5 fouls to alert referees." },
+        { title: "Timer Management", content: "Standard matches are 20 minutes per half. Use the presets to quickly set the official time for your match." }
       ]
     },
     id: {
-      title: "Papan Skor Futsal Digital: Fitur Pro untuk Sparing",
+      title: "Aturan Papan Skor Futsal Profesional",
       sections: [
-        {
-          title: "Papan Skor Futsal Digital",
-          content: "Catat skor, babak, pelanggaran, dan waktu. Tersedia mode layar penuh. Sesuai dengan pengatur waktu standar 20 menit."
-        }
+        { title: "Aturan Hitung Pelanggaran", content: "Pelanggaran ke-6 menghasilkan tendangan bebas langsung (penalti kedua). Papan kami berubah merah pada 5 foul." },
+        { title: "Manajemen Waktu", content: "Pertandingan standar adalah 20 menit per babak. Gunakan preset untuk pengaturan cepat." }
       ]
     },
-    de: {
-      title: "Futsal-Anzeigetafel",
-      sections: [{ title: "Features", content: "Digitale Futsal-Anzeigetafel. Verfolgen Sie Spielstand, Periode, Fouls und Zeit." }]
-    },
-    es: {
-      title: "Marcador de Fútbol Sala",
-      sections: [{ title: "Características", content: "Marcador de Fútbol Sala. Controla puntuación, periodo, faltas y tiempo." }]
-    },
-    pt: {
-      title: "Placar de Futsal Digital",
-      sections: [{ title: "Características", content: "Placar de Futsal Digital. Acompanhe placar, período, faltas e tempo." }]
-    },
-    fr: {
-      title: "Tableau de Score Futsal",
-      sections: [{ title: "Caractéristiques", content: "Tableau de Score Futsal. Suivez le score, la période, les fautes et le temps." }]
-    },
-    it: {
-      title: "Tabellone Calcetto Digitale",
-      sections: [{ title: "Caratteristiche", content: "Tabellone Calcetto Digitale. Traccia punteggio, periodo, falli e tempo." }]
-    }
+    de: { title: "Futsal-Regeln", sections: [{ title: "Fouls", content: "Anzeige wird bei 5 Fouls rot." }] },
+    es: { title: "Reglas de Futsal", sections: [{ title: "Faltas", content: "El tablero se pone rojo a las 5 faltas." }] },
+    pt: { title: "Regras de Futsal", sections: [{ title: "Faltas", content: "O placar fica vermelho na 5ª falta." }] },
+    fr: { title: "Règles du Futsal", sections: [{ title: "Fautes", content: "Le tableau devient rouge à 5 fautes." }] },
+    it: { title: "Regole Futsal", sections: [{ title: "Falli", content: "Il tabellone diventa rosso al 5° fallo." }] }
   },
-  "lineup": {
+  "tennis": {
     en: {
-      title: "Lineup Builder",
-      sections: [{ title: "How it works", content: "Football Lineup Builder. Drag and drop players to create formations (4-4-2, 4-3-3). Download as image." }]
+      title: "Fair Play Algorithm for Tennis Double Matches",
+      sections: [
+        { title: "Balanced Pairings", content: "Our algorithm balances teams by combining high-skill players with lower-skill partners to ensure competitive matches." },
+        { title: "Playtime Equality", content: "The system tracks rounds played to ensure every person in your club gets equal time on the court." }
+      ]
     },
     id: {
-      title: "Pembuat Formasi",
-      sections: [{ title: "Cara Penggunaan", content: "Pembuat Formasi Sepak Bola. Geser pemain untuk membuat formasi (4-4-2, etc). Unduh sebagai gambar." }]
+      title: "Algoritma Fair Play untuk Pertandingan Tenis Ganda",
+      sections: [
+        { title: "Pasangan yang Seimbang", content: "Algoritma kami menyeimbangkan tim dengan menggabungkan pemain skill tinggi dengan pemula." },
+        { title: "Kesamaan Waktu Main", content: "Sistem melacak jumlah ronde untuk memastikan semua orang mendapat waktu lapangan yang sama." }
+      ]
     },
-    de: {
-      title: "Fußball-Aufstellungs-Planer",
-      sections: [{ title: "Anleitung", content: "Fußball-Aufstellungs-Planer. Erstellen Sie Formationen per Drag & Drop." }]
-    },
-    es: {
-      title: "Creador de Alineaciones",
-      sections: [{ title: "Cómo usar", content: "Creador de Alineaciones. Arrastra jugadores para crear formaciones." }]
-    },
-    pt: {
-      title: "Criador de Escalação",
-      sections: [{ title: "Como usar", content: "Criador de Escalação. Arraste jogadores para criar formações." }]
-    },
-    fr: {
-      title: "Créateur de Composition",
-      sections: [{ title: "Comment ça marche", content: "Créateur de Composition. Glissez-déposez les joueurs pour créer des formations." }]
-    },
-    it: {
-      title: "Generatore Formazione Calcio",
-      sections: [{ title: "Come funziona", content: "Generatore Formazione Calcio. Trascina i giocatori per creare formazioni." }]
-    }
-  },
-  "scoreboard": {
-    en: {
-      title: "Universal Scoreboard",
-      sections: [{ title: "Usage", content: "Simple Scoreboard. Use for Badminton, Volleyball, or Ping Pong. No ads, completely offline." }]
-    },
-    id: {
-      title: "Papan Skor Universal",
-      sections: [{ title: "Penggunaan", content: "Papan Skor Serbaguna. Gunakan untuk Badminton, Voli, atau Pingpong. Tanpa iklan, offline." }]
-    },
-    de: {
-      title: "Universal-Anzeigetafel",
-      sections: [{ title: "Nutzung", content: "Einfache Anzeigetafel. Für Badminton, Volleyball oder Tischtennis." }]
-    },
-    es: {
-      title: "Marcador Universal",
-      sections: [{ title: "Uso", content: "Marcador Universal. Úsalo para Bádminton, Voleibol o Ping Pong." }]
-    },
-    pt: {
-      title: "Placar Universal",
-      sections: [{ title: "Uso", content: "Placar Simples. Use para Badminton, Vôlei ou Ping Pong." }]
-    },
-    fr: {
-      title: "Tableau de Score Universel",
-      sections: [{ title: "Utilisation", content: "Tableau de Score Simple. Pour Badminton, Volley ou Ping Pong." }]
-    },
-    it: {
-      title: "Tabellone Universale",
-      sections: [{ title: "Utilizzo", content: "Tabellone Semplice. Usa per Badminton, Pallavolo o Ping Pong." }]
-    }
-  },
-  "inventory": {
-    en: { title: "Stock Management", sections: [{ title: "Tool Overview", content: "Stock Management Tool. Track items, quantities, and low stock alerts. Runs offline." }] },
-    id: { title: "Manajemen Stok", sections: [{ title: "Ringkasan Alat", content: "Alat Manajemen Stok. Lacak barang, jumlah, dan peringatan stok menipis. Berjalan offline." }] },
-    de: { title: "Lagerverwaltung", sections: [{ title: "Überblick", content: "Lagerverwaltung. Verfolgen Sie Artikel und Bestände offline." }] },
-    es: { title: "Gestión de Inventario", sections: [{ title: "Descripción", content: "Gestión de Inventario. Controla artículos y stock bajo offline." }] },
-    pt: { title: "Gestão de Estoque", sections: [{ title: "Visão Geral", content: "Gestão de Estoque. Acompanhe itens e alertas de estoque baixo." }] },
-    fr: { title: "Gestion de Stock", sections: [{ title: "Aperçu", content: "Gestion de Stock. Suivez les articles et les alertes de stock faible." }] },
-    it: { title: "Gestione Inventario", sections: [{ title: "Panoramica", content: "Gestione Inventario. Traccia articoli e scorte basse offline." }] }
-  },
-  "shift": {
-    en: { title: "Shift Scheduler", sections: [{ title: "Tool Overview", content: "Employee Shift Planner. Organize morning, afternoon, and night shifts easily. Download schedule." }] },
-    id: { title: "Jadwal Shift", sections: [{ title: "Ringkasan Alat", content: "Jadwal Shift Karyawan. Atur shift pagi, siang, malam dengan mudah. Unduh jadwal." }] },
-    de: { title: "Schichtplaner", sections: [{ title: "Überblick", content: "Schichtplaner. Organisieren Sie Schichten einfach und laden Sie den Plan herunter." }] },
-    es: { title: "Planificador de Turnos", sections: [{ title: "Descripción", content: "Planificador de Turnos. Organiza turnos de mañana, tarde y noche." }] },
-    pt: { title: "Escala de Trabalho", sections: [{ title: "Visão Geral", content: "Escala de Trabalho. Organize turnos facilmente e baixe a escala." }] },
-    fr: { title: "Planning d'Équipe", sections: [{ title: "Aperçu", content: "Planning d'Équipe. Organisez les 3x8 facilement." }] },
-    it: { title: "Pianificatore Turni", sections: [{ title: "Panoramica", content: "Pianificatore Turni. Organizza i turni facilmente." }] }
-  },
-  "split-bill": {
-    en: { title: "Split Bill", sections: [{ title: "Tool Overview", content: "Restaurant Bill Splitter. Calculate tax and service charge accurately for groups." }] },
-    id: { title: "Bagi Tagihan", sections: [{ title: "Ringkasan Alat", content: "Pembagi Tagihan Restoran. Hitung pajak dan layanan secara akurat untuk grup." }] },
-    de: { title: "Rechnungsteiler", sections: [{ title: "Überblick", content: "Rechnungsteiler. Berechnen Sie Steuern und Servicegebühren präzise." }] },
-    es: { title: "Dividir Cuenta", sections: [{ title: "Descripción", content: "Dividir Cuenta. Calcula impuestos y servicio con precisión." }] },
-    pt: { title: "Dividir Conta", sections: [{ title: "Visão Geral", content: "Dividir Conta. Calcule impostos e taxas de serviço." }] },
-    fr: { title: "Partage d'Addition", sections: [{ title: "Aperçu", content: "Partage d'Addition. Calculez taxes et service avec précision." }] },
-    it: { title: "Divisione Conto", sections: [{ title: "Panoramica", content: "Divisione Conto. Calcola tasse e servizio con precisione." }] }
+    de: { title: "Tennis-Algorithmus", sections: [{ title: "Fairness", content: "Gleiche Spielzeit für alle." }] },
+    es: { title: "Algoritmo de Tenis", sections: [{ title: "Equidad", content: "Mismo tiempo de juego para todos." }] },
+    pt: { title: "Algoritmo de Tênis", sections: [{ title: "Igualdade", content: "Mesmo tempo de quadra para todos." }] },
+    fr: { title: "Algorithme de Tennis", sections: [{ title: "Équité", content: "Temps de jeu égal pour tous." }] },
+    it: { title: "Algoritmo Tennis", sections: [{ title: "Equità", content: "Stesso tempo di gioco per tutti." }] }
   }
 };
