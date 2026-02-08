@@ -30,6 +30,16 @@ const UI_TEXT: Record<string, any> = {
   off: { en: "Off", id: "Libur", de: "Frei", es: "Libre", pt: "Folga", fr: "Repos", it: "Libero" }
 };
 
+const DAY_LABELS: Record<string, string[]> = {
+  en: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+  id: ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'],
+  de: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
+  es: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+  pt: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+  fr: ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'],
+  it: ['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab', 'Dom']
+};
+
 interface EmployeeShift {
   id: string;
   name: string;
@@ -54,6 +64,7 @@ const DAYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'] as const;
 export default function ShiftRosterPage() {
   const { lang, t: globalT } = useLang();
   const t = (key: string) => UI_TEXT[key]?.[lang] || UI_TEXT[key]?.['en'] || key;
+  const currentDayLabels = DAY_LABELS[lang] || DAY_LABELS['en'];
   
   const [employees, setEmployees] = useLocalStorage<EmployeeShift[]>('versokit-shift-data', []);
   const [newName, setNewName] = useState('');
@@ -203,8 +214,8 @@ export default function ShiftRosterPage() {
                 <thead>
                   <tr className="bg-primary text-primary-foreground">
                     <th className="p-4 text-left font-black uppercase tracking-widest text-xs border-r border-primary-foreground/20">{t('employees')}</th>
-                    {DAYS.map(day => (
-                      <th key={day} className="p-4 text-center font-black uppercase tracking-widest text-xs border-r border-primary-foreground/20">{globalT(day)}</th>
+                    {DAYS.map((day, i) => (
+                      <th key={day} className="p-4 text-center font-black uppercase tracking-widest text-xs border-r border-primary-foreground/20">{currentDayLabels[i]}</th>
                     ))}
                     <th className="p-4 w-16 print:hidden"></th>
                   </tr>

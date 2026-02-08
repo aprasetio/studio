@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { FileSpreadsheet, Trash2, Download, Upload } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
+import TrustBadges from '@/components/ui/TrustBadges';
 
 export default function CSVHelperPage() {
   const { t } = useLang();
@@ -53,6 +54,7 @@ export default function CSVHelperPage() {
     <div className="flex flex-col items-center p-6 md:p-12 max-w-6xl mx-auto w-full gap-8">
       <div className="text-center space-y-2">
         <h1 className="text-3xl font-black uppercase tracking-tighter text-foreground">{t('csv_helper')}</h1>
+        <TrustBadges />
         <p className="text-muted-foreground font-medium">Bersihkan data CSV Anda secara lokal tanpa upload ke server</p>
       </div>
 

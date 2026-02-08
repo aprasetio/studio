@@ -22,7 +22,7 @@ const UI_TEXT: Record<string, any> = {
   rate: { en: "Rate", id: "Harga", de: "Preis", es: "Precio", pt: "Preço", fr: "Prix", it: "Prezzo" },
   amount: { en: "Amount", id: "Jumlah", de: "Betrag", es: "Importe", pt: "Valor", fr: "Montant", it: "Importo" },
   subtotal: { en: "Subtotal", id: "Subtotal", de: "Zwischensumme", es: "Subtotal", pt: "Subtotal", fr: "Sous-total", it: "Subtotale" },
-  tax: { en: "Tax", id: "Pajak", de: "Steuer", es: "Impuesto", pt: "Imposto", fr: "Taxe", it: "Tassa" },
+  tax: { en: "Tax", id: "Pajak", de: "Pajak", es: "Impuesto", pt: "Imposto", fr: "Taxe", it: "Tassa" },
   total: { en: "Total", id: "Total", de: "Gesamt", es: "Total", pt: "Total", fr: "Total", it: "Totale" },
   download: { en: "Download PDF", id: "Unduh PDF", de: "PDF herunterladen", es: "Descargar PDF", pt: "Baixar PDF", fr: "Télécharger PDF", it: "Scarica PDF" },
   add_item: { en: "+ Add Item", id: "+ Tambah Barang", de: "+ Artikel hinzufügen", es: "+ Añadir artículo", pt: "+ Adicionar Item", fr: "+ Ajouter un article", it: "+ Aggiungi Articolo" },
@@ -30,6 +30,16 @@ const UI_TEXT: Record<string, any> = {
   date: { en: "Date", id: "Tanggal", de: "Datum", es: "Fecha", pt: "Data", fr: "Date", it: "Data" },
   business_name: { en: "Your Business", id: "Bisnis Anda", de: "Ihr Unternehmen", es: "Su Negocio", pt: "Seu Negócio", fr: "Votre Entreprise", it: "Tua Azienda" },
   client_name: { en: "Client Name", id: "Nama Klien", de: "Kundenname", es: "Nombre del Cliente", pt: "Nome do Cliente", fr: "Nom du Client", it: "Nome Cliente" }
+};
+
+const CURRENCY: Record<string, string> = { 
+  en: '$', 
+  id: 'Rp', 
+  de: '€', 
+  es: '€', 
+  pt: 'R$', 
+  fr: '€', 
+  it: '€' 
 };
 
 interface InvoiceItem {
@@ -42,6 +52,7 @@ interface InvoiceItem {
 export default function InvoiceMakerPage() {
   const { lang, t: globalT } = useLang();
   const t = (key: string) => UI_TEXT[key]?.[lang] || UI_TEXT[key]?.['en'] || key;
+  const symbol = CURRENCY[lang] || '$';
 
   const [businessName, setBusinessName] = useState('');
   const [clientName, setClientName] = useState('');
@@ -127,12 +138,16 @@ export default function InvoiceMakerPage() {
                       />
                     </div>
                     <div className="col-span-3">
-                      <Input 
-                        type="number" 
-                        placeholder={t('rate')} 
-                        value={item.price} 
-                        onChange={(e) => updateItem(item.id, 'price', parseInt(e.target.value) || 0)} 
-                      />
+                      <div className="relative">
+                        <span className="absolute left-2 top-1/2 -translate-y-1/2 text-xs font-bold opacity-40">{symbol}</span>
+                        <Input 
+                          type="number" 
+                          placeholder={t('rate')} 
+                          value={item.price} 
+                          className="pl-7"
+                          onChange={(e) => updateItem(item.id, 'price', parseInt(e.target.value) || 0)} 
+                        />
+                      </div>
                     </div>
                     <div className="col-span-1">
                       <Button variant="ghost" size="icon" onClick={() => removeItem(item.id)} className="text-destructive">
@@ -195,8 +210,8 @@ export default function InvoiceMakerPage() {
                   <tr key={item.id} className="border-b border-gray-100">
                     <td className="py-4 font-bold uppercase tracking-tight">{item.name || '---'}</td>
                     <td className="py-4 text-center font-bold">{item.qty}</td>
-                    <td className="py-4 text-right">Rp {item.price.toLocaleString('id-ID')}</td>
-                    <td className="py-4 text-right font-black">Rp {(item.qty * item.price).toLocaleString('id-ID')}</td>
+                    <td className="py-4 text-right">{symbol} {item.price.toLocaleString(lang === 'id' ? 'id-ID' : 'en-US')}</td>
+                    <td className="py-4 text-right font-black">{symbol} {(item.qty * item.price).toLocaleString(lang === 'id' ? 'id-ID' : 'en-US')}</td>
                   </tr>
                 ))}
               </tbody>
@@ -206,7 +221,7 @@ export default function InvoiceMakerPage() {
             <div className="mt-12 pt-8 border-t-4 border-black flex justify-end">
               <div className="text-right space-y-1">
                 <p className="text-xs font-sans font-bold text-gray-400 uppercase tracking-widest">{t('total')}</p>
-                <p className="text-5xl font-black">Rp {grandTotal.toLocaleString('id-ID')}</p>
+                <p className="text-5xl font-black">{symbol} {grandTotal.toLocaleString(lang === 'id' ? 'id-ID' : 'en-US')}</p>
               </div>
             </div>
 

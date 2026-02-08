@@ -9,6 +9,7 @@ import { Plus, Trash2, ChevronRight, ChevronLeft } from 'lucide-react';
 import { DataControl } from '@/components/DataControl';
 import { useLang } from '@/components/Providers';
 import { SeoContent } from '@/components/seo-content';
+import TrustBadges from '@/components/ui/TrustBadges';
 
 type Status = 'todo' | 'progress' | 'done';
 
@@ -67,6 +68,7 @@ export default function KanbanPage() {
           <h1 className="text-4xl font-black tracking-tighter text-foreground uppercase">
             {t('kanban')}
           </h1>
+          <TrustBadges />
           <p className="text-muted-foreground font-medium">Kelola strategi dan tugas tim dengan manajemen visual</p>
         </div>
         <DataControl storageKey="versokit-kanban-tasks" type="array" />

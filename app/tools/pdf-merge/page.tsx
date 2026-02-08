@@ -9,6 +9,7 @@ import { FileStack, Trash2, Plus, FileText, Loader2 } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import { SeoContent } from '@/components/seo-content';
 import { SmartAd } from '@/components/smart-ad';
+import TrustBadges from '@/components/ui/TrustBadges';
 
 export default function PDFMergePage() {
   const { t } = useLang();
@@ -79,6 +80,7 @@ export default function PDFMergePage() {
     <div className="flex flex-col items-center p-6 md:p-12 max-w-7xl mx-auto w-full gap-8">
       <div className="text-center space-y-2">
         <h1 className="text-3xl font-black uppercase tracking-tighter text-foreground">{t('pdf_merge')}</h1>
+        <TrustBadges />
         <p className="text-muted-foreground font-medium">Gabungkan beberapa dokumen PDF menjadi satu secara instan dan privat</p>
       </div>
 
