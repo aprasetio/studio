@@ -15,8 +15,6 @@ import {
   X,
   Database,
   Calculator,
-  ArrowUpCircle,
-  ArrowDownCircle,
   PieChart as PieChartIcon
 } from 'lucide-react';
 import { 
@@ -36,13 +34,12 @@ import {
 } from "@/components/ui/select";
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
-import { DataPersistence } from '@/components/DataPersistence';
 import { ArticleSection } from '@/components/ArticleSection';
 import { SmartAd } from '@/components/smart-ad';
 import { SeoContent } from '@/components/SeoContent';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
-import { useBudgetStore, type TransactionType, type CategoryType } from './store';
+import { useBudgetStore, type TransactionType } from './store';
 import TrustBadges from '@/components/ui/TrustBadges';
 
 const UI_TEXT: Record<string, any> = {
@@ -53,7 +50,6 @@ const UI_TEXT: Record<string, any> = {
     budgeted: "Assigned",
     activity: "Activity",
     available: "Available",
-    add_group: "Add Group",
     add_item: "Add Item",
     total_income: "Income Summary",
     all_done: "All money has a job!",
@@ -68,12 +64,8 @@ const UI_TEXT: Record<string, any> = {
     payee: "Payee",
     history: "Recent History",
     empty_trans: "No transactions yet",
-    data_mgmt: "Data Management",
     base_income: "Manual Base Income",
     inflow: "Inflow Transactions",
-    needs: "Needs",
-    wants: "Wants",
-    savings: "Savings"
   },
   id: {
     title: "Perencana Anggaran",
@@ -82,7 +74,6 @@ const UI_TEXT: Record<string, any> = {
     budgeted: "Anggaran",
     activity: "Aktivitas",
     available: "Tersedia",
-    add_group: "Tambah Grup",
     add_item: "Tambah Item",
     total_income: "Ringkasan Pendapatan",
     all_done: "Semua uang sudah dialokasikan!",
@@ -97,12 +88,8 @@ const UI_TEXT: Record<string, any> = {
     payee: "Penerima",
     history: "Riwayat Terkini",
     empty_trans: "Belum ada transaksi",
-    data_mgmt: "Manajemen Data",
     base_income: "Pendapatan Dasar",
     inflow: "Transaksi Masuk",
-    needs: "Kebutuhan",
-    wants: "Keinginan",
-    savings: "Tabungan"
   }
 };
 
@@ -124,7 +111,7 @@ export default function BudgetPlannerPage() {
   const [mounted, setMounted] = useState(false);
   const { 
     income, toBeBudgeted, categories, transactions, 
-    setIncome, addCategory, updateCategoryAssignment, addTransaction, deleteTransaction, resetMonth 
+    setIncome, addCategory, deleteCategory, updateCategoryAssignment, addTransaction, deleteTransaction, resetMonth 
   } = useBudgetStore();
 
   const [isTxOpen, setIsTxOpen] = useState(false);
@@ -280,9 +267,10 @@ export default function BudgetPlannerPage() {
                   <thead>
                     <tr className="border-b bg-muted/10 text-[10px] font-black uppercase tracking-widest text-muted-foreground">
                       <th className="p-6 text-left">{t('category')}</th>
-                      <th className="p-6 text-right w-32">{t('budgeted')}</th>
-                      <th className="p-6 text-right w-32">{t('activity')}</th>
-                      <th className="p-6 text-right w-32">{t('available')}</th>
+                      <th className="p-6 text-right w-[140px]">{t('budgeted')}</th>
+                      <th className="p-6 text-right w-[140px]">{t('activity')}</th>
+                      <th className="p-6 text-right w-[140px]">{t('available')}</th>
+                      <th className="p-6 w-12"></th>
                     </tr>
                   </thead>
                   <tbody className="divide-y">
@@ -291,17 +279,17 @@ export default function BudgetPlannerPage() {
                       return (
                         <tr key={category.id} className="hover:bg-muted/5 transition-colors group">
                           <td className="p-6">
-                            <p className="font-black text-sm uppercase tracking-tight">{category.name}</p>
+                            <p className="font-black text-sm uppercase tracking-tight truncate max-w-[150px] md:max-w-none">{category.name}</p>
                             <span className="text-[9px] font-bold text-muted-foreground uppercase opacity-60">{category.type}</span>
                           </td>
-                          <td className="p-4">
-                            <div className="relative group/input">
+                          <td className="p-4 align-middle">
+                            <div className="relative group/input flex justify-end">
                               <span className="absolute left-2 top-1/2 -translate-y-1/2 text-[10px] opacity-20 font-black">{symbol}</span>
                               <input 
                                 type="number"
                                 value={category.assigned === 0 ? '' : category.assigned}
                                 onChange={(e) => updateCategoryAssignment(category.id, parseFloat(e.target.value) || 0)}
-                                className="w-full h-10 bg-muted/20 border-2 border-transparent rounded-xl text-right font-black px-3 focus:outline-none focus:border-primary transition-all"
+                                className="w-full h-10 bg-muted/20 border-b-2 border-transparent hover:border-muted-foreground/30 focus:border-primary rounded-lg text-right font-mono font-black px-3 focus:outline-none transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                                 placeholder="0"
                               />
                             </div>
@@ -311,13 +299,23 @@ export default function BudgetPlannerPage() {
                           </td>
                           <td className="p-6 text-right">
                             <span className={cn(
-                              "px-4 py-1.5 rounded-full text-xs font-black tabular-nums shadow-sm border-2",
-                              available > 0 ? "bg-green-50 text-green-700 border-green-100" : 
-                              available < 0 ? "bg-red-50 text-red-700 border-red-100 animate-pulse" : 
-                              "bg-slate-50 text-slate-400 border-slate-100"
+                              "text-sm font-black tabular-nums transition-colors",
+                              available > 0 ? "text-emerald-600" : 
+                              available < 0 ? "text-red-500 animate-pulse" : 
+                              "text-gray-400"
                             )}>
                               {available.toLocaleString()}
                             </span>
+                          </td>
+                          <td className="p-2 text-center">
+                            <Button 
+                              variant="ghost" 
+                              size="icon" 
+                              onClick={() => { if(confirm(globalT('delete') + '?')) deleteCategory(category.id) }}
+                              className="h-8 w-8 text-muted-foreground/30 hover:text-destructive opacity-0 group-hover:opacity-100 transition-all"
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </Button>
                           </td>
                         </tr>
                       );

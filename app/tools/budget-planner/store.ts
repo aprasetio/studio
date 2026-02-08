@@ -34,6 +34,7 @@ interface BudgetState {
   // Actions
   setIncome: (amount: number) => void;
   addCategory: (name: string, type: CategoryType) => void;
+  deleteCategory: (id: string) => void;
   updateCategoryAssignment: (id: string, amount: number) => void;
   addTransaction: (tx: Omit<Transaction, 'id'>) => void;
   deleteTransaction: (id: string) => void;
@@ -67,6 +68,15 @@ export const useBudgetStore = create<BudgetState>()(
           activity: 0 
         }]
       })),
+
+      deleteCategory: (id) => set((state) => {
+        const newCategories = state.categories.filter(c => c.id !== id);
+        const totalAssigned = newCategories.reduce((acc, c) => acc + c.assigned, 0);
+        return {
+          categories: newCategories,
+          toBeBudgeted: state.income - totalAssigned
+        };
+      }),
 
       updateCategoryAssignment: (id, amount) => {
         set((state) => {
