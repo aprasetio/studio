@@ -148,6 +148,26 @@ export const TOOL_ARTICLES: ArticleCollection = {
           content: "Gunakan fitur <b>Ganti Pemain (Swap)</b> jika ada teman yang harus pulang lebih awal. Sistem akan menawarkan untuk mengacak ulang jadwal masa depan agar tetap adil bagi mereka yang masih bertahan."
         }
       ]
+    },
+    de: {
+      title: "Tennis-Match-Generator",
+      sections: [{ title: "Fairer Match-Generator", content: "Tennis-Match-Generator. Erstellen Sie mühelos ausgewogene Doppelspiele. Perfekt für gesellige Club-Sessions." }]
+    },
+    es: {
+      title: "Generador de Partidos de Tenis",
+      sections: [{ title: "Generador de Partidos Justos", content: "Generador de Partidos de Tenis. Crea partidos de dobles equilibrados sin esfuerzo. Perfecto para sesiones sociales de clubes." }]
+    },
+    pt: {
+      title: "Gerador de Partidas de Tênis",
+      sections: [{ title: "Gerador de Partidas Justas", content: "Gerador de Partidas de Tênis. Crie jogos de duplas equilibrados facilmente. Perfeito para sessões sociais de clubes." }]
+    },
+    fr: {
+      title: "Générateur de Matchs de Tennis",
+      sections: [{ title: "Générateur de Matchs Équitables", content: "Générateur de Matchs de Tennis. Créez des matchs de double équilibrés sans effort. Parfait für die sozialen Sitzungen des Clubs." }]
+    },
+    it: {
+      title: "Generatore Partite Tennis",
+      sections: [{ title: "Generatore di Partite Eque", content: "Generatore Partite Tennis. Crea partite di doppio equilibrate senza sforzo. Perfetto per sessioni sociali di club." }]
     }
   },
   "budget-planner": {
@@ -156,15 +176,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
       sections: [
         {
           title: "Give Every Dollar a Job",
-          content: "Our planner uses the <b>Zero-Based Budgeting</b> method. This means your Income minus your Expenses should always equal zero. By assigning every cent to a specific category (Rent, Groceries, Savings), you stop 'leaking' money and start spending with intention."
-        },
-        {
-          title: "100% Privacy: Your Data Stays Local",
-          content: "Unlike other budgeting apps, VersoKit does <b>not</b> send your financial data to a server. Everything is stored in your browser's <b>LocalStorage</b>. This means you can manage your wealth with total peace of mind, knowing your personal information is invisible to the world."
-        },
-        {
-          title: "Managing Recurring Bills",
-          content: "Set up your monthly subscriptions like Netflix or Rent once. Our tool will alert you when a bill is due and allow you to log the transaction with a single click, keeping your 'Available' balances accurate throughout the month."
+          content: "Zero-Based Budgeting. Allocate every dollar to a category. Track expenses vs income. Our planner uses the method where your Income minus your Expenses should always equal zero."
         }
       ]
     },
@@ -173,15 +185,52 @@ export const TOOL_ARTICLES: ArticleCollection = {
       sections: [
         {
           title: "Berikan Tugas untuk Setiap Rupiah",
-          content: "Metode <b>Zero-Based Budgeting</b> memastikan Pendapatan dikurangi Pengeluaran sama dengan nol. Dengan mengalokasikan setiap rupiah ke kategori tertentu (Listrik, Makan, Tabungan), Anda akan lebih sadar akan kemana uang Anda pergi."
-        },
+          content: "Anggaran Berbasis Nol. Alokasikan setiap rupiah ke kategori. Lacak pengeluaran vs pemasukan. Metode ini memastikan setiap rupiah memiliki tugas."
+        }
+      ]
+    },
+    de: {
+      title: "Nullbasiertes Budgetieren",
+      sections: [
         {
-          title: "Privasi Mutlak di Perangkat Anda",
-          content: "VersoKit memproses semua data keuangan 100% secara lokal di browser Anda. Tidak ada data yang dikirim ke server kami, sehingga rahasia finansial Anda tetap aman dan pribadi."
-        },
+          title: "Jeden Euro zuweisen",
+          content: "Nullbasiertes Budgetieren. Weisen Sie jeden Euro einer Kategorie zu. Verfolgen Sie Ausgaben gegenüber Einnahmen."
+        }
+      ]
+    },
+    es: {
+      title: "Presupuesto Base Cero",
+      sections: [
         {
-          title: "Ekspor dan Backup Data",
-          content: "Gunakan fitur <b>Backup JSON</b> untuk menyimpan riwayat anggaran Anda ke file lokal. Anda juga bisa mengekspor laporan ke format <b>CSV</b> untuk dibuka di Excel atau Google Sheets."
+          title: "Asignar cada euro",
+          content: "Presupuesto Base Cero. Asigna cada euro a una categoría. Controla tus gastos frente a tus ingresos."
+        }
+      ]
+    },
+    pt: {
+      title: "Orçamento Base Zero",
+      sections: [
+        {
+          title: "Alocar cada centavo",
+          content: "Orçamento Base Zero. Aloque cada centavo a uma categoria. Acompanhe despesas versus receitas."
+        }
+      ]
+    },
+    fr: {
+      title: "Budget Base Zéro",
+      sections: [
+        {
+          title: "Allouer chaque euro",
+          content: "Budget Base Zéro. Allouez chaque euro à une catégorie. Suivez vos dépenses par rapport à vos revenus."
+        }
+      ]
+    },
+    it: {
+      title: "Budget a Base Zero",
+      sections: [
+        {
+          title: "Assegna ogni euro",
+          content: "Budget a Base Zero. Assegna ogni euro a una categoria. Monitora le spese rispetto alle entrate."
         }
       ]
     }
@@ -191,12 +240,8 @@ export const TOOL_ARTICLES: ArticleCollection = {
       title: "Professional PDF Invoicing for Freelancers",
       sections: [
         {
-          title: "The Importance of Clear Billing",
-          content: "A professional invoice ensures you get paid faster. Our tool generates clean, high-contrast PDF invoices that include all necessary legal fields: Business Info, Client Details, Tax calculations, and custom payment terms."
-        },
-        {
-          title: "Required Fields for a Valid Invoice",
-          content: "To avoid payment delays, always ensure your invoice includes a unique <b>Invoice Number</b>, the <b>Date of Issue</b>, a clear breakdown of services, and the <b>Grand Total</b> including any applicable taxes."
+          title: "Free Invoice Generator",
+          content: "Create PDF invoices instantly in your browser. No data stored on servers. A professional invoice ensures you get paid faster."
         }
       ]
     },
@@ -204,12 +249,53 @@ export const TOOL_ARTICLES: ArticleCollection = {
       title: "Cara Buat Invoice Profesional untuk Freelancer",
       sections: [
         {
-          title: "Keuntungan Invoice PDF",
-          content: "Invoice yang rapi membantu Anda terlihat lebih profesional di mata klien. Gunakan generator kami untuk membuat file PDF yang siap cetak atau kirim via email dalam hitungan detik."
-        },
+          title: "Pembuat Invoice Gratis",
+          content: "Buat faktur PDF instan di browser. Data tidak disimpan di server. Invoice yang rapi membantu Anda terlihat profesional."
+        }
+      ]
+    },
+    de: {
+      title: "Rechnungsgenerator",
+      sections: [
         {
-          title: "Komponen Penting dalam Faktur",
-          content: "Pastikan invoice Anda memiliki Nama Bisnis, Nama Klien, Tanggal, Rincian Barang/Jasa, dan Total Harga agar proses pembayaran berjalan lancar tanpa hambatan administrasi."
+          title: "Kostenloser Rechnungsgenerator",
+          content: "Kostenloser Rechnungsgenerator. Erstellen Sie PDF-Rechnungen sofort im Browser."
+        }
+      ]
+    },
+    es: {
+      title: "Generador de Facturas",
+      sections: [
+        {
+          title: "Generador de Facturas Gratis",
+          content: "Generador de Facturas Gratis. Crea facturas PDF al instante."
+        }
+      ]
+    },
+    pt: {
+      title: "Gerador de Faturas",
+      sections: [
+        {
+          title: "Gerador de Faturas Grátis",
+          content: "Gerador de Faturas Grátis. Crie faturas em PDF instantaneamente."
+        }
+      ]
+    },
+    fr: {
+      title: "Générateur de Factures",
+      sections: [
+        {
+          title: "Générateur de Factures Gratuit",
+          content: "Générateur de Factures Gratuit. Créez des factures PDF instantanément."
+        }
+      ]
+    },
+    it: {
+      title: "Generatore Fatture",
+      sections: [
+        {
+          title: "Generatore Fatture Gratuito",
+          content: "Generatore Fatture Gratuito. Crea fatture PDF istantaneamente."
         }
       ]
     }
@@ -219,12 +305,8 @@ export const TOOL_ARTICLES: ArticleCollection = {
       title: "Digital Futsal Scoreboard: Pro Features for Local Matches",
       sections: [
         {
-          title: "Managing the Clock and Fouls",
-          content: "Standard Futsal rules require a 20-minute countdown. Our scoreboard includes presets for 10, 15, and 20 minutes. It also tracks team fouls, highlighting them in <b>red</b> once a team reaches the 5-foul limit (Second Penalty threshold)."
-        },
-        {
-          title: "Digital vs. Manual Scoring",
-          content: "Stop using paper or unreliable mobile apps. Our scoreboard is designed for large screens and TV displays, providing high visibility for players and spectators alike, even in high-intensity match environments."
+          title: "Digital Futsal Scoreboard",
+          content: "Track score, period, fouls, and time. Fullscreen mode available. Standard Futsal rules require a 20-minute countdown."
         }
       ]
     },
@@ -232,14 +314,117 @@ export const TOOL_ARTICLES: ArticleCollection = {
       title: "Papan Skor Futsal Digital: Fitur Pro untuk Sparing",
       sections: [
         {
-          title: "Mengelola Waktu dan Pelanggaran",
-          content: "Gunakan pengatur waktu standar 20 menit dengan fitur jeda (pause) instan. Alat ini juga mencatat akumulasi pelanggaran (fouls) dan akan berubah menjadi <b>merah</b> saat tim mencapai 5 pelanggaran sebagai tanda penalti titik kedua."
-        },
-        {
-          title: "Tampilan untuk Layar Besar",
-          content: "Papan skor ini dioptimalkan untuk ditampilkan di TV atau monitor besar di lapangan, memberikan kemudahan bagi penonton dan pemain untuk melihat skor dan sisa waktu dengan jelas."
+          title: "Papan Skor Futsal Digital",
+          content: "Catat skor, babak, pelanggaran, dan waktu. Tersedia mode layar penuh. Sesuai dengan pengatur waktu standar 20 menit."
         }
       ]
+    },
+    de: {
+      title: "Futsal-Anzeigetafel",
+      sections: [{ title: "Features", content: "Digitale Futsal-Anzeigetafel. Verfolgen Sie Spielstand, Periode, Fouls und Zeit." }]
+    },
+    es: {
+      title: "Marcador de Fútbol Sala",
+      sections: [{ title: "Características", content: "Marcador de Fútbol Sala. Controla puntuación, periodo, faltas y tiempo." }]
+    },
+    pt: {
+      title: "Placar de Futsal Digital",
+      sections: [{ title: "Características", content: "Placar de Futsal Digital. Acompanhe placar, período, faltas e tempo." }]
+    },
+    fr: {
+      title: "Tableau de Score Futsal",
+      sections: [{ title: "Caractéristiques", content: "Tableau de Score Futsal. Suivez le score, la période, les fautes et le temps." }]
+    },
+    it: {
+      title: "Tabellone Calcetto Digitale",
+      sections: [{ title: "Caratteristiche", content: "Tabellone Calcetto Digitale. Traccia punteggio, periodo, falli e tempo." }]
     }
+  },
+  "lineup": {
+    en: {
+      title: "Lineup Builder",
+      sections: [{ title: "How it works", content: "Football Lineup Builder. Drag and drop players to create formations (4-4-2, 4-3-3). Download as image." }]
+    },
+    id: {
+      title: "Pembuat Formasi",
+      sections: [{ title: "Cara Penggunaan", content: "Pembuat Formasi Sepak Bola. Geser pemain untuk membuat formasi (4-4-2, etc). Unduh sebagai gambar." }]
+    },
+    de: {
+      title: "Fußball-Aufstellungs-Planer",
+      sections: [{ title: "Anleitung", content: "Fußball-Aufstellungs-Planer. Erstellen Sie Formationen per Drag & Drop." }]
+    },
+    es: {
+      title: "Creador de Alineaciones",
+      sections: [{ title: "Cómo usar", content: "Creador de Alineaciones. Arrastra jugadores para crear formaciones." }]
+    },
+    pt: {
+      title: "Criador de Escalação",
+      sections: [{ title: "Como usar", content: "Criador de Escalação. Arraste jogadores para criar formações." }]
+    },
+    fr: {
+      title: "Créateur de Composition",
+      sections: [{ title: "Comment ça marche", content: "Créateur de Composition. Glissez-déposez les joueurs pour créer des formations." }]
+    },
+    it: {
+      title: "Generatore Formazione Calcio",
+      sections: [{ title: "Come funziona", content: "Generatore Formazione Calcio. Trascina i giocatori per creare formazioni." }]
+    }
+  },
+  "scoreboard": {
+    en: {
+      title: "Universal Scoreboard",
+      sections: [{ title: "Usage", content: "Simple Scoreboard. Use for Badminton, Volleyball, or Ping Pong. No ads, completely offline." }]
+    },
+    id: {
+      title: "Papan Skor Universal",
+      sections: [{ title: "Penggunaan", content: "Papan Skor Serbaguna. Gunakan untuk Badminton, Voli, atau Pingpong. Tanpa iklan, offline." }]
+    },
+    de: {
+      title: "Universal-Anzeigetafel",
+      sections: [{ title: "Nutzung", content: "Einfache Anzeigetafel. Für Badminton, Volleyball oder Tischtennis." }]
+    },
+    es: {
+      title: "Marcador Universal",
+      sections: [{ title: "Uso", content: "Marcador Universal. Úsalo para Bádminton, Voleibol o Ping Pong." }]
+    },
+    pt: {
+      title: "Placar Universal",
+      sections: [{ title: "Uso", content: "Placar Simples. Use para Badminton, Vôlei ou Ping Pong." }]
+    },
+    fr: {
+      title: "Tableau de Score Universel",
+      sections: [{ title: "Utilisation", content: "Tableau de Score Simple. Pour Badminton, Volley ou Ping Pong." }]
+    },
+    it: {
+      title: "Tabellone Universale",
+      sections: [{ title: "Utilizzo", content: "Tabellone Semplice. Usa per Badminton, Pallavolo o Ping Pong." }]
+    }
+  },
+  "inventory": {
+    en: { title: "Stock Management", sections: [{ title: "Tool Overview", content: "Stock Management Tool. Track items, quantities, and low stock alerts. Runs offline." }] },
+    id: { title: "Manajemen Stok", sections: [{ title: "Ringkasan Alat", content: "Alat Manajemen Stok. Lacak barang, jumlah, dan peringatan stok menipis. Berjalan offline." }] },
+    de: { title: "Lagerverwaltung", sections: [{ title: "Überblick", content: "Lagerverwaltung. Verfolgen Sie Artikel und Bestände offline." }] },
+    es: { title: "Gestión de Inventario", sections: [{ title: "Descripción", content: "Gestión de Inventario. Controla artículos y stock bajo offline." }] },
+    pt: { title: "Gestão de Estoque", sections: [{ title: "Visão Geral", content: "Gestão de Estoque. Acompanhe itens e alertas de estoque baixo." }] },
+    fr: { title: "Gestion de Stock", sections: [{ title: "Aperçu", content: "Gestion de Stock. Suivez les articles et les alertes de stock faible." }] },
+    it: { title: "Gestione Inventario", sections: [{ title: "Panoramica", content: "Gestione Inventario. Traccia articoli e scorte basse offline." }] }
+  },
+  "shift": {
+    en: { title: "Shift Scheduler", sections: [{ title: "Tool Overview", content: "Employee Shift Planner. Organize morning, afternoon, and night shifts easily. Download schedule." }] },
+    id: { title: "Jadwal Shift", sections: [{ title: "Ringkasan Alat", content: "Jadwal Shift Karyawan. Atur shift pagi, siang, malam dengan mudah. Unduh jadwal." }] },
+    de: { title: "Schichtplaner", sections: [{ title: "Überblick", content: "Schichtplaner. Organisieren Sie Schichten einfach und laden Sie den Plan herunter." }] },
+    es: { title: "Planificador de Turnos", sections: [{ title: "Descripción", content: "Planificador de Turnos. Organiza turnos de mañana, tarde y noche." }] },
+    pt: { title: "Escala de Trabalho", sections: [{ title: "Visão Geral", content: "Escala de Trabalho. Organize turnos facilmente e baixe a escala." }] },
+    fr: { title: "Planning d'Équipe", sections: [{ title: "Aperçu", content: "Planning d'Équipe. Organisez les 3x8 facilement." }] },
+    it: { title: "Pianificatore Turni", sections: [{ title: "Panoramica", content: "Pianificatore Turni. Organizza i turni facilmente." }] }
+  },
+  "split-bill": {
+    en: { title: "Split Bill", sections: [{ title: "Tool Overview", content: "Restaurant Bill Splitter. Calculate tax and service charge accurately for groups." }] },
+    id: { title: "Bagi Tagihan", sections: [{ title: "Ringkasan Alat", content: "Pembagi Tagihan Restoran. Hitung pajak dan layanan secara akurat untuk grup." }] },
+    de: { title: "Rechnungsteiler", sections: [{ title: "Überblick", content: "Rechnungsteiler. Berechnen Sie Steuern und Servicegebühren präzise." }] },
+    es: { title: "Dividir Cuenta", sections: [{ title: "Descripción", content: "Dividir Cuenta. Calcula impuestos y servicio con precisión." }] },
+    pt: { title: "Dividir Conta", sections: [{ title: "Visão Geral", content: "Dividir Conta. Calcule impostos e taxas de serviço." }] },
+    fr: { title: "Partage d'Addition", sections: [{ title: "Aperçu", content: "Partage d'Addition. Calculez taxes et service avec précision." }] },
+    it: { title: "Divisione Conto", sections: [{ title: "Panoramica", content: "Divisione Conto. Calcola tasse e servizio con precisione." }] }
   }
 };
