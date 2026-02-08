@@ -8,14 +8,16 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { 
   Plus, 
   Trash2, 
-  PlusCircle, 
   History,
   Receipt,
   Wallet,
   X,
   Database,
   Calculator,
-  PieChart as PieChartIcon
+  PieChart as PieChartIcon,
+  Download,
+  AlertCircle,
+  ArrowRightLeft
 } from 'lucide-react';
 import { 
   Dialog, 
@@ -39,8 +41,11 @@ import { SmartAd } from '@/components/smart-ad';
 import { SeoContent } from '@/components/SeoContent';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
-import { useBudgetStore, type TransactionType } from './store';
+import { useBudgetStore, type TransactionType, type Category } from './store';
 import TrustBadges from '@/components/ui/TrustBadges';
+import { DataPersistence } from '@/components/DataPersistence';
+import Papa from 'papaparse';
+import { toast } from '@/hooks/use-toast';
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -66,6 +71,11 @@ const UI_TEXT: Record<string, any> = {
     empty_trans: "No transactions yet",
     base_income: "Manual Base Income",
     inflow: "Inflow Transactions",
+    cover: "Cover",
+    cover_title: "Cover Overspending",
+    move_from: "Cover from:",
+    move_btn: "Move Money",
+    export_csv: "Export CSV"
   },
   id: {
     title: "Perencana Anggaran",
@@ -90,6 +100,11 @@ const UI_TEXT: Record<string, any> = {
     empty_trans: "Belum ada transaksi",
     base_income: "Pendapatan Dasar",
     inflow: "Transaksi Masuk",
+    cover: "Tutup",
+    cover_title: "Tutup Overspending",
+    move_from: "Ambil dana dari:",
+    move_btn: "Pindahkan Dana",
+    export_csv: "Ekspor CSV"
   }
 };
 
@@ -103,31 +118,46 @@ const CURRENCY: Record<string, string> = {
   it: '€'
 };
 
+const LOCALES: Record<string, string> = {
+  en: 'en-US',
+  id: 'id-ID',
+  de: 'de-DE',
+  es: 'es-ES',
+  pt: 'pt-BR',
+  fr: 'fr-FR',
+  it: 'it-IT'
+};
+
 export default function BudgetPlannerPage() {
   const { lang, t: globalT } = useLang();
   const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
   const symbol = CURRENCY[lang] || '$';
+  const currentLocale = LOCALES[lang] || 'en-US';
 
   const [mounted, setMounted] = useState(false);
   const { 
     income, toBeBudgeted, categories, transactions, 
-    setIncome, addCategory, deleteCategory, updateCategoryAssignment, addTransaction, deleteTransaction, resetMonth 
+    setIncome, addCategory, deleteCategory, updateCategoryAssignment, addTransaction, deleteTransaction, resetMonth, moveMoney, restoreData
   } = useBudgetStore();
 
   const [isTxOpen, setIsTxOpen] = useState(false);
   const [newTx, setNewTx] = useState({
     date: format(new Date(), 'yyyy-MM-dd'),
     amount: 0,
-    categoryId: '1',
+    categoryId: '',
     payee: '',
     note: '',
     type: 'expense' as TransactionType
   });
 
+  // State for Covering Overspending
+  const [coveringCategory, setCoveringCategory] = useState<Category | null>(null);
+  const [sourceCategoryId, setSourceCategoryId] = useState<string>('');
+
   useEffect(() => { setMounted(true); }, []);
 
   const formatValue = (val: number) => {
-    return val.toLocaleString(lang === 'id' ? 'id-ID' : 'en-US', { 
+    return val.toLocaleString(currentLocale, { 
       style: 'currency', 
       currency: lang === 'id' ? 'IDR' : 'USD',
       maximumFractionDigits: 0 
@@ -139,6 +169,31 @@ export default function BudgetPlannerPage() {
     .reduce((sum, tx) => sum + tx.amount, 0);
 
   const baseIncomeValue = income - inflowTotal;
+
+  const handleExportCSV = () => {
+    const csvData = categories.map(c => ({
+      [t('category')]: c.name,
+      [t('budgeted')]: c.assigned,
+      [t('activity')]: c.activity,
+      [t('available')]: c.assigned + c.activity
+    }));
+    const csv = Papa.unparse(csvData);
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', `budget-export-${format(new Date(), 'yyyy-MM-dd')}.csv`);
+    link.click();
+  };
+
+  const handleCoverOverspending = () => {
+    if (!coveringCategory || !sourceCategoryId) return;
+    const amountToCover = Math.abs(coveringCategory.assigned + coveringCategory.activity);
+    moveMoney(sourceCategoryId, coveringCategory.id, amountToCover);
+    setCoveringCategory(null);
+    setSourceCategoryId('');
+    toast({ title: lang === 'id' ? "Dana berhasil dipindahkan" : "Money moved successfully" });
+  };
 
   if (!mounted) return null;
 
@@ -238,9 +293,13 @@ export default function BudgetPlannerPage() {
               </div>
               <DialogFooter>
                 <Button onClick={() => {
+                  if (newTx.type === 'expense' && !newTx.categoryId) {
+                    toast({ title: "Select a category", variant: "destructive" });
+                    return;
+                  }
                   addTransaction(newTx);
                   setIsTxOpen(false);
-                  setNewTx({ ...newTx, payee: '', amount: 0, note: '' });
+                  setNewTx({ ...newTx, payee: '', amount: 0, note: '', categoryId: '' });
                 }} className="w-full h-12 font-black uppercase tracking-widest">{t('save')}</Button>
               </DialogFooter>
             </DialogContent>
@@ -252,14 +311,19 @@ export default function BudgetPlannerPage() {
         {/* Category Groups */}
         <div className="lg:col-span-2 space-y-8">
           <Card className="overflow-hidden border-2 shadow-lg rounded-[2.5rem]">
-            <CardHeader className="bg-muted/30 py-4 px-8 border-b flex flex-row items-center justify-between">
+            <CardHeader className="bg-muted/30 py-4 px-8 border-b flex flex-col sm:flex-row items-center justify-between gap-4">
               <CardTitle className="text-sm font-black uppercase tracking-widest text-primary">Budget Categories</CardTitle>
-              <Button variant="ghost" size="sm" onClick={() => {
-                const name = window.prompt(t('new_item'));
-                if (name) addCategory(name, 'needs');
-              }} className="h-8 text-[10px] font-bold uppercase">
-                <Plus className="h-3 w-3 mr-1" /> {t('add_item')}
-              </Button>
+              <div className="flex items-center gap-2">
+                <Button variant="outline" size="sm" onClick={handleExportCSV} className="h-8 text-[10px] font-bold uppercase border-2">
+                  <Download className="h-3 w-3 mr-1" /> {t('export_csv')}
+                </Button>
+                <Button variant="ghost" size="sm" onClick={() => {
+                  const name = window.prompt(t('new_item'));
+                  if (name) addCategory(name, 'needs');
+                }} className="h-8 text-[10px] font-bold uppercase">
+                  <Plus className="h-3 w-3 mr-1" /> {t('add_item')}
+                </Button>
+              </div>
             </CardHeader>
             <CardContent className="p-0">
               <div className="overflow-x-auto">
@@ -295,24 +359,36 @@ export default function BudgetPlannerPage() {
                             </div>
                           </td>
                           <td className="p-6 text-right font-bold text-sm tabular-nums text-muted-foreground/60">
-                            {category.activity !== 0 ? category.activity.toLocaleString() : '—'}
+                            {category.activity !== 0 ? category.activity.toLocaleString(currentLocale) : '—'}
                           </td>
                           <td className="p-6 text-right">
-                            <span className={cn(
-                              "text-sm font-black tabular-nums transition-colors",
-                              available > 0 ? "text-emerald-600" : 
-                              available < 0 ? "text-red-500 animate-pulse" : 
-                              "text-gray-400"
-                            )}>
-                              {available.toLocaleString()}
-                            </span>
+                            <div className="flex flex-col items-end gap-1">
+                              <span className={cn(
+                                "text-sm font-black tabular-nums transition-colors",
+                                available > 0 ? "text-emerald-600" : 
+                                available < 0 ? "text-red-500 animate-pulse" : 
+                                "text-gray-400"
+                              )}>
+                                {available.toLocaleString(currentLocale)}
+                              </span>
+                              {available < 0 && (
+                                <Button 
+                                  size="sm" 
+                                  variant="destructive" 
+                                  className="h-5 px-2 text-[8px] font-black uppercase tracking-tighter"
+                                  onClick={() => setCoveringCategory(category)}
+                                >
+                                  {t('cover')}
+                                </Button>
+                              )}
+                            </div>
                           </td>
                           <td className="p-2 text-center">
                             <Button 
                               variant="ghost" 
                               size="icon" 
                               onClick={() => { if(confirm(globalT('delete') + '?')) deleteCategory(category.id) }}
-                              className="h-8 w-8 text-muted-foreground/30 hover:text-destructive opacity-0 group-hover:opacity-100 transition-all"
+                              className="h-8 w-8 text-red-400 hover:text-red-600 transition-all"
                             >
                               <Trash2 className="h-4 w-4" />
                             </Button>
@@ -363,7 +439,7 @@ export default function BudgetPlannerPage() {
                 <h4 className="text-lg font-black uppercase tracking-tight">Zero-Based Envelope</h4>
               </div>
               <p className="text-[9px] font-medium text-muted-foreground uppercase leading-relaxed">
-                Give every dollar a job. If "Ready to Budget" is green, assign it! If red, move money between categories.
+                Give every money a job. If "Ready to Budget" is green, assign it! If red, move money between categories.
               </p>
             </Card>
           </div>
@@ -409,9 +485,9 @@ export default function BudgetPlannerPage() {
                             "text-sm font-black tabular-nums",
                             tx.type === 'income' ? "text-green-600" : "text-foreground"
                           )}>
-                            {tx.type === 'income' ? '+' : '-'}{tx.amount.toLocaleString()}
+                            {tx.type === 'income' ? '+' : '-'}{tx.amount.toLocaleString(currentLocale)}
                           </span>
-                          <Button variant="ghost" size="icon" onClick={() => deleteTransaction(tx.id)} className="h-8 w-8 text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <Button variant="ghost" size="icon" onClick={() => deleteTransaction(tx.id)} className="h-8 w-8 text-red-500">
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </div>
@@ -422,6 +498,12 @@ export default function BudgetPlannerPage() {
               </div>
             </CardContent>
           </Card>
+
+          <DataPersistence 
+            data={{ income, categories, transactions }} 
+            onRestore={(data) => restoreData(data)} 
+            fileNamePrefix="versokit-budget" 
+          />
 
           <Card className="bg-card border-2 rounded-[2rem] p-6 space-y-4 shadow-sm">
             <div className="flex items-center gap-3 border-b pb-4">
@@ -438,6 +520,53 @@ export default function BudgetPlannerPage() {
           </Card>
         </div>
       </div>
+
+      {/* Cover Overspending Dialog */}
+      <Dialog open={!!coveringCategory} onOpenChange={(open) => !open && setCoveringCategory(null)}>
+        <DialogContent className="rounded-3xl max-w-sm">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 uppercase font-black tracking-tight">
+              <AlertCircle className="h-5 w-5 text-red-500" />
+              {t('cover_title')}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-6 py-6">
+            <div className="p-4 bg-red-50 rounded-2xl border-2 border-red-100 text-center">
+              <p className="text-[10px] font-black uppercase text-red-400 tracking-widest mb-1">{coveringCategory?.name}</p>
+              <p className="text-2xl font-black text-red-600">
+                {coveringCategory ? formatValue(Math.abs(coveringCategory.assigned + coveringCategory.activity)) : ''}
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-[10px] font-black uppercase opacity-60">{t('move_from')}</Label>
+              <Select value={sourceCategoryId} onValueChange={setSourceCategoryId}>
+                <SelectTrigger className="h-12 font-bold rounded-xl border-2">
+                  <SelectValue placeholder={lang === 'id' ? 'Pilih sumber dana' : 'Select funding source'} />
+                </SelectTrigger>
+                <SelectContent>
+                  {categories
+                    .filter(c => c.id !== coveringCategory?.id && (c.assigned + c.activity) > 0)
+                    .map(c => (
+                      <SelectItem key={c.id} value={c.id}>
+                        {c.name} ({formatValue(c.assigned + c.activity)})
+                      </SelectItem>
+                    ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <Button 
+              className="w-full h-14 bg-primary text-primary-foreground font-black uppercase tracking-widest rounded-2xl shadow-xl disabled:opacity-50"
+              disabled={!sourceCategoryId}
+              onClick={handleCoverOverspending}
+            >
+              <ArrowRightLeft className="mr-2 h-5 w-5" />
+              {t('move_btn')}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <ArticleSection toolId="budget-planner" />
       <SmartAd />

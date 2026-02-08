@@ -38,7 +38,9 @@ interface BudgetState {
   updateCategoryAssignment: (id: string, amount: number) => void;
   addTransaction: (tx: Omit<Transaction, 'id'>) => void;
   deleteTransaction: (id: string) => void;
+  moveMoney: (fromId: string, toId: string, amount: number) => void;
   resetMonth: () => void;
+  restoreData: (data: Partial<BudgetState>) => void;
 }
 
 export const useBudgetStore = create<BudgetState>()(
@@ -70,6 +72,7 @@ export const useBudgetStore = create<BudgetState>()(
       })),
 
       deleteCategory: (id) => set((state) => {
+        const categoryToDelete = state.categories.find(c => c.id === id);
         const newCategories = state.categories.filter(c => c.id !== id);
         const totalAssigned = newCategories.reduce((acc, c) => acc + c.assigned, 0);
         return {
@@ -90,6 +93,19 @@ export const useBudgetStore = create<BudgetState>()(
           };
         });
       },
+
+      moveMoney: (fromId, toId, amount) => set((state) => {
+        const newCategories = state.categories.map(c => {
+          if (c.id === fromId) return { ...c, assigned: c.assigned - amount };
+          if (c.id === toId) return { ...c, assigned: c.assigned + amount };
+          return c;
+        });
+        const totalAssigned = newCategories.reduce((acc, c) => acc + c.assigned, 0);
+        return {
+          categories: newCategories,
+          toBeBudgeted: state.income - totalAssigned
+        };
+      }),
 
       addTransaction: (tx) => {
         set((state) => {
@@ -154,10 +170,23 @@ export const useBudgetStore = create<BudgetState>()(
           { id: '3', name: 'Belanja Bulanan', type: 'needs', assigned: 0, activity: 0 },
         ], 
         transactions: [] 
-      })
+      }),
+
+      restoreData: (data) => {
+        const income = data.income ?? 0;
+        const categories = data.categories ?? [];
+        const transactions = data.transactions ?? [];
+        const totalAssigned = categories.reduce((acc, c) => acc + (c.assigned || 0), 0);
+        set({
+          income,
+          categories,
+          transactions,
+          toBeBudgeted: income - totalAssigned
+        });
+      }
     }),
     { 
-      name: 'versokit-budget-storage-v2',
+      name: 'versokit-budget-storage-v3',
       storage: createJSONStorage(() => localStorage)
     }
   )
