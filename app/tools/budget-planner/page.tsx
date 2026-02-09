@@ -18,7 +18,6 @@ import {
   Download,
   AlertCircle,
   ArrowRightLeft,
-  FileJson,
   Upload
 } from 'lucide-react';
 import { 
@@ -50,119 +49,51 @@ import Papa from 'papaparse';
 import { toast } from '@/hooks/use-toast';
 
 const UI_TEXT: Record<string, any> = {
-  en: {
-    income_label: "Total Income",
-    to_budget: "To be Budgeted",
-    col_category: "Category",
-    col_budgeted: "Budgeted",
-    col_activity: "Activity",
-    col_available: "Available",
-    btn_export: "Export Data",
-    btn_import: "Import Data",
-    btn_add_cat: "Add Category",
-    all_done: "All money has a job!",
-    over_budget: "Over Budget!",
-    new_item: "New Category Name",
-    add_tx: "Record Transaction",
-    date: "Date",
-    amount: "Amount",
-    desc: "Note",
-    save: "Save",
-    payee: "Payee",
-    history: "Recent History",
-    empty_trans: "No transactions yet",
-    base_income: "Manual Base Income",
-    inflow: "Inflow Transactions",
-    cover: "Cover",
-    cover_title: "Cover Overspending",
-    move_from: "Cover from:",
-    move_btn: "Move Money",
-    export_csv: "Export CSV"
-  },
-  id: {
-    income_label: "Total Pemasukan",
-    to_budget: "Siap Dianggarkan",
-    col_category: "Kategori",
-    col_budgeted: "Dianggarkan",
-    col_activity: "Aktivitas",
-    col_available: "Tersedia",
-    btn_export: "Ekspor Data",
-    btn_import: "Impor Data",
-    btn_add_cat: "Tambah Kategori",
-    all_done: "Semua uang sudah dialokasikan!",
-    over_budget: "Anggaran Melebihi!",
-    new_item: "Nama Kategori Baru",
-    add_tx: "Catat Transaksi",
-    date: "Tanggal",
-    amount: "Jumlah",
-    desc: "Catatan",
-    save: "Simpan",
-    payee: "Penerima",
-    history: "Riwayat Terkini",
-    empty_trans: "Belum ada transaksi",
-    base_income: "Pendapatan Dasar",
-    inflow: "Transaksi Masuk",
-    cover: "Tutup",
-    cover_title: "Tutup Overspending",
-    move_from: "Ambil dana dari:",
-    move_btn: "Pindahkan Dana",
-    export_csv: "Ekspor CSV"
-  },
-  de: {
-    income_label: "Gesamteinkommen",
-    to_budget: "Zu budgetieren",
-    col_category: "Kategorie",
-    col_budgeted: "Budgetiert",
-    col_activity: "Aktivität",
-    col_available: "Verfügbar",
-    btn_export: "Daten exportieren",
-    btn_import: "Daten importieren",
-    btn_add_cat: "Kategorie hinzufügen"
-  },
-  es: {
-    income_label: "Ingresos Totales",
-    to_budget: "Por presupuestar",
-    col_category: "Categoría",
-    col_budgeted: "Presupuestado",
-    col_activity: "Actividad",
-    col_available: "Disponible",
-    btn_export: "Exportar Datos",
-    btn_import: "Importar Datos",
-    btn_add_cat: "Añadir Categoría"
-  },
-  pt: {
-    income_label: "Renda Total",
-    to_budget: "A ser orçado",
-    col_category: "Categoria",
-    col_budgeted: "Orçado",
-    col_activity: "Atividade",
-    col_available: "Disponível",
-    btn_export: "Exportar Dados",
-    btn_import: "Importar Dados",
-    btn_add_cat: "Adicionar Categoria"
-  },
-  fr: {
-    income_label: "Revenu Total",
-    to_budget: "À budgétiser",
-    col_category: "Catégorie",
-    col_budgeted: "Budgétisé",
-    col_activity: "Activité",
-    col_available: "Disponible",
-    btn_export: "Exporter",
-    btn_import: "Importer",
-    btn_add_cat: "Ajouter Catégorie"
-  },
-  it: {
-    income_label: "Reddito Totale",
-    to_budget: "Da budgetare",
-    col_category: "Categoria",
-    col_budgeted: "Budget",
-    col_activity: "Attività",
-    col_available: "Disponibile",
-    btn_export: "Esporta Dati",
-    btn_import: "Importa Dati",
-    btn_add_cat: "Aggiungi Categoria"
-  }
+  // --- Headers & Summary ---
+  total_income: { en: "Total Income", id: "Total Pemasukan", de: "Gesamteinkommen", es: "Ingresos Totales", pt: "Renda Total", fr: "Revenu Total", it: "Reddito Totale" },
+  to_budget: { en: "To be Budgeted", id: "Siap Dianggarkan", de: "Zu budgetieren", es: "Por presupuestar", pt: "A ser orçado", fr: "À budgétiser", it: "Da budgetare" },
+  
+  // --- Table Columns ---
+  col_category: { en: "Category", id: "Kategori", de: "Kategorie", es: "Categoría", pt: "Categoria", fr: "Catégorie", it: "Categoria" },
+  col_budgeted: { en: "Budgeted", id: "Dianggarkan", de: "Budgetiert", es: "Presupuestado", pt: "Orçado", fr: "Budgétisé", it: "Budget" },
+  col_activity: { en: "Activity", id: "Aktivitas", de: "Aktivität", es: "Actividad", pt: "Atividade", fr: "Activité", it: "Attività" },
+  col_available: { en: "Available", id: "Tersedia", de: "Verfügbar", es: "Disponible", pt: "Disponível", fr: "Disponible", it: "Disponibile" },
+
+  // --- Buttons ---
+  btn_add_category: { en: "Add Category", id: "Tambah Kategori", de: "Kategorie +", es: "Añadir Categoría", pt: "Adicionar Categoria", fr: "Ajouter Catégorie", it: "Aggiungi Categoria" },
+  btn_add_transaction: { en: "Add Transaction", id: "Tambah Transaksi", de: "Transaktion +", es: "Añadir Transacción", pt: "Adicionar Transação", fr: "Ajouter Transaction", it: "Aggiungi Transazione" },
+  btn_export_json: { en: "Export JSON", id: "Ekspor JSON", de: "JSON Exportieren", es: "Exportar JSON", pt: "Exportar JSON", fr: "Exporter JSON", it: "Esporta JSON" },
+  btn_import_json: { en: "Import JSON", id: "Impor JSON", de: "JSON Importieren", es: "Importar JSON", pt: "Importar JSON", fr: "Importer JSON", it: "Importa JSON" },
+  btn_export_csv: { en: "Export CSV", id: "Ekspor CSV", de: "CSV Exportieren", es: "Exportar CSV", pt: "Exportar CSV", fr: "Exporter CSV", it: "Esporta CSV" },
+  
+  // --- Transaction Modal / Form ---
+  modal_title: { en: "New Transaction", id: "Transaksi Baru", de: "Neue Transaktion", es: "Nueva Transacción", pt: "Nova Transação", fr: "Nouvelle Transaction", it: "Nuova Transazione" },
+  label_type: { en: "Type", id: "Tipe", de: "Typ", es: "Tipo", pt: "Tipo", fr: "Type", it: "Tipo" },
+  opt_expense: { en: "Expense", id: "Pengeluaran", de: "Ausgabe", es: "Gasto", pt: "Despesa", fr: "Dépense", it: "Spesa" },
+  opt_income: { en: "Income", id: "Pemasukan", de: "Einnahme", es: "Ingreso", pt: "Renda", fr: "Revenu", it: "Reddito" },
+  label_amount: { en: "Amount", id: "Nominal", de: "Betrag", es: "Cantidad", pt: "Valor", fr: "Montant", it: "Importo" },
+  label_date: { en: "Date", id: "Tanggal", de: "Datum", es: "Fecha", pt: "Data", fr: "Date", it: "Data" },
+  label_payee: { en: "Payee / Note", id: "Penerima / Catatan", de: "Empfänger / Notiz", es: "Beneficiario / Nota", pt: "Beneficiário / Nota", fr: "Bénéficiaire / Note", it: "Beneficiario / Nota" },
+  ph_payee: { en: "e.g. Starbucks, Salary...", id: "contoh: Indomaret, Gaji...", de: "z.B. Supermarkt...", es: "ej. Supermercado...", pt: "ex. Supermercado...", fr: "ex. Supermarché...", it: "es. Supermercato..." },
+  btn_save: { en: "Save", id: "Simpan", de: "Speichern", es: "Guardar", pt: "Salvar", fr: "Enregistrer", it: "Salva" },
+  btn_cancel: { en: "Cancel", id: "Batal", de: "Abbrechen", es: "Cancelar", pt: "Cancelar", fr: "Annuler", it: "Annulla" },
+
+  // --- Alerts ---
+  confirm_delete: { en: "Are you sure you want to delete this category?", id: "Yakin ingin menghapus kategori ini?", de: "Möchten Sie diese Kategorie wirklich löschen?", es: "¿Seguro que quieres eliminar?", pt: "Tem certeza que deseja excluir?", fr: "Voulez-vous vraiment supprimer ?", it: "Sei sicuro di voler eliminare?" },
+  no_transactions: { en: "No transactions yet.", id: "Belum ada transaksi.", de: "Noch keine Transaktionen.", es: "No hay transacciones.", pt: "Nenhuma transação.", fr: "Aucune transaction.", it: "Nessuna transazione." },
+
+  // --- Miscellaneous ---
+  all_done: { en: "All money has a job!", id: "Semua uang sudah dialokasikan!", de: "Alles Geld hat eine Aufgabe!", es: "¡Todo el dinero tiene trabajo!", pt: "Todo o dinheiro tem uma tarefa!", fr: "Tout l'argent a un job !", it: "Tutto il denaro ha un compito!" },
+  over_budget: { en: "Over Budget!", id: "Anggaran Melebihi!", de: "Über Budget!", es: "¡Sobre el presupuesto!", pt: "Acima do orçamento!", fr: "Dépassement de budget !", it: "Oltre il budget!" },
+  new_item_prompt: { en: "New Category Name", id: "Nama Kategori Baru", de: "Neuer Kategoriename", es: "Nuevo nombre de categoría", pt: "Nome da nova categoria", fr: "Nom de la nouvelle catégorie", it: "Nuovo nome categoria" },
+  cover: { en: "Cover", id: "Tutup", de: "Decken", es: "Cubrir", pt: "Cobrir", fr: "Couvrir", it: "Coprire" },
+  history: { en: "Recent History", id: "Riwayat Terkini", de: "Verlauf", es: "Historial", pt: "Histórico", fr: "Historique", it: "Cronologia" },
+  system: { en: "System", id: "Sistem", de: "System", es: "Sistema", pt: "Sistema", fr: "Système", it: "Sistema" },
+  reset_data: { en: "Reset Budget Data", id: "Reset Data Anggaran", de: "Budgetdaten zurücksetzen", es: "Reiniciar datos", pt: "Redefinir dados", fr: "Réinitialiser les données", it: "Resetta i dati" },
+  cover_title: { en: "Cover Overspending", id: "Tutup Overspending", de: "Mehrausgaben decken", es: "Cubrir sobregasto", pt: "Cobrir gastos excessivos", fr: "Couvrir les dépassements", it: "Copri spesa eccessiva" },
+  move_from: { en: "Cover from:", id: "Ambil dana dari:", de: "Decken von:", es: "Cubrir desde:", pt: "Cobrir de:", fr: "Couvrir depuis :", it: "Copri da:" },
+  move_btn: { en: "Move Money", id: "Pindahkan Dana", de: "Geld bewegen", es: "Mover dinero", pt: "Mover dinheiro", fr: "Déplacer l'argent", it: "Sposta denaro" },
+  select_funding: { en: "Select funding source", id: "Pilih sumber dana", de: "Finanzierungsquelle wählen", es: "Seleccionar fuente", pt: "Selecionar fonte", fr: "Choisir la source", it: "Seleziona fonte" }
 };
 
 const LOCALES: Record<string, string> = { 
@@ -174,7 +105,7 @@ const CURRENCIES: Record<string, string> = {
 
 export default function BudgetPlannerPage() {
   const { lang, t: globalT } = useLang();
-  const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
+  const t = (key: string) => UI_TEXT[key]?.[lang] || UI_TEXT[key]?.['en'] || key;
 
   const [mounted, setMounted] = useState(false);
   const { 
@@ -238,7 +169,7 @@ export default function BudgetPlannerPage() {
       <div className="text-center space-y-2">
         <h1 className="text-4xl font-black uppercase tracking-tighter text-foreground flex items-center justify-center gap-3">
           <Calculator className="h-8 w-8 text-primary" />
-          {t('income_label')}
+          {t('total_income')}
         </h1>
         <TrustBadges />
       </div>
@@ -246,12 +177,12 @@ export default function BudgetPlannerPage() {
       {/* Utility Toolbar */}
       <div className="w-full flex flex-wrap gap-2 justify-end mb-[-1rem]">
         <Button variant="outline" size="sm" onClick={handleExportCSV} className="text-[10px] font-black uppercase border-2 h-8">
-          <Download className="h-3 w-3 mr-1" /> {t('export_csv')}
+          <Download className="h-3 w-3 mr-1" /> {t('btn_export_csv')}
         </Button>
         <Dialog>
           <DialogTrigger asChild>
             <Button variant="outline" size="sm" className="text-[10px] font-black uppercase border-2 h-8">
-              <Upload className="h-3 w-3 mr-1" /> {t('btn_import')}
+              <Upload className="h-3 w-3 mr-1" /> {t('btn_import_json')}
             </Button>
           </DialogTrigger>
           <DialogContent className="rounded-[2rem]">
@@ -267,7 +198,7 @@ export default function BudgetPlannerPage() {
       {/* Header Summary */}
       <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 bg-card p-6 rounded-[2.5rem] shadow-xl border-2">
         <div className="flex flex-col gap-1 items-center md:items-start">
-          <span className="text-[10px] font-black uppercase tracking-widest opacity-40">{t('income_label')}</span>
+          <span className="text-[10px] font-black uppercase tracking-widest opacity-40">{t('total_income')}</span>
           <div className="flex items-center gap-2">
             <Wallet className="h-5 w-5 text-primary" />
             <div className="relative">
@@ -302,12 +233,12 @@ export default function BudgetPlannerPage() {
           <Dialog open={isTxOpen} onOpenChange={setIsTxOpen}>
             <DialogTrigger asChild>
               <Button className="h-14 px-8 bg-accent hover:bg-accent/90 text-white font-black uppercase tracking-widest rounded-2xl shadow-xl">
-                <Plus className="mr-2 h-5 w-5" /> {t('add_tx')}
+                <Plus className="mr-2 h-5 w-5" /> {t('btn_add_transaction')}
               </Button>
             </DialogTrigger>
             <DialogContent className="rounded-[2rem] sm:max-w-md">
               <DialogHeader>
-                <DialogTitle className="text-2xl font-black uppercase tracking-tighter">{t('add_tx')}</DialogTitle>
+                <DialogTitle className="text-2xl font-black uppercase tracking-tighter">{t('modal_title')}</DialogTitle>
               </DialogHeader>
               <div className="space-y-4 py-4">
                 <div className="grid grid-cols-2 gap-2 p-1 bg-muted rounded-xl">
@@ -316,24 +247,24 @@ export default function BudgetPlannerPage() {
                     onClick={() => setNewTx({...newTx, type: 'expense'})}
                     className="rounded-lg font-bold"
                   >
-                    Expense
+                    {t('opt_expense')}
                   </Button>
                   <Button 
                     variant={newTx.type === 'income' ? 'default' : 'ghost'} 
                     onClick={() => setNewTx({...newTx, type: 'income'})}
                     className="rounded-lg font-bold"
                   >
-                    Inflow
+                    {t('opt_income')}
                   </Button>
                 </div>
 
                 <div className="space-y-2">
-                  <Label>{t('date')}</Label>
+                  <Label>{t('label_date')}</Label>
                   <Input type="date" value={newTx.date} onChange={(e) => setNewTx({...newTx, date: e.target.value})} />
                 </div>
                 <div className="space-y-2">
-                  <Label>{t('payee')}</Label>
-                  <Input value={newTx.payee} onChange={(e) => setNewTx({...newTx, payee: e.target.value})} placeholder="Netflix, McD, etc..." />
+                  <Label>{t('label_payee')}</Label>
+                  <Input value={newTx.payee} onChange={(e) => setNewTx({...newTx, payee: e.target.value})} placeholder={t('ph_payee')} />
                 </div>
                 {newTx.type === 'expense' && (
                   <div className="space-y-2">
@@ -349,15 +280,12 @@ export default function BudgetPlannerPage() {
                   </div>
                 )}
                 <div className="space-y-2">
-                  <Label>{t('amount')}</Label>
-                  <Input type="number" value={newTx.amount || ''} onChange={(e) => setNewTx({...newTx, amount: parseFloat(e.target.value) || 0})} />
-                </div>
-                <div className="space-y-2">
-                  <Label>{t('desc')}</Label>
-                  <Input value={newTx.note} onChange={(e) => setNewTx({...newTx, note: e.target.value})} />
+                  <Label>{t('label_amount')}</Label>
+                  <Input type="number" value={newTx.amount || ''} onChange={(e) => setNewTx({...newTx, amount: parseFloat(e.target.value) || 0})} placeholder={t('label_amount')} />
                 </div>
               </div>
-              <DialogFooter>
+              <DialogFooter className="flex flex-col sm:flex-row gap-2">
+                <Button variant="ghost" onClick={() => setIsTxOpen(false)} className="font-bold uppercase tracking-widest">{t('btn_cancel')}</Button>
                 <Button onClick={() => {
                   if (newTx.type === 'expense' && !newTx.categoryId) {
                     toast({ title: "Select a category", variant: "destructive" });
@@ -366,7 +294,7 @@ export default function BudgetPlannerPage() {
                   addTransaction(newTx);
                   setIsTxOpen(false);
                   setNewTx({ ...newTx, payee: '', amount: 0, note: '', categoryId: '' });
-                }} className="w-full h-12 font-black uppercase tracking-widest">{t('save')}</Button>
+                }} className="flex-1 h-12 font-black uppercase tracking-widest">{t('btn_save')}</Button>
               </DialogFooter>
             </DialogContent>
           </Dialog>
@@ -378,12 +306,12 @@ export default function BudgetPlannerPage() {
         <div className="lg:col-span-2 space-y-8">
           <Card className="overflow-hidden border-2 shadow-lg rounded-[2.5rem]">
             <CardHeader className="bg-muted/30 py-4 px-8 border-b flex flex-col sm:flex-row items-center justify-between gap-4">
-              <CardTitle className="text-xs font-black uppercase tracking-widest text-primary">Budget Categories</CardTitle>
+              <CardTitle className="text-xs font-black uppercase tracking-widest text-primary">{t('col_category')}</CardTitle>
               <Button variant="ghost" size="sm" onClick={() => {
-                const name = window.prompt(t('new_item'));
+                const name = window.prompt(t('new_item_prompt'));
                 if (name) addCategory(name, 'needs');
               }} className="h-8 text-[10px] font-bold uppercase">
-                <Plus className="h-3 w-3 mr-1" /> {t('btn_add_cat')}
+                <Plus className="h-3 w-3 mr-1" /> {t('btn_add_category')}
               </Button>
             </CardHeader>
             <CardContent className="p-0">
@@ -447,7 +375,7 @@ export default function BudgetPlannerPage() {
                             <Button 
                               variant="ghost" 
                               size="icon" 
-                              onClick={() => { if(confirm(globalT('delete') + '?')) deleteCategory(category.id) }}
+                              onClick={() => { if(confirm(t('confirm_delete'))) deleteCategory(category.id) }}
                               className="h-8 w-8 text-red-400 hover:text-red-600 transition-all"
                             >
                               <Trash2 className="h-4 w-4" />
@@ -466,11 +394,11 @@ export default function BudgetPlannerPage() {
             <Card className="shadow-lg border-2 bg-primary/5 rounded-[2rem] p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 bg-primary/10 rounded-xl text-primary"><Wallet className="h-5 w-5" /></div>
-                <h3 className="font-black uppercase text-sm tracking-widest">{t('income_label')}</h3>
+                <h3 className="font-black uppercase text-sm tracking-widest">{t('total_income')}</h3>
               </div>
               <div className="space-y-3">
                 <div className="flex justify-between items-center text-xs">
-                  <span className="font-bold text-muted-foreground uppercase">{t('base_income')}</span>
+                  <span className="font-bold text-muted-foreground uppercase">{t('total_income')}</span>
                   <span className="font-black">{formatValue(income)}</span>
                 </div>
                 <div className="pt-3 border-t border-dashed flex justify-between items-center">
@@ -507,7 +435,7 @@ export default function BudgetPlannerPage() {
                 {transactions.length === 0 ? (
                   <div className="py-20 text-center flex flex-col items-center gap-3 opacity-30">
                     <Receipt className="h-12 w-12" />
-                    <p className="font-bold uppercase text-xs tracking-widest">{t('empty_trans')}</p>
+                    <p className="font-bold uppercase text-xs tracking-widest">{t('no_transactions')}</p>
                   </div>
                 ) : (
                   <div className="divide-y">
@@ -515,12 +443,14 @@ export default function BudgetPlannerPage() {
                       <div key={tx.id} className="p-4 hover:bg-muted/30 transition-colors flex items-center justify-between group">
                         <div className="space-y-1">
                           <div className="flex items-center gap-2">
-                            <span className="text-[10px] font-black uppercase tracking-widest opacity-40">{format(new Date(tx.date), 'dd MMM')}</span>
+                            <span className="text-[10px] font-black uppercase tracking-widest opacity-40">
+                              {new Date(tx.date).toLocaleDateString(LOCALES[lang] || 'en-US', { day: 'numeric', month: 'short' })}
+                            </span>
                             <h4 className="font-black text-sm uppercase tracking-tight truncate max-w-[120px]">{tx.payee}</h4>
                           </div>
                           <div className="flex gap-2">
                             {tx.type === 'income' ? (
-                              <Badge className="bg-green-100 text-green-700 text-[8px] uppercase h-4">Inflow</Badge>
+                              <Badge className="bg-green-100 text-green-700 text-[8px] uppercase h-4">{t('opt_income')}</Badge>
                             ) : (
                               <Badge variant="outline" className="text-[8px] uppercase h-4 opacity-60">
                                 {categories.find(c => c.id === tx.categoryId)?.name}
@@ -550,14 +480,14 @@ export default function BudgetPlannerPage() {
           <Card className="bg-card border-2 rounded-[2rem] p-6 space-y-4 shadow-sm">
             <div className="flex items-center gap-3 border-b pb-4">
               <Database className="h-5 w-5 text-primary" />
-              <h3 className="font-black uppercase tracking-tight text-sm">System</h3>
+              <h3 className="font-black uppercase tracking-tight text-sm">{t('system')}</h3>
             </div>
             <Button 
               variant="outline" 
               onClick={() => { if(confirm(globalT('reset') + '?')) resetMonth() }}
               className="w-full h-12 font-black uppercase tracking-widest text-[10px] text-destructive hover:bg-red-50 border-2"
             >
-              <X className="mr-2 h-4 w-4" /> Reset Budget Data
+              <X className="mr-2 h-4 w-4" /> {t('reset_data')}
             </Button>
           </Card>
         </div>
@@ -584,7 +514,7 @@ export default function BudgetPlannerPage() {
               <Label className="text-[10px] font-black uppercase opacity-60">{t('move_from')}</Label>
               <Select value={sourceCategoryId} onValueChange={setSourceCategoryId}>
                 <SelectTrigger className="h-12 font-bold rounded-xl border-2">
-                  <SelectValue placeholder={lang === 'id' ? 'Pilih sumber dana' : 'Select funding source'} />
+                  <SelectValue placeholder={t('select_funding')} />
                 </SelectTrigger>
                 <SelectContent>
                   {categories
