@@ -79,7 +79,7 @@ const UI_TEXT: Record<string, any> = {
   
   // --- Transaction Modal / Form ---
   modal_title: { en: "New Transaction", id: "Transaksi Baru", de: "Neue Transaktion", es: "Nueva Transacción", pt: "Nova Transação", fr: "Nouvelle Transaction", it: "Nuova Transazione" },
-  label_type: { en: "Type", id: "Tipe", de: "Typ", es: "Tipo", pt: "Tipo", fr: "Type", it: "Tipo" },
+  label_type: { en: "Type", id: "Tipe", de: "Tipe", es: "Tipo", pt: "Tipo", fr: "Type", it: "Tipo" },
   opt_expense: { en: "Expense", id: "Pengeluaran", de: "Ausgabe", es: "Gasto", pt: "Despesa", fr: "Dépense", it: "Spesa" },
   opt_income: { en: "Income", id: "Pemasukan", de: "Einnahme", es: "Ingreso", pt: "Renda", fr: "Revenu", it: "Reddito" },
   label_amount: { en: "Amount", id: "Nominal", de: "Betrag", es: "Cantidad", pt: "Valor", fr: "Montant", it: "Importo" },
@@ -164,15 +164,6 @@ export default function BudgetPlannerPage() {
     link.click();
   };
 
-  const handleCoverOverspending = () => {
-    if (!coveringCategory || !sourceCategoryId) return;
-    const amountToCover = Math.abs(coveringCategory.assigned + coveringCategory.activity);
-    moveMoney(sourceCategoryId, coveringCategory.id, amountToCover);
-    setCoveringCategory(null);
-    setSourceCategoryId('');
-    toast({ title: lang === 'id' ? "Dana berhasil dipindahkan" : "Money moved successfully" });
-  };
-
   if (!mounted) return null;
 
   return (
@@ -197,6 +188,11 @@ export default function BudgetPlannerPage() {
             </Button>
           </DialogTrigger>
           <DialogContent className="rounded-[2rem]">
+            <DialogHeader>
+              <DialogTitle className="text-2xl font-black uppercase tracking-tighter">
+                {t('btn_import_json')}
+              </DialogTitle>
+            </DialogHeader>
             <DataPersistence 
               data={{ income, categories, transactions }} 
               onRestore={(data) => restoreData(data)} 
