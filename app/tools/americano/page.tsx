@@ -17,7 +17,8 @@ import {
   CalendarDays,
   Medal,
   CheckCircle2,
-  Info
+  Info,
+  Trophy
 } from 'lucide-react';
 import { useAmericanoStore } from './store';
 import { toast } from '@/hooks/use-toast';
@@ -32,9 +33,10 @@ const UI_TEXT: Record<string, any> = {
   mode_select: { en: "Select Sport", id: "Pilih Olahraga", de: "Sportart wählen", es: "Seleccionar Deporte", pt: "Selecionar Esporte", fr: "Choisir Sport", it: "Seleziona Sport" },
   padel: { en: "Padel 🎾", id: "Padel 🎾", de: "Padel 🎾", es: "Pádel 🎾", pt: "Padel 🎾", fr: "Padel 🎾", it: "Padel 🎾" },
   pickleball: { en: "Pickleball 🥒", id: "Pickleball 🥒", de: "Pickleball 🥒", es: "Pickleball 🥒", pt: "Pickleball 🥒", fr: "Pickleball 🥒", it: "Pickleball 🥒" },
+  tennis: { en: "Tennis 🎾", id: "Tenis 🎾", de: "Tennis 🎾", es: "Tenis 🎾", pt: "Tênis 🎾", fr: "Tennis 🎾", it: "Tennis 🎾" },
   lbl_players: { en: "Player Names (One per line)", id: "Nama Pemain (Satu per baris)", de: "Spielernamen (Einer pro Zeile)", es: "Nombres (Uno por línea)", pt: "Nomes (Um por linha)", fr: "Noms (Un par ligne)", it: "Nomi (Uno per riga)" },
   lbl_courts: { en: "Courts", id: "Lapangan", de: "Plätze", es: "Pistas", pt: "Quadras", fr: "Terrains", it: "Campi" },
-  lbl_target_padel: { en: "Target Points (Sum)", id: "Target Poin (Total)", de: "Zielpunkte (Gesamt)", es: "Puntos Objetivo (Suma)", pt: "Pontos Alvo (Soma)", fr: "Points Cibles (Total)", it: "Punti Obiettivo (Somma)" },
+  lbl_target_fixed: { en: "Target Points/Games", id: "Target Poin/Game", de: "Zielpunkte/Spiele", es: "Puntos/Juegos Objetivo", pt: "Pontos/Jogos Alvo", fr: "Points/Jeux Cibles", it: "Punti/Giochi Obiettivo" },
   lbl_target_pickle: { en: "Winning Score (Race)", id: "Skor Menang (Race)", de: "Gewinnpunktzahl", es: "Puntuación Ganadora", pt: "Pontuação Vencedora", fr: "Score Gagnant", it: "Punteggio Vincente" },
   btn_start: { en: "Start Tournament", id: "Mulai Turnamen", de: "Turnier starten", es: "Iniciar Torneo", pt: "Iniciar Torneio", fr: "Démarrer Tournoi", it: "Inizia Torneo" },
   btn_next: { en: "Next Round", id: "Ronde Berikutnya", de: "Nächste Runde", es: "Siguiente Ronda", pt: "Próxima Rodada", fr: "Tour Suivant", it: "Prossimo Turno" },
@@ -114,26 +116,33 @@ export default function AmericanoPage() {
               </CardTitle>
             </CardHeader>
             <CardContent className="p-8 space-y-8">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-3 gap-4">
                 <Button 
                   variant={sportMode === 'padel' ? 'default' : 'outline'} 
                   onClick={() => setSportMode('padel')}
-                  className={cn("h-16 font-black uppercase text-xs", sportMode === 'padel' && "bg-primary")}
+                  className={cn("h-16 font-black uppercase text-[10px] px-2", sportMode === 'padel' && "bg-primary")}
                 >
                   {t('padel')}
                 </Button>
                 <Button 
                   variant={sportMode === 'pickleball' ? 'default' : 'outline'} 
                   onClick={() => setSportMode('pickleball')}
-                  className={cn("h-16 font-black uppercase text-xs", sportMode === 'pickleball' && "bg-primary")}
+                  className={cn("h-16 font-black uppercase text-[10px] px-2", sportMode === 'pickleball' && "bg-primary")}
                 >
                   {t('pickleball')}
+                </Button>
+                <Button 
+                  variant={sportMode === 'tennis' ? 'default' : 'outline'} 
+                  onClick={() => setSportMode('tennis')}
+                  className={cn("h-16 font-black uppercase text-[10px] px-2", sportMode === 'tennis' && "bg-primary")}
+                >
+                  <Trophy className="h-4 w-4 mr-1 hidden sm:inline" /> {t('tennis')}
                 </Button>
               </div>
 
               <div className="space-y-2">
                 <Label className="text-[10px] font-black uppercase opacity-60">
-                  {sportMode === 'padel' ? t('lbl_target_padel') : t('lbl_target_pickle')}
+                  {sportMode === 'pickleball' ? t('lbl_target_pickle') : t('lbl_target_fixed')}
                 </Label>
                 <Input 
                   type="number" 
@@ -146,9 +155,9 @@ export default function AmericanoPage() {
               <div className="bg-muted/30 p-4 rounded-2xl border-2 border-dashed flex gap-3">
                 <Info className="h-5 w-5 text-primary shrink-0" />
                 <p className="text-[10px] font-bold text-muted-foreground uppercase leading-relaxed">
-                  {sportMode === 'padel' 
-                    ? "Padel Americano usually plays to 32 points. Teams share the 32 points total (e.g. 20-12)." 
-                    : "Pickleball Americano usually plays to a fixed winning score like 11 or 15 points per match."}
+                  {sportMode === 'pickleball' 
+                    ? "Pickleball Americano usually plays to a fixed winning score like 11 or 15 points per match." 
+                    : `${sportMode === 'padel' ? 'Padel' : 'Tennis'} Americano usually plays to fixed total points (e.g. 32). Teams share the total.`}
                 </p>
               </div>
 
@@ -187,7 +196,7 @@ export default function AmericanoPage() {
                 <div>
                   <h2 className="font-black uppercase tracking-tight text-xl">{t('round')} {currentRound}</h2>
                   <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
-                    {sportMode === 'padel' ? `${targetScore} Total Points` : `Race to ${targetScore}`}
+                    {sportMode === 'pickleball' ? `Race to ${targetScore}` : `${targetScore} Total Points`}
                   </p>
                 </div>
               </div>
@@ -226,7 +235,7 @@ export default function AmericanoPage() {
                           className="w-16 h-16 text-center font-black text-2xl border-4 rounded-2xl bg-card"
                         />
                         <span className="font-black opacity-20 text-xs uppercase tracking-widest">vs</span>
-                        {sportMode === 'padel' ? (
+                        {sportMode !== 'pickleball' ? (
                           <div className="w-16 h-16 flex items-center justify-center font-black text-2xl border-4 rounded-2xl bg-muted/20 opacity-60">
                             {m.score2}
                           </div>

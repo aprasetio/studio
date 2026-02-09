@@ -3,7 +3,7 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
-export type SportMode = 'padel' | 'pickleball';
+export type SportMode = 'padel' | 'pickleball' | 'tennis';
 
 export interface Player {
   id: string;
@@ -57,7 +57,7 @@ export const useAmericanoStore = create<AmericanoState>()(
 
       setSportMode: (mode) => set({ 
         sportMode: mode, 
-        targetScore: mode === 'padel' ? 32 : 11 
+        targetScore: mode === 'pickleball' ? 11 : 32 
       }),
 
       setTargetScore: (score) => set({ targetScore: score }),
