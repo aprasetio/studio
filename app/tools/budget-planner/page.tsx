@@ -73,9 +73,33 @@ const UI_TEXT: Record<string, any> = {
   // --- Buttons ---
   btn_add_category: { en: "Add Category", id: "Tambah Kategori", de: "Kategorie +", es: "Añadir Categoría", pt: "Adicionar Categoria", fr: "Ajouter Catégorie", it: "Aggiungi Categoria" },
   btn_add_transaction: { en: "Add Transaction", id: "Tambah Transaksi", de: "Transaktion +", es: "Añadir Transacción", pt: "Adicionar Transação", fr: "Ajouter Transaction", it: "Aggiungi Transazione" },
-  btn_export_json: { en: "Export JSON", id: "Ekspor JSON", de: "JSON Exportieren", es: "Exportar JSON", pt: "Exportar JSON", fr: "Exporter JSON", it: "Esporta JSON" },
-  btn_import_json: { en: "Import JSON", id: "Impor JSON", de: "JSON Importieren", es: "Importar JSON", pt: "Importar JSON", fr: "Importer JSON", it: "Importa JSON" },
-  btn_export_csv: { en: "Export CSV", id: "Ekspor CSV", de: "CSV Exportieren", es: "Exportar CSV", pt: "Exportar CSV", fr: "Esporta CSV", it: "Esporta CSV" },
+  btn_backup: { 
+    en: "Backup Data (JSON)", 
+    id: "Cadangkan Data (JSON)", 
+    de: "Daten sichern (JSON)", 
+    es: "Copia de seguridad (JSON)", 
+    pt: "Backup de Dados (JSON)", 
+    fr: "Sauvegarde (JSON)", 
+    it: "Backup Dati (JSON)" 
+  },
+  btn_restore: { 
+    en: "Restore Data (JSON)", 
+    id: "Pulihkan Data (JSON)", 
+    de: "Daten wiederherstellen", 
+    es: "Restaurar Datos (JSON)", 
+    pt: "Restaurar Dados (JSON)", 
+    fr: "Restaurer (JSON)", 
+    it: "Ripristina Dati (JSON)" 
+  },
+  btn_excel: { 
+    en: "Export to Excel (.csv)", 
+    id: "Ekspor ke Excel (.csv)", 
+    de: "Export nach Excel (.csv)", 
+    es: "Exportar a Excel (.csv)", 
+    pt: "Exportar p/ Excel (.csv)", 
+    fr: "Exporter vers Excel", 
+    it: "Esporta in Excel (.csv)" 
+  },
   
   // --- Transaction Modal / Form ---
   modal_title: { en: "New Transaction", id: "Transaksi Baru", de: "Neue Transaktion", es: "Nueva Transacción", pt: "Nova Transação", fr: "Nouvelle Transaction", it: "Nuova Transazione" },
@@ -101,7 +125,7 @@ const UI_TEXT: Record<string, any> = {
   history: { en: "Recent History", id: "Riwayat Terkini", de: "Verlauf", es: "Historial", pt: "Histórico", fr: "Historique", it: "Cronologia" },
   system: { en: "System", id: "Sistem", de: "System", es: "Sistema", pt: "Sistema", fr: "Système", it: "Sistema" },
   reset_data: { en: "Reset Budget Data", id: "Reset Data Anggaran", de: "Budgetdaten zurücksetzen", es: "Reiniciar data", pt: "Redefinir dados", fr: "Réinitialiser les données", it: "Resetta i dati" },
-  cover_title: { en: "Cover Overspending", id: "Tutup Overspending", de: "Mehrausgaben decken", es: "Cubrir sobregasto", pt: "Cobrir gastos excessivos", fr: "Couvrir les dépassements", it: "Copri spesa eccessiva" },
+  cover_title: { en: "Cover Overspending", id: "Tutup Overspending", de: "Mehrausgaben decken", es: "Cubrir sobregasto", pt: "Cubrir gastos excessivos", fr: "Couvrir les dépassements", it: "Copri spesa eccessiva" },
   move_from: { en: "Cover from:", id: "Ambil dana dari:", de: "Decken von:", es: "Cubrir desde:", pt: "Cobrir de:", fr: "Couvrir depuis :", it: "Copri da:" },
   move_btn: { en: "Move Money", id: "Pindahkan Dana", de: "Geld bewegen", es: "Mover dinero", pt: "Mover dinheiro", fr: "Déplacer l'argent", it: "Sposta denaro" },
   select_funding: { en: "Select funding source", id: "Pilih sumber dana", de: "Finanzierungsquelle wählen", es: "Seleccionar fuente", pt: "Selecionar fonte", fr: "Choisir la source", it: "Seleziona fonte" }
@@ -189,18 +213,18 @@ export default function BudgetPlannerPage() {
       {/* Utility Toolbar */}
       <div className="w-full flex flex-wrap gap-2 justify-end mb-[-1rem]">
         <Button variant="outline" size="sm" onClick={handleExportCSV} className="text-[10px] font-black uppercase border-2 h-8">
-          <Download className="h-3 w-3 mr-1" /> {t('btn_export_csv')}
+          <Download className="h-3 w-3 mr-1" /> {t('btn_excel')}
         </Button>
         <Dialog>
           <DialogTrigger asChild>
             <Button variant="outline" size="sm" className="text-[10px] font-black uppercase border-2 h-8">
-              <Upload className="h-3 w-3 mr-1" /> {t('btn_import_json')}
+              <Upload className="h-3 w-3 mr-1" /> {t('btn_restore')}
             </Button>
           </DialogTrigger>
           <DialogContent className="rounded-[2rem]">
             <DialogHeader>
               <DialogTitle className="text-2xl font-black uppercase tracking-tighter">
-                {t('btn_import_json')}
+                {t('btn_restore')}
               </DialogTitle>
             </DialogHeader>
             <DataPersistence 
@@ -499,13 +523,22 @@ export default function BudgetPlannerPage() {
               <Database className="h-5 w-5 text-primary" />
               <h3 className="font-black uppercase tracking-tight text-sm">{t('system')}</h3>
             </div>
-            <Button 
-              variant="outline" 
-              onClick={() => { if(confirm(globalT('reset') + '?')) resetMonth() }}
-              className="w-full h-12 font-black uppercase tracking-widest text-[10px] text-destructive hover:bg-red-50 border-2"
-            >
-              <X className="mr-2 h-4 w-4" /> {t('reset_data')}
-            </Button>
+            <div className="flex flex-col gap-2">
+              <Button 
+                variant="outline" 
+                onClick={handleExportCSV}
+                className="w-full h-12 font-black uppercase tracking-widest text-[10px] border-2"
+              >
+                <Download className="mr-2 h-4 w-4" /> {t('btn_excel')}
+              </Button>
+              <Button 
+                variant="outline" 
+                onClick={() => { if(confirm(globalT('reset') + '?')) resetMonth() }}
+                className="w-full h-12 font-black uppercase tracking-widest text-[10px] text-destructive hover:bg-red-50 border-2"
+              >
+                <X className="mr-2 h-4 w-4" /> {t('reset_data')}
+              </Button>
+            </div>
           </Card>
         </div>
       </div>
