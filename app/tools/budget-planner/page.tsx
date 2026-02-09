@@ -17,7 +17,9 @@ import {
   PieChart as PieChartIcon,
   Download,
   AlertCircle,
-  ArrowRightLeft
+  ArrowRightLeft,
+  FileJson,
+  Upload
 } from 'lucide-react';
 import { 
   Dialog, 
@@ -49,18 +51,18 @@ import { toast } from '@/hooks/use-toast';
 
 const UI_TEXT: Record<string, any> = {
   en: {
-    title: "Budget Planner",
-    to_be_budgeted: "Ready to Budget",
-    category: "Category",
-    budgeted: "Assigned",
-    activity: "Activity",
-    available: "Available",
-    add_item: "Add Item",
-    total_income: "Income Summary",
+    income_label: "Total Income",
+    to_budget: "To be Budgeted",
+    col_category: "Category",
+    col_budgeted: "Budgeted",
+    col_activity: "Activity",
+    col_available: "Available",
+    btn_export: "Export Data",
+    btn_import: "Import Data",
+    btn_add_cat: "Add Category",
     all_done: "All money has a job!",
-    over_budget: "You've assigned more than you have!",
-    new_item: "New Item Name",
-    transactions: "Transactions",
+    over_budget: "Over Budget!",
+    new_item: "New Category Name",
     add_tx: "Record Transaction",
     date: "Date",
     amount: "Amount",
@@ -78,18 +80,18 @@ const UI_TEXT: Record<string, any> = {
     export_csv: "Export CSV"
   },
   id: {
-    title: "Perencana Anggaran",
-    to_be_budgeted: "Siap Dianggarkan",
-    category: "Kategori",
-    budgeted: "Anggaran",
-    activity: "Aktivitas",
-    available: "Tersedia",
-    add_item: "Tambah Item",
-    total_income: "Ringkasan Pendapatan",
+    income_label: "Total Pemasukan",
+    to_budget: "Siap Dianggarkan",
+    col_category: "Kategori",
+    col_budgeted: "Dianggarkan",
+    col_activity: "Aktivitas",
+    col_available: "Tersedia",
+    btn_export: "Ekspor Data",
+    btn_import: "Impor Data",
+    btn_add_cat: "Tambah Kategori",
     all_done: "Semua uang sudah dialokasikan!",
-    over_budget: "Anggaran melebihi pendapatan!",
-    new_item: "Nama Item Baru",
-    transactions: "Transaksi",
+    over_budget: "Anggaran Melebihi!",
+    new_item: "Nama Kategori Baru",
     add_tx: "Catat Transaksi",
     date: "Tanggal",
     amount: "Jumlah",
@@ -105,6 +107,61 @@ const UI_TEXT: Record<string, any> = {
     move_from: "Ambil dana dari:",
     move_btn: "Pindahkan Dana",
     export_csv: "Ekspor CSV"
+  },
+  de: {
+    income_label: "Gesamteinkommen",
+    to_budget: "Zu budgetieren",
+    col_category: "Kategorie",
+    col_budgeted: "Budgetiert",
+    col_activity: "Aktivität",
+    col_available: "Verfügbar",
+    btn_export: "Daten exportieren",
+    btn_import: "Daten importieren",
+    btn_add_cat: "Kategorie hinzufügen"
+  },
+  es: {
+    income_label: "Ingresos Totales",
+    to_budget: "Por presupuestar",
+    col_category: "Categoría",
+    col_budgeted: "Presupuestado",
+    col_activity: "Actividad",
+    col_available: "Disponible",
+    btn_export: "Exportar Datos",
+    btn_import: "Importar Datos",
+    btn_add_cat: "Añadir Categoría"
+  },
+  pt: {
+    income_label: "Renda Total",
+    to_budget: "A ser orçado",
+    col_category: "Categoria",
+    col_budgeted: "Orçado",
+    col_activity: "Atividade",
+    col_available: "Disponível",
+    btn_export: "Exportar Dados",
+    btn_import: "Importar Dados",
+    btn_add_cat: "Adicionar Categoria"
+  },
+  fr: {
+    income_label: "Revenu Total",
+    to_budget: "À budgétiser",
+    col_category: "Catégorie",
+    col_budgeted: "Budgétisé",
+    col_activity: "Activité",
+    col_available: "Disponible",
+    btn_export: "Exporter",
+    btn_import: "Importer",
+    btn_add_cat: "Ajouter Catégorie"
+  },
+  it: {
+    income_label: "Reddito Totale",
+    to_budget: "Da budgetare",
+    col_category: "Categoria",
+    col_budgeted: "Budget",
+    col_activity: "Attività",
+    col_available: "Disponibile",
+    btn_export: "Esporta Dati",
+    btn_import: "Importa Dati",
+    btn_add_cat: "Aggiungi Categoria"
   }
 };
 
@@ -149,18 +206,12 @@ export default function BudgetPlannerPage() {
     }).format(val);
   };
 
-  const inflowTotal = transactions
-    .filter(tx => tx.type === 'income')
-    .reduce((sum, tx) => sum + tx.amount, 0);
-
-  const baseIncomeValue = income - inflowTotal;
-
   const handleExportCSV = () => {
     const csvData = categories.map(c => ({
-      [t('category')]: c.name,
-      [t('budgeted')]: c.assigned,
-      [t('activity')]: c.activity,
-      [t('available')]: c.assigned + c.activity
+      [t('col_category')]: c.name,
+      [t('col_budgeted')]: c.assigned,
+      [t('col_activity')]: c.activity,
+      [t('col_available')]: c.assigned + c.activity
     }));
     const csv = Papa.unparse(csvData);
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
@@ -187,28 +238,58 @@ export default function BudgetPlannerPage() {
       <div className="text-center space-y-2">
         <h1 className="text-4xl font-black uppercase tracking-tighter text-foreground flex items-center justify-center gap-3">
           <Calculator className="h-8 w-8 text-primary" />
-          {t('title')}
+          {t('income_label')}
         </h1>
         <TrustBadges />
+      </div>
+
+      {/* Utility Toolbar */}
+      <div className="w-full flex flex-wrap gap-2 justify-end mb-[-1rem]">
+        <Button variant="outline" size="sm" onClick={handleExportCSV} className="text-[10px] font-black uppercase border-2 h-8">
+          <Download className="h-3 w-3 mr-1" /> {t('export_csv')}
+        </Button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline" size="sm" className="text-[10px] font-black uppercase border-2 h-8">
+              <Upload className="h-3 w-3 mr-1" /> {t('btn_import')}
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="rounded-[2rem]">
+            <DataPersistence 
+              data={{ income, categories, transactions }} 
+              onRestore={(data) => restoreData(data)} 
+              fileNamePrefix="versokit-budget" 
+            />
+          </DialogContent>
+        </Dialog>
       </div>
 
       {/* Header Summary */}
       <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 bg-card p-6 rounded-[2.5rem] shadow-xl border-2">
         <div className="flex flex-col gap-1 items-center md:items-start">
-          <span className="text-[10px] font-black uppercase tracking-widest opacity-40">{t('total_income')}</span>
+          <span className="text-[10px] font-black uppercase tracking-widest opacity-40">{t('income_label')}</span>
           <div className="flex items-center gap-2">
             <Wallet className="h-5 w-5 text-primary" />
-            <span className="text-2xl font-black">{formatValue(income)}</span>
+            <div className="relative">
+              <input 
+                type="number" 
+                value={income === 0 ? '' : income} 
+                onChange={(e) => setIncome(parseFloat(e.target.value) || 0)}
+                className="text-2xl font-black bg-transparent border-b-2 border-dashed border-primary/20 focus:border-primary focus:outline-none w-40"
+                placeholder="0"
+              />
+              <span className="absolute -left-6 top-1 text-sm font-bold opacity-40">{CURRENCIES[lang]}</span>
+            </div>
           </div>
         </div>
 
         <div className={cn(
-          "px-10 py-6 rounded-3xl border-4 flex flex-col items-center gap-1 transition-all duration-500 shadow-lg",
+          "px-10 py-6 rounded-3xl border-4 flex flex-col items-center gap-1 transition-all duration-500 shadow-lg min-w-[280px]",
           toBeBudgeted === 0 ? "bg-green-500 border-green-600 text-white" : 
           toBeBudgeted > 0 ? "bg-primary text-white border-primary/20" : 
           "bg-destructive border-destructive text-white animate-pulse"
         )}>
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80">{t('to_be_budgeted')}</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80">{t('to_budget')}</span>
           <span className="text-4xl font-black tabular-nums">
             {formatValue(toBeBudgeted)}
           </span>
@@ -256,7 +337,7 @@ export default function BudgetPlannerPage() {
                 </div>
                 {newTx.type === 'expense' && (
                   <div className="space-y-2">
-                    <Label>{t('category')}</Label>
+                    <Label>{t('col_category')}</Label>
                     <Select value={newTx.categoryId} onValueChange={(val) => setNewTx({...newTx, categoryId: val})}>
                       <SelectTrigger><SelectValue /></SelectTrigger>
                       <SelectContent>
@@ -297,28 +378,23 @@ export default function BudgetPlannerPage() {
         <div className="lg:col-span-2 space-y-8">
           <Card className="overflow-hidden border-2 shadow-lg rounded-[2.5rem]">
             <CardHeader className="bg-muted/30 py-4 px-8 border-b flex flex-col sm:flex-row items-center justify-between gap-4">
-              <CardTitle className="text-sm font-black uppercase tracking-widest text-primary">Budget Categories</CardTitle>
-              <div className="flex items-center gap-2">
-                <Button variant="outline" size="sm" onClick={handleExportCSV} className="h-8 text-[10px] font-bold uppercase border-2">
-                  <Download className="h-3 w-3 mr-1" /> {t('export_csv')}
-                </Button>
-                <Button variant="ghost" size="sm" onClick={() => {
-                  const name = window.prompt(t('new_item'));
-                  if (name) addCategory(name, 'needs');
-                }} className="h-8 text-[10px] font-bold uppercase">
-                  <Plus className="h-3 w-3 mr-1" /> {t('add_item')}
-                </Button>
-              </div>
+              <CardTitle className="text-xs font-black uppercase tracking-widest text-primary">Budget Categories</CardTitle>
+              <Button variant="ghost" size="sm" onClick={() => {
+                const name = window.prompt(t('new_item'));
+                if (name) addCategory(name, 'needs');
+              }} className="h-8 text-[10px] font-bold uppercase">
+                <Plus className="h-3 w-3 mr-1" /> {t('btn_add_cat')}
+              </Button>
             </CardHeader>
             <CardContent className="p-0">
-              <div className="overflow-x-auto">
+              <div className="overflow-x-auto pb-4">
                 <table className="w-full border-collapse">
                   <thead>
                     <tr className="border-b bg-muted/10 text-[10px] font-black uppercase tracking-widest text-muted-foreground">
-                      <th className="p-6 text-left min-w-[180px] sticky left-0 bg-card z-10">{t('category')}</th>
-                      <th className="p-6 text-right min-w-[160px]">{t('budgeted')}</th>
-                      <th className="p-6 text-right min-w-[140px]">{t('activity')}</th>
-                      <th className="p-6 text-right min-w-[140px]">{t('available')}</th>
+                      <th className="p-6 text-left min-w-[200px] sticky left-0 bg-card z-10 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">{t('col_category')}</th>
+                      <th className="p-6 text-right min-w-[150px]">{t('col_budgeted')}</th>
+                      <th className="p-6 text-right min-w-[120px]">{t('col_activity')}</th>
+                      <th className="p-6 text-right min-w-[120px]">{t('col_available')}</th>
                       <th className="p-6 w-12"></th>
                     </tr>
                   </thead>
@@ -327,17 +403,17 @@ export default function BudgetPlannerPage() {
                       const available = category.assigned + category.activity;
                       return (
                         <tr key={category.id} className="hover:bg-muted/5 transition-colors group">
-                          <td className="p-6 sticky left-0 bg-card z-10 border-r md:border-r-0">
-                            <p className="font-black text-sm uppercase tracking-tight truncate max-w-[150px] md:max-w-none">{category.name}</p>
+                          <td className="p-6 sticky left-0 bg-card z-10 border-r shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">
+                            <p className="font-black text-sm uppercase tracking-tight truncate max-w-[150px]">{category.name}</p>
                             <span className="text-[9px] font-bold text-muted-foreground uppercase opacity-60">{category.type}</span>
                           </td>
                           <td className="p-4 align-middle">
-                            <div className="relative group/input flex justify-end">
+                            <div className="relative flex justify-end">
                               <input 
                                 type="number"
                                 value={category.assigned === 0 ? '' : category.assigned}
                                 onChange={(e) => updateCategoryAssignment(category.id, parseFloat(e.target.value) || 0)}
-                                className="w-full h-10 bg-muted/20 border-b-2 border-transparent hover:border-muted-foreground/30 focus:border-primary rounded-lg text-right font-mono font-black px-3 focus:outline-none transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                                className="w-full h-10 bg-transparent border-b border-gray-300 focus:border-emerald-500 text-right font-mono font-black px-3 focus:outline-none transition-all [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none text-sm"
                                 placeholder="0"
                               />
                             </div>
@@ -390,24 +466,12 @@ export default function BudgetPlannerPage() {
             <Card className="shadow-lg border-2 bg-primary/5 rounded-[2rem] p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 bg-primary/10 rounded-xl text-primary"><Wallet className="h-5 w-5" /></div>
-                <h3 className="font-black uppercase text-sm tracking-widest">{t('total_income')}</h3>
+                <h3 className="font-black uppercase text-sm tracking-widest">{t('income_label')}</h3>
               </div>
               <div className="space-y-3">
                 <div className="flex justify-between items-center text-xs">
                   <span className="font-bold text-muted-foreground uppercase">{t('base_income')}</span>
-                  <div className="relative w-32">
-                    <input 
-                      type="number" 
-                      value={baseIncomeValue || ''} 
-                      onChange={(e) => setIncome((parseFloat(e.target.value) || 0) + inflowTotal)}
-                      className="w-full h-8 bg-transparent text-right font-black border-b border-dashed focus:outline-none focus:border-primary"
-                      placeholder="0"
-                    />
-                  </div>
-                </div>
-                <div className="flex justify-between items-center text-xs">
-                  <span className="font-bold text-green-600 uppercase">{t('inflow')}</span>
-                  <span className="font-black text-green-600">+{formatValue(inflowTotal)}</span>
+                  <span className="font-black">{formatValue(income)}</span>
                 </div>
                 <div className="pt-3 border-t border-dashed flex justify-between items-center">
                   <span className="text-xs font-black uppercase">TOTAL</span>
@@ -482,12 +546,6 @@ export default function BudgetPlannerPage() {
               </div>
             </CardContent>
           </Card>
-
-          <DataPersistence 
-            data={{ income, categories, transactions }} 
-            onRestore={(data) => restoreData(data)} 
-            fileNamePrefix="versokit-budget" 
-          />
 
           <Card className="bg-card border-2 rounded-[2rem] p-6 space-y-4 shadow-sm">
             <div className="flex items-center gap-3 border-b pb-4">
