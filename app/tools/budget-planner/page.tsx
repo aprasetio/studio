@@ -100,7 +100,7 @@ const UI_TEXT: Record<string, any> = {
   cover: { en: "Cover", id: "Tutup", de: "Decken", es: "Cubrir", pt: "Cobrir", fr: "Couvrir", it: "Coprire" },
   history: { en: "Recent History", id: "Riwayat Terkini", de: "Verlauf", es: "Historial", pt: "Histórico", fr: "Historique", it: "Cronologia" },
   system: { en: "System", id: "Sistem", de: "System", es: "Sistema", pt: "Sistema", fr: "Système", it: "Sistema" },
-  reset_data: { en: "Reset Budget Data", id: "Reset Data Anggaran", de: "Budgetdaten zurücksetzen", es: "Reiniciar datos", pt: "Redefinir dados", fr: "Réinitialiser les données", it: "Resetta i dati" },
+  reset_data: { en: "Reset Budget Data", id: "Reset Data Anggaran", de: "Budgetdaten zurücksetzen", es: "Reiniciar data", pt: "Redefinir dados", fr: "Réinitialiser les données", it: "Resetta i dati" },
   cover_title: { en: "Cover Overspending", id: "Tutup Overspending", de: "Mehrausgaben decken", es: "Cubrir sobregasto", pt: "Cobrir gastos excessivos", fr: "Couvrir les dépassements", it: "Copri spesa eccessiva" },
   move_from: { en: "Cover from:", id: "Ambil dana dari:", de: "Decken von:", es: "Cubrir desde:", pt: "Cobrir de:", fr: "Couvrir depuis :", it: "Copri da:" },
   move_btn: { en: "Move Money", id: "Pindahkan Dana", de: "Geld bewegen", es: "Mover dinero", pt: "Mover dinheiro", fr: "Déplacer l'argent", it: "Sposta denaro" },
@@ -162,6 +162,16 @@ export default function BudgetPlannerPage() {
     link.setAttribute('href', url);
     link.setAttribute('download', `budget-export-${format(new Date(), 'yyyy-MM-dd')}.csv`);
     link.click();
+  };
+
+  const handleCoverOverspending = () => {
+    if (coveringCategory && sourceCategoryId) {
+      const overspentAmount = Math.abs(coveringCategory.assigned + coveringCategory.activity);
+      moveMoney(sourceCategoryId, coveringCategory.id, overspentAmount);
+      setCoveringCategory(null);
+      setSourceCategoryId('');
+      toast({ title: t('all_done') });
+    }
   };
 
   if (!mounted) return null;
