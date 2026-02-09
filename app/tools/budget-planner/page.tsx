@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -18,7 +19,8 @@ import {
   Download,
   AlertCircle,
   ArrowRightLeft,
-  Upload
+  Upload,
+  Settings2
 } from 'lucide-react';
 import { 
   Dialog, 
@@ -62,6 +64,7 @@ const UI_TEXT: Record<string, any> = {
 
   // --- Headers & Summary ---
   total_income: { en: "Total Income", id: "Total Pemasukan", de: "Gesamteinkommen", es: "Ingresos Totales", pt: "Renda Total", fr: "Revenu Total", it: "Reddito Totale" },
+  income_label: { en: "Total Income", id: "Total Pemasukan", de: "Gesamteinkommen", es: "Ingresos Totales", pt: "Renda Total", fr: "Revenu Total", it: "Reddito Totale" },
   to_budget: { en: "To be Budgeted", id: "Siap Dianggarkan", de: "Zu budgetieren", es: "Por presupuestar", pt: "A ser orçado", fr: "À budgétiser", it: "Da budgetare" },
   
   // --- Table Columns ---
@@ -90,6 +93,15 @@ const UI_TEXT: Record<string, any> = {
     pt: "Restaurar Dados (JSON)", 
     fr: "Restaurer (JSON)", 
     it: "Ripristina Dati (JSON)" 
+  },
+  btn_data_mgmt: { 
+    en: "Data Management", 
+    id: "Manajemen Data", 
+    de: "Datenverwaltung", 
+    es: "Gestión de Datos", 
+    pt: "Gestão de Dados", 
+    fr: "Gestion des Données", 
+    it: "Gestione Dati" 
   },
   btn_excel: { 
     en: "Export to Excel (.csv)", 
@@ -126,7 +138,7 @@ const UI_TEXT: Record<string, any> = {
   system: { en: "System", id: "Sistem", de: "System", es: "Sistema", pt: "Sistema", fr: "Système", it: "Sistema" },
   reset_data: { en: "Reset Budget Data", id: "Reset Data Anggaran", de: "Budgetdaten zurücksetzen", es: "Reiniciar data", pt: "Redefinir dados", fr: "Réinitialiser les données", it: "Resetta i dati" },
   cover_title: { en: "Cover Overspending", id: "Tutup Overspending", de: "Mehrausgaben decken", es: "Cubrir sobregasto", pt: "Cubrir gastos excessivos", fr: "Couvrir les dépassements", it: "Copri spesa eccessiva" },
-  move_from: { en: "Cover from:", id: "Ambil dana dari:", de: "Decken von:", es: "Cubrir desde:", pt: "Cobrir de:", fr: "Couvrir depuis :", it: "Copri da:" },
+  move_from: { en: "Cover from:", id: "Ambil dana dari:", de: "Decken von:", es: "Cubrir desde:", pt: "Cubrir de:", fr: "Couvrir depuis :", it: "Copri da:" },
   move_btn: { en: "Move Money", id: "Pindahkan Dana", de: "Geld bewegen", es: "Mover dinero", pt: "Mover dinheiro", fr: "Déplacer l'argent", it: "Sposta denaro" },
   select_funding: { en: "Select funding source", id: "Pilih sumber dana", de: "Finanzierungsquelle wählen", es: "Seleccionar fuente", pt: "Selecionar fonte", fr: "Choisir la source", it: "Seleziona fonte" }
 };
@@ -170,6 +182,13 @@ export default function BudgetPlannerPage() {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(val);
+  };
+
+  const getCurrencyCode = () => {
+    return new Intl.NumberFormat(LOCALES[lang] || 'en-US', { 
+      style: 'currency', 
+      currency: CURRENCIES[lang] || 'USD' 
+    }).formatToParts(0).find(p => p.type === 'currency')?.value || '$';
   };
 
   const handleExportCSV = () => {
@@ -218,13 +237,13 @@ export default function BudgetPlannerPage() {
         <Dialog>
           <DialogTrigger asChild>
             <Button variant="outline" size="sm" className="text-[10px] font-black uppercase border-2 h-8">
-              <Upload className="h-3 w-3 mr-1" /> {t('btn_restore')}
+              <Upload className="h-3 w-3 mr-1" /> {t('btn_data_mgmt')}
             </Button>
           </DialogTrigger>
           <DialogContent className="rounded-[2rem]">
             <DialogHeader>
               <DialogTitle className="text-2xl font-black uppercase tracking-tighter">
-                {t('btn_restore')}
+                {t('btn_data_mgmt')}
               </DialogTitle>
             </DialogHeader>
             <DataPersistence 
@@ -238,19 +257,26 @@ export default function BudgetPlannerPage() {
 
       {/* Header Summary */}
       <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 bg-card p-6 rounded-[2.5rem] shadow-xl border-2">
-        <div className="flex flex-col gap-1 items-center md:items-start">
-          <span className="text-[10px] font-black uppercase tracking-widest opacity-40">{t('total_income')}</span>
-          <div className="flex items-center gap-2">
-            <Wallet className="h-5 w-5 text-primary" />
-            <div className="relative">
+        {/* Fixed Overlap Container */}
+        <div className="flex items-center gap-4 bg-muted/30 p-5 rounded-3xl border-2 border-dashed w-full md:w-auto min-w-[300px]">
+          <div className="p-4 bg-primary/10 rounded-2xl text-primary shrink-0">
+            <Wallet className="h-7 w-7" />
+          </div>
+          <div className="flex flex-col flex-1">
+            <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">
+              {t('income_label')}
+            </span>
+            <div className="flex items-center gap-2 mt-1">
+              <span className="text-xl font-black text-muted-foreground/40 shrink-0">
+                {getCurrencyCode()}
+              </span>
               <input 
                 type="number" 
                 value={income === 0 ? '' : income} 
                 onChange={(e) => setIncome(parseFloat(e.target.value) || 0)}
-                className="text-2xl font-black bg-transparent border-b-2 border-dashed border-primary/20 focus:border-primary focus:outline-none w-40"
+                className="text-3xl font-black bg-transparent border-none focus:ring-0 focus:outline-none w-full p-0 tabular-nums"
                 placeholder="0"
               />
-              <span className="absolute -left-6 top-1 text-sm font-bold opacity-40">{CURRENCIES[lang]}</span>
             </div>
           </div>
         </div>
