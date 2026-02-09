@@ -49,6 +49,17 @@ import Papa from 'papaparse';
 import { toast } from '@/hooks/use-toast';
 
 const UI_TEXT: Record<string, any> = {
+  // --- Page Title ---
+  title: { 
+    en: "Budget Planner", 
+    id: "Perencana Anggaran", 
+    de: "Budgetplaner", 
+    es: "Planificador de Presupuesto", 
+    pt: "Planejador de Orçamento", 
+    fr: "Planificateur Budgétaire", 
+    it: "Pianificatore di Budget" 
+  },
+
   // --- Headers & Summary ---
   total_income: { en: "Total Income", id: "Total Pemasukan", de: "Gesamteinkommen", es: "Ingresos Totales", pt: "Renda Total", fr: "Revenu Total", it: "Reddito Totale" },
   to_budget: { en: "To be Budgeted", id: "Siap Dianggarkan", de: "Zu budgetieren", es: "Por presupuestar", pt: "A ser orçado", fr: "À budgétiser", it: "Da budgetare" },
@@ -64,7 +75,7 @@ const UI_TEXT: Record<string, any> = {
   btn_add_transaction: { en: "Add Transaction", id: "Tambah Transaksi", de: "Transaktion +", es: "Añadir Transacción", pt: "Adicionar Transação", fr: "Ajouter Transaction", it: "Aggiungi Transazione" },
   btn_export_json: { en: "Export JSON", id: "Ekspor JSON", de: "JSON Exportieren", es: "Exportar JSON", pt: "Exportar JSON", fr: "Exporter JSON", it: "Esporta JSON" },
   btn_import_json: { en: "Import JSON", id: "Impor JSON", de: "JSON Importieren", es: "Importar JSON", pt: "Importar JSON", fr: "Importer JSON", it: "Importa JSON" },
-  btn_export_csv: { en: "Export CSV", id: "Ekspor CSV", de: "CSV Exportieren", es: "Exportar CSV", pt: "Exportar CSV", fr: "Exporter CSV", it: "Esporta CSV" },
+  btn_export_csv: { en: "Export CSV", id: "Ekspor CSV", de: "CSV Exportieren", es: "Exportar CSV", pt: "Exportar CSV", fr: "Esporta CSV", it: "Esporta CSV" },
   
   // --- Transaction Modal / Form ---
   modal_title: { en: "New Transaction", id: "Transaksi Baru", de: "Neue Transaktion", es: "Nueva Transacción", pt: "Nova Transação", fr: "Nouvelle Transaction", it: "Nuova Transazione" },
@@ -85,7 +96,7 @@ const UI_TEXT: Record<string, any> = {
   // --- Miscellaneous ---
   all_done: { en: "All money has a job!", id: "Semua uang sudah dialokasikan!", de: "Alles Geld hat eine Aufgabe!", es: "¡Todo el dinero tiene trabajo!", pt: "Todo o dinheiro tem uma tarefa!", fr: "Tout l'argent a un job !", it: "Tutto il denaro ha un compito!" },
   over_budget: { en: "Over Budget!", id: "Anggaran Melebihi!", de: "Über Budget!", es: "¡Sobre el presupuesto!", pt: "Acima do orçamento!", fr: "Dépassement de budget !", it: "Oltre il budget!" },
-  new_item_prompt: { en: "New Category Name", id: "Nama Kategori Baru", de: "Neuer Kategoriename", es: "Nuevo nombre de categoría", pt: "Nome da nova categoria", fr: "Nom de la nouvelle catégorie", it: "Nuovo nome categoria" },
+  new_item_prompt: { en: "New Category Name", id: "Nama Kategori Baru", de: "Neuer Kategoriename", es: "Nuevo nombre de categoría", pt: "Nome da nova categoria", fr: "Nom de la nouvelle catégorie", it: "Nuovo nome kategori" },
   cover: { en: "Cover", id: "Tutup", de: "Decken", es: "Cubrir", pt: "Cobrir", fr: "Couvrir", it: "Coprire" },
   history: { en: "Recent History", id: "Riwayat Terkini", de: "Verlauf", es: "Historial", pt: "Histórico", fr: "Historique", it: "Cronologia" },
   system: { en: "System", id: "Sistem", de: "System", es: "Sistema", pt: "Sistema", fr: "Système", it: "Sistema" },
@@ -169,7 +180,7 @@ export default function BudgetPlannerPage() {
       <div className="text-center space-y-2">
         <h1 className="text-4xl font-black uppercase tracking-tighter text-foreground flex items-center justify-center gap-3">
           <Calculator className="h-8 w-8 text-primary" />
-          {t('total_income')}
+          {t('title')}
         </h1>
         <TrustBadges />
       </div>
