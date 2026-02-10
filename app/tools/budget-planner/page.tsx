@@ -122,7 +122,7 @@ const UI_TEXT: Record<string, any> = {
   label_date: { en: "Date", id: "Tanggal", de: "Datum", es: "Fecha", pt: "Data", fr: "Date", it: "Data" },
   label_payee: { en: "Payee / Note", id: "Penerima / Catatan", de: "Empfänger / Notiz", es: "Beneficiario / Nota", pt: "Beneficiário / Nota", fr: "Bénéficiaire / Note", it: "Beneficiario / Nota" },
   ph_payee: { en: "e.g. Starbucks, Salary...", id: "contoh: Indomaret, Gaji...", de: "z.B. Supermarkt...", es: "ej. Supermercado...", pt: "ex. Supermercado...", fr: "ex. Supermarché...", it: "es. Supermercato..." },
-  btn_save: { en: "Save", id: "Simpan", de: "Speichern", es: "Guardar", pt: "Salvar", fr: "Enregistrer", it: "Salva" },
+  btn_save: { en: "Save", id: "Simpan", de: "Simpan", es: "Guardar", pt: "Salvar", fr: "Enregistrer", it: "Salva" },
   btn_cancel: { en: "Cancel", id: "Batal", de: "Abbrechen", es: "Cancelar", pt: "Cancelar", fr: "Annuler", it: "Annulla" },
 
   // --- Alerts ---
@@ -140,7 +140,7 @@ const UI_TEXT: Record<string, any> = {
   cover_title: { en: "Cover Overspending", id: "Tutup Overspending", de: "Mehrausgaben decken", es: "Cubrir sobregasto", pt: "Cubrir gastos excessivos", fr: "Couvrir les dépassements", it: "Copri spesa eccessiva" },
   move_from: { en: "Cover from:", id: "Ambil dana dari:", de: "Decken von:", es: "Cubrir desde:", pt: "Cubrir de:", fr: "Couvrir depuis :", it: "Copri da:" },
   move_btn: { en: "Move Money", id: "Pindahkan Dana", de: "Geld bewegen", es: "Mover dinero", pt: "Mover dinheiro", fr: "Déplacer l'argent", it: "Sposta denaro" },
-  select_funding: { en: "Select funding source", id: "Pilih sumber dana", de: "Finanzierungsquelle wählen", es: "Seleccionar fuente", pt: "Selecionar fonte", fr: "Choisir la source", it: "Seleziona fonte" }
+  select_funding: { en: "Select funding source", id: "Pilih sumber dana", de: "Finanzierungsquelle wählen", es: "Seleccionar fuente", pt: "Seleccionar fonte", fr: "Choisir la source", it: "Seleziona fonte" }
 };
 
 const LOCALES: Record<string, string> = { 
@@ -616,9 +616,9 @@ export default function BudgetPlannerPage() {
         </DialogContent>
       </Dialog>
 
-      <ArticleSection toolId="budget-planner" />
       <SmartAd />
       <SeoContent toolId="budget-planner" />
+      <ArticleSection toolId="budget-planner" />
     </div>
   );
 }
