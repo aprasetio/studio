@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -20,7 +19,8 @@ import {
   AlertCircle,
   ArrowRightLeft,
   Upload,
-  Settings2
+  Settings,
+  FileSpreadsheet
 } from 'lucide-react';
 import { 
   Dialog, 
@@ -227,32 +227,6 @@ export default function BudgetPlannerPage() {
           {t('title')}
         </h1>
         <TrustBadges />
-      </div>
-
-      {/* Utility Toolbar */}
-      <div className="w-full flex flex-wrap gap-2 justify-end mb-[-1rem]">
-        <Button variant="outline" size="sm" onClick={handleExportCSV} className="text-[10px] font-black uppercase border-2 h-8">
-          <Download className="h-3 w-3 mr-1" /> {t('btn_excel')}
-        </Button>
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button variant="outline" size="sm" className="text-[10px] font-black uppercase border-2 h-8">
-              <Upload className="h-3 w-3 mr-1" /> {t('btn_data_mgmt')}
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="rounded-[2rem]">
-            <DialogHeader>
-              <DialogTitle className="text-2xl font-black uppercase tracking-tighter">
-                {t('btn_data_mgmt')}
-              </DialogTitle>
-            </DialogHeader>
-            <DataPersistence 
-              data={{ income, categories, transactions }} 
-              onRestore={(data) => restoreData(data)} 
-              fileNamePrefix="versokit-budget" 
-            />
-          </DialogContent>
-        </Dialog>
       </div>
 
       {/* Header Summary */}
@@ -544,26 +518,52 @@ export default function BudgetPlannerPage() {
             </CardContent>
           </Card>
 
+          {/* SECTION: SISTEM */}
           <Card className="bg-card border-2 rounded-[2rem] p-6 space-y-4 shadow-sm">
             <div className="flex items-center gap-3 border-b pb-4">
-              <Database className="h-5 w-5 text-primary" />
+              <Settings className="h-5 w-5 text-primary" />
               <h3 className="font-black uppercase tracking-tight text-sm">{t('system')}</h3>
             </div>
-            <div className="flex flex-col gap-2">
-              <Button 
-                variant="outline" 
+            <div className="flex flex-col gap-3">
+              {/* 1. Export CSV Button */}
+              <button 
                 onClick={handleExportCSV}
-                className="w-full h-12 font-black uppercase tracking-widest text-[10px] border-2"
+                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold uppercase tracking-widest text-[10px] hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
               >
-                <Download className="mr-2 h-4 w-4" /> {t('btn_excel')}
-              </Button>
-              <Button 
-                variant="outline" 
+                <FileSpreadsheet size={18} className="text-emerald-500" />
+                {t('btn_excel')}
+              </button>
+
+              {/* 2. Data Management (JSON) Button */}
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold uppercase tracking-widest text-[10px] hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+                    <Database size={18} className="text-blue-500" />
+                    {t('btn_data_mgmt')}
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="rounded-[2rem]">
+                  <DialogHeader>
+                    <DialogTitle className="text-2xl font-black uppercase tracking-tighter">
+                      {t('btn_data_mgmt')}
+                    </DialogTitle>
+                  </DialogHeader>
+                  <DataPersistence 
+                    data={{ income, categories, transactions }} 
+                    onRestore={(data) => restoreData(data)} 
+                    fileNamePrefix="versokit-budget" 
+                  />
+                </DialogContent>
+              </Dialog>
+
+              {/* 3. Reset Data Button */}
+              <button 
                 onClick={() => { if(confirm(globalT('reset') + '?')) resetMonth() }}
-                className="w-full h-12 font-black uppercase tracking-widest text-[10px] text-destructive hover:bg-red-50 border-2"
+                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30 text-red-600 dark:text-red-400 font-bold uppercase tracking-widest text-[10px] hover:bg-red-100 dark:hover:bg-red-900/20 transition-colors"
               >
-                <X className="mr-2 h-4 w-4" /> {t('reset_data')}
-              </Button>
+                <Trash2 size={18} />
+                {t('reset_data')}
+              </button>
             </div>
           </Card>
         </div>
