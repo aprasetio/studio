@@ -184,7 +184,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
   <li><strong>Kleine Online-Shops:</strong> Für alle, die von zu Hause aus verkaufen und möchten, dass der Bestand im Zimmer ordentlich überwacht wird.</li>
   <li><strong>Kioske & Lebensmittelgeschäfte:</strong> Überwachung der Vorräte an Grundnahrungsmitteln und des täglichen Bedarfs.</li>
   <li><strong>Dienstleistungs- & Ersatzteilgeschäfte:</strong> Motorradwerkstätten, die Zündkerzen/Öl lagern, oder Klimatechniker, die den Freon-Bestand überwachen.</li>
-  <li><strong>Hobbys & Sammler:</strong> Perfekt für die Auflistung von Buch-, Schuh- oder Spielzeugsammlungen (Gundam/Hotwheels), um Doppelkäufe zu vermeiden.</li>
+  <li><strong>Hobbys & Sammler:</strong> Perfekt für die Auflistung von Buch-, Schuh- oder Spielzeugsammlungen (Gundam/Hotwheels) erhalten, um Doppelkäufe zu vermeiden.</li>
 </ul>`
         },
         {
@@ -242,7 +242,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
           content: `<ul>
   <li><strong>Tiendas online pequeñas:</strong> Para quienes venden desde casa y quieren tener el stock de su habitación bien controlado.</li>
   <li><strong>Tiendas de alimentación y abarrotes:</strong> Control de suministros de alimentos básicos y necesidades diarias.</li>
-  <li><strong>Negocios de servicios y repuestos:</strong> Talleres de motos con stock de bujías/aceite, o técnicos de aire acondicionado que controlan el stock de freón.</li>
+  <li><strong>Negocios de servicios y repuestos:</strong> Talleres de motos con stock de bujías/aceite, o técnicos de aire acondicionado que controlan el stock de freon.</li>
   <li><strong>Aficiones y coleccionistas:</strong> Perfecto para listar colecciones de libros, zapatos o juguetes para evitar compras duplicadas.</li>
 </ul>`
         },
@@ -269,7 +269,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "Problemas clássicos que costumam travar os pequenos negócios",
-          content: `<p>Muitos proprietários de PMEs ficam presos em problemas de gestão de armazém por falta das ferramentas certas:</p>
+          content: `<p>Muchos propietarios de PMEs ficam presos em problemas de gestão de armazém por falta das ferramentas certas:</p>
 <ul>
   <li><strong>"Artigos perdidos" sem rasto:</strong> O stock nas prateleiras e nos registos costuma diferir por esquecer de anotar as transações em tempo real.</li>
   <li><strong>Dinheiro morto no armazém:</strong> Continua a comprar artigos dos quais ainda existem unidades, pelo que o seu capital permanece inativo sem gerar lucro.</li>
@@ -313,7 +313,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
   <li><strong>Saída de mercadoria:</strong> Clique no botão (-) cada vez que um artigo for vendido ou retirado.</li>
   <li><strong>Monitorizar painel:</strong> Veja o capital total e compre imediatamente os artigos que já estiverem a vermelho.</li>
 </ol>
-<p><strong>Comece a organizar a gestão do seu armazém hoje mesmo!</strong> Um negócio fluido começa com uma gestão de stock correta. Deixe de adivinhar a quantidade dos seus produtos e comece a usar um sistema digital de precisão. Stock mais organizado, negócio mais fluido. Experimente o Simple Inventory Manager agora mesmo!</p>`
+<p><strong>Comece a organizar a gestão do seu armazém hoje mesmo!</strong> Um negócio fluido começa com uma gestão de stock correta. Deixe de adivinar a quantidade dos seus produtos e comece a usar um sistema digital de precisão. Stock mais organizado, negócio mais fluido. Experimente o Simple Inventory Manager agora mesmo!</p>`
         }
       ]
     },
@@ -377,7 +377,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
       ]
     },
     it: {
-      title: "Gestione Magazzino Semplice: Gestione Scorte per PMI Gratis",
+      title: "App Gestione Magazzino Semplice: Gestisci l'inventario delle PMI gratuitamente",
       sections: [
         {
           title: "Stanco del conteggio manuale?",
@@ -400,7 +400,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
           content: `<p>Questo strumento è un libro scorte digitale che esegue tutti i calcoli matematici complessi per voi in modo automatico.</p>
 <ol>
   <li><strong>Carico & Scarico (Un clic):</strong> Aggiornare le scorte non richiede di riscrivere tutto. Usate i pulsanti rapidi per aggiungere entrate o ridurre gli articoli venduti. Il saldo delle scorte verrà aggiornato automaticamente all'istante.</li>
-  <li><strong>Avvisi scorte basse:</strong> Non lasciate che il vostro magazzino rimanga vuoto. Questo strumento è dotato di un indicatore visivo (colore rosso) che si accenderá se le scorte di un articolo sono al di sotto del limite minimo da voi definito. È ora di rifornirsi prima che finiscano!</li>
+  <li><strong>Avvisi scorte basse:</strong> Non lasciate che il vostro magazzino rimanga vuoto. Questo strumento è dotato di un indicatore visivo (colore rosso) che si accenderà se le scorte di un articolo sono al di sotto del limite minimo da voi definito. È ora di rifornirsi prima che finiscano!</li>
   <li><strong>Valutazione automatica degli asset:</strong> Potete vedere il valore totale del vostro denaro che attualmente è sotto forma di merce in magazzino. Il sistema calcolerà l'accumulo dei prezzi di acquisto/costo per farvi conoscere esattamente il totale dei vostri asset aziendali.</li>
   <li><strong>Ricerca & filtri istantanei:</strong> Avete centinaia di articoli? Non preoccupatevi. La nostra funzione di ricerca è molto veloce. Basta digitare il nome dell'articolo e i dati appariranno istantaneamente senza dover scorrere uno per uno.</li>
 </ol>`
@@ -458,7 +458,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
   <li><strong>Amplop Tabungan:</strong> Rp 1.000.000</li>
   <li><strong>Amplop Hiburan:</strong> Rp 1.000.000</li>
 </ul>
-<p>Anda terus membagi uang tersebut sampai uang di tangan Anda sisa <strong>NOL (0)</strong>. Artinya, semua uang sudah punya pos masing-masing.</p>
+<p>Anda terus membagi uang tersebut sampai uang di tangan Anda sisa <strong>NOL (0)</strong>. Artinya, semua uang sudah punya pos masing-masing. </p>
 <p>VersoKit Budget Planner mendigitalkan sistem amplop ini.</p>
 <ul>
   <li><strong>Expense Tracker Biasa:</strong> "Uangku sisa berapa ya?" (Reaktif/Takut).</li>
@@ -580,7 +580,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
   <li><strong>Umschlag zum Sparen:</strong> 1.000 €</li>
   <li><strong>Umschlag für Unterhaltung:</strong> 1.000 €</li>
 </ul>
-<p>Sie teilen das Geld so lange auf, bis das Geld in Ihrer Hand <strong>NULL (0)</strong> ist. Das bedeutet, dass jedes Geld bereits seinen eigenen zugewiesenen Platz hat.</p>
+<p>Sie teilen das Geld so lange auf, bis das Geld in Ihrer Hand <strong>NULL (0)</strong> ist. Das bedeutet, dass jedes Geld bereits seinen eigenen zugewiesenen Platz hat. </p>
 <p>Der VersoKit Budgetplaner digitalisiert dieses Umschlagsystem.</p>
 <ul>
   <li><strong>Standard-Ausgaben-Tracker:</strong> „Wie viel Geld habe ich noch übrig?“ (Reaktiv/Ängstlich).</li>
@@ -702,11 +702,11 @@ export const TOOL_ARTICLES: ArticleCollection = {
   <li><strong>Envelope de Poupança:</strong> R$ 1.000</li>
   <li><strong>Envelope de Entretenimento:</strong> R$ 1.000</li>
 </ul>
-<p>Você continua dividindo esse dinheiro até que o dinheiro na sua mão seja <strong>ZERO (0)</strong>. Isso significa que todo o dinheiro já tem o seu próprio posto atribuído.</p>
+<p>Você continua dividindo esse dinheiro até que o dinheiro na sua mão seja <strong>ZERO (0)</strong>. Isso significa que todo o dinheiro já tem o seu próprio posto atribuído. </p>
 <p>O VersoKit Budget Planner digitaliza esse sistema de envelopes.</p>
 <ul>
   <li><strong>Rastreador de Despesas Padrão:</strong> "Quanto dinheiro me resta?" (Reativo/Com medo).</li>
-  <li><strong>Planejador de Orçamento (ZBB):</strong> "Qual plano eu tenho para este dinheiro?" (Proativo/Controle).</li>
+  <li><strong>Planejador de Orçamento (ZBB):</strong> "Qual plano eu tenho para este dinheiro?" (Proactive/Controle).</li>
 </ul>`
         },
         {
@@ -723,7 +723,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
           content: `<ul>
   <li><strong>Sistema "A ser Orçado":</strong> Na parte superior do aplicativo, você verá um número grande. Esse é o seu dinheiro que ainda não tem um "trabalho". Sua missão é gastar esse número em categorias até que o indicador seja 0 (Zero).</li>
   <li><strong>Subsídio Cruzado (Aceitar a Realidade):</strong> A vida é dinâmica. Às vezes gastamos demais na categoria "Comida". Se a sua categoria de Comida estiver negativa (vermelha), esta ferramenta o força a ser honesto: De onde você tira o dinheiro para cobri-lo? Você deve tirá-lo de outra categoria (por exemplo, reduzir a parte de "Entretenimento"). Isso ensina a realidade de que o dinheiro não pode aparecer de árvores.</li>
-  <li><strong>100% Privacidade (Lado do Cliente e Offline):</strong> Sabemos que os dados financeiros são sensíveis. Sem login bancário, sem upload de identificação. Todos os data são armazenados no LocalStorage do seu dispositivo (computador/telefone). Nosso servidor não vê seus dados de forma alguma. <strong>Pronto para usar Offline</strong>, de modo que pode ser usado sem problemas mesmo com sinal ruim ou em modo avião.</li>
+  <li><strong>100% Privacidade (Lado do Cliente e Offline):</strong> Sabemos que os dados financeiros são sensíveis. Sem login bancário, sem upload de identificação. Todos os dados são armazenados no LocalStorage do seu dispositivo (computador/telefone). Nosso servidor não vê seus dados de forma alguma. <strong>Pronto para usar Offline</strong>, de modo que pode ser usado sem problemas mesmo com sinal ruim ou em modo avião.</li>
   <li><strong>Exportar e Importar Dados:</strong> Mudando de telefone ou quer uma análise mais aprofundada no Excel? Você pode fazer backup de seus dados para o formato JSON ou CSV (Excel) a qualquer momento. Você tem controle total sobre seus dados.</li>
 </ul>`
         },
@@ -763,7 +763,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
   <li><strong>Enveloppe Épargne :</strong> 1 000 €</li>
   <li><strong>Enveloppe Divertissement :</strong> 1 000 €</li>
 </ul>
-<p>Vous continuez à diviser cet argent jusqu'à ce que l'argent dans votre main soit de <strong>ZÉRO (0)</strong>. Cela signifie que tout l'argent a déjà son propre poste assigné.</p>
+<p>Vous continuez à diviser cet argent jusqu'à ce que l'argent dans votre main soit de <strong>ZÉRO (0)</strong>. Cela signifie que tout l'argent a déjà son propre poste assigné. </p>
 <p>VersoKit Budget Planner numérise ce système d'enveloppes.</p>
 <ul>
   <li><strong>Suivi des Dépenses Standard :</strong> "Combien d'argent me reste-t-il ?" (Réactif/Craintif).</li>
@@ -824,7 +824,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
   <li><strong>Busta Risparmi:</strong> 1.000 €</li>
   <li><strong>Busta Intrattenimento:</strong> 1.000 €</li>
 </ul>
-<p>Continui a dividere quel denaro finché l'importo nella tua mano è <strong>ZERO (0)</strong>. Ciò significa che tutto il denaro ha già il proprio posto assegnato.</p>
+<p>Continui a dividere quel denaro finché l'importo nella tua mano è <strong>ZERO (0)</strong>. Ciò significa che tutto il denaro ha già il proprio posto assegnato. </p>
 <p>VersoKit Budget Planner digitalizza questo sistema di buste.</p>
 <ul>
   <li><strong>Tracker delle Spese Standard:</strong> "Quanto denaro mi resta?" (Reattivo/Timoroso).</li>
@@ -833,7 +833,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "Problemi Finanziari Che Risolviamo",
-          content: `<p>Questo strumento è specificamente progettato per superare le comuni "malattie" finanziarie:</p>
+          content: `<p>Questo strumento è specificamente progettato per superare le comuni "maladies" finanziarie:</p>
 <ol>
   <li><strong>Sindrome della "Piccola Perdita":</strong> Le piccole spese come il caffè alla moda, le tariffe del parcheggio, le commissioni bancarie o gli abbonamenti alle app passano spesso inosservate. All'improvviso, il totale ammonta a migliaia. Con il BBZ, sei costretto a preventivare queste piccole cose all'inizio.</li>
   <li><strong>Paura di Controllare il Saldo:</strong> Molte persone hanno paura di aprire il mobile banking perché temono di vederne il contenuto. Con questo strumento, ti sentirai calmo. Perché? Perché sai esattamente che i soldi per pagare l'affitto sono al sicuro, i soldi per il cibo sono al sicuro e i risparmi sono già stati accantonati.</li>
@@ -844,9 +844,9 @@ export const TOOL_ARTICLES: ArticleCollection = {
           title: "Caratteristiche Principali di VersoKit Budget Planner",
           content: `<ul>
   <li><strong>Sistema "Da Preventivare":</strong> Nella parte superiore dell'applicazione, vedrai un numero grande. Quello è il tuo denaro che non ha ancora un "lavoro". La tua missione è spendere quella cifra nelle categorie finché l'indicatore non è 0 (Zero).</li>
-  <li><strong>Sussidio Incrociato (Accettare la Realtà):</strong> La vita è dinamica. A volte spendiamo troppo nella categoria "Cibo". Se la tua categoria Cibo è negativa (rossa), questo strumento ti costringe a essere onesto: da dove prendi i soldi per coprirlo? Devi prenderli da un'altra categoria (ad esempio, riducendo la quota per l'"Intrattenimento"). Questo insegna la realtà che i soldi non possono apparire per magia.</li>
+  <li><strong>Sussidio Incrociato (Accettare la Realtà):</strong> La vita è dinamica. A volte spendiamo troppo nella categoria "Cibo". Se la tua categoria Cibo è negativa (rossa), questo strumento ti costringe a essere onesto: da dove prendi i soldi per coprirlo? Devi prenderli da un'altra categoria (ad esempio, riducendo la quota per l''"Intrattenimento"). Questo insegna la realtà che i soldi non possono apparire per magia.</li>
   <li><strong>100% Privacy (Lato Client e Offline):</strong> Sappiamo che i dati finanziari sono sensibili. Nessun accesso bancario, nessun caricamento di documenti. Tutti i dati sono memorizzati nel LocalStorage del tuo dispositivo (computer/telefono). Il nostro server non vede affatto i tuoi dati. <strong>Pronto per l'Offline</strong>, quindi può essere utilizzato senza problemi anche con scarso segnale o in modalità aereo.</li>
-  <li><strong>Esporta e Importa Dati:</strong> Cambi telefono o desideri un'ulteriore analisi in Excel? Puoi eseguire il backup dei tuoi dati in formato JSON o CSV (Excel) in qualsiasi momento. Hai il pieno controllo dei tuoi dati.</li>
+  <li><strong>Esporta e Importa Dati:</strong> Cambi telefono o desideri un'ulteriore analisi in Excel? Puoi eseguire il backup dei tuoi dati in formato JSON o CSV (Excel) a qualsiasi momento. Hai il pieno controllo dei tuoi dati.</li>
 </ul>`
         },
         {
@@ -1184,7 +1184,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
           content: `<p>Senza strumenti o app, giocare all'Americano può diventare caotico:</p>
 <ul>
   <li><strong>Tempo Sprecato:</strong> Discutere su chi gioca contro chi può richiedere da solo 5-10 minuti.</li>
-  <li><strong>Ingiusto:</strong> Senza un algoritmo, esiste la possibilità che una persona ottenga costantemente lo stesso partner.</li>
+  <li><strong>Ingiusto:</strong> Senza un algoritmo, esiste la posibilidad che una persona ottenga costantemente lo stesso partner.</li>
   <li><strong>Errori di Calcolo:</strong> Sommare manualmente i punteggi di dozzine di partite su carta è molto soggetto a errori.</li>
 </ul>`
         },
@@ -1199,7 +1199,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "Come Usare Questo Generatore di Americano",
-          content: `<p>È molto facile, basta seguire questi passaggi:</p>
+          content: `<p>È molto facile, basta seguire questi passaggi :</p>
 <ol>
   <li><strong>Inserisci i Nomi dei Giocatori:</strong> Digita i nomi di tutti i partecipanti (minimo 4 persone). Numero dispari? Nessun problema, il nostro sistema può gestire sostituti rotanti/periodi di riposo.</li>
   <li><strong>Scegli i Punti Obiettivo:</strong> Determina quanti punti giocare (solitamente 24 o 32 punti).</li>
@@ -1233,9 +1233,9 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "Mengapa Anda Butuh Papan Skor VersoKit?",
-          content: `<p>Alat ini bukan sekadar pencatat angka. Kami merancangnya dengan fitur spesifik yang mengikuti standar peraturan futsal internasional (FIFA). Berikut adalah fitur "daging" yang bisa Anda nikmati:</p>
+          content: `<p>Alat ini bukan sekadar pencatat angka. Kami merancangnya dengan fitur spesifik yang mengikuti standar peraturan futsal internasional (FIFA). Berikut adalah fitur \"daging\" yang bisa Anda nikmati:</p>
 <ol>
-  <li><strong>Timer Pertandingan (Countdown) yang Fleksibel:</strong> Dalam futsal profesional, waktu adalah segalanya. Alat ini dilengkapi countdown timer (waktu mundur) yang bisa Anda atur—baik standar 20 menit (babak pro) atau 15 menit (sparring santai). <strong>Pause & Resume:</strong> Bola keluar lapangan? Kiper cedera? Cukup tekan tombol Pause. Waktu berhenti, dan Resume saat bola bergulir kembali. Sangat cocok untuk simulasi "Waktu Bersih".</li>
+  <li><strong>Timer Pertandingan (Countdown) yang Fleksibel:</strong> Dalam futsal profesional, waktu adalah segalanya. Alat ini dilengkapi countdown timer (waktu mundur) yang bisa Anda atur—baik standar 20 menit (babak pro) atau 15 menit (sparring santai). <strong>Pause & Resume:</strong> Bola keluar lapangan? Kiper cedera? Cukup tekan tombol Pause. Waktu berhenti, dan Resume saat bola bergulir kembali. Sangat cocok untuk simulasi \"Waktu Bersih\".</li>
   <li><strong>Penghitung Pelanggaran (Foul Counter) - Fitur Krusial!:</strong> Ini adalah fitur yang sering dilupakan aplikasi skor biasa. Di futsal, akumulasi pelanggaran sangat menentukan hasil pertandingan. Alat kami melacak akumulasi foul dari 0 hingga 5. <strong>Indikator Visual:</strong> Saat tim mencapai 5 pelanggaran, Anda dan pemain di lapangan akan sadar bahwa pelanggaran berikutnya (ke-6) berarti hukuman Tendangan Penalti Titik Kedua (Second Penalty Mark).</li>
   <li><strong>Tampilan Profesional (Customizable):</strong> <strong>Edit Nama Tim:</strong> Ucapkan selamat tinggal pada tulisan membosankan "Home vs Away". Anda bisa menggantinya menjadi nama tim asli, misal: "Garuda FC" vs "Harimau FC". <strong>Indikator Babak:</strong> Penanda jelas untuk Babak 1, Babak 2, atau Extra Time.</li>
 </ol>`
@@ -1380,7 +1380,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
       sections: [
         {
           title: "Eleve el Nivel de sus Partidos de Fútbol Sala",
-          content: `<p>Los partidos de fútbol sala se sienten menos emocionantes sin un marcador y un temporizador claros. ¿Alguna vez ha vivido un momento incómodo durante un entrenamiento: debatiendo el marcador (\"Espera, ¿era 4-3 o 4-4?\") o confundido sobre cuántos minutos quedan?</p>
+          content: `<p>Los partidos de fútbol sala se sienten menos emocionantes sin un marcador y un temporizador claros. ¿Alguna vez ha vivido un momento incómodo durante un entrenamiento: debatiendo el marcador (\"Espera, ¿era 4-3 o 4-4?\") o confundido sobre cuántos de minutos quedan?</p>
 <p>Un problema clásico en las canchas de fútbol sala no profesionales es la falta de un marcador adecuado. El precio de los marcadores digitales físicos puede ser muy elevado, una inversión fuerte para administradores de canchas pequeñas o comunidades. Mientras tanto, usar un cronómetro en un teléfono suele ser ineficaz porque la pantalla es pequeña y solo puede ser vista por una persona.</p>
 <p>VersoKit trae una solución inteligente: <strong>Marcador Digital de Fútbol Sala</strong>. ¡Este herramienta web transforma su computadora portátil, tableta o teléfono en un marcador profesional al instante y de forma gratuita!</p>`
         },
@@ -1743,7 +1743,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
           content: `<p>Es ist ganz einfach, ohne dass eine App installiert werden muss. Senden Sie einfach den Link zu dieser Seite an Ihre Tennis-WhatsApp-Gruppe.</p>
 <ol>
   <li><strong>Spieler eingeben:</strong> Geben Sie die Namen aller anwesenden Teilnehmer ein (mindestens 4 Personen).</li>
-  <li><strong>Anzahl der Plätze wählen:</strong> Legen Sie fest, wie viele Plätze heute zur Verfügung stehen.</li>
+  <li><strong>Anzahl der Plätze wählen:</strong> Legen Sie fest, wie heute zur Verfügung stehen.</li>
   <li><strong>Runde 1 generieren:</strong> Klicken Sie auf die Schaltfläche, und das System zeigt an, wer mit wem auf welchem Platz gepaart ist.</li>
   <li><strong>Spielen & Ergebnis eingeben:</strong> Nachdem das Spiel beendet ist (z. B. Stand 6:4 oder Tie-Break 10:8), geben Sie das Ergebnis ein.</li>
   <li><strong>Weiter zur nächsten Runde:</strong> Das System mischt die Partner für die zweite Runde neu.</li>
@@ -1826,7 +1826,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
       sections: [
         {
           title: "Entediado com os Mesmos Parceiros?",
-          content: `<p>Você tem um grupo de tênis regular, mas está começando a ficar entediado porque os parceiros de jogo são sempre os mesmos? Ou talvez você costume ter dores de cabeça ao organizar quem deve jogar na Quadra 1, na Quadra 2, e quem deve descansar quando o número de jogadores é ímpar?</p>
+          content: `<p>Você tem um grupo de tênis regular, mas está começando a ficar entediado porque os parceiros de jogo são sempre os mesmos? Ou talvez você costume ter dores de cabeça ao organizar quem deve jogar na Quadra 1, na Quadra 2, e quem deve descansar quando o número de jogadores é ímpio?</p>
 <p>Gerir manualmente sessões de tênis social para 8 a 12 pessoas é, de fato, complicado. Notas em papel são frequentemente perdidas, as divisões de equipe são muitas vezes consideradas "panelinhas" e perde-se tempo apenas debatendo de quem é a vez de jogar.</p>
 <p>Deixe a forma antiga para trás. Use este <strong>Gerador de Duplas de Tênis</strong> do VersoKit. Pense nesta ferramenta como seu "Gestor de Torneios de Bolso".</p>`
         },
@@ -1887,7 +1887,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
         {
           title: "Lassé de toujours jouer avec les mêmes partenaires ?",
           content: `<p>Vous avez un groupe de tennis régulier mais vous commencez à vous ennuyer parce que les partenaires de jeu sont toujours les mêmes ? Ou peut-être avez-vous souvent mal à la tête en organisant qui doit jouer sur le court 1, le court 2, et qui doit se reposer lorsque le nombre de joueurs est impair ?</p>
-<p>Gérer manuellement des sessions de tennis social pour 8 à 12 personnes est en effet compliqué. Les notes sur papier se perdent souvent, les divisions d'équipe sont souvent considérées comme des "clans" et on perd du temps rien qu'à débattre de qui doit jouer.</p>
+<p>Gérer manuellement des sessions de tennis social pour 8 à 12 personnes est en effet compliqué. Les notes sur papier se perdent souvent, les divisions d'équipe sont souvent considérées comme des "clans" et on perd du temps rien qu'à débattre de qui doit jouer. </p>
 <p>Laissez tomber l'ancienne méthode. Utilisez ce <strong>Générateur de Doubles de Tennis</strong> de VersoKit. Considérez cet outil comme votre "gestionnaire de tournoi de poche".</p>`
         },
         {
@@ -1947,57 +1947,57 @@ export const TOOL_ARTICLES: ArticleCollection = {
         {
           title: "Annoiato dai Soliti Partner?",
           content: `<p>Hai un gruppo di tennis regolare ma inizi ad annoiarti perché i compagni di gioco sono sempre gli stessi? O forse hai spesso il mal di testa per organizzare chi deve giocare sul Campo 1, sul Campo 2 e chi deve riposare quando il numero di giocatori è dispari?</p>
-<p>Gestire manualmente sessioni di tennis sociale per 8-12 persone è, in effetti, complicato. Gli appunti cartacei vengono spesso smarriti, le divisioni delle squadre sono spesso considerate "esclusive" e si perde tempo solo a discutere su chi debba giocare.</p>
+<p>Gestire manualmente sessioni di tennis sociale per 8-12 persone è, in effetti, complicato. Gli appunti cartacei vengono spesso smarriti, le divisioni delle squadre sono spesso considerate "esclusive" e si perde tempo solo a discutere su chi debba giocare. </p>
 <p>Lasciati alle spalle il vecchio metodo. Usa questo <strong>Generatore di Doppi Tennis</strong> di VersoKit. Considera questo strumento come il tuo "gestore di tornei tascabile".</p>`
         },
         {
           title: "Problemi Classici sul Campo da Tennis",
-          content: `<p>Senza un sistema chiaro, le sessioni di allenamento del club o le partite amichevoli incontrano spesso ostacoli:</p>
+          content: `<p>Senza un sistema chiaro, le sessioni di allenamento del club o le partite amichevoli incontrano spesso ostacoli :</p>
 <ul>
-  <li><strong>Partner Monotoni:</strong> I giocatori tendono a giocare solo con i loro amici stretti (clique), facendo sentire i nuovi membri isolati.</li>
-  <li><strong>Tempo Sprecato:</strong> Organizzare 8 persone su 2 campi è facile. Ma cosa succede se ci sono 13 persone su 3 campi? Calcolare le rotazioni manuali richiede molto tempo.</li>
-  <li><strong>Squilibrio di Abilità:</strong> Spesso i giocatori bravi si riuniscono tra loro, rendendo il gioco sbilanciato e meno eccitante.</li>
-  <li><strong>Dilemma del Giocatore Dispari:</strong> Chi deve sedersi in panchina? Senza una rotazione equa, potrebbe esserci una persona seduta troppo a lungo (la "cenerentola").</li>
+  <li><strong>Partner Monotoni :</strong> I giocatori tendono a giocare solo con i loro amici stretti (clique), facendo sentire i nuovi membri isolati.</li>
+  <li><strong>Tempo Sprecato :</strong> Organizzare 8 persone su 2 campi è facile. Ma cosa succede se ci sono 13 persone su 3 campi? Calcolare le rotazioni manuali richiede molto tempo.</li>
+  <li><strong>Squilibrio di Abilità :</strong> Spesso i giocatori bravi si riuniscono tra loro, rendendo il gioco sbilanciato e meno eccitante.</li>
+  <li><strong>Dilemma del Giocatore Dispari :</strong> Chi deve sedersi in panchina? Senza una rotazione equa, potrebbe esserci una persona seduta troppo a lungo (la "cenerentola").</li>
 </ul>`
         },
         {
-          title: "Soluzione VersoKit: Caratteristiche Chiave del Generatore di Tennis",
-          content: `<p>Questo strumento è progettato per risolvere i problemi sopra citati in pochi secondi. Ecco le sue caratteristiche principali:</p>
+          title: "Soluzione VersoKit : Caratteristiche Chiave del Generatore di Tennis",
+          content: `<p>Questo strumento è progettato per risolvere i problemi sopra citati in pochi secondi. Ecco le sue caratteristiche principali :</p>
 <ol>
-  <li><strong>Generatore di Coppie per il Doppio:</strong> Il nostro sistema utilizza un algoritmo di Social Mixer. A differenza dei tornei ufficiali (partner fisso), questo strumento si concentra sul partner a rotazione. Cambierai partner in ogni turno automaticamente. L'obiettivo è che tutti i membri si conoscano e che il gioco sia più fluido.</li>
-  <li><strong>Gestione di Più Campi:</strong> Hai una sessione numerosa con 3 o 4 campi contemporaneamente? Nessun problema. Questo strumento dividerà i giocatori equamente in "Campo 1", "Campo 2", ecc. Non devi preoccuparti di dividere la folla.</li>
-  <li><strong>Sistema di Panchina Intelligente (Rotazione di Riposo Equa):</strong> Se il numero di giocatori è dispari (ad esempio, 9 o 11 persone), il nostro sistema ruoterà i turni di riposo automaticamente. L'algoritmo assicura che nessun giocatore rimanga seduto due volte di seguito (a meno che tutti non abbiano già fatto il loro turno di riposo).</li>
-  <li><strong>Classifica e Statistiche Individuali:</strong> Sebbene il formato sia il doppio, questo strumento traccia le vittorie individuali (rapporto vittorie/sconfitte e differenza game). Alla fine della sessione, puoi vedere chi è il "Re del Campo" quel giorno in base ai dati statistici.</li>
+  <li><strong>Generatore di Coppie per il Doppio :</strong> Il nostro sistema utilizza un algoritmo di Social Mixer. A differenza dei tornei ufficiali (partner fisso), questo strumento si concentra sul partner a rotazione. Cambierai partner in ogni turno automaticamente. L'obiettivo è che tutti i membri si conoscano e che il gioco sia più fluido.</li>
+  <li><strong>Gestione di Più Campi :</strong> Hai una sessione numerosa con 3 o 4 campi contemporaneamente? Nessun problema. Questo strumento dividerà i giocatori equamente in "Campo 1", "Campo 2", ecc. Non devi preoccuparti di dividere la folla.</li>
+  <li><strong>Sistema di Panchina Intelligente (Rotazione di Riposo Equa) :</strong> Se il numero di giocatori è dispari (ad esempio, 9 o 11 persone), il nostro sistema ruoterà i turni di riposo automaticamente. L'algoritmo assicura che nessun giocatore rimanga seduto due volte di seguito (a meno che tutti non abbiano già fatto il loro turno di riposo).</li>
+  <li><strong>Classifica e Statistiche Individuali :</strong> Sebbene il formato sia il doppio, questo strumento traccia le vittorie individuali (rapporto vittorie/sconfitte e differenza game). Alla fine della sessione, puoi vedere chi è il "Re del Campo" quel giorno in base ai dati statistici.</li>
 </ol>`
         },
         {
-          title: "Per chi è adatto questo strumento?",
+          title: "Per chi è adatto questo strumento ?",
           content: `<ul>
-  <li><strong>Partite Amichevoli in Ufficio/Condominio:</strong> Un gruppo di amici dell'ufficio o residenti che affittano un campo per 2-3 ore nel fine settimana.</li>
-  <li><strong>Club di Tennis Amatoriali e Allenatori:</strong> Allenatori che desiderano organizzare un "torneo interno" o un Sunday Mixer per rendere i loro membri più affiatati.</li>
-  <li><strong>Incontri Sociali di Tennis:</strong> Gruppi che vogliono giocare in modo informale (ad esempio, formato Tie-Break) ma desiderano comunque un segnapunti ordinato ed equo.</li>
+  <li><strong>Partite Amichevoli in Ufficio/Condominio :</strong> Un gruppo di amici dell'ufficio o residenti che affittano un campo per 2-3 ore nel fine settimana.</li>
+  <li><strong>Club di Tennis Amatoriali e Allenatori :</strong> Allenatori che desiderano organizzare un "torneo interno" o un Sunday Mixer per rendere i loro membri più affiatati.</li>
+  <li><strong>Incontri Sociali di Tennis :</strong> Gruppi che vogliono giocare in modo informale (ad esempio, formato Tie-Break) ma desiderano comunque un segnapunti ordinato ed equo.</li>
 </ul>`
         },
         {
           title: "Come Usare Questo Generatore di Calendario",
           content: `<p>È molto facile, senza la necessità di installare alcuna app. Invia semplicemente il link a questa pagina al tuo gruppo WhatsApp di tennis.</p>
 <ol>
-  <li><strong>Inserire i Giocatori:</strong> Inserisci i nomi di tutti i partecipanti presenti (minimo 4 persone).</li>
-  <li><strong>Scegliere il Numero di Campi:</strong> Determina quanti campi sono disponibili oggi.</li>
-  <li><strong>Generare il Turno 1:</strong> Fai clic sul pulsante e il sistema visualizzerà chi è accoppiato con chi, su quale campo.</li>
-  <li><strong>Giocare e Inserire il Punteggio:</strong> Al termine della partita (ad esempio, punteggio 6-4 o tie-break 10-8), inserisci il punteggio.</li>
-  <li><strong>Continuare al Turno Successivo:</strong> Il sistema rimescolerà i partner per il secondo turno.</li>
+  <li><strong>Inserire i Giocatori :</strong> Inserisci i nomi di tutti i partecipanti presenti (minimo 4 persone).</li>
+  <li><strong>Scegliere il Numero di Campi :</strong> Determina quanti campi sono disponibili oggi.</li>
+  <li><strong>Generare il Turno 1 :</strong> Fai clic sul pulsante e il sistema visualizzerà chi è accoppiato con chi, su quale campo.</li>
+  <li><strong>Giocare e Inserire il Punteggio :</strong> Al termine della partita (ad esempio, punteggio 6-4 o tie-break 10-8), inserisci il punteggio.</li>
+  <li><strong>Continuare al Turno Successivo :</strong> Il sistema rimescolerà i partner per il secondo turno.</li>
 </ol>`
         },
         {
           title: "Comprendere i Formati di Gioco",
-          content: `<p>Per massimizzare l'uso di questo strumento, ecco alcuni termini di formato supportati:</p>
+          content: `<p>Per massimizzare l'uso di questo strumento, ecco alcuni termini di formato supportati :</p>
 <ul>
-  <li><strong>Round Robin:</strong> Un formato in cui idealmente tutti i giocatori incontreranno tutti gli altri giocatori (se il tempo lo consente).</li>
-  <li><strong>Social Mixer:</strong> Un formato informale che dà priorità all'interazione sociale cambiando i partner.</li>
-  <li><strong>Tie-Break/Fast Tennis:</strong> Questo strumento supporta formati di punteggio brevi (ad esempio, il meglio di 4 game o tie-break fino a 10) in modo che la rotazione dei giocatori sia veloce e tutti possano giocare molto.</li>
+  <li><strong>Round Robin :</strong> Un formato in cui idealmente tutti i giocatori incontreranno tutti gli altri giocatori (se il tempo lo consente).</li>
+  <li><strong>Social Mixer :</strong> Un formato informale che dà priorità all'interazione sociale cambiando i partner.</li>
+  <li><strong>Tie-Break/Fast Tennis :</strong> Questo strumento supporta formati di punteggio brevi (ad esempio, il meglio di 4 game o tie-break fino a 10) in modo che la rotazione dei giocatori sia veloce e tutti possano giocare molto.</li>
 </ul>
-<p><strong>Rendi le Sessioni di Tennis più Competitive e Affiatate!</strong> Non lasciare che le questioni amministrative rovinino il divertimento in campo. Lascia che il Generatore di Doppi Tennis di VersoKit organizzi il calendario, così potrai concentrarti sul colpire la palla e divertirti. Pronto a provare? Usa questo strumento, gratis per sempre!</p>`
+<p><strong>Rendi le Sessioni di Tennis più Competitive e Affiatate !</strong> Non lasciare che le questioni amministrative rovinino il divertimento in campo. Lascia che il Generatore di Doppi Tennis di VersoKit organizzi il calendario, così potrai concentrarti sul colpire la palla e divertirti. Pronto a provare ? Usa questo strumento, gratis per sempre !</p>`
         }
       ]
     }
@@ -2010,7 +2010,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
           title: "Mau Posting Starting XI tapi Tidak Bisa Desain?",
           content: `<p>Mau posting susunan pemain (Starting XI) tim Anda di Instagram tapi tidak bisa desain grafis? Atau Anda sedang berdebat seru tentang strategi Timnas di grup WhatsApp, tapi susah menjelaskan taktik rumit hanya lewat teks?</p>
 <p>Masalah klasik admin medsos klub atau pelatih adalah visualisasi. Menggambar formasi di kertas atau papan tulis spidol seringkali hasilnya berantakan dan sulit dibaca. Di sisi lain, menggunakan software berat seperti Photoshop hanya untuk membuat satu gambar line-up memakan waktu terlalu lama.</p>
-<p>Solusinya ada di sini. Gunakan <strong>Football Lineup Builder</strong> dari VersoKit.</p>
+<p>Solusinya ada di sini. Gunakan Football Lineup Builder dari VersoKit.</p>
 <p>Ini adalah alat pembuat formasi sepak bola online yang mengubah ide strategi Anda menjadi grafis profesional dalam hitungan detik. Cukup "Drag & Drop", ketik nama, dan unduh.</p>`
         },
         {
@@ -2137,7 +2137,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
   <li><strong>Spielernamen eingeben:</strong> Klicken Sie auf das Spieler-Icon, um Namen und Rückennummern zu ändern.</li>
   <li><strong>Aussehen anpassen:</strong> Legen Sie die Farben für die Heim-/Auswärtstrikots Ihres Teams fest.</li>
   <li><strong>Spezifische Taktiken festlegen:</strong> Verschieben Sie die Spielerpositionen, wenn Sie eine spezielle Strategie anwenden möchten (z. B. ein Mittelfeldspieler weiter nach vorne geschoben).</li>
-  <li><strong>Bild herunterladen:</strong> Klicken Sie auf die Download-Schaltfläche. Das Ergebnis ist ein hochwertiges Bild (PNG/JPG), das bereit zum Teilen ist.</li>
+  <li><strong>Bild herunterladen:</strong> Klicken Sie auf die Download-Schaltfläche. Das Ergebnis ist ein hochwertiges Bild (PNG/JPG) das bereit zum Teilen ist.</li>
 </ol>`
         },
         {
@@ -2238,7 +2238,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "Résultats Propres et Professionnels",
-          content: `<p>L'un des principaux avantages de notre outil est le résultat final Propre. L'image que vous téléchargez ressemble à un graphique de diffusion TV, ce qui rend votre stratégie crédible et facile à comprendre pour tout le monde.</p>
+          content: `<p>L'un des principaux avantages de notre outil est le résultat final Propre. L'image que vous téléchargez ressemble à un graphique de diffusion TV, ce qui rend votre stratégie crédible et facile à comprendre pour tout le monde. </p>
 <p>Ne laissez pas votre brillante stratégie n'exister que dans votre tête. Visualisez-la maintenant, partagez-la avec l'équipe, et décrochez la victoire ! Essayez ce Générateur de Composition de Football gratuit !</p>`
         }
       ]
@@ -2286,7 +2286,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "Risultati Puliti e Professionali",
-          content: `<p>Uno dei principali vantaggi del nostro strumento è il risultato finale Pulito. L'immagine che scarichi sembra una grafica di una trasmissione televisiva, rendendo la tua strategia credibile e facile da capire per chiunque.</p>
+          content: `<p>Uno dei principali vantaggi del nostro strumento è il risultato finale Pulito. L'immagine che scarichi sembra una grafica di una trasmissione televisiva, rendendo la tua strategia credibile e facile da capire per chiunque. </p>
 <p>Non lasciare che la tua brillante strategia esista solo nella tua testa. Visualizzala ora, condividila con la squadra e ottieni la vittoria! Prova questo Creatore di Formazioni di Calcio gratuito!</p>`
         }
       ]
@@ -2304,9 +2304,9 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "Mengapa Panitia Wajib Pakai Alat Ini?",
-          content: `<p>Alat ini adalah "Jantung"-nya penyelenggara acara sukses. Berikut masalah yang kami selesaikan untuk Anda:</p>
+          content: `<p>Alat ini adalah \"Jantung\"-nya penyelenggara acara sukses. Berikut masalah yang kami selesaikan untuk Anda:</p>
 <ol>
-  <li><strong>Sistem Gugur (Knockout Bracket) Instan:</strong> Lupakan penggaris dan spidol. Cukup masukkan nama tim, dan alat ini akan membuat Bagan Pohon (Bracket) otomatis untuk 4, 8, 16, hingga 32 tim. <strong>Visual Interaktif:</strong> Siapa pemenangnya? Cukup klik pada tim yang menang, dan nama mereka otomatis maju ke babak selanjutnya di bagan. <strong>Drawing Otomatis:</strong> Tidak perlu melinting kertas arisan. Tombol "Shuffle/Acak" kami akan mengundi siapa lawan siapa secara adil dalam 1 detik.</li>
+  <li><strong>Sistem Gugur (Knockout Bracket) Instan:</strong> Lupakan penggaris dan spidol. Cukup masukkan nama tim, dan alat ini akan membuat Bagan Pohon (Bracket) otomatis untuk 4, 8, 16, hingga 32 tim. <strong>Visual Interaktif:</strong> Siapa pemenangnya? Cukup klik pada tim yang menang, dan nama mereka otomatis maju ke babak selanjutnya di bagan. <strong>Drawing Otomatis:</strong> Tidak perlu melinting kertas arisan. Tombol \"Shuffle/Acak\" kami akan mengundi siapa lawan siapa secara adil dalam 1 detik.</li>
   <li><strong>Manajemen Liga (Round Robin) Tanpa Kalkulator:</strong> Membuat kompetisi liga seperti Premier League kini bisa dilakukan siapa saja. <strong>Auto-Standings:</strong> Masukkan skor pertandingan (misal 2-1), dan tabel klasemen akan langsung berubah urutannya secara real-time. <strong>Perhitungan Akurat:</strong> Sistem otomatis menghitung Menang (3 poin), Seri (1 poin), Kalah (0 poin), serta Selisih Gol (GD) dan Head-to-Head. Tidak ada lagi drama salah hitung!</li>
   <li><strong>Dukungan Multi-Sport:</strong> Apapun jenis lombanya, alat ini siap digunakan. Olahraga Fisik (Futsal, Badminton, Voli, Tenis Meja). E-Sports & Game (Mobile Legends, FIFA/eFootball, Valorant, PES). Lomba Tradisional (Catur, Tarik Tambang, 17 Agustusan).</li>
 </ol>`
@@ -2333,7 +2333,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
           title: "Cara Membuat Turnamen dalam 4 Langkah",
           content: `<p>Tidak perlu install aplikasi berat, cukup gunakan browser HP atau Laptop Anda:</p>
 <ol>
-  <li><strong>Pilih Mode Turnamen:</strong> Tentukan formatnya. Mau "Knockout" (Sistem Gugur) atau "League" (Sistem Liga/Klasemen)?</li>
+  <li><strong>Pilih Mode Turnamen:</strong> Tentukan formatnya. Mau \"Knockout\" (Sistem Gugur) atau \"League\" (Sistem Liga/Klasemen)?</li>
   <li><strong>Masukkan Peserta:</strong> Ketik nama tim atau nama pemain.</li>
   <li><strong>Generate & Acak:</strong> Klik tombol buat bagan. Gunakan fitur Shuffle jika ingin sistem mengundi lawan secara acak.</li>
   <li><strong>Jalankan Pertandingan:</strong> Pertandingan selesai? Input skornya. Sistem akan otomatis memajukan pemenang atau mengupdate poin klasemen.</li>
@@ -2385,7 +2385,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
           title: "How to Create a Tournament in 4 Steps",
           content: `<p>No need to install heavy apps, just use your Phone or Laptop browser:</p>
 <ol>
-  <li><strong>Choose Tournament Mode:</strong> Determine the format. Do you want "Knockout" or "League" (Standings)?</li>
+  <li><strong>Choose Tournament Mode:</strong> Determine the format. Do you want \"Knockout\" or \"League\" (Standings)?</li>
   <li><strong>Enter Participants:</strong> Type the team names or player names.</li>
   <li><strong>Generate & Shuffle:</strong> Click the create bracket button. Use the Shuffle feature if you want the system to draw opponents randomly.</li>
   <li><strong>Run Matches:</strong> Match finished? Input the score. The system will automatically advance the winner or update the standings points.</li>
@@ -2489,7 +2489,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
           title: "Cómo Crear un Torneo en 4 Pasos",
           content: `<p>No es necesario instalar aplicaciones pesadas, solo use el navegador de su teléfono o portátil:</p>
 <ol>
-  <li><strong>Elija el Modo de Torneo:</strong> Determine el formato. ¿Quiere "Eliminación Directa" o "Liga" (Clasificación)?</li>
+  <li><strong>Elija el Modo de Torneo:</strong> Determine el formato. ¿Quiere \"Eliminación Directa\" o \"Liga\" (Clasificación)?</li>
   <li><strong>Ingrese los Participantes:</strong> Escriba los nombres de los equipos o de los jugadores.</li>
   <li><strong>Generar y Mezclar:</strong> Haga clic en el botón de crear cuadro. Use la función Mezclar si desea que el sistema sortee los oponentes al azar.</li>
   <li><strong>Ejecutar Partidos:</strong> ¿Partido finalizado? Ingrese el resultado. El sistema hará avanzar automáticamente al ganador o actualizará los puntos de la clasificación.</li>
@@ -2532,7 +2532,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
           title: "À qui s'adresse cet Outil ?",
           content: `<ul>
   <li><strong>Organisateurs Communautaires et Rencontres Scolaires :</strong> Professeurs d'EPS ou comités de quartier gérant des compétitions de futsal/volley entre classes ou résidents.</li>
-  <li><strong>Propriétaires de Centres de Jeux et de Cafés :</strong> Organisation de tournois hebdomadaires PES/FIFA pour les clients fidèles.</li>
+  <li><strong>Proprietaires de Centres de Jeux et de Cafés :</strong> Organisation de tournois hebdomadaires PES/FIFA pour les clients fidèles.</li>
   <li><strong>Communautés d'E-Sports :</strong> Admins de groupes de jeux qui organisent souvent des matchs amicaux ou de petits tournois (Fast Tourneys).</li>
   <li><strong>Admins de Ligues Amateurs :</strong> Gestionnaires de ligues communautaires de futsal ou de foot à 5.</li>
 </ul>`
@@ -2541,7 +2541,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
           title: "Comment Créer un Tournoi en 4 Étapes",
           content: `<p>Pas besoin d'installer d'applications lourdes, utilisez simplement le navigateur de votre téléphone ou de votre ordinateur :</p>
 <ol>
-  <li><strong>Choisir le Mode de Tournoi :</strong> Déterminez le format. Voulez-vous "Élimination Directe" ou "Ligue" (Classement) ?</li>
+  <li><strong>Choisir le Mode de Tournoi :</strong> Déterminez le format. Voulez-vous \"Élimination Directe\" ou \"Ligue\" (Classement) ?</li>
   <li><strong>Saisir les Participants :</strong> Tapez les noms des équipes ou des joueurs.</li>
   <li><strong>Générer et Mélanger :</strong> Cliquez sur le bouton de création de tableau. Utilisez la fonction Mélanger si vous souhaitez que le système tire au sort les adversaires au hasard.</li>
   <li><strong>Lancer les Matchs :</strong> Match terminé ? Saisissez le score. Le système fera automatiquement avancer le vainqueur ou mettra à jour les points du classement.</li>
@@ -2584,16 +2584,16 @@ export const TOOL_ARTICLES: ArticleCollection = {
           title: "Per chi è Adatto Questo Strumento?",
           content: `<ul>
   <li><strong>Organizzatori Comunitari e Class Meeting:</strong> Insegnanti di educazione fisica o comitati di quartiere che gestiscono competizioni di calcio a 5/pallavolo tra classi o residenti.</li>
-  <li><strong>Proprietari di Game Center e Bar:</strong> Organizzazione di tornei settimanali di PES/FIFA per i clienti fedeli.</li>
-  <li><strong>Comunità di E-Sport:</strong> Admin di gruppi di gioco che spesso organizzano amichevoli o piccoli tornei (Fast Tourney).</li>
-  <li><strong>Admin di Leghe Amatoriali:</strong> Gestori di leghe comunitarie di calcio a 5 o calcio a 7.</li>
+  <li><strong>Proprietari di Game Center e Bar :</strong> Organizzazione di tornei settimanali di PES/FIFA per i clienti fedeli.</li>
+  <li><strong>Comunità di E-Sport :</strong> Admin di gruppi di gioco che spesso organizzano amichevoli o piccoli tornei (Fast Tourney).</li>
+  <li><strong>Admin di Leghe Amatoriali :</strong> Gestori di leghe comunitarie di calcio a 5 o calcio a 7.</li>
 </ul>`
         },
         {
-          title: "Come Creare un Torneo in 4 Passaggi",
+          title: "Come Creare un Turno in 4 Passaggi",
           content: `<p>Non è necessario installare app pesanti, basta usare il browser del tuo telefono o laptop:</p>
 <ol>
-  <li><strong>Scegli la Modalità Torneo:</strong> Determina il formato. Vuoi "Eliminazione Diretta" o "Lega" (Classifica)?</li>
+  <li><strong>Scegli la Modalità Torneo:</strong> Determina il formato. Vuoi \"Eliminazione Diretta\" o \"Lega\" (Classifica)?</li>
   <li><strong>Inserisci i Partecipanti:</strong> Digita i nomi delle squadre o dei giocatori.</li>
   <li><strong>Genera e Mescola:</strong> Fai clic sul pulsante di creazione del tabellone. Usa la funzione Mescola se vuoi che il sistema sortirà gli avversari in modo casuale.</li>
   <li><strong>Gestisci le Partite:</strong> Partita finita? Inserisci il punteggio. Il sistema farà avanzare automaticamente il vincitore o aggiornerà i punti della classifica.</li>
@@ -2602,58 +2602,6 @@ export const TOOL_ARTICLES: ArticleCollection = {
         {
           title: "Gestisci i Tornei Come un Professionista",
           content: `<p>Non lasciare che i tecnicismi amministrativi ostacolino l'entusiasmo del tuo evento. Con Tournament Manager Pro, puoi concentrarti sull'andamento della partita e lasciare che il nostro sistema si occupi dei dati. Gratuito, facile e senza problemi. Prova a creare il tuo tabellone del torneo qui sotto!</p>`
-        }
-      ]
-    },
-    pt: {
-      title: "Tournament Manager Pro: Crie Chaves e Tabelas de Liga Automaticamente",
-      sections: [
-        {
-          title: "Estressado por ser um Organizador de Torneios?",
-          content: `<p>Está ocupado sendo membro do comitê de uma competição de Futsal, E-Sports ou uma competição comunitária local? Sabemos como é estressante gerenciar dezenas de equipes participantes.</p>
-<p>Um problema clássico para os organizadores é a administração complicada. Desenhar linhas de chaves em papel cartão leva muito tempo e, se você cometer um erro, terá que recomeçar. Usar o Excel? Fórmulas para calcular pontos e saldo de gols costumam dar erro, o que acaba gerando protestos dos participantes.</p>
-<p>Pare de perder tempo com métodos manuais. Use o <strong>Tournament Manager Pro</strong> do VersoKit. É uma solução completa para criar calendários de jogos, tanto Sistemas de Eliminatórias (Mata-mata) quanto Sistemas de Liga (Pontos Corridos) em segundos.</p>`
-        },
-        {
-          title: "Por que os Organizadores Devem Usar esta Ferramenta?",
-          content: `<p>Esta ferramenta é o \"Coração\" dos organizadores de eventos de sucesso. Aqui estão os problemas que resolvemos para você:</p>
-<ol>
-  <li><strong>Chaves de Eliminatórias Instantâneas:</strong> Esqueça as réguas e canetas. Basta inserir os nomes das equipes, e esta ferramenta criará um gráfico de árvore automático (chave) para 4, 8, 16, até 32 equipes. <strong>Visuais Interativos:</strong> Quem é o vencedor? Basta clicar na equipe vencedora, e o nome dela avança automaticamente para a próxima rodada no gráfico. <strong>Sorteio Automático:</strong> Não é preciso enrolar papéis de sorteio. Nosso botão \"Embaralhar\" sorteará quem joga contra quem de forma justa em 1 segundo.</li>
-  <li><strong>Gestão de Ligas (Pontos Corridos) sem Calculadora:</strong> Criar uma competição de liga como a Premier League agora pode ser feito por qualquer pessoa. <strong>Tabelas Automáticas:</strong> Insira o placar do jogo (ex: 2-1), e a tabela de classificação mudará imediatamente sua ordem em tempo real. <strong>Cálculos Precisos:</strong> O sistema calcula automaticamente Vitórias (3 pontos), Empates (1 ponto), Derrotas (0 pontos), bem como Saldo de Gols (SG) e Confronto Direto. Sem mais dramas de cálculos!</li>
-  <li><strong>Suporte Multiesportivo:</strong> Seja qual for o tipo de competição, esta ferramenta está pronta para usar. Esportes Físicos (Futsal, Badminton, Vôlei, Tênis de Mesa). E-Sports e Jogos (Mobile Legends, FIFA/eFootball, Valorant, PES). Competições Tradicionais (Xadrez, Cabo de Guerra).</li>
-</ol>`
-        },
-        {
-          title: "Principais Recursos do Tournament Manager",
-          content: `<p>Além de ser rápido, esta ferramenta está equipada com recursos profissionais:</p>
-<ul>
-  <li><strong>Exportar para Imagem:</strong> A chave ou tabela finalizada pode ser capturada ou baixada. Compartilhe a imagem no grupo de WhatsApp dos participantes para que pareça oficial e transparente.</li>
-  <li><strong>Salvar Progresso (Armazenamento do Navegador):</strong> Medo de perder dados ao fechar o navegador acidentalmente? Não se preocupe, nosso sistema salva os dados temporários no seu navegador, para que fiquem seguros quando reaberto.</li>
-  <li><strong>Editar Nomes das Equipes:</strong> Existe uma equipe que mudou de nome ou um participante atrasado? Edite a qualquer momento sem danificar a estrutura da chave.</li>
-</ul>`
-        },
-        {
-          title: "Para quem é adequada esta ferramenta?",
-          content: `<ul>
-  <li><strong>Organizadores Comunitários e Encontros Escolares:</strong> Professores de educação física ou comitês de bairro gerenciando competições de futsal/vôlei entre turmas ou moradores.</li>
-  <li><strong>Proprietários de Centros de Jogos e Cafés:</strong> Realização de torneios semanais de PES/FIFA para clientes fiéis.</li>
-  <li><strong>Comunidades de E-Sports:</strong> Admins de grupos de jogos que costumam realizar amistosos ou pequenos torneios (Fast Tourneys).</li>
-  <li><strong>Admins de Ligas Amadoras:</strong> Gestores de ligas comunitárias de futsal ou society.</li>
-</ul>`
-        },
-        {
-          title: "Como Criar um Torneio em 4 Passos",
-          content: `<p>Não é preciso instalar aplicativos pesados, basta usar o navegador do seu Celular ou Laptop:</p>
-<ol>
-  <li><strong>Escolher o Modo de Torneio:</strong> Determine o formato. Você quer "Mata-mata" ou "Liga" (Tabela)?</li>
-  <li><strong>Inserir Participantes:</strong> Digite os nomes das equipes ou dos jogadores.</li>
-  <li><strong>Gerar e Embaralhar:</strong> Clique no botão de criar chave. Use o recurso Embaralhar se quiser que o sistema sorteie os oponentes aleatoriamente.</li>
-  <li><strong>Executar Partidas:</strong> Partida finalizada? Insira o placar. O sistema fará o vencedor avançar automaticamente ou atualizará os pontos da tabela.</li>
-</ol>`
-        },
-        {
-          title: "Gerencie Torneios como um Profissional",
-          content: `<p>Não deixe que detalhes administrativos técnicos atrapalhem a emoção do seu evento. Com o Tournament Manager Pro, você pode focar no andamento da partida, deixe nosso sistema cuidar dos dados. Gratuito, fácil e sem complicações. Tente criar sua chave de torneio abaixo!</p>`
         }
       ]
     }
