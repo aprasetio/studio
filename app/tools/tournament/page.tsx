@@ -23,6 +23,7 @@ import { useLang } from '@/components/Providers';
 import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { SeoContent } from '@/components/seo-content';
+import { ArticleSection } from '@/components/ArticleSection';
 import { SmartAd } from '@/components/smart-ad';
 
 interface Match {
@@ -341,8 +342,8 @@ export default function TournamentManagerPage() {
         </div>
       )}
       
+      <ArticleSection toolId="tournament" />
       <SmartAd />
-      
       <SeoContent toolId="tournament" />
     </div>
   );

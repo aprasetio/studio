@@ -9,6 +9,7 @@ import { Plus, Trash2, ChevronRight, ChevronLeft, LayoutGrid } from 'lucide-reac
 import { DataControl } from '@/components/DataControl';
 import { useLang } from '@/components/Providers';
 import { SeoContent } from '@/components/SeoContent';
+import { ArticleSection } from '@/components/ArticleSection';
 import TrustBadges from '@/components/ui/TrustBadges';
 
 const UI_TEXT: Record<string, any> = {
@@ -208,6 +209,7 @@ export default function KanbanPage() {
         ))}
       </div>
 
+      <ArticleSection toolId="kanban" />
       <SeoContent toolId="kanban" />
     </div>
   );

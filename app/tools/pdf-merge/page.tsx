@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { FileStack, Trash2, Plus, FileText, Loader2 } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import { SeoContent } from '@/components/SeoContent';
+import { ArticleSection } from '@/components/ArticleSection';
 import { SmartAd } from '@/components/smart-ad';
 import TrustBadges from '@/components/ui/TrustBadges';
 
@@ -231,6 +232,7 @@ export default function PDFMergePage() {
         </CardContent>
       </Card>
 
+      <ArticleSection toolId="pdf-merge" />
       <SmartAd />
       <SeoContent toolId="pdf-merge" />
     </div>

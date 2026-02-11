@@ -9,6 +9,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { FileSpreadsheet, Trash2, Download, Upload, Scissors } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import TrustBadges from '@/components/ui/TrustBadges';
+import { ArticleSection } from '@/components/ArticleSection';
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -216,6 +217,8 @@ export default function CSVHelperPage() {
           )}
         </CardContent>
       </Card>
+
+      <ArticleSection toolId="csv-helper" />
     </div>
   );
 }

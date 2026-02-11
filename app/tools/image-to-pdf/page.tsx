@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Image as ImageIcon, Trash2, Plus, Loader2, FileType } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import { SeoContent } from '@/components/seo-content';
+import { ArticleSection } from '@/components/ArticleSection';
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -245,6 +246,7 @@ export default function ImageToPDFPage() {
         </CardContent>
       </Card>
 
+      <ArticleSection toolId="image-to-pdf" />
       <SeoContent toolId="image-to-pdf" />
     </div>
   );

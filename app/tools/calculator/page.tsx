@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calculator, Ruler, Droplets, Banknote, Maximize2 } from 'lucide-react';
 import { SeoContent } from '@/components/SeoContent';
+import { ArticleSection } from '@/components/ArticleSection';
 import { SmartAd } from '@/components/smart-ad';
 import TrustBadges from '@/components/ui/TrustBadges';
 
@@ -208,6 +209,7 @@ export default function MaterialCalculatorPage() {
         </Card>
       </div>
 
+      <ArticleSection toolId="calculator" />
       <SmartAd />
       <SeoContent toolId="calculator" />
     </div>
