@@ -27,7 +27,7 @@ export function ArticleSection({ toolId }: ArticleSectionProps) {
         <summary className="flex items-center justify-between p-6 cursor-pointer list-none bg-muted/30 hover:bg-muted/50 transition-colors">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-primary/10 rounded-xl text-primary">
-              <BookOpen size={20} />
+              < BookOpen size={20} />
             </div>
             <h2 className="text-sm md:text-base font-black uppercase tracking-widest text-foreground">
               {article.title} {lang === 'id' ? '(Panduan & Tips)' : '(Guide & Tips)'}
@@ -46,10 +46,12 @@ export function ArticleSection({ toolId }: ArticleSectionProps) {
                 <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight text-primary transition-colors">
                   {section.title}
                 </h3>
-                <div 
-                  className="text-muted-foreground leading-relaxed font-medium text-base md:text-lg"
-                  dangerouslySetInnerHTML={{ __html: section.content }} 
-                />
+                <article className="prose prose-sm md:prose-base dark:prose-invert max-w-none prose-headings:font-bold prose-headings:text-slate-700 dark:prose-headings:text-slate-200 prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-li:text-slate-600 dark:prose-li:text-slate-400">
+                  <div 
+                    className="leading-relaxed font-medium"
+                    dangerouslySetInnerHTML={{ __html: section.content }} 
+                  />
+                </article>
               </div>
             ))}
           </div>
