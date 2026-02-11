@@ -65,44 +65,121 @@ export const TOOL_ARTICLES: ArticleCollection = {
     it: {
       title: "Generatore Tornei Americano",
       sections: [
-        { title: "Come funziona", content: "L'Americano è un formato social in cui cambi partner ogni turno." }
+        { title: "Come funciona", content: "L'Americano è un formato social in cui cambi partner ogni turno." }
       ]
     }
   },
   "budget-planner": {
-    en: {
-      title: "Master Your Finances with Zero-Based Budgeting",
+    id: {
+      title: "Panduan Lengkap & FAQ",
       sections: [
-        { title: "The 50/30/20 Rule", content: "A popular method where you allocate 50% of income to Needs, 30% to Wants, and 20% to Savings or Debt. Our tool helps you visualize this split easily." },
-        { title: "Track Daily Expenses", content: "Input your daily spending to see your 'Available' balance update in real-time. This prevents overspending before the month ends." }
+        {
+          title: "Apa itu Zero-Based Budgeting?",
+          content: "<p>Zero-Based Budgeting (ZBB) atau Anggaran Berbasis Nol adalah metode di mana setiap rupiah penghasilan Anda harus dialokasikan ke pos tertentu (Tabungan, Tagihan, atau Kebutuhan) hingga tersisa nol. Tujuannya bukan menghabiskan uang, melainkan memastikan setiap uang 'memiliki pekerjaan'.</p>"
+        },
+        {
+          title: "Mengapa Menggunakan Budget Planner VersoKit?",
+          content: "<p>Kebanyakan aplikasi anggaran terlalu rumit atau berbayar mahal. VersoKit hadir dengan pendekatan berbeda:</p><ul><li><strong>Privasi 100%:</strong> Data keuangan Anda tersimpan di browser (LocalStorage), tidak dikirim ke server kami. Aman dari kebocoran data.</li><li><strong>Bisa Offline:</strong> Gunakan saat tidak ada sinyal internet.</li><li><strong>Gratis Selamanya:</strong> Tanpa biaya langganan bulanan.</li></ul>"
+        },
+        {
+          title: "Cara Menggunakan Fitur 'Cover Overspending'",
+          content: "<p>Jika kategori 'Makan' Anda merah (minus), jangan panik. Klik tombol 'Cover' dan pilih kategori lain (misal: 'Hiburan') untuk menutupi kekurangannya. Ini disebut prinsip <em>Roll with the Punches</em>.</p>"
+        },
+        {
+          title: "FAQ (Pertanyaan Umum)",
+          content: "<p><strong>Q: Apakah data saya hilang jika browser ditutup?</strong><br>A: Tidak. Data tersimpan otomatis di perangkat Anda.</p><p><strong>Q: Bisakah saya memindahkan data ke HP lain?</strong><br>A: Bisa. Gunakan fitur 'Manajemen Data' > 'Backup Data', lalu kirim file tersebut ke HP baru dan lakukan 'Restore Data'.</p>"
+        }
       ]
     },
-    id: {
-      title: "Kuasai Keuangan dengan Anggaran Berbasis Nol",
+    en: {
+      title: "Complete Guide & FAQ",
       sections: [
-        { title: "Aturan 50/30/20", content: "Metode populer di mana Anda mengalokasikan 50% pendapatan untuk Kebutuhan, 30% Keinginan, dan 20% Tabungan. Alat kami membantu visualisasi ini." },
-        { title: "Lacak Pengeluaran Harian", content: "Masukkan pengeluaran harian untuk melihat saldo 'Tersedia' diperbarui secara real-time." }
+        {
+          title: "What is Zero-Based Budgeting?",
+          content: "<p>Zero-Based Budgeting (ZBB) is a method where every single dollar of your income is assigned to a specific category (Savings, Bills, Needs) until you have zero left to budget. The goal is to give every dollar a job.</p>"
+        },
+        {
+          title: "Why Choose VersoKit Budget Planner?",
+          content: "<p>VersoKit stands out by offering professional-grade budgeting tools with a focus on ease of use and security:</p><ul><li><strong>Privacy First:</strong> Your financial data stays in your browser. We never transmit or store your personal data on our servers.</li><li><strong>Offline Ready:</strong> Budget on the go, even without an internet connection.</li><li><strong>Zero Cost:</strong> No monthly subscriptions or hidden fees, ever.</li></ul>"
+        },
+        {
+          title: "Handling Overspending",
+          content: "<p>If a category turns red (negative), use the 'Cover' button to move money from another category (e.g., from 'Wants' or 'Entertainment') to cover the cost. This keeps your budget balanced and realistic.</p>"
+        },
+        {
+          title: "Frequently Asked Questions",
+          content: "<p><strong>Q: Is my data safe?</strong><br>A: Yes, it is stored locally on your device using LocalStorage technology. Your data never leaves your browser.</p><p><strong>Q: Can I export my data?</strong><br>A: Absolutely. You can download a JSON backup for safe-keeping or a CSV file for use in Excel or Google Sheets.</p>"
+        }
       ]
     },
     de: {
-      title: "Finanzen meistern mit Null-basierter Budgetierung",
-      sections: [{ title: "50/30/20-Regel", content: "50% Bedürfnisse, 30% Wünsche, 20% Sparen." }]
+      title: "Vollständiger Leitfaden & FAQ",
+      sections: [
+        {
+          title: "Was ist Zero-Based Budgeting?",
+          content: "<p>Zero-Based Budgeting (ZBB) ist eine Methode, bei der jeder Euro Ihres Einkommens einer bestimmten Kategorie zugewiesen wird, bis kein Geld mehr übrig ist. Das Ziel ist es, jedem Euro eine Aufgabe zu geben.</p>"
+        },
+        {
+          title: "Warum den VersoKit Budgetplaner wählen?",
+          content: "<ul><li><strong>Privatsphäre zuerst:</strong> Ihre Daten bleiben in Ihrem Browser.</li><li><strong>Offline-fähig:</strong> Funktioniert ohne Internet.</li><li><strong>Kostenlos:</strong> Keine Abonnements.</li></ul>"
+        },
+        {
+          title: "Mehrausgaben abdecken",
+          content: "<p>Wenn eine Kategorie negativ wird, nutzen Sie die Funktion 'Abdecken', um Geld aus einer anderen Kategorie zu verschieben.</p>"
+        }
+      ]
     },
     es: {
-      title: "Domina tus Finanzas con Presupuesto Base Cero",
-      sections: [{ title: "Regla 50/30/20", content: "Asigna 50% a Necesidades, 30% a Deseos y 20% a Ahorros." }]
+      title: "Guía Completa y FAQ",
+      sections: [
+        {
+          title: "¿Qué es el Presupuesto Base Cero?",
+          content: "<p>Es un método en el que cada euro de sus ingresos se asigna a una categoría específica hasta que no quede nada por presupuestar. El objetivo es darle un trabajo a cada euro.</p>"
+        },
+        {
+          title: "¿Por qué elegir VersoKit?",
+          content: "<ul><li><strong>Privacidad Total:</strong> Sus datos no salen de su navegador.</li><li><strong>Listo para usar Offline:</strong> Funciona sin conexión.</li><li><strong>Gratis para siempre:</strong> Sin suscripciones mensuales.</li></ul>"
+        }
+      ]
     },
     pt: {
-      title: "Domine suas Finanças com Orçamento Base Zero",
-      sections: [{ title: "Regra 50/30/20", content: "50% Necessidades, 30% Desejos e 20% Poupança." }]
+      title: "Guia Completo e FAQ",
+      sections: [
+        {
+          title: "O que é o Orçamento Base Zero?",
+          content: "<p>O Orçamento Base Zero (OBZ) é um método onde cada centavo da sua renda é atribuído a uma categoria específica até que restem zero para orçar.</p>"
+        },
+        {
+          title: "Por que escolher o VersoKit?",
+          content: "<ul><li><strong>Privacidade:</strong> Seus dados ficam no seu navegador.</li><li><strong>Offline:</strong> Funciona sem internet.</li><li><strong>Grátis:</strong> Sem assinaturas.</li></ul>"
+        }
+      ]
     },
     fr: {
-      title: "Maîtrisez vos Finances avec le Budget Base Zéro",
-      sections: [{ title: "Règle 50/30/20", content: "50% Besoins, 30% Envies et 20% Épargne." }]
+      title: "Guide Complet et FAQ",
+      sections: [
+        {
+          title: "Qu'est-ce que le Budget Base Zéro ?",
+          content: "<p>Le Budget Base Zéro (BBZ) est une méthode où chaque euro de votre revenu est affecté à une catégorie spécifique jusqu'à ce qu'il ne reste plus rien à budgétiser.</p>"
+        },
+        {
+          title: "Pourquoi choisir VersoKit ?",
+          content: "<ul><li><strong>Confidentialité :</strong> Vos données restent dans votre navigateur.</li><li><strong>Hors ligne :</strong> Fonctionne sans connexion.</li><li><strong>Gratuit :</strong> Pas d'abonnement.</li></ul>"
+        }
+      ]
     },
     it: {
-      title: "Domina le tue Finanze con il Budget a Base Zero",
-      sections: [{ title: "Regola 50/30/20", content: "50% Bisogni, 30% Desideri e 20% Risparmio." }]
+      title: "Guida Completa e FAQ",
+      sections: [
+        {
+          title: "Cos'è il Budget a Base Zero?",
+          content: "<p>Il Budget a Base Zero (BBZ) è un metodo in cui ogni singolo euro del tuo reddito viene assegnato a una categoria specifica finché non rimane nulla da preventivare.</p>"
+        },
+        {
+          title: "Perché scegliere VersoKit?",
+          content: "<ul><li><strong>Privacy:</strong> I tuoi dati rimangono nel tuo browser.</li><li><strong>Sempre Pronto:</strong> Funziona offline.</li><li><strong>Gratis:</strong> Nessun abbonamento.</li></ul>"
+        }
+      ]
     }
   },
   "kanban": {
@@ -200,7 +277,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
     },
     de: { title: "CSV-Daten für Excel reinigen", sections: [{ title: "Reinigung", content: "Duplikate entfernen." }] },
     es: { title: "Limpiar datos CSV para Excel", sections: [{ title: "Limpieza", content: "Eliminar duplicados." }] },
-    pt: { title: "Limpar dados CSV para Excel", sections: [{ title: "Limpeza", content: "Remover duplicatas." }] },
+    pt: { title: "Limpar datos CSV para Excel", sections: [{ title: "Limpeza", content: "Remover duplicatas." }] },
     fr: { title: "Nettoyer les données CSV pour Excel", sections: [{ title: "Nettoyage", content: "Supprimer les doublons." }] },
     it: { title: "Pulire dati CSV per Excel", sections: [{ title: "Pulizia", content: "Rimuovi i duplicati." }] }
   },
@@ -265,6 +342,158 @@ export const TOOL_ARTICLES: ArticleCollection = {
     es: { title: "Algoritmo de Tenis", sections: [{ title: "Equidad", content: "Mismo tiempo de juego para todos." }] },
     pt: { title: "Algoritmo de Tênis", sections: [{ title: "Igualdade", content: "Mesmo tempo de quadra para todos." }] },
     fr: { title: "Algorithme de Tennis", sections: [{ title: "Équité", content: "Temps de jeu égal pour tous." }] },
-    it: { title: "Algoritmo Tennis", sections: [{ title: "Equità", content: "Stesso tempo di gioco per tutti." }] }
+    it: { title: "Algorithme Tennis", sections: [{ title: "Equità", content: "Stesso tempo di gioco per tutti." }] }
+  },
+  "invoice": {
+    en: {
+      title: "Professional PDF Invoicing for Freelancers",
+      sections: [
+        {
+          title: "Free Invoice Generator",
+          content: "Free Invoice Generator. Create PDF invoices instantly in your browser. No data stored on servers. A professional invoice ensures you get paid faster."
+        }
+      ]
+    },
+    id: {
+      title: "Cara Buat Invoice Profesional untuk Freelancer",
+      sections: [
+        {
+          title: "Pembuat Invoice Gratis",
+          content: "Pembuat Invoice Gratis. Buat faktur PDF instan di browser. Data tidak disimpan di server. Invoice yang rapi membantu Anda terlihat profesional."
+        }
+      ]
+    },
+    de: {
+      title: "Rechnungsgenerator",
+      sections: [
+        {
+          title: "Kostenloser Rechnungsgenerator",
+          content: "Kostenloser Rechnungsgenerator. Erstellen Sie PDF-Rechnungen sofort im Browser."
+        }
+      ]
+    },
+    es: {
+      title: "Generador de Facturas",
+      sections: [
+        {
+          title: "Generador de Facturas Gratis",
+          content: "Generador de Facturas Gratis. Crea facturas PDF al instante."
+        }
+      ]
+    },
+    pt: {
+      title: "Gerador de Faturas",
+      sections: [
+        {
+          title: "Gerador de Faturas Grátis",
+          content: "Gerador de Faturas Grátis. Crie faturas em PDF instantaneamente."
+        }
+      ]
+    },
+    fr: {
+      title: "Générateur de Factures",
+      sections: [
+        {
+          title: "Générateur de Factures Gratuit",
+          content: "Générateur de Factures Gratuit. Créez des factures PDF instantanément."
+        }
+      ]
+    },
+    it: {
+      title: "Generatore Fatture",
+      sections: [
+        {
+          title: "Generatore Fatture Gratuito",
+          content: "Generatore Fatture Gratuito. Crea fatture PDF istantaneamente."
+        }
+      ]
+    }
+  },
+  "lineup": {
+    en: {
+      title: "Lineup Builder",
+      sections: [{ title: "How it works", content: "Football Lineup Builder. Drag and drop players to create formations (4-4-2, 4-3-3). Download as image." }]
+    },
+    id: {
+      title: "Pembuat Formasi",
+      sections: [{ title: "Cara Penggunaan", content: "Pembuat Formasi Sepak Bola. Geser pemain untuk membuat formasi (4-4-2, etc). Unduh sebagai gambar." }]
+    },
+    de: {
+      title: "Fußball-Aufstellungs-Planer",
+      sections: [{ title: "Anleitung", content: "Fußball-Aufstellungs-Planer. Erstellen Sie Formationen per Drag & Drop." }]
+    },
+    es: {
+      title: "Creador de Alineaciones",
+      sections: [{ title: "Cómo usar", content: "Creador de Alineaciones. Arrastra jugadores para crear formaciones." }]
+    },
+    pt: {
+      title: "Criador de Escalação",
+      sections: [{ title: "Como usar", content: "Criador de Escalação. Arraste jogadores para criar formações." }]
+    },
+    fr: {
+      title: "Créateur de Composition",
+      sections: [{ title: "Comment ça marche", content: "Créateur de Composition. Glissez-déposez les joueurs pour créer des formations." }]
+    },
+    it: {
+      title: "Generatore Formazione Calcio",
+      sections: [{ title: "Come funziona", content: "Generatore Formazione Calcio. Trascina i giocatori per creare formazioni." }]
+    }
+  },
+  "scoreboard": {
+    en: {
+      title: "Universal Scoreboard",
+      sections: [{ title: "Usage", content: "Simple Scoreboard. Use for Badminton, Volleyball, or Ping Pong. No ads, completely offline." }]
+    },
+    id: {
+      title: "Papan Skor Universal",
+      sections: [{ title: "Penggunaan", content: "Papan Skor Serbaguna. Gunakan untuk Badminton, Voli, atau Pingpong. Tanpa iklan, offline." }]
+    },
+    de: {
+      title: "Universal-Anzeigetafel",
+      sections: [{ title: "Nutzung", content: "Einfache Anzeigetafel. Für Badminton, Volleyball oder Tischtennis." }]
+    },
+    es: {
+      title: "Marcador Universal",
+      sections: [{ title: "Uso", content: "Marcador Universal. Úsalo para Bádminton, Voleibol o Ping Pong." }]
+    },
+    pt: {
+      title: "Placar Universal",
+      sections: [{ title: "Uso", content: "Placar Simples. Use para Badminton, Vôlei ou Ping Pong." }]
+    },
+    fr: {
+      title: "Tableau de Score Simple",
+      sections: [{ title: "Utilisation", content: "Tableau de Score Simple. Pour Badminton, Volley ou Ping Pong." }]
+    },
+    it: {
+      title: "Tabellone Universale",
+      sections: [{ title: "Utilizzo", content: "Tabellone Semplice. Usa per Badminton, Pallavolo o Ping Pong." }]
+    }
+  },
+  "inventory": {
+    en: { title: "Stock Management", sections: [{ title: "Tool Overview", content: "Stock Management Tool. Track items, quantities, and low stock alerts. Runs offline." }] },
+    id: { title: "Manajemen Stok", sections: [{ title: "Ringkasan Alat", content: "Alat Manajemen Stok. Lacak barang, jumlah, dan peringatan stok menipis. Berjalan offline." }] },
+    de: { title: "Lagerverwaltung", sections: [{ title: "Überblick", content: "Lagerverwaltung. Verfolgen Sie Artikel und Bestände offline." }] },
+    es: { title: "Gestión de Inventario", sections: [{ title: "Descripción", content: "Gestión de Inventario. Controla artículos y stock bajo offline." }] },
+    pt: { title: "Gestão de Estoque", sections: [{ title: "Visão Geral", content: "Gestão de Estoque. Acompanhe itens e alertas de estoque baixo." }] },
+    fr: { title: "Gestion de Stock", sections: [{ title: "Aperçu", content: "Gestion de Stock. Suivez les articles et les alertes de stock faible." }] },
+    it: { title: "Gestione Inventario", sections: [{ title: "Panoramica", content: "Gestione Inventario. Traccia articoli e scorte basse offline." }] }
+  },
+  "shift": {
+    en: { title: "Shift Scheduler", sections: [{ title: "Tool Overview", content: "Employee Shift Planner. Organize morning, afternoon, and night shifts easily. Download schedule." }] },
+    id: { title: "Jadwal Shift", sections: [{ title: "Ringkasan Alat", content: "Jadwal Shift Karyawan. Atur shift pagi, siang, malam dengan mudah. Unduh jadwal." }] },
+    de: { title: "Schichtplaner", sections: [{ title: "Überblick", content: "Schichtplaner. Organisieren Sie Schichten einfach und laden Sie den Plan herunter." }] },
+    es: { title: "Planificador de Turnos", sections: [{ title: "Descripción", content: "Planificador de Turnos. Organiza turnos de mañana, tarde y noche." }] },
+    pt: { title: "Escala de Trabalho", sections: [{ title: "Visão Geral", content: "Escala de Trabalho. Organize turnos facilmente e baixe a escala." }] },
+    fr: { title: "Planning d'Équipe", sections: [{ title: "Aperçu", content: "Planning d'Équipe. Organisez les 3x8 facilement." }] },
+    it: { title: "Pianificatore Turni", sections: [{ title: "Panoramica", content: "Pianificatore Turni. Organizza i turni facilmente." }] }
+  },
+  "split-bill": {
+    en: { title: "Split Bill", sections: [{ title: "Tool Overview", content: "Restaurant Bill Splitter. Calculate tax and service charge accurately for groups." }] },
+    id: { title: "Bagi Tagihan", sections: [{ title: "Ringkasan Alat", content: "Pembagi Tagihan Restoran. Hitung pajak dan layanan secara akurat untuk grup." }] },
+    de: { title: "Rechnungsteiler", sections: [{ title: "Überblick", content: "Rechnungsteiler. Berechnen Sie Steuern und Servicegebühren präzise." }] },
+    es: { title: "Dividir Cuenta", sections: [{ title: "Descripción", content: "Dividir Cuenta. Calcula impuestos y servicio con precisión." }] },
+    pt: { title: "Dividir Conta", sections: [{ title: "Visão Geral", content: "Dividir Conta. Calcule impostos e taxas de serviço." }] },
+    fr: { title: "Partage d'Addition", sections: [{ title: "Aperçu", content: "Partage d'Addition. Calculez taxes et service avec précision." }] },
+    it: { title: "Divisione Conto", sections: [{ title: "Panoramica", content: "Divisione Conto. Calcola tasse e servizio con precisione." }] }
   }
 };
