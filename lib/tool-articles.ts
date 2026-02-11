@@ -171,7 +171,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "Funcionalidades Superiores do Nosso Gerador de Americano",
-          content: "<p>Por que deve utilizar as ferramentas do nosso site em vez de outras aplicações? <ol><li><strong>Sem Download nem Instalação:</strong> Memória do telemóvel cheia? Tranquilo. A nossa ferramenta é baseada na web. Pode abri-la diretamente do seu navegador no campo sem o incómodo de descarregar aplicações pesadas.</li><li><strong>Algoritmo de Jogo Limpo:</strong> O nosso sistema garante uma rotação equilibrada dos jogadores. Todos terão uma oportunidade justa de mudar de parceiro e enfrentar diferentes inimigos.</li><li><strong>Classificação em Direto:</strong> Assim que introduzir as pontuações das partidas, a classificação será atualizada automaticamente. Todos os jogadores podem ver as suas posições em tempo real nos seus respetivos telemóveis (se o link for partilhado).</li></ol></p>"
+          content: "<p>Por que deve utilizar as ferramentas do nosso site em vez de outras aplicações? <ol><li><strong>Sem Download nem Instalação:</strong> Memória do telemóvel cheia? Tranquilo. A nossa ferramenta é baseada na web. Pode abri-la diretamente do seu navegador no campo sem o incómodo de descarregar aplicações pesadas.</li><li><strong>Algoritmo de Jogo Limpo:</strong> O nosso sistema garante uma rotação equilibrada dos jogadores. Todos terão uma oportunidade justa de mudar de parceiro e enfrentar diferentes inimigos.</li><li><strong>Classificação em Direto:</strong> Assim que introduzir as pontuações das partidas, a classificação será atualizada automaticamente. Todos os jogadores podem ver as suas posições em tempo real nos seus respetivos telemóveis (si o link for partilhado).</li></ol></p>"
         },
         {
           title: "Como Utilizar Este Gerador de Americano",
@@ -200,7 +200,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "Problèmes Classiques lors d'un Americano Manuel",
-          content: "<p>Sans outils ni applications, jouer à l'Americano peut devenir chaotique : <ul><li><strong>Temps Perdu :</strong> Débattre de qui joue contre qui peut prendre 5 à 10 minutes en soi.</li><li><strong>Injustice :</strong> Sans algorithme, il est possible qu'une personne se retrouve constamment avec le même partenaire.</li><li><strong>Erreurs de Calcul :</strong> Additionner manuellement les scores de dizaines de matchs sur papier est très source d'erreurs.</li></ul></p>"
+          content: "<p>Sans outils ni applications, jouer à l'Americano peut devenir chaotique : <ul><li><strong>Temps Perdu :</strong> Débattre de qui joue contre qui peut prendre 5 à 10 minutes en soi.</li><li><strong>Injustice :</strong> Sans algorithme, il est possible qu'une personne se retrouve constamment avec le même partenaire.</li><li><strong>Erreur de Calcul :</strong> Additionner manuellement les scores de dizaines de matchs sur papier est très source d'erreurs.</li></ul></p>"
         },
         {
           title: "Caractéristiques Supérieures de notre Générateur d'Americano",
@@ -237,10 +237,10 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "Caratteristiche Superiori del Nostro Generatore Americano",
-          content: "<p>Perché dovresti usare gli strumenti sul nostro sito web invece di altre app? <ol><li><strong>Nessun Download o Installazione:</strong> Memoria del telefono piena? Rilassati. Lo strumento è basato sul web. Puoi aprirlo direttamente dal tuo browser in campo senza il fastidio di scaricare app pesanti.</li><li><strong>Algoritmo Fair Play:</strong> Il nostro sistema garantisce una rotazione equilibrata dei giocatori. Tutti avranno un'equa possibilità di cambiare partner e affrontare avversari diversi.</li><li><strong>Classifica Live:</strong> Non appena inserisci i punteggi delle partite, la classifica si aggiornerà automaticamente. Tutti i giocatori possono vedere le loro posizioni in tempo reale dai rispettivi telefoni (se il link viene condiviso).</li></ol></p>"
+          content: "<p>Perché dovresti usare gli strumenti sul nostro sito web invece di altre app? <ol><li><strong>Nessun Download o Installazione:</strong> Memoria del telefono piena? Rilassati. Lo strumento è basato sul web. Puoi aprirlo direttamente dal tuo browser in campo senza il fastidio di scaricare app pesanti.</li><li><strong>Algoritmo Fair Play:</strong> Il nostro sistema garantisce una rotazione equilibrata dei giocatori. Tutti avranno un'equa possibilità di cambiare partner e affrontare avversari diversi.</li><li><strong>Classifica Live:</strong> Non appena inserisci i punteggi delle partite, la classifica si aggiornerà automaticamente. Tutti i giocatori possono vedere le loro posizioni in tempo reale dai rispettivi telefoni (si il link viene condiviso).</li></ol></p>"
         },
         {
-          title: "Come Usare Questo Generatore Americano",
+          title: "Como Usare Questo Generatore Americano",
           content: "<p>È molto facile, segui questi passaggi: <ol><li><strong>Inserisci i Nomi dei Giocatori:</strong> Digita i nomi di tutti i partecipanti (minimo 4 persone). Numero dispari? Nessun problema, il nostro sistema può organizzare i giocatori sostituti/a riposo a rotazione.</li><li><strong>Seleziona i Punti Obiettivo:</strong> Determina a quanti punti vuoi giocare? (Generalmente 24 o 32 punti).</li><li><strong>Genera Turni:</strong> Clicca sul pulsante di creazione turni.</li><li><strong>Gioca e Inserisci i Punteggi:</strong> Una volta terminata la partita, inserisci i punteggi.</li><li><strong>Vedi il Vincitore:</strong> Alla fine della sessione, il sistema incoronerà il campione Americano del giorno!</li></ol></p>"
         },
         {
@@ -345,7 +345,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
           content: "<p>Es ist sehr einfach, ohne dass eine Anwendung installiert werden muss. Senden Sie einfach den Link zu dieser Seite an Ihre Tennis-WhatsApp-Gruppe.</p><ol><li><strong>Spieler eingeben:</strong> Geben Sie die Namen aller anwesenden Teilnehmer ein (mindestens 4 Personen).</li><li><strong>Anzahl der Plätze wählen:</strong> Bestimmen Sie, wie viele Plätze heute verfügbar sind.</li><li><strong>Runde 1 generieren:</strong> Klicken Sie auf die Schaltfläche, und das System zeigt an, wer mit wem auf welchem Platz gepaart ist.</li><li><strong>Spielen & Ergebnisse eingeben:</strong> Nachdem das Spiel beendet ist (z. B. Ergebnis 6:4 oder Tie-Break 10:8), geben Sie das Ergebnis ein.</li><li><strong>Weiter zur nächsten Runde:</strong> Das System mischt die Partner für die zweite Runde neu.</li></ol>"
         },
         {
-          title: "Das Spiel format verstehen",
+          title: "Das Spielformat verstehen",
           content: "<p>Um die Nutzung dieses Tools zu maximieren, finden Sie hier einige unterstützte Formatbegriffe:</p><ul><li><strong>Round Robin:</strong> Ein Format, bei dem im Idealfall alle Spieler auf alle anderen Spieler treffen (wenn die Zeit ausreicht).</li><li><strong>Social Mixer:</strong> Ein entspanntes Format, bei dem die soziale Interaktion mit wechselnden Partnern im Vordergrund steht.</li><li><strong>Tie-Break/Fast Tennis:</strong> Dieses Tool unterstützt kurze Ergebnisformate (z. B. Best-of-4-Spiele oder Tie-Break bis 10), damit die Spielerrotation schnell abläuft und jeder viel zum Spielen kommt.</li></ul>"
         },
         {
@@ -437,7 +437,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "À qui s'adresse cet outil ?",
-          content: "<ul><li><strong>Matchs amicaux de bureau/résidence :</strong> Un groupe d'amis de bureau ou de résidents d'un complexe qui louent un court pendant 2-3 heures le week-end.</li><li><strong>Clubs de tennis amateurs et entraîneurs :</strong> Les entraîneurs qui souhaitent organiser un \"Tournoi Interne\" ou un Mixeur du dimanche pour que les membres soient plus unis.</li><li><strong>Mixeurs de tennis :</strong> Groupes sociaux qui souhaitent jouer de manière décontractée (par exemple, format Tie-Break) tout en voulant une tenue de score soignée et équitable.</li></ul>"
+          content: "<ul><li><strong>Matchs amicaux de bureau/résidence :</strong> Un groupe d'amis de bureau ou de résidents d'un complexe qui louent un court pendant 2-3 heures le week-end.</li><li><strong>Clubs de tennis amateurs et entraîneurs :</strong> Les entraîneurs qui souhaitent organiser un \"Tournoi Interne\" ou un Mixeur du dimanche pour que les membres soient plus unis.</li><li><strong>Mixers de tennis :</strong> Groupes sociaux qui souhaitent jouer de manière décontractée (par exemple, format Tie-Break) tout en voulant une tenue de score soignée et équitable.</li></ul>"
         },
         {
           title: "Comment utiliser ce générateur de planning",
@@ -470,7 +470,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "Per chi è adatto questo strumento?",
-          content: "<ul><li><strong>Partite amichevoli tra colleghi/condomini:</strong> Un gruppo di amici dell'ufficio o residenti di un complesso che affittano un campo per 2-3 ore nei fine settimana.</li><li><strong>Club di tennis amatoriali e allenatori:</strong> Allenatori che vogliono organizzare un \"Torneo interno\" o un Mixer domenicale affinché i membri diventino più uniti.</li><li><strong>Mixer di tennis:</strong> Gruppi sociali che vogliono giocare in modo informale (ad esempio, formato Tie-Break) ma desiderano comunque un punteggio ordinato ed equo.</li></ul>"
+          content: "<ul><li><strong>Partite amichevoli tra colleghi/condomini:</strong> Un gruppo di amici dell'ufficio o residenti di un complesso che affittano un campo per 2-3 ore nei fine settimana.</li><li><strong>Club di tennis amatoriali e allenatori:</strong> Allenatori che vogliono organizzare un \"Torneo interno\" o un Mixer domenicale affinché i membri diventino più uniti.</li><li><strong>Mixer di tennis:</strong> Gruppi sociali que vogliono giocare in modo informale (ad esempio, formato Tie-Break) ma desiderano comunque un punteggio ordinato ed equo.</li></ul>"
         },
         {
           title: "Come usare questo generatore di programmi",
@@ -478,7 +478,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "Comprendere il formato del gioco",
-          content: "<p>Per massimizzare l'uso di questo strumento, ecco alcuni termini di formato supportati:</p><ul><li><strong>Round Robin:</strong> Un formato in cui idealmente tutti i giocatori incontreranno tutti gli altri (si il tempo è sufficiente).</li><li><strong>Social Mixer:</strong> Un formato rilassato che dà priorità all'interazione sociale con il cambio di partner.</li><li><strong>Tie-Break/Fast Tennis:</strong> Questo strumento supporta formati di punteggio brevi (ad esempio, il meglio di 4 giochi o tie-break a 10) in modo che la rotazione dei giocatori sia rapida e tutti possano giocare molto.</li></ul>"
+          content: "<p>Per massimizzare l'uso di questo strumento, ecco alcuni termini di formato supportati:</p><ul><li><strong>Round Robin:</strong> Un formato in cui idealmente tutti i giocatori incontreranno tutti gli altri (si il tempo è sufficiente).</li><li><strong>Social Mixer:</strong> Un formato rilassato che dà prioridade all'interazione sociale con il cambio di partner.</li><li><strong>Tie-Break/Fast Tennis:</strong> Questo strumento supporta formati di punteggio brevi (ad esempio, il meglio di 4 giochi o tie-break a 10) in modo che la rotazione dei giocatori sia rapida e tutti possano giocare molto.</li></ul>"
         },
         {
           title: "Rendi le sessioni di tennis più competitive e unite",
@@ -489,7 +489,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
   },
   "budget-planner": {
     en: {
-      title: "Online Budget Planner: Manage Finances with Zero-Based Budgeting Method",
+      title: "Budget Planner Online: Manage Finances with Zero-Based Budgeting Method",
       sections: [
         {
           title: "What is Zero-Based Budgeting (ZBB)?",
@@ -543,7 +543,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "Hauptmerkmale des VersoKit Budgetplaners",
-          content: "<p>Warum sollten Sie unsere Tools im Vergleich zu anderen Apps nutzen?</p><ul><li><strong>\"Bereit zur Budgetierung\"-System:</strong> Am oberen Rand der App sehen Sie eine große Zahl. Das ist Ihr Geld, das noch keine \"Aufgabe\" hat. Ihre Mission ist es, diese Zahl auf Kategorien zu verteilen, bis der Indikator 0 (Null) anzeigt.</li><li><strong>Quersubventionierung (Anpassungsfähigkeit):</strong> Das Leben ist dynamisch. Manchmal geben wir in der Kategorie \"Essen\" zu viel aus. Wenn Ihre Lebensmittelkategorie im Minus ist (rot markiert), zwingt Sie dieses Tool dazu, ehrlich zu sein: Woher nehmen Sie das Geld, um es zu decken? Sie müssen es aus einer anderen Kategorie nehmen (z. B. das Budget für \"Unterhaltung\" kürzen). Dies lehrt die Realität, dass Geld nicht auf Bäumen wächst.</li><li><strong>100 % Privatsphäre (Client-seitig & Offline):</strong> Wir wissen, dass Finanzdaten sensibel sind. Kein Bank-Login, kein Ausweis-Upload. Alle Daten werden im LocalStorage Ihres Geräts (Laptop/Handy) gespeichert. Unser Server sieht Ihre Daten überhaupt nicht. Offline-bereit, wenn das Signal schlecht ist.</li><li><strong>Daten exportieren & importieren:</strong> Sie wechseln das Handy oder möchten weitere Analysen in Excel durchführen? Sie können Ihre Daten jederzeit im JSON- oder CSV-Format (Excel) sichern. Sie haben die volle Kontrolle über Ihre Daten.</li></ul>"
+          content: "<p>Warum sollten Sie unsere Tools im Vergleich zu anderen Apps nutzen?</p><ul><li><strong>\"Bereit zur Budgetierung\"-System:</strong> Am oberen Rand der App sehen Sie eine große Zahl. Das ist Ihr Geld, das noch keine \"Aufgabe\" hat. Ihre Mission ist es, diese Zahl auf Kategorien zu verteilen, bis der Indikator 0 (Null) anzeigt.</li><li><strong>Quersubventionierung (Anpassungsfähigkeit):</strong> Das Leben ist dynamisch. Manchmal geben wir in der Kategorie \"Essen\" zu viel aus. Wenn Ihre Lebensmittelkategorie im Minus ist (rot markiert), zwingt Sie dieses Tool dazu, ehrlich zu sein: Woher nehmen Sie das Geld, um es zu decken? Sie müssen es aus einer anderen Kategorie nehmen (z. B. das Budget für \"Unterhaltung\" kürzen). Dies lehrt die Realität, dass Geld nicht auf Bäumen wächst.</li><li><strong>100 % Privatsphäre (Client-seitig & Offline):</strong> Wir wissen, dass Finanzdaten sensibel sind. Kein Bank-Login, kein Ausweis-Upload. Alle Daten werden im LocalStorage Ihres Geräts (Laptop/Handy) gespeichert. Unser Server sieht Ihre Daten überhaupt nicht. Offline-bereit, wenn das Signal ist schlecht.</li><li><strong>Daten exportieren & importieren:</strong> Sie wechseln das Handy oder möchten weitere Analysen in Excel durchführen? Sie können Ihre Daten jederzeit im JSON- oder CSV-Format (Excel) sichern. Sie haben die volle Kontrolle über Ihre Daten.</li></ul>"
         },
         {
           title: "Budgetplanung in 4 Schritten starten",
@@ -556,7 +556,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
       sections: [
         {
           title: "¿Qué es el Presupuesto Base Cero (ZBB)?",
-          content: "<p>¿Alguna vez has sentido que tu salario es solo un \"paso de dinero\"? Recibes tu paga el día 25, pero el día 10 del mes siguiente el saldo de tu cuenta ya es bajo y te preguntas: \"¿En qué se me ha ido todo el dinero?\"</p><p>El problema principal no suele ser el tamaño de tu salario, sino cómo tratas ese dinero. Muchas personas están atrapadas usando aplicaciones de seguimiento de gastos (Expense Tracker). El problema es que registrar los gastos es un acto de arrepentimiento. Solo estás registrando la historia: \"Vaya, me gasté 500 en café\". Es hora de cambiar.</p><p>Te presentamos VersoKit Budget Planner. Esto no es solo un registrador; es una herramienta de Planificación del Futuro basada en el método de Presupuesto Base Cero (ZBB). La filosofía detrás de esta herramienta es muy simple pero poderosa: <strong>\"Dale un trabajo a cada euro que tengas\".</strong></p><p>Imagina el método del \"Sobre\" de nuestros antepasados. Si tuviera 5.000 € en efectivo en la mano, los pondría en sobres físicos: Sobre de Comida, Sobre de Electricidad, Sobre de Ahorros, etc. Sigue dividiendo ese dinero hasta que el dinero en su mano sea CERO (0). Esto significa que todo el dinero ya tiene su propio puesto asignado.</p><p>VersoKit Budget Planner digitaliza este sistema de sobres.</p><ul><li><strong>Rastreador de Gastos Estándar:</strong> \"¿Cuánto dinero me queda?\" (Reactivo/Temeroso).</li><li><strong>Planificador de Presupuesto (ZBB):</strong> \"¿Qué plan tengo para este dinero?\" (Proactivo/Control).</li></ul>"
+          content: "<p>¿Alguna vez has sentido que tu salario es solo un \"paso de dinero\"? Recibes tu paga el día 25, pero el día 10 del mes siguiente el saldo de tu cuenta ya es bajo y te preguntas: \"¿En qué se me ha ido todo el dinero?\"</p><p>El problema principal no suele ser el tamaño de tu salario, sino cómo tratas ese dinero. Muchas personas están atrapadas usando aplicaciones de seguimiento de gastos (Expense Tracker). El problema es que registrar los gastos es un acto de arrepentimiento. Solo estás registrando la historia: \"Vaya, me gasté 500 en café\". Es hora de cambiar.</p><p>Te presentamos VersoKit Budget Planner. Esto no es solo un registrador; es una herramienta de Planificación del Futuro basada en el método de Presupuesto Base Cero (ZBB). La filosofía detrás de esta herramienta es muy simple pero poderosa: <strong>\"Dale un trabajo a cada euro que tengas\".</strong></p><p>Imagina el método del \"Sobre\" de nuestros antepasados. Si tuviera 5.000 € en efectivo en la mano, los pondría en sobres físicos: Sobre de Comida, Sobre de Electricidad, Sobre de Ahorros, etc. Sigue dividiendo ese dinero hasta que el dinero en su mano sea CERO (0). Esto significa que todo el dinero ya tiene su propio puesto asignado.</p><p>VersoKit Budget Planner digitaliza este sistema de sobres.</p><ul><li><strong>Rastreador de Gastos Estándar:</strong> \"¿Cuánto dinero me queda?\" (Reactivo/Temeroso).</li><li><strong>Planificador de Presupuesto (ZBB):</strong> \"Qué plan tengo para este dinero?\" (Proactivo/Control).</li></ul>"
         },
         {
           title: "Problemas Financieros que Resolvemos",
@@ -619,7 +619,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
       sections: [
         {
           title: "Cos'è il Budget a Base Zero (BBZ)?",
-          content: "<p>Hai mai avuto l'impressione che il tuo stipendio sia solo di \"passaggio\"? Ricevi la busta paga il 25, ma già il 10 del mese successivo il saldo del tuo conto è basso e ti chiedi: \"Dove sono finiti tutti i miei soldi?\"</p><p>Il problema principale spesso non è l'entità del tuo stipendio, ma il modo in cui tratti quel denaro. Molte persone sono intrappolate nell'uso di app per il monitoraggio delle spese (Expense Tracker). Il problema è che registrare le spese è un atto di rimpianto. Stai solo registrando la storia: \"Oh, ho speso 500 per il caffè\". È ora di cambiare.</p><p>Ti presentiamo VersoKit Budget Planner. Questo non è solo un registratore; è uno strumento di Pianificazione del Futuro basato sul metodo del Budget a Base Zero (BBZ). La filosofia alla base di questo strumento è molto semplice ma potente: <strong>\"Dai un lavoro a ogni euro che possiedi.\"</strong></p><p>Immagina il metodo delle \"Buste\" dei nostri antenati. Se avessi 5.000 € in contanti in mano, li metteresti in buste fisiche: Busta per il Cibo, Busta per l'Elettricità, Busta per i Risparmi, ecc. Continui a dividere quel denaro finché il denaro che hai in mano non è ZERO (0). Ciò significa che tutto il denaro ha già la sua destinazione assegnata.</p><p>VersoKit Budget Planner digitalizza questo sistema di buste.</p><ul><li><strong>Tracker delle Spese Standard:</strong> \"Quanto denaro mi è rimasto?\" (Reattivo/Timoroso).</li><li><strong>Pianificatore di Budget (BBZ):</strong> \"Quale piano ho per questo denaro?\" (Proattivo/Controllo).</li></ul>"
+          content: "<p>Hai mai avuto l'impressione che il tuo stipendio sia solo di \"passaggio\"? Ricevi la busta paga il 25, ma già il 10 del mese successivo il saldo del tuo conto è basso e ti chiedi: \"Dove sono finiti tutti i miei soldi?\"</p><p>Il problema principale spesso non è l'entità del tuo stipendio, ma il modo in cui tratti quel denaro. Molte persone sono intrappolate nell'uso di app per il monitoraggio delle spese (Expense Tracker). Il problema è che registrare le spese è un atto di rimpianto. Stai solo registrando la storia: \"Oh, ho speso 500 per il caffè\". È ora di cambiare.</p><p>Ti presentiamo VersoKit Budget Planner. Questo non è solo un registratore; è uno strumento di Pianificazione del Futuro basato sul metodo del Budget a Base Zero (BBZ). La filosofia alla base di questo strumento è molto semplice ma potente: <strong>\"Dai un lavoro a ogni euro che possiedi.\"</strong></p><p>Immagina il metodo delle \"Buste\" dei nostri antenati. Se avessi 5.000 € in contanti in mano, li metteresti in buste fisiche: Busta per il Cibo, Busta per l'Elettricità, Busta per i Risparmi, ecc. Continui a dividere quel denaro finché il denaro che hai in mano non è ZERO (0). Ciò significa che tutto il denaro ha già la sua destinazione assegnata.</p><p>VersoKit Budget Planner digitalizza questo sistema di buste.</p><ul><li><strong>Tracker delle Spese Standard:</strong> \"Quanto denaro mi è rimasto?\" (Reattivo/Timoroso).</li><li><strong>Pianificatore di Budget (BBZ):</strong> \"Quale piano ho per questo denaro?\" (Proactive/Controllo).</li></ul>"
         },
         {
           title: "Problemi Finanziari che Risolviamo",
@@ -627,760 +627,160 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "Caratteristiche Principali di VersoKit Budget Planner",
-          content: "<p>Perché dovresti usare i nostri strumenti rispetto ad altre app?</p><ul><li><strong>Sistema \"Da Preventivare\":</strong> Nella parte superiore dell'app, vedrai un numero grande. Quello è il tuo denaro che non ha ancora un \"lavoro\". La tua missione è spendere quel numero nelle categorie finché l'indicatore non è 0 (Zero).</li><li><strong>Sussidio Incrociato (Adattarsi ai colpi):</strong> La vita è dinamica. A volte spendiamo troppo nella categoria \"Cibo\". Se la tua categoria Cibo è negativa (rossa), questo strumento ti costringe a essere onesto: da dove prenderai i soldi per coprirla? Devi prenderli da un'altra categoria (ad esempio, ridurre lo stanziamento per lo \"Svago\"). Questo insegna la realtà che i soldi non crescono sugli alberi.</li><li><strong>Privacy al 100% (Client-Side e Offline):</strong> Sappiamo che i dati finanziari sono sensibili. Nessun login bancario, nessun caricamento di documenti d'identità. Tutti i dati sono memorizzati nel LocalStorage del tuo dispositivo (Laptop/Telefono). Il nostro server non vede affatto i tuoi dati. Pronto per l'uso offline quando il segnale è scarso.</li><li><strong>Esporta e Importa Dati:</strong> Cambi telefono o vuoi analizzare ulteriormente in Excel? Puoi eseguire il backup dei tuoi dati in formato JSON o CSV (Excel) in qualsiasi momento. Hai il pieno controllo dei tuoi dati.</li></ul>"
+          content: "<p>Perché dovresti usare i nostri strumenti rispetto ad altre app?</p><ul><li><strong>Sistema \"Da Preventivare\":</strong> Nella parte superiore dell'app, vedrai un numero grande. Quello è il tuo denaro che non ha ancora un \"lavoro\". La tua missione è spendere quel numero nelle categorie finché l'indicatore non è 0 (Zero).</li><li><strong>Sussidio Incrociato (Adattarsi ai colpi):</strong> La vita è dinamica. A volte spendiamo troppo nella categoria \"Cibo\". Se la tua categoria Cibo è negativa (rossa), questo strumento ti costringe a essere onesto: da dove prenderai i soldi per coprirla? Devi prenderli da un'altra categoria (ad esempio, ridurre lo stanziamento per lo \"Svago\"). Questo insegna la realtà que i soldi non crescono sugli alberi.</li><li><strong>Privacy al 100% (Client-Side e Offline):</strong> Sappiamo che i dati finanziari sono sensibili. Nessun login bancario, nessun caricamento di documenti d'identità. Tutti i dati sono memorizzati nel LocalStorage del tuo dispositivo (Laptop/Telefono). Il nostro server non vede affatto i tuoi dati. Pronto per l'uso offline quando il segnale è scarso.</li><li><strong>Esporta e Importa Dati:</strong> Cambi telefono o vuoi analizzare ulteriormente in Excel? Puoi eseguire il backup dei tuoi dati in formato JSON o CSV (Excel) in qualsiasi momento. Hai il pieno controllo dei tuoi dati.</li></ul>"
         },
         {
           title: "Come Iniziare a Fare il Budget in 4 Passaggi",
-          content: "<p>Cambia il tuo destino finanziario a partire da oggi:</p><ol><li><strong>Inserisci le Entrate:</strong> Inserisci il tuo stipendio o le tue entrate. Il numero \"Da Preventivare\" diventerà verde.</li><li><strong>Assegna (Fare il Budget):</strong> Inserisci gli importi nella colonna \"Assegnato\" per ogni categoria (Bisogni Primari, Rate, Risparmi, Svago) finché \"Da Preventivare\" non diventa 0 €.</li><li><strong>Registra le Transazioni:</strong> Ogni volta che spendi, clicca sul pulsante (+). Seleziona una categoria, inserisci l'importo. Il saldo della categoria diminuirà automaticamente.</li><li><strong>Valuta e Regola:</strong> Se una categoria è rossa (fuori budget), sposta il budget da un'altra categoria che ha ancora un surplus.</li></ol><p>Non lasciare che il denaro controlli la tua vita. Inizia a pianificare dove andrà ogni euro prima che finisca il mese. Prova la tranquillità di sapere che tutte le bollette sono pagate e i risparmi sono accantonati.</p><p>Gratuito, sicuro e senza installazione richiesta. Prova VersoKit Budget Planner proprio ora qui sotto!</p>"
+          content: "<p>Cambia il tuo destino finanziario a partire da oggi:</p><ol><li><strong>Inserisci le Entrate:</strong> Inserisci il tuo stipendio o le tue entrate. Il numero \"Da Preventivare\" diventerà verde.</li><li><strong>Assegna (Fare il Budget):</strong> Inserisci gli importi nella colonna \"Assegnato\" per ogni categoria (Bisogni Primari, Rate, Risparmi, Svago) finché \"Da Preventivare\" non diventa 0 €.</li><li><strong>Registra le Transazioni:</strong> Ogni volta che spendi, clicca sul pulsante (+). Seleziona una categoria, inserisci l'importo. Il saldo della categoria diminuirà automaticamente.</li><li><strong>Valuta e Regola:</strong> Se una categoria è rossa (fuori budget), sposta il budget da un'altra categoria che ha ancora un surplus.</li></ol><p>Non lasciare che il denaro controlli la tua vida. Inizia a pianificare dove andrà ogni euro prima che finisca il mese. Prova la tranquillità di sapere che tutte le bollette sono pagate e i risparmi sono accantonati.</p><p>Gratuito, sicuro e senza installazione richiesta. Prova VersoKit Budget Planner proprio ora qui sotto!</p>"
         }
       ]
     }
   },
   "invoice": {
     en: {
-      title: "Professional PDF Invoicing for Freelancers",
+      title: "Free Invoice Generator: Create Professional PDF Invoices (1 Minute)",
       sections: [
         {
-          title: "Free Invoice Generator",
-          content: "Free Invoice Generator. Create PDF invoices instantly in your browser. No data stored on servers. A professional invoice ensures you get paid faster."
+          title: "Why Should You Use This Tool?",
+          content: "<p>Accounting software like QuickBooks or Xero is great, but the subscription fees are expensive. Using Excel/Word is free, but prone to formula errors and formatting often shifts.</p><p>Our tool combines the advantages of both: Free yet Professional.</p><ul><li><strong>Automatic & Error-Proof:</strong> Humans often make errors, especially when adding up many items. With this tool, you don't need a calculator. Simply enter the Quantity (Qty) and Unit Price, and the system will automatically calculate the Total, including Tax (VAT) or Discount calculations if any. 100% accuracy.</li><li><strong>Industry Standard PDF Format:</strong> Don't send Word files (.doc) that can be easily edited by clients. This tool generates PDF files that look elegant, clean, and secure (content is not easily changed). PDF also ensures your invoice appearance remains neat whether opened on a Laptop or Mobile.</li><li><strong>Global Currency Support:</strong> Have international clients? No problem. You can change the currency from Rupiah (IDR) to Dollar (USD), Euro (EUR), or other currencies according to your work contract needs.</li></ul>"
+        },
+        {
+          title: "Key Features: Privacy & Branding",
+          content: "<p>We designed this tool with features usually only found in paid applications:</p><ul><li><strong>100% Privacy (Client-Side):</strong> This is the most important feature. Client data, monetary amounts, and item details are processed only in your browser. We do NOT send or store your sensitive business data on our servers. Your company's internal secrets are safe.</li><li><strong>Upload Business Logo:</strong> Want to look like a large corporation? Upload your brand logo in the invoice header to increase credibility.</li><li><strong>No Watermark:</strong> The downloaded PDF result is clean. There is no large \"Created by VersoKit\" text that interferes. This invoice belongs entirely to you.</li><li><strong>Notes & Terms:</strong> A special column is available to write payment details (e.g., \"Transfer to Bank: 123456 account name Budi\") or warranty terms.</li></ul>"
+        },
+        {
+          title: "Who is This Invoice Suitable For?",
+          content: "<ul><li><strong>Freelancers:</strong> Graphic designers, writers, freelance programmers who need a quick bill to disburse a down payment (DP).</li><li><strong>SMEs & Online Shops:</strong> Catering sellers, clothing stores, even shoe laundry services who want tidier bookkeeping.</li><li><strong>Consultants & Professional Services:</strong> Legal services, business consultants, wedding photographers, even AC technicians.</li></ul>"
+        },
+        {
+          title: "How to Create an Invoice in 4 Steps",
+          content: "<p>No need to sign up, no need to login. Create your bill immediately:</p><ol><li><strong>Fill in Identity:</strong> Complete the \"From\" column (Your Business Info) and \"To\" (Client Info). Don't forget to upload a logo if you have one.</li><li><strong>Enter Goods/Services:</strong> Type item names, short descriptions, quantities, and unit prices.</li><li><strong>Add Tax/Discount:</strong> Click the add tax button (e.g., 11% VAT) or discount if you are running a promotion. The total will be calculated automatically.</li><li><strong>Download PDF:</strong> Double-check the data (don't forget the due date), then click the \"Download Invoice\" button. Done!</li></ol>"
         }
       ]
     },
     id: {
-      title: "Cara Buat Invoice Profesional untuk Freelancer",
+      title: "Invoice Generator Gratis: Buat Invoice PDF Profesional (1 Menit)",
       sections: [
         {
-          title: "Pembuat Invoice Gratis",
-          content: "Pembuat Invoice Gratis. Buat faktur PDF instan di browser. Data tidak disimpan di server. Invoice yang rapi membantu Anda terlihat profesional."
+          title: "Mengapa Anda Wajib Pakai Alat Ini?",
+          content: "<p>Software akuntansi seperti QuickBooks atau Xero memang bagus, tapi biaya langganannya mahal. Menggunakan Excel/Word gratis, tapi rentan salah rumus dan formatnya sering geser.</p><p>Alat kami menggabungkan kelebihan keduanya: Gratis tapi Profesional.</p><ul><li><strong>Otomatis & Anti Salah Hitung:</strong> Manusia sering melakukan human error, apalagi saat menjumlahkan banyak barang. Dengan alat ini, Anda tidak perlu kalkulator. Cukup masukkan Jumlah (Qty) dan Harga Satuan, sistem akan otomatis menghitung Total, termasuk kalkulasi Pajak (PPN) atau Diskon jika ada. Akurasi 100%.</li><li><strong>Format PDF Standar Industri:</strong> Jangan kirim file Word (.doc) yang bisa diedit sembarangan oleh klien. Alat ini menghasilkan file PDF yang terlihat elegan, bersih, dan aman (tidak mudah diubah isinya). PDF juga menjamin tampilan invoice Anda tetap rapi baik dibuka di Laptop maupun HP.</li><li><strong>Dukungan Mata Uang Global:</strong> Punya klien dari luar negeri? Tidak masalah. Anda bisa mengubah mata uang dari Rupiah (IDR) ke Dollar (USD), Euro (EUR), atau mata uang lainnya sesuai kebutuhan kontrak kerja Anda.</li></ul>"
+        },
+        {
+          title: "Fitur Unggulan: Privasi & Branding",
+          content: "<p>Kami merancang alat ini dengan fitur-fitur yang biasanya hanya ada di aplikasi berbayar:</p><ul><li><strong>Privasi 100% (Client-Side):</strong> Ini fitur terpenting. Data klien, nominal uang, dan rincian barang Anda diproses hanya di browser Anda. Kami TIDAK mengirim atau menyimpan data bisnis sensitif Anda di server kami. Rahasia dapur perusahaan Anda aman.</li><li><strong>Upload Logo Bisnis:</strong> Ingin terlihat seperti perusahaan besar? Unggah logo brand Anda di bagian header invoice untuk meningkatkan kredibilitas.</li><li><strong>No Watermark:</strong> Hasil PDF yang Anda unduh bersih. Tidak ada tulisan besar \"Created by VersoKit\" yang mengganggu. Invoice ini sepenuhnya milik Anda.</li><li><strong>Notes & Terms:</strong> Tersedia kolom khusus untuk menulis detail pembayaran (Misal: \"Transfer ke BCA: 123456 a.n Budi\") atau syarat garansi.</li></ul>"
+        },
+        {
+          title: "Siapa yang Cocok Menggunakan Invoice Ini?",
+          content: "<ul><li><strong>Freelancer:</strong> Desainer grafis, penulis, programmer lepas yang butuh tagihan cepat untuk cairkan down payment (DP).</li><li><strong>UMKM & Online Shop:</strong> Penjual katering, toko baju, hingga jasa cuci sepatu yang ingin pembukuan lebih rapi.</li><li><strong>Konsultan & Jasa Profesional:</strong> Jasa hukum, konsultan bisnis, fotografer wedding, hingga teknisi AC.</li></ul>"
+        },
+        {
+          title: "Cara Membuat Invoice dalam 4 Langkah",
+          content: "<p>Tidak perlu sign-up, tidak perlu login. Langsung buat tagihan Anda:</p><ol><li><strong>Isi Identitas:</strong> Lengkapi kolom \"Dari\" (Info Bisnis Anda) dan \"Kepada\" (Info Klien). Jangan lupa upload logo jika ada.</li><li><strong>Masukkan Barang/Jasa:</strong> Ketik nama barang, deskripsi singkat, kuantitas, dan harga satuan.</li><li><strong>Tambahkan Pajak/Diskon:</strong> Klik tombol tambah pajak (misal PPN 11%) atau diskon jika Anda sedang promo. Total akan terhitung otomatis.</li><li><strong>Download PDF:</strong> Periksa kembali data (jangan lupa tanggal jatuh tempo), lalu klik tombol \"Download Invoice\". Selesai!</li></ol>"
         }
       ]
     },
     de: {
-      title: "Rechnungsgenerator",
+      title: "Kostenloser Rechnungsgenerator: Professionelle PDF-Rechnungen erstellen (1 Minute)",
       sections: [
         {
-          title: "Kostenloser Rechnungsgenerator",
-          content: "Kostenloser Rechnungsgenerator. Erstellen Sie PDF-Rechnungen sofort im Browser."
+          title: "Warum sollten Sie dieses Tool nutzen?",
+          content: "<p>Buchhaltungssoftware wie QuickBooks oder Xero ist zwar gut, aber die Abonnements sind teuer. Die Nutzung von Excel/Word ist zwar kostenlos, aber anfällig für Formelfehler und Formatierungsverschiebungen.</p><p>Unser Tool vereint die Vorteile von beidem: Kostenlos und doch professionell.</p><ul><li><strong>Automatisch & Fehlersicher:</strong> Menschen machen oft Fehler, besonders beim Addieren vieler Artikel. Mit diesem Tool benötigen Sie keinen Taschenrechner. Geben Sie einfach Menge (Qty) und Einzelpreis ein, und das System berechnet automatisch den Gesamtbetrag, einschließlich Steuer (MwSt.) oder Rabatten, falls vorhanden. 100 % Genauigkeit.</li><li><strong>Industriestandard PDF-Format:</strong> Senden Sie keine Word-Dateien (.doc), die vom Kunden leicht bearbeitet werden können. Dieses Tool erstellt PDF-Dateien, die elegant, sauber und sicher aussehen (Inhalt kann nicht einfach geändert werden). PDF garantiert zudem, dass Ihre Rechnung sowohl auf dem Laptop als auch auf dem Handy ordentlich aussieht.</li><li><strong>Globale Währungsunterstützung:</strong> Haben Sie internationale Kunden? Kein Problem. Sie können die Währung von Rupiah (IDR) in Dollar (USD), Euro (EUR) oder andere Währungen ändern, je nach den Anforderungen Ihres Arbeitsvertrags.</li></ul>"
+        },
+        {
+          title: "Top-Features: Privatsphäre & Branding",
+          content: "<p>Wir haben dieses Tool mit Funktionen ausgestattet, die normalerweise nur in kostenpflichtigen Anwendungen zu finden sind:</p><ul><li><strong>100 % Privatsphäre (Client-Side):</strong> Dies ist das wichtigste Merkmal. Kundendaten, Geldbeträge und Artikeldetails werden nur in Ihrem Browser verarbeitet. Wir senden oder speichern Ihre sensiblen Geschäftsdaten NICHT auf unseren Servern. Ihre internen Firmengeheimnisse sind sicher.</li><li><strong>Unternehmenslogo hochladen:</strong> Möchten Sie wie ein großes Unternehmen wirken? Laden Sie Ihr Markenlogo im Rechnungskopf hoch, um Ihre Glaubwürdigkeit zu erhöhen.</li><li><strong>Kein Wasserzeichen:</strong> Das heruntergeladene PDF-Ergebnis ist sauber. Es gibt keinen störenden Text \"Created by VersoKit\". Diese Rechnung gehört ganz allein Ihnen.</li><li><strong>Notizen & Bedingungen:</strong> Es steht eine spezielle Spalte zur Verfügung, um Zahlungsdetails (z. B. \"Überweisung an Bank: 123456 Kontoinhaber Budi\") oder Garantiebedingungen einzutragen.</li></ul>"
+        },
+        {
+          title: "Für wen ist diese Rechnung geeignet?",
+          content: "<ul><li><strong>Freelancer:</strong> Grafikdesigner, Autoren, freiberufliche Programmierer, die eine schnelle Abrechnung benötigen, um eine Anzahlung (DP) zu erhalten.</li><li><strong>KMU & Online-Shops:</strong> Catering-Anbieter, Bekleidungsgeschäfte, sogar Schuhreinigungsdienste, die eine ordentlichere Buchführung wünschen.</li><li><strong>Berater & professionelle Dienstleistungen:</strong> Rechtsdienstleistungen, Unternehmensberater, Hochzeitsfotografen, sogar Klimatechniker.</li></ul>"
+        },
+        {
+          title: "In 4 Schritten zur Rechnung",
+          content: "<p>Keine Registrierung erforderlich, kein Login notwendig. Erstellen Sie Ihre Abrechnung sofort:</p><ol><li><strong>Identität ausfüllen:</strong> Füllen Sie die Spalten \"Von\" (Ihre Geschäftsinfos) und \"An\" (Kundeninfos) aus. Vergessen Sie nicht, ein Logo hochzuladen, falls vorhanden.</li><li><strong>Waren/Dienstleistungen eingeben:</strong> Geben Sie Artikelnamen, Kurzbeschreibungen, Mengen und Einzelpreise ein.</li><li><strong>Steuer/Rabatt hinzufügen:</strong> Klicken Sie auf die Schaltfläche Steuer hinzufügen (z. B. 11 % MwSt.) oder Rabatt, wenn Sie eine Werbeaktion durchführen. Der Gesamtbetrag wird automatisch berechnet.</li><li><strong>PDF herunterladen:</strong> Überprüfen Sie die Daten noch einmal (vergessen Sie das Fälligkeitsdatum nicht) und klicken Sie dann auf die Schaltfläche \"Rechnung herunterladen\". Fertig!</li></ol>"
         }
       ]
     },
     es: {
-      title: "Generador de Facturas",
+      title: "Generador de Facturas Gratis: Crea Facturas PDF Profesionales (1 Minuto)",
       sections: [
         {
-          title: "Generador de Facturas Gratis",
-          content: "Generador de Facturas Gratis. Crea facturas PDF al instante."
+          title: "¿Por qué deberías usar esta herramienta?",
+          content: "<p>Los programas de contabilidad como QuickBooks o Xero son buenos, pero sus suscripciones son caras. Usar Excel o Word es gratis, pero es propenso a errores de fórmulas y el formato suele desajustarse.</p><p>Nuestra herramienta combina las ventajas de ambos: gratuita pero profesional.</p><ul><li><strong>Automática y a prueba de errores:</strong> Los humanos suelen cometer errores, especialmente al sumar muchos artículos. Con esta herramienta, no necesitas calculadora. Solo ingresa la cantidad (Cant.) y el precio unitario, y el sistema calculará automáticamente el total, incluyendo impuestos (IVA) o descuentos si los hay. Precisión del 100%.</li><li><strong>Formato PDF estándar de la industria:</strong> No envíes archivos de Word (.doc) que el cliente pueda editar a su antojo. Esta herramienta genera archivos PDF que se ven elegantes, limpios y seguros (el contenido no se cambia fácilmente). El PDF también garantiza que la apariencia de tu factura se mantenga impecable tanto en portátiles como en móviles.</li><li><strong>Soporte de moneda global:</strong> ¿Tienes clientes en el extranjero? No hay problema. Puedes cambiar la moneda de Rupias (IDR) a Dólares (USD), Euros (EUR) u otras monedas según las necesidades de tu contrato de trabajo.</li></ul>"
+        },
+        {
+          title: "Características destacadas: Privacidad y marca",
+          content: "<p>Diseñamos esta herramienta con funciones que normalmente solo se encuentran en aplicaciones de pago:</p><ul><li><strong>Privacidad 100% (del lado del cliente):</strong> Esta es la función más importante. Los datos de los clientes, los montos monetarios y los detalles de los artículos se procesan solo en tu navegador. NO enviamos ni almacenamos tus datos comerciales confidenciales en nuestros servidores. Los secretos de tu empresa están a salvo.</li><li><strong>Subir logo del negocio:</strong> ¿Quieres parecer una gran corporación? Sube el logo de tu marca en el encabezado de la factura para aumentar la credibilidad.</li><li><strong>Sin marca de agua:</strong> El PDF descargado está limpio. No hay ningún texto molesto de \"Creado por VersoKit\". Esta factura es totalmente tuya.</li><li><strong>Notas y términos:</strong> Hay una columna especial disponible para escribir detalles de pago (ej.: \"Transferencia a banco: 123456 a nombre de Budi\") o términos de garantía.</li></ul>"
+        },
+        {
+          title: "¿Para quién es adecuada esta factura?",
+          content: "<ul><li><strong>Freelancers:</strong> Diseñadores gráficos, escritores, programadores independientes que necesitan una factura rápida para cobrar un anticipo.</li><li><strong>Pymes y tiendas online:</strong> Vendedores de catering, tiendas de ropa, incluso servicios de limpieza de calzado que desean una contabilidad más ordenada.</li><li><strong>Consultores y servicios profesionales:</strong> Servicios legales, consultores de negocios, fotógrafos de bodas, incluso técnicos de aire acondicionado.</li></ul>"
+        },
+        {
+          title: "Cómo crear una factura en 4 pasos",
+          content: "<p>Sin necesidad de registrarse ni iniciar sesión. Crea tu factura de inmediato:</p><ol><li><strong>Completar identidad:</strong> Completa las columnas \"De\" (información de tu negocio) y \"A\" (información del cliente). No olvides subir un logo si tienes uno.</li><li><strong>Ingresar productos/servicios:</strong> Escribe nombres de artículos, descripciones cortas, cantidades y precios unitarios.</li><li><strong>Añadir impuestos/descuentos:</strong> Haz clic en el botón de añadir impuestos (ej. IVA 11%) o descuento si tienes una promoción. El total se calculará automáticamente.</li><li><strong>Descargar PDF:</strong> Revisa los datos (no olvides la fecha de vencimiento) y haz clic en el botón \"Descargar factura\". ¡Listo!</li></ol>"
         }
       ]
     },
     pt: {
-      title: "Gerador de Faturas",
+      title: "Gerador de Faturas Grátis: Crie Faturas em PDF Profissionais (1 Minuto)",
       sections: [
         {
-          title: "Gerador de Faturas Grátis",
-          content: "Gerador de Faturas Grátis. Crie faturas em PDF instantaneamente."
+          title: "Por que você deve usar esta ferramenta?",
+          content: "<p>Softwares de contabilidade como QuickBooks ou Xero são ótimos, mas as taxas de assinatura são caras. Usar Excel/Word é gratuito, mas propenso a erros de fórmula e a formatação costuma desconfigurar.</p><p>Nossa ferramenta combina as vantagens de ambos: Gratuita, mas Profissional.</p><ul><li><strong>Automática e à prova de erros:</strong> Humanos costumam cometer erros, especialmente ao somar muitos itens. Com esta ferramenta, você não precisa de calculadora. Basta inserir a Quantidade (Qtd) e o Preço Unitário, e o sistema calculará automaticamente o Total, incluindo cálculos de Impostos (IVA) ou Descontos, se houver. 100% de precisão.</li><li><strong>Formato PDF padrão da indústria:</strong> Não envie arquivos Word (.doc) que podem ser editados livremente pelos clientes. Esta ferramenta gera arquivos PDF que parecem elegantes, limpos e seguros (o conteúdo não é facilmente alterado). O PDF também garante que a aparência da sua fatura permaneça organizada, seja aberta em um laptop ou celular.</li><li><strong>Suporte a Moedas Globais:</strong> Tem clientes internacionais? Sem problemas. Você pode alterar a moeda de Rupiah (IDR) para Dólar (USD), Euro (EUR) ou outras moedas de acordo com as necessidades do seu contrato de trabalho.</li></ul>"
+        },
+        {
+          title: "Recursos Principais: Privacidade e Branding",
+          content: "<p>Projetamos esta ferramenta com recursos geralmente encontrados apenas em aplicativos pagos:</p><ul><li><strong>100% Privacidade (Client-Side):</strong> Este é o recurso mais importante. Dados de clientes, valores monetários e detalhes de itens são processados apenas no seu navegador. NÓS NÃO enviamos nem armazenamos seus dados comerciais confidenciais em nossos servidores. Os segredos internos da sua empresa estão seguros.</li><li><strong>Upload de Logo do Negócio:</strong> Quer parecer uma grande corporação? Faça o upload do logotipo da sua marca no cabeçalho da fatura para aumentar a credibilidade.</li><li><strong>Sem Marca d'Água:</strong> O resultado em PDF baixado é limpo. Não há nenhum texto grande \"Criado por VersoKit\" que interfira. Esta fatura pertence inteiramente a você.</li><li><strong>Notas e Termos:</strong> Uma coluna especial está disponível para escrever detalhes de pagamento (ex: \"Transferência para Banco: 123456 em nome de Budi\") ou termos de garantia.</li></ul>"
+        },
+        {
+          title: "Para quem esta fatura é adequada?",
+          content: "<ul><li><strong>Freelancers:</strong> Designers gráficos, escritores, programadores freelancers que precisam de uma fatura rápida para receber um adiantamento (sinal).</li><li><strong>PMEs e Lojas Online:</strong> Vendedores de buffet, lojas de roupas, até serviços de limpeza de sapatos que desejam uma contabilidade mais organizada.</li><li><strong>Consultores e Serviços Profissionais:</strong> Serviços jurídicos, consultores de negócios, fotógrafos de casamento, até técnicos de ar-condicionado.</li></ul>"
+        },
+        {
+          title: "Como criar uma fatura em 4 etapas",
+          content: "<p>Não é necessário se cadastrar, não é necessário fazer login. Crie sua fatura imediatamente:</p><ol><li><strong>Preencha a Identidade:</strong> Preencha a coluna \"De\" (informações do seu negócio) e \"Para\" (informações do cliente). Não se esqueça de fazer o upload de um logotipo, se tiver um.</li><li><strong>Insira Mercadorias/Serviços:</strong> Digite nomes de itens, descrições curtas, quantidades e preços unitários.</li><li><strong>Adicione Impostos/Desconto:</strong> Clique no botão de adicionar imposto (ex: IVA 11%) ou desconto se estiver fazendo uma promoção. O total será calculado automaticamente.</li><li><strong>Baixe o PDF:</strong> Verifique novamente os dados (não se esqueça da data de vencimiento) e clique no botão \"Baixar Fatura\". Pronto!</li></ol>"
         }
       ]
     },
     fr: {
-      title: "Générateur de Factures",
+      title: "Générateur de Factures Gratuit : Créez des Factures PDF Professionnelles (1 Minute)",
       sections: [
         {
-          title: "Générateur de Factures Gratuit",
-          content: "Générateur de Factures Gratuit. Créez des factures PDF instantanément."
+          title: "Pourquoi devriez-vous utiliser cet outil ?",
+          content: "<p>Les logiciels de comptabilité comme QuickBooks ou Xero sont excellents, mais les frais d'abonnement sont élevés. L'utilisation d'Excel/Word est gratuite, mais sujette aux erreurs de formule et la mise en forme change souvent.</p><p>Notre outil combine les avantages des deux : Gratuit mais Professionnel.</p><ul><li><strong>Automatique et sans erreur :</strong> L'erreur est humaine, surtout lorsqu'il s'agit d'additionner de nombreux articles. Avec cet outil, vous n'avez pas besoin de calculatrice. Saisissez simplement la quantité (Qté) et le prix unitaire, et le système calculera automatiquement le total, y compris les calculs de taxes (TVA) ou de remises éventuelles. Précision à 100 %.</li><li><strong>Format PDF standard de l'industrie :</strong> N'envoyez pas de fichiers Word (.doc) qui peuvent être facilement modifiés par les clients. Cet outil génère des fichiers PDF élégants, propres et sécurisés (le contenu n'est pas facilement modifiable). Le PDF garantit également que l'apparence de votre facture reste nette, qu'elle soit ouverte sur un ordinateur portable ou un mobile.</li><li><strong>Prise en charge des devises mondiales :</strong> Vous avez des clients internationaux ? Pas de problème. Vous pouvez changer la devise de la Roupie (IDR) en Dollar (USD), Euro (EUR) ou d'autres devises selon les besoins de votre contrat de travail.</li></ul>"
+        },
+        {
+          title: "Fonctionnalités clés : Confidentialité et image de marque",
+          content: "<p>Nous avons conçu cet outil with des fonctionnalités que l'on ne trouve généralement que dans les applications payantes :</p><ul><li><strong>Confidentialité 100 % (côté client) :</strong> C'est la fonctionnalité la plus importante. Les données des clients, les montants monétaires et les détails des articles sont traités uniquement dans votre navigateur. Nous n'envoyons NI ne stockons vos données commerciales sensibles sur nos serveurs. Les secrets de votre entreprise sont en sécurité.</li><li><strong>Téléchargement du logo de l'entreprise :</strong> Vous voulez ressembler à une grande entreprise ? Téléchargez votre logo dans l'en-tête de la facture pour accroître votre crédibilité.</li><li><strong>Pas de filigrane :</strong> Le résultat PDF téléchargé est propre. Il n'y a pas de texte gênant \"Créé par VersoKit\". Cette facture vous appartient entièrement.</li><li><strong>Notes et conditions :</strong> Une colonne spéciale est disponible pour inscrire les détails du paiement (ex : \"Virement bancaire : 123456 au nom de Budi\") ou les conditions de garantie.</li></ul>"
+        },
+        {
+          title: "À qui s'adresse cette facture ?",
+          content: "<ul><li><strong>Freelances :</strong> Graphistes, rédacteurs, programmeurs indépendants qui ont besoin d'une facture rapide pour décaisser un acompte.</li><li><strong>PME et boutiques en ligne :</strong> Traiteurs, magasins de vêtements, même services de nettoyage de chaussures qui souhaitent une comptabilité plus ordonnée.</li><li><strong>Consultants et services professionnels :</strong> Services juridiques, consultants en gestion, photographes de mariage, même techniciens en climatisation.</li></ul>"
+        },
+        {
+          title: "Comment créer une facture en 4 étapes",
+          content: "<p>Pas besoin de s'inscrire, pas besoin de se connecter. Créez votre facture immédiatement :</p><ol><li><strong>Remplir l'identité :</strong> Remplissez les colonnes \"De\" (vos infos professionnelles) et \"À\" (infos du client). N'oubliez pas de télécharger un logo si vous en avez un.</li><li><strong>Saisir les biens/services :</strong> Saisissez les noms des articles, les descriptions courtes, les quantités et les prix unitaires.</li><li><strong>Ajouter une taxe/remise :</strong> Cliquez sur le bouton d'ajout de taxe (ex : TVA 11 %) ou de remise si vous faites une promotion. Le total sera calculé automatiquement.</li><li><strong>Télécharger le PDF :</strong> Vérifiez à nouveau les données (n'oubliez pas la date d'échéance), puis cliquez sur le bouton \"Télécharger la facture\". Terminé !</li></ol>"
         }
       ]
     },
     it: {
-      title: "Generatore Fatture",
+      title: "Generatore Fatture Gratuito: Crea Fatture PDF Professionali (1 Minuto)",
       sections: [
         {
-          title: "Generatore Fatture Gratuito",
-          content: "Generatore Fatture Gratuito. Crea fatture PDF istantaneamente."
-        }
-      ]
-    }
-  },
-  "futsal": {
-    en: {
-      title: "Online Digital Futsal Scoreboard: Free, Timer & Foul Counter",
-      sections: [
-        {
-          title: "Pro Scoreboard for Sparring & Tournaments",
-          content: "<p>Playing futsal feels less exciting if there is no clear scoreboard and time. Have you ever experienced an awkward moment during sparring: debating the score (\"Hey, was it 4-3 or 4-4?\"), or confused about how many minutes are left?</p><p>A classic problem on non-professional futsal courts is the lack of a proper Scoreboard. The price of a physical digital scoreboard can reach millions of rupiah ($150 - $400), a quite expensive investment for small court managers or communities. Meanwhile, using a stopwatch on a phone is often ineffective because the screen is small and can only be seen by one person. VersoKit presents a smart solution: <strong>Digital Futsal Scoreboard</strong>. This web-based tool instantly and for free turns your Laptop, Tablet, or Phone into a professional scoreboard!</p>"
-        },
-        {
-          title: "Why Do You Need the VersoKit Scoreboard?",
-          content: "<p>This tool is not just a number recorder. We designed it with specific features that follow international futsal regulation standards (FIFA). Here are the \"meaty\" features you can enjoy:</p><ul><li><strong>1. Flexible Match Timer (Countdown)</strong>: In professional futsal, time is everything. This tool is equipped with a countdown timer that you can set—either the standard 20 minutes (pro half) or 15 minutes (casual sparring). <strong>Pause & Resume</strong>: Ball out of bounds? Keeper injured? Just press the Pause button. Time stops, and Resume when the ball rolls again. Perfect for simulating \"Stop-clock\" time.</li><li><strong>2. Foul Counter - A Crucial Feature!</strong>: This is a feature often forgotten by regular score apps. In futsal, accumulated fouls determine match results. Our tool tracks accumulated fouls from 0 to 5. <strong>Visual Indicator</strong>: When a team reaches 5 fouls, you and the players on the field will realize that the next foul (the 6th) means a Second Penalty Mark kick penalty.</li><li><strong>3. Professional Appearance (Customizable)</strong>: <strong>Edit Team Names</strong>: Say goodbye to the boring \"Home vs Away\" text. You can change it to real team names, e.g.: \"Garuda FC\" vs \"Harimau FC\". <strong>Period Indicator</strong>: Clear markers for Half 1, Half 2, or Extra Time.</li></ul>"
-        },
-        {
-          title: "Keunggulan Teknis: Canggih Tanpa Ribet",
-          content: "<p>We know that court operators or referees don't want to be bothered with complicated installations. Therefore, the VersoKit Futsal Scoreboard is built with modern technology:</p><ul><li><strong>Web-Based & No Install</strong>: No need to fill up phone memory by downloading apps from PlayStore/AppStore. Just open the browser (Chrome/Safari/Edge), and the tool is ready to use.</li><li><strong>Fullscreen Mode</strong>: Want a display like on Pro League TV? Click the Fullscreen button. All browser elements will disappear, leaving a clean and elegant scoreboard.</li><li><strong>Offline Ready</strong>: Is the internet at the futsal court often slow? Relax. Once this page is fully open, the Timer and Score continue to function normally even if the internet is disconnected.</li><li><strong>Responsive</strong>: The display automatically adjusts. Perfect on a Laptop to be connected to a TV/Projector via HDMI cable. Ideal on a Tablet/Phone for referees to control the score from the sidelines.</li></ul>"
-        },
-        {
-          title: "How to Use This Futsal Scoreboard",
-          content: "<p>It only takes 1 minute to start a match like a professional:</p><ol><li><strong>Prepare Device</strong>: Open this VersoKit page on your Laptop or Tablet.</li><li><strong>Connect to Large Screen (Optional)</strong>: If you are a court manager, connect the Laptop to a Hanging TV or Projector using an HDMI cable.</li><li><strong>Enter Fullscreen Mode</strong>: Click the Fullscreen button for maximum display.</li><li><strong>Set Match</strong>: Click the team name text to change names. Set the time duration (e.g.: 20 minutes).</li><li><strong>Kick-off!</strong>: Press \"Start\".</li><li><strong>Real-time Update</strong>: Press (+) on Score if a goal occurs. Press (+) on Foul if the referee blows the whistle for a violation. Press Pause if the ball goes out.</li></ol>"
-        },
-        {
-          title: "Understand Futsal Rules to Make Playing More Fun",
-          content: "<p>Using this tool also helps your community learn real futsal rule discipline:</p><ul><li><strong>Stop-clock vs Running-clock</strong>: Professional futsal uses 20 minutes of Stop-clock (the clock stops every time the ball is dead). However, for public court rentals, they usually use Running-clock (the clock keeps going). With our Pause/Resume feature, you are free to choose which play style you want to apply.</li><li><strong>Accumulated Foul Rule</strong>: Many amateur teams underestimate fouls. Remember, in futsal, every foul counts! If your team has committed 5 fouls in one half, you must play very carefully. Use the Foul Counter in this tool to keep both teams alert.</li></ul>"
-        },
-        {
-          title: "Ready for Pro Level Match?",
-          content: "<p>Don't let your exciting match be ruined by forgetting the score or debating the time. Make your sparring practice or village tournament feel like a Professional League with clear score visualization. Free, Easy, and Professional. Try the VersoKit Digital Futsal Scoreboard right now!</p>"
-        }
-      ]
-    },
-    id: {
-      title: "Papan Skor Futsal Digital Online: Gratis, Timer & Hitung Foul",
-      sections: [
-        {
-          title: "Papan Skor Pro untuk Sparing & Turnamen",
-          content: "<p>Main futsal rasanya kurang seru kalau tidak ada papan skor dan waktu yang jelas. Pernahkah Anda mengalami momen canggung saat sparring: berdebat soal skor (\"Eh, tadi 4-3 atau 4-4?\"), atau bingung sisa waktu tinggal berapa menit?</p><p>Masalah klasik di lapangan futsal non-profesional adalah ketiadaan Scoreboard yang layak. Harga papan skor digital fisik bisa mencapai jutaan rupiah (Rp 2.000.000 - Rp 5.000.000), investasi yang cukup mahal bagi pengelola lapangan kecil atau komunitas. Sementara itu, menggunakan stopwatch di HP seringkali tidak efektif karena layarnya kecil dan hanya bisa dilihat oleh satu orang. VersoKit menghadirkan solusi cerdas: <strong>Futsal Scoreboard Digital</strong>. Alat berbasis web ini mengubah Laptop, Tablet, atau HP Anda menjadi papan skor profesional secara instan dan gratis!</p>"
-        },
-        {
-          title: "Mengapa Anda Butuh Papan Skor VersoKit?",
-          content: "<p>Alat ini bukan sekadar pencatat angka. Kami merancangnya dengan fitur spesifik yang mengikuti standar peraturan futsal internasional (FIFA). Berikut adalah fitur \"daging\" yang bisa Anda nikmati:</p><ul><li><strong>1. Timer Pertandingan (Countdown) yang Fleksibel</strong>: Dalam futsal profesional, waktu adalah segalanya. Alat ini dilengkapi countdown timer (waktu mundur) yang bisa Anda atur—baik standar 20 menit (babak pro) atau 15 menit (sparring santai). <strong>Pause & Resume</strong>: Bola keluar lapangan? Kiper cedera? Cukup tekan tombol Pause. Waktu berhenti, dan Resume saat bola bergulir kembali. Sangat cocok untuk simulasi \"Waktu Bersih\".</li><li><strong>2. Penghitung Pelanggaran (Foul Counter) - Fitur Krusial!</strong>: Ini adalah fitur yang sering dilupakan aplikasi skor biasa. Di futsal, akumulasi pelanggaran sangat menentukan hasil pertandingan. Alat kami melacak akumulasi foul dari 0 hingga 5. <strong>Indikator Visual</strong>: Saat tim mencapai 5 pelanggaran, Anda dan pemain di lapangan akan sadar bahwa pelanggaran berikutnya (ke-6) berarti hukuman Tendangan Penalti Titik Kedua (Second Penalty Mark).</li><li><strong>3. Tampilan Profesional (Customizable)</strong>: <strong>Edit Nama Tim</strong>: Ucapkan selamat tinggal pada tulisan membosankan \"Home vs Away\". Anda bisa menggantinya menjadi nama tim asli, misal: \"Garuda FC\" vs \"Harimau FC\". <strong>Indikator Babak</strong>: Penanda jelas untuk Babak 1, Babak 2, atau Extra Time.</li></ul>"
-        },
-        {
-          title: "Keunggulan Teknis: Canggih Tanpa Ribet",
-          content: "<p>Kami tahu operator lapangan atau wasit tidak ingin direpotkan dengan instalasi yang rumit. Oleh karena itu, VersoKit Futsal Scoreboard dibuat dengan teknologi modern:</p><ul><li><strong>Web-Based & No Install</strong>: Tidak perlu memenuhi memori HP dengan download aplikasi di PlayStore/AppStore. Cukup buka browser (Chrome/Safari/Edge), dan alat siap digunakan.</li><li><strong>Fullscreen Mode</strong>: Ingin tampilan seperti di TV Liga Pro? Klik tombol Fullscreen. Semua elemen browser akan hilang, menyisakan papan skor yang bersih dan elegan.</li><li><strong>Offline Ready</strong>: Internet di lapangan futsal sering lemot? Tenang. Setelah halaman ini terbuka sempurna, Timer dan Skor tetap berfungsi normal meskipun internet putus.</li><li><strong>Responsif</strong>: Tampilan otomatis menyesuaikan. Di Laptop sempurna untuk disambungkan ke TV/Proyektor via kabel HDMI. Di Tablet/HP ideal untuk wasit memegang kendali skor di pinggir lapangan.</li></ul>"
-        },
-        {
-          title: "Cara Menggunakan Papan Skor Futsal Ini",
-          content: "<p>Hanya butuh 1 menit untuk memulai pertandingan layaknya profesional:</p><ol><li><strong>Siapkan Perangkat</strong>: Buka halaman VersoKit ini di Laptop atau Tablet Anda.</li><li><strong>Sambungkan ke Layar Besar (Opsional)</strong>: Jika Anda pengelola lapangan, sambungkan Laptop ke TV Gantung atau Proyektor menggunakan kabel HDMI.</li><li><strong>Masuk Mode Layar Penuh</strong>: Klik tombol Fullscreen untuk tampilan maksimal.</li><li><strong>Atur Pertandingan</strong>: Klik teks nama tim untuk mengubah nama. Atur durasi waktu (misal: 20 menit).</li><li><strong>Kick-off!</strong>: Tekan \"Start\".</li><li><strong>Update Real-time</strong>: Tekan (+) pada Skor jika gol terjadi. Tekan (+) pada Foul jika wasit meniup peluit pelanggaran. Tekan Pause jika bola keluar.</li></ol>"
-        },
-        {
-          title: "Pahami Aturan Futsal Agar Main Lebih Seru",
-          content: "<p>Menggunakan alat ini juga membantu komunitas Anda belajar disiplin aturan futsal yang sebenarnya:</p><ul><li><strong>Waktu Bersih vs Waktu Kotor</strong>: Futsal profesional menggunakan 20 menit Waktu Bersih (jam berhenti setiap bola mati). Namun, untuk penyewaan lapangan umum, biasanya menggunakan Waktu Kotor (jam jalan terus). Dengan fitur Pause/Resume kami, Anda bebas memilih gaya permainan mana yang ingin diterapkan.</li><li><strong>Aturan Akumulasi Foul</strong>: Banyak tim amatir meremehkan pelanggaran. Ingat, dalam futsal, setiap pelanggaran dihitung! Jika tim Anda sudah melakukan 5 kali foul dalam satu babak, Anda harus bermain sangat hati-hati. Gunakan Foul Counter di alat ini agar kedua tim waspada.</li></ul>"
-        },
-        {
-          title: "Siap Pertandingan Level Pro?",
-          content: "<p>Jangan biarkan pertandingan seru Anda rusak karena lupa skor atau debat waktu. Jadikan latihan sparring atau turnamen antarkampung Anda terasa seperti Liga Profesional dengan visualisasi skor yang jelas. Gratis, Mudah, dan Profesional. Cobalah Futsal Scoreboard Digital VersoKit sekarang juga!</p>"
-        }
-      ]
-    },
-    de: {
-      title: "Online Digitales Futsal-Anzeigetafel: Kostenlos, Timer & Foul-Zähler",
-      sections: [
-        {
-          title: "Profi-Anzeigetafel für Sparing & Turniere",
-          content: "<p>Futsal spielen macht weniger Spaß, wenn es keine klare Anzeigetafel und Zeitmessung gibt. Haben Sie jemals einen peinlichen Moment beim Sparing erlebt: Diskussionen über den Spielstand („Hey, war das 4:3 oder 4:4?“) oder Verwirrung darüber, wie viele Minuten noch übrig sind?</p><p>Ein klassisches Problem auf nicht-professionellen Futsal-Plätzen ist das Fehlen einer ordentlichen Anzeigetafel. Der Preis für eine physische digitale Anzeigetafel kann Millionen von Rupiah erreichen (150 € - 400 €), eine ziemlich teure Investition für kleine Platzbetreiber oder Gemeinschaften. Unterdessen ist die Verwendung einer Stoppuhr auf dem Handy oft ineffektiv, da der Bildschirm klein ist und nur von einer Person gesehen werden kann. VersoKit präsentiert eine clevere Lösung: <strong>Digitales Futsal-Scoreboard</strong>. Dieses webbasierte Tool verwandelt Ihren Laptop, Ihr Tablet oder Ihr Handy sofort und kostenlos in eine professionelle Anzeigetafel!</p>"
-        },
-        {
-          title: "Warum brauchen Sie das VersoKit Scoreboard?",
-          content: "<p>Dieses Tool ist nicht nur ein Zahlenaufzeichner. Wir haben es mit spezifischen Funktionen entwickelt, die den internationalen Futsal-Regelstandards (FIFA) entsprechen. Hier sind die „gehaltvollen“ Funktionen, die Sie genießen können:</p><ul><li><strong>1. Flexibler Match-Timer (Countdown)</strong>: Im Profi-Futsal ist Zeit alles. Dieses Tool ist mit einem Countdown-Timer ausgestattet, den Sie einstellen können – entweder die standardmäßigen 20 Minuten (Profi-Halbzeit) oder 15 Minuten (lockeres Sparing). <strong>Pause & Resume</strong>: Ball im Aus? Torwart verletzt? Drücken Sie einfach die Pause-Taste. Die Zeit stoppt, und Resume, wenn der Ball wieder rollt. Perfekt für die Simulation von „Netto-Spielzeit“.</li><li><strong>2. Foul-Zähler - Eine entscheidende Funktion!</strong>: Dies ist eine Funktion, die von normalen Score-Apps oft vergessen wird. Beim Futsal entscheiden kumulierte Fouls über das Spielergebnis. Unser Tool verfolgt kumulierte Fouls von 0 bis 5. <strong>Visueller Indikator</strong>: Wenn ein Team 5 Fouls erreicht, werden Sie und die Spieler auf dem Feld erkennen, dass das nächste Foul (das 6.) eine Bestrafung durch einen Strafstoß vom zweiten Elfmeterpunkt (Zehnmeter) bedeutet.</li><li><strong>3. Professionelles Erscheinungsbild (Anpassbar)</strong>: <strong>Teamnamen bearbeiten</strong>: Verabschieden Sie sich von dem langweiligen „Home vs Away“-Text. Sie können ihn in echte Teamnamen ändern, z. B.: „Garuda FC“ vs. „Harimau FC“. <strong>Halbzeit-Anzeige</strong>: Klare Markierungen für Halbzeit 1, Halbzeit 2 oder Verlängerung.</li></ul>"
-        },
-        {
-          title: "Technische Vorteile: Hochentwickelt ohne Aufwand",
-          content: "<p>Wir wissen, dass Platzbetreiber oder Schiedsrichter sich nicht mit komplizierten Installationen herumschlagen wollen. Daher wurde das VersoKit Futsal-Scoreboard mit moderner Technologie entwickelt:</p><ul><li><strong>Webbasiert & keine Installation</strong>: Der Telefonspeicher muss nicht durch das Herunterladen von Apps aus dem PlayStore/AppStore gefüllt werden. Öffnen Sie einfach den Browser (Chrome/Safari/Edge), und das Tool ist einsatzbereit.</li><li><strong>Vollbildmodus</strong>: Möchten Sie eine Anzeige wie im Profi-Liga-TV? Klicken Sie auf die Schaltfläche Vollbild. Alle Browserelemente verschwinden und hinterlassen eine saubere und elegante Anzeigetafel.</li><li><strong>Offline-Bereit</strong>: Ist das Internet am Futsal-Platz oft langsam? Entspannen Sie sich. Sobald diese Seite vollständig geöffnet ist, funktionieren Timer und Spielstand normal weiter, auch wenn das Internet unterbrochen wird.</li><li><strong>Reaktionsschnell</strong>: Die Anzeige passt sich automatisch an. Perfekt auf einem Laptop, um ihn per HDMI-Kabel an einen Fernseher/Projektor anzuschließen. Ideal auf einem Tablet/Handy für Schiedsrichter, um den Spielstand vom Spielfeldrand aus zu kontrollieren.</li></ul>"
-        },
-        {
-          title: "So verwenden Sie diese Futsal-Anzeigetafel",
-          content: "<p>Es dauert nur 1 Minute, um ein Spiel wie ein Profi zu starten:</p><ol><li><strong>Gerät vorbereiten</strong>: Öffnen Sie diese VersoKit-Seite auf Ihrem Laptop oder Tablet.</li><li><strong>An großen Bildschirm anschließen (Optional)</strong>: Wenn Sie ein Platzbetreiber sind, schließen Sie den Laptop mit einem HDMI-Kabel an einen hängenden Fernseher oder Projektor an.</li><li><strong>Vollbildmodus aktivieren</strong>: Klicken Sie auf die Schaltfläche Vollbild für eine maximale Anzeige.</li><li><strong>Spiel einstellen</strong>: Klicken Sie auf den Text des Teamnamens, um Namen zu ändern. Stellen Sie die Zeitdauer ein (z. B.: 20 Minuten).</li><li><strong>Anpfiff!</strong>: Drücken Sie „Start“.</li><li><strong>Echtzeit-Update</strong>: Drücken Sie (+) bei Score, wenn ein Tor fällt. Drücken Sie (+) bei Foul, wenn der Schiedsrichter eine Verletzung abpfeift. Drücken Sie Pause, wenn der Ball ins Aus geht.</li></ol>"
-        },
-        {
-          title: "Futsal-Regeln verstehen, damit das Spielen mehr Spaß macht",
-          content: "<p>Die Verwendung dieses Tools hilft Ihrer Gemeinschaft auch, echte Futsal-Regeldisziplin zu lernen:</p><ul><li><strong>Netto-Zeit vs. Brutto-Zeit</strong>: Profi-Futsal verwendet 20 Minuten Netto-Zeit (die Uhr stoppt jedes Mal, wenn der Ball ruht). Bei der Vermietung öffentlicher Plätze wird jedoch normalerweise Brutto-Zeit verwendet (die Uhr läuft weiter). Mit unserer Pause/Resume-Funktion können Sie frei wählen, welchen Spielstil Sie anwenden möchten.</li><li><strong>Regel für kumulierte Fouls</strong>: Viele Amateurteams unterschätzen Fouls. Denken Sie daran, beim Futsal zählt jedes Foul! Wenn Ihr Team in einer Halbzeit 5 Fouls begangen hat, muss Sie sehr vorsichtig spielen. Verwenden Sie den Foul-Zähler in diesem Tool, um beide Teams wachsam zu halten.</li></ul>"
-        },
-        {
-          title: "Bereit für ein Spiel auf Profi-Niveau?",
-          content: "<p>Lassen Sie Ihr spannendes Spiel nicht dadurch ruinieren, dass Sie den Spielstand vergessen oder über die Zeit debattieren. Sorgen Sie dafür, dass sich Ihr Sparing-Training oder Ihr Dorfturnier wie eine Profiliga anfühlt mit einer klaren Score-Visualisierung. Kostenlos, einfach und professionell. Probieren Sie das digitale Futsal-Scoreboard von VersoKit jetzt aus!</p>"
-        }
-      ]
-    },
-    es: {
-      title: "Marcador Digital de Fútbol Sala Online: Gratis, Temporizador y Contador de Faltas",
-      sections: [
-        {
-          title: "Marcador Pro para Sparing y Torneos",
-          content: "<p>Jugar al fútbol sala parece menos emocionante si no hay un marcador y un tempo claros. ¿Alguna vez has experimentado un momento incómodo durante el sparring: debatiendo el marcador (\"¡Eh, era 4-3 o 4-4!\"), o confundido sobre cuántos minutos quedan?</p><p>Un problema clásico en las canchas de fútbol sala no profesionales es la falta de un marcador adecuado. El precio de un marcador digital físico puede alcanzar millones de rupias ($150 - $400), una inversión bastante cara para los administradores de pequeñas canchas o comunidades. Mientras tanto, usar un cronómetro en el teléfono suele ser ineficaz porque la pantalla es pequeña y solo la puede ver una persona. VersoKit presenta una solución inteligente: <strong>Marcador Digital de Fútbol Sala</strong>. ¡Esta herramienta basada en la web convierte instantáneamente y de forma gratuita tu Laptop, Tablet o Teléfono en un marcador profesional!</p>"
-        },
-        {
-          title: "¿Por qué necesitas el Marcador de VersoKit?",
-          content: "<p>Esta herramienta no es solo un grabador de números. La diseñamos con características específicas que siguen los estándares de regulación internacional de fútbol sala (FIFA). Aquí están las características clave que puedes disfrutar:</p><ul><li><strong>1. Temporizador de Partido Flexible (Cuenta Regresiva)</strong>: En el fútbol sala profesional, el tempo lo es todo. Esta herramienta está equipada con un temporizador de cuenta regresiva que puedes configurar, ya sea los 20 minutos estándar (mitad pro) o 15 minutos (sparring casual). <strong>Pausa y Reanudación</strong>: ¿Balón fuera? ¿Portero lesionado? Solo presiona el botón Pausa. El tempo se detiene, y Reanudar cuando el balón ruede de nuevo. Perfecto para simular el tempo de \"Reloj Parado\".</li><li><strong>2. Contador de Faltas - ¡Una característica crucial!</strong>: Esta es una característica que a menudo olvidan las aplicaciones de puntuación normales. En el fútbol sala, las faltas acumuladas determinan los resultados del partido. Nuestra herramienta rastrea las faltas acumuladas de 0 a 5. <strong>Indicador Visual</strong>: Cuando un equipo alcanza las 5 faltas, tú y los jugadores en el campo se darán cuenta de que la siguiente falta (la 6ª) significa una penalización de tiro desde el Segundo Punto de Penal.</li><li><strong>3. Apariencia Profesional (Personalizable)</strong>: <strong>Editar Nombres de Equipos</strong>: Dile adiós al aburrido texto \"Local vs Visitante\". Puedes cambiarlo por nombres de equipos reales, ej.: \"Garuda FC\" vs \"Harimau FC\". <strong>Indicador de Periodo</strong>: Marcadores claros para Mitad 1, Mitad 2 o Tiempo Extra.</li></ul>"
-        },
-        {
-          title: "Ventajas Técnicas: Avanzado sin Complicaciones",
-          content: "<p>Sabemos que los operadores de canchas o árbitros no quieren molestarse con instalaciones complicadas. Por lo tanto, el Marcador de Fútbol Sala VersoKit está construido con tecnología moderna:</p><ul><li><strong>Basado en la Web y sin instalación</strong>: No es necesario llenar la memoria del teléfono descargando aplicaciones de PlayStore/AppStore. Simplemente abre el navegador (Chrome/Safari/Edge) y la herramienta estará lista para usar.</li><li><strong>Modo de Pantalla Completa</strong>: ¿Quieres una pantalla como en la TV de la Liga Pro? Haz clic en el botón Pantalla Completa. Todos los elementos del navegador desaparecerán, dejando un marcador limpio y elegante.</li><li><strong>Listo para usar sin conexión</strong>: ¿El internet en la cancha de fútbol sala suele ser lento? Relájate. Una vez que esta página está completamente abierta, el Temporizador y el Marcador continúan funcionando normalmente incluso si el internet se desconecta.</li><li><strong>Responsivo</strong>: La pantalla se ajusta automáticamente. Perfecto en una Laptop para conectarse a una TV/Proyektor mediante cable HDMI. Ideal en una Tablet/Teléfono para que los árbitros controlen el marcador desde la banda.</li></ul>"
-        },
-        {
-          title: "Cómo usar este Marcador de Fútbol Sala",
-          content: "<p>Solo toma 1 minuto comenzar un partido como un profesional:</p><ol><li><strong>Preparar el Dispositivo</strong>: Abre esta página de VersoKit en tu Laptop o Tablet.</li><li><strong>Conectar a una pantalla grande (Opcional)</strong>: Si eres administrador de una cancha, conecta la Laptop a una TV colgante o proyector mediante un cable HDMI.</li><li><strong>Entrar en Modo de Pantalla Completa</strong>: Haz clic en el botón Pantalla Completa para una visualización máxima.</li><li><strong>Configurar el Partido</strong>: Haz clic en el texto del nombre del equipo para cambiar los nombres. Configura la duración del tempo (ej.: 20 minutos).</li><li><strong>¡Saque inicial!</strong>: Presiona \"Iniciar\".</li><li><strong>Actualización en tempo real</strong>: Presiona (+) en Puntuación si ocurre un gol. Presiona (+) en Falta si el árbitro pita una infracción. Presiona Pausa si el balón sale.</li></ol>"
-        },
-        {
-          title: "Entiende las reglas del Fútbol Sala para que jugar sea más divertido",
-          content: "<p>El uso de esta herramienta también ayuda a tu comunidad a aprender la disciplina de las reglas reales del fútbol sala:</p><ul><li><strong>Reloj Parado vs. Reloj Corrido</strong>: El fútbol sala profesional utiliza 20 minutos de Reloj Parado (el reloj se detiene cada vez que el balón está muerto). Sin embargo, para los alquileres de canchas públicas, suelen usar Reloj Corrido (el reloj sigue funcionando). Con nuestra función de Pausa/Reanudación, eres libre de elegir qué estilo de juego quieres aplicar.</li><li><strong>Regla de Faltas Acumuladas</strong>: Muchos equipos amateurs subestiman las faltas. ¡Recuerda, en el fútbol sala, cada falta cuenta! Si tu equipo ha cometido 5 faltas en una mitad, debes jugar con mucho cuidado. Usa el Contador de Faltas en esta herramienta para mantener a ambos equipos alerta.</li></ul>"
-        },
-        {
-          title: "¿Listo para un partido de nivel Pro?",
-          content: "<p>No dejes que tu emocionante partido se arruine por olvidar el marcador o debatir el tempo. Haz que tu práctica de sparring o tu torneo local se sientan como una Liga Profesional con una visualización de puntuación clara. Gratis, Fácil y Profesional. ¡Prueba el Marcador Digital de Fútbol Sala VersoKit ahora mismo!</p>"
-        }
-      ]
-    },
-    pt: {
-      title: "Placar Digital de Futsal Online: Grátis, Cronômetro e Contador de Faltas",
-      sections: [
-        {
-          title: "Placar Pro para Sparing e Torneios",
-          content: "<p>Jogar futsal parece menos emocionante se não houver um placar e um tempo claros. Você já experimentou um momento estranho durante o sparring: debatendo o placar (\"Ei, foi 4-3 ou 4-4?\"), ou confuso sobre quantos minutos restam?</p><p>Um problema clássico em quadras de futsal não profissionais é a falta de um Placar adequado. O preço de um placar digital físico pode chegar a milhões de rúpias ($150 - $400), um investimento bastante caro para gestores de pequenas quadras ou comunidades. Enquanto isso, usar um cronômetro no telefone costuma ser ineficaz porque a tela é pequena e só pode ser vista por uma pessoa. VersoKit apresenta uma solução inteligente: <strong>Placar Digital de Futsal</strong>. Esta ferramenta baseada na web transforma instantaneamente e gratuitamente seu Laptop, Tablet ou Celular em um placar profissional!</p>"
-        },
-        {
-          title: "Por que você precisa do Placar VersoKit?",
-          content: "<p>Esta ferramenta não é apenas um gravador de números. Nós a projetamos com recursos específicos que seguem os padrões de regulação internacional de futsal (FIFA). Aqui estão os recursos principais que você pode aproveitar:</p><ul><li><strong>1. Cronômetro de Jogo Flexível (Contagem Regressiva)</strong>: No futsal profissional, o tempo é tudo. Esta ferramenta está equipada com um cronômetro de contagem regressiva que você pode configurar — seja os 20 minutos padrão (metade pro) ou 15 minutos (sparring casual). <strong>Pausar e Retomar</strong>: Bola fora? Goleiro lesionado? Basta pressionar o botão Pausa. O tempo para, e Retomar quando a bola rolar novamente. Perfeito para simular o tempo de \"Cronômetro Parado\".</li><li><strong>2. Contador de Faltas - Um recurso crucial!</strong>: Este é um recurso muitas vezes esquecido pelos aplicativos de pontuação comuns. No futsal, as faltas acumuladas determinam os resultados do jogo. Nossa ferramenta rastreia as faltas acumuladas de 0 a 5. <strong>Indicador Visual</strong>: Quando uma equipe atinge 5 faltas, você e os jogadores em campo perceberão que a próxima falta (a 6ª) significa uma penalidade de tiro livre direto do Segundo Ponto de Penalidade.</li><li><strong>3. Aparência Profissional (Customizável)</strong>: <strong>Editar Nomes das Equipes</strong>: Diga adeus ao texto entediante \"Casa vs Fora\". Você pode alterá-lo para nomes de equipes reais, ex.: \"Garuda FC\" vs \"Harimau FC\". <strong>Indicador de Período</strong>: Marcadores claros para 1º Tempo, 2º Tempo ou Tempo Extra.</li></ul>"
-        },
-        {
-          title: "Vantagens Técnicas: Avançado sem Complicações",
-          content: "<p>Sabemos que os operadores de quadra ou árbitros não querem se preocupar com instalações complicadas. Portanto, o Placar de Futsal VersoKit é construído com tecnologia moderna:</p><ul><li><strong>Baseado na Web e sem instalação</strong>: Não é necessário encher a memória do telefone baixando aplicativos da PlayStore/AppStore. Basta abrir o navegador (Chrome/Safari/Edge) e a ferramenta estará pronta para uso.</li><li><strong>Modo de Tela Cheia</strong>: Quer uma tela como na TV da Liga Pro? Clique no botão Tela Cheia. Todos os elementos do navegador desaparecerão, deixando um placar limpo e elegante.</li><li><strong>Pronto para uso offline</strong>: A internet na quadra de futsal costuma ser lenta? Relaxe. Assim que esta página estiver completamente aberta, o Cronômetro e o Placar continuam funcionando normalmente, mesmo que a internet seja desconectada.</li><li><strong>Responsivo</strong>: A tela se ajusta automaticamente. Perfeito em um Laptop para se conectar a uma TV/Projetor via cabo HDMI. Ideal em um Tablet/Celular para os árbitros controlarem o placar da lateral.</li></ul>"
-        },
-        {
-          title: "Como usar este Placar de Futsal",
-          content: "<p>Leva apenas 1 minuto para começar uma partida como um profissional:</p><ol><li><strong>Preparar o Dispositivo</strong>: Abra esta página do VersoKit em seu Laptop ou Tablet.</li><li><strong>Conectar a uma tela grande (Opcional)</strong>: Se você for um gestor de quadra, conecte o Laptop a uma TV suspensa ou projetor usando um cabo HDMI.</li><li><strong>Entrar no Modo de Tela Cheia</strong>: Clique no botão Tela Cheia para visualização máxima.</li><li><strong>Configurar a Partida</strong>: Clique no texto do nome da equipe para alterar os nomes. Configure a duração do tempo (ex.: 20 minutos).</li><li><strong>Início de jogo!</strong>: Pressione \"Iniciar\".</li><li><strong>Atualização em tempo real</strong>: Pressione (+) no Placar se ocorrer um gol. Pressione (+) na Falta se o árbitro apitar uma infração. Pressione Pausa se a bola sair.</li></ol>"
-        },
-        {
-          title: "Entenda as regras do Futsal para tornar o jogo mais divertido",
-          content: "<p>O uso desta ferramenta também ajuda sua comunidade a aprender a disciplina das regras reais do futsal:</p><ul><li><strong>Cronômetro Parado vs. Cronômetro Corrido</strong>: O futsal profissional utiliza 20 minutos de Cronômetro Parado (o relógio para toda vez que a bola está morta). No entanto, para aluguéis de quadras públicas, costumam usar Cronômetro Corrido (o relógio continua funcionando). Com nossa função de Pausar/Retomar, você é livre para escolher qual estilo de jogo deseja aplicar.</li><li><strong>Regra de Faltas Acumuladas</strong>: Muitas equipes amadoras subestimam as faltas. Lembre-se, no futsal, cada falta conta! Se sua equipe cometeu 5 faltas em um tempo, você deve jogar com muito cuidado. Use o Contador de Faltas nesta ferramenta para manter as duas equipes alertas.</li></ul>"
-        },
-        {
-          title: "Pronto para um jogo de nível Pro?",
-          content: "<p>Não deixe seu jogo emocionante ser arruinado por esquecer o placar ou debater o tempo. Faça com que seu treino de sparring ou torneio local pareçam uma Liga Profissional com uma visualização de pontuação clara. Grátis, Fácil e Profissional. Experimente o Placar Digital de Futsal VersoKit agora mesmo!</p>"
-        }
-      ]
-    },
-    fr: {
-      title: "Tableau de Score Futsal Digital en Ligne : Gratuit, Timer & Compteur de Fautes",
-      sections: [
-        {
-          title: "Tableau de Score Pro pour les Sparing & Tournois",
-          content: "<p>Jouer au futsal est moins excitant s'il n'y a pas de tableau de score et de temps clair. Avez-vous déjà vécu un moment embarrassant pendant un sparring : débattre du score (\"Hé, c'était 4-3 ou 4-4 ?\"), ou être confus sur le nombre de minutes restantes ?</p><p>Un problème classique sur les terrains de futsal non professionnels est l'absence d'un tableau de score approprié. Le prix d'un tableau de score numérique physique peut atteindre des millions de roupies (150 € - 400 €), un investissement assez coûteux pour les gestionnaires de petits terrains ou les communautés. Pendant ce temps, utiliser un chronomètre sur un téléphone est souvent inefficace car l'écran est petit et ne peut être vu que par une seule personne. VersoKit présente une solution intelligente : <strong>Tableau de Score Futsal Digital</strong>. Cet outil en ligne transforme instantanément et gratuitement votre ordinateur portable, tablette ou téléphone en un tableau de score professionnel !</p>"
-        },
-        {
-          title: "Pourquoi avez-vous besoin du Tableau de Score VersoKit ?",
-          content: "<p>Cet outil n'est pas seulement un enregistreur de chiffres. Nous l'avons conçu avec des fonctionnalités spécifiques qui suivent les normes de réglementation internationales du futsal (FIFA). Voici les fonctionnalités clés dont vous pouvez profiter :</p><ul><li><strong>1. Timer de Match Flexible (Compte à Rebours)</strong> : Dans le futsal professionnel, le temps est tout. Cet outil est équipé d'un compte à rebours que vous pouvez régler, soit les 20 minutes standard (mi-temps pro), soit 15 minutes (sparring décontracté). <strong>Pause & Reprise</strong> : Ballon hors limites ? Gardien blessé ? Appuyez simplement sur le bouton Pause. Le temps s'arrête, et Reprendre quand le ballon roule à nouveau. Parfait pour simuler le temps de \"Chronomètre Arrêté\".</li><li><strong>2. Compteur de Fautes - Une fonctionnalité cruciale !</strong> : C'est une fonctionnalité souvent oubliée par les applications de score classiques. Au futsal, les fautes accumulées déterminent les résultats du match. Notre outil suit les fautes accumulées de 0 à 5. <strong>Indicateur Visual</strong> : Lorsqu'une équipe atteint 5 fautes, vous et les joueurs sur le terrain réaliserez que la faute suivante (la 6e) signifie une pénalité de coup franc direct au deuxième point de penalty.</li><li><strong>3. Apparence Professionnelle (Personnalisable)</strong> : <strong>Modifier les Noms des Équipes</strong> : Dites adieu au texte ennuyeux \"Domicile vs Extérieur\". Vous pouvez le changer pour de vrais noms d'équipes, ex : \"Garuda FC\" vs \"Harimau FC\". <strong>Indicateur de Période</strong> : Des marqueurs clairs pour la 1ère mi-temps, la 2e mi-temps ou les prolongations.</li></ul>"
-        },
-        {
-          title: "Avantages Techniques : Avancé sans Tracas",
-          content: "<p>Nous savons que les gestionnaires de terrains ou les arbitres ne veulent pas s'embêter avec des installations compliquées. Par conséquent, le Tableau de Score Futsal VersoKit est construit avec une technologie moderne :</p><ul><li><strong>Basé sur le Web et sans installation</strong> : Pas besoin de remplir la mémoire du téléphone en téléchargeant des applications sur le PlayStore/AppStore. Ouvrez simplement le navigateur (Chrome/Safari/Edge) et l'outil est prêt à l'emploi.</li><li><strong>Mode Plein Écran</strong> : Vous voulez un affichage comme sur la TV de la Ligue Pro ? Cliquez sur le bouton Plein Écran. Tous les éléments du navigateur disparaîtront, laissant un tableau de score propre et élégant.</li><li><strong>Prêt pour le mode hors ligne</strong> : L'internet sur le terrain de futsal est-il souvent lent ? Détendez-vous. Une fois cette page complètement ouverte, le Timer et le Score continue de fonctionner normalement même si l'internet est déconnecté.</li><li><strong>Responsif</strong> : L'affichage s'ajuste automatiquement. Parfait sur un ordinateur portable pour être connecté à une TV/Projecteur via un câble HDMI. Idéal sur une tablette/téléphone pour que les arbitres contrôlent le score depuis la ligne de touche.</li></ul>"
-        },
-        {
-          title: "Comment utiliser ce Tableau de Score Futsal",
-          content: "<p>Il ne faut que 1 minute pour commencer un match comme un professionnel :</p><ol><li><strong>Préparer l'Appareil</strong> : Ouvrez cette page VersoKit sur votre ordinateur portable ou votre tablette.</li><li><strong>Connecter à un grand écran (Facultatif)</strong> : Si vous êtes un gestionnaire de terrain, connectez l'ordinateur portable à une TV suspendue ou à un projecteur à l'aide d'un câble HDMI.</li><li><strong>Entrer en Mode Plein Écran</strong> : Cliquez sur le bouton Plein Écran pour un affichage maximal.</li><li><strong>Régler le Match</strong> : Cliquez sur le texte du nom de l'équipe pour changer les noms. Réglez la durée (ex : 20 minutes).</li><li><strong>Coup d'envoi !</strong> : Appuyez sur \"Démarrer\".</li><li><strong>Mise à jour en temps réel</strong> : Appuyez sur (+) sur le Score si un but est marqué. Appuyez sur (+) sur la Faute si l'arbitre siffle une infraction. Appuyez sur Pause si le ballon sort.</li></ol>"
-        },
-        {
-          title: "Comprenez les règles du Futsal pour rendre le jeu plus amusant",
-          content: "<p>L'utilisation de cet outil aide également votre communauté à apprendre la discipline des vraies règles du futsal :</p><ul><li><strong>Temps de Jeu vs. Temps Réel</strong> : Le futsal professionnel utilise 20 minutes de Temps de Jeu (le chrono s'arrête à chaque fois que le ballon est mort). Cependant, pour les locations de terrains publics, on utilise généralement le Temps Réel (le chrono continue de tourner). Avec notre fonction Pause/Reprise, vous êtes libre de choisir le style de jeu que vous souhaitez appliquer.</li><li><strong>Règle des Fautes Accumulées</strong> : Beaucoup d'équipes amateurs sous-estiment les fautes. Rappelez-vous, au futsal, chaque faute compte ! Si votre équipe a commis 5 fautes dans une mi-temps, vous devez jouer très prudemment. Utilisez le Compteur de Fautes de cet outil pour garder les deux équipes vigilantes.</li></ul>"
-        },
-        {
-          title: "Prêt pour un match de niveau Pro ?",
-          content: "<p>Ne laissez pas votre match passionnant être gâché par l'oubli du score ou un débat sur le temps. Faites en sorte que votre entraînement de sparring ou votre tournoi local ressemble à une Ligue Professionnelle avec une visualisation claire du score. Gratuit, Facile et Professionnel. Essayez le Tableau de Score Futsal Digital VersoKit dès maintenant !</p>"
-        }
-      ]
-    },
-    it: {
-      title: "Tabellone Digitale Calcio a 5 Online: Gratuito, Timer e Conteggio Falli",
-      sections: [
-        {
-          title: "Tabellone Pro per Sparing e Tornei",
-          content: "<p>Giocare a calcio a 5 è meno emozionante se non c'è un tabellone e un tempo chiari. Hai mai vissuto un momento imbarazzante durante lo sparring: discutere sul punteggio (\"Ehi, era 4-3 o 4-4?\"), o essere confuso su quanti minuti mancano?</p><p>Un problema classico nei campi di calcio a 5 non professionali è la mancanza di un tabellone adeguato. Il prezzo di un tabellone digitale fisico può raggiungere milioni di rupie ($150 - $400), un investimento piuttosto costoso per i gestori di piccoli campi o per le comunità. Nel frattempo, usare un cronometro sul telefono è spesso inefficace perché lo schermo è piccolo e può essere visto solo da una persona. VersoKit presenta una soluzione intelligente: <strong>Tabellone Digitale Calcio a 5</strong>. Questo strumento online trasforma istantaneamente e gratuitamente il tuo Laptop, Tablet o Telefono in un tabellone professionale!</p>"
-        },
-        {
-          title: "Perché hai bisogno del Tabellone VersoKit?",
-          content: "<p>Questo strumento non è solo un registratore di numeri. Lo abbiamo progettato con caratteristiche specifiche che seguono gli standard internazionali di regolamentazione del calcio a 5 (FIFA). Ecco le caratteristiche chiave di cui puoi godere:</p><ul><li><strong>1. Timer di Gara Flessibile (Conto alla Rovescia)</strong>: Nel calcio a 5 professionale, il tempo è tutto. Questo strumento è dotato di un timer per il conto alla rovescia che puoi impostare — o i 20 minuti standard (tempo pro) o i 15 minuti (sparring amichevole). <strong>Pausa e Ripresa</strong>: Palla fuori? Portiere infortunato? Basta premere il pulsante Pausa. Il tempo si ferma, e Riprendi quando la palla torna in gioco. Perfetto per simulere il tempo di \"Cronometro Fermo\".</li><li><strong>2. Conteggio Falli - Una funzione cruciale!</strong>: Questa è una funzione spesso dimenticata dalle normali app di punteggio. Nel calcio a 5, i falli accumulati determinano i risultati della gara. Il nostro strumento traccia i falli accumulati da 0 a 5. <strong>Indicatore Visual</strong>: Quando una squadra raggiunge i 5 falli, tu e i giocatori in campo vi renderete conto che il fallo successivo (il 6°) significa una penalità di tiro libero diretto dal Secondo Punto del Rigore.</li><li><strong>3. Aspetto Professionale (Personalizzabile)</strong>: <strong>Modifica Nomi Squadre</strong>: Dì addio al noioso testo \"Casa vs Ospiti\". Puoi cambiarlo con i nomi reali delle squadre, ad es.: \"Garuda FC\" vs \"Harimau FC\". <strong>Indicatore di Periodo</strong>: Marcatori chiari per 1° Tempo, 2º Tempo o Tempi Supplementari.</li></ul>"
-        },
-        {
-          title: "Vantaggi Tecnici: Avanzati senza Problemi",
-          content: "<p>Sappiamo che i gestori dei campi o gli arbitri non vogliono essere disturbati da installazioni complicate. Pertanto, il Tabellone Calcio a 5 VersoKit è costruito con tecnologia moderna:</p><ul><li><strong>Basat sul Web e senza installazione</strong>: Non è necessario riempire la memoria del telefono scaricando app dal PlayStore/AppStore. Basta aprire il browser (Chrome/Safari/Edge) e lo strumento è pronto all'uso.</li><li><strong>Modalità Schermo Intero</strong>: Vuoi una visualizzazione come sulla TV della Lega Pro? Clicca sul pulsante Schermo Intero. Tutti gli elementi del browser scompariranno, lasciando un tabellone pulito ed elegante.</li><li><strong>Pronto per l'uso offline</strong>: L'internet sul campo di calcio a 5 è spesso lento? Rilassati. Una volta che questa pagina è completamente aperta, il Timer e il Punteggio continuano a funzionare normalmente anche se l'internet viene scollegato.</li><li><strong>Resposivo</strong>: La visualizzazione si adatta automaticamente. Perfetto su un Laptop per essere collegato a una TV/Proyettore tramite cavo HDMI. Ideale su un Tablet/Telefono per gli arbitri per controllare il punteggio da bordo campo.</li></ul>"
-        },
-        {
-          title: "Come usare questo Tabellone per il Calcio a 5",
-          content: "<p>Ci vuole solo 1 minuto per iniziare una gara come un professionista:</p><ol><li><strong>Prepara il Dispositivo</strong>: Apri questa pagina di VersoKit sul tuo Laptop o Tablet.</li><li><strong>Collega a uno schermo grande (Opzionale)</strong>: Se sei un gestore di un campo, collega il Laptop a una TV sospesa o a un proiettore usando un cavo HDMI.</li><li><strong>Entra in Modalità Schermo Intero</strong>: Clicca sul pulsante Schermo Intero per la massima visualizzazione.</li><li><strong>Imposta la Gara</strong>: Clicca sul testo del nome della squadra per cambiare i nomi. Imposta la durata del tempo (ad es.: 20 minuti).</li><li><strong>Calcio d'inizio!</strong>: Premi \"Inizia\".</li><li><strong>Aggiornamento in tempo reale</strong>: Premi (+) sul Punteggio se viene segnato un gol. Premi (+) sul Fallo se l'arbitro fischia un'infrazione. Premi Pausa se la palla esce.</li></ol>"
-        },
-        {
-          title: "Comprendi le regole del Calcio a 5 per rendere il gioco più divertente",
-          content: "<p>L'uso di questo strumento aiuta anche la tua comunità a imparare la disciplina delle vere regole del calcio a 5:</p><ul><li><strong>Cronometro Fermo vs. Cronometro Scorrevole</strong>: Il calcio a 5 professionale utilizza 20 minuti di Cronometro Fermo (l'orologio si ferma ogni volta che la palla è morta). Tuttavia, per gli affitti dei campi pubblici, di solito usano il Cronometro Scorrevole (l'orologio continua a scorrere). Con la nostra funzione Pausa/Ripresa, sei libero di scegliere quale stile di gioco vuoi applicare.</li><li><strong>Regola dei Falli Accumulati</strong>: Molte squadre amatoriali sottovalutano i falli. Ricorda, nel calcio a 5, ogni fallo conta! Se la tua squadra ha commesso 5 falli in un tempo, devi giocare con molta attenzione. Usa il Conteggio Falli in questo strumento per mantenere entrambe le squadre all'erta.</li></ul>"
-        },
-        {
-          title: "Pronto per un match di livello Pro?",
-          content: "<p>Non lasciare che il tuo match emozionante sia rovinato dimenticando il punteggio o discutendo sul tempo. Fai in modo che il tuo allenamento di sparring o il tuo torneo locale sembrino una Lega Professionale con una visualizzazione del punteggio chiara. Gratuito, Facile e Professionale. Prova il Tabellone Digitale Calcio a 5 VersoKit proprio ora!</p>"
-        }
-      ]
-    }
-  },
-  "lineup": {
-    en: {
-      title: "Football Lineup Builder: Create Team Formations & Download Image",
-      sections: [
-        {
-          title: "Why Do You Need This Lineup Builder?",
-          content: "<p>This tool serves as a digital tactics board that is far more advanced and organized than a physical magnetic board. Here are the top features that will make your life easier:</p><ul><li><strong>1. Instant Starting XI Visualization:</strong> Forget blurry hand sketches. This tool generates green field graphics with precise player positions. Perfect for pre-match briefings.</li><li><strong>2. Drag & Drop Interface:</strong> Player positions are not rigid. Want the right winger to push further inside? Or the defensive midfielder to drop deeper? Simply click and drag (drag & drop) the player/jersey icons to any position on the field. You have full control over your tactics.</li><li><strong>3. Popular Formation Presets:</strong> Not sure where to start? We provide ready-to-use standard formation templates: Classic (4-4-2, 4-3-3, 3-5-2) and Modern (4-2-3-1, 3-4-3 Diamond, or \"Park the Bus\" 5-4-1). Pick one, adjust slightly, and you're done!</li><li><strong>4. Jersey & Name Customization:</strong> Make your team look authentic. Change the colors of the players' and goalkeeper's jerseys to match your team pride (Red, Blue, White, Stripes, etc.). Type the player's name and jersey number below the icon. No more players asking, \"Coach, where am I playing?\"</li></ul>"
-        },
-        {
-          title: "Who Should Use This Tool?",
-          content: "<p>This tool is designed for various needs within the football community:</p><ul><li><strong>Social Media Admins:</strong> Want your club's Instagram account to look professional like major league clubs? Posting a neat graphic Starting Lineup before kick-off is the key.</li><li><strong>Coaches & Team Captains:</strong> Share strategies to the team's WhatsApp group a day before the match (\"We're playing this tactic tomorrow!\"). Clear visuals reduce miscommunication on the field.</li><li><strong>Fans & Instant Pundits:</strong> Love analyzing matches? Explain your arguments about a \"False Nine\" or \"Inverted Fullback\" with pictures. Football debates on Twitter (X) become more valid with visual data.</li><li><strong>Gamers (FIFA/eFootball):</strong> Show off your strongest Ultimate Team or Dream Team squad to the gaming community with an elegant display.</li></ul>"
-        },
-        {
-          title: "How to Create a Football Formation in 1 Minute",
-          content: "<p>No need to install an app, just open this page in your phone or laptop browser:</p><ol><li><strong>Select Base Formation:</strong> Start with a preset (e.g., 4-3-3 Attack).</li><li><strong>Input Player Names:</strong> Click on the player icons to change names and numbers.</li><li><strong>Customize Appearance:</strong> Set your team's Home/Away jersey colors.</li><li><strong>Set Specific Tactics:</strong> Drag player positions if you want to apply a specific strategy (e.g., pushing one midfielder further forward).</li><li><strong>Download Image:</strong> Click the download button. The result is a high-quality image (PNG/JPG) ready to be shared.</li></ol>"
-        },
-        {
-          title: "Clean & Professional Results",
-          content: "<p>One of the main advantages of our tool is the \"Clean\" end result. The image you download looks like TV broadcast graphics, making your strategy appear credible and easy for anyone to understand. Don't let your genius strategy stay only in your head. Visualize it now, share it with the team, and achieve victory!</p>"
-        }
-      ]
-    },
-    id: {
-      title: "Football Lineup Builder: Buat Formasi Tim Bola & Download Gambar",
-      sections: [
-        {
-          title: "Mengapa Anda Perlu Lineup Builder Ini?",
-          content: "<p>Alat ini berfungsi sebagai papan taktik digital yang jauh lebih canggih dan rapi daripada papan magnet fisik. Berikut adalah fitur unggulan yang akan mempermudah hidup Anda:</p><ul><li><strong>1. Visualisasi Starting XI Instan:</strong> Lupakan sketsa tangan yang buram. Alat ini menghasilkan gambar grafis lapangan hijau dengan posisi pemain yang presisi. Sangat cocok untuk presentasi sebelum pertandingan (pre-match briefing).</li><li><strong>2. Drag & Drop Interface (Geser Sesuka Hati):</strong> Posisi pemain tidak kaku. Ingin winger kanan lebih maju menusuk ke dalam? Atau gelandang bertahan lebih turun ke belakang? Cukup klik dan geser (drag & drop) ikon pemain/jersey ke posisi manapun di lapangan. Anda punya kendali penuh atas taktik Anda.</li><li><strong>3. Preset Formasi Populer:</strong> Bingung mulai dari mana? Kami menyediakan template formasi standar yang siap pakai: Klasik (4-4-2, 4-3-3, 3-5-2) dan Modern (4-2-3-1, 3-4-3 Diamond, atau strategi \"Parkir Bus\" 5-4-1). Pilih satu, lalu sesuaikan sedikit, dan selesai!</li><li><strong>4. Kustomisasi Jersey & Nama:</strong> Buat tim Anda terlihat otentik. Ubah warna baju pemain dan kiper agar sesuai dengan kebanggaan tim (Merah, Biru, Putih, Strip, dll). Ketik nama pemain dan nomor punggung di bawah ikon. Tidak ada lagi pemain yang bertanya, \"Saya main di posisi mana, Coach?\"</li></ul>"
-        },
-        {
-          title: "Siapa yang Wajib Menggunakan Alat Ini?",
-          content: "<p>Alat ini dirancang untuk berbagai kebutuhan komunitas sepak bola:</p><ul><li><strong>Admin Media Sosial (SSB/Komunitas):</strong> Ingin akun Instagram klub terlihat profesional seperti klub Liga 1 atau Eropa? Posting Starting Lineup grafis yang rapi sebelum kick-off adalah kuncinya.</li><li><strong>Pelatih & Kapten Tim:</strong> Bagikan strategi ke grup WhatsApp tim sehari sebelum pertandingan (\"Besok kita main taktik ini ya!\"). Visual yang jelas mengurangi miskomunikasi di lapangan.</li><li><strong>Fans & Pundit Dadakan:</strong> Suka menganalisis pertandingan? Jelaskan argumen Anda tentang \"False Nine\" atau \"Inverted Fullback\" dengan gambar. Debat bola di Twitter (X) jadi lebih valid dengan data visual.</li><li><strong>Gamer (FIFA/eFootball):</strong> Pamerkan skuad Ultimate Team atau Dream Team terkuat Anda ke komunitas gaming dengan tampilan yang elegan.</li></ul>"
-        },
-        {
-          title: "Cara Membuat Formasi Bola dalam 1 Menit",
-          content: "<p>Tidak perlu instal aplikasi, cukup buka halaman ini di browser HP atau Laptop Anda:</p><ol><li><strong>Pilih Formasi Dasar:</strong> Mulai dengan preset (misal: 4-3-3 Attack).</li><li><strong>Input Nama Pemain:</strong> Klik pada ikon pemain untuk mengganti nama dan nomor punggung.</li><li><strong>Kustomisasi Tampilan:</strong> Atur warna jersey Home/Away tim Anda.</li><li><strong>Atur Taktik Spesifik:</strong> Geser posisi pemain jika Anda ingin menerapkan strategi khusus (misal: satu gelandang didorong lebih ke depan).</li><li><strong>Download Image:</strong> Klik tombol unduh. Hasilnya adalah gambar (PNG/JPG) berkualitas tinggi yang siap di-share.</li></ol>"
-        },
-        {
-          title: "Hasil Bersih & Profesional",
-          content: "<p>Salah satu keunggulan utama alat kami adalah hasil akhir yang Clean. Gambar yang Anda unduh terlihat seperti grafis siaran TV, membuat strategi Anda terlihat kredibel dan mudah dipahami oleh siapa saja. Jangan biarkan strategi jitu Anda hanya ada di kepala. Visualisasikan sekarang, bagikan ke tim, dan raih kemenangan!</p>"
-        }
-      ]
-    },
-    de: {
-      title: "Fußball-Aufstellungs-Planer: Teamformationen erstellen & Bild herunterladen",
-      sections: [
-        {
-          title: "Warum brauchen Sie diesen Aufstellungs-Planer?",
-          content: "<p>Dieses Tool dient als digitales Taktikboard, das weitaus fortschrittlicher und organisierter ist als eine physische Magnettafel. Hier sind die wichtigsten Funktionen, die Ihnen das Leben erleichtern werden:</p><ul><li><strong>1. Sofortige Visualisierung der Startelf:</strong> Vergessen Sie verschwommene Handskizzen. Dieses Tool erstellt Grafiken auf dem grünen Feld mit präzisen Spielerpositionen. Perfekt für Besprechungen vor dem Spiel.</li><li><strong>2. Drag & Drop-Benutzeroberfläche:</strong> Spielerpositionen sind nicht starr. Möchten Sie, dass der rechte Flügelspieler weiter nach innen zieht? Oder soll der defensive Mittelfeldspieler tiefer stehen? Klicken Sie einfach auf die Spieler-/Trikotsymbole und ziehen Sie sie an eine beliebige Stelle auf dem Spielfeld. Sie haben die volle Kontrolle über Ihre Taktik.</li><li><strong>3. Beliebte Formations-Voreinstellungen:</strong> Sie wissen nicht, wo Sie anfangen sollen? Wir bieten gebrauchsfertige Standard-Formationsvorlagen: Klassisch (4-4-2, 4-3-3, 3-5-2) und Modern (4-2-3-1, 3-4-3 Diamond oder die „Bus parken“-Strategie 5-4-1). Wählen Sie eine aus, passen Sie sie leicht an, und fertig!</li><li><strong>4. Trikot- & Namensanpassung:</strong> Lassen Sie Ihr Team authentisch aussehen. Ändern Sie die Farben der Spieler- und Torwarttrikots passend zu Ihrem Teamstolz (Rot, Blau, Weiß, Pfirsich usw.). Geben Sie den Namen und die Rückennummer des Spielers unter dem Symbol ein. Kein Spieler fragt mehr: „Coach, auf welcher Position spiele ich?“</li></ul>"
-        },
-        {
-          title: "Wer sollte dieses Tool nutzen?",
-          content: "<p>Dieses Tool ist für verschiedene Bedürfnisse innerhalb der Fußball-Community konzipiert:</p><ul><li><strong>Social Media Admins:</strong> Möchten Sie, dass der Instagram-Account Ihres Vereins so professionell aussieht wie der von großen Proficlubs? Eine saubere grafische Startaufstellung vor dem Anpfiff zu posten, ist der Schlüssel.</li><li><strong>Trainer & Teamkapitäne:</strong> Teilen Sie Strategien einen Tag vor dem Spiel in der WhatsApp-Gruppe des Teams („Morgen spielen wir mit dieser Taktik!“). Klare Visualisierungen reduzieren Missverständnisse auf dem Spielfeld.</li><li><strong>Fans & Experten:</strong> Lieben Sie es, Spiele zu analysieren? Erklären Sie Ihre Argumente über eine „Falsche Neun“ oder „Invertierte Außenverteidiger“ mit Bildern. Fußballdebatten auf Twitter (X) werden durch visuelle Daten glaubwürdiger.</li><li><strong>Gamer (FIFA/eFootball):</strong> Präsentieren Sie der Gaming-Community Ihren stärksten Ultimate Team- oder Dream Team-Kader in einem eleganten Design.</li></ul>"
-        },
-        {
-          title: "So erstellen Sie eine Fußballformation in 1 Minute",
-          content: "<p>Sie müssen keine App installieren, öffnen Sie einfach diese Seite in Ihrem Handy- oder Laptop-Browser:</p><ol><li><strong>Basisformation wählen:</strong> Beginnen Sie mit einer Voreinstellung (z. B. 4-3-3 Attack).</li><li><strong>Spielernamen eingeben:</strong> Klicken Sie auf die Spielersymbole, um Namen und Nummern zu ändern.</li><li><strong>Aussehen anpassen:</strong> Legen Sie die Heim-/Auswärtstrikotfarben Ihres Teams fest.</li><li><strong>Spezifische Taktiken festlegen:</strong> Verschieben Sie die Spielerpositionen, wenn Sie eine spezielle Strategie anwenden möchten (z. B. einen Mittelfeldspieler weiter nach vorne schieben).</li><li><strong>Bild herunterladen:</strong> Klicken Sie auf die Schaltfläche „Herunterladen“. Das Ergebnis ist ein hochwertiges Bild (PNG/JPG) das bereit zum Teilen ist.</li></ol>"
-        },
-        {
-          title: "Saubere & professionelle Ergebnisse",
-          content: "<p>Einer der Hauptvorteile unseres Tools ist das „saubere“ Endergebnis. Das heruntergeladene Bild sieht aus wie Grafiken aus TV-Übertragungen, wodurch Ihre Strategie glaubwürdig und für jeden leicht verständlich wirkt. Lassen Sie Ihre genialen Strategien nicht nur in Ihrem Kopf. Visualisieren Sie sie jetzt, teilen Sie sie mit dem Team und erringen Sie den Sieg!</p>"
-        }
-      ]
-    },
-    es: {
-      title: "Creador de Alineaciones de Fútbol: Crea Formaciones y Descarga la Imagen",
-      sections: [
-        {
-          title: "¿Por qué necesitas este Creador de Alineaciones?",
-          content: "<p>Esta herramienta sirve como una pizarra táctica digital que es mucho más avanzada y organizada que una pizarra magnética física. Estas son las principales características que te facilitarán la vida:</p><ul><li><strong>1. Visualización instantánea del Once Inicial:</strong> Olvida los bocetos a mano borrosos. Esta herramienta genera gráficos de campo verde con posiciones precisas de los jugadores. Perfecto para charlas previas al partido.</li><li><strong>2. Interfaz de arrastrar y soltar (Drag & Drop):</strong> Las posiciones de los jugadores no son rígidas. ¿Quieres que el extremo derecho avance más hacia adentro? ¿O que el mediocentro defensivo baje más? Simplemente haz clic y arrastra (drag & drop) los iconos de los jugadores/camisetas a cualquier posición del campo. Tienes control total sobre tus tácticas.</li><li><strong>3. Ajustes preestablecidos de formaciones populares:</strong> ¿No sabes por dónde empezar? Ofrecemos plantillas de formaciones estándar listas para usar: Clásicas (4-4-2, 4-3-3, 3-5-2) y Modernas (4-2-3-1, 3-4-3 Diamante, o la estrategia de \"Aparcar el autobús\" 5-4-1). Elige una, ajústala ligeramente y ¡listo!</li><li><strong>4. Personalización de camisetas y nombres:</strong> Haz que tu equipo parezca auténtico. Cambia los colores de las camisetas de los jugadores y del portero para que coincidan con el orgullo de tu equipo (rojo, azul, blanco, rayas, etc.). Escribe el nombre del jugador y el número de dorsal debajo del icono. Se acabaron los jugadores preguntando: \"Entrenador, ¿en qué posición juego?\"</li></ul>"
-        },
-        {
-          title: "¿Quién debería usar esta herramienta?",
-          content: "<p>Esta herramienta está diseñada para diversas necesidades dentro de la comunidad futbolística:</p><ul><li><strong>Administradores de Redes Sociales:</strong> ¿Quieres que la cuenta de Instagram de tu club se vea profesional como la de los clubes de las grandes ligas? Publicar una alineación gráfica limpia antes del saque inicial es la clave.</li><li><strong>Entrenadores y Capitanes de equipo:</strong> Comparte estrategias en el grupo de WhatsApp del equipo un día antes del partido (\"¡Mañana jugaremos con esta táctica!\"). Los visuales claros reducen la falta de comunicación en el campo.</li><li><strong>Aficionados y Analistas:</strong> ¿Te gusta analizar partidos? Explica tus argumentos sobre un \"Falso Nueve\" o un \"Lateral Invertido\" con imágenes. Los debates de fútbol en Twitter (X) se vuelven más válidos con datos visuales.</li><li><strong>Gamers (FIFA/eFootball):</strong> Presume de tu escuadra más fuerte de Ultimate Team o Dream Team ante la comunidad de jugadores con una visualización elegante.</li></ul>"
-        },
-        {
-          title: "Cómo crear una formación de fútbol en 1 minuto",
-          content: "<p>No necesitas instalar ninguna aplicación, solo abre esta página en el navegador de tu móvil o portátil:</p><ol><li><strong>Selecciona la formación base:</strong> Empieza con un ajuste preestablecido (ej. 4-3-3 Ataque).</li><li><strong>Introduce los nombres de los jugadores:</strong> Haz clic en los iconos de los jugadores para cambiar nombres y números.</li><li><strong>Personaliza la apariencia:</strong> Configura los colores de la equipación local/visitante de tu equipo.</li><li><strong>Establece tácticas específicas:</strong> Arrastra las posiciones de los jugadores si quieres aplicar una estrategia específica (ej. empujar a un centrocampista más adelante).</li><li><strong>Descarga la imagen:</strong> Haz clic en el botón de descarga. El resultado es una imagen de alta calidad (PNG/JPG) lista para compartir.</li></ol>"
-        },
-        {
-          title: "Resultados limpios y profesionales",
-          content: "<p>Una de las principales ventajas de nuestra herramienta es el resultado final \"limpio\". La imagen que descargas parece un gráfico de una transmisión de televisión, lo que hace que tu estrategia parezca creíble y fácil de entender para cualquiera. No dejes que tu estrategia magistral se quede solo en tu cabeza. ¡Visualízala ahora, compártela con el equipo y consigue la victoria!</p>"
-        }
-      ]
-    },
-    pt: {
-      title: "Criador de Escalação de Futebol: Crie Formações e Baixe a Imagem",
-      sections: [
-        {
-          title: "Por que você precisa deste Criador de Escalação?",
-          content: "<p>Esta ferramenta funciona como um quadro de táticas digital que é muito mais avançado e organizado do que um quadro magnético físico. Aqui estão os principais recursos que facilitarão a sua vida:</p><ul><li><strong>1. Visualização instantânea do Onze Inicial:</strong> Esqueça esboços manuais borrados. Esta ferramenta gera gráficos de campo verde com posições precisas dos jogadores. Perfeito para preleções antes do jogo.</li><li><strong>2. Interface de arrastar e soltar (Drag & Drop):</strong> As posições dos jogadores não são rígidas. Quer que o ponta-direita avance mais para o meio? Ou que o médio defensivo recue mais? Basta clicar e arrastar (drag & drop) os ícones dos jogadores/camisas para qualquer posição no campo. Você tem controle total sobre suas táticas.</li><li><strong>3. Predefinições de formações populares:</strong> Não sabe por onde começar? Oferecemos modelos de formações padrão prontos para usar: Clássicas (4-4-2, 4-3-3, 3-5-2) e Modernas (4-2-3-1, 3-4-3 Diamante, ou a estratégia de \"Estacionar o Ônibus\" 5-4-1). Escolha uma, ajuste levemente e pronto!</li><li><strong>4. Personalização de camisas e nomes:</strong> Faça seu time parecer autêntico. Altere as cores das camisas dos jogadores e do goleiro para combinar com o orgulho do seu time (Vermelho, Azul, Branco, Listrado, etc.). Digite o nome do jogador e o número da camisa abaixo do ícone. Não haverá mais jogadores perguntando: \"Treinador, em que posição eu jogo?\"</li></ul>"
-        },
-        {
-          title: "Quem deve usar esta ferramenta?",
-          content: "<p>Esta ferramenta foi projetada para diversas necessidades da comunidade do futebol:</p><ul><li><strong>Administradores de Redes Sociais:</strong> Quer que o conta do Instagram do seu clube pareça profissional como a dos clubes das grandes ligas? Publicar uma escalação gráfica organizada antes do pontapé inicial é a chave.</li><li><strong>Treinadores e Capitães de equipe:</strong> Compartilhe estratégias no grupo de WhatsApp do time um dia antes da partida (\"Amanhã jogaremos com esta tática!\"). Visuais claros reduzem falhas de comunicação em campo.</li><li><strong>Fãs e Analistas:</strong> Gosta de analisar partidas? Explique seus argumentos sobre um \"Falso Nove\" o um \"Lateral Invertido\" com imagens. Os debates de futebol no Twitter (X) tornam-se mais válidos com dados visuais.</li><li><strong>Gamers (FIFA/eFootball):</strong> Mostre sua escalação mais forte do Ultimate Team ou Dream Team para a comunidade de jogadores com uma exibição elegante.</li></ul>"
-        },
-        {
-          title: "Como criar uma formação de futebol em 1 minuto",
-          content: "<p>Não é necessário instalar um aplicativo, basta abrir esta página no navegador do seu telemóvel ou portátil:</p><ol><li><strong>Selecione a formação base:</strong> Comece com uma predefinição (ex: 4-3-3 Ataque).</li><li><strong>Insira os nomes dos jogadores:</strong> Clique nos ícones dos jogadores para alterar nomes e números.</li><li><strong>Personalize a aparência:</strong> Defina as cores das camisas principal/secundária do seu time.</li><li><strong>Defina táticas específicas:</strong> Arrastra as posições dos jogadores se quiser aplicar uma estratégia específica (ex: empurrar um médio mais para a frente).</li><li><strong>Baixe a imagem:</strong> Clique no botão de download. O resultado é uma imagem de alta qualidade (PNG/JPG) pronta para ser compartilhada.</li></ol>"
-        },
-        {
-          title: "Resultados limpios e profissionais",
-          content: "<p>Uma das principais vantagens da nossa ferramenta é o resultado final \"limpo\". A imagem que você baixa parece um gráfico de transmissão de TV, tornando sua estratégia credível e fácil de entender para qualquer pessoa. Não deixe sua estratégia genial ficar apenas na sua cabeça. Visualize-a agora, compartilhe-a com a equipe e conquiste a vitória!</p>"
-        }
-      ]
-    },
-    fr: {
-      title: "Créateur de Composition de Football : Créez des Formations & Téléchargez l'Image",
-      sections: [
-        {
-          title: "Pourquoi avez-vous besoin de ce Créateur de Composition ?",
-          content: "<p>Cet outil sert de tableau tactique numérique bien plus avancé et organisé qu'un tableau magnétique physique. Voici les fonctionnalités phares qui vous faciliteront la vie :</p><ul><li><strong>1. Visualisation instantanée du Onze de Départ :</strong> Oubliez les croquis manuels flous. Cet outil génère des graphiques de terrain vert avec des positions de joueurs précises. Parfait pour les briefings d'avant-match.</li><li><strong>2. Interface Glisser-Déposer (Drag & Drop) :</strong> Les positions des joueurs ne sont pas figées. Vous voulez que l'ailier droit repique davantage vers l'intérieur ? Ou que le milieu défensif descende plus bas ? Cliquez simplement et faites glisser (drag & drop) les icônes de joueurs/maillots vers n'importe quelle position sur le terrain. Vous avez le contrôle total sur votre tactique.</li><li><strong>3. Préréglages de formations populaires :</strong> Vous ne savez pas par où commencer ? Nous proposons des modèles de formations standards prêts à l'emploi : Classiques (4-4-2, 4-3-3, 3-5-2) et Modernes (4-2-3-1, 3-4-3 Diamant, ou la stratégie \"Garer le bus\" 5-4-1). Choisissez-en un, ajustez-le légèrement et le tour est joué !</li><li><strong>4. Personnalisation des maillots et des noms :</strong> Donnez à votre équipe un look authentique. Changez les couleurs des maillots des joueurs et du gardien pour qu'elles correspondent à la fierté de votre équipe (Rouge, Bleu, Blanc, Rayures, etc.). Saisissez le nom du joueur et son numéro de maillot sous l'icône. Plus aucun joueur ne demandera : \"Coach, à quel poste je joue ?\"</li></ul>"
-        },
-        {
-          title: "Qui devrait utiliser cet outil ?",
-          content: "<p>Cet outil est conçu pour répondre aux divers besoins de la communauté du football :</p><ul><li><strong>Admins de Réseaux Sociaux :</strong> Vous voulez que le compte Instagram de votre club ait l'air professionnel comme celui des clubs de ligue 1 ou européens ? Publier une composition graphique propre avant le coup d'envoi est la clé.</li><li><strong>Entraîneurs et Capitaines d'équipe :</strong> Partagez vos stratégies dans le groupe WhatsApp de l'équipe la veille du match (\"Demain, on joue avec cette tactique !\"). Des visuels clairs réduisent les erreurs de communication sur le terrain.</li><li><strong>Fans et Analystes :</strong> Vous aimez analyser les matchs ? Expliquez vos arguments sur un \"Faux Neuf\" ou un \"Latéral Inversé\" avec des images. Les débats foot sur Twitter (X) deviennent plus crédibles avec des données visuelles.</li><li><strong>Gamers (FIFA/eFootball) :</strong> Présentez votre équipe Ultimate Team ou Dream Team la plus forte à la communauté gaming avec un affichage élégant.</li></ul>"
-        },
-        {
-          title: "Comment créer une formation de foot en 1 minute",
-          content: "<p>Pas besoin d'installer d'application, ouvrez simplement cette page dans le navigateur de votre téléphone ou de votre ordinateur :</p><ol><li><strong>Sélectionnez la formation de base :</strong> Commencez avec un préréglage (ex : 4-3-3 Attaque).</li><li><strong>Saisissez les noms des joueurs :</strong> Cliquez sur les icônes des joueurs pour changer les noms et les numéros.</li><li><strong>Personnalisez l'apparence :</strong> Réglez les couleurs des maillots domicile/extérieur de votre équipe.</li><li><strong>Définissez des tactiques spécifiques :</strong> Faites glisser les positions des joueurs si vous souhaitez appliquer une stratégie particulière (ex : pousser un milieu de terrain plus en avant).</li><li><strong>Téléchargez l'image :</strong> Cliquez sur le bouton de téléchargement. Le résultat est une image de haute qualité (PNG/JPG) prête à être partagée.</li></ol>"
-        },
-        {
-          title: "Résultats nets et professionnels",
-          content: "<p>L'un des principaux avantages de notre outil est le résultat final \"propre\". L'image que vous téléchargez ressemble aux graphiques des retransmissions TV, ce qui rend votre stratégie crédible et facile à comprendre pour tout le monde. Ne laissez pas votre stratégie de génie rester uniquement dans votre tête. Visualisez-la dès maintenant, partagez-la avec l'équipe et remportez la victoire !</p>"
-        }
-      ]
-    },
-    it: {
-      title: "Football Lineup Builder: Crea Formazioni Squadra e Scarica l'Immagine",
-      sections: [
-        {
-          title: "Perché hai bisogno di questo Lineup Builder?",
-          content: "<p>Questo strumento funge da lavagna tattica digitale molto più avanzata e organizzata di una lavagna magnetica fisica. Ecco le caratteristiche principali che ti semplificheranno la vita:</p><ul><li><strong>1. Visualizzazione istantanea della formazione titolare:</strong> Dimentica gli schizzi a mano sfocati. Questo strumento genera grafiche del campo verde con posizioni dei giocatori precise. Perfetto per i briefing pre-partita.</li><li><strong>2. Interfaccia Drag & Drop:</strong> Le posizioni dei giocatori non sono rigide. Vuoi che l'ala destra spinga più verso l'interno? O che il centrocampista difensivo scenda più in profondità? Basta fare clic e trascinare (drag & drop) le icone dei giocatori/maglie in qualsiasi posizione sul campo. Hai il pieno controllo delle tue tattiche.</li><li><strong>3. Formazioni predefinite popolari:</strong> Non sai da dove iniziare? Forniamo modelli di formazioni standard pronti all'uso: Classiche (4-4-2, 4-3-3, 3-5-2) e Moderne (4-2-3-1, 3-4-3 Diamante o la strategia \"Pullman davanti alla porta\" 5-4-1). Scegline una, regolala leggermente e il gioco è fatto!</li><li><strong>4. Personalizzazione di maglie e nomi:</strong> Rendi la tua squadra autentica. Cambia i colori delle maglie dei giocatori e del portiere per abbinarli all'orgoglio della tua squadra (Rosso, Blu, Bianco, a strisce, ecc.). Digita il nome del giocatore e il numero di maglia sotto l'icona. Non ci saranno più giocatori che chiedono: \"Coach, in che posizione gioco?\"</li></ul>"
-        },
-        {
-          title: "Chi dovrebbe usare questo strumento?",
-          content: "<p>Questo strumento è progettato per varie esigenze all'interno della comunità calcistica:</p><ul><li><strong>Amministratori dei social media:</strong> Vuoi che l'account Instagram del tuo club sembri professionale come quello dei club delle grandi leghe? Pubblicare una grafica pulita della formazione titolare prima del fischio d'inizio è la chiave.</li><li><strong>Allenatori e Capitani:</strong> Condividi le strategie nel gruppo WhatsApp della squadra il giorno prima della partita (\"Domani giocheremo con questa tattica!\"). Visual chiari riducono le incomprensioni in campo.</li><li><strong>Tifosi e Analisti:</strong> Ami analizzare le partite? Spiega le tue argomentazioni su un \"Falso Nueve\" o un \"Terzino Invertito\" con le immagini. I dibattiti sul calcio su Twitter (X) diventano più validi con i dati visivi.</li><li><strong>Gamer (FIFA/eFootball):</strong> Mostra la tua squadra Ultimate Team o Dream Team più forte alla comunità di gioco con un display elegante.</li></ul>"
-        },
-        {
-          title: "Come creare una formazione di calcio in 1 minuto",
-          content: "<p>Non è necessario installare un'app, basta aprire questa pagina nel browser del tuo telefono o laptop:</p><ol><li><strong>Seleziona la formazione base:</strong> Inizia con un preset (es. 4-3-3 Attacco).</li><li><strong>Inserisci i nomi dei giocatori:</strong> Fai clic sulle icone dei giocatori per cambiare nomi e numeri.</li><li><strong>Personalizza l'aspetto:</strong> Imposta i colori delle maglie Home/Away della tua squadra.</li><li><strong>Imposta tattiche specifiche:</strong> Trascina le posizioni dei giocatori se desideri applicare una strategia specifica (es. spingere un centrocampista più avanti).</li><li><strong>Scarica l'immagine:</strong> Fai clic sul pulsante di download. Lo risultato è un'immagine di alta qualità (PNG/JPG) pronta per essere condivisa.</li></ol>"
-        },
-        {
-          title: "Risultati puliti e professionali",
-          content: "<p>Uno dei principali vantaggi del nostro strumento è il risultato finale \"pulito\". L'immagine che scarichi sembra una grafica delle trasmissioni TV, rendendo la tua strategia credibile e facile da capire per chiunque. Non lasciare che la tua strategia geniale rimanga solo nella tua testa. Visualizzala ora, condividila con la squadra e ottieni la vittoria!</p>"
-        }
-      ]
-    }
-  },
-  "tournament": {
-    en: {
-      title: "Tournament Manager Pro: Create Automatic Brackets & League Standings",
-      sections: [
-        {
-          title: "Stop Wasting Time with Manual Tournament Administration",
-          content: "<p>Busy being a committee member for Futsal, E-Sports, or a neighborhood competition? We know how stressful managing dozens of teams can be. The classic committee problem is complicated administration. Drawing brackets on cardboard takes a long time, and a single mistake means starting over. Using Excel? Formulas for points and goal differences often error out, leading to protests. Stop wasting time with manual methods.</p><p>Use Tournament Manager Pro from VersoKit. It is an all-in-one solution for creating match schedules, for both Knockout and Round Robin systems in seconds.</p>"
-        },
-        {
-          title: "Why Every Organizer Needs This Tool",
-          content: "<p>This tool is the \"heart\" of successful event organizing. Here are the problems we solve for you:</p><ul><li><strong>1. Instant Knockout Brackets:</strong> Forget rulers and markers. Just enter team names, and this tool generates automatic brackets for 4, 8, 16, up to 32 teams. <strong>Interactive Visuals:</strong> Who won? Just click the winning team, and their name automatically advances to the next round. <strong>Automatic Drawing:</strong> No need for lottery slips. Our \"Shuffle\" button draws matchups fairly in 1 second.</li><li><strong>2. Round Robin League Management Without a Calculator:</strong> Creating a league like the Premier League is now for everyone. <strong>Auto-Standings:</strong> Enter match scores (e.g., 2-1), and the standings table updates in real-time. <strong>Accurate Calculations:</strong> The system automatically calculates Wins (3 pts), Draws (1 pt), Losses (0 pts), Goal Difference (GD), and Head-to-Head. No more calculation drama!</li><li><strong>3. Multi-Sport Support:</strong> Whatever the competition, this tool is ready. Physical Sports (Futsal, Badminton, Volley, Table Tennis). E-Sports & Game (Mobile Legends, FIFA/eFootball, Valorant, PES). Traditional Games (Chess, Tug of War, neighborhood competitions).</li></ul>"
-        },
-        {
-          title: "Top Features of Tournament Manager",
-          content: "<p>Besides speed, this tool is equipped with professional features:</p><ul><li><strong>Export to Image:</strong> Brackets or standings can be screenshotted or downloaded. Share these images to WhatsApp groups to look official and transparent.</li><li><strong>Save Progress (Browser Storage):</strong> Afraid of losing data when accidentally closing the browser? Relax, our system stores temporary data in your browser, keeping it safe for your return.</li><li><strong>Edit Team Names:</strong> Team name change or late participants? Edit anytime without breaking the bracket structure.</li></ul>"
-        },
-        {
-          title: "Who Should Use This Tool?",
-          content: "<ul><li><strong>Event Committees & Class Meetings:</strong> PE teachers or neighborhood committees managing sports between classes or residents.</li><li><strong>Game Center & Cafe Owners:</strong> Hosting weekly PES/FIFA tournaments for loyal customers.</li><li><strong>E-Sports Communities:</strong> Group admins organizing scrims or mini tournaments (Fast Tourney).</li><li><strong>Amateur League Admins:</strong> Managers of community futsal or mini-soccer leagues.</li></ul>"
-        },
-        {
-          title: "How to Create a Tournament in 4 Steps",
-          content: "<p>No need to install heavy apps, just use your phone or laptop browser:</p><ol><li><strong>Choose Tournament Mode:</strong> Select \"Knockout\" or \"League\".</li><li><strong>Enter Participants:</strong> Type team or player names.</li><li><strong>Generate & Shuffle:</strong> Click build. Use Shuffle for random matchups.</li><li><strong>Run Matches:</strong> Match finished? Input scores. The system advances winners or updates league points automatically.</li></ol>"
-        },
-        {
-          title: "Manage Tournaments Like a Professional",
-          content: "<p>Don't let administrative technicalities hinder your event's excitement. With Tournament Manager Pro, you can focus on the matches while our system handles the data. Free, easy, and hassle-free. Try building your tournament bracket below!</p>"
-        }
-      ]
-    },
-    id: {
-      title: "Tournament Manager Pro: Buat Bagan & Klasemen Liga Otomatis",
-      sections: [
-        {
-          title: "Berhenti Membuang Waktu dengan Administrasi Manual",
-          content: "<p>Sedang sibuk menjadi panitia turnamen Futsal, E-Sports, atau lomba 17 Agustusan? Kami tahu betapa pusingnya mengelola puluhan tim peserta. Masalah klasik panitia adalah administrasi yang ribet. Menggambar garis-garis bagan di kertas karton memakan waktu lama, dan jika salah tulis, harus ganti kertas baru. Menggunakan Excel? Rumus hitung poin dan selisih gol sering error, yang ujung-ujungnya memicu protes dari peserta. Berhenti membuang waktu dengan cara manual.</p><p>Gunakan Tournament Manager Pro dari VersoKit. Ini adalah solusi all-in-one untuk membuat jadwal pertandingan, baik Sistem Gugur (Knockout) maupun Sistem Liga (Round Robin) dalam hitungan detik.</p>"
-        },
-        {
-          title: "Mengapa Panitia Wajib Pakai Alat Ini?",
-          content: "<p>Alat ini adalah \"Jantung\"-nya penyelenggara acara sukses. Berikut masalah yang kami selesaikan untuk Anda:</p><ul><li><strong>1. Sistem Gugur (Knockout Bracket) Instan:</strong> Lupakan penggaris dan spidol. Cukup masukkan nama tim, dan alat ini akan membuat Bagan Pohon (Bracket) otomatis untuk 4, 8, 16, hingga 32 tim. <strong>Visual Interaktif:</strong> Siapa pemenangnya? Cukup klik pada tim yang menang, dan nama mereka otomatis maju ke babak selanjutnya di bagan. <strong>Drawing Otomatis:</strong> Tidak perlu melinting kertas arisan. Tombol \"Shuffle/Acak\" kami akan mengundi siapa lawan siapa secara adil dalam 1 detik.</li><li><strong>2. Manajemen Liga (Round Robin) Tanpa Kalkulator:</strong> Membuat kompetisi liga seperti Premier League kini bisa dilakukan siapa saja. <strong>Auto-Standings:</strong> Masukkan skor pertandingan (misal 2-1), dan tabel klasemen akan langsung berubah urutannya secara real-time. <strong>Perhitungan Akurat:</strong> Sistem otomatis menghitung Menang (3 poin), Seri (1 poin), Kalah (0 poin), serta Selisih Gol (GD) dan Head-to-Head. Tidak ada lagi drama salah hitung!</li><li><strong>3. Dukungan Multi-Sport:</strong> Apapun jenis lombanya, alat ini siap digunakan. Olahraga Fisik (Futsal, Badminton, Voli, Tenis Meja). E-Sports & Game (Mobile Legends, FIFA/eFootball, Valorant, PES). Lomba Tradisional (Catur, Tarik Tambang, 17 Agustusan).</li></ul>"
-        },
-        {
-          title: "Fitur Unggulan Tournament Manager",
-          content: "<p>Selain cepat, alat ini dilengkapi fitur profesional:</p><ul><li><strong>Export to Image:</strong> Bagan atau klasemen yang sudah jadi bisa di-screenshot atau diunduh. Bagikan gambar tersebut ke grup WhatsApp peserta agar terlihat resmi dan transparan.</li><li><strong>Simpan Progres (Browser Storage):</strong> Takut data hilang saat tidak sengaja menutup browser? Tenang, sistem kami menyimpan data sementara di browser Anda, sehingga aman saat dibuka kembali.</li><li><strong>Edit Nama Tim:</strong> Ada tim yang ganti nama atau peserta susulan? Edit kapan saja tanpa merusak struktur bagan.</li></ul>"
-        },
-        {
-          title: "Siapa yang Cocok Menggunakan Alat Ini?",
-          content: "<ul><li><strong>Panitia 17 Agustusan & Class Meeting:</strong> Guru olahraga atau panitia kampung yang mengelola lomba futsal/voli antar kelas atau antar warga.</li><li><strong>Pemilik Rental PS & Warkop:</strong> Mengadakan turnamen mingguan PES/FIFA untuk pelanggan setia.</li><li><strong>Komunitas E-Sports:</strong> Admin grup mabar yang sering mengadakan scrim atau turnamen kecil-kecilan (Fast Tourney).</li><li><strong>Admin Liga Amatir:</strong> Pengelola liga futsal atau minisoccer komunitas.</li></ul>"
-        },
-        {
-          title: "Cara Membuat Turnamen dalam 4 Langkah",
-          content: "<p>Tidak perlu instal aplikasi berat, cukup gunakan browser HP atau Laptop Anda:</p><ol><li><strong>Pilih Mode Turnamen:</strong> Tentukan formatnya. Mau \"Knockout\" (Sistem Gugur) atau \"League\" (Sistem Liga/Klasemen)?</li><li><strong>Masukkan Peserta:</strong> Ketik nama tim atau nama pemain.</li><li><strong>Generate & Acak:</strong> Klik tombol buat bagan. Gunakan fitur Shuffle jika ingin sistem mengundi lawan secara acak.</li><li><strong>Jalankan Pertandingan:</strong> Pertandingan selesai? Input skornya. Sistem akan otomatis memajukan pemenang atau mengupdate poin klasemen.</li></ol>"
-        },
-        {
-          title: "Kelola Turnamen Layaknya Profesional",
-          content: "<p>Jangan biarkan teknis administrasi menghambat keseruan acara Anda. Dengan Tournament Manager Pro, Anda bisa fokus pada jalannya pertandingan, biar sistem kami yang mengurus datanya. Gratis, mudah, dan anti-ribet. Coba buat bagan turnamen Anda di bawah ini!</p>"
-        }
-      ]
-    },
-    de: {
-      title: "Tournament Manager Pro: Automatische Turnierbäume & Ligatabellen erstellen",
-      sections: [
-        {
-          title: "Schluss mit dem Zeitaufwand für die manuelle Turnierverwaltung",
-          content: "<p>Sind Sie als Organisator für Futsal, E-Sports oder Vereinswettbewerbe beschäftigt? Wir wissen, wie stressig die Verwaltung von Dutzenden von Teams sein kann. Das klassische Problem ist die komplizierte Administration. Das Zeichnen von Turnierbäumen auf Papier dauert lange, und ein einziger Fehler bedeutet, von vorn anzufangen. Excel nutzen? Formeln für Punkte und Tordifferenzen sind oft fehleranfällig. Hören Sie auf, Zeit mit manuellen Methoden zu verschwenden.</p><p>Nutzen Sie den Tournament Manager Pro von VersoKit. Es ist eine All-in-One-Lösung für Spielpläne, sowohl für K.o.-Systeme als auch für Round-Robin-Ligen in Sekundenschnelle.</p>"
-        },
-        {
-          title: "Warum jeder Organisator dieses Tool braucht",
-          content: "<ul><li><strong>1. Sofortige K.o.-Bäume:</strong> Geben Sie Teamnamen ein und das Tool generiert Bäume für 4 bis 32 Teams. Ein Klick auf den Gewinner rückt diesen automatisch vor.</li><li><strong>2. Liga-Management ohne Taschenrechner:</strong> Erstellen Sie Ligen wie die Bundesliga. Das System berechnet Siege, Unentschieden, Niederlagen und Tordifferenzen automatisch in Echtzeit.</li><li><strong>3. Multi-Sport-Unterstützung:</strong> Ideal für Fußball, Badminton, E-Sports wie FIFA oder Mobile Legends und traditionelle Wettbewerbe.</li></ul>"
-        }
-      ]
-    },
-    es: {
-      title: "Tournament Manager Pro: Crea Cuadros y Clasificaciones de Liga Automáticos",
-      sections: [
-        {
-          title: "Deja de perder tiempo con la administración manual de torneos",
-          content: "<p>¿Estás ocupado siendo parte del comité de un torneo de Futsal, E-Sports o una competición barrial? Sabemos lo estresante que puede ser gestionar docenas de equipos. El problema clásico es la administración complicada. Dibujar cuadros en cartulina lleva mucho tiempo y un error significa empezar de nuevo. ¿Usar Excel? Las fórmulas suelen fallar. Deja de perder tiempo.</p><p>Usa Tournament Manager Pro de VersoKit. Es la solución todo en uno para crear calendarios de partidos, tanto para sistemas de eliminación directa como de liga, en segundos.</p>"
-        },
-        {
-          title: "Por qué todo organizador necesita esta herramienta",
-          content: "<ul><li><strong>1. Cuadros de Eliminación Instantáneos:</strong> Genera cuadros para 4 a 32 equipos. Haz clic en el ganador y avanzará automáticamente.</li><li><strong>2. Gestión de Ligas sin Calculadora:</strong> Crea ligas profesionales. El sistema calcula puntos, diferencia de goles y resultados directos automáticamente.</li><li><strong>3. Soporte para Múltiples Deportes:</strong> Perfecto para fútbol, bádminton, E-Sports como Valorant o FIFA, y juegos tradicionales.</li></ul>"
-        }
-      ]
-    },
-    pt: {
-      title: "Tournament Manager Pro: Crie Chaves e Classificações de Liga Automáticas",
-      sections: [
-        {
-          title: "Pare de perder tempo com a administração manual de torneios",
-          content: "<p>Está ocupado como organizador de torneios de Futsal, E-Sports ou competições escolares? Sabemos como é estressante gerenciar dezenas de equipes. O problema clássico é a administração complicada. Desenhar chaves no papel leva tempo e um erro significa recomeçar. Usar Excel? As fórmulas costumam dar erro. Pare de perder tempo.</p><p>Use o Tournament Manager Pro da VersoKit. É a solução completa para criar calendarios de jogos, tanto para mata-mata quanto para ligas, em segundos.</p>"
-        },
-        {
-          title: "Por que todo organizador precisa desta ferramenta",
-          content: "<ul><li><strong>1. Chaves de Mata-Mata Instantâneas:</strong> Gere chaves para 4 a 32 equipes. Clique no vencedor e ele avançará automaticamente.</li><li><strong>2. Gestão de Ligas sem Calculadora:</strong> Crie ligas como os campeonatos profissionais. O sistema calcula pontos, saldo de gols e critérios de desempate automaticamente.</li><li><strong>3. Suporte para Vários Esportes:</strong> Ideal para futebol, vôlei, E-Sports como LoL ou FIFA, e gincanas tradicionais.</li></ul>"
-        }
-      ]
-    },
-    fr: {
-      title: "Tournament Manager Pro : Créez des Tableaux et Classements de Ligue Automatiques",
-      sections: [
-        {
-          title: "Arrêtez de perdre du temps avec l'administration manuelle des tournois",
-          content: "<p>Vous êtes membre d'un comité pour un tournoi de Futsal, d'E-Sports ou une compétition locale ? Nous savons à quel point la gestion de dizaines d'équipes peut être stressante. Le problème classique est l'administration compliquée. Dessiner des tableaux sur du carton prend du temps et une erreur oblige à recommencer. Utiliser Excel ? Les formules sont souvent sources d'erreurs. Arrêtez de perdre du temps.</p><p>Utilisez Tournament Manager Pro de VersoKit. C'est la solution tout-en-un pour créer des calendriers de matchs, pour les systèmes à élimination directe ou de championnat, en quelques secondes.</p>"
-        },
-        {
-          title: "Pourquoi chaque organisateur a besoin de cet outil",
-          content: "<ul><li><strong>1. Tableaux à élimination directe instantanés :</strong> Générez des tableaux pour 4 à 32 équipes. Cliquez sur le vainqueur pour le faire avancer automatiquement.</li><li><strong>2. Gestion de ligue sans calculatrice :</strong> Créez des championnats professionnels. Le système calcule automatiquement les points, la différence de buts et les confrontations directes.</li><li><strong>3. Support Multi-Sport :</strong> Parfait pour le foot, le badminton, les E-Sports comme FIFA ou Valorant, et les jeux traditionnels.</li></ul>"
-        }
-      ]
-    },
-    it: {
-      title: "Tournament Manager Pro: Crea Tabelloni e Classifiche di Lega Automatici",
-      sections: [
-        {
-          title: "Smetti di perdere tempo con l'amministrazione manuale dei tornei",
-          content: "<p>Sei impegnato come organizzatore di tornei di Calcetto, E-Sports o competizioni locali? Sappiamo quanto possa essere stressante gestire dozzine di squadre. Il problema classico è l'amministrazione complicata. Disegnare i tabelloni a mano richiede tempo e un errore significa ricominciare. Usare Excel? Le formule spesso falliscono. Smetti di perdere tempo.</p><p>Usa Tournament Manager Pro di VersoKit. È la soluzione completa per creare calendari di gara, sia per sistemi a eliminazione diretta che per campionati, in pochi secondi.</p>"
-        },
-        {
-          title: "Perché ogni organizzatore ha bisogno di questo strumento",
-          content: "<ul><li><strong>1. Tabelloni a eliminazione diretta istantanei :</strong> Genera tabelloni da 4 a 32 squadre. Clicca sul vincitore e avanzerà automaticamente.</li><li><strong>2. Gestione Campionato senza Calcolatrice :</strong> Crea leghe professionali. Il sistema calcola punti, differenza reti e scontri diretti automaticamente.</li><li><strong>3. Supporto Multi-Sport :</strong> Ideale per calcio, pallavolo, E-Sports come FIFA o PES, e giochi tradizionali.</li></ul>"
-        }
-      ]
-    }
-  },
-  "scoreboard": {
-    en: {
-      title: "Universal Scoreboard: Digital Scoreboard for Badminton, Volleyball & Table Tennis",
-      sections: [
-        {
-          title: "Ditch the Old Flip Boards",
-          content: "<p>Have you ever played badminton or volleyball at a sports hall, only for the referee to forget the current score? Or perhaps the available manual flip boards are torn, missing numbers, and too small for spectators at the back to see?</p><p>In fast-paced sports like Table Tennis or Badminton, scores change every second. A slight loss of focus can lead to long debates between players. The solution? Leave the old manual boards behind. Use the <strong>Universal Scoreboard</strong> from VersoKit. It is the \"Swiss Army Knife\" of digital scoreboards—one advanced tool that can be used for various point-based (Rally Point) and set-based sports.</p>"
-        },
-        {
-          title: "One Scoreboard, Many Sports",
-          content: "<p>Unlike a futsal scoreboard that focuses on time, the Universal Scoreboard is specifically designed to record Points and Sets (Rounds). It is highly flexible and ideal for the following sports:</p><ul><li><strong>Badminton:</strong> Perfect for the 21-point scoring system and Best of 3 Sets format.</li><li><strong>Volleyball:</strong> Supports long rallies up to 25 points and Best of 5 Sets.</li><li><strong>Table Tennis (Ping Pong):</strong> Suitable for fast 11-point games.</li><li><strong>Sepak Takraw:</strong> Records points and sets accurately.</li><li><strong>Basketball 3x3:</strong> A simple choice for streetball that doesn't require a complex shot clock.</li></ul>"
-        },
-        {
-          title: "Killer Features for Operators & Referees",
-          content: "<p>We understand that score operators need speed. Therefore, we designed these features to solve problems on the court:</p><ol><li><strong>Keyboard Shortcuts (Fast Control):</strong> This is a favorite feature for referees. You don't need to bother moving the mouse or touching the screen every second. Simply press keys on your laptop keyboard (e.g., specific keys for Home Points and Away Points). Scores increase instantly. It's highly responsive to keep up with fast smashes in Ping Pong!</li><li><strong>Swap Sides Feature:</strong> In racket sports and volleyball, players often change ends after each set. On a manual board, you have to flip papers one by one. In VersoKit, simply click the \"Swap\" button. The positions of names, scores, and team colors will automatically swap left-to-right in an instant.</li><li><strong>Separate Point & Set System:</strong> The tool distinguishes between Game Score (current points) and Set Score (number of rounds won). Example display: Score 21 - 19 | Set 1 - 0. Operators don't need to manually remember who won the first set.</li></ol>"
-        },
-        {
-          title: "Visual Advantages for Spectators",
-          content: "<p>Make matches between friends or local tournaments feel like professional TV broadcasts:</p><ul><li><strong>Fullscreen Mode:</strong> Display the scoreboard in full screen without the distraction of the browser address bar. Connect a laptop to a large TV or Projector so the entire hall can see the score clearly.</li><li><strong>Custom Team Colors:</strong> Team A wearing Yellow? Team B wearing Blue? Adjust the scoreboard background colors to match their jerseys so spectators don't get confused between the home and away scores.</li><li><strong>Match Point Indicator:</strong> Provides a visual sign of tension when a team only needs 1 more point to win.</li></ul>"
-        },
-        {
-          title: "How to Use the Universal Scoreboard",
-          content: "<p>Turn your device into a professional scoreboard with these easy steps:</p><ol><li><strong>Prepare Device:</strong> Open this page on a Laptop (recommended) or Tablet. Connect to a TV if available.</li><li><strong>Set Identity:</strong> Enter player/team names (e.g., \"Team Alpha\" vs \"Team Bravo\") and choose team colors.</li><li><strong>Start Match:</strong> Use the (+) buttons or Keyboard Shortcuts to add points after each rally. Made a mistake? Press the Undo or (-) button for a quick correction.</li><li><strong>Change Sets:</strong> When a game is finished, add a point (+) to the Set column. Click Reset Points to return the numbers to 0-0 for the new set. Click Swap if players switch sides.</li></ol>"
-        },
-        {
-          title: "Free & Hassle-Free Solution",
-          content: "<p>Don't let a referee who \"forgets the score\" ruin the excitement of your intense match. Use the VersoKit Universal Scoreboard now. No install required, no payment needed, and ready to use in seconds.</p>"
-        }
-      ]
-    },
-    id: {
-      title: "Universal Scoreboard: Papan Skor Digital Badminton, Voli & Ping Pong",
-      sections: [
-        {
-          title: "Tinggalkan Papan Skor Lipat Kuno",
-          content: "<p>Pernahkah Anda bermain bulu tangkis atau voli di GOR, tapi wasitnya sering lupa skor saat ini berapa? Atau mungkin papan skor lipat (flip board) manual yang tersedia sudah robek, angkanya hilang, dan terlalu kecil untuk dilihat penonton di tribun belakang?</p><p>Dalam olahraga tempo cepat seperti Tenis Meja atau Badminton, skor berubah setiap detik. Kehilangan fokus sedikit saja bisa memicu perdebatan panjang antar pemain. Solusinya? Tinggalkan papan manual kuno. Gunakan <strong>Universal Scoreboard</strong> dari VersoKit. Ini adalah \"Pisau Lipat Swiss Army\"-nya papan skor digital. Satu alat canggih yang bisa digunakan untuk berbagai cabang olahraga berbasis poin (Rally Point) dan set.</p>"
-        },
-        {
-          title: "Satu Papan Skor, Banyak Olahraga",
-          content: "<p>Berbeda dengan papan skor futsal yang fokus pada waktu, Universal Scoreboard dirancang khusus untuk mencatat Poin dan Set (Babak). Alat ini sangat fleksibel dan ideal untuk olahraga berikut:</p><ul><li><strong>Badminton (Bulu Tangkis):</strong> Sempurna untuk sistem skor 21 poin dan format Best of 3 Sets.</li><li><strong>Bola Voli (Volleyball):</strong> Mendukung reli panjang hingga 25 poin dan Best of 5 Sets.</li><li><strong>Tenis Meja (Ping Pong):</strong> Cocok untuk permainan cepat 11 poin.</li><li><strong>Sepak Takraw:</strong> Mencatat poin dan set dengan akurat.</li><li><strong>Basket 3x3:</strong> Pilihan simpel untuk streetball yang tidak membutuhkan shot clock rumit.</li></ul>"
-        },
-        {
-          title: "Fitur \"Killer\" untuk Operator & Wasit",
-          content: "<p>Kami memahami bahwa operator skor butuh kecepatan. Oleh karena itu, fitur-fitur ini kami rancang untuk menyelesaikan masalah di lapangan:</p><ol><li><strong>Keyboard Shortcuts (Kendali Cepat):</strong> Ini adalah fitur favorit para wasit. Anda tidak perlu repot menggerakkan mouse atau menyentuh layar setiap detik. Cukup tekan tombol di keyboard laptop Anda (misal: tombol tertentu untuk Poin Home, tombol lain untuk Poin Away). Skor bertambah secara instan. Sangat responsif untuk mengimbangi smash cepat di Ping Pong!</li><li><strong>Fitur Tukar Posisi (Swap Sides):</strong> Di olahraga raket dan voli, pemain sering bertukar tempat lapangan (change ends) setiap selesai satu set. Di papan manual, Anda harus membalik kertas satu per satu. Di VersoKit, cukup klik tombol \"Swap\". Posisi nama, skor, dan warna tim akan bertukar kiri-kanan secara otomatis dalam sekejap.</li><li><strong>Sistem Poin & Set Terpisah:</strong> Alat ini membedakan antara Skor Game (Poin saat ini) dan Skor Set (Jumlah kemenangan babak). Contoh Tampilan: Skor 21 - 19 | Set 1 - 0. Operator tidak perlu mengingat manual siapa yang memenangkan set pertama.</li></ol>"
-        },
-        {
-          title: "Keunggulan Visual untuk Penonton",
-          content: "<p>Jadikan pertandingan antar teman atau turnamen level kampung terasa seperti siaran TV profesional:</p><ul><li><strong>Fullscreen Mode:</strong> Tampilkan papan skor dalam layar penuh tanpa gangguan address bar browser. Sambungkan laptop ke TV besar atau Proyektor agar seluruh GOR bisa melihat skor dengan jelas.</li><li><strong>Warna Tim Kustom:</strong> Tim A pakai baju Kuning? Tim B pakai baju Biru? Sesuaikan warna latar papan skor dengan jersey mereka agar penonton tidak bingung membedakan mana skor kawan, mana skor lawan.</li><li><strong>Match Point Indicator:</strong> Memberikan tanda visual ketegangan saat satu tim hanya butuh 1 poin lagi untuk menang.</li></ul>"
-        },
-        {
-          title: "Cara Menggunakan Universal Scoreboard",
-          content: "<p>Ubah perangkat Anda menjadi papan skor profesional dengan langkah mudah ini:</p><ol><li><strong>Siapkan Alat:</strong> Buka halaman ini di Laptop (disarankan) atau Tablet. Sambungkan ke TV jika ada.</li><li><strong>Atur Identitas:</strong> Masukkan nama pemain/tim (misal: \"Kevin/Marcus\" vs \"Ahsan/Hendra\") dan pilih warna tim.</li><li><strong>Mulai Pertandingan:</strong> Gunakan tombol (+) atau Shortcut Keyboard untuk menambah poin setiap reli selesai. Salah pencet? Tekan tombol Undo atau (-) untuk koreksi cepat.</li><li><strong>Pindah Set:</strong> Jika game selesai, tambahkan poin (+) pada kolom Set. Klik Reset Poin untuk mengembalikan angka ke 0-0 bagi set baru. Klik Swap jika pemain bertukar lapangan.</li></ol>"
-        },
-        {
-          title: "Solusi Gratis & Anti-Ribet",
-          content: "<p>Jangan biarkan wasit yang \"lupa skor\" merusak keseruan pertandingan sengit Anda. Gunakan Universal Scoreboard VersoKit sekarang. Tidak perlu install, tidak perlu bayar, dan siap pakai dalam hitungan detik.</p>"
-        }
-      ]
-    },
-    de: {
-      title: "Universal-Anzeigetafel: Digitales Scoreboard für Badminton, Volleyball & Tischtennis",
-      sections: [
-        {
-          title: "Weg mit den alten Klapptafeln",
-          content: "<p>Haben Sie jemals Badminton oder Volleyball in einer Sporthalle gespielt, nur damit der Schiedsrichter den aktuellen Spielstand vergisst? Oder vielleicht sind die verfügbaren manuellen Klapptafeln zerrissen, es fehlen Nummern und sie sind zu klein, als dass die Zuschauer hinten sie sehen könnten?</p><p>In rasanten Sportarten wie Tischtennis oder Badminton ändern sich die Spielstände sekündlich. Ein kurzer Konzentrationsverlust kann zu langen Debatten zwischen den Spielern führen. Die Lösung? Lassen Sie die alten manuellen Tafeln hinter sich. Nutzen Sie die <strong>Universal-Anzeigetafel</strong> von VersoKit. Es ist das „Schweizer Taschenmesser“ unter den digitalen Anzeigetafeln – ein fortschrittliches Tool, das für verschiedene punktbasierte (Rally-Point) und satzbasierte Sportarten verwendet werden kann.</p>"
-        },
-        {
-          title: "Eine Anzeigetafel, viele Sportarten",
-          content: "<p>Im Gegensatz zu einer Futsal-Anzeigetafel, die sich auf die Zeit konzentriert, ist die Universal-Anzeigetafel speziell für die Aufzeichnung von Punkten und Sätzen (Runden) konzipiert. Sie ist hochflexibel und ideal für folgende Sportarten:</p><ul><li><strong>Badminton:</strong> Perfekt für das 21-Punkte-System und das Best-of-3-Sätze-Format.</li><li><strong>Volleyball:</strong> Unterstützt lange Ballwechsel bis zu 25 Punkten und Best-of-5-Sätze.</li><li><strong>Tischtennis (Ping Pong):</strong> Geeignet für schnelle 11-Punkte-Spiele.</li><li><strong>Sepak Takraw:</strong> Zeichnet Punkte und Sätze genau auf.</li><li><strong>3x3 Basketball:</strong> Eine einfache Wahl für Streetball, die keine komplexe Shotclock erfordert.</li></ul>"
-        },
-        {
-          title: "Top-Features für Bediener und Schiedsrichter",
-          content: "<p>Wir verstehen, dass Score-Bediener Geschwindigkeit brauchen. Daher haben wir diese Funktionen entwickelt, um Probleme auf dem Platz zu lösen:</p><ol><li><strong>Tastaturkürzel (Schnelle Steuerung):</strong> Dies ist eine Lieblingsfunktion der Schiedsrichter. Sie müssen sich nicht jede Sekunde darum kümmern, die Maus zu bewegen oder den Bildschirm zu berühren. Drücken Sie einfach Tasten auf Ihrer Laptop-Tastatur (z. B. bestimmte Tasten für Heim-Punkte und Gast-Punkte). Die Spielstände erhöhen sich sofort. Es reagiert extrem schnell, um mit schnellen Smashes beim Tischtennis Schritt zu halten!</li><li><strong>Seitenwechsel-Funktion (Swap Sides):</strong> Bei Rückschlagsportarten und Volleyball wechseln die Spieler oft nach jedem Satz die Seiten. Bei einer manuellen Tafel müssen Sie die Papiere nacheinander umblättern. In VersoKit klicken Sie einfach auf die Schaltfläche „Swap“. Die Positionen von Namen, Punkten und Teamfarben werden augenblicklich von links nach rechts getauscht.</li><li><strong>Getrenntes Punkte- und Satz-System:</strong> Das Tool unterscheidet zwischen Spielstand (aktuelle Punkte) und Satzstand (Anzahl der gewonnenen Runden). Beispielanzeige: Stand 21 - 19 | Satz 1 - 0. Bediener müssen sich nicht manuell merken, wer den ersten Satz gewonnen hat.</li></ol>"
-        },
-        {
-          title: "Visuelle Vorteile für Zuschauer",
-          content: "<p>Lassen Sie Spiele unter Freunden oder lokale Turniere wie professionelle TV-Übertragungen wirken:</p><ul><li><strong>Vollbildmodus:</strong> Zeigen Sie die Anzeigetafel im Vollbildmodus ohne die Ablenkung durch die Adressleiste des Browsers an. Schließen Sie einen Laptop an einen großen Fernseher oder Projektor an, damit die gesamte Halle den Spielstand deutlich sehen kann.</li><li><strong>Benutzerdefinierte Teamfarben:</strong> Team A trägt Gelb? Team B trägt Blau? Passen Sie die Hintergrundfarben der Anzeigetafel an ihre Trikots an, damit die Zuschauer nicht zwischen den Heim- und Gastständen verwirrt werden.</li><li><strong>Matchball-Indikator:</strong> Bietet ein visuelles Zeichen der Spannung, wenn ein Team nur noch einen Punkt zum Sieg benötigt.</li></ul>"
-        },
-        {
-          title: "So verwenden Sie die Universal-Anzeigetafel",
-          content: "<p>Verwandeln Sie Ihr Gerät mit diesen einfachen Schritten in eine professionelle Anzeigetafel:</p><ol><li><strong>Gerät vorbereiten:</strong> Öffnen Sie diese Seite auf einem Laptop (empfohlen) oder Tablet. Schließen Sie es an einen Fernseher an, falls verfügbar.</li><li><strong>Identität festlegen:</strong> Geben Sie Spieler-/Teamnamen ein (z. B. „Team Alpha“ vs. „Team Bravo“) und wählen Sie Teamfarben.</li><li><strong>Spiel starten:</strong> Verwenden Sie die (+)-Tasten oder Tastaturkürzel, um nach jedem Ballwechsel Punkte hinzuzufügen. Einen Fehler gemacht? Drücken Sie die Undo- oder (-)-Taste für eine schnelle Korrektur.</li><li><strong>Sätze wechseln:</strong> Wenn ein Spiel beendet ist, fügen Sie einen Punkt (+) in der Spalte Satz hinzu. Klicken Sie auf Punkte zurücksetzen, um die Zahlen für den neuen Satz auf 0-0 zurückzusetzen. Klicken Sie auf Swap, wenn die Spieler die Seiten wechseln.</li></ol>"
-        },
-        {
-          title: "Kostenlose und unkomplizierte Lösung",
-          content: "<p>Lassen Sie nicht zu, dass ein Schiedsrichter, der „den Spielstand vergisst“, die Spannung Ihres intensiven Matches ruiniert. Nutzen Sie jetzt die VersoKit Universal-Anzeigetafel. Keine Installation erforderlich, keine Zahlung nötig und in Sekundenschnelle einsatzbereit.</p>"
-        }
-      ]
-    },
-    es: {
-      title: "Marcador Universal: Marcador Digital de Bádminton, Voleibol y Tenis de Mesa",
-      sections: [
-        {
-          title: "Abandona los Viejos Marcadores de Pestañas",
-          content: "<p>¿Alguna vez has jugado al bádminton o al voleibol en un pabellón deportivo y el árbitro se ha olvidado del marcador actual? ¿O quizás los marcadores manuales de pestañas disponibles están rotos, les faltan números y son demasiado pequeños para que los espectadores de atrás los vean?</p><p>En deportes de ritmo rápido como el tenis de mesa o el bádminton, el marcador cambia cada segundo. Una ligera pérdida de concentración puede dar lugar a largos debates entre los jugadores. ¿La solución? Deja atrás los viejos marcadores manuales. Usa el <strong>Marcador Universal</strong> de VersoKit. Es la \"navaja suiza\" de los marcadores digitales: una herramienta avanzada que se puede usar para varios deportes basados en puntos (Rally Point) y sets.</p>"
-        },
-        {
-          title: "Un Marcador, Muchos Deportes",
-          content: "<p>A diferencia de un marcador de fútbol sala que se centra en el tiempo, el Marcador Universal está diseñado específicamente para registrar Puntos y Sets (Rondas). Es muy flexible e ideal para los siguientes deportes:</p><ul><li><strong>Bádminton:</strong> Perfecto para el sistema de puntuación de 21 puntos y el formato al mejor de 3 sets.</li><li><strong>Voleibol:</strong> Admite rallies largos de hasta 25 puntos y al mejor de 5 sets.</li><li><strong>Tenis de Mesa (Ping Pong):</strong> Adecuado para juegos rápidos de 11 puntos.</li><li><strong>Sepak Takraw:</strong> Registra puntos y sets con precisión.</li><li><strong>Baloncesto 3x3:</strong> Una opción sencilla para el streetball que no requiere un reloj de posesión complejo.</li></ul>"
-        },
-        {
-          title: "Funciones Estelares para Operadores y Árbitros",
-          content: "<p>Entendemos que los operadores de marcadores necesitan velocidad. Por lo tanto, hemos diseñado estas funciones para resolver problemas en la cancha:</p><ol><li><strong>Atajos de Teclado (Control Rápido):</strong> Esta es la función favorita de los árbitros. No tienes que molestarte en mover el ratón o tocar la pantalla cada segundo. Simplemente presiona las teclas del teclado de tu portátil (por ejemplo, teclas específicas para los puntos locales y los puntos visitantes). Los marcadores aumentan al instante. ¡Es muy receptivo para seguir el ritmo de los mates rápidos en el ping pong!</li><li><strong>Función de Cambio de Lado (Swap Sides):</strong> En los deportes de raqueta y el voleibol, los jugadores suelen cambiar de lado de la cancha después de cada set. En un marcador manual, tienes que pasar las hojas una a una. En VersoKit, simplemente haz clic en el botón \"Swap\". Las posiciones de los nombres, marcadores y colores de los equipos cambiarán de izquierda a derecha automáticamente en un instante.</li><li><strong>Sistema de Puntos y Sets Separado:</strong> La herramienta distingue entre el marcador del juego (puntos actuales) y el marcador de sets (número de rondas ganadas). Ejemplo de visualización: Marcador 21 - 19 | Set 1 - 0. Los operadores no necesitan recordar manualmente quién ganó el primer set.</li></ol>"
-        },
-        {
-          title: "Ventajas Visuales para los Espectadores",
-          content: "<p>Haz que los partidos entre amigos o los torneos locales parezcan retransmisiones televisivas profesionales:</p><ul><li><strong>Modo de Pantalla Completa:</strong> Muestra el marcador en pantalla completa sin la distracción de la barra de direcciones del navegador. Conecta un portátil a un televisor grande o a un proyector para que todo el pabellón pueda ver el marcador con claridad.</li><li><strong>Colores de Equipo Personalizados:</strong> ¿El equipo A viste de amarillo? ¿El equipo B viste de azul? Ajusta los colores de fondo del marcador para que coincidan con sus camisetas y así los espectadores no se confundan entre los marcadores local y visitante.</li><li><strong>Indicador de Match Point:</strong> Proporciona una señal visual de tensión cuando a un equipo solo le falta 1 punto más para ganar.</li></ul>"
-        },
-        {
-          title: "Cómo Usar el Marcador Universal",
-          content: "<p>Convierte tu dispositivo en un marcador profesional con estos sencillos pasos:</p><ol><li><strong>Prepara el Dispositivo:</strong> Abre esta página en un portátil (recomendado) o tableta. Conéctalo a un televisor si está disponible.</li><li><strong>Establece la Identidad:</strong> Introduce los nombres de los jugadores/equipos (por ejemplo, \"Equipo Alfa\" vs \"Equipo Bravo\") y elige los colores del equipo.</li><li><strong>Inicia el Partido:</strong> Usa los botones (+) o los atajos de teclado para añadir puntos después de cada rally. ¿Cometiste un error? Presiona el botón Deshacer o (-) para una corrección rápida.</li><li><strong>Cambia de Set:</strong> Cuando termine un juego, añade un punto (+) en la columna de sets. Haz clic en Reiniciar Puntos para volver los números a 0-0 para el nuevo set. Haz clic en Swap si los jugadores cambian de lado.</li></ol>"
-        },
-        {
-          title: "Solución Gratuita y Sin Complicaciones",
-          content: "<p>No dejes que un árbitro que \"se olvida del marcador\" arruine la emoción de tu intenso partido. Usa el Marcador Universal de VersoKit ahora. Sin instalación, sin pagos y listo para usar en segundos.</p>"
-        }
-      ]
-    },
-    pt: {
-      title: "Placar Universal: Placar Digital de Badminton, Voleibol e Tênis de Mesa",
-      sections: [
-        {
-          title: "Abandone os Antigos Placares Manuais",
-          content: "<p>Já jogou badminton ou voleibol num ginásio e o árbitro esqueceu-se do resultado atual? Ou talvez os placares manuais disponíveis estivessem rasgados, sem números e fossem demasiado pequenos para os espectadores ao fundo verem?</p><p>Em desportos de ritmo acelerado como o Ténis de Mesa ou o Badminton, os resultados mudam a cada segundo. Uma ligeira perda de foco pode levar a longos debates entre os jogadores. A solução? Deixe os antigos placares manuais para trás. Utilize o <strong>Placar Universal</strong> da VersoKit. É o \"canivete suíço\" dos placares digitais – uma ferramenta avançada que pode ser utilizada para vários desportos baseados em pontos (Rally Point) e sets.</p>"
-        },
-        {
-          title: "Um Placar, Muitos Desportos",
-          content: "<p>Ao contrário de um placar de futsal que se foca no tempo, o Placar Universal foi especificamente concebido para registar Pontos e Sets (Rondas). É altamente flexível e ideal para os seguintes desportos:</p><ul><li><strong>Badminton:</strong> Perfeito para o sistema de pontuação de 21 pontos e formato à melhor de 3 sets.</li><li><strong>Voleibol:</strong> Suporta rallies longos de até 25 pontos e à melhor de 5 sets.</li><li><strong>Ténis de Mesa (Ping Pong):</strong> Adequado para jogos rápidos de 11 pontos.</li><li><strong>Sepak Takraw:</strong> Regista pontos e sets com precisão.</li><li><strong>Basquetebol 3x3:</strong> Uma escolha simples para streetball que não requer um shot clock complexo.</li></ul>"
-        },
-        {
-          title: "Funcionalidades Incríveis para Operadores e Árbitros",
-          content: "<p>Compreendemos que os operadores de placar precisam de velocidade. Por isso, concebemos estas funcionalidades para resolver problemas no campo:</p><ol><li><strong>Atalhos de Teclado (Controlo Rápido):</strong> Esta é uma funcionalidade favorita dos árbitros. Não precisa de se preocupar em mover o rato ou tocar no ecrã a cada segundo. Basta premir as teclas do teclado do seu portátil (por exemplo, teclas específicas para os Pontos da Casa e Pontos de Fora). Os resultados aumentam instantaneamente. É altamente responsivo para acompanhar os smashes rápidos no Ping Pong!</li><li><strong>Funcionalidade de Troca de Lado (Swap Sides):</strong> Nos desportos de raquete e no voleibol, os jogadores trocam frequentemente de lado do campo após cada set. Num placar manual, tem de virar as folhas uma a uma. No VersoKit, basta clicar no botão \"Swap\". As posições dos nomes, resultados e cores das equipas trocam automaticamente da esquerda para a direita num instante.</li><li><strong>Sistema de Pontos e Sets Separados:</strong> A ferramenta distingue entre o Resultado do Jogo (pontos atuais) e o Resultado do Set (número de rondas ganhas). Exemplo de visualização: Pontuação 21 - 19 | Set 1 - 0. Os operadores não precisam de se lembrar manualmente de quem ganhou o primeiro set.</li></ol>"
-        },
-        {
-          title: "Vantagens Visuais para os Espectadores",
-          content: "<p>Faça com que os jogos entre amigos ou os torneios locais pareçam transmissões profissionais de TV:</p><ul><li><strong>Modo Ecrã Inteiro:</strong> Exiba o placar em ecrã inteiro sem a distração da barra de endereço do navegador. Ligue um portátil a uma TV grande ou a um projetor para que todo o pavilhão possa ver o resultado claramente.</li><li><strong>Cores de Equipa Personalizadas:</strong> A Equipa A veste Amarelo? A Equipa B veste Azul? Ajuste as cores de fundo do placar para combinarem com as suas camisolas, para que os espectadores não se confundam entre os resultados da casa e de fora.</li><li><strong>Indicador de Match Point:</strong> Fornece um sinal visual de tensão quando uma equipa precisa de apenas mais 1 ponto para ganhar.</li></ul>"
-        },
-        {
-          title: "Como Utilizar o Placar Universal",
-          content: "<p>Transforme o seu dispositivo num placar profissional com estes passos fáceis:</p><ol><li><strong>Prepare o Dispositivo:</strong> Abra esta página num portátil (recomendado) ou tablet. Ligue a uma TV, se disponível.</li><li><strong>Defina a Identidade:</strong> Introduza os nomes dos jogadores/equipas (ex: \"Equipa Alfa\" vs \"Equipa Bravo\") e escolha as cores da equipa.</li><li><strong>Inicie a Partida:</strong> Utilize os botões (+) ou Atalhos de Teclado para adicionar pontos após cada rally. Cometeu um erro? Prima o botão Anular ou (-) para uma correção rápida.</li><li><strong>Mude de Set:</strong> Quando um jogo terminar, adicione um ponto (+) na coluna de Sets. Clique em Reiniciar Pontos para repor os números em 0-0 para o novo set. Clique em Swap se os jogadores trocarem de lado.</li></ol>"
-        },
-        {
-          title: "Solução Gratuita e Sem Complicações",
-          content: "<p>Não deixe que um árbitro que \"se esquece do resultado\" estrague a emoção da sua partida intensa. Utilize agora o Placar Universal VersoKit. Não precisa de instalar nada, não precisa de pagar e está pronto a utilizar em segundos.</p>"
-        }
-      ]
-    },
-    fr: {
-      title: "Tableau de Score Universel : Tableau de Score Digital pour Badminton, Volley et Tennis de Table",
-      sections: [
-        {
-          title: "Oubliez les Vieux Tableaux à Paillettes",
-          content: "<p>Avez-vous déjà joué au badminton ou au volley dans un gymnase, pour que l'arbitre oublie le score actuel ? Ou peut-être que les tableaux de score manuels disponibles sont déchirés, qu'il manque des numéros et qu'ils sont trop petits pour être vus par les spectateurs au fond ?</p><p>Dans les sports à rythme rapide comme le Tennis de Table ou le Badminton, les scores changent chaque seconde. Une légère perte de concentration peut entraîner de longs débats entre les joueurs. La solution ? Laissez les vieux tableaux manuels derrière vous. Utilisez le <strong>Tableau de Score Universel</strong> de VersoKit. C'est le « couteau suisse » des tableaux de score digitaux — un outil avancé qui peut être utilisé pour divers sports basés sur les points (Rally Point) et les sets.</p>"
-        },
-        {
-          title: "Un Tableau de Score, de Nombreux Sports",
-          content: "<p>Contrairement à un tableau de score de futsal qui se concentre sur le temps, le Tableau de Score Universel est spécifiquement conçu pour enregistrer les Points et les Sets (Manches). Il est très flexible et idéal pour les sports suivants :</p><ul><li><strong>Badminton :</strong> Parfait pour le système de score à 21 points et le format au meilleur des 3 sets.</li><li><strong>Volleyball :</strong> Prend en charge les longs rallyes jusqu'à 25 points et le format au meilleur des 5 sets.</li><li><strong>Tennis de Table (Ping Pong) :</strong> Adapté aux matchs rapides en 11 points.</li><li><strong>Sepak Takraw :</strong> Enregistre les points et les sets avec précision.</li><li><strong>Basketball 3x3 :</strong> Un choix simple pour le streetball qui ne nécessite pas de chronomètre de tir complexe.</li></ul>"
-        },
-        {
-          title: "Fonctionnalités Clés pour les Opérateurs et Arbitres",
-          content: "<p>Nous comprenons que les opérateurs de score ont besoin de rapidité. C'est pourquoi nous avons conçu ces fonctionnalités pour résoudre les problèmes sur le terrain :</p><ol><li><strong>Raccourcis Clavier (Contrôle Rapide) :</strong> C'est la fonctionnalité préférée des arbitres. Vous n'avez pas besoin de vous soucier de déplacer la souris ou de toucher l'écran chaque seconde. Appuyez simplement sur les touches de votre clavier d'ordinateur (ex : touches spécifiques pour les Points Domicile et les Points Extérieur). Les scores augmentent instantanément. C'est très réactif pour suivre les smashs rapides au Ping Pong !</li><li><strong>Fonction de Changement de Côté (Swap Sides) :</strong> Dans les sports de raquette et le volley, les joueurs changent souvent de côté après chaque set. Sur un tableau manuel, vous devez tourner les pages une par uma. Dans VersoKit, cliquez simplement sur le bouton « Swap ». Les positions des noms, des scores et des couleurs d'équipe s'échangeront automatiquement de gauche à droite en un instant.</li><li><strong>Système de Points et de Sets Séparé :</strong> L'outil distingue le Score du Match (points actuels) du Score des Sets (nombre de manches gagnées). Exemple d'affichage : Score 21 - 19 | Set 1 - 0. Les opérateurs n'ont pas besoin de se souvenir manuellement de qui a gagné le premier set.</li></ol>"
-        },
-        {
-          title: "Avantages Visuels pour les Spectateurs",
-          content: "<p>Faites en sorte que les matchs entre amis ou les tournois locaux ressemblent à des retransmissions télévisées professionnelles :</p><ul><li><strong>Mode Plein Écran :</strong> Affichez le tableau de score en plein écran sans la distraction de la barre d'adresse du navigateur. Connectez un ordinateur portable à un grand téléviseur ou un projecteur pour que toute la salle puisse voir le score clairement.</li><li><strong>Couleurs d'Équipe Personnalisées :</strong> L'équipe A porte du jaune ? L'équipe B porte du bleu ? Ajustez les couleurs de fond du tableau de score pour qu'elles correspondent à leurs maillots afin que les spectateurs ne confondent pas les scores domicile et extérieur.</li><li><strong>Indicateur de Balle de Match :</strong> Fournit un signe visuel de tension lorsqu'une équipe n'a plus besoin que d'un point pour gagner.</li></ul>"
-        },
-        {
-          title: "Comment Utiliser le Tableau de Score Universel",
-          content: "<p>Transformez votre appareil en un tableau de score professionnel grâce à ces étapes simples :</p><ol><li><strong>Préparer l'Appareil :</strong> Ouvrez cette page sur un ordinateur portable (recommandé) ou une tablette. Connectez-vous à un téléviseur si possible.</li><li><strong>Définir l'Identité :</strong> Saisissez les noms des joueurs/équipes (ex : « Équipe Alpha » vs « Équipe Bravo ») et choisissez les couleurs d'équipe.</li><li><strong>Démarrer le Match :</strong> Utilisez les boutons (+) ou les Raccourcis Clavier pour ajouter des points après chaque rallye. Vous avez fait une erreur ? Appuyez sur le bouton Annuler ou (-) pour une correction rapide.</li><li><strong>Changer de Set :</strong> Lorsqu'un set est terminé, ajoutez un point (+) dans la colonne Set. Cliquez sur Réinitialiser les Points pour remettre les compteurs à 0-0 pour le nouveau set. Cliquez sur Swap si les joueurs changent de côté.</li></ol>"
-        },
-        {
-          title: "Solution Gratuite et Sans Tracas",
-          content: "<p>Ne laissez pas un arbitre qui « oublie le score » gâcher l'excitation de votre match intense. Utilisez le Tableau de Score Universel de VersoKit dès maintenant. Pas d'installation requise, pas de paiement nécessaire, et prêt à l'emploi en quelques secondes.</p>"
-        }
-      ]
-    },
-    it: {
-      title: "Tabellone Universale: Tabellone Digitale per Badminton, Pallavolo e Ping Pong",
-      sections: [
-        {
-          title: "Abbandona i Vecchi Segnapunti Manuali",
-          content: "<p>Hai mai giocato a badminton o pallavolo in un palazzetto dello sport, solo perché l'arbitro dimenticasse il punteggio attuale? O forse i segnapunti manuali disponibili sono strappati, mancano i numeri e sono troppo piccoli per essere visti dagli spettatori in fondo?</p><p>In sport frenetici come il Tennis da Tavolo o il Badminton, i punteggi cambiano ogni secondo. Una leggera perdita di concentrazione può portare a lunghe discussioni tra i giocatori. La soluzione? Lascia i vecchi tabelloni manuali alle spalle. Usa il <strong>Tabellone Universale</strong> di VersoKit. È il \"coltellino svizzero\" dei tabelloni digitali: uno strumento avanzato che può essere utilizzato per vari sport basati sui punti (Rally Point) e sui set.</p>"
-        },
-        {
-          title: "Un Tabellone, Molti Sport",
-          content: "<p>A differenza di un tabellone per il calcio a 5 che si concentra sul tempo, il Tabellone Universale è progettato specificamente per registrare Punti e Set (Turni). È altamente flessibile e ideale per i seguenti sport:</p><ul><li><strong>Badminton:</strong> Perfetto per il sistema di punteggio a 21 punti e il formato al meglio dei 3 set.</li><li><strong>Pallavolo:</strong> Supporta lunghi scambi fino a 25 punti e il meglio dei 5 set.</li><li><strong>Tennis da Tavolo (Ping Pong):</strong> Adatto per partite veloci a 11 punti.</li><li><strong>Sepak Takraw:</strong> Registra punti e set con precisione.</li><li><strong>Basket 3x3:</strong> Una scelta semplice per lo streetball che non richiede un cronometro dei 24 secondi complesso.</li></ul>"
-        },
-        {
-          title: "Caratteristiche Killer per Operatori e Arbitri",
-          content: "<p>Comprendiamo che gli operatori dei segnapunti hanno bisogno di velocità. Pertanto, abbiamo progettato queste funzioni per risolvere i problemi in campo:</p><ol><li><strong>Scorciatoie da Tastiera (Controllo Rapido):</strong> Questa è la funzione preferita dagli arbitri. Non devi preoccuparti di muovere il mouse o toccare lo schermo ogni secondo. Basta premere i tasti sulla tastiera del tuo laptop (ad esempio, tasti specifici per i Punti Casa e i Punti Ospiti). I punteggi aumentano istantaneamente. È estremamente reattivo per stare al passo con le schiacciate veloci nel Ping Pong!</li><li><strong>Funzione Scambia Campo (Swap Sides):</strong> Negli sport di racchetta e nella pallavolo, i giocatori spesso cambiano campo dopo ogni set. Su un tabellone manuale, devi girare i fogli uno per uno. In VersoKit, basta cliccare sul pulsante \"Swap\". Le posizioni di nomi, punteggi e colori delle squadre si scambieranno automaticamente da sinistra a destra in un istante.</li><li><strong>Sistema Punti e Set Separati:</strong> Lo strumento distingue tra Punteggio della Partita (punti attuali) e Punteggio dei Set (numero di turni vinti). Esempio di visualizzazione: Punteggio 21 - 19 | Set 1 - 0. Gli operatori non hanno bisogno di ricordare manualmente chi ha vinto il primo set.</li></ol>"
+          title: "Perché dovresti usare questo strumento?",
+          content: "<p>I software di contabilità come QuickBooks o Xero sono ottimi, ma i costi di abbonamento sono elevati. Usare Excel/Word è gratuito, ma soggetto a errori nelle formule e la formattazione spesso si sposta.</p><p>Il nostro strumento combina i vantaggi di entrambi: Gratuito ma Professionale.</p><ul><li><strong>Automatico e a prova di errore:</strong> Gli esseri umani commettono spesso errori, specialmente quando si sommano molti articoli. Con questo strumento non serve la calcolatrice. Inserisci semplicemente la Quantità (Qtà) e il Prezzo Unitario, e il sistema calcolerà automaticamente il Totale, inclusi eventuali calcoli di Tasse (IVA) o Sconti. Accuratezza al 100%.</li><li><strong>Formato PDF Standard del settore:</strong> Non inviare file Word (.doc) que possono essere facilmente modificati dai clienti. Questo strumento genera file PDF dall'aspetto elegante, pulito e sicuro (il contenuto non è facilmente modificabile). Il PDF garantisce inoltre che l'aspetto della fattura rimanga ordinato sia che venga aperta su un laptop che su un cellulare.</li><li><strong>Supporto Valute Globali:</strong> Hai clienti internazionali? Nessun problema. Puoi cambiare la valuta da Rupia (IDR) a Dollaro (USD), Euro (EUR) o altre valute in base alle esigenze del tuo contratto di lavoro.</li></ul>"
         },
         {
-          title: "Vantaggi Visuali per gli Spettatori",
-          content: "<p>Fai in modo che le partite tra amici o i tornei locali sembrino trasmissioni televisive professionali:</p><ul><li><strong>Modalità Schermo Intero:</strong> Visualizza il tabellone a schermo intero senza la distrazione della barra degli indirizzi del browser. Collega un laptop a una grande TV o a un proiettore in modo che l'intero palazzetto possa vedere chiaramente il punteggio.</li><li><strong>Colori Squadra Personalizzati:</strong> La Squadra A indossa il Giallo? La Squadra B indossa il Blu? Regola i colori di sfondo del tabellone per abbinarli alle loro maglie in modo che gli spettatori non si confondano tra i punteggi casa e ospiti.</li><li><strong>Indicatore Match Point:</strong> Fornece un segno visivo di tensione quando a una squadra manca solo 1 punto per vincere.</li></ul>"
+          title: "Caratteristiche principali: Privacy e Branding",
+          content: "<p>Abbiamo progettato questo strumento con caratteristiche solitamente presenti solo nelle applicazioni a pagamento:</p><ul><li><strong>Privacy 100% (Client-Side):</strong> Questa è la caratteristica più importante. I dati dei clienti, gli importi monetari e i dettagli degli articoli vengono elaborati solo nel tuo browser. NON inviamo né memorizziamo i tuoi dati aziendali sensibili sui nostri server. I segreti della tua azienda sono al sicuro.</li><li><strong>Caricamento Logo Aziendale:</strong> Vuoi sembrare una grande azienda? Carica il logo del tuo brand nell'intestazione della fattura per aumentare la credibilità.</li><li><strong>Nessuna filigrana:</strong> Il file PDF scaricato è pulito. Non c'è alcun testo \"Creato da VersoKit\" che interferisce. Questa fattura appartiene interamente a te.</li><li><strong>Note e Termini:</strong> È disponibile una colonna speciale per scrivere i dettagli del pagamento (ad es. \"Bonifico bancario: 123456 intestato a Budi\") o i termini di garanzia.</li></ul>"
         },
         {
-          title: "Come Usare il Tabellone Universale",
-          content: "<p>Trasforma il tuo dispositivo in un tabellone professionale con questi semplici passaggi:</p><ol><li><strong>Prepara il Dispositivo:</strong> Apri questa pagina su un Laptop (consigliato) o Tablet. Collega a una TV se disponibile.</li><li><strong>Imposta l'Identità:</strong> Inserisci i nomi dei giocatori/squadre (es. \"Kevin/Marcus\" vs \"Ahsan/Hendra\") e scegli i colori della squadra.</li><li><strong>Inizia la Partita:</strong> Usa i pulsanti (+) o le Scorciatoie da Tastiera per aggiungere punti dopo ogni scambio. Hai fatto un errore? Premi il pulsante Annulla o (-) per una correzione rapida.</li><li><strong>Cambia Set:</strong> Quando una partita è finita, aggiungi un punto (+) nella colonna Set. Clicca su Resetta Punti per riportare i numeri a 0-0 per il nuovo set. Clicca su Swap se i giocatori cambiano campo.</li></ol>"
+          title: "A chi è adatta questa fattura?",
+          content: "<ul><li><strong>Freelance:</strong> Graphic designer, scrittori, programmatori freelance che hanno bisogno di una fattura veloce per incassare un acconto.</li><li><strong>PMI e Negozi Online:</strong> Servizi di catering, negozi di abbigliamento, persino servizi di lavanderia scarpe che desiderano una contabilidade più ordinata.</li><li><strong>Consulenti e Servizi Professionali:</strong> Studi legali, consulenti aziendali, fotografi di matrimoni, persino tecnici per caldaie.</li></ul>"
         },
         {
-          title: "Soluzione Gratuita e Semplice",
-          content: "<p>Non lasciare che un arbitro che \"dimentica il punteggio\" rovini l'emozione della tua partita intensa. Usa subito il Tabellone Universale VersoKit. Nessuna installazione richiesta, nessun pagamento necessario e pronto all'uso in pochi secondi.</p>"
+          title: "Come creare una fattura in 4 passaggi",
+          content: "<p>Non serve registrarsi, non serve il login. Crea subito la tua fattura:</p><ol><li><strong>Inserisci l'Identità:</strong> Completa le colonne \"Da\" (le tue info aziendali) e \"A\" (le info del cliente). Non dimenticare di caricare un logo se ne hai uno.</li><li><strong>Inserisci Beni/Servizi:</strong> Digita i nomi degli articoli, brevi descrizioni, quantità e prezzi unitari.</li><li><strong>Aggiungi Tasse/Sconto:</strong> Clicca sul pulsante per aggiungere le tasse (es. IVA 22%) o lo sconto se hai una promozione in corso. Il totale verrà calcolato automaticamente.</li><li><strong>Scarica il PDF:</strong> Ricontrolla i dati (non dimenticare la data di scadenza), quindi clicca sul pulsante \"Scarica Fattura\". Fatto!</li></ol>"
         }
       ]
     }
@@ -1471,8 +871,117 @@ export const TOOL_ARTICLES: ArticleCollection = {
     id: { title: "Gambar ke PDF", sections: [{ title: "Buat PDF", content: "Ubah foto JPG dan PNG menjadi dokumen PDF yang rapi." }] },
     de: { title: "Bild zu PDF", sections: [{ title: "PDF Ersteller", content: "Wandeln Sie JPG- und PNG-Bilder in ein PDF-Dokument um." }] },
     es: { title: "Imagen a PDF", sections: [{ title: "Creador de PDF", content: "Convierte imágenes JPG y PNG en un documento PDF limpio." }] },
-    pt: { title: "Imagem para PDF", sections: [{ title: "Criador de PDF", content: "Converta imagens JPG e PNG em um documento PDF limpo." }] },
+    pt: { title: "Imagen para PDF", sections: [{ title: "Criador de PDF", content: "Converta imagens JPG e PNG em um documento PDF limpo." }] },
     fr: { title: "Image en PDF", sections: [{ title: "Créateur PDF", content: "Convertissez des images JPG et PNG en document PDF." }] },
     it: { title: "Immagine in PDF", sections: [{ title: "Creatore PDF", content: "Converti immagini JPG e PNG in un documento PDF pulito." }] }
+  },
+  "kanban": {
+    en: {
+      title: "Kanban Board Online: Visual Task Management & Workflow",
+      sections: [
+        {
+          title: "What is a Kanban Board?",
+          content: "<p>Do you feel overwhelmed with too many tasks but confused about where to start? Or perhaps your stick-it notes are scattered and often lost? It's time to use a visual management system. <strong>Kanban</strong> is a method used by professional teams (like Toyota or software developers) to visualize work and maximize efficiency.</p><p>VersoKit Kanban Board is a digital version of this board. It allows you to see the \"flow\" of your work from the planning stage to completion. The concept is simple: moving cards from one column to another as tasks progress.</p>"
+        },
+        {
+          title: "Why Use Our Kanban Tool?",
+          content: "<p>We designed this tool to be the simplest and fastest way to organize your life or small business:</p><ul><li><strong>1. 100% Privacy (LocalStorage):</strong> Unlike Trello or Jira which store your data on their servers, VersoKit processes everything in your browser. Your task descriptions and projects are 100% your own secret.</li><li><strong>2. Visual Workflow:</strong> See everything at a glance. What needs to be done (To Do), what is currently being worked on (In Progress), and what is finished (Done). This visual clarity reduces mental stress.</li><li><strong>3. Drag & Drop Ease:</strong> Move tasks with one click or swipe. It's satisfying to move a card to the 'Done' column!</li><li><strong>4. Offline Support:</strong> Keep managing your tasks even without an internet connection. Perfect for working in areas with poor signal.</li></ul>"
+        },
+        {
+          title: "Who is This Kanban Board For?",
+          content: "<ul><li><strong>Students & Researchers:</strong> Managing assignments, thesis chapters, or study schedules.</li><li><strong>Freelancers:</strong> Tracking multiple client projects simultaneously.</li><li><strong>Solo-Preneurs:</strong> Managing daily operations of an online shop or service.</li><li><strong>Anyone with a 'To-Do' list:</strong> If you have a list, you can Kanban it!</li></ul>"
+        },
+        {
+          title: "How to Use Kanban in 3 Steps",
+          content: "<ol><li><strong>Add Cards:</strong> Type your task in the input box and click (+). It will appear in the 'To Do' column.</li><li><strong>Progress Tasks:</strong> As you start working, move the card to 'In Progress'. When finished, move it to 'Done'.</li><li><strong>Analyze & Reset:</strong> See how many tasks you've completed today. You can delete individual tasks or reset the board for a new project.</li></ol>"
+        }
+      ]
+    },
+    id: {
+      title: "Kanban Board Online: Manajemen Tugas Visual & Alur Kerja",
+      sections: [
+        {
+          title: "Apa Itu Kanban Board?",
+          content: "<p>Apakah Anda merasa kewalahan dengan terlalu banyak tugas tapi bingung harus mulai dari mana? Atau mungkin catatan tempel (stick-it notes) Anda berantakan dan sering hilang? Saatnya menggunakan sistem manajemen visual. <strong>Kanban</strong> adalah metode yang digunakan tim profesional (seperti Toyota atau pengembang software) untuk memvisualisasikan pekerjaan dan memaksimalkan efisiensi.</p><p>VersoKit Kanban Board adalah versi digital dari papan ini. Alat ini memungkinkan Anda melihat \"aliran\" pekerjaan Anda dari tahap rencana hingga selesai. Konsepnya sederhana: memindahkan kartu dari satu kolom ke kolom lain seiring kemajuan tugas.</p>"
+        },
+        {
+          title: "Mengapa Menggunakan Alat Kanban Kami?",
+          content: "<p>Kami merancang alat ini untuk menjadi cara termudah dan tercepat untuk mengorganisir hidup atau bisnis kecil Anda:</p><ul><li><strong>1. Privasi 100% (LocalStorage):</strong> Berbeda dengan Trello atau Jira yang menyimpan data Anda di server mereka, VersoKit memproses semuanya di browser Anda. Deskripsi tugas dan proyek Anda 100% rahasia milik Anda sendiri.</li><li><strong>2. Alur Kerja Visual:</strong> Lihat semuanya dalam sekejap. Apa yang harus dikerjakan (To Do), apa yang sedang dikerjakan (In Progress), dan apa yang sudah selesai (Done). Kejelasan visual ini mengurangi stres mental.</li><li><strong>3. Kemudahan Drag & Drop:</strong> Pindahkan tugas dengan sekali klik atau geser. Ada kepuasan tersendiri saat memindahkan kartu ke kolom 'Selesai'!</li><li><strong>4. Dukungan Offline:</strong> Tetap kelola tugas Anda meskipun tidak ada koneksi internet. Cocok untuk bekerja di area yang susah sinyal.</li></ul>"
+        },
+        {
+          title: "Siapa yang Cocok Menggunakan Kanban Board Ini?",
+          content: "<ul><li><strong>Pelajar & Mahasiswa:</strong> Mengelola tugas kuliah, bab skripsi, atau jadwal belajar.</li><li><strong>Freelancer:</strong> Melacak beberapa proyek klien secara bersamaan.</li><li><strong>Solo-Preneur:</strong> Mengatur operasional harian online shop atau jasa.</li><li><strong>Siapapun yang punya 'Daftar Tugas':</strong> Jika Anda punya daftar, Anda bisa melakukan Kanban!</li></ul>"
+        },
+        {
+          title: "Cara Menggunakan Kanban dalam 3 Langkah",
+          content: "<ol><li><strong>Tambah Kartu:</strong> Ketik tugas Anda di kotak input dan klik (+). Tugas akan muncul di kolom 'To Do'.</li><li><strong>Majukan Tugas:</strong> Saat mulai mengerjakan, pindahkan kartu ke 'In Progress'. Jika sudah rampung, pindahkan ke 'Done'.</li><li><strong>Analisa & Reset:</strong> Lihat berapa banyak tugas yang berhasil Anda selesaikan hari ini. Anda bisa menghapus tugas satu per satu atau meriset papan untuk proyek baru.</li></ol>"
+        }
+      ]
+    },
+    de: {
+      title: "Kanban-Board Online: Visuelles Aufgabenmanagement & Workflow",
+      sections: [
+        {
+          title: "Was ist ein Kanban-Board?",
+          content: "<p>Fühlen Sie sich von zu vielen Aufgaben überwältigt und wissen nicht, wo Sie anfangen sollen? <strong>Kanban</strong> ist eine Methode, um Arbeit zu visualisieren und die Effizienz zu maximieren.</p><p>Das VersoKit Kanban-Board hilft Ihnen, den „Fluss“ Ihrer Arbeit von der Planung bis zum Abschluss zu sehen.</p>"
+        },
+        {
+          title: "Hauptmerkmale",
+          content: "<ul><li><strong>100 % Privatsphäre:</strong> Alle Daten werden lokal in Ihrem Browser gespeichert.</li><li><strong>Visueller Workflow:</strong> Aufgaben in 'Zu tun', 'In Arbeit' und 'Erledigt' kategorisieren.</li><li><strong>Drag & Drop:</strong> Einfaches Verschieben von Karten.</li></ul>"
+        }
+      ]
+    },
+    es: {
+      title: "Tablero Kanban Online: Gestión Visual de Tareas y Flujo de Trabajo",
+      sections: [
+        {
+          title: "¿Qué es un Tablero Kanban?",
+          content: "<p>¿Se siente abrumado por las tareas? <strong>Kanban</strong> es un método visual para gestionar el trabajo de manera eficiente.</p><p>El tablero Kanban de VersoKit le permite ver el progreso de sus tareas desde el inicio hasta el final.</p>"
+        },
+        {
+          title: "Características Principales",
+          content: "<ul><li><strong>Privacidad 100%:</strong> Sus datos se quedan en su navegador.</li><li><strong>Flujo Visual:</strong> Organice tareas en 'Por hacer', 'En progreso' y 'Hecho'.</li><li><strong>Fácil de usar:</strong> Arrastre y suelte tarjetas para actualizar su estado.</li></ul>"
+        }
+      ]
+    },
+    pt: {
+      title: "Quadro Kanban Online: Gestão Visual de Tarefas e Fluxo de Trabalho",
+      sections: [
+        {
+          title: "O que é um Quadro Kanban?",
+          content: "<p>Sente-se sobrecarregado? O <strong>Kanban</strong> é um método visual para organizar tarefas e aumentar a produtividade.</p><p>Com o quadro Kanban do VersoKit, você visualiza o progresso do seu trabalho de forma clara e simples.</p>"
+        },
+        {
+          title: "Recursos Principais",
+          content: "<ul><li><strong>Privacidade 100%:</strong> Dados processados localmente no seu dispositivo.</li><li><strong>Fluxo de Trabalho:</strong> Colunas para 'A fazer', 'Em progresso' e 'Concluído'.</li><li><strong>Simplicidade:</strong> Arraste as tarefas conforme elas avançam.</li></ul>"
+        }
+      ]
+    },
+    fr: {
+      title: "Tableau Kanban en Ligne : Gestion Visuelle des Tâches",
+      sections: [
+        {
+          title: "Qu'est-ce qu'un tableau Kanban ?",
+          content: "<p>Vous avez trop de choses à faire ? Le <strong>Kanban</strong> est une méthode visuelle pour organiser vos tâches efficacement.</p><p>Le tableau Kanban de VersoKit vous permet de suivre l'avancement de vos projets en un coup d'œil.</p>"
+        },
+        {
+          title: "Points Forts",
+          content: "<ul><li><strong>Confidentialité totale :</strong> Les données restent dans votre navigateur.</li><li><strong>Organisation visuelle :</strong> Colones 'À faire', 'En cours' et 'Terminé'.</li><li><strong>Utilisation intuitive :</strong> Glissez-déposez vos tâches facilement.</li></ul>"
+        }
+      ]
+    },
+    it: {
+      title: "Lavagna Kanban Online: Gestione Visuale delle Attività",
+      sections: [
+        {
+          title: "Cos'è una lavagna Kanban?",
+          content: "<p>Troppi impegni? Il <strong>Kanban</strong> è un metodo visuale per gestire il lavoro e massimizzare l'efficienza.</p><p>La lavagna Kanban di VersoKit ti aiuta a monitorare il flusso di lavoro dalla pianificazione al completamento.</p>"
+        },
+        {
+          title: "Caratteristiche principali",
+          content: "<ul><li><strong>Privacy 100%:</strong> I dati vengono salvati localmente nel tuo browser.</li><li><strong>Workflow visivo:</strong> Organizza i compiti in 'Da fare', 'In corso' e 'Fatto'.</li><li><strong>Interfaccia rapida:</strong> Sposta le schede con un clic.</li></ul>"
+        }
+      ]
+    }
   }
 };
