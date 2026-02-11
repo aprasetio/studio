@@ -27,11 +27,11 @@ export const TOOL_ARTICLES: ArticleCollection = {
       sections: [
         { 
           title: "Main Americano Tanpa Ribet: Gunakan Generator Jadwal & Skor Otomatis Kami", 
-          content: "<p>Apakah Anda sedang merencanakan sesi fun game Padel, Pickleball, atau Tenis akhir pekan ini? Format Americano pasti jadi pilihan utama agar suasana lebih cair dan kompetitif.</p><p>Tapi, kita semua tahu masalah utamanya: Mengatur jadwal dan menghitung poin secara manual itu memusingkan. Jangan biarkan kertas, pulpen, atau rumus Excel yang rumit merusak keseruan Anda di lapangan. <strong>Solusinya ada di sini.</strong></p>" 
+          content: "<p>Mau main format Americano tapi malas hitung manual? Gunakan Americano Generator & Scoreboard otomatis kami. Gratis, tanpa install aplikasi. Coba sekarang!</p><p>Apakah Anda sedang merencanakan sesi fun game Padel, Pickleball, atau Tenis akhir pekan ini? Format Americano pasti jadi pilihan utama agar suasana lebih cair dan kompetitif.</p><p>Tapi, kita semua tahu masalah utamanya: Mengatur jadwal dan menghitung poin secara manual itu memusingkan. Siapa berpasangan dengan siapa? Siapa yang harus istirahat? Bagaimana klasemen akhirnya? Jangan biarkan kertas, pulpen, atau rumus Excel yang rumit merusak keseruan Anda di lapangan.</p><p>Solusinya ada di sini. Kami menyediakan Americano Generator Tool yang bisa Anda gunakan langsung di halaman ini. Cukup masukkan nama pemain, dan biarkan sistem kami mengatur sisanya.</p>" 
         },
         { 
           title: "Apa Itu Format Americano?", 
-          content: "<p>Bagi Anda yang baru pertama kali mencoba, Americano adalah format turnamen sosial yang paling adil dan seru. Konsep dasarnya sederhana:</p><ul><li><strong>Ganti Pasangan:</strong> Anda akan bermain dengan pasangan berbeda di setiap pertandingan.</li><li><strong>Skor Individu:</strong> Meskipun bermain ganda, poin yang Anda dapatkan dihitung untuk diri sendiri.</li><li><strong>Tujuan:</strong> Mengumpulkan poin sebanyak mungkin untuk menjadi juara klasemen di akhir sesi.</li></ul>" 
+          content: "<p>Bagi Anda yang baru pertama kali mencoba, Americano adalah format turnamen sosial yang paling adil dan seru. Konsep dasarnya sederhana:</p><ul><li><strong>Ganti Pasangan:</strong> Anda akan bermain dengan pasangan berbeda di setiap pertandingan.</li><li><strong>Skor Individu:</strong> Meskipun bermain ganda, poin yang Anda dapatkan dihitung untuk diri sendiri.</li><li><strong>Tujuan:</strong> Mengumpulkan poin sebanyak mungkin untuk menjadi juara klasemen di akhir sesi.</li></ul><p>Format ini sangat cocok untuk komunitas Padel dan Pickleball karena memaksa semua pemain untuk saling berinteraksi (sosialisasi) sekaligus berkompetisi.</p>" 
         },
         { 
           title: "Masalah Klasik Saat Main Americano Manual", 
@@ -39,15 +39,19 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         { 
           title: "Fitur Unggulan Americano Generator Kami", 
-          content: "<ul><li><strong>Tanpa Download & Install:</strong> Tool kami berbasis web (web-based) dan hemat penyimpanan HP.</li><li><strong>Algoritma Fair Play:</strong> Sistem kami memastikan rotasi pemain seimbang dan adil.</li><li><strong>Live Leaderboard:</strong> Klasemen otomatis terupdate begitu skor dimasukkan.</li></ul>" 
+          content: "<p>Mengapa Anda harus menggunakan tools di website kami daripada aplikasi lain?</p><ol><li><strong>Tanpa Download & Install:</strong> Penyimpanan HP penuh? Tenang. Tool kami berbasis web (web-based). Anda bisa membukanya langsung dari browser di lapangan tanpa perlu repot download aplikasi berat.</li><li><strong>Algoritma Fair Play:</strong> Sistem kami memastikan rotasi pemain seimbang. Setiap orang akan mendapatkan kesempatan yang adil untuk berganti pasangan dan melawan musuh yang berbeda.</li><li><strong>Live Leaderboard (Klasemen Langsung):</strong> Begitu Anda memasukkan skor pertandingan, klasemen akan otomatis terupdate. Semua pemain bisa melihat posisi mereka secara real-time dari HP masing-masing (jika link dibagikan).</li></ol>" 
         },
         { 
           title: "Cara Menggunakan Generator Americano Ini", 
-          content: "<ol><li><strong>Masukkan Nama Pemain:</strong> Ketik nama semua peserta (Minimal 4 orang).</li><li><strong>Pilih Poin Target:</strong> Tentukan mau main sampai poin berapa? (Umumnya 24 atau 32 poin).</li><li><strong>Generate Jadwal:</strong> Klik tombol buat jadwal.</li><li><strong>Main & Input Skor:</strong> Setelah match selesai, masukkan skornya.</li><li><strong>Lihat Pemenang:</strong> Di akhir sesi, sistem akan menobatkan juara hari itu!</li></ol>" 
+          content: "<p>Sangat mudah, ikuti langkah berikut:</p><ol><li><strong>Masukkan Nama Pemain:</strong> Ketik nama semua peserta (Minimal 4 orang). Jumlah ganjil? Tidak masalah, sistem kami bisa mengatur pemain cadangan/istirahat secara bergilir.</li><li><strong>Pilih Poin Target:</strong> Tentukan mau main sampai poin berapa? (Umumnya 24 atau 32 poin).</li><li><strong>Generate Jadwal:</strong> Klik tombol buat jadwal.</li><li><strong>Main & Input Skor:</strong> Setelah match selesai, masukkan skornya.</li><li><strong>Lihat Pemenang:</strong> Di akhir sesi, sistem akan menobatkan juara Americano hari itu!</li></ol>" 
         },
         { 
           title: "Aturan Singkat Perhitungan Poin", 
-          content: "<ul><li><strong>Sistem Poin:</strong> Pertandingan dihitung per bola. Jika Tim A menang 14-10, maka Pemain Tim A masing-masing dapat 14 poin, dan Tim B dapat 10 poin.</li><li><strong>Servis:</strong> Servis bergantian setiap 4 kali bola.</li><li><strong>Pemenang:</strong> Pemain dengan total poin akumulasi tertinggi di akhir turnamen.</li></ul>" 
+          content: "<p>Agar penggunaan tool kami makin maksimal, pastikan semua pemain paham aturan mainnya:</p><ul><li><strong>Sistem Poin:</strong> Pertandingan dihitung per bola. Jika Tim A menang 14-10 lawan Tim B, maka Pemain Tim A masing-masing dapat 14 poin, dan Tim B masing-masing dapat 10 poin.</li><li><strong>Servis:</strong> Servis bergantian setiap 4 kali bola (2 kali Tim A, 2 kali Tim B).</li><li><strong>Pemenang:</strong> Pemain dengan total poin akumulasi tertinggi di akhir turnamen.</li></ul>" 
+        },
+        { 
+          title: "Siap Bermain?", 
+          content: "<p>Jangan habiskan waktu 2 jam sewa lapangan Anda hanya untuk mencatat skor di kertas. Maksimalkan waktu bermain dan biarkan teknologi yang bekerja untuk Anda.</p><p>Cobalah Americano Generator kami sekarang juga di bawah ini (atau di bagian atas halaman). Gratis, cepat, dan dijamin bikin permainan makin seru!</p>" 
         }
       ]
     },
@@ -55,45 +59,65 @@ export const TOOL_ARTICLES: ArticleCollection = {
       title: "Automatic Americano Schedule Generator: Padel, Pickleball & Tennis",
       sections: [
         { 
-          title: "Play Americano Hassle-Free: Use Our Automatic Generator & Scoreboard", 
-          content: "<p>Planning a fun Padel, Pickleball, or Tennis session this weekend? The Americano format is the perfect choice for a social yet competitive atmosphere.</p><p>However, we all know the main headache: managing schedules and calculating points manually is exhausting. Don't let paper, pens, or complex Excel formulas ruin your fun on the court. <strong>The solution is here.</strong></p>" 
+          title: "Play Americano Hassle-Free: Use Our Automatic Schedule Generator & Scoreboard", 
+          content: "<p>Want to play Americano format but lazy to calculate manually? Use our automatic Americano Generator & Scoreboard. Free, no app install required. Try now!</p><p>Are you planning a fun game session of Padel, Pickleball, or Tennis this weekend? The Americano format will surely be the top choice to make the atmosphere more fluid and competitive.</p><p>But we all know the main problem: Organizing the schedule and calculating points manually is confusing. Who pairs with whom? Who should rest? What is the final leaderboard? Don't let paper, pens, or complicated Excel formulas ruin your fun on the court.</p><p>The solution is here. We provide an Americano Generator Tool that you can use directly on this page. Simply enter the player names, and let our system handle the rest.</p>" 
         },
         { 
           title: "What is the Americano Format?", 
-          content: "<p>For those trying it for the first time, Americano is one of the fairest and most exciting social tournament formats. The basic concept is simple:</p><ul><li><strong>Rotating Partners:</strong> You will play with a different partner in every match.</li><li><strong>Individual Score:</strong> Even though you play doubles, the points you earn are calculated for you personally.</li><li><strong>Goal:</strong> Accumulate as many points as possible to become the champion at the end of the session.</li></ul>" 
+          content: "<p>For those of you trying it for the first time, Americano is the fairest and most exciting social tournament format. The basic concept is simple:</p><ul><li><strong>Switch Partners:</strong> You will play with a different partner in every match.</li><li><strong>Individual Score:</strong> Although playing doubles, the points you earn are counted for yourself.</li><li><strong>Goal:</strong> Collect as many points as possible to become the leaderboard champion at the end of the session.</li></ul><p>This format is perfect for Padel and Pickleball communities because it forces all players to interact (socialize) while competing at the same time.</p>" 
         },
         { 
-          title: "Classic Problems with Manual Americano", 
-          content: "<p>Without the right tools, Americano can quickly become chaotic:</p><ul><li><strong>Wasted Time:</strong> Debating who plays whom can take 5-10 minutes per round.</li><li><strong>Unfairness:</strong> Without an algorithm, some players might get stuck with the same partner repeatedly.</li><li><strong>Calculation Errors:</strong> Manually adding up dozens of match scores on paper is prone to mistakes.</li></ul>" 
+          title: "Classic Problems When Playing Manual Americano", 
+          content: "<p>Without tools or apps, playing Americano can become chaotic:</p><ul><li><strong>Wasted Time:</strong> Debating who plays whom can take 5-10 minutes on its own.</li><li><strong>Unfairness:</strong> Without an algorithm, there is a possibility that one person keeps getting the same partner.</li><li><strong>Calculation Errors:</strong> Manually adding up scores from dozens of matches on paper is very prone to mistakes.</li></ul>" 
         },
         { 
-          title: "Key Features of Our Americano Generator", 
-          content: "<ul><li><strong>No Download Required:</strong> Our tool is web-based, saving your phone's storage space.</li><li><strong>Fair Play Algorithm:</strong> Our system ensures balanced and fair player rotation.</li><li><strong>Live Leaderboard:</strong> Standings update automatically as soon as match scores are entered.</li></ul>" 
+          title: "Superior Features of Our Americano Generator", 
+          content: "<p>Why should you use the tools on our website instead of other apps?</p><ol><li><strong>No Download & Install:</strong> Phone storage full? Relax. Our tool is web-based. You can open it directly from your browser at the court without the hassle of downloading heavy apps.</li><li><strong>Fair Play Algorithm:</strong> Our system ensures balanced player rotation. Everyone will get a fair chance to switch partners and face different opponents.</li><li><strong>Live Leaderboard:</strong> As soon as you enter match scores, the standings will update automatically. All players can see their positions in real-time from their respective phones (if the link is shared).</li></ol>" 
         },
         { 
           title: "How to Use This Americano Generator", 
-          content: "<ol><li><strong>Enter Player Names:</strong> Type in all participants (Minimum 4 people).</li><li><strong>Select Target Points:</strong> Decide the match length (Commonly 24 or 32 points).</li><li><strong>Generate Schedule:</strong> Click the build schedule button.</li><li><strong>Play & Input Scores:</strong> Enter the results after each match.</li><li><strong>See the Winner:</strong> The system crowns the champion at the end of the tournament!</li></ol>" 
+          content: "<p>It's very easy, follow these steps:</p><ol><li><strong>Enter Player Names:</strong> Type the names of all participants (Minimum 4 people). Odd number? No problem, our system can arrange substitute/resting players in rotation.</li><li><strong>Select Target Points:</strong> Determine how many points you want to play to? (Generally 24 or 32 points).</li><li><strong>Generate Schedule:</strong> Click the build schedule button.</li><li><strong>Play & Input Scores:</strong> After the match is finished, enter the scores.</li><li><strong>See the Winner:</strong> At the end of the session, the system will crown the Americano champion of the day!</li></ol>" 
         },
         { 
-          title: "Quick Scoring Rules", 
-          content: "<ul><li><strong>Point System:</strong> Matches are counted per ball. If Team A wins 14-10, each player on Team A gets 14 points, and Team B players get 10.</li><li><strong>Serving:</strong> Service rotates every 4 points.</li><li><strong>Winner:</strong> The player with the highest total accumulated points at the end.</li></ul>" 
+          title: "Quick Rules for Point Calculation", 
+          content: "<p>To maximize the use of our tool, make sure all players understand the rules:</p><ul><li><strong>Point System:</strong> Matches are counted per ball. If Team A wins 14-10 against Team B, then Team A players each get 14 points, and Team B players each get 10 points.</li><li><strong>Service:</strong> Service rotates every 4 balls (2 times for Team A, 2 times for Team B).</li><li><strong>Winner:</strong> The player with the highest total accumulated points at the end of the tournament.</li></ul>" 
+        },
+        { 
+          title: "Ready to Play?", 
+          content: "<p>Don't spend your 2-hour court rental just to record scores on paper. Maximize your playing time and let technology work for you. Try our Americano Generator now below (or at the top of the page). Free, fast, and guaranteed to make the game even more exciting!</p>" 
         }
       ]
     },
     de: {
-      title: "Automatischer Americano Spielplan-Generator: Padel, Pickleball & Tennis",
+      title: "Automatischer Americano-Spielplan-Generator: Padel, Pickleball & Tennis",
       sections: [
         { 
-          title: "Americano stressfrei spielen: Nutzen Sie unseren automatischen Generator", 
-          content: "<p>Planen Sie eine Padel-, Pickleball- oder Tennis-Session? Das Americano-Format ist ideal für eine gesellige und wettbewerbsorientierte Atmosphäre.</p><p>Wir kennen das Problem: Den Spielplan und die Punkte manuell zu verwalten, ist mühsam. Lassen Sie sich den Spaß nicht durch Papierkram oder komplizierte Excel-Tabellen verderben. <strong>Hier ist die Lösung.</strong></p>" 
+          title: "Americano spielen ohne Stress: Nutzen Sie unseren automatischen Spielplan-Generator & Scoreboard", 
+          content: "<p>Wollen Sie das Americano-Format spielen, haben aber keine Lust auf manuelles Rechnen? Nutzen Sie unseren automatischen Americano-Generator & Scoreboard. Kostenlos, ohne App-Installation. Jetzt ausprobieren!</p><p>Planen Sie dieses Wochenende eine unterhaltsame Spielrunde Padel, Pickleball oder Tennis? Das Americano-Format ist sicher die beste Wahl, um die Atmosphäre lockerer und wettbewerbsfähiger zu gestalten.</p><p>Aber wir alle kennen das Hauptproblem: Den Zeitplan zu organisieren und Punkte manuell zu berechnen, ist verwirrend. Wer spielt mit wem? Wer muss pausieren? Wie sieht die Endtabelle aus? Lassen Sie nicht zu, dass Papier, Stifte oder komplizierte Excel-Formeln Ihren Spaß auf dem Platz ruinieren.</p><p>Die Lösung ist hier. Wir bieten ein Americano-Generator-Tool an, das Sie direkt auf dieser Seite nutzen können. Geben Sie einfach die Spielernamen ein und lassen Sie unser System den Rest erledigen.</p>" 
         },
         { 
           title: "Was ist das Americano-Format?", 
-          content: "<p>Americano ist eines der fairsten sozialen Turnierformate. Das Konzept ist einfach:</p><ul><li><strong>Wechselnde Partner:</strong> Sie spielen in jedem Spiel mit einem anderen Partner.</li><li><strong>Einzelwertung:</strong> Obwohl Sie Doppel spielen, werden die Punkte für Sie persönlich gezählt.</li><li><strong>Ziel:</strong> Sammeln Sie so viele Punkte wie möglich, um am Ende Champion zu werden.</li></ul>" 
+          content: "<p>Für diejenigen unter Ihnen, die es zum ersten Mal ausprobieren: Americano ist das fairste und spannendste soziale Turnierformat. Das Grundkonzept ist einfach:</p><ul><li><strong>Partner wechseln:</strong> Sie spielen in jedem Spiel mit einem anderen Partner.</li><li><strong>Einzelwertung:</strong> Obwohl Sie Doppel spielen, werden die erzielten Punkte für Sie persönlich gezählt.</li><li><strong>Ziel:</strong> So viele Punkte wie möglich zu sammeln, um am Ende der Sitzung Tabellenführer zu werden.</li></ul><p>Dieses Format ist perfekt für Padel- und Pickleball-Communities, da es alle Spieler dazu zwingt, miteinander zu interagieren (sozialisieren) und gleichzeitig gegeneinander anzutreten.</p>" 
         },
         { 
-          title: "Vorteile unseres Generators", 
-          content: "<ul><li><strong>Webbasiert:</strong> Keine Installation nötig, schont den Speicherplatz.</li><li><strong>Fair-Play-Algorithmus:</strong> Garantiert eine ausgewogene Rotation der Spieler.</li><li><strong>Live-Rangliste:</strong> Ergebnisse werden sofort nach der Eingabe aktualisiert.</li></ul>" 
+          title: "Klassische Probleme beim manuellen Americano-Spiel", 
+          content: "<p>Ohne Tools oder Apps kann das Americano-Spielen chaotisch werden: <ul><li><strong>Zeitverschwendung:</strong> Die Debatte darüber, wer gegen wen spielt, kann allein schon 5-10 Minuten dauern.</li><li><strong>Ungerechtigkeit:</strong> Ohne Algorithmus besteht die Möglichkeit, dass eine Person ständig denselben Partner bekommt.</li><li><strong>Rechenfehler:</strong> Das manuelle Zusammenzählen von Ergebnissen aus Dutzenden von Spielen auf Papier ist sehr fehleranfällig.</li></ul>" 
+        },
+        { 
+          title: "Herausragende Merkmale unseres Americano-Generators", 
+          content: "<p>Warum sollten Sie die Tools auf unserer Website anstelle von anderen Apps verwenden?</p><ol><li><strong>Kein Download & Installation:</strong> Telefonspeicher voll? Keine Sorge. Unser Tool ist webbasiert. Sie können es direkt über Ihren Browser auf dem Platz öffnen, ohne mühsam schwere Apps herunterladen zu müssen.</li><li><strong>Fair-Play-Algorithmus:</strong> Unser System sorgt für eine ausgewogene Spielerrotation. Jeder erhält die faire Chance, den Partner zu wechseln und gegen verschiedene Gegner anzutreten.</li><li><strong>Live-Rangliste:</strong> Sobald Sie Spielergebnisse eingeben, wird die Tabelle automatisch aktualisiert. Alle Spieler können ihre Positionen in Echtzeit auf ihren jeweiligen Handys sehen (wenn der Link geteilt wird).</li></ol>" 
+        },
+        { 
+          title: "So verwenden Sie diesen Americano-Generator", 
+          content: "<p>Es ist sehr einfach, folgen Sie diesen Schritten:</p><ol><li><strong>Spielernamen eingeben:</strong> Geben Sie die Namen aller Teilnehmer ein (mindestens 4 Personen). Ungerade Anzahl? Kein Problem, unser System kann Ersatz-/Ruhespieler im Wechsel einteilen.</li><li><strong>Zielpunkte wählen:</strong> Legen Sie fest, bis zu welcher Punktzahl Sie spielen möchten? (In der Regel 24 oder 32 Punkte).</li><li><strong>Spielplan erstellen:</strong> Klicken Sie auf die Schaltfläche „Spielplan erstellen“.</li><li><strong>Spielen & Ergebnisse eingeben:</strong> Geben Sie nach Spielende die Ergebnisse ein.</li><li><strong>Gewinner sehen:</strong> Am Ende der Sitzung wird das System den Americano-Champion des Tages krönen!</li></ol>" 
+        },
+        { 
+          title: "Kurze Regeln zur Punktberechnung", 
+          content: "<p>Damit die Nutzung unseres Tools optimal gelingt, stellen Sie sicher, dass alle Spieler die Regeln verstehen:</p><ul><li><strong>Punktsystem:</strong> Spiele werden pro Ball gezählt. Wenn Team A 14-10 gegen Team B gewinnt, erhalten die Spieler von Team A jeweils 14 Punkte und die Spieler von Team B jeweils 10 Punkte.</li><li><strong>Aufschlag:</strong> Der Aufschlag wechselt alle 4 Bälle (2 Mal für Team A, 2 Mal für Team B).</li><li><strong>Gewinner:</strong> Der Spieler mit der höchsten Gesamtpunktzahl am Ende des Turniers.</li></ul>" 
+        },
+        { 
+          title: "Bereit zum Spielen?", 
+          content: "<p>Verschwenden Sie nicht Ihre 2-stündige Platzmiete damit, nur Ergebnisse auf Papier festzuhalten. Maximieren Sie Ihre Spielzeit und lassen Sie die Technik für sich arbeiten. Probieren Sie unseren Americano-Generator jetzt unten (oder am Seitenanfang) aus. Kostenlos, schnell und garantiert ein noch spannenderes Spiel!</p>" 
         }
       ]
     },
@@ -101,16 +125,32 @@ export const TOOL_ARTICLES: ArticleCollection = {
       title: "Generador de Calendario Americano Automático: Pádel, Pickleball y Tenis",
       sections: [
         { 
-          title: "Juega Americano sin complicaciones con nuestro generador automático", 
-          content: "<p>¿Planeas una sesión de Pádel, Pickleball o Tenis? El formato Americano es la mejor opción para un ambiente social y competitivo.</p><p>Gestionar los horarios y calcular puntos manualmente es agotador. No dejes que el papel y el boli arruinen tu diversión. <strong>La solución está aquí.</strong></p>" 
+          title: "Juega Americano sin Complicaciones: Usa Nuestro Generador de Calendario y Marcador Automático", 
+          content: "<p>¿Quieres jugar en formato Americano pero te da pereza calcular manualmente? Usa nuestro Generador y Marcador Americano automático. Gratis, sin instalar aplicaciones. ¡Pruébalo ahora!</p><p>¿Estás planeando una sesión de juego divertido de Pádel, Pickleball o Tenis este fin de semana? El formato Americano será sin duda la mejor opción para que el ambiente sea más fluido y competitivo.</p><p>Pero todos conocemos el problema principal: organizar el calendario y calcular los puntos manualmente es confuso. ¿Quién se empareja con quién? ¿Quién debe descansar? ¿Cómo queda la clasificación final? No dejes que el papel, los bolígrafos o las complicadas fórmulas de Excel arruinen tu diversión en la pista.</p><p>La solución está aquí. Ofrecemos una herramienta de generación de Americano que puedes usar directamente en esta página. Solo tienes que introducir los nombres de los jugadores y dejar que nuestro sistema se encargue del resto.</p>" 
         },
         { 
-          title: "¿Qué es el formato Americano?", 
-          content: "<p>El Americano es un formato de torneo social muy justo y emocionante. El concepto es simple:</p><ul><li><strong>Parejas rotativas:</strong> Jugarás con un compañero diferente en cada partido.</li><li><strong>Puntuación individual:</strong> Aunque juegues dobles, los puntos se cuentan individualmente.</li><li><strong>Objetivo:</strong> Acumular el máximo de puntos para ganar el torneo.</li></ul>" 
+          title: "¿Qué es el Formato Americano?", 
+          content: "<p>Para los que lo prueban por primera vez, el Americano es el formato de torneo social más justo y emocionante. El concepto básico es sencillo:</p><ul><li><strong>Cambiar de Pareja:</strong> Jugarás con una pareja diferente en cada partido.</li><li><strong>Puntuación Individual:</strong> Aunque juegues dobles, los puntos que consigas se cuentan para ti mismo.</li><li><strong>Objetivo:</strong> Acumular el mayor número de puntos posible para ser el campeón de la clasificación al final de la sesión.</li></ul><p>Este formato es perfecto para las comunidades de Pádel y Pickleball porque obliga a todos los jugadores a interactuar (socializar) y a competir al mismo tiempo.</p>" 
         },
         { 
-          title: "Características principales", 
-          content: "<ul><li><strong>Sin descargas:</strong> Herramienta web, no ocupa espacio en tu móvil.</li><li><strong>Algoritmo de Juego Limpio:</strong> Asegura una rotación equilibrada.</li><li><strong>Clasificación en vivo:</strong> Actualización automática de la tabla de posiciones.</li></ul>" 
+          title: "Problemas Clásicos al Jugar Americano Manuelmente", 
+          content: "<p>Sin herramientas ni aplicaciones, jugar al Americano puede volverse caótico: <ul><li><strong>Tiempo Perdido:</strong> Debatir quién juega contra quién puede llevar entre 5 y 10 minutos por sí solo.</li><li><strong>Injusticia:</strong> Sin un algoritmo, existe la posibilidad de que una persona siga teniendo la misma pareja constantemente.</li><li><strong>Errores de Cálculo:</strong> Sumar manualmente las puntuaciones de docenas de partidos en papel es muy propenso a errores.</li></ul>" 
+        },
+        { 
+          title: "Características Superiores de Nuestro Generador de Americano", 
+          content: "<p>¿Por qué deberías usar las herramientas de nuestro sitio web en lugar de otras aplicaciones?</p><ol><li><strong>Sin Descarga ni Instalación:</strong> ¿Memoria del móvil llena? Tranquilo. Nuestra herramienta está basada en la web. Puedes abrirla directamente desde tu navegador en la pista sin la molestia de descargar pesadas aplicaciones.</li><li><strong>Algoritmo de Juego Limpio:</strong> Nuestro sistema garantiza una rotación equilibrada de los jugadores. Todo el mundo tendrá una oportunidad justa de cambiar de pareja y enfrentarse a diferentes enemigos.</li><li><strong>Clasificación en Vivo:</strong> En cuanto introduzcas las puntuaciones de los partidos, la clasificación se actualizará automáticamente. Todos los jugadores pueden ver sus posiciones en tiempo real desde sus respectivos móviles (si se comparte el enlace).</li></ol>" 
+        },
+        { 
+          title: "Cómo Usar Este Generador de Americano", 
+          content: "<p>Es muy fácil, sigue estos pasos:</p><ol><li><strong>Introduce los Nombres de los Jugadores:</strong> Escribe los nombres de todos los participantes (mínimo 4 personas). ¿Número impar? No hay problema, nuestro sistema puede organizar a los jugadores sustitutos/en descanso por turnos.</li><li><strong>Selecciona los Puntos Objetivo:</strong> Determina ¿hasta cuántos puntos quieres jugar? (Generalmente 24 o 32 puntos).</li><li><strong>Generar Calendario:</strong> Haz clic en el botón de crear calendario.</li><li><strong>Jugar e Introducir Puntuaciones:</strong> Una vez finalizado el partido, introduce las puntuaciones.</li><li><strong>Ver al Ganador:</strong> Al final de la sesión, ¡el sistema coronará al campeón de Americano del día!</li></ol>" 
+        },
+        { 
+          title: "Reglas Breves para el Cálculo de Puntos", 
+          content: "<p>Para maximizar el uso de nuestra herramienta, asegúrate de que todos los jugadores entienden las reglas:</p><ul><li><strong>Sistema de Puntos:</strong> Los partidos se cuentan por bola. Si el Equipo A gana 14-10 al Equipo B, los jugadores del Equipo A reciben 14 puntos cada uno, y los del Equipo B reciben 10 puntos cada uno.</li><li><strong>Saque:</strong> El saque se alterna cada 4 bolas (2 veces el Equipo A, 2 veces el Equipo B).</li><li><strong>Ganador:</strong> El jugador con el mayor total de puntos acumulados al final del torneo.</li></ul>" 
+        },
+        { 
+          title: "¿Listo para Jugar?", 
+          content: "<p>No malgaste tus 2 horas de alquiler de pista solo para anotar puntuaciones en un papel. Maximiza tu tiempo de juego y deja que la tecnología trabaje por ti. ¡Prueba nuestro Generador Americano ahora mismo abajo (o en la parte superior de la página). Gratis, rápido y garantizado para hacer el juego aún más emocionante!</p>" 
         }
       ]
     },
@@ -118,16 +158,32 @@ export const TOOL_ARTICLES: ArticleCollection = {
       title: "Gerador Automático de Tabelas Americano: Padel, Pickleball e Ténis",
       sections: [
         { 
-          title: "Jogue Americano sem chatices com o nosso gerador automático", 
-          content: "<p>Vai organizar uma partida de Padel, Pickleball ou Ténis? O formato Americano é a escolha ideal para um convívio competitivo.</p><p>Gerir horários e pontos manualmente é uma dor de cabeça. Não deixe que o papel e a caneta estraguem a diversão. <strong>A solução está aqui.</strong></p>" 
+          title: "Jogue Americano Sem Complicações: Utilize o Nosso Gerador de Tabelas e Marcador Automático", 
+          content: "<p>Quer jogar no formato Americano mas tem preguiça de calcular manualmente? Utilize o nosso Gerador e Marcador Americano automático. Gratuito, sem instalar aplicações. Experimente agora!</p><p>Está a planear uma sessão de jogo divertido de Padel, Pickleball ou Ténis este fim de semana? O formato Americano será certamente a melhor escolha para tornar o ambiente mais fluido e competitivo.</p><p>Mas todos conhecemos o problema principal: organizar a tabela e calcular os pontos manualmente é confuso. Quem faz par com quem? Quem deve descansar? Como fica a classificação final? Não deixe que o papel, as canetas ou as complicadas fórmulas de Excel estraguem a sua diversão no campo.</p><p>A solução está aqui. Oferecemos uma ferramenta de geração de Americano que pode utilizar diretamente nesta página. Basta introduzir os nomes dos jogadores e deixar que o nosso sistema trate do resto.</p>" 
         },
         { 
-          title: "O que é o formato Americano?", 
-          content: "<p>O Americano é um dos formatos de torneio social mais justos. O conceito é simples:</p><ul><li><strong>Parceiros Rotativos:</strong> Joga com um parceiro diferente em cada partida.</li><li><strong>Pontuação Individual:</strong> Embora jogue em duplas, os pontos são para a sua conta pessoal.</li><li><strong>Objetivo:</strong> Acumular o máximo de pontos para ser o campeão final.</li></ul>" 
+          title: "O que é o Formato Americano?", 
+          content: "<p>Para quem o experimenta pela primeira vez, o Americano é o formato de torneio social mais justo e emocionante. O conceito básico é simples:</p><ul><li><strong>Mudar de Parceiro:</strong> Jogará com um parceiro diferente em cada partida.</li><li><strong>Pontuação Individual:</strong> Embora jogue em duplas, os pontos que conseguir contam para si próprio.</li><li><strong>Objetivo:</strong> Acumular o maior número de pontos possível para ser o campeão da classificação no final da sessão.</li></ul><p>Este formato é perfeito para comunidades de Padel e Pickleball porque obriga todos os jogadores a interagir (socializar) e a competir ao mesmo tempo.</p>" 
         },
         { 
-          title: "Funcionalidades Principais", 
-          content: "<ul><li><strong>Sem Instalação:</strong> Ferramenta web que não ocupa espaço no telemóvel.</li><li><strong>Algoritmo Fair Play:</strong> Garante uma rotação equilibrada de jogadores.</li><li><strong>Classificação em Direto:</strong> Atualização automática mal insere os resultados.</li></ul>" 
+          title: "Problemas Clássicos ao Jogar Americano Manualmente", 
+          content: "<p>Sem ferramentas nem aplicações, jogar Americano pode tornar-se caótico: <ul><li><strong>Tempo Desperdiçado:</strong> Debater quem joga contra quem pode levar 5 a 10 minutos por si só.</li><li><strong>Injustiça:</strong> Sem um algoritmo, existe a possibilidade de uma pessoa continuar a ter o mesmo parceiro constantemente.</li><li><strong>Erros de Cálculo:</strong> Somar manualmente as pontuações de dezenas de partidas em papel é muito propenso a erros.</li></ul>" 
+        },
+        { 
+          title: "Funcionalidades Superiores do Nosso Gerador de Americano", 
+          content: "<p>Por que deve utilizar as ferramentas do nosso site em vez de outras aplicações?</p><ol><li><strong>Sem Download nem Instalação:</strong> Memória do telemóvel cheia? Tranquilo. A nossa ferramenta é baseada na web. Pode abri-la diretamente do seu navegador no campo sem o incómodo de descarregar aplicações pesadas.</li><li><strong>Algoritmo de Jogo Limpo:</strong> O nosso sistema garante uma rotação equilibrada dos jogadores. Todos terão uma oportunidade justa de mudar de parceiro e enfrentar diferentes inimigos.</li><li><strong>Classificação em Direto:</strong> Assim que introduzir as pontuações das partidas, a classificação será atualizada automaticamente. Todos os jogadores podem ver as suas posições em tempo real nos seus respetivos telemóveis (se o link for partilhado).</li></ol>" 
+        },
+        { 
+          title: "Como Utilizar Este Gerador de Americano", 
+          content: "<p>É muito fácil, siga estes passos:</p><ol><li><strong>Introduza os Nomes dos Jogadores:</strong> Escreva os nomes de todos os participantes (mínimo 4 pessoas). Número ímpar? Não há problema, o nosso sistema pode organizar os jogadores substitutos/em descanso por turnos.</li><li><strong>Selecione os Pontos Alvo:</strong> Determine até quantos pontos quer jogar? (Geralmente 24 ou 32 pontos).</li><li><strong>Gerar Tabela:</strong> Clique no botão de criar tabela.</li><li><strong>Jogar e Introduzir Pontuações:</strong> Assim que a partida terminar, introduza as pontuações.</li><li><strong>Ver o Vencedor:</strong> No final da sessão, o sistema coroará o campeão de Americano do dia!</li></ol>" 
+        },
+        { 
+          title: "Regras Breves para o Cálculo de Pontos", 
+          content: "<p>Para maximizar a utilização da nossa ferramenta, certifique-se de que todos os jogadores entendem as regras:</p><ul><li><strong>Sistema de Pontos:</strong> As partidas son contadas por bola. Se a Equipa A vencer por 14-10 a Equipa B, os jogadores da Equipa A recebem 14 pontos cada, e os da Equipa B recebem 10 pontos cada.</li><li><strong>Serviço:</strong> O serviço alterna a cada 4 bolas (2 vezes a Equipa A, 2 vezes a Equipa B).</li><li><strong>Vencedor:</strong> O jogador com o maior total de pontos acumulados no final do torneio.</li></ul>" 
+        },
+        { 
+          title: "Pronto para Jogar?", 
+          content: "<p>Não desperdice as suas 2 horas de aluguer de campo apenas para anotar pontuações num papel. Maximize o seu tempo de jogo e deixe que a tecnologia trabalhe por si. Experimente o nosso Gerador Americano agora mesmo abaixo (ou no topo da página). Gratuito, rápido e garantido para tornar o jogo ainda mais emocionante!</p>" 
         }
       ]
     },
@@ -135,16 +191,32 @@ export const TOOL_ARTICLES: ArticleCollection = {
       title: "Générateur Automatique de Planning Americano : Padel, Pickleball & Tennis",
       sections: [
         { 
-          title: "Jouez à l'Americano sans stress grâce à notre générateur automatique", 
-          content: "<p>Vous organisez une session de Padel, Pickleball ou Tennis ? Le format Americano est parfait pour une ambiance conviviale et compétitive.</p><p>Gérer le planning et les points manuellement est épuisant. Ne laissez pas la paperasse gâcher votre plaisir. <strong>La solution est ici.</strong></p>" 
+          title: "Jouez à l'Americano sans Stress : Utilisez notre Générateur de Planning et Tableau de Score Automatique", 
+          content: "<p>Vous voulez jouer au format Americano mais vous avez la flemme de calculer manuellement ? Utilisez notre Générateur et Tableau de Score Americano automatique. Gratuit, sans installation d'application. Essayez maintenant !</p><p>Prévoyez-vous une session de jeu amusante de Padel, Pickleball ou Tennis ce week-end ? Le format Americano sera certainement le meilleur choix pour rendre l'atmosphère plus fluide et compétitive.</p><p>Mais nous connaissons tous le problème principal : organiser le planning et calculer les points manuellement est déroutant. Qui joue avec qui ? Qui doit se reposer ? Quel est le classement final ? Ne laissez pas le papier, les stylos ou les formules Excel compliquées gâcher votre plaisir sur le terrain.</p><p>La solution est ici. Nous proposons un outil de génération d'Americano que vous pouvez utiliser directement sur cette page. Saisissez simplement les noms des joueurs et laissez notre système s'occuper du reste.</p>" 
         },
         { 
-          title: "Qu'est-ce que le format Americano ?", 
-          content: "<p>L'Americano est un format de tournoi social très équitable. Le concept est simple :</p><ul><li><strong>Partenaires tournants :</strong> Vous changez de partenaire à chaque match.</li><li><strong>Score individuel :</strong> Même si vous jouez en double, vos points sont comptabilisés personnellement.</li><li><strong>Objectif :</strong> Accumuler le plus de points possible pour gagner.</li></ul>" 
+          title: "Qu'est-ce que le Format Americano ?", 
+          content: "<p>Pour ceux d'entre vous qui l'essaient pour la première fois, l'Americano est le format de tournoi social le plus équitable et le plus excitant. Le concept de base est simple :</p><ul><li><strong>Changer de Partenaire :</strong> Vous jouerez avec un partenaire différent à chaque match.</li><li><strong>Score Individuel :</strong> Bien que vous jouiez en double, les points que vous gagnez sont comptabilisés pour vous-même.</li><li><strong>Objectif :</strong> Accumuler le plus de points possible pour devenir le champion du classement à la fin de la session.</li></ul><p>Ce format est parfait pour les communautés de Padel et de Pickleball car il oblige tous les joueurs à interagir (socialiser) tout en étant en compétition en même temps.</p>" 
         },
         { 
-          title: "Nos points forts", 
-          content: "<ul><li><strong>Sans téléchargement :</strong> Outil web, n'encombre pas votre smartphone.</li><li><strong>Algorithme Fair-Play :</strong> Assure une rotation équilibrée des joueurs.</li><li><strong>Classement en direct :</strong> Mise à jour automatique des positions.</li></ul>" 
+          title: "Problèmes Classiques lors d'un Americano Manuel", 
+          content: "<p>Sans outils ni applications, jouer à l'Americano peut devenir chaotique : <ul><li><strong>Temps Perdu :</strong> Débattre de qui joue contre qui peut prendre 5 à 10 minutes en soi.</li><li><strong>Injustice :</strong> Sans algorithme, il est possible qu'une personne se retrouve constamment avec le même partenaire.</li><li><strong>Erreurs de Calcul :</strong> Additionner manuellement les scores de dizaines de matchs sur papier est très source d'erreurs.</li></ul>" 
+        },
+        { 
+          title: "Caractéristiques Supérieures de notre Générateur d'Americano", 
+          content: "<p>Pourquoi devriez-vous utiliser les outils de notre site web plutôt que d'autres applications ?</p><ol><li><strong>Sans Téléchargement ni Installation :</strong> Mémoire de téléphone pleine ? Détendez-vous. Notre outil est basé sur le web. Vous pouvez l'ouvrir directement depuis votre navigateur sur le terrain sans avoir à télécharger des applications lourdes.</li><li><strong>Algorithme Fair-Play :</strong> Notre système assure une rotation équilibrée des joueurs. Tout le monde aura une chance équitable de changer de partenaire et d'affronter des adversaires différents.</li><li><strong>Classement en Direct :</strong> Dès que vous saisissez les scores des matchs, le classement se met à jour automatiquement. Tous les joueurs peuvent voir leur position en temps réel sur leur téléphone respectif (si le lien est partagé).</li></ol>" 
+        },
+        { 
+          title: "Comment Utiliser ce Générateur d'Americano", 
+          content: "<p>C'est très facile, suivez ces étapes :</p><ol><li><strong>Saisir les Noms des Joueurs :</strong> Tapez les noms de tous les participants (minimum 4 personnes). Nombre impair ? Pas de problème, notre système peut organiser les joueurs remplaçants/au repos à tour de rôle.</li><li><strong>Sélectionner les Points Cibles :</strong> Déterminez jusqu'à combien de points vous voulez jouer ? (Généralement 24 ou 32 points).</li><li><strong>Générer le Planning :</strong> Cliquez sur le bouton de création de planning.</li><li><strong>Jouer et Saisir les Scores :</strong> Une fois le match terminé, saisissez les scores.</li><li><strong>Voir le Vainqueur :</strong> À la fin de la session, le système couronnera le champion Americano du jour !</li></ol>" 
+        },
+        { 
+          title: "Règles Courtes pour le Calcul des Points", 
+          content: "<p>Pour maximiser l'utilisation de notre outil, assurez-vous que tous les joueurs comprennent les règles :</p><ul><li><strong>Système de Points :</strong> Les matchs sont comptés par balle. Si l'Équipe A gagne 14-10 contre l'Équipe B, les joueurs de l'Équipe A reçoivent chacun 14 points, et ceux de l'Équipe B en reçoivent 10 chacun.</li><li><strong>Service :</strong> Le service alterne toutes les 4 balles (2 fois pour l'Équipe A, 2 fois pour l'Équipe B).</li><li><strong>Vainqueur :</strong> Le joueur ayant le total de points accumulés le plus élevé à la fin du tournoi.</li></ul>" 
+        },
+        { 
+          title: "Prêt à Jouer ?", 
+          content: "<p>Ne passez pas vos 2 heures de location de terrain juste pour noter des scores sur papier. Maximisez votre temps de jeu et laissez la technologie travailler pour vous. Essayez notre Générateur Americano dès maintenant ci-dessous (ou en haut de la page). Gratuit, rapide et garanti pour rendre le jeu encore plus passionnant !</p>" 
         }
       ]
     },
@@ -152,366 +224,419 @@ export const TOOL_ARTICLES: ArticleCollection = {
       title: "Generatore Automatico di Tabellone Americano: Padel, Pickleball e Tennis",
       sections: [
         { 
-          title: "Gioca all'Americano senza stress con il nostro generatore automatico", 
-          content: "<p>Stai organizzando una partita di Padel, Pickleball o Tennis? Il formato Americano è la scelta migliore per unire divertimento e competizione.</p><p>Gestire turni e punti manualmente è complicato. Non lasciare che carta e penna rovinino il divertimento. <strong>La soluzione è qui.</strong></p>" 
+          title: "Gioca all'Americano Senza Stress: Usa il Nostro Generatore di Turni e Tabellone Automatico", 
+          content: "<p>Vuoi giocare nel formato Americano ma ti annoia calcolare i punti manualmente? Usa il nostro Generatore e Tabellone Americano automatico. Gratuito, senza installare app. Provalo ora!</p><p>Stai pianificando una divertente sessione di gioco di Padel, Pickleball o Tennis questo fine settimana? Il formato Americano sarà sicuramente la scelta migliore per rendere l'atmosfera più fluida e competitiva.</p><p>Ma tutti conosciamo il problema principale: organizzare i turni e calcolare i punti manualmente è complicato. Chi fa coppia con chi? Chi deve riposare? Qual è la classifica finale? Non lasciare che carta, penne o complicate formule Excel rovinino il tuo divertimento in campo.</p><p>La soluzione è qui. Forniamo uno strumento di generazione per l'Americano che puoi usare direttamente su questa pagina. Inserisci semplicemente i nomi dei giocatori e lascia che il nostro sistema si occupi del resto.</p>" 
         },
         { 
-          title: "Cos'è il formato Americano?", 
-          content: "<p>L'Americano è uno dei formati di torneo sociale più equi. Il concetto è semplice:</p><ul><li><strong>Partner a rotazione:</strong> Giocherai con un compagno diverso in ogni partita.</li><li><strong>Punteggio individuale:</strong> Anche se giochi in doppio, i punti sono contati per te singolarmente.</li><li><strong>Obiettivo:</strong> Accumulare più punti possibile per vincere il torneo.</li></ul>" 
+          title: "Cos'è il Formato Americano?", 
+          content: "<p>Per chi di voi lo prova per la prima volta, l'Americano è il formato di torneo sociale più equo ed emozionante. Il concetto di base è semplice:</p><ul><li><strong>Cambiare Partner:</strong> Giocherai con un partner diverso in ogni partita.</li><li><strong>Punteggio Individuale:</strong> Anche se giochi in doppio, i punti che guadagni vengono contati per te stesso.</li><li><strong>Obiettivo:</strong> Raccogliere più punti possibile per diventare il campione della classifica alla fine della sessione.</li></ul><p>Questo formato è perfetto per le comunità di Padel e Pickleball perché costringe tutti i giocatori a interagire (socializzare) e competere allo stesso tempo.</p>" 
         },
         { 
-          title: "Caratteristiche principali", 
-          content: "<ul><li><strong>Nessun download:</strong> Strumento web, non occupa spazio sul telefono.</li><li><strong>Algoritmo Fair Play:</strong> Garantisce una rotazione equilibrata dei giocatori.</li><li><strong>Classifica live:</strong> Aggiornamento automatico non appena inserisci i risultati.</li></ul>" 
+          title: "Problemi Classici Quando si Gioca l'Americano Manualmente", 
+          content: "<p>Senza strumenti o app, giocare all'Americano può diventare caotico: <ul><li><strong>Tempo Sprecato:</strong> Discutere su chi gioca contro chi può richiedere 5-10 minuti da solo.</li><li><strong>Iniquità:</strong> Senza un algoritmo, c'è la possibilità che una persona continui ad avere lo stesso partner.</li><li><strong>Errori di Calcolo:</strong> Sommare manualmente i punteggi di dozzine di partite su carta è molto incline agli errori.</li></ul>" 
+        },
+        { 
+          title: "Caratteristiche Superiori del Nostro Generatore Americano", 
+          content: "<p>Perché dovresti usare gli strumenti sul nostro sito web invece di altre app?</p><ol><li><strong>Nessun Download o Installazione:</strong> Memoria del telefono piena? Rilassati. Il nostro strumento è basato sul web. Puoi aprirlo direttamente dal tuo browser in campo senza il fastidio di scaricare app pesanti.</li><li><strong>Algoritmo Fair Play:</strong> Il nostro sistema garantisce una rotazione equilibrata dei giocatori. Tutti avranno un'equa possibilità di cambiare partner e affrontare avversari diversi.</li><li><strong>Classifica Live:</strong> Non appena inserisci i punteggi delle partite, la classifica si aggiornerà automaticamente. Tutti i giocatori possono vedere le loro posizioni in tempo reale dai rispettivi telefoni (se il link viene condiviso).</li></ol>" 
+        },
+        { 
+          title: "Come Usare Questo Generatore Americano", 
+          content: "<p>È molto facile, segui questi passaggi:</p><ol><li><strong>Inserisci i Nomi dei Giocatori:</strong> Digita i nomi di tutti i partecipanti (minimo 4 persone). Numero dispari? Nessun problema, il nostro sistema può organizzare i giocatori sostituti/a riposo a rotazione.</li><li><strong>Seleziona i Punti Obiettivo:</strong> Determina a quanti punti vuoi giocare? (Generalmente 24 o 32 punti).</li><li><strong>Genera Turni:</strong> Clicca sul pulsante di creazione turni.</li><li><strong>Gioca e Inserisci i Punteggi:</strong> Una volta terminata la partita, inserisci i punteggi.</li><li><strong>Vedi il Vincitore:</strong> Alla fine della sessione, il sistema incoronerà il campione Americano del giorno!</li></ol>" 
+        },
+        { 
+          title: "Brevi Regole per il Calcolo dei Punti", 
+          content: "<p>Per massimizzare l'uso del nostro strumento, assicurati che tutti i giocatori comprendano le regole:</p><ul><li><strong>Sistema a Punti:</strong> Le partite vengono conteggiate per palla. Se la Squadra A vince 14-10 contro la Squadra B, i giocatori della Squadra A ricevono 14 punti ciascuno e i giocatori della Squadra B ricevono 10 punti ciascuno.</li><li><strong>Servizio:</strong> Il servizio si alterna ogni 4 palle (2 volte per la Squadra A, 2 volte per la Squadra B).</li><li><strong>Vincitore:</strong> Il giocatore con il punteggio totale accumulato più alto alla fine del torneo.</li></ul>" 
+        },
+        { 
+          title: "Pronto a Giocare?", 
+          content: "<p>Non sprecare le tue 2 ore di affitto del campo solo per registrare i punteggi su carta. Massimizza il tuo tempo di gioco e lascia che la tecnologia lavori per te. Prova il nostro Generatore Americano subito qui sotto (o in cima alla pagina). Gratuito, veloce e garantito per rendere il gioco ancora più emozionante!</p>" 
         }
       ]
     }
   },
-  "budget-planner": {
+  "tennis": {
     en: {
-      title: "Zero-Based Budget Planner Guide",
+      title: "Mastering Your Tennis Mixer with Our Match Generator",
       sections: [
-        { title: "What is Zero-Based Budgeting?", content: "<h2>Give Every Dollar a Job</h2><p>Zero-based budgeting (ZBB) is a methodology where your <strong>Income minus Expenses equals Zero</strong>. This doesn't mean you have no money left; it means every dollar has been assigned to a specific task, such as savings, rent, or groceries.</p>" },
-        { title: "How to Use the VersoKit Planner", content: "<h2>Step-by-Step Budgeting</h2><ol><li><strong>Enter Income:</strong> Input your total monthly take-home pay.</li><li><strong>Assign Categories:</strong> Create 'Envelopes' for your needs and wants.</li><li><strong>Allocate Funds:</strong> Move money from your income to these categories until 'To be Budgeted' reaches zero.</li><li><strong>Track Activity:</strong> Add transactions throughout the month to see real-time balances.</li></ol>" },
-        { title: "Handling Overspending", content: "<h2>Roll with the Punches</h2><p>If you spend more than planned in one category (the balance turns red), simply use the <strong>'Cover'</strong> feature to move funds from another category. This keeps your budget realistic and prevents debt.</p>" },
-        { title: "Data Management", content: "<h2>Privacy and Backups</h2><p>Your financial data is <strong>never uploaded</strong>. It stays in your browser's local storage. Use the 'Data Management' section to export JSON backups if you want to move your data to another device.</p>" }
+        {
+          title: "How to Set Up Your Tournament",
+          content: "Setting up a social tennis session has never been easier. Start by entering your <b>Number of Players</b> and <b>Total Duration</b>. Our generator will automatically calculate how many rounds fit into your time slot. Add your players' names and assign their skill levels from 'Newbie' to 'Pro' to ensure the fairest possible match-ups."
+        },
+        {
+          title: "The Fair Play Algorithm Explained",
+          content: "Tired of the same people sitting out every round? Our proprietary <b>Fair Play Algorithm</b> prioritizes players who have played the fewest games first. When balancing teams, it uses a 'Best + Worst vs. Middle Two' logic, ensuring that even with mixed skill levels, every match is competitive and fun."
+        },
+        {
+          title: "Smart Swapping & Rebalancing",
+          content: "If a player needs to leave early or arrives late, use the <b>Swap</b> feature. You can replace a player in any scheduled match, and the tool will offer to rebalance all future games to maintain equal court time for the remaining roster."
+        }
       ]
     },
     id: {
-      title: "Panduan Lengkap Perencana Anggaran",
+      title: "Panduan Lengkap Generator Jadwal Tenis Ganda",
       sections: [
-        { title: "Apa itu Zero-Based Budgeting?", content: "<h2>Berikan Tugas untuk Setiap Rupiah</h2><p>Zero-Based Budgeting (ZBB) adalah metode di mana <strong>Pendapatan dikurangi Pengeluaran sama dengan Nol</strong>. Artinya, setiap rupiah yang Anda hasilkan sudah dialokasikan ke pos tertentu seperti tabungan atau cicilan.</p>" },
-        { title: "Fitur Unggulan", content: "<ul><li><strong>Metode Envelope:</strong> Alokasi dana per kategori secara visual.</li><li><strong>Tutup Overspending:</strong> Pindahkan dana antar kategori jika ada yang minus.</li><li><strong>Privasi 100%:</strong> Data hanya tersimpan di HP/Laptop Anda.</li></ul>" }
+        {
+          title: "Cara Mengatur Turnamen Anda",
+          content: "Mengatur sesi tenis sosial kini lebih mudah. Mulailah dengan memasukkan <b>Jumlah Pemain</b> dan <b>Durasi Sewa Lapangan</b>. Generator kami akan menghitung otomatis berapa banyak babak yang tersedia. Masukkan nama pemain dan level skill mereka untuk hasil pembagian tim yang adil."
+        },
+        {
+          title: "Memahami Algoritma Fair Play",
+          content: "Algoritma kami memprioritaskan pemain yang paling sedikit bermain untuk masuk ke babak berikutnya. Ini memastikan semua orang mendapatkan waktu lapangan yang sama, sangat cocok untuk grup dengan jumlah pemain ganjil."
+        },
+        {
+          title: "Tips Mengelola Roster Pemain",
+          content: "Gunakan fitur <b>Ganti Pemain (Swap)</b> jika ada teman yang harus pulang lebih awal. Sistem akan menawarkan untuk mengacak ulang jadwal masa depan agar tetap adil bagi mereka yang masih bertahan."
+        }
       ]
     },
     de: {
-      title: "Leitfaden für die Budgetplanung",
-      sections: [
-        { title: "Nullbasierte Budgetierung", content: "<h2>Jeder Euro hat eine Aufgabe</h2><p>Bei der nullbasierten Budgetierung entspricht Ihr Einkommen abzüglich Ihrer Ausgaben genau Null. So behalten Sie die volle Kontrolle über Ihre Finanzen.</p>" }
-      ]
+      title: "Tennis-Match-Generator",
+      sections: [{ title: "Fairer Match-Generator", content: "Tennis-Match-Generator. Erstellen Sie mühelos ausgewogene Doppelspiele. Perfekt für gesellige Club-Sessions." }]
     },
     es: {
-      title: "Guía de Planificación de Presupuesto",
-      sections: [
-        { title: "Presupuesto Base Cero", content: "<h2>Asigna una función a cada euro</h2><p>El presupuesto base cero es un método donde tus ingresos menos tus gastos deben ser igual a cero. Cada euro tiene un destino específico.</p>" }
-      ]
+      title: "Generador de Partidos de Tenis",
+      sections: [{ title: "Generador de Partidos Justos", content: "Generador de Partidos de Tenis. Crea partidos de dobles equilibrados sin esfuerzo. Perfecto para sesiones sociales de clubes." }]
     },
     pt: {
-      title: "Guia de Planejamento de Orçamento",
-      sections: [
-        { title: "Orçamento Base Zero", content: "<h2>Dê uma tarefa para cada centavo</h2><p>Orçamento base zero é um método onde sua renda menos suas despesas é igual a zero. Todo o seu dinheiro é planejado com intenção.</p>" }
-      ]
+      title: "Gerador de Partidas de Tênis",
+      sections: [{ title: "Gerador de Partidas Justas", content: "Gerador de Partidas de Tênis. Crie jogos de duplas equilibrados facilmente. Perfeito para sessões sociais de clubes." }]
     },
     fr: {
-      title: "Guide du Planificateur Budgétaire",
-      sections: [
-        { title: "Le Budget Base Zéro", content: "<h2>Donnez un rôle à chaque euro</h2><p>Le budget base zéro est une méthode où vos revenus moins vos dépenses égalent zéro. Chaque euro est affecté à une catégorie précise.</p>" }
-      ]
+      title: "Générateur de Matchs de Tennis",
+      sections: [{ title: "Générateur de Matchs Équitables", content: "Générateur de Matchs de Tennis. Créez des matchs de double équilibrés sans effort. Parfait pour les sessions sociales du club." }]
     },
     it: {
-      title: "Guida al Budget a Base Zero",
-      sections: [
-        { title: "Cos'è il Budget a Base Zero?", content: "<h2>Ogni euro ha un compito</h2><p>Il budget a base zero è un metodo in cui le entrate meno le uscite sono uguali a zero. Tutto il tuo denaro viene allocato con precisione.</p>" }
-      ]
+      title: "Generatore Partite Tennis",
+      sections: [{ title: "Generatore di Partite Eque", content: "Generatore Partite Tennis. Crea partite di doppio equilibrate senza sforzo. Perfetto per sessioni sociali di club." }]
     }
   },
-  "kanban": {
+  "budget-planner": {
     en: {
-      title: "Visual Task Management with Kanban",
+      title: "Why Zero-Based Budgeting is the Key to Financial Freedom",
       sections: [
-        { title: "What is a Kanban Board?", content: "<h2>Visualizing Your Workflow</h2><p>Kanban is a visual method for managing work as it moves through a process. By using cards to represent tasks and columns to represent stages, you can easily see <strong>bottlenecks</strong> and focus on finishing work rather than just starting it.</p>" },
-        { title: "The Three Pillars", content: "<ul><li><strong>To Do:</strong> Tasks that are ready to be started.</li><li><strong>In Progress:</strong> Tasks you are currently working on. Limit these to stay focused!</li><li><strong>Done:</strong> Completed tasks. Celebrate your progress!</li></ul>" }
+        {
+          title: "Give Every Dollar a Job",
+          content: "Zero-Based Budgeting. Allocate every dollar to a category. Track expenses vs income. Our planner uses the method where your Income minus your Expenses should always equal zero."
+        }
       ]
     },
     id: {
-      title: "Manajemen Tugas Visual dengan Kanban",
+      title: "Kuasai Keuangan dengan Metode Anggaran Berbasis Nol",
       sections: [
-        { title: "Meningkatkan Produktivitas", content: "<h2>Visualisasikan Pekerjaan Anda</h2><p>Papan Kanban membantu Anda melihat alur kerja dari 'Rencana' hingga 'Selesai'. Dengan memindahkan kartu, Anda bisa fokus menyelesaikan satu hal sebelum memulai yang lain.</p>" }
+        {
+          title: "Berikan Tugas untuk Setiap Rupiah",
+          content: "Anggaran Berbasis Nol. Alokasikan setiap rupiah ke kategori. Lacak pengeluaran vs pemasukan. Metode ini memastikan setiap rupiah memiliki tugas."
+        }
       ]
     },
     de: {
-      title: "Produktivität mit Kanban steigern",
-      sections: [{ title: "Workflows visualisieren", content: "<h2>Was ist Kanban?</h2><p>Kanban ist eine visuelle Methode zur Aufgabenverwaltung. Verschieben Sie Karten von 'To Do' nach 'Erledigt'.</p>" }]
+      title: "Nullbasiertes Budgetieren",
+      sections: [
+        {
+          title: "Jeden Euro zuweisen",
+          content: "Nullbasiertes Budgetieren. Weisen Sie jeden Euro einer Kategorie zu. Verfolgen Sie Ausgaben gegenüber Einnahmen."
+        }
+      ]
     },
     es: {
-      title: "Gestión de Tareas con Kanban",
-      sections: [{ title: "Visualiza tu flujo de trabajo", content: "<h2>¿Qué es Kanban?</h2><p>Kanban es un método visual para gestionar tareas a medida que avanzan por un proceso.</p>" }]
+      title: "Presupuesto Base Cero",
+      sections: [
+        {
+          title: "Asignar cada euro",
+          content: "Presupuesto Base Cero. Asigna cada euro a una categoría. Controla tus gastos frente a tus ingresos."
+        }
+      ]
     },
     pt: {
-      title: "Gestão Visual com Kanban",
-      sections: [{ title: "Visualize seu fluxo", content: "<h2>O que é Kanban?</h2><p>Kanban é um método visual para gerenciar o trabalho enquanto ele se move através de um processo.</p>" }]
+      title: "Orçamento Base Zero",
+      sections: [
+        {
+          title: "Alocar cada centavo",
+          content: "Orçamento Base Zero. Aloque cada centavo a uma categoria. Acompanhe despesas versus receitas."
+        }
+      ]
     },
     fr: {
-      title: "Gestion de Tâches Kanban",
-      sections: [{ title: "Visualisez votre flux", content: "<h2>Qu'est-ce que le Kanban ?</h2><p>Le Kanban est une méthode visuelle pour gérer le travail au fur et à mesure qu'il progresse.</p>" }]
+      title: "Budget Base Zéro",
+      sections: [
+        {
+          title: "Allouer chaque euro",
+          content: "Budget Base Zéro. Allouez chaque euro à une catégorie. Suivez vos dépenses par rapport à vos revenus."
+        }
+      ]
     },
     it: {
-      title: "Gestione Attività con Kanban",
-      sections: [{ title: "Visualizza il tuo flusso", content: "<h2>Cos'è il Kanban?</h2><p>Il Kanban è un metodo visivo per gestire il lavoro mentre si muove attraverso un processo.</p>" }]
+      title: "Budget a Base Zero",
+      sections: [
+        {
+          title: "Assegna ogni euro",
+          content: "Budget a Base Zero. Assegna ogni euro a una categoria. Monitora le spese rispetto alle entrate."
+        }
+      ]
     }
   },
   "invoice": {
     en: {
-      title: "Professional PDF Invoice Generator",
+      title: "Professional PDF Invoicing for Freelancers",
       sections: [
-        { title: "Create Invoices Instantly", content: "<h2>Fast Billing for Freelancers</h2><p>Our Invoice Generator helps you create professional PDF receipts and invoices directly in your browser. It's ideal for freelancers, consultants, and small business owners who need a clean, itemized bill without complex accounting software.</p>" },
-        { title: "Features", content: "<ul><li><strong>Live Preview:</strong> See your invoice update as you type.</li><li><strong>Itemized Billing:</strong> Add multiple items with quantities and rates.</li><li><strong>Local Processing:</strong> Your financial and client data never leaves your device.</li><li><strong>Print to PDF:</strong> Uses your system's print dialog for pixel-perfect PDF generation.</li></ul>" }
+        {
+          title: "Free Invoice Generator",
+          content: "Free Invoice Generator. Create PDF invoices instantly in your browser. No data stored on servers. A professional invoice ensures you get paid faster."
+        }
       ]
     },
     id: {
-      title: "Pembuat Invoice & Faktur Profesional",
+      title: "Cara Buat Invoice Profesional untuk Freelancer",
       sections: [
-        { title: "Invoice Cepat & Mudah", content: "<h2>Solusi Bisnis Kecil</h2><p>Buat faktur PDF profesional dalam hitungan detik. Sangat cocok untuk freelancer atau UMKM yang membutuhkan bukti pembayaran rapi tanpa ribet.</p>" }
+        {
+          title: "Pembuat Invoice Gratis",
+          content: "Pembuat Invoice Gratis. Buat faktur PDF instan di browser. Data tidak disimpan di server. Invoice yang rapi membantu Anda terlihat profesional."
+        }
       ]
     },
     de: {
-      title: "Professioneller Rechnungsgenerator",
-      sections: [{ title: "Rechnungen sofort erstellen", content: "<h2>Für Freiberufler</h2><p>Erstellen Sie professionelle PDF-Rechnungen direkt in Ihrem Browser. Sicher und lokal.</p>" }]
+      title: "Rechnungsgenerator",
+      sections: [
+        {
+          title: "Kostenloser Rechnungsgenerator",
+          content: "Kostenloser Rechnungsgenerator. Erstellen Sie PDF-Rechnungen sofort im Browser."
+        }
+      ]
     },
     es: {
-      title: "Generador de Facturas Profesional",
-      sections: [{ title: "Crea facturas al instante", content: "<h2>Para autónomos y pymes</h2><p>Genera facturas PDF profesionales de forma gratuita y segura en tu navegador.</p>" }]
+      title: "Generador de Facturas",
+      sections: [
+        {
+          title: "Generador de Facturas Gratis",
+          content: "Generador de Facturas Gratis. Crea facturas PDF al instante."
+        }
+      ]
     },
     pt: {
-      title: "Gerador de Faturas Profissional",
-      sections: [{ title: "Crie faturas instantaneamente", content: "<h2>Para freelancers e PMEs</h2><p>Gere faturas PDF profissionais de forma gratuita e segura no seu navegador.</p>" }]
+      title: "Gerador de Faturas",
+      sections: [
+        {
+          title: "Gerador de Faturas Grátis",
+          content: "Gerador de Faturas Grátis. Crie faturas em PDF instantaneamente."
+        }
+      ]
     },
     fr: {
-      title: "Générateur de Factures Professionnel",
-      sections: [{ title: "Créez des factures instantanément", content: "<h2>Pour freelances et PME</h2><p>Générez des factures PDF professionnelles gratuitement et en toute sécurité dans votre navigateur.</p>" }]
+      title: "Générateur de Factures",
+      sections: [
+        {
+          title: "Générateur de Factures Gratuit",
+          content: "Générateur de Factures Gratuit. Créez des factures PDF instantanément."
+        }
+      ]
     },
     it: {
-      title: "Generatore di Fatture Professionale",
-      sections: [{ title: "Crea fatture istantaneamente", content: "<h2>Per freelance e PMI</h2><p>Genera fatture PDF professionali in modo gratuito e sicuro nel tuo browser.</p>" }]
+      title: "Generatore Fatture",
+      sections: [
+        {
+          title: "Generatore Fatture Gratuito",
+          content: "Generatore Fatture Gratuito. Crea fatture PDF istantaneamente."
+        }
+      ]
     }
   },
   "futsal": {
     en: {
-      title: "Professional Futsal Scoreboard Rules",
+      title: "Digital Futsal Scoreboard: Pro Features for Local Matches",
       sections: [
-        { title: "Timer & Foul Rules", content: "<h2>FIFA Compliant Tracking</h2><p>In official Futsal, matches are played in two 20-minute halves. Our scoreboard includes presets for 20, 15, and 10 minutes to suit local league rules. Most importantly, the <strong>Foul Counter</strong> turns red after the 5th foul, alerting you to the 'Second Penalty' rule.</p>" },
-        { title: "User Tips", content: "<ul><li><strong>Period Toggle:</strong> Use the Period button to reset fouls automatically for the second half.</li><li><strong>Fullscreen Ready:</strong> Perfect for displaying on a TV or tablet at the court.</li></ul>" }
+        {
+          title: "Digital Futsal Scoreboard",
+          content: "Track score, period, fouls, and time. Fullscreen mode available. Standard Futsal rules require a 20-minute countdown."
+        }
       ]
     },
     id: {
-      title: "Aturan Papan Skor Futsal Profesional",
+      title: "Papan Skor Futsal Digital: Fitur Pro untuk Sparing",
       sections: [
-        { title: "Aturan Waktu & Foul", content: "<h2>Standar FIFA</h2><p>Pertandingan futsal resmi dimainkan dalam 2x20 menit. Papan skor kami menyertakan hitungan <strong>Pelanggaran</strong> yang akan berubah merah setelah foul ke-5 (tanda penalti kedua).</p>" }
+        {
+          title: "Papan Skor Futsal Digital",
+          content: "Catat skor, babak, pelanggaran, dan waktu. Tersedia mode layar penuh. Sesuai dengan pengatur waktu standar 20 menit."
+        }
       ]
     },
     de: {
-      title: "Professionelle Futsal-Anzeigetafel",
-      sections: [{ title: "Zeit & Fouls", content: "<h2>Regeln</h2><p>Offizielle Spiele dauern 2x20 Minuten. Die Foul-Anzeige wird nach dem 5. Foul rot.</p>" }]
+      title: "Futsal-Anzeigetafel",
+      sections: [{ title: "Features", content: "Digitale Futsal-Anzeigetafel. Verfolgen Sie Spielstand, Periode, Fouls und Zeit." }]
     },
     es: {
-      title: "Marcador de Fútbol Sala Profesional",
-      sections: [{ title: "Tiempo y Faltas", content: "<h2>Reglas</h2><p>Los partidos oficiales duran 2x20 minutos. El contador de faltas se pone rojo tras la 5ª falta.</p>" }]
+      title: "Marcador de Fútbol Sala",
+      sections: [{ title: "Características", content: "Marcador de Fútbol Sala. Controla puntuación, periodo, faltas y tiempo." }]
     },
     pt: {
-      title: "Placar de Futsal Profissional",
-      sections: [{ title: "Tempo e Faltas", content: "<h2>Regras</h2><p>Partidas oficiais duram 2x20 minutos. O contador de faltas fica vermelho após a 5ª falta.</p>" }]
+      title: "Placar de Futsal Digital",
+      sections: [{ title: "Características", content: "Placar de Futsal Digital. Acompanhe placar, período, faltas e tempo." }]
     },
     fr: {
-      title: "Tableau de Score Futsal Professionnel",
-      sections: [{ title: "Temps et Fautes", content: "<h2>Règles</h2><p>Les matchs officiels durent 2x20 minutes. Le compteur de fautes devient rouge après la 5ème faute.</p>" }]
+      title: "Tableau de Score Futsal",
+      sections: [{ title: "Caractéristiques", content: "Tableau de Score Futsal. Suivez le score, la période, les fautes et le temps." }]
     },
     it: {
-      title: "Tabellone Futsal Professionale",
-      sections: [{ title: "Tempo e Falli", content: "<h2>Regole</h2><p>Le partite ufficiali durano 2x20 minuti. Il contatore dei falli diventa rosso dopo il 5° fallo.</p>" }]
-    }
-  },
-  "tennis": {
-    en: {
-      title: "Balanced Tennis Match Generator",
-      sections: [
-        { title: "Fair Play Algorithm", content: "<h2>Skill-Based Matchmaking</h2><p>Organizing club tennis can be difficult when skill levels vary. Our generator uses a <strong>balanced pairing logic</strong> that combines high-skill players with lower-skill partners, ensuring every match is competitive and engaging.</p>" },
-        { title: "Equal Playtime", content: "<h2>No One Sits Out Too Long</h2><p>The system tracks how many rounds each player has participated in. It automatically prioritizes players with the least matches played for the next available round, making it perfect for social mixers.</p>" }
-      ]
-    },
-    id: {
-      title: "Generator Jadwal Tenis Ganda",
-      sections: [
-        { title: "Algoritma Fair Play", content: "<h2>Pembagian Tim Seimbang</h2><p>Sistem kami menggabungkan pemain mahir dengan pemula agar pertandingan tetap seru. Algoritma ini juga memastikan semua orang mendapat waktu bermain yang sama.</p>" }
-      ]
-    },
-    de: {
-      title: "Ausgeglichener Tennis-Match-Generator",
-      sections: [{ title: "Fairness im Vordergrund", content: "<h2>Algorithmus</h2><p>Unser System kombiniert starke Spieler mit Anfängern, um faire und spannende Matches zu garantieren.</p>" }]
-    },
-    es: {
-      title: "Generador de Partidos de Tenis Equilibrado",
-      sections: [{ title: "Juego Limpio", content: "<h2>Algoritmo</h2><p>Nuestro sistema combina jugadores expertos con principiantes para garantizar partidos competitivos.</p>" }]
-    },
-    pt: {
-      title: "Gerador de Partidas de Ténis Equilibrado",
-      sections: [{ title: "Fair Play", content: "<h2>Algoritmo</h2><p>Nosso sistema combina jogadores experientes com iniciantes para garantir partidas competitivas.</p>" }]
-    },
-    fr: {
-      title: "Générateur de Matchs de Tennis Équilibré",
-      sections: [{ title: "Fair Play", content: "<h2>Algorithme</h2><p>Notre système combine des joueurs expérimentés avec des débutants pour garantir des matchs compétitifs.</p>" }]
-    },
-    it: {
-      title: "Generatore Partite Tennis Equilibrato",
-      sections: [{ title: "Gioco Equo", content: "<h2>Algoritmo</h2><p>Il nostro sistema combina giocatori esperti con principianti per garantire partite competitive.</p>" }]
-    }
-  },
-  "scoreboard": {
-    en: {
-      title: "Universal Scoreboard for Multi-Sports",
-      sections: [
-        { title: "Simple and Reliable", content: "<h2>One Board for Every Game</h2><p>Whether it's Volleyball, Badminton, or Table Tennis, our Universal Scoreboard tracks points and sets won with a clean, high-contrast interface. It's designed for visibility from a distance.</p>" },
-        { title: "Smart Features", content: "<ul><li><strong>Target Score:</strong> Set a victory target to highlight when a team is close to winning.</li><li><strong>Swap Sides:</strong> Change court positions with one click at half-time.</li><li><strong>Persistence:</strong> If you accidentally refresh the page, your score is still there.</li></ul>" }
-      ]
-    },
-    id: {
-      title: "Papan Skor Universal Serbaguna",
-      sections: [
-        { title: "Satu Alat untuk Semua", content: "<h2>Voli, Badminton, Pingpong</h2><p>Papan skor simpel untuk berbagai cabang olahraga. Mendukung hitungan set dan tukar posisi lapangan dengan satu klik.</p>" }
-      ]
+      title: "Tabellone Calcetto Digitale",
+      sections: [{ title: "Caratteristiche", content: "Tabellone Calcetto Digitale. Traccia punteggio, periodo, falli e tempo." }]
     }
   },
   "lineup": {
     en: {
-      title: "Football Lineup & Formation Builder",
-      sections: [
-        { title: "Visualize Your Tactics", content: "<h2>Drag and Drop Formation</h2><p>Create your perfect team formation (4-4-2, 4-3-3, 3-5-2) using our interactive pitch. Simply drag players to their positions and assign names and numbers.</p>" },
-        { title: "Share Your Strategy", content: "<h2>Download as Image</h2><p>Once your lineup is ready, download it as a high-quality PNG image. Perfect for sharing your matchday squad on Instagram, WhatsApp, or Twitter.</p>" }
-      ]
+      title: "Lineup Builder",
+      sections: [{ title: "How it works", content: "Football Lineup Builder. Drag and drop players to create formations (4-4-2, 4-3-3). Download as image." }]
     },
     id: {
-      title: "Penyusun Formasi Sepak Bola",
-      sections: [
-        { title: "Visualisasikan Taktik", content: "<h2>Geser dan Atur</h2><p>Buat formasi tim favorit Anda dan unduh hasilnya sebagai gambar PNG untuk dibagikan ke media sosial atau grup WhatsApp tim.</p>" }
-      ]
+      title: "Pembuat Formasi",
+      sections: [{ title: "Cara Penggunaan", content: "Pembuat Formasi Sepak Bola. Geser pemain untuk membuat formasi (4-4-2, etc). Unduh sebagai gambar." }]
+    },
+    de: {
+      title: "Fußball-Aufstellungs-Planer",
+      sections: [{ title: "Anleitung", content: "Fußball-Aufstellungs-Planer. Erstellen Sie Formationen per Drag & Drop." }]
+    },
+    es: {
+      title: "Creador de Alineaciones",
+      sections: [{ title: "Cómo usar", content: "Creador de Alineaciones. Arrastra jugadores para crear formaciones." }]
+    },
+    pt: {
+      title: "Criador de Escalação",
+      sections: [{ title: "Como usar", content: "Criador de Escalação. Arraste jogadores para criar formações." }]
+    },
+    fr: {
+      title: "Créateur de Composition",
+      sections: [{ title: "Comment ça marche", content: "Créateur de Composition. Glissez-déposez les joueurs pour créer des formations." }]
+    },
+    it: {
+      title: "Generatore Formazione Calcio",
+      sections: [{ title: "Come funziona", content: "Generatore Formazione Calcio. Trascina i giocatori per creare formazioni." }]
     }
   },
-  "shift": {
+  "scoreboard": {
     en: {
-      title: "Simple Weekly Shift Scheduler",
-      sections: [
-        { title: "Manage Your Roster", content: "<h2>Effortless Team Planning</h2><p>The Shift Scheduler is designed for retail, security, and small teams. Manage Morning, Afternoon, and Night shifts across a 7-day week with a simple color-coded grid.</p>" },
-        { title: "Export and Share", content: "<h2>One-Click Distribution</h2><p>Generate a clean image of your weekly roster to send to your staff. No more messy spreadsheets or forgotten schedules.</p>" }
-      ]
+      title: "Universal Scoreboard",
+      sections: [{ title: "Usage", content: "Simple Scoreboard. Use for Badminton, Volleyball, or Ping Pong. No ads, completely offline." }]
     },
     id: {
-      title: "Penjadwal Shift Karyawan Mingguan",
-      sections: [
-        { title: "Kelola Jadwal Tim", content: "<h2>Simpel & Teratur</h2><p>Atur jadwal Pagi, Siang, dan Malam untuk tim Anda. Unduh hasilnya sebagai gambar untuk dibagikan di grup kantor.</p>" }
-      ]
-    }
-  },
-  "split-bill": {
-    en: {
-      title: "Easy Split Bill & Shared Expense Calculator",
-      sections: [
-        { title: "Fair Group Dining", content: "<h2>No More Math at the Table</h2><p>Instantly calculate how much everyone owes after a group meal. Our tool handles complex <strong>Tax and Service Charges</strong> automatically, so no one ends up paying more than they should.</p>" },
-        { title: "Social Sharing", content: "<h2>Copy to WhatsApp</h2><p>Generate a neatly formatted summary including the total, per-person amount, and payment instructions. Paste it directly into your group chat.</p>" }
-      ]
+      title: "Papan Skor Universal",
+      sections: [{ title: "Penggunaan", content: "Papan Skor Serbaguna. Gunakan untuk Badminton, Voli, atau Pingpong. Tanpa iklan, offline." }]
     },
-    id: {
-      title: "Kalkulator Bagi Tagihan (Split Bill)",
-      sections: [
-        { title: "Bagi Rata Tanpa Ribet", content: "<h2>Pajak & Layanan Otomatis</h2><p>Hitung patungan makan bareng teman dengan cepat. Sudah termasuk hitungan pajak dan servis. Salin hasilnya ke WhatsApp dengan sekali klik.</p>" }
-      ]
+    de: {
+      title: "Universal-Anzeigetafel",
+      sections: [{ title: "Nutzung", content: "Einfache Anzeigetafel. Für Badminton, Volleyball oder Tischtennis." }]
+    },
+    es: {
+      title: "Marcador Universal",
+      sections: [{ title: "Uso", content: "Marcador Universal. Úsalo para Bádminton, Voleibol o Ping Pong." }]
+    },
+    pt: {
+      title: "Placar Universal",
+      sections: [{ title: "Uso", content: "Placar Simples. Use para Badminton, Vôlei ou Ping Pong." }]
+    },
+    fr: {
+      title: "Tableau de Score Simple",
+      sections: [{ title: "Utilisation", content: "Tableau de Score Simple. Pour Badminton, Volley ou Ping Pong." }]
+    },
+    it: {
+      title: "Tabellone Universale",
+      sections: [{ title: "Utilizzo", content: "Tabellone Semplice. Usa per Badminton, Pallavolo o Ping Pong." }]
     }
   },
   "inventory": {
-    en: {
-      title: "Simple Inventory & Stock Manager",
-      sections: [
-        { title: "Track Your Items", content: "<h2>Lightweight Stock Control</h2><p>Perfect for sports equipment rooms, small warehouses, or home businesses. Track stock-in and stock-out movements without complex ERP software.</p>" },
-        { title: "Privacy First", content: "<h2>Local Database</h2><p>Your inventory list is stored locally on your device. It's fast, private, and works even in basements with no internet connection.</p>" }
-      ]
-    },
-    id: {
-      title: "Manajemen Stok Barang Sederhana",
-      sections: [
-        { title: "Pantau Inventaris Anda", content: "<h2>Kontrol Stok Efisien</h2><p>Cocok untuk gudang kecil atau peralatan olahraga. Lacak jumlah barang masuk dan keluar dengan mudah secara offline.</p>" }
-      ]
-    }
+    en: { title: "Stock Management", sections: [{ title: "Tool Overview", content: "Stock Management Tool. Track items, quantities, and low stock alerts. Runs offline." }] },
+    id: { title: "Manajemen Stok", sections: [{ title: "Ringkasan Alat", content: "Alat Manajemen Stok. Lacak barang, jumlah, dan peringatan stok menipis. Berjalan offline." }] },
+    de: { title: "Lagerverwaltung", sections: [{ title: "Überblick", content: "Lagerverwaltung. Verfolgen Sie Artikel und Bestände offline." }] },
+    es: { title: "Gestión de Inventario", sections: [{ title: "Descripción", content: "Gestión de Inventario. Controla artículos y stock bajo offline." }] },
+    pt: { title: "Gestão de Estoque", sections: [{ title: "Visão Geral", content: "Gestão de Estoque. Acompanhe itens e alertas de estoque baixo." }] },
+    fr: { title: "Gestion de Stock", sections: [{ title: "Aperçu", content: "Gestion de Stock. Suivez les articles et les alertes de stock faible." }] },
+    it: { title: "Gestione Inventario", sections: [{ title: "Panoramica", content: "Gestione Inventario. Traccia articoli e scorte basse offline." }] }
   },
-  "image-compressor": {
-    en: {
-      title: "Secure Browser-Based Image Compressor",
-      sections: [
-        { title: "Reduce File Size Safely", content: "<h2>No Server Uploads</h2><p>Unlike online converters that upload your photos to their servers, our tool processes images <strong>100% in your browser</strong>. Your private photos never leave your device.</p>" },
-        { title: "Optimization", content: "<h2>Web Ready Images</h2><p>Reduce large MB files into small KB sizes without losing visible quality. Perfect for website optimization and sending photos via email.</p>" }
-      ]
-    },
-    id: {
-      title: "Kompres Gambar Aman & Privat",
-      sections: [
-        { title: "Kecilkan Ukuran File", content: "<h2>Tanpa Upload Server</h2><p>Proses kompresi terjadi 100% di browser Anda. Aman dari kebocoran data karena foto tidak pernah dikirim ke internet.</p>" }
-      ]
-    }
+  "shift": {
+    en: { title: "Shift Scheduler", sections: [{ title: "Tool Overview", content: "Employee Shift Planner. Organize morning, afternoon, and night shifts easily. Download schedule." }] },
+    id: { title: "Jadwal Shift", sections: [{ title: "Ringkasan Alat", content: "Jadwal Shift Karyawan. Atur shift pagi, siang, malam dengan mudah. Unduh jadwal." }] },
+    de: { title: "Schichtplaner", sections: [{ title: "Überblick", content: "Schichtplaner. Organisieren Sie Schichten einfach und laden Sie den Plan herunter." }] },
+    es: { title: "Planificador de Turnos", sections: [{ title: "Descripción", content: "Planificador de Turnos. Organiza turnos de mañana, tarde y noche." }] },
+    pt: { title: "Escala de Trabalho", sections: [{ title: "Visão Geral", content: "Escala de Trabalho. Organize turnos facilmente e baixe a escala." }] },
+    fr: { title: "Planning d'Équipe", sections: [{ title: "Aperçu", content: "Planning d'Équipe. Organisez les 3x8 facilement." }] },
+    it: { title: "Pianificatore Turni", sections: [{ title: "Panoramica", content: "Pianificatore Turni. Organizza i turni facilmente." }] }
+  },
+  "split-bill": {
+    en: { title: "Split Bill", sections: [{ title: "Tool Overview", content: "Restaurant Bill Splitter. Calculate tax and service charge accurately for groups." }] },
+    id: { title: "Bagi Tagihan", sections: [{ title: "Ringkasan Alat", content: "Pembagi Tagihan Restoran. Hitung pajak dan layanan secara akurat untuk grup." }] },
+    de: { title: "Rechnungsteiler", sections: [{ title: "Überblick", content: "Rechnungsteiler. Berechnen Sie Steuern und Servicegebühren präzise." }] },
+    es: { title: "Dividir Cuenta", sections: [{ title: "Descripción", content: "Dividir Cuenta. Calcula impuestos y servicio con precisión." }] },
+    pt: { title: "Dividir Conta", sections: [{ title: "Visão Geral", content: "Dividir Conta. Calcule impostos e taxas de serviço." }] },
+    fr: { title: "Partage d'Addition", sections: [{ title: "Aperçu", content: "Partage d'Addition. Calculez taxes et service avec précision." }] },
+    it: { title: "Divisione Conto", sections: [{ title: "Panoramica", content: "Divisione Conto. Calcola tasse e servizio con precisione." }] }
   },
   "image-resizer": {
-    en: {
-      title: "Pixel-Perfect Image Resizer",
-      sections: [
-        { title: "Precise Dimensions", content: "<h2>Resize for Any Platform</h2><p>Change the width and height of your images in pixels with precision. Use the <strong>Lock Aspect Ratio</strong> feature to ensure your photos don't look stretched or squashed.</p>" }
-      ]
-    },
-    id: {
-      title: "Ubah Ukuran Gambar Pixel-Perfect",
-      sections: [
-        { title: "Dimensi yang Tepat", content: "<h2>Sesuaikan Kebutuhan</h2><p>Ubah lebar dan tinggi gambar dalam pixel dengan akurat. Gunakan fitur kunci rasio agar foto tetap proporsional.</p>" }
-      ]
-    }
+    en: { title: "Image Resizer", sections: [{ title: "Privacy-First Resizing", content: "Resize images specifically for Instagram, TikTok, or Passports. Processed 100% in your browser." }] },
+    id: { title: "Ubah Ukuran Gambar", sections: [{ title: "Ubah Ukuran Aman", content: "Ubah ukuran foto khusus untuk Instagram, TikTok, atau Paspor. Diproses 100% di browser Anda, tanpa upload server." }] },
+    de: { title: "Bildgröße ändern", sections: [{ title: "Datenschutzfreundliche Größenänderung", content: "Bildgröße für Instagram oder Pässe ändern. 100% im Browser verarbeitet." }] },
+    es: { title: "Redimensionar Imagen", sections: [{ title: "Redimensionado Seguro", content: "Cambia el tamaño para Instagram o Pasaporte. Procesado 100% en tu navegador." }] },
+    pt: { title: "Redimensionar Imagem", sections: [{ title: "Redimensionamento Seguro", content: "Redimensione para Instagram ou Pasaporte. Processado 100% no navegador." }] },
+    fr: { title: "Redimensionner Image", sections: [{ title: "Redimensionnement Sécurisé", content: "Redimensionnez pour Instagram ou Passeport. Traité à 100% dans votre navigateur." }] },
+    it: { title: "Ridimensiona Immagine", sections: [{ title: "Ridimensionamento Sicuro", content: "Ridimensiona per Instagram o Passaporto. Elaborato al 100% nel browser." }] }
   },
   "image-cropper": {
-    en: {
-      title: "Interactive Image Cropping Tool",
-      sections: [
-        { title: "Perfect Aspect Ratios", content: "<h2>Crop for Social Media</h2><p>Crop your photos to exact ratios like <strong>1:1 (Square)</strong> for Instagram or <strong>16:9</strong> for YouTube thumbnails. Works entirely on your device for maximum speed and privacy.</p>" }
-      ]
-    },
-    id: {
-      title: "Potong Gambar Interaktif",
-      sections: [
-        { title: "Rasio Dimensi Sempurna", content: "<h2>Potong untuk Media Sosial</h2><p>Sesuaikan foto Anda ke rasio 1:1 (Kotak) atau 16:9 dengan mudah dan cepat tanpa upload file ke server.</p>" }
-      ]
-    }
+    en: { title: "Image Cropper", sections: [{ title: "Crop Photos Easily", content: "Crop your images to exact ratios (1:1, 16:9) instantly. No quality loss." }] },
+    id: { title: "Potong Gambar", sections: [{ title: "Potong Foto Mudah", content: "Potong gambar Anda ke rasio yang tepat (1:1, 16:9) secara instan. Tanpa mengurangi kualitas." }] },
+    de: { title: "Bild zuschneiden", sections: [{ title: "Fotos einfach zuschneiden", content: "Bilder sofort auf exakte Verhältnisse (1:1, 16:9) zuschneiden. Kein Qualitätsverlust." }] },
+    es: { title: "Cortar Imagen", sections: [{ title: "Recortar Fotos Fácilmente", content: "Recorta tus imágenes a ratios exactos (1:1, 16:9). Sin pérdida de calidad." }] },
+    pt: { title: "Cortar Imagem", sections: [{ title: "Cortar Fotos Facilmente", content: "Corte suas imagens em proporções exatas. Sem perda de qualidade." }] },
+    fr: { title: "Rogner Image", sections: [{ title: "Rogner Facilement", content: "Rognez vos images aux ratios exacts. Pas de perte de qualité." }] },
+    it: { title: "Ritaglia Immagine", sections: [{ title: "Ritaglia Foto Facilmente", content: "Ritaglia le tue immagini in rapporti esatti. Nessuna perdita di qualità." }] }
+  },
+  "image-compressor": {
+    en: { title: "Image Compressor", sections: [{ title: "Reduce File Size", content: "Secure image compression. Shrink MB to KB instantly without server uploads." }] },
+    id: { title: "Kompres Gambar", sections: [{ title: "Kecilkan Foto", content: "Kompresi gambar aman. Ubah MB ke KB secara instan tanpa upload ke server." }] },
+    de: { title: "Bildkompressor", sections: [{ title: "Dateigröße reduzieren", content: "Sichere Bildkomprimierung. Reduzieren Sie MB in KB ohne Server-Uploads." }] },
+    es: { title: "Compresor de Imagen", sections: [{ title: "Reducir Tamaño", content: "Compresión segura. Reduce MB a KB al instante sin subir a servidores." }] },
+    pt: { title: "Compressor de Imagem", sections: [{ title: "Reduzir Tamanho", content: "Compressão segura. Reduza MB para KB instantaneamente sem upload." }] },
+    fr: { title: "Compresseur d'Image", sections: [{ title: "Réduire la taille", content: "Compression sécurisée. Réduisez les MB en KB sans envoi sur serveur." }] },
+    it: { title: "Compressore Immagini", sections: [{ title: "Riduci Dimensioni", content: "Compressione sicura. Riduci MB in KB senza caricamenti su server." }] }
   },
   "pdf-merge": {
-    en: {
-      title: "Secure PDF Merger & Combiner",
-      sections: [
-        { title: "Combine Documents Privately", content: "<h2>Client-Side PDF Processing</h2><p>Merge multiple PDF files into one single document securely. Since the processing happens in your browser, your sensitive documents are <strong>never uploaded</strong> to a cloud server.</p>" }
-      ]
-    },
-    id: {
-      title: "Gabung PDF Aman & Privat",
-      sections: [
-        { title: "Satukan Dokumen", content: "<h2>Proses Tanpa Internet</h2><p>Gabungkan beberapa file PDF menjadi satu dokumen secara aman. Data Anda tetap di perangkat Anda, tidak pernah diunggah ke server mana pun.</p>" }
-      ]
-    }
+    en: { title: "PDF Merge", sections: [{ title: "Combine PDFs", content: "Merge multiple PDF files into one. Private and offline processing." }] },
+    id: { title: "Gabung PDF", sections: [{ title: "Satukan Dokumen", content: "Gabungkan beberapa file PDF menjadi satu. Proses privat dan offline." }] },
+    de: { title: "PDF zusammenfügen", sections: [{ title: "Dokumente kombinieren", content: "Mehrere PDFs zu einer Datei verbinden. Private Offline-Verarbeitung." }] },
+    es: { title: "Combinar PDF", sections: [{ title: "Unir Documentos", content: "Combina varios archivos PDF en uno. Procesamiento privado y offline." }] },
+    pt: { title: "Combinar PDF", sections: [{ title: "Mesclar Documentos", content: "Una vários arquivos PDF em um só. Processamento privado e offline." }] },
+    fr: { title: "Fusionner PDF", sections: [{ title: "Combiner des PDF", content: "Fusionnez plusieurs PDF en un seul. Traitement privé et hors ligne." }] },
+    it: { title: "Unisci PDF", sections: [{ title: "Combina Documenti", content: "Unisci più file PDF in uno solo. Elaborazione privata e offline." }] }
   },
   "csv-helper": {
-    en: {
-      title: "Clean and Format CSV Data",
-      sections: [
-        { title: "Data Sanitization", content: "<h2>Ready for Excel & Sheets</h2><p>Clean your raw CSV data by removing duplicate rows and trimming unnecessary whitespace. Ensure your datasets are consistent and ready for analysis.</p>" }
-      ]
-    },
-    id: {
-      title: "Pembersih & Format Data CSV",
-      sections: [
-        { title: "Sanitasi Data", content: "<h2>Siap untuk Excel</h2><p>Bersihkan data CSV mentah Anda dengan menghapus baris duplikat dan spasi tambahan secara otomatis di browser.</p>" }
-      ]
-    }
+    en: { title: "CSV Cleaner", sections: [{ title: "Sanitize Data", content: "Remove duplicates and trim whitespace from CSV files instantly." }] },
+    id: { title: "Pembersih CSV", sections: [{ title: "Bersihkan Data", content: "Hapus duplikat dan rapikan spasi dari file CSV secara instan." }] },
+    de: { title: "CSV-Reiniger", sections: [{ title: "Daten bereinigen", content: "Duplikate entfernen und Leerzeichen aus CSV-Dateien kürzen." }] },
+    es: { title: "Limpiador CSV", sections: [{ title: "Sanear Datos", content: "Elimina duplicados y recorta espacios en archivos CSV al instante." }] },
+    pt: { title: "Limpeza CSV", sections: [{ title: "Limpar Dados", content: "Remova duplicatas e limpe espaços em arquivos CSV instantaneamente." }] },
+    fr: { title: "Nettoyeur CSV", sections: [{ title: "Nettoyer les données", content: "Supprimez les doublons et les espaces inutiles de vos fichiers CSV." }] },
+    it: { title: "Pulitore CSV", sections: [{ title: "Pulisci Dati", content: "Rimuovi duplicati e spazi dai file CSV istantaneamente." }] }
   },
   "calculator": {
-    en: {
-      title: "Construction Material & Cost Estimator",
-      sections: [
-        { title: "Accurate Renovations", content: "<h2>Calculate Paint and Tiles</h2><p>Enter your room dimensions to estimate exactly how many liters of paint or square meters of tiles you need. Avoid waste and save money on your next DIY project.</p>" }
-      ]
-    },
-    id: {
-      title: "Kalkulator Material & Estimasi Biaya",
-      sections: [
-        { title: "Renovasi Akurat", content: "<h2>Hitung Cat dan Ubin</h2><p>Masukkan dimensi ruangan untuk menghitung kebutuhan cat atau ubin secara presisi. Hemat biaya dengan estimasi yang tepat.</p>" }
-      ]
-    }
+    en: { title: "Material Calculator", sections: [{ title: "Estimate Materials", content: "Calculate paint and floor tile needs for your renovation project." }] },
+    id: { title: "Kalkulator Material", sections: [{ title: "Estimasi Bahan", content: "Hitung kebutuhan cat dan ubin untuk proyek renovasi Anda." }] },
+    de: { title: "Baumaterial-Rechner", sections: [{ title: "Bedarf schätzen", content: "Berechnen Sie den Farb- und Fliesenbedarf für Ihre Renovierung." }] },
+    es: { title: "Calculadora de Materiales", sections: [{ title: "Estimar Materiales", content: "Calcula pintura y azulejos para tus proyectos de renovación." }] },
+    pt: { title: "Calculadora de Materiais", sections: [{ title: "Estimativa de Materiais", content: "Calcule a necessidade de tinta e pisos para sua reforma." }] },
+    fr: { title: "Calculateur de Matériaux", sections: [{ title: "Estimer les matériaux", content: "Calculez vos besoins en peinture et carrelage pour vos travaux." }] },
+    it: { title: "Calcolatore Materiali", sections: [{ title: "Stima Materiali", content: "Calcola il fabbisogno di vernice e piastrelle per la ristrutturazione." }] }
+  },
+  "image-to-pdf": {
+    en: { title: "Image to PDF", sections: [{ title: "PDF Creator", content: "Convert JPG and PNG images into a clean PDF document." }] },
+    id: { title: "Gambar ke PDF", sections: [{ title: "Buat PDF", content: "Ubah foto JPG dan PNG menjadi dokumen PDF yang rapi." }] },
+    de: { title: "Bild zu PDF", sections: [{ title: "PDF Ersteller", content: "Wandeln Sie JPG- und PNG-Bilder in ein PDF-Dokument um." }] },
+    es: { title: "Imagen a PDF", sections: [{ title: "Creador de PDF", content: "Convierte imágenes JPG y PNG en un documento PDF limpio." }] },
+    pt: { title: "Imagem para PDF", sections: [{ title: "Criador de PDF", content: "Converta imagens JPG e PNG em um documento PDF limpo." }] },
+    fr: { title: "Image en PDF", sections: [{ title: "Créateur PDF", content: "Convertissez des images JPG et PNG en document PDF." }] },
+    it: { title: "Immagine in PDF", sections: [{ title: "Creatore PDF", content: "Converti immagini JPG e PNG in un documento PDF pulito." }] }
+  },
+  "tournament": {
+    en: { title: "Tournament Manager", sections: [{ title: "Organizer", content: "Create round-robin tournament brackets and auto-updating leaderboards." }] },
+    id: { title: "Manajer Turnamen", sections: [{ title: "Penyelenggara", content: "Buat bagan turnamen round-robin dan klasemen otomatis." }] },
+    de: { title: "Turniermanager", sections: [{ title: "Organisation", content: "Erstellen Sie Round-Robin-Spielpläne und Tabellen." }] },
+    es: { title: "Gestor de Torneos", sections: [{ title: "Organizador", content: "Crea cuadros de torneo round-robin y clasificaciones automáticas." }] },
+    pt: { title: "Gestor de Torneios", sections: [{ title: "Organizador", content: "Crie chaves de torneio round-robin e placares automáticos." }] },
+    fr: { title: "Gestionnaire de Tournoi", sections: [{ title: "Organisateur", content: "Créez des tournois round-robin et des classements automatiques." }] },
+    it: { title: "Gestore Torneo", sections: [{ title: "Organizzatore", content: "Crea tabelloni per tornei round-robin e classifiche automatiche." }] }
   }
 };
