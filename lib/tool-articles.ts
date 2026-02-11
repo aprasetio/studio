@@ -27,18 +27,18 @@ export const TOOL_ARTICLES: ArticleCollection = {
       sections: [
         { 
           title: "Play Americano Hassle-Free: Use Our Automatic Schedule Generator & Scoreboard", 
-          content: "<p>Want to play Americano format but lazy to calculate manually? Use our automatic Americano Generator & Scoreboard. Free, no app install required. Try now!</p><p>Are you planning a fun game session of Padel, Pickleball, or Tennis this weekend? The Americano format will surely be the top choice to make the atmosphere more fluid and competitive. But we all know the main problem: Organizing the schedule and calculating points manually is confusing. Who pairs with whom? Who should rest? What is the final leaderboard? Don't let paper, pens, or complicated Excel formulas ruin your fun on the court. Solusinya ada di sini. Kami menyediakan Americano Generator Tool yang bisa Anda gunakan langsung di halaman ini. Cukup masukkan nama pemain, dan biarkan sistem kami mengatur sisanya.</p>" 
+          content: "<p>Want to play Americano format but lazy to calculate manually? Use our automatic Americano Generator & Scoreboard. Free, no app install required. Try now!</p><p>Are you planning a fun game session of Padel, Pickleball, or Tennis this weekend? The Americano format will surely be the top choice to make the atmosphere more fluid and competitive. But we all know the main problem: Organizing the schedule and calculating points manually is confusing. Who pairs with whom? Who should rest? What is the final leaderboard? Don't let paper, pens, or complicated Excel formulas ruin your fun on the court. The solution is here. We provide an Americano Generator Tool that you can use directly on this page. Simply enter the player names, and let our system handle the rest.</p>" 
         },
         { 
           title: "What is the Americano Format?", 
-          content: "<p>For those of you trying it for the first time, Americano is the fairest and most exciting social tournament format. The basic concept is simple: <ul><li><strong>Switch Partners:</strong> You will play with a different partner in every match.</li><li><strong>Individual Score:</strong> Although playing doubles, the points you earn are counted for yourself.</li><li><strong>Goal:</strong> Collect as many points as possible to become the leaderboard champion at the end of the session.</li></ul></p><p>This format is perfect for Padel and Pickleball because it forces all players to interact (socialize) while competing at the same time.</p>" 
+          content: "<p>For those of you trying it for the first time, Americano is the fairest and most exciting social tournament format. The basic concept is simple: <ul><li><strong>Switch Partners:</strong> You will play with a different partner in every match.</li><li><strong>Individual Score:</strong> Although playing doubles, the points you earn are counted for yourself.</li><li><strong>Goal:</strong> Collect as many points as possible to become the leaderboard champion at the end of the session.</li></ul></p><p>This format is perfect for Padel and Pickleball communities because it forces all players to interact (socialize) while competing at the same time.</p>" 
         },
         { 
-          title: "Masalah Klasik Saat Main Americano Manual", 
-          content: "<p>Tanpa tools atau aplikasi, main Americano bisa jadi kacau: <ul><li><strong>Wasted Time:</strong> Debating who plays whom can take 5-10 minutes on its own.</li><li><strong>Unfairness:</strong> Without an algorithm, there is a possibility that one person keeps getting the same partner.</li><li><strong>Calculation Errors:</strong> Manually adding up scores from dozens of matches on paper is very prone to mistakes.</li></ul></p>" 
+          title: "Classic Problems When Playing Americano Manually", 
+          content: "<p>Without tools or apps, playing Americano can become chaotic: <ul><li><strong>Wasted Time:</strong> Debating who plays whom can take 5-10 minutes on its own.</li><li><strong>Unfairness:</strong> Without an algorithm, there is a possibility that one person keeps getting the same partner.</li><li><strong>Calculation Errors:</strong> Manually adding up scores from dozens of matches on paper is very prone to mistakes.</li></ul></p>" 
         },
         { 
-          title: "Fitur Unggulan Americano Generator Kami", 
+          title: "Superior Features of Our Americano Generator", 
           content: "<p>Why should you use the tools on our website instead of other apps? <ol><li><strong>No Download & Install:</strong> Phone storage full? Relax. Our tool is web-based. You can open it directly from your browser at the court without the hassle of downloading heavy apps.</li><li><strong>Fair Play Algorithm:</strong> Our system ensures balanced player rotation. Everyone will get a fair chance to switch partners and face different opponents.</li><li><strong>Live Leaderboard:</strong> As soon as you enter match scores, the standings will update automatically. All players can see their positions in real-time from their respective phones (if the link is shared).</li></ol></p>" 
         },
         { 
@@ -347,7 +347,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
       sections: [
         {
           title: "Marcador Pro para Sparing y Torneos",
-          content: "<p>Jugar al fútbol sala parece menos emocionante si no hay un marcador y un tiempo claros. ¿Alguna vez has experimentado un momento incómodo durante el sparring: debatiendo el marcador (\"¡Eh, era 4-3 o 4-4!\"), o confundido sobre cuántos minutos quedan?</p><p>Un problema clásico en las canchas de fútbol sala no profesionales es la falta de un marcador adecuado. El precio de un marcador digital físico puede alcanzar millones de rupias ($150 - $400), una inversión bastante cara para los administradores de pequeñas canchas o comunidades. Mientras tanto, usar un cronómetro en el teléfono suele ser ineficaz porque la pantalla es pequeña y solo la puede ver una persona. VersoKit presenta una solución inteligente: <strong>Marcador Digital de Fútbol Sala</strong>. ¡Esta herramienta basada en la web convierte instantáneamente y de forma gratuita tu Laptop, Tablet o Teléfono en un marcador profesional!</p>"
+          content: "<p>Jugar al fútbol sala parece menos emocionante si no hay un marcador y un tiempo claros. ¿Alguna vez has experimentado un momento incómodo durante el sparring: debatiendo el marcador (\"¡Eh, era 4-3 o 4-4!\"), o confundido sobre cuántos minutos quedan?</p><p>Un problema clásico en las canchas de fútbol sala no profesionales es la falta de un marcador adecuado. El precio de un marcador digital físico puede alcanzar millones de rupias ($150 - $400), una inversión bastante cara para los administradores de pequeñas canchas o comunidades. Mientras tanto, usar un cronómetro en el teléfono suele ser en el sentido de que la pantalla es pequeña y solo la puede ver una persona. VersoKit presenta una solución inteligente: <strong>Marcador Digital de Fútbol Sala</strong>. ¡Esta herramienta basada en la web convierte instantáneamente y de forma gratuita tu Laptop, Tablet o Teléfono en un marcador profesional!</p>"
         },
         {
           title: "¿Por qué necesitas el Marcador de VersoKit?",
@@ -355,7 +355,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "Ventajas Técnicas: Avanzado sin Complicaciones",
-          content: "<p>Sabemos que los operadores de canchas o árbitros no quieren molestarse con instalaciones complicadas. Por lo tanto, el Marcador de Fútbol Sala VersoKit está construido con tecnología moderna:</p><ul><li><strong>Basado en la Web y sin instalación</strong>: No es necesario llenar la memoria del teléfono descargando aplicaciones de PlayStore/AppStore. Simplemente abre el navegador (Chrome/Safari/Edge) y la herramienta estará lista para usar.</li><li><strong>Modo de Pantalla Completa</strong>: ¿Quieres una pantalla como en la TV de la Liga Pro? Haz clic en el botón Pantalla Completa. Todos los elementos del navegador desaparecerán, dejando un marcador limpio y elegante.</li><li><strong>Listo para usar sin conexión</strong>: ¿El internet en la cancha de fútbol sala suele ser lento? Relájate. Una vez que esta página está completamente abierta, el Temporizador y el Marcador continúan funcionando normalmente incluso si el internet se desconecta.</li><li><strong>Responsivo</strong>: La pantalla se ajusta automáticamente. Perfecto en una Laptop para conectarse a una TV/Proyector mediante cable HDMI. Ideal en una Tablet/Teléfono para que los árbitros controlen el marcador desde la banda.</li></ul>"
+          content: "<p>Sabemos que los operadores de canchas o árbitros no quieren molestarse con instalaciones complicadas. Por lo tanto, el Marcador de Fútbol Sala VersoKit está construido con tecnología moderna:</p><ul><li><strong>Basado en la Web y sin instalación</strong>: No es necesario llenar la memoria del teléfono descargando aplicaciones de PlayStore/AppStore. Simplemente abre el navegador (Chrome/Safari/Edge) y la herramienta estará lista para usar.</li><li><strong>Modo de Pantalla Completa</strong>: ¿Quieres una pantalla como en la TV de la Liga Pro? Haz clic en el botón Pantalla Completa. Todos los elementos del navegador desaparecerán, dejando un marcador limpio y elegante.</li><li><strong>Listo para usar sin conexión</strong>: ¿El internet en la cancha de fútbol sala suele ser lento? Relájate. Una vez que esta página está completamente abierta, el Temporizador y el Marcador continúan funcionando normalmente incluso si el internet se desconecta.</li><li><strong>Responsivo</strong>: La pantalla se ajusta automáticamente. Perfecto en una Laptop para conectarse a una TV/Proyektor mediante cable HDMI. Ideal en una Tablet/Teléfono para que los árbitros controlen el marcador desde la banda.</li></ul>"
         },
         {
           title: "Cómo usar este Marcador de Fútbol Sala",
@@ -413,7 +413,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "Avantages Techniques : Avancé sans Tracas",
-          content: "<p>Nous savons que les gestionnaires de terrains ou les arbitres ne veulent pas s'embêter avec des installations compliquées. Par conséquent, le Tableau de Score Futsal VersoKit est construit avec une technologie moderne :</p><ul><li><strong>Basé sur le Web et sans installation</strong> : Pas besoin de remplir la mémoire du téléphone en téléchargeant des applications sur le PlayStore/AppStore. Ouvrez simplement le navigateur (Chrome/Safari/Edge) et l'outil est prêt à l'emploi.</li><li><strong>Mode Plein Écran</strong> : Vous voulez un affichage comme sur la TV de la Ligue Pro ? Cliquez sur le bouton Plein Écran. Tous les éléments du navigateur disparaîtront, laissant un tableau de score propre et élégant.</li><li><strong>Prêt pour le mode hors ligne</strong> : L'internet sur le terrain de futsal est-il souvent lent ? Détendez-vous. Une fois cette page complètement ouverte, le Timer et le Score continuent de fonctionner normalement même si l'internet est déconnecté.</li><li><strong>Responsif</strong> : L'affichage s'ajuste automatiquement. Parfait sur un ordinateur portable pour être connecté à une TV/Projecteur via un câble HDMI. Idéal sur une tablette/téléphone pour que les arbitres contrôlent le score depuis la ligne de touche.</li></ul>"
+          content: "<p>Nous savons que les gestionnaires de terrains ou les arbitres ne veulent pas s'embêter avec des installations compliquées. Par conséquent, le Tableau de Score Futsal VersoKit est construit avec une technologie moderne :</p><ul><li><strong>Basé sur le Web et sans installation</strong> : Pas besoin de remplir la mémoire du téléphone en téléchargeant des applications sur le PlayStore/AppStore. Ouvrez simplement le navigateur (Chrome/Safari/Edge) et l'outil est prêt à l'emploi.</li><li><strong>Mode Plein Écran</strong> : Vous voulez un affichage comme sur la TV de la Ligue Pro ? Cliquez sur le bouton Plein Écran. Tous les éléments du navigateur disparaîtront, laissant un tableau de score propre et élégant.</li><li><strong>Prêt pour le mode hors ligne</strong> : L'internet sur le terrain de futsal est-il souvent lent ? Détendez-vous. Une fois cette page complètement ouverte, le Timer et le Score continue de fonctionner normalement même si l'internet est déconnecté.</li><li><strong>Responsif</strong> : L'affichage s'ajuste automatiquement. Parfait sur un ordinateur portable pour être connecté à une TV/Projecteur via un câble HDMI. Idéal sur une tablette/téléphone pour que les arbitres contrôlent le score depuis la ligne de touche.</li></ul>"
         },
         {
           title: "Comment utiliser ce Tableau de Score Futsal",
@@ -441,7 +441,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
           content: "<p>Questo strumento non è solo un registratore di numeri. Lo abbiamo progettato con caratteristiche specifiche che seguono gli standard internazionali di regolamentazione del calcio a 5 (FIFA). Ecco le caratteristiche chiave di cui puoi godere:</p><ul><li><strong>1. Timer di Gara Flessibile (Conto alla Rovescia)</strong>: Nel calcio a 5 professionale, il tempo è tutto. Questo strumento è dotato di un timer per il conto alla rovescia che puoi impostare — o i 20 minuti standard (tempo pro) o i 15 minuti (sparring amichevole). <strong>Pausa e Ripresa</strong>: Palla fuori? Portiere infortunato? Basta premere il pulsante Pausa. Il tempo si ferma, e Riprendi quando la palla torna in gioco. Perfetto per simulare il tempo di \"Cronometro Fermo\".</li><li><strong>2. Conteggio Falli - Una funzione cruciale!</strong>: Questa è una funzione spesso dimenticata dalle normali app di punteggio. Nel calcio a 5, i falli accumulati determinano i risultati della gara. Il nostro strumento traccia i falli accumulati da 0 a 5. <strong>Indicatore Visivo</strong>: Quando una squadra raggiunge i 5 falli, tu e i giocatori in campo vi renderete conto che il fallo successivo (il 6°) significa una penalità di tiro libero diretto dal Secondo Punto del Rigore.</li><li><strong>3. Aspetto Professionale (Personalizzabile)</strong>: <strong>Modifica Nomi Squadre</strong>: Dì addio al noioso testo \"Casa vs Ospiti\". Puoi cambiarlo con i nomi reali delle squadre, ad es.: \"Garuda FC\" vs \"Harimau FC\". <strong>Indicatore di Periodo</strong>: Marcatori chiari per 1° Tempo, 2° Tempo o Tempi Supplementari.</li></ul>"
         },
         {
-          title: "Vantaggi Tecnici: Avanzato senza Problemi",
+          title: "Vantaggi Tecnici: Avanzed senza Problemi",
           content: "<p>Sappiamo che i gestori dei campi o gli arbitri non vogliono essere disturbati da installazioni complicate. Pertanto, il Tabellone Calcio a 5 VersoKit è costruito con tecnologia moderna:</p><ul><li><strong>Basato sul Web e senza installazione</strong>: Non è necessario riempire la memoria del telefono scaricando app dal PlayStore/AppStore. Basta aprire il browser (Chrome/Safari/Edge) e lo strumento è pronto all'uso.</li><li><strong>Modalità Schermo Intero</strong>: Vuoi una visualizzazione come sulla TV della Lega Pro? Clicca sul pulsante Schermo Intero. Tutti gli elementi del browser scompariranno, lasciando un tabellone pulito ed elegante.</li><li><strong>Pronto per l'uso offline</strong>: L'internet sul campo di calcio a 5 è spesso lento? Rilassati. Una volta che questa pagina è completamente aperta, il Timer e il Punteggio continuano a funzionare normalmente anche se l'internet viene scollegato.</li><li><strong>Resposivo</strong>: La visualizzazione si adatta automaticamente. Perfetto su un Laptop per essere collegato a una TV/Proiettore tramite cavo HDMI. Ideale su un Tablet/Telefono per gli arbitri per controllare il punteggio da bordo campo.</li></ul>"
         },
         {
@@ -576,7 +576,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "¿Para quién es adecuada esta herramienta?",
-          content: "<ul><li><strong>Juegos divertidos de oficina/complejo:</strong> Un grupo de amigos de la oficina o residentes del complejo que alquilan una pista durante 2-3 horas los fines de semana.</li><li><strong>Clubes de tenis amateur y entrenadores:</strong> Entrenadores que quieren organizar un \"Torneo Interno\" o un Mezclador dominical para que los miembros se unan más.</li><li><strong>Mezcladores de tenis:</strong> Grupos sociales que quieren jugar de forma casual (por ejemplo, formato de Tie-Break) pero aún así quieren un registro de puntuación ordenado y justo.</li></ul>"
+          content: "<ul><li><strong>Juegos divertidos de oficina/complejo:</strong> Un grupo de amigos de la oficina o residentes del complejo que alquilan una pista durante 2-3 horas los fines de semana.</li><li><strong>Clubes de tenis amateur y entrenadores:</strong> Entrenadores que quieren organizar un \"Torneo Interno\" o un Mezclador dominical para que los miembros se unan más.</li><li><strong>Mezcladores de tenis:</strong> Grupos sociales que quieren jugar de forma casual (por exemplo, formato de Tie-Break) pero aún así quieren un registro de puntuación ordenado y justo.</li></ul>"
         },
         {
           title: "Cómo usar este generador de horarios",
@@ -584,7 +584,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "Entender el formato del juego",
-          content: "<p>Para maximizar el uso de esta herramienta, aquí hay algunos términos de formato compatibles:</p><ul><li><strong>Round Robin:</strong> Un formato donde idealmente todos los jugadores se encontrarán con todos los demás jugadores (si el tiempo es suficiente).</li><li><strong>Mezclador Social:</strong> Un formato relajado que prioriza la interacción social con el cambio de compañeros.</li><li><strong>Tie-Break/Tenis rápido:</strong> Esta herramienta admite formatos de puntuación corta (por ejemplo, el mejor de 4 juegos o tie-break a 10) para que la rotación de jugadores se ejecute rápidamente y todos puedan jugar mucho.</li></ul>"
+          content: "<p>Para maximizar el uso de esta herramienta, aquí hay algunos términos de formato compatibles:</p><ul><li><strong>Round Robin:</strong> Un formato donde idealmente todos los jugadores se encontrarán con todos los demás jugadores (si el tiempo es suficiente).</li><li><strong>Mezclador Social:</strong> Un formato relajado que prioriza la interacción social con el cambio de compañeros.</li><li><strong>Tie-Break/Tenis rápido:</strong> Esta herramienta admite formatos de puntuación corta (por exemplo, el mejor de 4 juegos o tie-break a 10) para que la rotación de jugadores se ejecute rápidamente y todos puedan jugar mucho.</li></ul>"
         },
         {
           title: "Haz que las sesiones de tenis sean más competitivas y unidas",
@@ -824,32 +824,151 @@ export const TOOL_ARTICLES: ArticleCollection = {
   },
   "lineup": {
     en: {
-      title: "Lineup Builder",
-      sections: [{ title: "How it works", content: "Football Lineup Builder. Drag and drop players to create formations (4-4-2, 4-3-3). Download as image." }]
+      title: "Football Lineup Builder: Create Team Formations & Download Image",
+      sections: [
+        {
+          title: "Why Do You Need This Lineup Builder?",
+          content: "<p>This tool serves as a digital tactics board that is far more advanced and organized than a physical magnetic board. Here are the top features that will make your life easier:</p><ul><li><strong>1. Instant Starting XI Visualization:</strong> Forget blurry hand sketches. This tool generates green field graphics with precise player positions. Perfect for pre-match briefings.</li><li><strong>2. Drag & Drop Interface:</strong> Player positions are not rigid. Want the right winger to push further inside? Or the defensive midfielder to drop deeper? Simply click and drag (drag & drop) the player/jersey icons to any position on the field. You have full control over your tactics.</li><li><strong>3. Popular Formation Presets:</strong> Not sure where to start? We provide ready-to-use standard formation templates: Classic (4-4-2, 4-3-3, 3-5-2) and Modern (4-2-3-1, 3-4-3 Diamond, or \"Park the Bus\" 5-4-1). Pick one, adjust slightly, and you're done!</li><li><strong>4. Jersey & Name Customization:</strong> Make your team look authentic. Change the colors of the players' and goalkeeper's jerseys to match your team pride (Red, Blue, White, Stripes, etc.). Type the player's name and jersey number below the icon. No more players asking, \"Coach, where am I playing?\"</li></ul>"
+        },
+        {
+          title: "Who Should Use This Tool?",
+          content: "<p>This tool is designed for various needs within the football community:</p><ul><li><strong>Social Media Admins:</strong> Want your club's Instagram account to look professional like major league clubs? Posting a neat graphic Starting Lineup before kick-off is the key.</li><li><strong>Coaches & Team Captains:</strong> Share strategies to the team's WhatsApp group a day before the match (\"We're playing this tactic tomorrow!\"). Clear visuals reduce miscommunication on the field.</li><li><strong>Fans & Instant Pundits:</strong> Love analyzing matches? Explain your arguments about a \"False Nine\" or \"Inverted Fullback\" with pictures. Football debates on Twitter (X) become more valid with visual data.</li><li><strong>Gamers (FIFA/eFootball):</strong> Show off your strongest Ultimate Team or Dream Team squad to the gaming community with an elegant display.</li></ul>"
+        },
+        {
+          title: "How to Create a Football Formation in 1 Minute",
+          content: "<p>No need to install an app, just open this page in your phone or laptop browser:</p><ol><li><strong>Select Base Formation:</strong> Start with a preset (e.g., 4-3-3 Attack).</li><li><strong>Input Player Names:</strong> Click on the player icons to change names and numbers.</li><li><strong>Customize Appearance:</strong> Set your team's Home/Away jersey colors.</li><li><strong>Set Specific Tactics:</strong> Drag player positions if you want to apply a specific strategy (e.g., pushing one midfielder further forward).</li><li><strong>Download Image:</strong> Click the download button. The result is a high-quality image (PNG/JPG) ready to be shared.</li></ol>"
+        },
+        {
+          title: "Clean & Professional Results",
+          content: "<p>One of the main advantages of our tool is the \"Clean\" end result. The image you download looks like TV broadcast graphics, making your strategy appear credible and easy for anyone to understand. Don't let your genius strategy stay only in your head. Visualize it now, share it with the team, and achieve victory!</p>"
+        }
+      ]
     },
     id: {
-      title: "Pembuat Formasi",
-      sections: [{ title: "Cara Penggunaan", content: "Pembuat Formasi Sepak Bola. Geser pemain untuk membuat formasi (4-4-2, etc). Unduh sebagai gambar." }]
+      title: "Football Lineup Builder: Buat Formasi Tim Bola & Download Gambar",
+      sections: [
+        {
+          title: "Mengapa Anda Perlu Lineup Builder Ini?",
+          content: "<p>Alat ini berfungsi sebagai papan taktik digital yang jauh lebih canggih dan rapi daripada papan magnet fisik. Berikut adalah fitur unggulan yang akan mempermudah hidup Anda:</p><ul><li><strong>1. Visualisasi Starting XI Instan:</strong> Lupakan sketsa tangan yang buram. Alat ini menghasilkan gambar grafis lapangan hijau dengan posisi pemain yang presisi. Sangat cocok untuk presentasi sebelum pertandingan (pre-match briefing).</li><li><strong>2. Drag & Drop Interface (Geser Sesuka Hati):</strong> Posisi pemain tidak kaku. Ingin winger kanan lebih maju menusuk ke dalam? Atau gelandang bertahan lebih turun ke belakang? Cukup klik dan geser (drag & drop) ikon pemain/jersey ke posisi manapun di lapangan. Anda punya kendali penuh atas taktik Anda.</li><li><strong>3. Preset Formasi Populer:</strong> Bingung mulai dari mana? Kami menyediakan template formasi standar yang siap pakai: Klasik (4-4-2, 4-3-3, 3-5-2) dan Modern (4-2-3-1, 3-4-3 Diamond, atau strategi \"Parkir Bus\" 5-4-1). Pilih satu, lalu sesuaikan sedikit, dan selesai!</li><li><strong>4. Kustomisasi Jersey & Nama:</strong> Buat tim Anda terlihat otentik. Ubah warna baju pemain dan kiper agar sesuai dengan kebanggaan tim (Merah, Biru, Putih, Strip, dll). Ketik nama pemain dan nomor punggung di bawah ikon. Tidak ada lagi pemain yang bertanya, \"Saya main di posisi mana, Coach?\"</li></ul>"
+        },
+        {
+          title: "Siapa yang Wajib Menggunakan Alat Ini?",
+          content: "<p>Alat ini dirancang untuk berbagai kebutuhan komunitas sepak bola:</p><ul><li><strong>Admin Media Sosial (SSB/Komunitas):</strong> Ingin akun Instagram klub terlihat profesional seperti klub Liga 1 atau Eropa? Posting Starting Lineup grafis yang rapi sebelum kick-off adalah kuncinya.</li><li><strong>Pelatih & Kapten Tim:</strong> Bagikan strategi ke grup WhatsApp tim sehari sebelum pertandingan (\"Besok kita main taktik ini ya!\"). Visual yang jelas mengurangi miskomunikasi di lapangan.</li><li><strong>Fans & Pundit Dadakan:</strong> Suka menganalisis pertandingan? Jelaskan argumen Anda tentang \"False Nine\" atau \"Inverted Fullback\" dengan gambar. Debat bola di Twitter (X) jadi lebih valid dengan data visual.</li><li><strong>Gamer (FIFA/eFootball):</strong> Pamerkan skuad Ultimate Team atau Dream Team terkuat Anda ke komunitas gaming dengan tampilan yang elegan.</li></ul>"
+        },
+        {
+          title: "Cara Membuat Formasi Bola dalam 1 Menit",
+          content: "<p>Tidak perlu instal aplikasi, cukup buka halaman ini di browser HP atau Laptop Anda:</p><ol><li><strong>Pilih Formasi Dasar:</strong> Mulai dengan preset (misal: 4-3-3 Attack).</li><li><strong>Input Nama Pemain:</strong> Klik pada ikon pemain untuk mengganti nama dan nomor punggung.</li><li><strong>Kustomisasi Tampilan:</strong> Atur warna jersey Home/Away tim Anda.</li><li><strong>Atur Taktik Spesifik:</strong> Geser posisi pemain jika Anda ingin menerapkan strategi khusus (misal: satu gelandang didorong lebih ke depan).</li><li><strong>Download Image:</strong> Klik tombol unduh. Hasilnya adalah gambar (PNG/JPG) berkualitas tinggi yang siap di-share.</li></ol>"
+        },
+        {
+          title: "Hasil Bersih & Profesional",
+          content: "<p>Salah satu keunggulan utama alat kami adalah hasil akhir yang Clean. Gambar yang Anda unduh terlihat seperti grafis siaran TV, membuat strategi Anda terlihat kredibel dan mudah dipahami oleh siapa saja. Jangan biarkan strategi jitu Anda hanya ada di kepala. Visualisasikan sekarang, bagikan ke tim, dan raih kemenangan!</p>"
+        }
+      ]
     },
     de: {
-      title: "Fußball-Aufstellungs-Planer",
-      sections: [{ title: "Anleitung", content: "Fußball-Aufstellungs-Planer. Erstellen Sie Formationen per Drag & Drop." }]
+      title: "Fußball-Aufstellungs-Planer: Teamformationen erstellen & Bild herunterladen",
+      sections: [
+        {
+          title: "Warum brauchen Sie diesen Aufstellungs-Planer?",
+          content: "<p>Dieses Tool dient als digitales Taktikboard, das weitaus fortschrittlicher und organisierter ist als eine physische Magnettafel. Hier sind die wichtigsten Funktionen, die Ihnen das Leben erleichtern werden:</p><ul><li><strong>1. Sofortige Visualisierung der Startelf:</strong> Vergessen Sie verschwommene Handskizzen. Dieses Tool erstellt Grafiken auf dem grünen Feld mit präzisen Spielerpositionen. Perfekt für Besprechungen vor dem Spiel.</li><li><strong>2. Drag & Drop-Benutzeroberfläche:</strong> Spielerpositionen sind nicht starr. Möchten Sie, dass der rechte Flügelspieler weiter nach innen zieht? Oder soll der defensive Mittelfeldspieler tiefer stehen? Klicken Sie einfach auf die Spieler-/Trikotsymbole und ziehen Sie sie an eine beliebige Stelle auf dem Spielfeld. Sie haben die volle Kontrolle über Ihre Taktik.</li><li><strong>3. Beliebte Formations-Voreinstellungen:</strong> Sie wissen nicht, wo Sie anfangen sollen? Wir bieten gebrauchsfertige Standard-Formationsvorlagen: Klassisch (4-4-2, 4-3-3, 3-5-2) und Modern (4-2-3-1, 3-4-3 Diamond oder die „Bus parken“-Strategie 5-4-1). Wählen Sie eine aus, passen Sie sie leicht an, und fertig!</li><li><strong>4. Trikot- & Namensanpassung:</strong> Lassen Sie Ihr Team authentisch aussehen. Ändern Sie die Farben der Spieler- und Torwarttrikots passend zu Ihrem Teamstolz (Rot, Blau, Weiß, Pfirsich usw.). Geben Sie den Namen und die Rückennummer des Spielers unter dem Symbol ein. Kein Spieler fragt mehr: „Coach, auf welcher Position spiele ich?“</li></ul>"
+        },
+        {
+          title: "Wer sollte dieses Tool nutzen?",
+          content: "<p>Dieses Tool ist für verschiedene Bedürfnisse innerhalb der Fußball-Community konzipiert:</p><ul><li><strong>Social Media Admins:</strong> Möchten Sie, dass der Instagram-Account Ihres Vereins so professionell aussieht wie der von großen Proficlubs? Eine saubere grafische Startaufstellung vor dem Anpfiff zu posten, ist der Schlüssel.</li><li><strong>Trainer & Teamkapitäne:</strong> Teilen Sie Strategien einen Tag vor dem Spiel in der WhatsApp-Gruppe des Teams („Morgen spielen wir mit dieser Taktik!“). Klare Visualisierungen reduzieren Missverständnisse auf dem Spielfeld.</li><li><strong>Fans & Experten:</strong> Lieben Sie es, Spiele zu analysieren? Erklären Sie Ihre Argumente über eine „Falsche Neun“ oder „Invertierte Außenverteidiger“ mit Bildern. Fußballdebatten auf Twitter (X) werden durch visuelle Daten glaubwürdiger.</li><li><strong>Gamer (FIFA/eFootball):</strong> Präsentieren Sie der Gaming-Community Ihren stärksten Ultimate Team- oder Dream Team-Kader in einem eleganten Design.</li></ul>"
+        },
+        {
+          title: "So erstellen Sie eine Fußballformation in 1 Minute",
+          content: "<p>Sie müssen keine App installieren, öffnen Sie einfach diese Seite in Ihrem Handy- oder Laptop-Browser:</p><ol><li><strong>Basisformation wählen:</strong> Beginnen Sie mit einer Voreinstellung (z. B. 4-3-3 Attack).</li><li><strong>Spielernamen eingeben:</strong> Klicken Sie auf die Spielersymbole, um Namen und Nummern zu ändern.</li><li><strong>Aussehen anpassen:</strong> Legen Sie die Heim-/Auswärtstrikotfarben Ihres Teams fest.</li><li><strong>Spezifische Taktiken festlegen:</strong> Verschieben Sie die Spielerpositionen, wenn Sie eine spezielle Strategie anwenden möchten (z. B. einen Mittelfeldspieler weiter nach vorne schieben).</li><li><strong>Bild herunterladen:</strong> Klicken Sie auf die Schaltfläche „Herunterladen“. Das Ergebnis ist ein hochwertiges Bild (PNG/JPG), das bereit zum Teilen ist.</li></ol>"
+        },
+        {
+          title: "Saubere & professionelle Ergebnisse",
+          content: "<p>Einer der Hauptvorteile unseres Tools ist das „saubere“ Endergebnis. Das heruntergeladene Bild sieht aus wie Grafiken aus TV-Übertragungen, wodurch Ihre Strategie glaubwürdig und für jeden leicht verständlich wirkt. Lassen Sie Ihre genialen Strategien nicht nur in Ihrem Kopf. Visualisieren Sie sie jetzt, teilen Sie sie mit dem Team und erringen Sie den Sieg!</p>"
+        }
+      ]
     },
     es: {
-      title: "Creador de Alineaciones",
-      sections: [{ title: "Cómo usar", content: "Creador de Alineaciones. Arrastra jugadores para crear formaciones." }]
+      title: "Creador de Alineaciones de Fútbol: Crea Formaciones y Descarga la Imagen",
+      sections: [
+        {
+          title: "¿Por qué necesitas este Creador de Alineaciones?",
+          content: "<p>Esta herramienta sirve como una pizarra táctica digital que es mucho más avanzada y organizada que una pizarra magnética física. Estas son las principales características que te facilitarán la vida:</p><ul><li><strong>1. Visualización instantánea del Once Inicial:</strong> Olvida los bocetos a mano borrosos. Esta herramienta genera gráficos de campo verde con posiciones precisas de los jugadores. Perfecto para charlas previas al partido.</li><li><strong>2. Interfaz de arrastrar y soltar (Drag & Drop):</strong> Las posiciones de los jugadores no son rígidas. ¿Quieres que el extremo derecho avance más hacia adentro? ¿O que el mediocentro defensivo baje más? Simplemente haz clic y arrastra (drag & drop) los iconos de los jugadores/camisetas a cualquier posición del campo. Tienes control total sobre tus tácticas.</li><li><strong>3. Ajustes preestablecidos de formaciones populares:</strong> ¿No sabes por dónde empezar? Ofrecemos plantillas de formaciones estándar listas para usar: Clásicas (4-4-2, 4-3-3, 3-5-2) y Modernas (4-2-3-1, 3-4-3 Diamante, o la estrategia de \"Aparcar el autobús\" 5-4-1). Elige una, ajústala ligeramente y ¡listo!</li><li><strong>4. Personalización de camisetas y nombres:</strong> Haz que tu equipo parezca auténtico. Cambia los colores de las camisetas de los jugadores y del portero para que coincidan con el orgullo de tu equipo (rojo, azul, blanco, rayas, etc.). Escribe el nombre del jugador y el número de dorsal debajo del icono. Se acabaron los jugadores preguntando: \"Entrenador, ¿en qué posición juego?\"</li></ul>"
+        },
+        {
+          title: "¿Quién debería usar esta herramienta?",
+          content: "<p>Esta herramienta está diseñada para diversas necesidades dentro de la comunidad futbolística:</p><ul><li><strong>Administradores de Redes Sociales:</strong> ¿Quieres que la cuenta de Instagram de tu club se vea profesional como la de los clubes de las grandes ligas? Publicar una alineación gráfica limpia antes del saque inicial es la clave.</li><li><strong>Entrenadores y Capitanes de equipo:</strong> Comparte estrategias en el grupo de WhatsApp del equipo un día antes del partido (\"¡Mañana jugaremos con esta táctica!\"). Los visuales claros reducen la falta de comunicación en el campo.</li><li><strong>Aficionados y Analistas:</strong> ¿Te gusta analizar partidos? Explica tus argumentos sobre un \"Falso Nueve\" o un \"Lateral Invertido\" con imágenes. Los debates de fútbol en Twitter (X) se vuelven más válidos con datos visuales.</li><li><strong>Gamers (FIFA/eFootball):</strong> Presume de tu escuadra más fuerte de Ultimate Team o Dream Team ante la comunidad de jugadores con una visualización elegante.</li></ul>"
+        },
+        {
+          title: "Cómo crear una formación de fútbol en 1 minuto",
+          content: "<p>No necesitas instalar ninguna aplicación, solo abre esta página en el navegador de tu móvil o portátil:</p><ol><li><strong>Selecciona la formación base:</strong> Empieza con un ajuste preestablecido (ej. 4-3-3 Ataque).</li><li><strong>Introduce los nombres de los jugadores:</strong> Haz clic en los iconos de los jugadores para cambiar nombres y números.</li><li><strong>Personaliza la apariencia:</strong> Configura los colores de la equipación local/visitante de tu equipo.</li><li><strong>Establece tácticas específicas:</strong> Arrastra las posiciones de los jugadores si quieres aplicar una estrategia específica (ej. empujar a un centrocampista más adelante).</li><li><strong>Descarga la imagen:</strong> Haz clic en el botón de descarga. El resultado es una imagen de alta calidad (PNG/JPG) lista para compartir.</li></ol>"
+        },
+        {
+          title: "Resultados limpios y profesionales",
+          content: "<p>Una de las principales ventajas de nuestra herramienta es el resultado final \"limpio\". La imagen que descargas parece un gráfico de una transmisión de televisión, lo que hace que tu estrategia parezca creíble y fácil de entender para cualquiera. No dejes que tu estrategia magistral se quede solo en tu cabeza. ¡Visualízala ahora, compártela con el equipo y consigue la victoria!</p>"
+        }
+      ]
     },
     pt: {
-      title: "Criador de Escalação",
-      sections: [{ title: "Como usar", content: "Criador de Escalação. Arraste jogadores para criar formações." }]
+      title: "Criador de Escalação de Futebol: Crie Formações e Baixe a Imagem",
+      sections: [
+        {
+          title: "Por que você precisa deste Criador de Escalação?",
+          content: "<p>Esta ferramenta funciona como um quadro de táticas digital que é muito mais avançado e organizado do que um quadro magnético físico. Aqui estão os principais recursos que facilitarão a sua vida:</p><ul><li><strong>1. Visualização instantânea do Onze Inicial:</strong> Esqueça esboços manuais borrados. Esta ferramenta gera gráficos de campo verde com posições precisas dos jogadores. Perfeito para preleções antes do jogo.</li><li><strong>2. Interface de arrastar e soltar (Drag & Drop):</strong> As posições dos jogadores não são rígidas. Quer que o ponta-direita avance mais para o meio? Ou que o médio defensivo recue mais? Basta clicar e arrastar (drag & drop) os ícones dos jogadores/camisas para qualquer posição no campo. Você tem controle total sobre suas táticas.</li><li><strong>3. Predefinições de formações populares:</strong> Não sabe por onde começar? Oferecemos modelos de formações padrão prontos para usar: Clássicas (4-4-2, 4-3-3, 3-5-2) e Modernas (4-2-3-1, 3-4-3 Diamante, ou a estratégia de \"Estacionar o Ônibus\" 5-4-1). Escolha uma, ajuste levemente e pronto!</li><li><strong>4. Personalização de camisas e nomes:</strong> Faça seu time parecer autêntico. Altere as cores das camisas dos jogadores e do goleiro para combinar com o orgulho do seu time (Vermelho, Azul, Branco, Listrado, etc.). Digite o nome do jogador e o número da camisa abaixo do ícone. Não haverá mais jogadores perguntando: \"Treinador, em que posição eu jogo?\"</li></ul>"
+        },
+        {
+          title: "Quem deve usar esta ferramenta?",
+          content: "<p>Esta ferramenta foi projetada para diversas necessidades da comunidade do futebol:</p><ul><li><strong>Administradores de Redes Sociais:</strong> Quer que o conta do Instagram do seu clube pareça profissional como a dos clubes das grandes ligas? Publicar uma escalação gráfica organizada antes do pontapé inicial é a chave.</li><li><strong>Treinadores e Capitães de equipe:</strong> Compartilhe estratégias no grupo de WhatsApp do time um dia antes da partida (\"Amanhã jogaremos com esta tática!\"). Visuais claros reduzem falhas de comunicação em campo.</li><li><strong>Fãs e Analistas:</strong> Gosta de analisar partidas? Explique seus argumentos sobre um \"Falso Nove\" ou um \"Lateral Invertido\" com imagens. Os debates de futebol no Twitter (X) tornam-se mais válidos com dados visuais.</li><li><strong>Gamers (FIFA/eFootball):</strong> Mostre sua escalação mais forte do Ultimate Team ou Dream Team para a comunidade de jogadores com uma exibição elegante.</li></ul>"
+        },
+        {
+          title: "Como criar uma formação de futebol em 1 minuto",
+          content: "<p>Não é necessário instalar um aplicativo, basta abrir esta página no navegador do seu telemóvel ou portátil:</p><ol><li><strong>Selecione a formação base:</strong> Comece com uma predefinição (ex: 4-3-3 Ataque).</li><li><strong>Insira os nomes dos jogadores:</strong> Clique nos ícones dos jogadores para alterar nomes e números.</li><li><strong>Personalize a aparência:</strong> Defina as cores das camisas principal/secundária do seu time.</li><li><strong>Defina táticas específicas:</strong> Arraste as posições dos jogadores se quiser aplicar uma estratégia específica (ex: empurrar um médio mais para a frente).</li><li><strong>Baixe a imagem:</strong> Clique no botão de download. O resultado é uma imagem de alta qualidade (PNG/JPG) pronta para ser compartilhada.</li></ol>"
+        },
+        {
+          title: "Resultados limpos e profissionais",
+          content: "<p>Uma das principais vantagens da nossa ferramenta é o resultado final \"limpo\". A imagem que você baixa parece um gráfico de transmissão de TV, tornando sua estratégia credível e fácil de entender para qualquer pessoa. Não deixe sua estratégia genial ficar apenas na sua cabeça. Visualize-a agora, compartilhe-a com a equipe e conquiste a vitória!</p>"
+        }
+      ]
     },
     fr: {
-      title: "Créateur de Composition",
-      sections: [{ title: "Comment ça marche", content: "Créateur de Composition. Glissez-déposez les joueurs pour créer des formations." }]
+      title: "Créateur de Composition de Football : Créez des Formations & Téléchargez l'Image",
+      sections: [
+        {
+          title: "Pourquoi avez-vous besoin de ce Créateur de Composition ?",
+          content: "<p>Cet outil sert de tableau tactique numérique bien plus avancé et organisé qu'un tableau magnétique physique. Voici les fonctionnalités phares qui vous faciliteront la vie :</p><ul><li><strong>1. Visualisation instantanée du Onze de Départ :</strong> Oubliez les croquis manuels flous. Cet outil génère des graphiques de terrain vert avec des positions de joueurs précises. Parfait pour les briefings d'avant-match.</li><li><strong>2. Interface Glisser-Déposer (Drag & Drop) :</strong> Les positions des joueurs ne sont pas figées. Vous voulez que l'ailier droit repique davantage vers l'intérieur ? Ou que le milieu défensif descende plus bas ? Cliquez simplement et faites glisser (drag & drop) les icônes de joueurs/maillots vers n'importe quelle position sur le terrain. Vous avez le contrôle total sur votre tactique.</li><li><strong>3. Préréglages de formations populaires :</strong> Vous ne savez pas par où commencer ? Nous proposons des modèles de formations standards prêts à l'emploi : Classiques (4-4-2, 4-3-3, 3-5-2) et Modernes (4-2-3-1, 3-4-3 Diamant, ou la stratégie \"Garer le bus\" 5-4-1). Choisissez-en un, ajustez-le légèrement et le tour est joué !</li><li><strong>4. Personnalisation des maillots et des noms :</strong> Donnez à votre équipe un look authentique. Changez les couleurs des maillots des joueurs et du gardien pour qu'elles correspondent à la fierté de votre équipe (Rouge, Bleu, Blanc, Rayures, etc.). Saisissez le nom du joueur et son numéro de maillot sous l'icône. Plus aucun joueur ne demandera : \"Coach, à quel poste je joue ?\"</li></ul>"
+        },
+        {
+          title: "Qui devrait utiliser cet outil ?",
+          content: "<p>Cet outil est conçu pour répondre aux divers besoins de la communauté du football :</p><ul><li><strong>Admins de Réseaux Sociaux :</strong> Vous voulez que le compte Instagram de votre club ait l'air professionnel comme celui des clubs de ligue 1 ou européens ? Publier une composition graphique propre avant le coup d'envoi est la clé.</li><li><strong>Entraîneurs et Capitaines d'équipe :</strong> Partagez vos stratégies dans le groupe WhatsApp de l'équipe la veille du match (\"Demain, on joue avec cette tactique !\"). Des visuels clairs réduisent les erreurs de communication sur le terrain.</li><li><strong>Fans et Analystes :</strong> Vous aimez analyser les matchs ? Expliquez vos arguments sur un \"Faux Neuf\" ou un \"Latéral Inversé\" avec des images. Les débats foot sur Twitter (X) deviennent plus crédibles avec des données visuelles.</li><li><strong>Gamers (FIFA/eFootball) :</strong> Présentez votre équipe Ultimate Team ou Dream Team la plus forte à la communauté gaming avec un affichage élégant.</li></ul>"
+        },
+        {
+          title: "Comment créer une formation de foot en 1 minute",
+          content: "<p>Pas besoin d'installer d'application, ouvrez simplement cette page dans le navigateur de votre téléphone ou de votre ordinateur :</p><ol><li><strong>Sélectionnez la formation de base :</strong> Commencez avec un préréglage (ex : 4-3-3 Attaque).</li><li><strong>Saisissez les noms des joueurs :</strong> Cliquez sur les icônes des joueurs pour changer les noms et les numéros.</li><li><strong>Personnalisez l'apparence :</strong> Réglez les couleurs des maillots domicile/extérieur de votre équipe.</li><li><strong>Définissez des tactiques spécifiques :</strong> Faites glisser les positions des joueurs si vous souhaitez appliquer une stratégie particulière (ex : pousser un milieu de terrain plus en avant).</li><li><strong>Téléchargez l'image :</strong> Cliquez sur le bouton de téléchargement. Le résultat est une image de haute qualité (PNG/JPG) prête à être partagée.</li></ol>"
+        },
+        {
+          title: "Résultats nets et professionnels",
+          content: "<p>L'un des principaux avantages de notre outil est le résultat final \"propre\". L'image que vous téléchargez ressemble aux graphiques des retransmissions TV, ce qui rend votre stratégie crédible et facile à comprendre pour tout le monde. Ne laissez pas votre stratégie de génie rester uniquement dans votre tête. Visualisez-la dès maintenant, partagez-la avec l'équipe et remportez la victoire !</p>"
+        }
+      ]
     },
     it: {
-      title: "Generatore Formazione Calcio",
-      sections: [{ title: "Come funziona", content: "Generatore Formazione Calcio. Trascina i giocatori per creare formazioni." }]
+      title: "Football Lineup Builder: Crea Formazioni Squadra e Scarica l'Immagine",
+      sections: [
+        {
+          title: "Perché hai bisogno di questo Lineup Builder?",
+          content: "<p>Questo strumento funge da lavagna tattica digitale molto più avanzata e organizzata di una lavagna magnetica fisica. Ecco le caratteristiche principali che ti semplificheranno la vita:</p><ul><li><strong>1. Visualizzazione istantanea della formazione titolare:</strong> Dimentica gli schizzi a mano sfocati. Questo strumento genera grafiche del campo verde con posizioni dei giocatori precise. Perfetto per i briefing pre-partita.</li><li><strong>2. Interfaccia Drag & Drop:</strong> Le posizioni dei giocatori non sono rigide. Vuoi che l'ala destra spinga più verso l'interno? O che il centrocampista difensivo scenda più in profondità? Basta fare clic e trascinare (drag & drop) le icone dei giocatori/maglie in qualsiasi posizione sul campo. Hai il pieno controllo delle tue tattiche.</li><li><strong>3. Formazioni predefinite popolari:</strong> Non sai da dove iniziare? Forniamo modelli di formazioni standard pronti all'uso: Classiche (4-4-2, 4-3-3, 3-5-2) e Moderne (4-2-3-1, 3-4-3 Diamante o la strategia \"Pullman davanti alla porta\" 5-4-1). Scegline una, regolala leggermente e il gioco è fatto!</li><li><strong>4. Personalizzazione di maglie e nomi:</strong> Rendi la tua squadra autentica. Cambia i colori delle maglie dei giocatori e del portiere per abbinarli all'orgoglio della tua squadra (Rosso, Blu, Bianco, a strisce, ecc.). Digita il nome del giocatore e il numero di maglia sotto l'icona. Non ci saranno più giocatori che chiedono: \"Coach, in che posizione gioco?\"</li></ul>"
+        },
+        {
+          title: "Chi dovrebbe usare questo strumento?",
+          content: "<p>Questo strumento è progettato per varie esigenze all'interno della comunità calcistica:</p><ul><li><strong>Amministratori dei social media:</strong> Vuoi che l'account Instagram del tuo club sembri professionale come quello dei club delle grandi leghe? Pubblicare una grafica pulita della formazione titolare prima del fischio d'inizio è la chiave.</li><li><strong>Allenatori e Capitani:</strong> Condividi le strategie nel gruppo WhatsApp della squadra il giorno prima della partita (\"Domani giocheremo con questa tattica!\"). Visual chiari riducono le incomprensioni in campo.</li><li><strong>Tifosi e Analisti:</strong> Ami analizzare le partite? Spiega le tue argomentazioni su un \"Falso Nueve\" o un \"Terzino Invertito\" con le immagini. I dibattiti sul calcio su Twitter (X) diventano più validi con i dati visivi.</li><li><strong>Gamer (FIFA/eFootball):</strong> Mostra la tua squadra Ultimate Team o Dream Team più forte alla comunità di gioco con un display elegante.</li></ul>"
+        },
+        {
+          title: "Come creare una formazione di calcio in 1 minuto",
+          content: "<p>Non è necessario installare un'app, basta aprire questa pagina nel browser del tuo telefono o laptop:</p><ol><li><strong>Seleziona la formazione base:</strong> Inizia con un preset (es. 4-3-3 Attacco).</li><li><strong>Inserisci i nomi dei giocatori:</strong> Fai clic sulle icone dei giocatori per cambiare nomi e numeri.</li><li><strong>Personalizza l'aspetto:</strong> Imposta i colori delle maglie Home/Away della tua squadra.</li><li><strong>Imposta tattiche specifiche:</strong> Trascina le posizioni dei giocatori se desideri applicare una strategia specifica (es. spingere un centrocampista più avanti).</li><li><strong>Scarica l'immagine:</strong> Fai clic sul pulsante di download. Il risultato è un'immagine di alta qualità (PNG/JPG) pronta per essere condivisa.</li></ol>"
+        },
+        {
+          title: "Risultati puliti e professionali",
+          content: "<p>Uno dei principali vantaggi del nostro strumento è il risultato finale \"pulito\". L'immagine che scarichi sembra una grafica delle trasmissioni TV, rendendo la tua strategia credibile e facile da capire per chiunque. Non lasciare che la tua strategia geniale rimanga solo nella tua testa. Visualizzala ora, condividila con la squadra e ottieni la vittoria!</p>"
+        }
+      ]
     }
   },
   "scoreboard": {
@@ -883,12 +1002,8 @@ export const TOOL_ARTICLES: ArticleCollection = {
     }
   },
   "inventory": {
-    en: { title: "Stock Management", sections: [
-      { title: "Tool Overview", content: "Stock Management Tool. Track items, quantities, and low stock alerts. Runs offline." }
-    ]},
-    id: { title: "Manajemen Stok", sections: [
-      { title: "Ringkasan Alat", content: "Alat Manajemen Stok. Lacak barang, jumlah, dan peringatan stok menipis. Berjalan offline." }
-    ]},
+    en: { title: "Stock Management", sections: [{ title: "Tool Overview", content: "Stock Management Tool. Track items, quantities, and low stock alerts. Runs offline." }] },
+    id: { title: "Manajemen Stok", sections: [{ title: "Ringkasan Alat", content: "Alat Manajemen Stok. Lacak barang, jumlah, dan peringatan stok menipis. Berjalan offline." }] },
     de: { title: "Lagerverwaltung", sections: [{ title: "Überblick", content: "Lagerverwaltung. Verfolgen Sie Artikel und Bestände offline." }] },
     es: { title: "Gestión de Inventario", sections: [{ title: "Descripción", content: "Gestión de Inventario. Controla artículos y stock bajo offline." }] },
     pt: { title: "Gestão de Estoque", sections: [{ title: "Visão Geral", content: "Gestão de Estoque. Acompanhe itens e alertas de estoque baixo." }] },
@@ -896,25 +1011,17 @@ export const TOOL_ARTICLES: ArticleCollection = {
     it: { title: "Gestione Inventario", sections: [{ title: "Panoramica", content: "Gestione Inventario. Traccia articoli e scorte basse offline." }] }
   },
   "shift": {
-    en: { title: "Shift Scheduler", sections: [
-      { title: "Tool Overview", content: "Employee Shift Planner. Organize morning, afternoon, and night shifts easily. Download schedule." }
-    ]},
-    id: { title: "Jadwal Shift", sections: [
-      { title: "Ringkasan Alat", content: "Jadwal Shift Karyawan. Atur shift pagi, siang, malam dengan mudah. Unduh jadwal." }
-    ]},
+    en: { title: "Shift Scheduler", sections: [{ title: "Tool Overview", content: "Employee Shift Planner. Organize morning, afternoon, and night shifts easily. Download schedule." }] },
+    id: { title: "Jadwal Shift", sections: [{ title: "Ringkasan Alat", content: "Jadwal Shift Karyawan. Atur shift pagi, siang, malam dengan mudah. Unduh jadwal." }] },
     de: { title: "Schichtplaner", sections: [{ title: "Überblick", content: "Schichtplaner. Organisieren Sie Schichten einfach und laden Sie den Plan herunter." }] },
     es: { title: "Planificador de Turnos", sections: [{ title: "Descripción", content: "Planificador de Turnos. Organiza turnos de mañana, tarde y noche." }] },
-    pt: { title: "Escala de Trabalho", sections: [{ title: "Visão Geral", content: "Escala de Trabalho. Organize turnos facilement e baixe a escala." }] },
+    pt: { title: "Escala de Trabalho", sections: [{ title: "Visão Geral", content: "Escala de Trabalho. Organize turnos facilmente e baixe a escala." }] },
     fr: { title: "Planning d'Équipe", sections: [{ title: "Aperçu", content: "Planning d'Équipe. Organisez les 3x8 facilement." }] },
     it: { title: "Pianificatore Turni", sections: [{ title: "Panoramica", content: "Pianificatore Turni. Organizza i turni facilmente." }] }
   },
   "split-bill": {
-    en: { title: "Split Bill", sections: [
-      { title: "Tool Overview", content: "Restaurant Bill Splitter. Calculate tax and service charge accurately for groups." }
-    ]},
-    id: { title: "Bagi Tagihan", sections: [
-      { title: "Ringkasan Alat", content: "Pembagi Tagihan Restoran. Hitung pajak dan layanan secara akurat untuk grup." }
-    ]},
+    en: { title: "Split Bill", sections: [{ title: "Tool Overview", content: "Restaurant Bill Splitter. Calculate tax and service charge accurately for groups." }] },
+    id: { title: "Bagi Tagihan", sections: [{ title: "Ringkasan Alat", content: "Pembagi Tagihan Restoran. Hitung pajak dan layanan secara akurat untuk grup." }] },
     de: { title: "Rechnungsteiler", sections: [{ title: "Überblick", content: "Rechnungsteiler. Berechnen Sie Steuern und Servicegebühren präzise." }] },
     es: { title: "Dividir Cuenta", sections: [{ title: "Descripción", content: "Dividir Cuenta. Calcula impuestos y servicio con precisión." }] },
     pt: { title: "Dividir Conta", sections: [{ title: "Visão Geral", content: "Dividir Conta. Calcule impostos e taxas de serviço." }] },
