@@ -22,50 +22,147 @@ export interface ArticleCollection {
 
 export const TOOL_ARTICLES: ArticleCollection = {
   "americano": {
-    en: {
-      title: "Americano Tournament Generator (Padel & Pickleball)",
+    id: {
+      title: "Generator Jadwal Americano Otomatis: Padel, Pickleball & Tenis",
       sections: [
-        { title: "What is an Americano Tournament?", content: "<h2>The Ultimate Social Format</h2><p>Americano is a popular tournament format for Padel, Pickleball, and Tennis where individual performance matters most. Unlike standard tournaments, you play with a <strong>different partner in every round</strong>. This makes it highly social and ensures that no single team dominates the entire event.</p>" },
-        { title: "How the Generator Works", content: "<h2>Smart Fair-Play Pairing</h2><p>Our generator uses an optimized <strong>Anchor Shift algorithm</strong> to ensure everyone plays with everyone else as much as possible. If you have an odd number of players, the system automatically manages 'Bye' rounds (bench) so that everyone gets equal court time.</p><h2>Key Features</h2><ul><li><strong>Padel Mode:</strong> Play to fixed points (e.g., 32 points total).</li><li><strong>Pickleball Mode:</strong> Race to a winning score (e.g., first to 11).</li><li><strong>Automatic Leaderboard:</strong> Tracks individual points and point differences in real-time.</li></ul>" },
-        { title: "FAQ & Privacy", content: "<h2>Is my data safe?</h2><p>Yes. All player names and scores are processed <strong>100% locally</strong> in your browser. We never upload your tournament data to our servers.</p><h2>Can I use it offline?</h2><p>Absolutely. Once the page is loaded, the Americano Generator works perfectly without an internet connection, making it ideal for sports clubs with poor signal.</p>" }
+        { 
+          title: "Main Americano Tanpa Ribet: Gunakan Generator Jadwal & Skor Otomatis Kami", 
+          content: "<p>Apakah Anda sedang merencanakan sesi fun game Padel, Pickleball, atau Tenis akhir pekan ini? Format Americano pasti jadi pilihan utama agar suasana lebih cair dan kompetitif.</p><p>Tapi, kita semua tahu masalah utamanya: Mengatur jadwal dan menghitung poin secara manual itu memusingkan. Jangan biarkan kertas, pulpen, atau rumus Excel yang rumit merusak keseruan Anda di lapangan. <strong>Solusinya ada di sini.</strong></p>" 
+        },
+        { 
+          title: "Apa Itu Format Americano?", 
+          content: "<p>Bagi Anda yang baru pertama kali mencoba, Americano adalah format turnamen sosial yang paling adil dan seru. Konsep dasarnya sederhana:</p><ul><li><strong>Ganti Pasangan:</strong> Anda akan bermain dengan pasangan berbeda di setiap pertandingan.</li><li><strong>Skor Individu:</strong> Meskipun bermain ganda, poin yang Anda dapatkan dihitung untuk diri sendiri.</li><li><strong>Tujuan:</strong> Mengumpulkan poin sebanyak mungkin untuk menjadi juara klasemen di akhir sesi.</li></ul>" 
+        },
+        { 
+          title: "Masalah Klasik Saat Main Americano Manual", 
+          content: "<p>Tanpa tools atau aplikasi, main Americano bisa jadi kacau:</p><ul><li><strong>Waktu Terbuang:</strong> Debat siapa lawan siapa bisa memakan waktu 5-10 menit sendiri.</li><li><strong>Tidak Adil:</strong> Tanpa algoritma, ada kemungkinan satu orang terus menerus dapat partner yang sama.</li><li><strong>Salah Hitung:</strong> Menjumlahkan skor puluhan pertandingan secara manual di kertas sangat rawan kesalahan.</li></ul>" 
+        },
+        { 
+          title: "Fitur Unggulan Americano Generator Kami", 
+          content: "<ul><li><strong>Tanpa Download & Install:</strong> Tool kami berbasis web (web-based) dan hemat penyimpanan HP.</li><li><strong>Algoritma Fair Play:</strong> Sistem kami memastikan rotasi pemain seimbang dan adil.</li><li><strong>Live Leaderboard:</strong> Klasemen otomatis terupdate begitu skor dimasukkan.</li></ul>" 
+        },
+        { 
+          title: "Cara Menggunakan Generator Americano Ini", 
+          content: "<ol><li><strong>Masukkan Nama Pemain:</strong> Ketik nama semua peserta (Minimal 4 orang).</li><li><strong>Pilih Poin Target:</strong> Tentukan mau main sampai poin berapa? (Umumnya 24 atau 32 poin).</li><li><strong>Generate Jadwal:</strong> Klik tombol buat jadwal.</li><li><strong>Main & Input Skor:</strong> Setelah match selesai, masukkan skornya.</li><li><strong>Lihat Pemenang:</strong> Di akhir sesi, sistem akan menobatkan juara hari itu!</li></ol>" 
+        },
+        { 
+          title: "Aturan Singkat Perhitungan Poin", 
+          content: "<ul><li><strong>Sistem Poin:</strong> Pertandingan dihitung per bola. Jika Tim A menang 14-10, maka Pemain Tim A masing-masing dapat 14 poin, dan Tim B dapat 10 poin.</li><li><strong>Servis:</strong> Servis bergantian setiap 4 kali bola.</li><li><strong>Pemenang:</strong> Pemain dengan total poin akumulasi tertinggi di akhir turnamen.</li></ul>" 
+        }
       ]
     },
-    id: {
-      title: "Generator Turnamen Americano (Padel & Pickleball)",
+    en: {
+      title: "Automatic Americano Schedule Generator: Padel, Pickleball & Tennis",
       sections: [
-        { title: "Apa itu Turnamen Americano?", content: "<h2>Format Sosial Terbaik</h2><p>Americano adalah format turnamen populer untuk Padel dan Pickleball di mana performa individu lebih diutamakan. Anda akan <strong>berganti pasangan di setiap babak</strong>, menjadikannya sangat seru dan adil bagi semua tingkat keahlian.</p>" },
-        { title: "Fitur Utama", content: "<ul><li><strong>Mode Padel:</strong> Bermain hingga total poin tetap (misal: 32 poin).</li><li><strong>Mode Pickleball:</strong> Siapa cepat mencapai skor tertentu (misal: 11 poin).</li><li><strong>Klasemen Otomatis:</strong> Menghitung poin individu dan selisih skor secara real-time.</li></ul>" },
-        { title: "Privasi & Penggunaan", content: "<h2>Apakah aman?</h2><p>Sangat aman. Semua data nama dan skor diproses <strong>secara lokal</strong> di browser Anda. Tidak ada data yang dikirim ke server kami.</p>" }
+        { 
+          title: "Play Americano Hassle-Free: Use Our Automatic Generator & Scoreboard", 
+          content: "<p>Planning a fun Padel, Pickleball, or Tennis session this weekend? The Americano format is the perfect choice for a social yet competitive atmosphere.</p><p>However, we all know the main headache: managing schedules and calculating points manually is exhausting. Don't let paper, pens, or complex Excel formulas ruin your fun on the court. <strong>The solution is here.</strong></p>" 
+        },
+        { 
+          title: "What is the Americano Format?", 
+          content: "<p>For those trying it for the first time, Americano is one of the fairest and most exciting social tournament formats. The basic concept is simple:</p><ul><li><strong>Rotating Partners:</strong> You will play with a different partner in every match.</li><li><strong>Individual Score:</strong> Even though you play doubles, the points you earn are calculated for you personally.</li><li><strong>Goal:</strong> Accumulate as many points as possible to become the champion at the end of the session.</li></ul>" 
+        },
+        { 
+          title: "Classic Problems with Manual Americano", 
+          content: "<p>Without the right tools, Americano can quickly become chaotic:</p><ul><li><strong>Wasted Time:</strong> Debating who plays whom can take 5-10 minutes per round.</li><li><strong>Unfairness:</strong> Without an algorithm, some players might get stuck with the same partner repeatedly.</li><li><strong>Calculation Errors:</strong> Manually adding up dozens of match scores on paper is prone to mistakes.</li></ul>" 
+        },
+        { 
+          title: "Key Features of Our Americano Generator", 
+          content: "<ul><li><strong>No Download Required:</strong> Our tool is web-based, saving your phone's storage space.</li><li><strong>Fair Play Algorithm:</strong> Our system ensures balanced and fair player rotation.</li><li><strong>Live Leaderboard:</strong> Standings update automatically as soon as match scores are entered.</li></ul>" 
+        },
+        { 
+          title: "How to Use This Americano Generator", 
+          content: "<ol><li><strong>Enter Player Names:</strong> Type in all participants (Minimum 4 people).</li><li><strong>Select Target Points:</strong> Decide the match length (Commonly 24 or 32 points).</li><li><strong>Generate Schedule:</strong> Click the build schedule button.</li><li><strong>Play & Input Scores:</strong> Enter the results after each match.</li><li><strong>See the Winner:</strong> The system crowns the champion at the end of the tournament!</li></ol>" 
+        },
+        { 
+          title: "Quick Scoring Rules", 
+          content: "<ul><li><strong>Point System:</strong> Matches are counted per ball. If Team A wins 14-10, each player on Team A gets 14 points, and Team B players get 10.</li><li><strong>Serving:</strong> Service rotates every 4 points.</li><li><strong>Winner:</strong> The player with the highest total accumulated points at the end.</li></ul>" 
+        }
       ]
     },
     de: {
-      title: "Americano Turnier Generator",
+      title: "Automatischer Americano Spielplan-Generator: Padel, Pickleball & Tennis",
       sections: [
-        { title: "Was ist ein Americano Turnier?", content: "<h2>Das ultimative soziale Format</h2><p>Americano ist ein Format für Padel und Pickleball, bei dem man in jeder Runde mit einem <strong>neuen Partner</strong> spielt. Es ist ideal für Vereine und soziale Gruppen.</p>" }
+        { 
+          title: "Americano stressfrei spielen: Nutzen Sie unseren automatischen Generator", 
+          content: "<p>Planen Sie eine Padel-, Pickleball- oder Tennis-Session? Das Americano-Format ist ideal für eine gesellige und wettbewerbsorientierte Atmosphäre.</p><p>Wir kennen das Problem: Den Spielplan und die Punkte manuell zu verwalten, ist mühsam. Lassen Sie sich den Spaß nicht durch Papierkram oder komplizierte Excel-Tabellen verderben. <strong>Hier ist die Lösung.</strong></p>" 
+        },
+        { 
+          title: "Was ist das Americano-Format?", 
+          content: "<p>Americano ist eines der fairsten sozialen Turnierformate. Das Konzept ist einfach:</p><ul><li><strong>Wechselnde Partner:</strong> Sie spielen in jedem Spiel mit einem anderen Partner.</li><li><strong>Einzelwertung:</strong> Obwohl Sie Doppel spielen, werden die Punkte für Sie persönlich gezählt.</li><li><strong>Ziel:</strong> Sammeln Sie so viele Punkte wie möglich, um am Ende Champion zu werden.</li></ul>" 
+        },
+        { 
+          title: "Vorteile unseres Generators", 
+          content: "<ul><li><strong>Webbasiert:</strong> Keine Installation nötig, schont den Speicherplatz.</li><li><strong>Fair-Play-Algorithmus:</strong> Garantiert eine ausgewogene Rotation der Spieler.</li><li><strong>Live-Rangliste:</strong> Ergebnisse werden sofort nach der Eingabe aktualisiert.</li></ul>" 
+        }
       ]
     },
     es: {
-      title: "Generador de Torneos Americano",
+      title: "Generador de Calendario Americano Automático: Pádel, Pickleball y Tenis",
       sections: [
-        { title: "¿Qué es el torneo Americano?", content: "<h2>El formato social por excelencia</h2><p>El Americano es un formato de torneo para Pádel y Pickleball donde cambias de <strong>pareja en cada ronda</strong>. El sistema gestiona las rotaciones automáticamente.</p>" }
+        { 
+          title: "Juega Americano sin complicaciones con nuestro generador automático", 
+          content: "<p>¿Planeas una sesión de Pádel, Pickleball o Tenis? El formato Americano es la mejor opción para un ambiente social y competitivo.</p><p>Gestionar los horarios y calcular puntos manualmente es agotador. No dejes que el papel y el boli arruinen tu diversión. <strong>La solución está aquí.</strong></p>" 
+        },
+        { 
+          title: "¿Qué es el formato Americano?", 
+          content: "<p>El Americano es un formato de torneo social muy justo y emocionante. El concepto es simple:</p><ul><li><strong>Parejas rotativas:</strong> Jugarás con un compañero diferente en cada partido.</li><li><strong>Puntuación individual:</strong> Aunque juegues dobles, los puntos se cuentan individualmente.</li><li><strong>Objetivo:</strong> Acumular el máximo de puntos para ganar el torneo.</li></ul>" 
+        },
+        { 
+          title: "Características principales", 
+          content: "<ul><li><strong>Sin descargas:</strong> Herramienta web, no ocupa espacio en tu móvil.</li><li><strong>Algoritmo de Juego Limpio:</strong> Asegura una rotación equilibrada.</li><li><strong>Clasificación en vivo:</strong> Actualización automática de la tabla de posiciones.</li></ul>" 
+        }
       ]
     },
     pt: {
-      title: "Gerador de Torneios Americano",
+      title: "Gerador Automático de Tabelas Americano: Padel, Pickleball e Ténis",
       sections: [
-        { title: "O que é o torneio Americano?", content: "<h2>O formato mais social</h2><p>Americano é um torneio de Padel e Pickleball onde você joga com um <strong>parceiro diferente a cada rodada</strong>. Ótimo para integrar jogadores de todos os níveis.</p>" }
+        { 
+          title: "Jogue Americano sem chatices com o nosso gerador automático", 
+          content: "<p>Vai organizar uma partida de Padel, Pickleball ou Ténis? O formato Americano é a escolha ideal para um convívio competitivo.</p><p>Gerir horários e pontos manualmente é uma dor de cabeça. Não deixe que o papel e a caneta estraguem a diversão. <strong>A solução está aqui.</strong></p>" 
+        },
+        { 
+          title: "O que é o formato Americano?", 
+          content: "<p>O Americano é um dos formatos de torneio social mais justos. O conceito é simples:</p><ul><li><strong>Parceiros Rotativos:</strong> Joga com um parceiro diferente em cada partida.</li><li><strong>Pontuação Individual:</strong> Embora jogue em duplas, os pontos são para a sua conta pessoal.</li><li><strong>Objetivo:</strong> Acumular o máximo de pontos para ser o campeão final.</li></ul>" 
+        },
+        { 
+          title: "Funcionalidades Principais", 
+          content: "<ul><li><strong>Sem Instalação:</strong> Ferramenta web que não ocupa espaço no telemóvel.</li><li><strong>Algoritmo Fair Play:</strong> Garante uma rotação equilibrada de jogadores.</li><li><strong>Classificação em Direto:</strong> Atualização automática mal insere os resultados.</li></ul>" 
+        }
       ]
     },
     fr: {
-      title: "Générateur de Tournoi Americano",
+      title: "Générateur Automatique de Planning Americano : Padel, Pickleball & Tennis",
       sections: [
-        { title: "Qu'est-ce qu'un tournoi Americano ?", content: "<h2>Le format social idéal</h2><p>L'Americano est un format de tournoi pour le Padel et le Pickleball où vous changez de <strong>partenaire à chaque tour</strong>.</p>" }
+        { 
+          title: "Jouez à l'Americano sans stress grâce à notre générateur automatique", 
+          content: "<p>Vous organisez une session de Padel, Pickleball ou Tennis ? Le format Americano est parfait pour une ambiance conviviale et compétitive.</p><p>Gérer le planning et les points manuellement est épuisant. Ne laissez pas la paperasse gâcher votre plaisir. <strong>La solution est ici.</strong></p>" 
+        },
+        { 
+          title: "Qu'est-ce que le format Americano ?", 
+          content: "<p>L'Americano est un format de tournoi social très équitable. Le concept est simple :</p><ul><li><strong>Partenaires tournants :</strong> Vous changez de partenaire à chaque match.</li><li><strong>Score individuel :</strong> Même si vous jouez en double, vos points sont comptabilisés personnellement.</li><li><strong>Objectif :</strong> Accumuler le plus de points possible pour gagner.</li></ul>" 
+        },
+        { 
+          title: "Nos points forts", 
+          content: "<ul><li><strong>Sans téléchargement :</strong> Outil web, n'encombre pas votre smartphone.</li><li><strong>Algorithme Fair-Play :</strong> Assure une rotation équilibrée des joueurs.</li><li><strong>Classement en direct :</strong> Mise à jour automatique des positions.</li></ul>" 
+        }
       ]
     },
     it: {
-      title: "Generatore Torneo Americano",
+      title: "Generatore Automatico di Tabellone Americano: Padel, Pickleball e Tennis",
       sections: [
-        { title: "Cos'è un torneo Americano?", content: "<h2>Il formato social perfetto</h2><p>L'Americano è un formato per Padel e Pickleball in cui si cambia <strong>partner ad ogni turno</strong>.</p>" }
+        { 
+          title: "Gioca all'Americano senza stress con il nostro generatore automatico", 
+          content: "<p>Stai organizzando una partita di Padel, Pickleball o Tennis? Il formato Americano è la scelta migliore per unire divertimento e competizione.</p><p>Gestire turni e punti manualmente è complicato. Non lasciare che carta e penna rovinino il divertimento. <strong>La soluzione è qui.</strong></p>" 
+        },
+        { 
+          title: "Cos'è il formato Americano?", 
+          content: "<p>L'Americano è uno dei formati di torneo sociale più equi. Il concetto è semplice:</p><ul><li><strong>Partner a rotazione:</strong> Giocherai con un compagno diverso in ogni partita.</li><li><strong>Punteggio individuale:</strong> Anche se giochi in doppio, i punti sono contati per te singolarmente.</li><li><strong>Obiettivo:</strong> Accumulare più punti possibile per vincere il torneo.</li></ul>" 
+        },
+        { 
+          title: "Caratteristiche principali", 
+          content: "<ul><li><strong>Nessun download:</strong> Strumento web, non occupa spazio sul telefono.</li><li><strong>Algoritmo Fair Play:</strong> Garantisce una rotazione equilibrata dei giocatori.</li><li><strong>Classifica live:</strong> Aggiornamento automatico non appena inserisci i risultati.</li></ul>" 
+        }
       ]
     }
   },
