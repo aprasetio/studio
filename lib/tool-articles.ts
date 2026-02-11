@@ -27,18 +27,18 @@ export const TOOL_ARTICLES: ArticleCollection = {
       sections: [
         { 
           title: "Play Americano Hassle-Free: Use Our Automatic Schedule Generator & Scoreboard", 
-          content: "<p>Want to play Americano format but lazy to calculate manually? Use our automatic Americano Generator & Scoreboard. Free, no app install required. Try now!</p><p>Are you planning a fun game session of Padel, Pickleball, or Tennis this weekend? The Americano format will surely be the top choice to make the atmosphere more fluid and competitive. But we all know the main problem: Organizing the schedule and calculating points manually is confusing. Who pairs with whom? Who should rest? What is the final leaderboard? Don't let paper, pens, or complicated Excel formulas ruin your fun on the court. The solution is here. We provide an Americano Generator Tool that you can use directly on this page. Simply enter the player names, and let our system handle the rest.</p>" 
+          content: "<p>Want to play Americano format but lazy to calculate manually? Use our automatic Americano Generator & Scoreboard. Free, no app install required. Try now!</p><p>Are you planning a fun game session of Padel, Pickleball, or Tennis this weekend? The Americano format will surely be the top choice to make the atmosphere more fluid and competitive. But we all know the main problem: Organizing the schedule and calculating points manually is confusing. Who pairs with whom? Who should rest? What is the final leaderboard? Don't let paper, pens, or complicated Excel formulas ruin your fun on the court. Solusinya ada di sini. Kami menyediakan Americano Generator Tool yang bisa Anda gunakan langsung di halaman ini. Cukup masukkan nama pemain, dan biarkan sistem kami mengatur sisanya.</p>" 
         },
         { 
           title: "What is the Americano Format?", 
-          content: "<p>For those of you trying it for the first time, Americano is the fairest and most exciting social tournament format. The basic concept is simple: <ul><li><strong>Switch Partners:</strong> You will play with a different partner in every match.</li><li><strong>Individual Score:</strong> Although playing doubles, the points you earn are counted for yourself.</li><li><strong>Goal:</strong> Collect as many points as possible to become the leaderboard champion at the end of the session.</li></ul></p><p>This format is perfect for Padel and Pickleball communities because it forces all players to interact (socialize) while competing at the same time.</p>" 
+          content: "<p>For those of you trying it for the first time, Americano is the fairest and most exciting social tournament format. The basic concept is simple: <ul><li><strong>Switch Partners:</strong> You will play with a different partner in every match.</li><li><strong>Individual Score:</strong> Although playing doubles, the points you earn are counted for yourself.</li><li><strong>Goal:</strong> Collect as many points as possible to become the leaderboard champion at the end of the session.</li></ul></p><p>This format is perfect for Padel and Pickleball because it forces all players to interact (socialize) while competing at the same time.</p>" 
         },
         { 
-          title: "Classic Problems When Playing Manual Americano", 
-          content: "<p>Without tools or apps, playing Americano can become chaotic: <ul><li><strong>Wasted Time:</strong> Debating who plays whom can take 5-10 minutes on its own.</li><li><strong>Unfairness:</strong> Without an algorithm, there is a possibility that one person keeps getting the same partner.</li><li><strong>Calculation Errors:</strong> Manually adding up scores from dozens of matches on paper is very prone to mistakes.</li></ul></p>" 
+          title: "Masalah Klasik Saat Main Americano Manual", 
+          content: "<p>Tanpa tools atau aplikasi, main Americano bisa jadi kacau: <ul><li><strong>Wasted Time:</strong> Debating who plays whom can take 5-10 minutes on its own.</li><li><strong>Unfairness:</strong> Without an algorithm, there is a possibility that one person keeps getting the same partner.</li><li><strong>Calculation Errors:</strong> Manually adding up scores from dozens of matches on paper is very prone to mistakes.</li></ul></p>" 
         },
         { 
-          title: "Superior Features of Our Americano Generator", 
+          title: "Fitur Unggulan Americano Generator Kami", 
           content: "<p>Why should you use the tools on our website instead of other apps? <ol><li><strong>No Download & Install:</strong> Phone storage full? Relax. Our tool is web-based. You can open it directly from your browser at the court without the hassle of downloading heavy apps.</li><li><strong>Fair Play Algorithm:</strong> Our system ensures balanced player rotation. Everyone will get a fair chance to switch partners and face different opponents.</li><li><strong>Live Leaderboard:</strong> As soon as you enter match scores, the standings will update automatically. All players can see their positions in real-time from their respective phones (if the link is shared).</li></ol></p>" 
         },
         { 
@@ -175,7 +175,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         { 
           title: "Como Utilizar Este Gerador de Americano", 
-          content: "<p>É muito fácil, siga estes passos: <ol><li><strong>Introduza os Nomes dos Jogadores:</strong> Escreva os nomes de todos os participantes (mínimo 4 pessoas). Número ímpar? Não há problema, o nosso sistema pode organizar os jogadores substitutos/em descanso por turnos.</li><li><strong>Selecione os Pontos Alvo:</strong> Determine até quantos pontos quer jogar? (Geralmente 24 ou 32 pontos).</li><li><strong>Gerar Tabela:</strong> Clique no botão de criar tabela.</li><li><strong>Jogar e Introduzir Pontuações:</strong> Assim que a partida terminar, introduza as pontuações.</li><li><strong>Ver o Vencedor:</strong> No final da sessão, o sistema coroará o campeão de Americano do dia!</li></ol></p>" 
+          content: "<p>É muito fácil, siga estes passos: <ol><li><strong>Introduza os Nomes dos Jogadores:</strong> Escreva os nomes de todos os participantes (mínimo 4 pessoas). Número ímppar? Não há problema, o nosso sistema pode organizar os jogadores substitutos/em descanso por turnos.</li><li><strong>Selecione os Pontos Alvo:</strong> Determine até quantos pontos quer jogar? (Geralmente 24 ou 32 pontos).</li><li><strong>Gerar Tabela:</strong> Clique no botão de criar tabela.</li><li><strong>Jogar e Introduzir Pontuações:</strong> Assim que a partida terminar, introduza as pontuações.</li><li><strong>Ver o Vencedor:</strong> No final da sessão, o sistema coroará o campeão de Americano do dia!</li></ol></p>" 
         },
         { 
           title: "Regras Breves para o Cálculo de Pontos", 
@@ -461,145 +461,298 @@ export const TOOL_ARTICLES: ArticleCollection = {
   },
   "tennis": {
     en: {
-      title: "Mastering Your Tennis Mixer with Our Match Generator",
+      title: "Tennis Doubles Generator: Automatic Schedule & Player Rotation",
       sections: [
         {
-          title: "How to Set Up Your Tournament",
-          content: "Setting up a social tennis session has never been easier. Start by entering your <b>Number of Players</b> and <b>Total Duration</b>. Our generator will automatically calculate how many rounds fit into your time slot. Add your players' names and assign their skill levels from 'Newbie' to 'Pro' to ensure the fairest possible match-ups."
+          title: "Stop Manual Scheduling Hassles",
+          content: "<p>Do you have a regular tennis group but are starting to get bored because the playing partners are always the same? Or perhaps you often have a headache arranging who should play on Court 1, Court 2, and who should rest when there is an odd number of players?</p><p>Managing social tennis sessions for 8 to 12 people manually is indeed complicated. Paper notes are often lost, team divisions are often seen as \"cliquey,\" and time is wasted just debating turn-taking. Leave the old ways behind. Use this Tennis Doubles Generator from VersoKit. Consider this tool as your \"Pocket Tournament Manager.\"</p>"
         },
         {
-          title: "The Fair Play Algorithm Explained",
-          content: "Tired of the same people sitting out every round? Our proprietary <b>Fair Play Algorithm</b> prioritizes players who have played the fewest games first. When balancing teams, it uses a 'Best + Worst vs. Middle Two' logic, ensuring that even with mixed skill levels, every match is competitive and fun."
+          title: "Classic Problems on the Tennis Court",
+          content: "<p>Without a clear system, club practice sessions or fun games often face obstacles:</p><ul><li><strong>Monotonous Partners:</strong> Players tend to only play with their close friends (cliques), making new members feel isolated.</li><li><strong>Wasted Time:</strong> Managing 8 people on 2 courts is easy. But what if there are 13 people on 3 courts? Calculating manual rotations takes a long time.</li><li><strong>Skill Imbalance:</strong> Often, skilled players gather with other skilled players, making the game unbalanced and less exciting.</li><li><strong>Odd Player Dilemma:</strong> Who should sit on the bench? Without fair rotation, there might be one person who sits for too long (\"stepchild\").</li></ul>"
         },
         {
-          title: "Smart Swapping & Rebalancing",
-          content: "If a player needs to leave early or arrives late, use the <b>Swap</b> feature. You can replace a player in any scheduled match, and the tool will offer to rebalance all future games to maintain equal court time for the remaining roster."
+          title: "VersoKit Solution: Key Features of the Tennis Generator",
+          content: "<p>This tool is designed to solve the above problems in seconds. Here are the main features:</p><ol><li><strong>Doubles Pairing Generator:</strong> Our system uses a Social Mixer algorithm. Unlike official tournaments (Fixed Partner), this tool focuses on Rotating Partners. You will change partners in every round automatically. The goal is for all members to get to know each other and for the game to be more fluid.</li><li><strong>Multi-Court Management:</strong> Have a large session with 3 or 4 courts at once? No problem. This tool will divide players evenly into \"Court 1\", \"Court 2\", etc. You don't need to worry about dividing the crowd.</li><li><strong>Smart Bench System (Fair Rest Rotation):</strong> If the number of players is odd (e.g., 9 or 11 people), our system will rotate rest turns automatically. The algorithm ensures no player sits twice in a row (unless everyone has already had a turn to rest).</li><li><strong>Leaderboard & Statistics:</strong> Although it's a doubles format, this tool tracks individual victories (Win/Loss Ratio and Game Difference). At the end of the session, you can see who is the \"King of the Court\" for that day based on statistical data.</li></ol>"
+        },
+        {
+          title: "Who is this Tool Suitable For?",
+          content: "<ul><li><strong>Office/Complex Fun Games:</strong> A group of office friends or complex residents who rent a court for 2-3 hours on weekends.</li><li><strong>Amateur Tennis Clubs & Coaches:</strong> Coaches who want to hold an \"Internal Tournament\" or Sunday Mixer so that members become more united.</li><li><strong>Tennis Mixers:</strong> Social groups who want to play casually (e.g., Tie-Break format) but still want neat and fair scorekeeping.</li></ul>"
+        },
+        {
+          title: "How to Use This Schedule Generator",
+          content: "<p>It's very easy, without needing to install any application. Simply send the link to this page to your tennis WhatsApp group.</p><ol><li><strong>Input Players:</strong> Enter the names of all participants present (Minimum 4 people).</li><li><strong>Select Number of Courts:</strong> Determine how many courts are available today.</li><li><strong>Generate Round 1:</strong> Click the button, and the system will display who is paired with whom, on which court.</li><li><strong>Play & Input Scores:</strong> After the game is finished (e.g., score 6-4 or tie-break 10-8), enter the score.</li><li><strong>Continue to Next Round:</strong> The system will reshuffle partners for the second round.</li></ol>"
+        },
+        {
+          title: "Understanding the Game Format",
+          content: "<p>To maximize the use of this tool, here are some supported format terms:</p><ul><li><strong>Round Robin:</strong> A format where ideally all players will meet all other players (if time is sufficient).</li><li><strong>Social Mixer:</strong> A relaxed format that prioritizes social interaction with changing partners.</li><li><strong>Tie-Break/Fast Tennis:</strong> This tool supports short score formats (e.g., best of 4 games or tie-break to 10) so that player rotation runs quickly and everyone gets to play a lot.</li></ul>"
+        },
+        {
+          title: "Make Tennis Sessions More Competitive & United",
+          content: "<p>Don't let administrative matters ruin the fun on the court. Let the VersoKit Tennis Doubles Generator manage the schedule, so you can focus on hitting the ball and having fun. Ready to try it? Use this tool, Free forever!</p>"
         }
       ]
     },
     id: {
-      title: "Panduan Lengkap Generator Jadwal Tenis Ganda",
+      title: "Tennis Doubles Generator: Atur Jadwal & Rotasi Pemain Otomatis",
       sections: [
         {
-          title: "Cara Mengatur Turnamen Anda",
-          content: "Mengatur sesi tenis sosial kini lebih mudah. Mulailah dengan memasukkan <b>Jumlah Pemain</b> dan <b>Durasi Sewa Lapangan</b>. Generator kami akan menghitung otomatis berapa banyak babak yang tersedia. Masukkan nama pemain dan level skill mereka untuk hasil pembagian tim yang adil."
+          title: "Stop Ribet Atur Jadwal Manual",
+          content: "<p>Apakah Anda punya grup tenis rutin tapi mulai bosan karena partner mainnya itu-itu saja? Atau mungkin Anda sering pusing mengatur siapa yang harus main di Lapangan 1, Lapangan 2, dan siapa yang harus istirahat saat jumlah pemain ganjil?</p><p>Mengelola sesi tenis sosial (social tennis) untuk 8 hingga 12 orang secara manual memang rumit. Catatan di kertas sering hilang, pembagian tim sering dianggap \"kubu-kubuan\", dan waktu habis hanya untuk berdebat soal giliran main. Tinggalkan cara lama. Gunakan Tennis Doubles Generator dari VersoKit ini. Anggap alat ini sebagai \"Manajer Turnamen Saku\" Anda.</p>"
         },
         {
-          title: "Memahami Algoritma Fair Play",
-          content: "Algoritma kami memprioritaskan pemain yang paling sedikit bermain untuk masuk ke babak berikutnya. Ini memastikan semua orang mendapatkan waktu lapangan yang sama, sangat cocok untuk grup dengan jumlah pemain ganjil."
+          title: "Masalah Klasik di Lapangan Tenis",
+          content: "<p>Tanpa sistem yang jelas, sesi latihan klub atau fun game sering mengalami kendala:</p><ul><li><strong>Partner Monoton:</strong> Pemain cenderung hanya bermain dengan teman dekatnya (clique), sehingga anggota baru merasa terasing.</li><li><strong>Waktu Terbuang:</strong> Mengatur 8 orang di 2 lapangan itu mudah. Tapi bagaimana jika ada 13 orang di 3 lapangan? Menghitung rotasi manual butuh waktu lama.</li><li><strong>Ketimpangan Skill:</strong> Seringkali pemain jago berkumpul dengan pemain jago, membuat permainan tidak seimbang dan kurang seru.</li><li><strong>Dilema Pemain Ganjil:</strong> Siapa yang harus duduk di bangku cadangan (bench)? Tanpa rotasi yang adil, bisa jadi ada satu orang yang duduk terlalu lama (\"anak tiri\").</li></ul>"
         },
         {
-          title: "Tips Mengelola Roster Pemain",
-          content: "Gunakan fitur <b>Ganti Pemain (Swap)</b> jika ada teman yang harus pulang lebih awal. Sistem akan menawarkan untuk mengacak ulang jadwal masa depan agar tetap adil bagi mereka yang masih bertahan."
+          title: "Solusi VersoKit: Fitur Unggulan Generator Tenis",
+          content: "<p>Alat ini dirancang untuk memecahkan masalah di atas dalam hitungan detik. Berikut fitur utamanya:</p><ol><li><strong>Rotasi Pasangan (Doubles Pairing Generator):</strong> Sistem kami menggunakan algoritma Social Mixer. Berbeda dengan turnamen resmi (Fixed Partner), alat ini fokus pada Rotating Partner. Anda akan berganti pasangan di setiap ronde secara otomatis. Tujuannya agar semua member saling kenal dan permainan lebih cair.</li><li><strong>Manajemen Banyak Lapangan (Multi-Court):</strong> Punya sesi besar dengan 3 atau 4 lapangan sekaligus? Tidak masalah. Alat ini akan membagi pemain secara merata ke \"Court 1\", \"Court 2\", dst. Anda tidak perlu pusing membagi kerumunan.</li><li><strong>Smart Bench System (Rotasi Istirahat Adil):</strong> Jika jumlah pemain ganjil (misal 9 atau 11 orang), sistem kami akan memutar giliran istirahat secara otomatis. Algoritma memastikan tidak ada pemain yang duduk dua kali berturut-turut (kecuali semua sudah kebagian istirahat).</li><li><strong>Leaderboard & Statistik Individu:</strong> Meskipun formatnya ganda, alat ini melacak kemenangan individu (Win/Loss Ratio dan Game Difference). Di akhir sesi, Anda bisa melihat siapa \"Raja Lapangan\" hari itu berdasarkan data statistik.</li></ol>"
+        },
+        {
+          title: "Siapa yang Cocok Menggunakan Alat Ini?",
+          content: "<ul><li><strong>Fun Game Kantor/Komplek:</strong> Sekelompok teman kantor atau bapak-bapak komplek yang menyewa lapangan 2-3 jam di akhir pekan.</li><li><strong>Klub Tenis Amatir & Pelatih:</strong> Pelatih yang ingin mengadakan \"Internal Tournament\" atau Sunday Mixer agar membernya makin guyub.</li><li><strong>Arisan Tenis:</strong> Ibu-ibu yang ingin main santai (misal format Tie-Break) tapi tetap ingin pencatatan skor yang rapi dan adil.</li></ul>"
+        },
+        {
+          title: "Cara Menggunakan Generator Jadwal Ini",
+          content: "<p>Sangat mudah, tanpa perlu install aplikasi apapun. Cukup kirim link halaman ini ke grup WhatsApp tenis Anda.</p><ol><li><strong>Input Pemain:</strong> Masukkan nama semua peserta yang hadir (Minimal 4 orang).</li><li><strong>Pilih Jumlah Lapangan:</strong> Tentukan berapa court yang tersedia hari ini.</li><li><strong>Generate Ronde 1:</strong> Klik tombol, dan sistem akan menampilkan siapa berpasangan dengan siapa, di lapangan mana.</li><li><strong>Main & Input Skor:</strong> Setelah game selesai (misal skor 6-4 atau tie-break 10-8), masukkan skornya.</li><li><strong>Lanjut Ronde Berikutnya:</strong> Sistem akan mengacak ulang pasangan untuk ronde kedua.</li></ol>"
+        },
+        {
+          title: "Memahami Format Permainan",
+          content: "<p>Untuk memaksimalkan penggunaan alat ini, berikut beberapa istilah format yang didukung:</p><ul><li><strong>Round Robin:</strong> Format di mana idealnya semua pemain akan bertemu dengan semua pemain lain (jika waktu cukup).</li><li><strong>Social Mixer:</strong> Format santai yang mengutamakan interaksi sosial dengan gonta-ganti pasangan.</li><li><strong>Tie-Break/Fast Tennis:</strong> Alat ini mendukung format skor pendek (misal best of 4 games atau tie-break to 10) agar rotasi pemain berjalan cepat dan semua kebagian main banyak.</li></ul>"
+        },
+        {
+          title: "Bikin Sesi Tenis Lebih Kompetitif & Guyub",
+          content: "<p>Jangan biarkan urusan administrasi merusak keseruan di lapangan. Biarkan VersoKit Tennis Doubles Generator yang mengatur jadwal, sehingga Anda bisa fokus memukul bola dan bersenang-senang. Siap mencobanya? Gunakan alat ini, Gratis selamanya!</p>"
         }
       ]
     },
     de: {
-      title: "Tennis-Match-Generator",
-      sections: [{ title: "Fairer Match-Generator", content: "Tennis-Match-Generator. Erstellen Sie mühelos ausgewogene Doppelspiele. Perfekt für gesellige Club-Sessions." }]
+      title: "Tennis-Doppel-Generator: Automatischer Spielplan & Spielerrotation",
+      sections: [
+        {
+          title: "Schluss mit manuellem Planungsstress",
+          content: "<p>Haben Sie eine feste Tennisgruppe, fangen aber an, sich zu langweilen, weil die Spielpartner immer die gleichen sind? Oder haben Sie oft Kopfschmerzen bei der Einteilung, wer auf Platz 1 oder Platz 2 spielen soll und wer bei einer ungeraden Spieleranzahl pausieren muss?</p><p>Die manuelle Verwaltung von sozialen Tennis-Sessions für 8 bis 12 Personen ist in der Tat kompliziert. Notizen auf Papier gehen oft verloren, die Teameinteilung wird oft als „Grüppchenbildung“ wahrgenommen und Zeit wird mit Debatten über die Reihenfolge verschwendet. Lassen Sie die alten Wege hinter sich. Nutzen Sie diesen Tennis-Doppel-Generator von VersoKit. Betrachten Sie dieses Tool als Ihren „Taschen-Turniermanager“.</p>"
+        },
+        {
+          title: "Klassische Probleme auf dem Tennisplatz",
+          content: "<p>Ohne ein klares System stehen Vereinstrainings oder Spaßspiele oft vor Hindernissen:</p><ul><li><strong>Monotone Partner:</strong> Spieler neigen dazu, nur mit ihren engen Freunden zu spielen (Grüppchenbildung), wodurch sich neue Mitglieder isoliert fühlen.</li><li><strong>Zeitverschwendung:</strong> Die Verwaltung von 8 Personen auf 2 Plätzen ist einfach. Aber was ist, wenn es 13 Personen auf 3 Plätzen sind? Die Berechnung manueller Rotationen nimmt viel Zeit in Anspruch.</li><li><strong>Ungleichgewicht der Fähigkeiten:</strong> Oft versammeln sich talentierte Spieler mit anderen talentierten Spielern, was das Spiel unausgewogen und weniger aufregend macht.</li><li><strong>Dilemma der ungeraden Spielerzahl:</strong> Wer soll auf der Bank sitzen? Ohne faire Rotation gibt es vielleicht eine Person, die zu lange sitzt („Stiefkind“).</li></ul>"
+        },
+        {
+          title: "VersoKit-Lösung: Hauptmerkmale des Tennis-Generators",
+          content: "<p>Dieses Tool wurde entwickelt, um die oben genannten Probleme in Sekunden zu lösen. Hier sind die Hauptmerkmale:</p><ol><li><strong>Doppel-Paarungs-Generator:</strong> Unser System verwendet einen Social Mixer-Algorithmus. Im Gegensatz zu offiziellen Turnieren (fester Partner) konzentriert sich dieses Tool auf rotierende Partner. Sie wechseln in jeder Runde automatisch den Partner. Das Ziel ist, dass sich alle Mitglieder kennenlernen und das Spiel flüssiger wird.</li><li><strong>Multi-Court-Verwaltung:</strong> Haben Sie eine große Session mit 3 oder 4 Plätzen gleichzeitig? Kein Problem. Dieses Tool teilt die Spieler gleichmäßig auf „Platz 1“, „Platz 2“ usw. auf. Sie müssen sich nicht um die Aufteilung der Menge kümmern.</li><li><strong>Smart Bench System (Faire Pausenrotation):</strong> Wenn die Spieleranzahl ungerade ist (z. B. 9 oder 11 Personen), rotiert unser System die Pausen automatisch. Der Algorithmus stellt sicher, dass kein Spieler zweimal hintereinander sitzt (es sei denn, jeder war schon einmal an der Reihe zu pausieren).</li><li><strong>Rangliste & Statistiken:</strong> Obwohl es ein Doppel-Format ist, verfolgt dieses Tool individuelle Siege (Sieg/Niederlage-Verhältnis und Spieldifferenz). Am Ende der Session können Sie anhand statistischer Daten sehen, wer der „König des Platzes“ für diesen Tag ist.</li></ol>"
+        },
+        {
+          title: "Für wen ist dieses Tool geeignet?",
+          content: "<ul><li><strong>Büro-/Wohnkomplex-Spaßspiele:</strong> Eine Gruppe von Bürofreunden oder Bewohnern, die am Wochenende einen Platz für 2-3 Stunden mieten.</li><li><strong>Amateur-Tennisclubs & Trainer:</strong> Trainer, die ein „internes Turnier“ oder einen Sunday Mixer veranstalten möchten, damit die Mitglieder enger zusammenwachsen.</li><li><strong>Tennis-Mixer:</strong> Soziale Gruppen, die locker spielen möchten (z. B. Tie-Break-Format), aber dennoch eine ordentliche und faire Punktezählung wünschen.</li></ul>"
+        },
+        {
+          title: "So verwenden Sie diesen Spielplan-Generator",
+          content: "<p>Es ist sehr einfach, ohne dass eine Anwendung installiert werden muss. Senden Sie einfach den Link zu dieser Seite an Ihre Tennis-WhatsApp-Gruppe.</p><ol><li><strong>Spieler eingeben:</strong> Geben Sie die Namen aller anwesenden Teilnehmer ein (mindestens 4 Personen).</li><li><strong>Anzahl der Plätze wählen:</strong> Bestimmen Sie, wie viele Plätze heute verfügbar sind.</li><li><strong>Runde 1 generieren:</strong> Klicken Sie auf die Schaltfläche, und das System zeigt an, wer mit wem auf welchem Platz gepaart ist.</li><li><strong>Spielen & Ergebnisse eingeben:</strong> Nachdem das Spiel beendet ist (z. B. Ergebnis 6:4 oder Tie-Break 10:8), geben Sie das Ergebnis ein.</li><li><strong>Weiter zur nächsten Runde:</strong> Das System mischt die Partner für die zweite Runde neu.</li></ol>"
+        },
+        {
+          title: "Das Spielformat verstehen",
+          content: "<p>Um die Nutzung dieses Tools zu maximieren, finden Sie hier einige unterstützte Formatbegriffe:</p><ul><li><strong>Round Robin:</strong> Ein Format, bei dem im Idealfall alle Spieler auf alle anderen Spieler treffen (wenn die Zeit ausreicht).</li><li><strong>Social Mixer:</strong> Ein entspanntes Format, bei dem die soziale Interaktion mit wechselnden Partnern im Vordergrund steht.</li><li><strong>Tie-Break/Fast Tennis:</strong> Dieses Tool unterstützt kurze Ergebnisformate (z. B. Best-of-4-Spiele oder Tie-Break bis 10), damit die Spielerrotation schnell abläuft und jeder viel zum Spielen kommt.</li></ul>"
+        },
+        {
+          title: "Tennis-Sessions wettbewerbsfähiger & gemeinschaftlicher gestalten",
+          content: "<p>Lassen Sie administrative Angelegenheiten nicht den Spaß auf dem Platz ruinieren. Lassen Sie den VersoKit Tennis Doubles Generator den Zeitplan verwalten, damit Sie sich auf das Schlagen des Balls und den Spaß konzentrieren können. Bereit zum Ausprobieren? Nutzen Sie dieses Tool, für immer kostenlos!</p>"
+        }
+      ]
     },
     es: {
-      title: "Generador de Partidos de Tenis",
-      sections: [{ title: "Generador de Partidos Justos", content: "Generador de Partidos de Tenis. Crea partidos de dobles equilibrados sin esfuerzo. Perfecto para sesiones sociales de clubes." }]
+      title: "Tennis Doubles Generator: Horario y Rotación Automática de Jugadores",
+      sections: [
+        {
+          title: "Detén las complicaciones de la programación manual",
+          content: "<p>¿Tienes un grupo de tenis habitual pero estás empezando a aburrirte porque los compañeros de juego son siempre los mismos? ¿O quizás a menudo tienes dolor de cabeza organizando quién debe jugar en la Pista 1, la Pista 2, y quién debe descansar cuando hay un número impar de jugadores?</p><p>Gestionar sesiones de tenis social para 8 a 12 personas manualmente es realmente complicado. Las notas en papel se pierden a menudo, las divisiones de equipo se ven frecuentemente como \"grupos cerrados\" y se pierde el tiempo debatiendo los turnos. Deja atrás las viejas formas. Usa este Generador de Dobles de Tenis de VersoKit. Considera esta herramienta como tu \"Gestor de Torneos de Bolsillo\".</p>"
+        },
+        {
+          title: "Problemas clásicos en la pista de tenis",
+          content: "<p>Sin un sistema claro, las sesiones de práctica del club o los juegos divertidos a menudo enfrentan obstáculos:</p><ul><li><strong>Compañeros monótonos:</strong> Los jugadores tienden a jugar solo con sus amigos cercanos (clanes), haciendo que los nuevos miembros se sientan aislados.</li><li><strong>Tiempo perdido:</strong> Gestionar a 8 personas en 2 pistas es fácil. Pero ¿qué pasa si hay 13 personas en 3 pistas? Calcular las rotaciones manuales lleva mucho tiempo.</li><li><strong>Desequilibrio de habilidades:</strong> A menudo, los jugadores hábiles se reúnen con otros jugadores hábiles, lo que hace que el juego sea desequilibrado y menos emocionante.</li><li><strong>Dilema del jugador impar:</strong> ¿Quién debe sentarse en el banquillo? Sin una rotación justa, podría haber una persona que se siente durante demasiado tiempo (\"el hijastro\").</li></ul>"
+        },
+        {
+          title: "Solución de VersoKit: Características clave del generador de tenis",
+          content: "<p>Esta herramienta está diseñada para resolver los problemas anteriores en segundos. Aquí están las características principales:</p><ol><li><strong>Generador de emparejamiento de dobles:</strong> Nuestro sistema utiliza un algoritmo de Mezclador Social. A diferencia de los torneos oficiales (compañero fijo), esta herramienta se centra en compañeros rotativos. Cambiarás de compañero en cada ronda automáticamente. El objetivo es que todos los miembros se conozcan entre sí y que el juego sea más fluido.</li><li><strong>Gestión de múltiples pistas:</strong> ¿Tienes una sesión grande con 3 o 4 pistas a la vez? No hay problema. Esta herramienta dividirá a los jugadores uniformemente en \"Pista 1\", \"Pista 2\", etc. No necesitas preocuparte por dividir a la multitud.</li><li><strong>Sistema de banquillo inteligente (rotación de descanso justa):</strong> Si el número de jugadores es impar (por ejemplo, 9 u 11 personas), nuestro sistema rotará los turnos de descanso automáticamente. El algoritmo garantiza que ningún jugador se siente dos veces seguidas (a menos que todos ya hayan tenido un turno para descansar).</li><li><strong>Clasificación y estadísticas:</strong> Aunque es un formato de dobles, esta herramienta rastrea las victorias individuales (proporción de victorias/derrotas y diferencia de juegos). Al final de la sesión, puedes ver quién es el \"Rey de la Pista\" de ese día basado en datos estadísticos.</li></ol>"
+        },
+        {
+          title: "¿Para quién es adecuada esta herramienta?",
+          content: "<ul><li><strong>Juegos divertidos de oficina/complejo:</strong> Un grupo de amigos de la oficina o residentes del complejo que alquilan una pista durante 2-3 horas los fines de semana.</li><li><strong>Clubes de tenis amateur y entrenadores:</strong> Entrenadores que quieren organizar un \"Torneo Interno\" o un Mezclador dominical para que los miembros se unan más.</li><li><strong>Mezcladores de tenis:</strong> Grupos sociales que quieren jugar de forma casual (por ejemplo, formato de Tie-Break) pero aún así quieren un registro de puntuación ordenado y justo.</li></ul>"
+        },
+        {
+          title: "Cómo usar este generador de horarios",
+          content: "<p>Es muy fácil, sin necesidad de instalar ninguna aplicación. Simplemente envía el enlace de esta página a tu grupo de WhatsApp de tenis.</p><ol><li><strong>Introducir jugadores:</strong> Introduce los nombres de todos los participantes presentes (mínimo 4 personas).</li><li><strong>Seleccionar número de pistas:</strong> Determina cuántas pistas hay disponibles hoy.</li><li><strong>Generar Ronda 1:</strong> Haz clic en el botón y el sistema mostrará quién está emparejado con quién, en qué pista.</li><li><strong>Jugar e introducir puntuaciones:</strong> Una vez finalizado el juego (por ejemplo, puntuación 6-4 o tie-break 10-8), introduce la puntuación.</li><li><strong>Continuar con la siguiente ronda:</strong> El sistema barajará de nuevo a los compañeros para la segunda ronda.</li></ol>"
+        },
+        {
+          title: "Entender el formato del juego",
+          content: "<p>Para maximizar el uso de esta herramienta, aquí hay algunos términos de formato compatibles:</p><ul><li><strong>Round Robin:</strong> Un formato donde idealmente todos los jugadores se encontrarán con todos los demás jugadores (si el tiempo es suficiente).</li><li><strong>Mezclador Social:</strong> Un formato relajado que prioriza la interacción social con el cambio de compañeros.</li><li><strong>Tie-Break/Tenis rápido:</strong> Esta herramienta admite formatos de puntuación corta (por ejemplo, el mejor de 4 juegos o tie-break a 10) para que la rotación de jugadores se ejecute rápidamente y todos puedan jugar mucho.</li></ul>"
+        },
+        {
+          title: "Haz que las sesiones de tenis sean más competitivas y unidas",
+          content: "<p>No dejes que los asuntos administrativos arruinen la diversión en la pista. Deja que el Generador de Dobles de Tenis de VersoKit gestione el horario, para que puedas centrarte en golpear la pelota y divertirte. ¿Listo para probarlo? ¡Usa esta herramienta, gratis para siempre!</p>"
+        }
+      ]
     },
     pt: {
-      title: "Gerador de Partidas de Tênis",
-      sections: [{ title: "Gerador de Partidas Justas", content: "Gerador de Partidas de Tênis. Crie jogos de duplas equilibrados facilmente. Perfeito para sessões sociais de clubes." }]
+      title: "Gerador de Duplas de Ténis: Horário e Rotação Automática de Jogadores",
+      sections: [
+        {
+          title: "Pare com as complicações do agendamento manual",
+          content: "<p>Tem um grupo de ténis regular, mas está a começar a ficar aborrecido porque os parceiros de jogo são sempre os mesmos? Ou talvez tenha frequentemente dores de cabeça a organizar quem deve jogar no Campo 1, no Campo 2 e quem deve descansar quando há um número ímpar de jogadores?</p><p>Gerir sessões de ténis social para 8 a 12 pessoas manualmente é, de facto, complicado. As notas em papel perdem-se frequentemente, as divisões de equipas são muitas vezes vistas como \"grupos fechados\" e perde-se tempo apenas a debater a ordem de jogo. Deixe as velhas formas para trás. Utilize este Gerador de Duplas de Ténis da VersoKit. Considere esta ferramenta como o seu \"Gestor de Torneios de Bolso\".</p>"
+        },
+        {
+          title: "Problemas clássicos no campo de ténis",
+          content: "<p>Sem um sistema claro, as sessões de treino do clube ou os jogos divertidos enfrentam frequentemente obstáculos:</p><ul><li><strong>Parceiros monótonos:</strong> Os jogadores tendem a jogar apenas com os seus amigos próximos (clãs), fazendo com que os novos membros se sintam isolados.</li><li><strong>Tempo desperdiçado:</strong> Gerir 8 pessoas em 2 campos é fácil. Mas e se houver 13 pessoas em 3 campos? Calcular as rotações manuais demora muito tempo.</li><li><strong>Desequilíbrio de competências:</strong> Muitas vezes, os jogadores habilidosos reúnem-se com outros jogadores habilidosos, tornando o jogo desequilibrado e menos emocionante.</li><li><strong>Dilema do jogador ímpar:</strong> Quem deve sentar-se no banco? Sem uma rotação justa, pode haver uma pessoa que se sente durante demasiado tempo (\"o enteado\").</li></ul>"
+        },
+        {
+          title: "Solução VersoKit: Principais características do gerador de ténis",
+          content: "<p>Esta ferramenta foi concebida para resolver os problemas acima referidos em segundos. Aqui estão as principais características:</p><ol><li><strong>Gerador de emparelhamento de duplas:</strong> O nosso sistema utiliza um algoritmo de Misturador Social. Ao contrário dos torneios oficiais (parceiro fixo), esta ferramenta foca-se em parceiros rotativos. Irá mudar de parceiro em cada ronda automaticamente. O objetivo é que todos os membros se conheçam e que o jogo seja mais fluido.</li><li><strong>Gestão de vários campos:</strong> Tem uma sessão grande com 3 ou 4 campos ao mesmo tempo? Não há problema. Esta ferramenta dividirá os jogadores uniformemente entre o \"Campo 1\", \"Campo 2\", etc. Não precisa de se preocupar com a divisão da multidão.</li><li><strong>Sistema de banco inteligente (rotação de descanso justa):</strong> Se o número de jogadores for ímpar (por exemplo, 9 ou 11 pessoas), o nosso sistema rodará os turnos de descanso automaticamente. O algoritmo garante que nenhum jogador se sente duas vezes seguidas (a menos que todos já tenham tido a sua vez de descansar).</li><li><strong>Classificação e estatísticas:</strong> Embora seja um formato de duplas, esta ferramenta monitoriza as vitórias individuais (rácio de vitórias/derrotas e diferença de jogos). No final da sessão, pode ver quem é o \"Rei do Campo\" desse dia com base nos dados estatísticos.</li></ol>"
+        },
+        {
+          title: "Para quem é adequada esta ferramenta?",
+          content: "<ul><li><strong>Jogos divertidos de escritório/condomínio:</strong> Um grupo de amigos do escritório ou residentes de um condomínio que alugam um campo durante 2 a 3 horas aos fins de semana.</li><li><strong>Clubes de ténis amadores e treinadores:</strong> Treinadores que queiram organizar um \"Torneio Interno\" ou um Misturador de domingo para que os membros se tornem mais unidos.</li><li><strong>Misturadores de ténis:</strong> Grupos sociais que queiram jogar casualmente (por exemplo, formato Tie-Break), mas que queiram um registo de pontuação organizado e justo.</li></ul>"
+        },
+        {
+          title: "Como utilizar este gerador de horários",
+          content: "<p>É muito fácil, sem necessidade de instalar qualquer aplicação. Basta enviar o link desta página para o seu grupo de ténis no WhatsApp.</p><ol><li><strong>Introduzir jogadores:</strong> Introduza os nomes de todos os participantes presentes (mínimo 4 pessoas).</li><li><strong>Selecionar número de campos:</strong> Determine quantos campos estão disponíveis hoje.</li><li><strong>Gerar Ronda 1:</strong> Clique no botão e o sistema mostrará quem está emparelhado com quem, em que campo.</li><li><strong>Jogar e introduzir pontuações:</strong> Após o jogo terminar (por exemplo, pontuação 6-4 ou tie-break 10-8), introduza a pontuação.</li><li><strong>Continuar para a ronda seguinte:</strong> O sistema voltará a baralhar os parceiros para a segunda ronda.</li></ol>"
+        },
+        {
+          title: "Compreender o formato do jogo",
+          content: "<p>Para maximizar a utilização desta ferramenta, aqui estão alguns termos de formato suportados:</p><ul><li><strong>Round Robin:</strong> Um formato em que, idealmente, todos os jogadores se encontrarão com todos os outros jogadores (se o tempo for suficiente).</li><li><strong>Misturador Social:</strong> Um formato relaxado que dá prioridade à interação social com a mudança de parceiros.</li><li><strong>Tie-Break/Ténis rápido:</strong> Esta ferramenta suporta formatos de pontuação curtos (por exemplo, melhor de 4 jogos ou tie-break até 10) para que a rotação dos jogadores seja rápida e todos consigam jogar muito.</li></ul>"
+        },
+        {
+          title: "Torne as sessões de ténis mais competitivas e unidas",
+          content: "<p>Não deixe que os assuntos administrativos estraguem a diversão no campo. Deixe que o Gerador de Duplas de Ténis da VersoKit gira o horário, para que se possa concentrar em bater na bola e divertir-se. Pronto para experimentar? Utilize esta ferramenta, grátis para sempre!</p>"
+        }
+      ]
     },
     fr: {
-      title: "Générateur de Matchs de Tennis",
-      sections: [{ title: "Générateur de Matchs Équitables", content: "Générateur de Matchs de Tennis. Créez des matchs de double équilibrés sans effort. Parfait pour les sessions sociales du club." }]
+      title: "Générateur de Doubles de Tennis : Planning et Rotation Automatique des Joueurs",
+      sections: [
+        {
+          title: "Arrêtez les tracas de la planification manuelle",
+          content: "<p>Avez-vous un groupe de tennis régulier mais commencez-vous à vous ennuyer parce que les partenaires de jeu sont toujours les mêmes ? Ou peut-être avez-vous souvent mal à la tête pour organiser qui doit jouer sur le Court 1, le Court 2, et qui doit se reposer lorsqu'il y a un nombre impair de joueurs ?</p><p>Gérer manuellement des sessions de tennis social pour 8 à 12 personnes est en effet compliqué. Les notes sur papier sont souvent perdues, les divisions d'équipe sont souvent perçues comme des \"clans\", et on perd du temps rien qu'à débattre de l'ordre de passage. Laissez les anciennes méthodes derrière vous. Utilisez ce Générateur de Doubles de Tennis de VersoKit. Considérez cet outil comme votre \"Gestionnaire de Tournoi de Poche\".</p>"
+        },
+        {
+          title: "Problèmes classiques sur le court de tennis",
+          content: "<p>Sans un système clair, les sessions d'entraînement du club ou les matchs amicaux rencontrent souvent des obstacles :</p><ul><li><strong>Partenaires monotones :</strong> Les joueurs ont tendance à ne jouer qu'avec leurs amis proches (clans), ce qui donne aux nouveaux membres le sentiment d'être isolés.</li><li><strong>Temps perdu :</strong> Gérer 8 personnes sur 2 courts est facile. Mais qu'en est-il s'il y a 13 personnes sur 3 courts ? Le calcul des rotations manuelles prend beaucoup de temps.</li><li><strong>Déséquilibre des compétences :</strong> Souvent, les joueurs expérimentés se regroupent entre eux, ce qui rend le jeu déséquilibré et moins passionnant.</li><li><strong>Dilemme du joueur impair :</strong> Qui doit rester sur le banc ? Sans une rotation équitable, il se peut qu'une personne reste assise trop longtemps (le \"laissé-pour-compte\").</li></ul>"
+        },
+        {
+          title: "Solution VersoKit : Caractéristiques clés du générateur de tennis",
+          content: "<p>Cet outil est conçu pour résoudre les problèmes ci-dessus en quelques secondes. Voici les principales caractéristiques :</p><ol><li><strong>Générateur d'appariement de doubles :</strong> Notre système utilise un algorithme de Mixeur Social. Contrairement aux tournois officiels (partenaire fixe), cet outil se concentre sur les partenaires tournants. Vous changerez de partenaire à chaque tour automatiquement. L'objectif est que tous les membres fassent connaissance et que le jeu soit plus fluide.</li><li><strong>Gestion multi-courts :</strong> Vous avez une grande session avec 3 ou 4 courts à la fois ? Pas de problème. Cet outil divisera les joueurs uniformément entre le \"Court 1\", le \"Court 2\", etc. Vous n'avez pas besoin de vous soucier de diviser la foule.</li><li><strong>Système de banc intelligent (rotation de repos équitable) :</strong> Si le nombre de joueurs est impair (par exemple, 9 ou 11 personnes), notre système fera tourner les tours de repos automatiquement. L'algorithme garantit qu'aucun joueur ne reste assis deux fois de suite (sauf si tout le monde a déjà eu un tour pour se reposer).</li><li><strong>Classement et statistiques :</strong> Bien qu'il s'agisse d'un format de double, cet outil suit les victoires individuelles (ratio victoires/défaites et différence de jeux). À la fin de la session, vous pouvez voir qui est le \"Roi du Court\" pour cette journée-là en fonction des données statistiques.</li></ol>"
+        },
+        {
+          title: "À qui s'adresse cet outil ?",
+          content: "<ul><li><strong>Matchs amicaux de bureau/résidence :</strong> Un groupe d'amis de bureau ou de résidents d'un complexe qui louent un court pendant 2-3 heures le week-end.</li><li><strong>Clubs de tennis amateurs et entraîneurs :</strong> Les entraîneurs qui souhaitent organiser un \"Tournoi Interne\" ou un Mixeur du dimanche pour que les membres soient plus unis.</li><li><strong>Mixeurs de tennis :</strong> Groupes sociaux qui souhaitent jouer de manière décontractée (par exemple, format Tie-Break) tout en voulant une tenue de score soignée et équitable.</li></ul>"
+        },
+        {
+          title: "Comment utiliser ce générateur de planning",
+          content: "<p>C'est très facile, sans avoir besoin d'installer d'application. Envoyez simplement le lien de cette page à votre groupe WhatsApp de tennis.</p><ol><li><strong>Saisir les joueurs :</strong> Entrez les noms de tous les participants présents (minimum 4 personnes).</li><li><strong>Sélectionner le nombre de courts :</strong> Déterminez combien de courts sont disponibles aujourd'hui.</li><li><strong>Générer le Tour 1 :</strong> Cliquez sur le bouton, et le système affichera qui est jumelé avec qui, sur quel court.</li><li><strong>Jouer et saisir les scores :</strong> Une fois le jeu terminé (par exemple, score 6-4 ou tie-break 10-8), entrez le score.</li><li><strong>Passer au tour suivant :</strong> Le système redistribuera les partenaires pour le deuxième tour.</li></ol>"
+        },
+        {
+          title: "Comprendre le format du jeu",
+          content: "<p>Pour maximiser l'utilisation de cet outil, voici quelques termes de format pris en charge :</p><ul><li><strong>Round Robin :</strong> Un format où, idéalement, tous les joueurs rencontreront tous les autres joueurs (si le temps le permet).</li><li><strong>Mixeur Social :</strong> Un format détendu qui privilégie l'interaction sociale avec changement de partenaires.</li><li><strong>Tie-Break/Fast Tennis :</strong> Cet outil prend en charge les formats de score courts (par exemple, le meilleur de 4 jeux ou tie-break à 10) pour que la rotation des joueurs se fasse rapidement et que tout le monde puisse jouer beaucoup.</li></ul>"
+        },
+        {
+          title: "Rendez les sessions de tennis plus compétitives et unies",
+          content: "<p>Ne laissez pas les questions administratives gâcher le plaisir sur le court. Laissez le Générateur de Doubles de Tennis VersoKit gérer le planning, afin que vous puissiez vous concentrer sur la frappe de la balle et vous amuser. Prêt à essayer ? Utilisez cet outil, gratuit pour toujours !</p>"
+        }
+      ]
     },
     it: {
-      title: "Generatore Partite Tennis",
-      sections: [{ title: "Generatore di Partite Eque", content: "Generatore Partite Tennis. Crea partite di doppio equilibrate senza sforzo. Perfetto per sessioni sociali di club." }]
+      title: "Generatore di Doppio Tennis: Programma e Rotazione Automatica dei Giocatori",
+      sections: [
+        {
+          title: "Basta complicazioni con la programmazione manuale",
+          content: "<p>Hai un gruppo di tennis abituale ma inizi ad annoiarti perché i partner di gioco sono sempre gli stessi? O forse hai spesso il mal di testa per organizzare chi deve giocare sul Campo 1, sul Campo 2 e chi deve riposare quando c'è un numero dispari di giocatori?</p><p>Gestire manualmente le sessioni di tennis sociale per 8-12 persone è davvero complicato. Gli appunti su carta si perdono spesso, le divisioni in squadre sono spesso viste come \"gruppetti\" e si perde tempo solo a discutere sui turni. Lascia perdere i vecchi metodi. Usa questo Generatore di Doppio Tennis di VersoKit. Considera questo strumento come il tuo \"Gestore di Tornei tascabile\".</p>"
+        },
+        {
+          title: "Problemi classici sul campo da tennis",
+          content: "<p>Senza un sistema chiaro, le sessioni di allenamento del club o le partite amichevoli affrontano spesso ostacoli:</p><ul><li><strong>Partner monotoni:</strong> I giocatori tendono a giocare solo con i loro amici stretti (clique), facendo sentire isolati i nuovi membri.</li><li><strong>Tempo sprecato:</strong> Gestire 8 persone su 2 campi è facile. Ma cosa succede se ci sono 13 persone su 3 campi? Calcolare le rotazioni manuali richiede molto tempo.</li><li><strong>Squilibrio di abilità:</strong> Spesso, i giocatori esperti si riuniscono con altri giocatori esperti, rendendo il gioco sbilanciato e meno eccitante.</li><li><strong>Dilemma del giocatore dispari:</strong> Chi deve sedersi in panchina? Senza una rotazione equa, potrebbe esserci una persona che siede troppo a lungo (il \"figliastro\").</li></ul>"
+        },
+        {
+          title: "Soluzione VersoKit: Caratteristiche principali del generatore di tennis",
+          content: "<p>Questo strumento è progettato per risolvere i problemi sopra citati in pochi secondi. Ecco le caratteristiche principali:</p><ol><li><strong>Generatore di abbinamento di doppio:</strong> Il nostro sistema utilizza un algoritmo di Social Mixer. A differenza dei tornei ufficiali (partner fisso), questo strumento si concentra sui partner rotanti. Cambierai partner automaticamente in ogni turno. L'obiettivo è che tutti i membri si conoscano e che il gioco sia più fluido.</li><li><strong>Gestione di più campi:</strong> Hai una sessione numerosa con 3 o 4 campi contemporaneamente? Nessun problema. Questo strumento dividerà i giocatori equamente tra \"Campo 1\", \"Campo 2\", ecc. Non devi preoccuparti di dividere la folla.</li><li><strong>Sistema di panchina intelligente (rotazione di riposo equa):</strong> Se il numero di giocatori è dispari (ad esempio, 9 o 11 persone), il nostro sistema ruoterà i turni di riposo automaticamente. L'algoritmo assicura che nessun giocatore sieda due volte di seguito (a meno che tutti non abbiano già avuto un turno di riposo).</li><li><strong>Classifica e statistiche:</strong> Sebbene sia un formato di doppio, questo strumento traccia le vittorie individuali (rapporto vittorie/sconfitte e differenza di giochi). Alla fine della sessione, puoi vedere chi è il \"Re del Campo\" per quel giorno in base ai dati statistici.</li></ol>"
+        },
+        {
+          title: "Per chi è adatto questo strumento?",
+          content: "<ul><li><strong>Partite amichevoli tra colleghi/condomini:</strong> Un gruppo di amici dell'ufficio o residenti di un complesso che affittano un campo per 2-3 ore nei fine settimana.</li><li><strong>Club di tennis amatoriali e allenatori:</strong> Allenatori che vogliono organizzare un \"Torneo interno\" o un Mixer domenicale affinché i membri diventino più uniti.</li><li><strong>Mixer di tennis:</strong> Gruppi sociali che vogliono giocare in modo informale (ad esempio, formato Tie-Break) ma desiderano comunque un punteggio ordinato ed equo.</li></ul>"
+        },
+        {
+          title: "Come usare questo generatore di programmi",
+          content: "<p>È molto facile, senza dover installare alcuna applicazione. Basta inviare il link di questa pagina al tuo gruppo WhatsApp di tennis.</p><ol><li><strong>Inserisci i giocatori:</strong> Inserisci i nomi di tutti i partecipanti presenti (minimo 4 persone).</li><li><strong>Seleziona il numero di campi:</strong> Determina quanti campi sono disponibili oggi.</li><li><strong>Genera il Turno 1:</strong> Clicca sul pulsante e il sistema mostrerà chi è accoppiato con chi, su quale campo.</li><li><strong>Gioca e inserisci i punteggi:</strong> Una volta terminata la partita (ad esempio, punteggio 6-4 o tie-break 10-8), inserisci il punteggio.</li><li><strong>Continua al turno successivo:</strong> Il sistema rimescolerà i partner per il secondo turno.</li></ol>"
+        },
+        {
+          title: "Comprendere il formato del gioco",
+          content: "<p>Per massimizzare l'uso di questo strumento, ecco alcuni termini di formato supportati:</p><ul><li><strong>Round Robin:</strong> Un formato in cui idealmente tutti i giocatori incontreranno tutti gli altri (se il tempo è sufficiente).</li><li><strong>Social Mixer:</strong> Un formato rilassato che dà priorità all'interazione sociale con il cambio di partner.</li><li><strong>Tie-Break/Fast Tennis:</strong> Questo strumento supporta formati di punteggio brevi (ad esempio, il meglio di 4 giochi o tie-break a 10) in modo che la rotazione dei giocatori sia rapida e tutti possano giocare molto.</li></ul>"
+        },
+        {
+          title: "Rendi le sessioni di tennis più competitive e unite",
+          content: "<p>Non lasciare che le questioni amministrative rovinino il divertimento in campo. Lascia che il Generatore di Doppio Tennis VersoKit gestisca il programma, così potrai concentrarti sul colpire la palla e divertirti. Pronto a provarlo? Usa questo strumento, gratis per sempre!</p>"
+        }
+      ]
     }
   },
   "budget-planner": {
     en: {
-      title: "Complete Guide & FAQ",
+      title: "Why Zero-Based Budgeting is the Key to Financial Freedom",
       sections: [
         {
-          title: "What is Zero-Based Budgeting?",
-          content: "<p>Zero-Based Budgeting (ZBB) is a method where every single dollar of your income is assigned to a specific category (Savings, Bills, Needs) until you have zero left to budget. The goal is to give every dollar a job.</p>"
-        },
-        {
-          title: "Why Choose VersoKit Budget Planner?",
-          content: "<ul><li><strong>Privacy First:</strong> Your financial data stays in your browser. We never see it.</li><li><strong>Offline Ready:</strong> Budget on the go, even without a connection.</li><li><strong>Zero Cost:</strong> No monthly subscriptions, ever.</li></ul>"
-        },
-        {
-          title: "Handling Overspending",
-          content: "<p>If a category turns red (negative), use the \"Fix\" button to move money from another category (e.g., from \"Entertainment\") to cover the cost. This keeps your budget balanced.</p>"
-        },
-        {
-          title: "Frequently Asked Questions",
-          content: "<p><strong>Q: Is my data safe?</strong><br>A: Yes, it is stored locally on your device using LocalStorage technology.</p>"
+          title: "Give Every Dollar a Job",
+          content: "Zero-Based Budgeting. Allocate every dollar to a category. Track expenses vs income. Our planner uses the method where your Income minus your Expenses should always equal zero."
         }
       ]
     },
     id: {
-      title: "Panduan Lengkap & FAQ",
+      title: "Kuasai Keuangan dengan Metode Anggaran Berbasis Nol",
       sections: [
         {
-          title: "Apa itu Zero-Based Budgeting?",
-          content: "<p>Zero-Based Budgeting (ZBB) atau Anggaran Berbasis Nol adalah metode di mana setiap rupiah penghasilan Anda harus dialokasikan ke pos tertentu (Tabungan, Tagihan, atau Kebutuhan) hingga tersisa nol. Tujuannya bukan menghabiskan uang, melainkan memastikan setiap uang \"memiliki pekerjaan\".</p>"
-        },
-        {
-          title: "Mengapa Menggunakan Budget Planner VersoKit?",
-          content: "<p>Kebanyakan aplikasi anggaran terlalu rumit atau berbayar mahal. VersoKit hadir dengan pendekatan berbeda:</p><ul><li><strong>Privasi 100%:</strong> Data keuangan Anda tersimpan di browser (LocalStorage), tidak dikirim ke server kami. Aman dari kebocoran data.</li><li><strong>Bisa Offline:</strong> Gunakan saat tidak ada sinyal internet.</li><li><strong>Gratis Selamanya:</strong> Tanpa biaya langganan bulanan.</li></ul>"
-        },
-        {
-          title: "Cara Menggunakan Fitur \"Cover Overspending\"",
-          content: "<p>Jika kategori \"Makan\" Anda merah (minus), jangan panik. Klik tombol \"Fix\" dan pilih kategori lain (misal: \"Hiburan\") untuk menutupi kekurangannya. Ini disebut prinsip <em>Roll with the Punches</em>.</p>"
-        },
-        {
-          title: "FAQ (Pertanyaan Umum)",
-          content: "<p><strong>Q: Apakah data saya hilang jika browser ditutup?</strong><br>A: Tidak. Data tersimpan otomatis di perangkat Anda.</p><p><strong>Q: Bisakah saya memindahkan data ke HP lain?</strong><br>A: Bisa. Gunakan fitur \"Manajemen Data\" > \"Ekspor JSON\", lalu kirim file tersebut ke HP baru dan lakukan \"Impor JSON\".</p>"
+          title: "Berikan Tugas untuk Setiap Rupiah",
+          content: "Anggaran Berbasis Nol. Alokasikan setiap rupiah ke kategori. Lacak pengeluaran vs pemasukan. Metode ini memastikan setiap rupiah memiliki tugas."
         }
       ]
     },
     de: {
-      title: "Vollständiger Leitfaden & FAQ",
+      title: "Nullbasiertes Budgetieren",
       sections: [
         {
-          title: "Was ist nullbasiertes Budgetieren?",
-          content: "<p>Nullbasiertes Budgetieren (ZBB) ist eine Methode, bei der jeder einzelne Euro Ihres Einkommens einer bestimmten Kategorie zugewiesen wird, bis null Euro übrig bleiben. Das Ziel ist es, jedem Euro eine Aufgabe zu geben.</p>"
+          title: "Jeden Euro zuweisen",
+          content: "Nullbasiertes Budgetieren. Weisen Sie jeden Euro einer Kategorie zu. Verfolgen Sie Ausgaben gegenüber Einnahmen."
         }
       ]
     },
     es: {
-      title: "Guía Completa y FAQ",
+      title: "Presupuesto Base Cero",
       sections: [
         {
-          title: "¿Qué es el Presupuesto Base Cero?",
-          content: "<p>El Presupuesto Base Cero (ZBB) es un método en el que cada euro de sus ingresos se asigna a una categoría específica hasta que queden cero euros por presupuestar.</p>"
+          title: "Asignar cada euro",
+          content: "Presupuesto Base Cero. Asigna cada euro a una categoría. Controla tus gastos frente a tus ingresos."
         }
       ]
     },
     pt: {
-      title: "Guia Completo e FAQ",
+      title: "Orçamento Base Zero",
       sections: [
         {
-          title: "O que é Orçamento Base Zero?",
-          content: "<p>Orçamento Base Zero (ZBB) é um método onde cada centavo de sua renda é atribuído a uma categoria específica até que reste zero para orçar.</p>"
+          title: "Alocar cada centavo",
+          content: "Orçamento Base Zero. Aloque cada centavo a uma categoria. Acompanhe despesas versus receitas."
         }
       ]
     },
     fr: {
-      title: "Guide Complet & FAQ",
+      title: "Budget Base Zéro",
       sections: [
         {
-          title: "Qu'est-ce que le budget base zéro ?",
-          content: "<p>Le budget base zéro (ZBB) est une méthode où chaque euro de votre revenu est affecté à une catégorie spécifique jusqu'à ce qu'il reste zéro à budgétiser.</p>"
+          title: "Allouer chaque euro",
+          content: "Budget Base Zéro. Allouez chaque euro à une catégorie. Suivez vos dépenses par rapport à vos revenus."
         }
       ]
     },
     it: {
-      title: "Guida Completa e FAQ",
+      title: "Budget a Base Zero",
       sections: [
         {
-          title: "Cos'è il budget a base zero?",
-          content: "<p>Il budget a base zero (ZBB) è un metodo in cui ogni singolo euro del tuo reddito viene assegnato a una categoria specifica fino a quando non rimangono zero euro da preventivare.</p>"
+          title: "Assegna ogni euro",
+          content: "Budget a Base Zero. Assegna ogni euro a una categoria. Monitora le spese rispetto alle entrate."
         }
       ]
     }
@@ -751,7 +904,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
     ]},
     de: { title: "Schichtplaner", sections: [{ title: "Überblick", content: "Schichtplaner. Organisieren Sie Schichten einfach und laden Sie den Plan herunter." }] },
     es: { title: "Planificador de Turnos", sections: [{ title: "Descripción", content: "Planificador de Turnos. Organiza turnos de mañana, tarde y noche." }] },
-    pt: { title: "Escala de Trabalho", sections: [{ title: "Visão Geral", content: "Escala de Trabalho. Organize turnos facilmente e baixe a escala." }] },
+    pt: { title: "Escala de Trabalho", sections: [{ title: "Visão Geral", content: "Escala de Trabalho. Organize turnos facilement e baixe a escala." }] },
     fr: { title: "Planning d'Équipe", sections: [{ title: "Aperçu", content: "Planning d'Équipe. Organisez les 3x8 facilement." }] },
     it: { title: "Pianificatore Turni", sections: [{ title: "Panoramica", content: "Pianificatore Turni. Organizza i turni facilmente." }] }
   },
@@ -773,7 +926,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
     id: { title: "Ubah Ukuran Gambar", sections: [{ title: "Ubah Ukuran Aman", content: "Ubah ukuran foto khusus untuk Instagram, TikTok, atau Paspor. Diproses 100% di browser Anda, tanpa upload server." }] },
     de: { title: "Bildgröße ändern", sections: [{ title: "Datenschutzfreundliche Größenänderung", content: "Bildgröße für Instagram oder Pässe ändern. 100% im Browser verarbeitet." }] },
     es: { title: "Redimensionar Imagen", sections: [{ title: "Redimensionado Seguro", content: "Cambia el tamaño para Instagram o Pasaporte. Procesado 100% en tu navegador." }] },
-    pt: { title: "Redimensionar Imagem", sections: [{ title: "Redimensionamento Seguro", content: "Redimensione para Instagram ou Passaporte. Processado 100% no navegador." }] },
+    pt: { title: "Redimensionar Imagem", sections: [{ title: "Redimensionamento Seguro", content: "Redimensione para Instagram ou Pasaporte. Processado 100% no navegador." }] },
     fr: { title: "Redimensionner Image", sections: [{ title: "Redimensionnement Sécurisé", content: "Redimensionnez pour Instagram ou Passeport. Traité à 100% dans votre navigateur." }] },
     it: { title: "Ridimensiona Immagine", sections: [{ title: "Ridimensionamento Sicuro", content: "Ridimensiona per Instagram o Passaporto. Elaborato al 100% nel browser." }] }
   },
