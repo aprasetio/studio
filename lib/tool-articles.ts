@@ -634,11 +634,11 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "Problèmes classiques sur le court de tennis",
-          content: "<p>Sans un système clair, les sessions d'entraînement du club ou les matchs amicaux rencontrent souvent des obstacles :</p><ul><li><strong>Partenaires monotones :</strong> Les joueurs ont tendance à ne jouer qu'avec leurs amis proches (clans), ce qui donne aux nouveaux membres le sentiment d'être isolés.</li><li><strong>Temps perdu :</strong> Gérer 8 personnes sur 2 courts est facile. Mais qu'en est-il s'il y a 13 personnes sur 3 courts ? Le calcul des rotations manuelles prend beaucoup de temps.</li><li><strong>Déséquilibre des compétences :</strong> Souvent, les joueurs expérimentés se regroupent entre eux, ce qui rend le jeu déséquilibré et moins passionnant.</li><li><strong>Dilemme du joueur impair :</strong> Qui doit rester sur le banc ? Sans une rotation équitable, il se peut qu'une personne reste assise trop longtemps (le \"laissé-pour-compte\").</li></ul>"
+          content: "<p>Sans un système clair, las sessions d'entraînement du club ou les matchs amicaux rencontrent souvent des obstacles :</p><ul><li><strong>Partenaires monotones :</strong> Les joueurs ont tendance à ne jouer qu'avec leurs amis proches (clans), ce qui donne aux nouveaux membres le sentiment d'être isolés.</li><li><strong>Temps perdu :</strong> Gérer 8 personnes sur 2 courts est facile. Mais qu'en est-il s'il y a 13 personnes sur 3 courts ? Le calcul des rotations manuelles prend beaucoup de temps.</li><li><strong>Déséquilibre des compétences :</strong> Souvent, les joueurs expérimentés se regroupent entre eux, ce qui rend le jeu déséquilibré et moins passionnant.</li><li><strong>Dilemme du joueur impair :</strong> Qui doit rester sur le banc ? Sans une rotation équitable, il se peut qu'une personne reste assise trop longtemps (le \"laissé-pour-compte\").</li></ul>"
         },
         {
           title: "Solution VersoKit : Caractéristiques clés du générateur de tennis",
-          content: "<p>Cet outil est conçu pour résoudre les problèmes ci-dessus en quelques secondes. Voici les principales caractéristiques :</p><ol><li><strong>Générateur d'appariement de doubles :</strong> Notre système utilise un algorithme de Mixeur Social. Contrairement aux tournois officiels (partenaire fixe), cet outil se concentre sur les partenaires tournants. Vous changerez de partenaire à chaque tour automatiquement. L'objectif est que tous les membres fassent connaissance et que le jeu soit plus fluide.</li><li><strong>Gestion multi-courts :</strong> Vous avez une grande session avec 3 ou 4 courts à la fois ? Pas de problème. Cet outil divisera les joueurs uniformément entre le \"Court 1\", le \"Court 2\", etc. Vous n'avez pas besoin de vous soucier de diviser la foule.</li><li><strong>Système de banc intelligent (rotation de repos équitable) :</strong> Si le nombre de joueurs est impair (par exemple, 9 ou 11 personnes), notre système fera tourner les tours de repos automatiquement. L'algorithme garantit qu'aucun joueur ne reste assis deux fois de suite (sauf si tout le monde a déjà eu un tour pour se reposer).</li><li><strong>Classement et statistiques :</strong> Bien qu'il s'agisse d'un format de double, cet outil suit les victoires individuelles (ratio victoires/défaites et différence de jeux). À la fin de la session, vous pouvez voir qui est le \"Roi du Court\" pour cette journée-là en fonction des données statistiques.</li></ol>"
+          content: "<p>Cet outil est conçu pour résoudre les problèmes ci-dessus en quelques secondes. Voici les principales caractéristiques :</p><ol><li><strong>Générateur d'appariement de doubles :</strong> Notre système utilise un algorithme de Mixeur Social. Contrairement aux tournois officiels (partenaire fixe), cet outil se concentre sur les partenaires tournants. Vous changerez de partenaire à chaque tour automatiquement. L'objectif est que tous les membres fassent connaissance et que le jeu soit plus fluide.</li><li><strong>Gestion multi-courts :</strong> Vous avez une grande session avec 3 ou 4 courts à la fois ? Pas de problème. Cet outil divisera les joueurs uniformément entre le \"Court 1\", le \"Court 2\", etc. Vous n'avez pas besoin de vous soucier de diviser la foule.</li><li><strong>Système de banc intelligent (rotation de repos équitable) :</strong> Si le nombre de joueurs est impair (par exemple, 9 ou 11 personnes), notre système fera tourner les tours de repos automatiquement. L'algorithme garantit qu'un joueur ne reste jamais assis deux fois de suite (sauf si tout le monde a déjà eu un tour pour se reposer).</li><li><strong>Classement et statistiques :</strong> Bien qu'il s'agisse d'un format de double, cet outil suit les victoires individuelles (ratio victoires/défaites et différence de jeux). À la fin de la session, vous pouvez voir qui est le \"Roi du Court\" pour cette journée-là en fonction des données statistiques.</li></ol>"
         },
         {
           title: "À qui s'adresse cet outil ?",
@@ -697,8 +697,20 @@ export const TOOL_ARTICLES: ArticleCollection = {
       title: "Why Zero-Based Budgeting is the Key to Financial Freedom",
       sections: [
         {
-          title: "Give Every Dollar a Job",
-          content: "Zero-Based Budgeting. Allocate every dollar to a category. Track expenses vs income. Our planner uses the method where your Income minus your Expenses should always equal zero."
+          title: "What is Zero-Based Budgeting?",
+          content: "<p>Zero-Based Budgeting (ZBB) is a method where every single dollar of your income is assigned to a specific category (Savings, Bills, or Needs) until you have zero left to budget. The goal isn't to spend every penny, but to ensure every dollar \"has a job.\"</p>"
+        },
+        {
+          title: "Why Choose VersoKit Budget Planner?",
+          content: "<p>Most budgeting apps are overly complicated or require expensive subscriptions. VersoKit takes a different approach:</p><ul><li><strong>100% Privacy:</strong> Your financial data is stored in your browser (LocalStorage) and is never sent to our servers. Your data is safe from leaks.</li><li><strong>Offline Ready:</strong> Use it even when you don't have an internet connection.</li><li><strong>Free Forever:</strong> No monthly subscription fees, ever.</li></ul>"
+        },
+        {
+          title: "Using the 'Cover Overspending' Feature",
+          content: "<p>If your 'Dining' category turns red (negative), don't panic. Click the 'Fix' button and select another category (e.g., 'Entertainment') to cover the difference. This is based on the <em>Roll with the Punches</em> principle of successful budgeting.</p>"
+        },
+        {
+          title: "Frequently Asked Questions (FAQ)",
+          content: "<p><strong>Q: Will my data be lost if I close the browser?</strong><br>A: No. Data is automatically saved on your device's local storage.</p><p><strong>Q: Can I move my data to another phone?</strong><br>A: Yes. Use the 'Data Management' > 'Export JSON' feature, then send that file to your new device and use 'Restore Data'.</p>"
         }
       ]
     },
@@ -706,53 +718,69 @@ export const TOOL_ARTICLES: ArticleCollection = {
       title: "Kuasai Keuangan dengan Metode Anggaran Berbasis Nol",
       sections: [
         {
-          title: "Berikan Tugas untuk Setiap Rupiah",
-          content: "Anggaran Berbasis Nol. Alokasikan setiap rupiah ke kategori. Lacak pengeluaran vs pemasukan. Metode ini memastikan setiap rupiah memiliki tugas."
+          title: "Apa itu Zero-Based Budgeting?",
+          content: "<p>Zero-Based Budgeting (ZBB) atau Anggaran Berbasis Nol adalah metode di mana setiap rupiah penghasilan Anda harus dialokasikan ke pos tertentu (Tabungan, Tagihan, atau Kebutuhan) hingga tersisa nol. Tujuannya bukan menghabiskan uang, melainkan memastikan setiap uang \"memiliki pekerjaan\".</p>"
+        },
+        {
+          title: "Mengapa Menggunakan Budget Planner VersoKit?",
+          content: "<p>Kebanyakan aplikasi anggaran terlalu rumit atau berbayar mahal. VersoKit hadir dengan pendekatan berbeda:</p><ul><li><strong>Privasi 100%:</strong> Data keuangan Anda tersimpan di browser (LocalStorage), tidak dikirim ke server kami. Aman dari kebocoran data.</li><li><strong>Bisa Offline:</strong> Gunakan saat tidak ada sinyal internet.</li><li><strong>Gratis Selamanya:</strong> Tanpa biaya langganan bulanan.</li></ul>"
+        },
+        {
+          title: "Cara Menggunakan Fitur 'Cover Overspending'",
+          content: "<p>Jika kategori 'Makan' Anda merah (minus), jangan panik. Klik tombol 'Tutup' dan pilih kategori lain (misal: 'Hiburan') untuk menutupi kekurangannya. Ini disebut prinsip <em>Roll with the Punches</em>.</p>"
+        },
+        {
+          title: "FAQ (Pertanyaan Umum)",
+          content: "<p><strong>Q: Apakah data saya hilang jika browser ditutup?</strong><br>A: Tidak. Data tersimpan otomatis di perangkat Anda.</p><p><strong>Q: Bisakah saya memindahkan data ke HP lain?</strong><br>A: Bisa. Gunakan fitur 'Manajemen Data' > 'Simpan Data (JSON)', lalu kirim file tersebut ke HP baru dan lakukan 'Pulihkan Data'.</p>"
         }
       ]
     },
     de: {
-      title: "Nullbasiertes Budgetieren",
+      title: "Nullbasiertes Budgetieren: Ihr Weg zur finanziellen Freiheit",
       sections: [
         {
-          title: "Jeden Euro zuweisen",
-          content: "Nullbasiertes Budgetieren. Weisen Sie jeden Euro einer Kategorie zu. Verfolgen Sie Ausgaben gegenüber Einnahmen."
+          title: "Was ist nullbasiertes Budgetieren?",
+          content: "<p>Nullbasiertes Budgetieren (ZBB) ist eine Methode, bei der jeder einzelne Euro Ihres Einkommens einer bestimmten Kategorie (Ersparnisse, Rechnungen oder Bedarf) zugewiesen wird, bis Sie null Euro zum Budgetieren übrig haben. Das Ziel ist es, jedem Euro eine „Aufgabe“ zu geben.</p>"
+        },
+        {
+          title: "Warum den VersoKit Budgetplaner wählen?",
+          content: "<ul><li><strong>100% Privatsphäre:</strong> Ihre Finanzdaten werden in Ihrem Browser gespeichert und niemals an unsere Server gesendet.</li><li><strong>Offline-bereit:</strong> Nutzen Sie den Planer auch ohne Internetverbindung.</li><li><strong>Immer kostenlos:</strong> Keine monatlichen Gebühren.</li></ul>"
         }
       ]
     },
     es: {
-      title: "Presupuesto Base Cero",
+      title: "Presupuesto Base Cero: La Clave para tu Libertad Financiera",
       sections: [
         {
-          title: "Asignar cada euro",
-          content: "Presupuesto Base Cero. Asigna cada euro a una categoría. Controla tus gastos frente a tus ingresos."
+          title: "¿Qué es el presupuesto base cero?",
+          content: "<p>El Presupuesto Base Cero (ZBB) es un método en el que cada euro de tus ingresos se asigna a una categoría específica (Ahorros, Facturas o Necesidades) hasta que te queden cero euros por presupuestar. El objetivo es darle a cada euro un \"trabajo\".</p>"
         }
       ]
     },
     pt: {
-      title: "Orçamento Base Zero",
+      title: "Orçamento Base Zero: A Chave para a sua Liberdade Financeira",
       sections: [
         {
-          title: "Alocar cada centavo",
-          content: "Orçamento Base Zero. Aloque cada centavo a uma categoria. Acompanhe despesas versus receitas."
+          title: "O que é o orçamento base zero?",
+          content: "<p>O Orçamento Base Zero (ZBB) é um método onde cada centavo da sua renda é atribuído a uma categoria específica (Poupança, Contas ou Necessidades) até que reste zero para orçar. O objetivo é dar a cada real um \"trabalho\".</p>"
         }
       ]
     },
     fr: {
-      title: "Budget Base Zéro",
+      title: "Budget Base Zéro : La clé de votre liberté financière",
       sections: [
         {
-          title: "Allouer chaque euro",
-          content: "Budget Base Zéro. Allouez chaque euro à une catégorie. Suivez vos dépenses par rapport à vos revenus."
+          title: "Qu'est-ce que le budget base zéro ?",
+          content: "<p>Le budget base zéro (ZBB) est une méthode où chaque euro de votre revenu est affecté à une catégorie spécifique (épargne, factures ou besoins) jusqu'à ce qu'il vous reste zéro euro à budgétiser. L'objectif est de donner un « job » à chaque euro.</p>"
         }
       ]
     },
     it: {
-      title: "Budget a Base Zero",
+      title: "Budget a Base Zero: La chiave per la tua libertà finanziaria",
       sections: [
         {
-          title: "Assegna ogni euro",
-          content: "Budget a Base Zero. Assegna ogni euro a una categoria. Monitora le spese rispetto alle entrate."
+          title: "Cos'è il budget a base zero?",
+          content: "<p>Il budget a base zero (ZBB) è un metodo in cui ogni singolo euro del tuo reddito viene assegnato a una categoria specifica (risparmi, bollette o necessità) fino a quando non ti rimangono zero euro da preventivare. L'obiettivo è dare a ogni euro un \"lavoro\".</p>"
         }
       ]
     }
@@ -878,7 +906,7 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "So erstellen Sie eine Fußballformation in 1 Minute",
-          content: "<p>Sie müssen keine App installieren, öffnen Sie einfach diese Seite in Ihrem Handy- oder Laptop-Browser:</p><ol><li><strong>Basisformation wählen:</strong> Beginnen Sie mit einer Voreinstellung (z. B. 4-3-3 Attack).</li><li><strong>Spielernamen eingeben:</strong> Klicken Sie auf die Spielersymbole, um Namen und Nummern zu ändern.</li><li><strong>Aussehen anpassen:</strong> Legen Sie die Heim-/Auswärtstrikotfarben Ihres Teams fest.</li><li><strong>Spezifische Taktiken festlegen:</strong> Verschieben Sie die Spielerpositionen, wenn Sie eine spezielle Strategie anwenden möchten (z. B. einen Mittelfeldspieler weiter nach vorne schieben).</li><li><strong>Bild herunterladen:</strong> Klicken Sie auf die Schaltfläche „Herunterladen“. Das Ergebnis ist ein hochwertiges Bild (PNG/JPG), das bereit zum Teilen ist.</li></ol>"
+          content: "<p>Sie müssen keine App installieren, öffnen Sie einfach diese Seite in Ihrem Handy- oder Laptop-Browser:</p><ol><li><strong>Basisformation wählen:</strong> Beginnen Sie mit einer Voreinstellung (z. B. 4-3-3 Attack).</li><li><strong>Spielernamen eingeben:</strong> Klicken Sie auf die Spielersymbole, um Namen und Nummern zu ändern.</li><li><strong>Aussehen anpassen:</strong> Legen Sie die Heim-/Auswärtstrikotfarben Ihres Teams fest.</li><li><strong>Spezifische Taktiken festlegen:</strong> Verschieben Sie die Spielerpositionen, wenn Sie eine spezielle Strategie anwenden möchten (z. B. einen Mittelfeldspieler weiter nach vorne schieben).</li><li><strong>Bild herunterladen:</strong> Klicken Sie auf die Schaltfläche „Herunterladen“. Das Ergebnis ist ein hochwertiges Bild (PNG/JPG) das bereit zum Teilen ist.</li></ol>"
         },
         {
           title: "Saubere & professionelle Ergebnisse",
@@ -916,11 +944,11 @@ export const TOOL_ARTICLES: ArticleCollection = {
         },
         {
           title: "Quem deve usar esta ferramenta?",
-          content: "<p>Esta ferramenta foi projetada para diversas necessidades da comunidade do futebol:</p><ul><li><strong>Administradores de Redes Sociais:</strong> Quer que o conta do Instagram do seu clube pareça profissional como a dos clubes das grandes ligas? Publicar uma escalação gráfica organizada antes do pontapé inicial é a chave.</li><li><strong>Treinadores e Capitães de equipe:</strong> Compartilhe estratégias no grupo de WhatsApp do time um dia antes da partida (\"Amanhã jogaremos com esta tática!\"). Visuais claros reduzem falhas de comunicação em campo.</li><li><strong>Fãs e Analistas:</strong> Gosta de analisar partidas? Explique seus argumentos sobre um \"Falso Nove\" ou um \"Lateral Invertido\" com imagens. Os debates de futebol no Twitter (X) tornam-se mais válidos com dados visuais.</li><li><strong>Gamers (FIFA/eFootball):</strong> Mostre sua escalação mais forte do Ultimate Team ou Dream Team para a comunidade de jogadores com uma exibição elegante.</li></ul>"
+          content: "<p>Esta ferramenta foi projetada para diversas necessidades da comunidade do futebol:</p><ul><li><strong>Administradores de Redes Sociais:</strong> Quer que o conta do Instagram do seu clube pareça profissional como a dos clubes das grandes ligas? Publicar uma escalação gráfica organizada antes do pontapé inicial é a chave.</li><li><strong>Treinadores e Capitães de equipe:</strong> Compartilhe estratégias no grupo de WhatsApp do time um dia antes da partida (\"Amanhã jogaremos com esta tática!\"). Visuais claros reduzem falhas de comunicação em campo.</li><li><strong>Fãs e Analistas:</strong> Gosta de analisar partidas? Explique seus argumentos sobre um \"Falso Nove\" o um \"Lateral Invertido\" com imagens. Os debates de futebol no Twitter (X) tornam-se mais válidos com dados visuais.</li><li><strong>Gamers (FIFA/eFootball):</strong> Mostre sua escalação mais forte do Ultimate Team ou Dream Team para a comunidade de jogadores com uma exibição elegante.</li></ul>"
         },
         {
           title: "Como criar uma formação de futebol em 1 minuto",
-          content: "<p>Não é necessário instalar um aplicativo, basta abrir esta página no navegador do seu telemóvel ou portátil:</p><ol><li><strong>Selecione a formação base:</strong> Comece com uma predefinição (ex: 4-3-3 Ataque).</li><li><strong>Insira os nomes dos jogadores:</strong> Clique nos ícones dos jogadores para alterar nomes e números.</li><li><strong>Personalize a aparência:</strong> Defina as cores das camisas principal/secundária do seu time.</li><li><strong>Defina táticas específicas:</strong> Arraste as posições dos jogadores se quiser aplicar uma estratégia específica (ex: empurrar um médio mais para a frente).</li><li><strong>Baixe a imagem:</strong> Clique no botão de download. O resultado é uma imagem de alta qualidade (PNG/JPG) pronta para ser compartilhada.</li></ol>"
+          content: "<p>Não é necessário instalar um aplicativo, basta abrir esta página no navegador do seu telemóvel ou portátil:</p><ol><li><strong>Selecione a formação base:</strong> Comece com uma predefinição (ex: 4-3-3 Ataque).</li><li><strong>Insira os nomes dos jogadores:</strong> Clique nos ícones dos jogadores para alterar nomes e números.</li><li><strong>Personalize a aparência:</strong> Defina as cores das camisas principal/secundária do seu time.</li><li><strong>Defina táticas específicas:</strong> Arrastra as posições dos jogadores se quiser aplicar uma estratégia específica (ex: empurrar um médio mais para a frente).</li><li><strong>Baixe a imagem:</strong> Clique no botão de download. O resultado é uma imagem de alta qualidade (PNG/JPG) pronta para ser compartilhada.</li></ol>"
         },
         {
           title: "Resultados limpos e profissionais",
@@ -1092,12 +1120,128 @@ export const TOOL_ARTICLES: ArticleCollection = {
     it: { title: "Immagine in PDF", sections: [{ title: "Creatore PDF", content: "Converti immagini JPG e PNG in un documento PDF pulito." }] }
   },
   "tournament": {
-    en: { title: "Tournament Manager", sections: [{ title: "Organizer", content: "Create round-robin tournament brackets and auto-updating leaderboards." }] },
-    id: { title: "Manajer Turnamen", sections: [{ title: "Penyelenggara", content: "Buat bagan turnamen round-robin dan klasemen otomatis." }] },
-    de: { title: "Turniermanager", sections: [{ title: "Organisation", content: "Erstellen Sie Round-Robin-Spielpläne und Tabellen." }] },
-    es: { title: "Gestor de Torneos", sections: [{ title: "Organizador", content: "Crea cuadros de torneo round-robin y clasificaciones automáticas." }] },
-    pt: { title: "Gestor de Torneios", sections: [{ title: "Organizador", content: "Crie chaves de torneio round-robin e placares automáticos." }] },
-    fr: { title: "Gestionnaire de Tournoi", sections: [{ title: "Organisateur", content: "Créez des tournois round-robin et des classements automatiques." }] },
-    it: { title: "Gestore Torneo", sections: [{ title: "Organizzatore", content: "Crea tabelloni per tornei round-robin e classifiche automatiche." }] }
+    en: {
+      title: "Tournament Manager Pro: Create Automatic Brackets & League Standings",
+      sections: [
+        {
+          title: "Stop Wasting Time with Manual Tournament Administration",
+          content: "<p>Busy being a committee member for Futsal, E-Sports, or a neighborhood competition? We know how stressful managing dozens of teams can be. The classic committee problem is complicated administration. Drawing brackets on cardboard takes a long time, and a single mistake means starting over. Using Excel? Formulas for points and goal differences often error out, leading to protests. Stop wasting time with manual methods.</p><p>Use Tournament Manager Pro from VersoKit. It is an all-in-one solution for creating match schedules, for both Knockout and Round Robin systems in seconds.</p>"
+        },
+        {
+          title: "Why Every Organizer Needs This Tool",
+          content: "<p>This tool is the \"heart\" of successful event organizing. Here are the problems we solve for you:</p><ul><li><strong>1. Instant Knockout Brackets:</strong> Forget rulers and markers. Just enter team names, and this tool generates automatic brackets for 4, 8, 16, up to 32 teams. <strong>Interactive Visuals:</strong> Who won? Just click the winning team, and their name automatically advances to the next round. <strong>Automatic Drawing:</strong> No need for lottery slips. Our \"Shuffle\" button draws matchups fairly in 1 second.</li><li><strong>2. Round Robin League Management Without a Calculator:</strong> Creating a league like the Premier League is now for everyone. <strong>Auto-Standings:</strong> Enter match scores (e.g., 2-1), and the standings table updates in real-time. <strong>Accurate Calculations:</strong> The system automatically calculates Wins (3 pts), Draws (1 pt), Losses (0 pts), Goal Difference (GD), and Head-to-Head. No more calculation drama!</li><li><strong>3. Multi-Sport Support:</strong> Whatever the competition, this tool is ready. Physical Sports (Futsal, Badminton, Volley, Table Tennis). E-Sports & Games (Mobile Legends, FIFA/eFootball, Valorant, PES). Traditional Games (Chess, Tug of War, neighborhood competitions).</li></ul>"
+        },
+        {
+          title: "Top Features of Tournament Manager",
+          content: "<p>Besides speed, this tool is equipped with professional features:</p><ul><li><strong>Export to Image:</strong> Brackets or standings can be screenshotted or downloaded. Share these images to WhatsApp groups to look official and transparent.</li><li><strong>Save Progress (Browser Storage):</strong> Afraid of losing data when accidentally closing the browser? Relax, our system stores temporary data in your browser, keeping it safe for your return.</li><li><strong>Edit Team Names:</strong> Team name change or late participants? Edit anytime without breaking the bracket structure.</li></ul>"
+        },
+        {
+          title: "Who Should Use This Tool?",
+          content: "<ul><li><strong>Event Committees & Class Meetings:</strong> PE teachers or neighborhood committees managing sports between classes or residents.</li><li><strong>Game Center & Cafe Owners:</strong> Hosting weekly PES/FIFA tournaments for loyal customers.</li><li><strong>E-Sports Communities:</strong> Group admins organizing scrims or mini tournaments (Fast Tourney).</li><li><strong>Amateur League Admins:</strong> Managers of community futsal or mini-soccer leagues.</li></ul>"
+        },
+        {
+          title: "How to Create a Tournament in 4 Steps",
+          content: "<p>No need to install heavy apps, just use your phone or laptop browser:</p><ol><li><strong>Choose Tournament Mode:</strong> Select \"Knockout\" or \"League\".</li><li><strong>Enter Participants:</strong> Type team or player names.</li><li><strong>Generate & Shuffle:</strong> Click build. Use Shuffle for random matchups.</li><li><strong>Run Matches:</strong> Match finished? Input scores. The system advances winners or updates league points automatically.</li></ol>"
+        },
+        {
+          title: "Manage Tournaments Like a Professional",
+          content: "<p>Don't let administrative technicalities hinder your event's excitement. With Tournament Manager Pro, you can focus on the matches while our system handles the data. Free, easy, and hassle-free. Try building your tournament bracket below!</p>"
+        }
+      ]
+    },
+    id: {
+      title: "Tournament Manager Pro: Buat Bagan & Klasemen Liga Otomatis",
+      sections: [
+        {
+          title: "Berhenti Membuang Waktu dengan Administrasi Manual",
+          content: "<p>Sedang sibuk menjadi panitia turnamen Futsal, E-Sports, atau lomba 17 Agustusan? Kami tahu betapa pusingnya mengelola puluhan tim peserta. Masalah klasik panitia adalah administrasi yang ribet. Menggambar garis-garis bagan di kertas karton memakan waktu lama, dan jika salah tulis, harus ganti kertas baru. Menggunakan Excel? Rumus hitung poin dan selisih gol sering error, yang ujung-ujungnya memicu protes dari peserta. Berhenti membuang waktu dengan cara manual.</p><p>Gunakan Tournament Manager Pro dari VersoKit. Ini adalah solusi all-in-one untuk membuat jadwal pertandingan, baik Sistem Gugur (Knockout) maupun Sistem Liga (Round Robin) dalam hitungan detik.</p>"
+        },
+        {
+          title: "Mengapa Panitia Wajib Pakai Alat Ini?",
+          content: "<p>Alat ini adalah \"Jantung\"-nya penyelenggara acara sukses. Berikut masalah yang kami selesaikan untuk Anda:</p><ul><li><strong>1. Sistem Gugur (Knockout Bracket) Instan:</strong> Lupakan penggaris dan spidol. Cukup masukkan nama tim, dan alat ini akan membuat Bagan Pohon (Bracket) otomatis untuk 4, 8, 16, hingga 32 tim. <strong>Visual Interaktif:</strong> Siapa pemenangnya? Cukup klik pada tim yang menang, dan nama mereka otomatis maju ke babak selanjutnya di bagan. <strong>Drawing Otomatis:</strong> Tidak perlu melinting kertas arisan. Tombol \"Shuffle/Acak\" kami akan mengundi siapa lawan siapa secara adil dalam 1 detik.</li><li><strong>2. Manajemen Liga (Round Robin) Tanpa Kalkulator:</strong> Membuat kompetisi liga seperti Premier League kini bisa dilakukan siapa saja. <strong>Auto-Standings:</strong> Masukkan skor pertandingan (misal 2-1), dan tabel klasemen akan langsung berubah urutannya secara real-time. <strong>Perhitungan Akurat:</strong> Sistem otomatis menghitung Menang (3 poin), Seri (1 poin), Kalah (0 poin), serta Selisih Gol (GD) dan Head-to-Head. Tidak ada lagi drama salah hitung!</li><li><strong>3. Dukungan Multi-Sport:</strong> Apapun jenis lombanya, alat ini siap digunakan. Olahraga Fisik (Futsal, Badminton, Voli, Tenis Meja). E-Sports & Game (Mobile Legends, FIFA/eFootball, Valorant, PES). Lomba Tradisional (Catur, Tarik Tambang, 17 Agustusan).</li></ul>"
+        },
+        {
+          title: "Fitur Unggulan Tournament Manager",
+          content: "<p>Selain cepat, alat ini dilengkapi fitur profesional:</p><ul><li><strong>Export to Image:</strong> Bagan atau klasemen yang sudah jadi bisa di-screenshot atau diunduh. Bagikan gambar tersebut ke grup WhatsApp peserta agar terlihat resmi dan transparan.</li><li><strong>Simpan Progres (Browser Storage):</strong> Takut data hilang saat tidak sengaja menutup browser? Tenang, sistem kami menyimpan data sementara di browser Anda, sehingga aman saat dibuka kembali.</li><li><strong>Edit Nama Tim:</strong> Ada tim yang ganti nama atau peserta susulan? Edit kapan saja tanpa merusak struktur bagan.</li></ul>"
+        },
+        {
+          title: "Siapa yang Cocok Menggunakan Alat Ini?",
+          content: "<ul><li><strong>Panitia 17 Agustusan & Class Meeting:</strong> Guru olahraga atau panitia kampung yang mengelola lomba futsal/voli antar kelas atau antar warga.</li><li><strong>Pemilik Rental PS & Warkop:</strong> Mengadakan turnamen mingguan PES/FIFA untuk pelanggan setia.</li><li><strong>Komunitas E-Sports:</strong> Admin grup mabar yang sering mengadakan scrim atau turnamen kecil-kecilan (Fast Tourney).</li><li><strong>Admin Liga Amatir:</strong> Pengelola liga futsal atau minisoccer komunitas.</li></ul>"
+        },
+        {
+          title: "Cara Membuat Turnamen dalam 4 Langkah",
+          content: "<p>Tidak perlu instal aplikasi berat, cukup gunakan browser HP atau Laptop Anda:</p><ol><li><strong>Pilih Mode Turnamen:</strong> Tentukan formatnya. Mau \"Knockout\" (Sistem Gugur) atau \"League\" (Sistem Liga/Klasemen)?</li><li><strong>Masukkan Peserta:</strong> Ketik nama tim atau nama pemain.</li><li><strong>Generate & Acak:</strong> Klik tombol buat bagan. Gunakan fitur Shuffle jika ingin sistem mengundi lawan secara acak.</li><li><strong>Jalankan Pertandingan:</strong> Pertandingan selesai? Input skornya. Sistem akan otomatis memajukan pemenang atau mengupdate poin klasemen.</li></ol>"
+        },
+        {
+          title: "Kelola Turnamen Layaknya Profesional",
+          content: "<p>Jangan biarkan teknis administrasi menghambat keseruan acara Anda. Dengan Tournament Manager Pro, Anda bisa fokus pada jalannya pertandingan, biar sistem kami yang mengurus datanya. Gratis, mudah, dan anti-ribet. Coba buat bagan turnamen Anda di bawah ini!</p>"
+        }
+      ]
+    },
+    de: {
+      title: "Tournament Manager Pro: Automatische Turnierbäume & Ligatabellen erstellen",
+      sections: [
+        {
+          title: "Schluss mit dem Zeitaufwand für die manuelle Turnierverwaltung",
+          content: "<p>Sind Sie als Organisator für Futsal, E-Sports oder Vereinswettbewerbe beschäftigt? Wir wissen, wie stressig die Verwaltung von Dutzenden von Teams sein kann. Das klassische Problem ist die komplizierte Administration. Das Zeichnen von Turnierbäumen auf Papier dauert lange, und ein einziger Fehler bedeutet, von vorn anzufangen. Excel nutzen? Formeln für Punkte und Tordifferenzen sind oft fehleranfällig. Hören Sie auf, Zeit mit manuellen Methoden zu verschwenden.</p><p>Nutzen Sie den Tournament Manager Pro von VersoKit. Es ist eine All-in-One-Lösung für Spielpläne, sowohl für K.o.-Systeme als auch für Round-Robin-Ligen in Sekundenschnelle.</p>"
+        },
+        {
+          title: "Warum jeder Organisator dieses Tool braucht",
+          content: "<ul><li><strong>1. Sofortige K.o.-Bäume:</strong> Geben Sie Teamnamen ein und das Tool generiert Bäume für 4 bis 32 Teams. Ein Klick auf den Gewinner rückt diesen automatisch vor.</li><li><strong>2. Liga-Management ohne Taschenrechner:</strong> Erstellen Sie Ligen wie die Bundesliga. Das System berechnet Siege, Unentschieden, Niederlagen und Tordifferenzen automatisch in Echtzeit.</li><li><strong>3. Multi-Sport-Unterstützung:</strong> Ideal für Fußball, Badminton, E-Sports wie FIFA oder Mobile Legends und traditionelle Wettbewerbe.</li></ul>"
+        }
+      ]
+    },
+    es: {
+      title: "Tournament Manager Pro: Crea Cuadros y Clasificaciones de Liga Automáticos",
+      sections: [
+        {
+          title: "Deja de perder tiempo con la administración manual de torneos",
+          content: "<p>¿Estás ocupado siendo parte del comité de un torneo de Futsal, E-Sports o una competición barrial? Sabemos lo estresante que puede ser gestionar docenas de equipos. El problema clásico es la administración complicada. Dibujar cuadros en cartulina lleva mucho tiempo y un error significa empezar de nuevo. ¿Usar Excel? Las fórmulas suelen fallar. Deja de perder tiempo.</p><p>Usa Tournament Manager Pro de VersoKit. Es la solución todo en uno para crear calendarios de partidos, tanto para sistemas de eliminación directa como de liga, en segundos.</p>"
+        },
+        {
+          title: "Por qué todo organizador necesita esta herramienta",
+          content: "<ul><li><strong>1. Cuadros de Eliminación Instantáneos:</strong> Genera cuadros para 4 a 32 equipos. Haz clic en el ganador y avanzará automáticamente.</li><li><strong>2. Gestión de Ligas sin Calculadora:</strong> Crea ligas profesionales. El sistema calcula puntos, diferencia de goles y resultados directos automáticamente.</li><li><strong>3. Soporte para Múltiples Deportes:</strong> Perfecto para fútbol, bádminton, E-Sports como Valorant o FIFA, y juegos tradicionales.</li></ul>"
+        }
+      ]
+    },
+    pt: {
+      title: "Tournament Manager Pro: Crie Chaves e Classificações de Liga Automáticas",
+      sections: [
+        {
+          title: "Pare de perder tempo com a administração manual de torneios",
+          content: "<p>Está ocupado como organizador de torneios de Futsal, E-Sports ou competições escolares? Sabemos como é estressante gerenciar dezenas de equipes. O problema clássico é a administração complicada. Desenhar chaves no papel leva tempo e um erro significa recomeçar. Usar Excel? As fórmulas costumam dar erro. Pare de perder tempo.</p><p>Use o Tournament Manager Pro da VersoKit. É a solução completa para criar calendários de jogos, tanto para mata-mata quanto para ligas, em segundos.</p>"
+        },
+        {
+          title: "Por que todo organizador precisa desta ferramenta",
+          content: "<ul><li><strong>1. Chaves de Mata-Mata Instantâneas:</strong> Gere chaves para 4 a 32 equipes. Clique no vencedor e ele avançará automaticamente.</li><li><strong>2. Gestão de Ligas sem Calculadora:</strong> Crie ligas como os campeonatos profissionais. O sistema calcula pontos, saldo de gols e critérios de desempate automaticamente.</li><li><strong>3. Suporte para Vários Esportes:</strong> Ideal para futebol, vôlei, E-Sports como LoL ou FIFA, e gincanas tradicionais.</li></ul>"
+        }
+      ]
+    },
+    fr: {
+      title: "Tournament Manager Pro : Créez des Tableaux et Classements de Ligue Automatiques",
+      sections: [
+        {
+          title: "Arrêtez de perdre du temps avec l'administration manuelle des tournois",
+          content: "<p>Vous êtes membre d'un comité pour un tournoi de Futsal, d'E-Sports ou une compétition locale ? Nous savons à quel point la gestion de dizaines d'équipes peut être stressante. Le problème classique est l'administration compliquée. Dessiner des tableaux sur du carton prend du temps et une erreur oblige à recommencer. Utiliser Excel ? Les formules sont souvent sources d'erreurs. Arrêtez de perdre du temps.</p><p>Utilisez Tournament Manager Pro de VersoKit. C'est la solution tout-en-un pour créer des calendriers de matchs, pour les systèmes à élimination directe ou de championnat, en quelques secondes.</p>"
+        },
+        {
+          title: "Pourquoi chaque organisateur a besoin de cet outil",
+          content: "<ul><li><strong>1. Tableaux à élimination directe instantanés :</strong> Générez des tableaux pour 4 à 32 équipes. Cliquez sur le vainqueur pour le faire avancer automatiquement.</li><li><strong>2. Gestion de ligue sans calculatrice :</strong> Créez des championnats professionnels. Le système calcule automatiquement les points, la différence de buts et les confrontations directes.</li><li><strong>3. Support Multi-Sport :</strong> Parfait pour le foot, le badminton, les E-Sports comme FIFA ou Valorant, et les jeux traditionnels.</li></ul>"
+        }
+      ]
+    },
+    it: {
+      title: "Tournament Manager Pro: Crea Tabelloni e Classifiche di Lega Automatici",
+      sections: [
+        {
+          title: "Smetti di perdere tempo con l'amministrazione manuale dei tornei",
+          content: "<p>Sei impegnato come organizzatore di tornei di Calcetto, E-Sports o competizioni locali? Sappiamo quanto possa essere stressante gestire dozzine di squadre. Il problema classico è l'amministrazione complicata. Disegnare i tabelloni a mano richiede tempo e un errore significa ricominciare. Usare Excel? Le formule spesso falliscono. Smetti di perdere tempo.</p><p>Usa Tournament Manager Pro di VersoKit. È la soluzione completa per creare calendari di gara, sia per sistemi a eliminazione diretta che per campionati, in pochi secondi.</p>"
+        },
+        {
+          title: "Perché ogni organizzatore ha bisogno di questo strumento",
+          content: "<ul><li><strong>1. Tabelloni a eliminazione diretta istantanei :</strong> Genera tabelloni da 4 a 32 squadre. Clicca sul vincitore e avanzerà automaticamente.</li><li><strong>2. Gestione Campionato senza Calcolatrice :</strong> Crea leghe professionali. Il sistema calcola punti, differenza reti e scontri diretti automaticamente.</li><li><strong>3. Supporto Multi-Sport :</strong> Ideale per calcio, pallavolo, E-Sports come FIFA o PES, e giochi tradizionali.</li></ul>"
+        }
+      ]
+    }
   }
 };
