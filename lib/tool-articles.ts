@@ -35,7 +35,7 @@ const INVENTORY_CONTENT: { [lang: string]: ToolArticle } = {
       },
       {
         title: `Fitur Unggulan Simple Inventory Manager`,
-        content: `<ol><li><strong>Stock In & Stock Out (Satu Klik):</strong> Update stok tidak perlu ketik ulang. Gunakan tombol cepat untuk menambah barang masuk atau mengurangi barang yang terjual. Saldo stok akan ter-update secara otomatis saat itu juga.</li><li><strong>Low Stock Alerts:</strong> Alat ini dilengkapi indikator visual (warna merah) yang akan menyala jika stok suatu barang berada di bawah batas minimum yang Anda tentukan.</li><li><strong>Hitung Nilai Aset Otomatis:</strong> Anda bisa melihat total nilai uang Anda yang saat ini berbentuk barang di gudang. Sistem akan menghitung akumulasi harga beli/modal sehingga Anda tahu persis berapa total aset bisnis Anda.</li><li><strong>Search & Filter Instan:</strong> Fitur pencarian kami sangat cepat untuk menemukan barang tanpa perlu scroll.</li></ol>`
+        content: `<ol><li><strong>Stock In & Stock Out (Satu Klik):</strong> Update stok tidak perlu ketik ulang. Gunakan tombol cepat untuk menambah barang masuk atau mengurangi barang yang terjual. Saldo stok akan ter-update secara otomatis saat itu juga.</li><li><strong>Low Stock Alerts (Peringatan Stok Tipis):</strong> Jangan biarkan stok Anda kosong melompong. Alat ini dilengkapi indikator visual (warna merah) yang akan menyala jika stok suatu barang berada di bawah batas minimum yang Anda tentukan. Waktunya belanja stok lagi sebelum habis!</li><li><strong>Hitung Nilai Aset Otomatis (Valuation):</strong> Anda bisa melihat total nilai uang Anda yang saat ini berbentuk barang di gudang. Sistem akan menghitung akumulasi harga beli/modal sehingga Anda tahu persis berapa total aset bisnis Anda.</li><li><strong>Search & Filter Instan:</strong> Punya ratusan jenis barang? Jangan khawatir. Fitur pencarian kami sangat cepat. Cukup ketik nama barang, dan data akan muncul seketika tanpa perlu scroll satu per satu.</li></ol>`
       }
     ]
   },
@@ -130,11 +130,11 @@ const BUDGET_CONTENT: { [lang: string]: ToolArticle } = {
     sections: [
       {
         title: `Gaji Cuma Numpang Lewat?`,
-        content: `<p>Pernahkah Anda merasa gaji "numpang lewat"? Tanggal 25 terima gaji, tapi baru tanggal 10 bulan depan, saldo rekening sudah menipis dan Anda bingung: "Uangku habis buat apa saja, ya?"</p><p>Masalah utamanya seringkali bukan pada besarnya gaji Anda, melainkan pada cara Anda memperlakukan uang tersebut. Banyak orang terjebak menggunakan aplikasi Expense Tracker. Masalahnya, mencatat pengeluaran itu sifatnya penyesalan. Anda hanya mencatat sejarah: "Yah, uangku habis 500 ribu buat kopi."</p><p>Sudah saatnya berubah. Perkenalkan <strong>VersoKit Budget Planner</strong>. Ini bukan sekadar pencatat, ini adalah alat Perencana Masa Depan berbasis metode Zero-Based Budgeting (ZBB).</p>`
+        content: `<p>Pernahkah Anda merasa gaji "numpang lewat"? Tanggal 25 terima gaji, tapi baru tanggal 10 bulan depan, saldo rekening sudah menipis dan Anda bingung: "Uangku habis buat apa saja, ya?" Masalah utamanya seringkali bukan pada besarnya gaji Anda, melainkan pada cara Anda memperlakukan uang tersebut. Banyak orang terjebak menggunakan aplikasi Expense Tracker. Masalahnya, mencatat pengeluaran itu sifatnya penyesalan. Anda hanya mencatat sejarah: "Yah, uangku habis 500 ribu buat kopi." Sudah saatnya berubah. Perkenalkan VersoKit Budget Planner. Ini bukan sekadar pencatat, ini adalah alat Perencana Masa Depan berbasis metode Zero-Based Budgeting (ZBB).</p>`
       },
       {
         title: `Apa Itu Zero-Based Budgeting (ZBB)?`,
-        content: `<p>Filosofi di balik alat ini sangat sederhana namun powerful: <strong>"Berikan pekerjaan untuk setiap rupiah yang Anda miliki."</strong></p><p>Bayangkan metode "Amplop" nenek moyang kita. Jika Anda punya uang tunai Rp 5.000.000 di tangan, Anda akan memasukkannya ke dalam amplop-amplop fisik: Makan, Kost, Tabungan, dan Hiburan. Anda terus membagi uang tersebut sampai uang di tangan Anda sisa NOL (0). Artinya, semua uang sudah punya pos masing-masing.</p>`
+        content: `<p>Filosofi di balik alat ini sangat sederhana namun powerful: <strong>"Berikan pekerjaan untuk setiap rupiah yang Anda miliki."</strong> Bayangkan metode "Amplop" nenek moyang kita. Jika Anda punya uang tunai Rp 5.000.000 di tangan, Anda akan memasukkannya ke dalam amplop-amplop fisik: Makan, Kost, Tabungan, dan Hiburan. Anda terus membagi uang tersebut sampai uang di tangan Anda sisa NOL (0). Artinya, semua uang sudah punya pos masing-masing. VersoKit Budget Planner mendigitalkan sistem amplop ini.</p>`
       },
       {
         title: `Masalah Keuangan yang Kami Selesaikan`,
@@ -147,7 +147,7 @@ const BUDGET_CONTENT: { [lang: string]: ToolArticle } = {
     sections: [
       {
         title: `Is Your Salary Just Passing Through?`,
-        content: `<p>Have you ever felt like your salary is just "passing through"? You receive your paycheck on the 25th, but by the 10th of the next month, your account balance is already low. The problem isn't the size of your salary, but how you treat that money.</p><p>Many people use Expense Trackers, but that's just recording history. It's time for a change with <strong>VersoKit Budget Planner</strong>, a future-planning tool based on the Zero-Based Budgeting (ZBB) method.</p>`
+        content: `<p>Have you ever felt like your salary is just "passing through"? You receive your paycheck on the 25th, but by the 10th of the next month, your account balance is already low. The problem isn't the size of your salary, but how you treat that money. Many people use Expense Trackers, but that's just recording history. It's time for a change with <strong>VersoKit Budget Planner</strong>, a future-planning tool based on the Zero-Based Budgeting (ZBB) method.</p>`
       },
       {
         title: `The Zero-Based Philosophy`,
@@ -160,7 +160,7 @@ const BUDGET_CONTENT: { [lang: string]: ToolArticle } = {
     sections: [
       {
         title: `Wo ist das Geld hin?`,
-        content: `<p>Haben Sie das Gefühl, dass Ihr Gehalt nur ein „Durchlaufposten“ ist? Am 25. kommt das Geld, am 10. ist es weg. Das Problem ist oft nicht die Höhe des Gehalts, sondern die fehlende Planung.</p><p>Mit der <strong>Zero-Based Budgeting (ZBB)</strong> Methode von VersoKit geben Sie jedem Cent eine Aufgabe, bevor er ausgegeben wird. Verwandeln Sie reaktives Verfolgen in proaktive Kontrolle.</p>`
+        content: `<p>Haben Sie das Gefühl, dass Ihr Gehalt nur ein „Durchlaufposten“ ist? Am 25. kommt das Geld, am 10. ist es weg. Das Problem ist oft nicht die Höhe des Gehalts, sondern die fehlende Planung. Mit der <strong>Zero-Based Budgeting (ZBB)</strong> Methode von VersoKit geben Sie jedem Cent eine Aufgabe, bevor er ausgegeben wird.</p>`
       }
     ]
   },
@@ -414,73 +414,157 @@ const SCOREBOARD_CONTENT: { [lang: string]: ToolArticle } = {
 // --- 6. SHIFT SCHEDULER CONTENT ---
 const SHIFT_CONTENT: { [lang: string]: ToolArticle } = {
   id: {
-    title: `Aplikasi Jadwal Shift Kerja Gratis: Atur Roster & Share ke WA`,
+    title: `Aplikasi Jadwal Shift Kerja Gratis: Atur Roster Karyawan & Share ke WhatsApp`,
     sections: [
       {
         title: `Pusing Mengatur Jadwal Shift Karyawan?`,
-        content: `<p>Pusing mengatur jadwal kerja karyawan setiap minggu? Masih pakai tulis tangan di papan pengumuman atau rumus Excel yang ribet?</p><p>Hati-hati, manajemen jadwal yang buruk bisa berdampak fatal bagi bisnis Anda. Mulai dari drama di grup WhatsApp karena salah ketik, karyawan yang protes karena jam kerja tidak adil, hingga toko yang kosong karena ada shift yang terlewat tanpa petugas.</p><p>Hentikan kebingungan tersebut sekarang juga. Gunakan <strong>Shift Scheduler</strong> dari VersoKit—asisten pribadi digital Anda untuk membuat roster kerja yang rapi, profesional, dan adil.</p>`
+        content: `<p>Pusing mengatur jadwal kerja karyawan setiap minggu? Masih pakai tulis tangan di papan pengumuman atau rumus Excel yang ribet? Hati-hati, manajemen jadwal yang buruk bisa berdampak fatal bagi bisnis Anda. Mulai dari drama di grup WhatsApp karena salah ketik, karyawan yang protes karena jam kerja tidak adil, hingga toko yang kosong karena ada shift yang terlewat.</p><p>Hentikan kebingungan tersebut sekarang juga. Gunakan <strong>Shift Scheduler</strong> dari VersoKit—asisten pribadi digital Anda untuk membuat roster kerja yang rapi, profesional, and adil.</p>`
       },
       {
-        title: `Kenapa Harus Pindah dari Excel ke Shift Scheduler?`,
-        content: `<p>Banyak manajer menggunakan Excel, namun file Excel seringkali tidak mobile-friendly. Karyawan harus melakukan zoom in/out berkali-kali di HP mereka hanya untuk melihat giliran kerja.</p><p>VersoKit Shift Scheduler hadir dengan keunggulan yang tidak dimiliki Excel tradisional:</p><ul><li><strong>Visual Roster Builder (Intuitif & Berwarna):</strong> Tampilan tabel grid kami sangat sederhana. Anda bisa menggunakan kode warna untuk membedakan shift (Misal: Pagi = Kuning, Malam = Gelap, OFF = Merah). Sekali lirik, semua orang langsung paham pola kerjanya.</li><li><strong>Fitur "WhatsApp Mode" (Killer Feature!):</strong> Cukup satu klik "Copy to Clipboard", dan sistem akan mengubah tabel jadwal menjadi teks rapi yang siap di-Paste ke grup WA tim Anda.</li><li><strong>Workload Calculator (Pembagian Adil):</strong> Alat ini memantau total hari masuk setiap karyawan secara otomatis untuk pembagian beban kerja yang lebih transparan.</li></ul>`
+        title: `Kenapa Harus Pindah dari Excel ke VersoKit?`,
+        content: `<p>Banyak manajer menggunakan Excel, namun file Excel seringkali tidak mobile-friendly. Karyawan harus melakukan zoom in/out berkali-kali di HP mereka hanya untuk melihat giliran kerja. VersoKit menawarkan solusi lebih baik:</p><ul><li><strong>Visual Roster Builder (Intuitif):</strong> Tampilan tabel grid kami sangat sederhana. Anda bisa menggunakan kode warna untuk membedakan shift (Misal: Pagi = Kuning, Malam = Gelap, OFF = Merah). Sekali lirik, semua orang langsung paham.</li><li><strong>WhatsApp Mode (Killer Feature!):</strong> Tidak perlu mengetik ulang jadwal panjang. Cukup satu klik "Copy to Clipboard", sistem mengubah tabel menjadi teks rapi yang siap di-Paste ke grup WA tim Anda.</li><li><strong>Workload Calculator (Adil):</strong> Alat ini memantau total hari masuk setiap karyawan secara otomatis. Pastikan pembagian beban kerja transparan dan adil.</li></ul>`
+      },
+      {
+        title: `Masalah Klasik yang Kami Selesaikan`,
+        content: `<ul><li><strong>Bentrokan Jadwal:</strong> Tidak ada lagi cerita "satu shift kosong" karena sistem visual kami menunjukkan dengan jelas siapa yang berjaga.</li><li><strong>Excel Berantakan:</strong> Jadwal kami didesain responsif. Jika diunduh sebagai gambar (PNG), tampilannya tetap jernih di layar HP.</li><li><strong>Lupa Giliran:</strong> Dengan format gambar atau teks WhatsApp yang rapi, karyawan bisa menyimpan jadwal di galeri HP mereka.</li></ul>`
+      },
+      {
+        title: `Cara Membuat Jadwal Kerja dalam 1 Menit`,
+        content: `<ol><li><strong>Input Nama Karyawan:</strong> Masukkan daftar tim yang aktif minggu ini.</li><li><strong>Tentukan Jenis Shift:</strong> Atur jam kerja (Misal: P=08.00-16.00, S=16.00-24.00).</li><li><strong>Klik Kotak Hari:</strong> Cukup klik pada kotak hari di bawah nama karyawan untuk menentukan shift mereka. Tidak perlu ketik manual!</li><li><strong>Evaluasi & Bagikan:</strong> Cek ringkasan jam kerja agar adil, lalu klik "Copy Text" untuk WhatsApp atau "Download Image".</li></ol>`
+      },
+      {
+        title: `Keamanan Data Terjamin`,
+        content: `<p>Kami menghargai privasi bisnis Anda. Data nama karyawan dan rincian jadwal Anda <strong>TIDAK</strong> dikirim ke server kami. Semuanya tersimpan dengan aman di browser (LocalStorage) perangkat Anda. Jadi, data operasional Anda tidak akan bocor ke pihak luar.</p>`
       }
     ]
   },
   en: {
-    title: `Free Shift Schedule App: Manage rosters & Share to WhatsApp`,
+    title: `Free Shift Schedule App: Manage Employee Rosters & Share to WhatsApp`,
     sections: [
       {
-        title: `Headache with Employee Schedules?`,
-        content: `<p>Tired of managing employee shifts every week using whiteboards or messy Excel files?</p><p>Poor schedule management can be fatal for your business. From WhatsApp group drama due to typos to empty stores because of missed shifts, it's time for a professional solution. Use <strong>Shift Scheduler</strong> from VersoKit—your personal digital assistant for clean and fair rosters.</p>`
+        title: `Headache Managing Work Schedules?`,
+        content: `<p>Still using handwriting on a bulletin board or complicated Excel formulas? Poor schedule management can have fatal consequences: from drama in WhatsApp groups due to typos, to empty stores because a shift was missed. Use <strong>VersoKit Shift Scheduler</strong>—your personal digital assistant to create neat, professional, and fair work rosters.</p>`
       },
       {
         title: `Why Switch from Excel?`,
-        content: `<p>Excel is not mobile-friendly. Employees have to zoom in and out constantly just to see their shift. VersoKit offers unique advantages:</p><ul><li><strong>Visual Roster Builder:</strong> Intuitive and color-coded (e.g., Morning = Yellow, OFF = Red). One glance is all it takes to understand the work pattern.</li><li><strong>WhatsApp Mode (Killer Feature!):</strong> No more manual typing. One click "Copy to Clipboard" transforms the grid into a neat text message ready for your group chat.</li><li><strong>Workload Calculator:</strong> Automatically tracks total workdays for each staff member to ensure fair distribution.</li></ul>`
-      }
-    ]
-  },
-  de: {
-    title: `Kostenlose Schichtplan-App: Dienstpläne erstellen & teilen`,
-    sections: [
+        content: `<p>Excel files are often not mobile-friendly, forcing employees to zoom in and out. VersoKit offers advantages that traditional Excel doesn't:</p><ul><li><strong>Visual Roster Builder:</strong> Simple grid layout. Use color coding to differentiate shifts (e.g., Morning = Yellow, Off = Red). With just a glance, everyone understands the pattern.</li><li><strong>WhatsApp Mode (Killer Feature!):</strong> No more retyping long schedules. Just click "Copy to Clipboard," and the system converts the table into neat text for your team's WhatsApp group.</li><li><strong>Workload Calculator:</strong> Automatically monitors total workdays to ensure fair distribution. No more burning out one employee while another is underutilized.</li></ul>`
+      },
       {
-        title: `Herausforderung bei der Personalplanung?`,
-        content: `<p>Haben Sie es satt, Schichtpläne mühsam in Excel oder auf Papier zu erstellen? Der <strong>VersoKit Schichtplaner</strong> ist Ihr digitaler Assistent für saubere und faire Dienstpläne.</p><ul><li><strong>Visueller Planer:</strong> Nutzen Sie Farbcodes für maximale Übersichtlichkeit auf dem Smartphone.</li><li><strong>WhatsApp-Modus:</strong> Kopieren Sie den Plan als formatierten Text direkt in Ihre Team-Gruppe.</li><li><strong>Gerechte Verteilung:</strong> Behalten Sie die Arbeitstage jedes Mitarbeiters automatisch im Blick.</li></ul>`
+        title: `Who Needs This Tool?`,
+        content: `<ul><li><strong>F&B (Cafe/Restaurant):</strong> Manage barista, waiter, and cook rotations.</li><li><strong>Retail/Stores:</strong> Manage cashier and salesperson schedules.</li><li><strong>Security:</strong> Ensure 24/7 shifts are always staffed.</li><li><strong>Customer Service:</strong> Manage admin teams responding to chats on rotation.</li></ul>`
+      },
+      {
+        title: `How to Create a Schedule in 1 Minute`,
+        content: `<ol><li><strong>Enter Names:</strong> Input your active team list.</li><li><strong>Define Shifts:</strong> Set work hours (e.g., M=Morning, E=Evening).</li><li><strong>Click to Assign:</strong> Simply click on the day box to assign a shift. No manual typing!</li><li><strong>Share:</strong> Click "Copy Text" for WhatsApp or "Download Image" for the bulletin board.</li></ol>`
+      },
+      {
+        title: `Data Security Guaranteed`,
+        content: `<p>We respect your business privacy. Your employee names and schedule details are <strong>NOT</strong> sent to our servers. Everything is securely stored in your device's browser (LocalStorage).</p>`
       }
     ]
   },
   es: {
-    title: `App de Horarios de Turnos Gratis: Crea Rosters y Comparte en WA`,
+    title: `App gratuita de programación de turnos: Gestiona listas y comparte en WhatsApp`,
     sections: [
       {
-        title: `¿Problemas con los Turnos del Personal?`,
-        content: `<p>Deja de usar Excel o papel para gestionar a tu equipo. Con <strong>VersoKit Shift Scheduler</strong>, creas cuadrantes de trabajo profesionales en minutos.</p><ul><li><strong>Creador Visual:</strong> Usa códigos de colores intuitivos para mañana, tarde y noche.</li><li><strong>Modo WhatsApp:</strong> Copia la tabla como texto limpio listo para pegar en el grupo de chat.</li><li><strong>Distribución Justa:</strong> Calcula automáticamente los días trabajados por cada empleado.</li></ul>`
-      }
-    ]
-  },
-  pt: {
-    title: `Gerador de Escala de Trabalho Grátis: Organize e Partilhe no WA`,
-    sections: [
+        title: `¿Te cuesta gestionar los horarios?`,
+        content: `<p>¿Sigues usando Excel o papel? Una mala gestión puede causar conflictos y turnos vacíos. <strong>VersoKit Shift Scheduler</strong> es tu asistente digital para crear listas de trabajo ordenadas y justas.</p>`
+      },
       {
-        title: `Dificuldade em gerir os turnos da equipa?`,
-        content: `<p>Abandone as folhas de cálculo confusas. O <strong>VersoKit Shift Scheduler</strong> é o seu assistente digital para criar escalas de trabalho organizadas e transparentes.</p><ul><li><strong>Construtor Visual:</strong> Diferencie os turnos por cores para facilitar a leitura no telemóvel.</li><li><strong>Modo WhatsApp:</strong> Transforme a grelha em texto formatado para o grupo da equipa com um clique.</li><li><strong>Cálculo de Carga:</strong> Garanta que o trabalho é distribuído de forma justa entre todos.</li></ul>`
+        title: `¿Por qué dejar Excel?`,
+        content: `<ul><li><strong>Creador Visual:</strong> Usa códigos de colores (ej: Mañana = Amarillo, Tarde = Oscuro) para que todos entiendan el patrón de un vistazo.</li><li><strong>Modo WhatsApp:</strong> ¡Función estrella! Convierte la tabla en texto ordenado para pegar en el grupo de WhatsApp con un solo clic.</li><li><strong>Calculadora de Carga:</strong> Monitorea los días trabajados para asegurar una distribución justa y transparente.</li></ul>`
+      },
+      {
+        title: `Cómo crear un horario en 1 minuto`,
+        content: `<ol><li><strong>Nombres:</strong> Introduce la lista de empleados.</li><li><strong>Turnos:</strong> Define las horas (ej: M=8:00-16:00).</li><li><strong>Asignar:</strong> Haz clic en los días para asignar turnos rápidamente.</li><li><strong>Compartir:</strong> Usa "Copiar texto" para WhatsApp o descarga la imagen.</li></ol>`
+      },
+      {
+        title: `Privacidad Garantizada`,
+        content: `<p>Respetamos tu privacidad. Los datos NO se envían a nuestros servidores; todo se guarda localmente en tu navegador para máxima seguridad.</p>`
       }
     ]
   },
   fr: {
-    title: `Planning d'Équipe Gratuit : Gérer les Shifts et Partager sur WA`,
+    title: `Application gratuite de gestion des plannings : Partagez sur WhatsApp`,
     sections: [
       {
-        title: `Besoin d'un planning clair pour vos employés ?`,
-        content: `<p>Finis les fichiers Excel illisibles sur mobile. Utilisez le <strong>Shift Scheduler</strong> de VersoKit pour une gestion simplifiée et professionnelle.</p><ul><li><strong>Planning Visuel :</strong> Codez vos shifts par couleur pour une lecture instantanée.</li><li><strong>Mode WhatsApp :</strong> Copiez le planning en format texte optimisé pour vos groupes de discussion.</li><li><strong>Équité de Charge :</strong> Surveillez automatiquement le nombre de jours travaillés par chacun.</li></ul>`
+        title: `Problèmes de Planning ?`,
+        content: `<p>Une mauvaise gestion des horaires peut désorganiser votre entreprise. Fini les fichiers Excel illisibles sur mobile. Utilisez <strong>VersoKit Shift Scheduler</strong> pour des plannings clairs et équitables.</p>`
+      },
+      {
+        title: `Pourquoi utiliser VersoKit ?`,
+        content: `<ul><li><strong>Planning Visuel :</strong> Utilisez des codes couleurs pour différencier les horaires. En un coup d'œil, tout est clair.</li><li><strong>Mode WhatsApp :</strong> Ne retapez plus les plannings ! Copiez le tableau en format texte optimisé pour WhatsApp en un clic.</li><li><strong>Calculateur de Charge :</strong> Évitez les injustices en surveillant automatiquement le nombre de jours travaillés par chacun.</li></ul>`
+      },
+      {
+        title: `Créer un planning en 1 minute`,
+        content: `<ol><li><strong>Noms :</strong> Saisissez les employés.</li><li><strong>Horaires :</strong> Définissez les types de postes.</li><li><strong>Attribuer :</strong> Cliquez sur les cases pour assigner les shifts.</li><li><strong>Partager :</strong> Téléchargez l'image ou copiez le texte pour WhatsApp.</li></ol>`
+      },
+      {
+        title: `Sécurité des Données`,
+        content: `<p>Vos données restent privées. Rien n'est envoyé sur nos serveurs ; tout est stocké localement sur votre appareil.</p>`
       }
     ]
   },
   it: {
-    title: `Pianificatore Turni Gratis: Crea il Roster e Condividi su WA`,
+    title: `App gratuita pianificazione turni: Gestisci e condividi su WhatsApp`,
     sections: [
       {
-        title: `Basta confusione con i turni di lavoro`,
-        content: `<p>Gestire il personale non è mai stato così semplice. Con <strong>VersoKit Shift Scheduler</strong>, crei calendari settimanali chiari e accessibili da smartphone.</p><ul><li><strong>Layout Visivo:</strong> Usa i colori per distinguere i turni (es. Mattina, Notte, Riposo).</li><li><strong>Modalità WhatsApp:</strong> Copia la tabella come testo pronto da incollare nella chat di gruppo.</li><li><strong>Carico di Lavoro:</strong> Monitora automaticamente i giorni di presenza per ogni dipendente.</li></ul>`
+        title: `Basta confusione con i turni`,
+        content: `<p>Gestire gli orari su Excel o carta è obsoleto e rischioso. <strong>VersoKit Shift Scheduler</strong> ti aiuta a creare turni ordinati e professionali, evitando negozi vuoti e lamentele.</p>`
+      },
+      {
+        title: `Vantaggi rispetto a Excel`,
+        content: `<ul><li><strong>Layout Visivo:</strong> Usa i colori per distinguere i turni (es. Mattina, Pomeriggio, Riposo). Intuitivo anche da mobile.</li><li><strong>Modalità WhatsApp:</strong> La funzione geniale! Converti la tabella in testo pronto per essere incollato nella chat del gruppo.</li><li><strong>Carico di Lavoro:</strong> Controlla automaticamente i giorni lavorati per garantire una distribuzione equa.</li></ul>`
+      },
+      {
+        title: `Come funziona`,
+        content: `<ol><li><strong>Nomi:</strong> Inserisci il team.</li><li><strong>Turni:</strong> Imposta gli orari.</li><li><strong>Assegna:</strong> Clicca sui giorni per riempire il calendario.</li><li><strong>Condividi:</strong> Copia il testo per WhatsApp o scarica l'immagine PNG.</li></ol>`
+      },
+      {
+        title: `Sicurezza Garantita`,
+        content: `<p>I tuoi dati sono al sicuro. Non inviamo nulla ai server; tutto rimane salvato nel browser del tuo dispositivo.</p>`
+      }
+    ]
+  },
+  pt: {
+    title: `Criador de Escalas de Trabalho Grátis: Partilhe no WhatsApp`,
+    sections: [
+      {
+        title: `Dores de cabeça com escalas?`,
+        content: `<p>Uma má gestão de escalas pode ser fatal. Abandone o Excel e use o <strong>VersoKit Shift Scheduler</strong> para criar escalas organizadas e justas em minutos.</p>`
+      },
+      {
+        title: `Por que usar o VersoKit?`,
+        content: `<ul><li><strong>Visual Intuitivo:</strong> Use cores para diferenciar turnos. Fácil de entender num piscar de olhos.</li><li><strong>Modo WhatsApp:</strong> Converta a tabela em texto organizado para o grupo da equipa com um clique.</li><li><strong>Distribuição Justa:</strong> A calculadora de carga de trabalho monitoriza os dias para evitar sobrecargas injustas.</li></ul>`
+      },
+      {
+        title: `Como criar em 1 minuto`,
+        content: `<ol><li><strong>Funcionários:</strong> Insira os nomes.</li><li><strong>Turnos:</strong> Defina os horários.</li><li><strong>Atribuir:</strong> Clique nos dias para marcar o turno. Sem digitar repetidamente!</li><li><strong>Partilhar:</strong> Copie para o WhatsApp ou baixe a imagem.</li></ol>`
+      },
+      {
+        title: `Privacidade Total`,
+        content: `<p>Respeitamos a sua privacidade. Os dados não saem do seu dispositivo, ficando armazenados apenas no seu navegador.</p>`
+      }
+    ]
+  },
+  de: {
+    title: `Kostenlose Schichtplan-App: Verwalten & per WhatsApp teilen`,
+    sections: [
+      {
+        title: `Schluss mit dem Dienstplan-Chaos`,
+        content: `<p>Excel-Tabellen sind auf Handys schwer zu lesen. Der <strong>VersoKit Schichtplaner</strong> ist Ihr digitaler Assistent für übersichtliche und faire Dienstpläne.</p>`
+      },
+      {
+        title: `Warum VersoKit?`,
+        content: `<ul><li><strong>Visueller Planer:</strong> Nutzen Sie Farbcodes (z.B. Gelb für Frühschicht), damit jeder den Plan sofort versteht.</li><li><strong>WhatsApp-Modus:</strong> Nie wieder Pläne abtippen! Kopieren Sie den Plan als Text direkt in Ihre WhatsApp-Gruppe.</li><li><strong>Arbeitslastrechner:</strong> Überwacht automatisch die Arbeitstage für eine gerechte Verteilung.</li></ul>`
+      },
+      {
+        title: `Anleitung`,
+        content: `<ol><li><strong>Namen:</strong> Mitarbeiter eintragen.</li><li><strong>Schichten:</strong> Zeiten definieren.</li><li><strong>Zuweisen:</strong> Einfach auf die Tage klicken.</li><li><strong>Teilen:</strong> Als Bild herunterladen oder Text für WhatsApp kopieren.</li></ol>`
+      },
+      {
+        title: `Datensicherheit`,
+        content: `<p>Ihre Daten bleiben privat. Wir speichern nichts auf Servern; alles bleibt lokal in Ihrem Browser.</p>`
       }
     ]
   }
@@ -627,69 +711,77 @@ const FUTSAL_CONTENT: { [lang: string]: ToolArticle } = {
     sections: [
       {
         title: `Akhiri Debat Skor di Lapangan`,
-        content: `<p>Dalam pertandingan futsal tensi tinggi, transparansi skor dan waktu adalah segalanya. <strong>VersoKit Futsal Scoreboard</strong> hadir sebagai solusi cerdas untuk sparring dan liga.</p>`
+        content: `<p>Pernahkah sesi sparring futsal Anda berakhir dengan perdebatan sengit hanya karena lupa skor? Atau pemain terus bertanya "Sisa berapa menit?" karena stopwatch wasit tidak terlihat?</p><p>Dalam pertandingan tensi tinggi, transparansi adalah segalanya. <strong>VersoKit Futsal Scoreboard</strong> hadir sebagai solusi cerdas. Cukup dengan Laptop/Tablet dan kabel HDMI ke TV, ubah lapangan biasa menjadi arena profesional layaknya liga nasional.</p>`
+      },
+      {
+        title: `Masalah Klasik yang Kami Selesaikan`,
+        content: `<ul><li><strong>Hakim yang Adil:</strong> Tampilan Timer/Countdown besar mengakhiri debat sisa waktu antara pemain dan wasit.</li><li><strong>Foul Counter:</strong> Jangan lupa aturan futsal! Pelanggaran ke-6 berarti penalti titik kedua. Fitur kami mencatat ini dengan akurat.</li><li><strong>Hemat Jutaan Rupiah:</strong> Tidak perlu beli papan skor fisik mahal. Dapatkan fitur lebih canggih secara Gratis.</li></ul>`
       },
       {
         title: `Fitur Unggulan`,
-        content: `<ul><li><strong>Foul Counter:</strong> Pantau pelanggaran kumulatif tim secara akurat.</li><li><strong>Timer Fleksibel:</strong> Atur durasi babak sesuai kebutuhan liga Anda.</li><li><strong>TV Fullscreen Mode:</strong> Tampilan bersih tajam di TV besar lapangan.</li></ul>`
+        content: `<ul><li><strong>Custom Team Name:</strong> Ubah nama "Home" & "Away" jadi nama tim asli.</li><li><strong>Timer Fleksibel:</strong> Atur durasi babak (15, 20, 25 menit) lengkap dengan tombol Pause/Resume.</li><li><strong>Fullscreen Mode TV:</strong> Tampilan bersih tanpa menu browser, tajam di TV besar.</li><li><strong>Period Indicator:</strong> Penanda Babak 1, Babak 2, hingga Extra Time.</li></ul>`
       }
     ]
   },
   en: {
-    title: `Online Digital Futsal Scoreboard: Professional Arena Quality`,
+    title: `Online Digital Futsal Scoreboard: Transform Your Pitch into a Professional Arena`,
     sections: [
       {
         title: `Stop the Score Debates`,
-        content: `<p>Transparency is everything in high-tension matches. <strong>VersoKit Futsal Scoreboard</strong> transforms your ordinary pitch into a professional arena.</p>`
+        content: `<p>Have your sparring sessions ever ended in arguments because someone forgot the score? Or players constantly asking, "How much time is left, Coach?"</p><p>Transparency is everything in high-tension matches. <strong>VersoKit Futsal Scoreboard</strong> transforms your ordinary pitch into a professional arena using just a laptop and an HDMI connection. Save money on expensive physical scoreboards.</p>`
       },
       {
-        title: `Pro Features`,
-        content: `<ul><li><strong>Foul Tracking:</strong> Cumulative fouls with visual alerts.</li><li><strong>Flexible Timer:</strong> Customizable period durations.</li><li><strong>Broadcast Ready:</strong> Clean fullscreen UI for stadium displays.</li></ul>`
-      }
-    ]
-  },
-  de: {
-    title: `Online-Anzeigetafel für Futsal: Profi-Qualität`,
-    sections: [
-      {
-        title: `Schluss mit Diskussionen`,
-        content: `<p>Die <strong>VersoKit Futsal-Anzeigetafel</strong> verwandelt Ihren Platz mit nur einem Laptop in eine Profi-Arena für Sparring und Ligen.</p>`
+        title: `Problems We Solve`,
+        content: `<ul><li><strong>The Fair Judge:</strong> A large, clear Timer/Countdown display ends all time disputes instantly.</li><li><strong>Foul Counter:</strong> In futsal, the 6th foul means a Second Penalty Point. Our tool tracks this crucial rule strictly.</li><li><strong>Cost-Effective:</strong> Get advanced scoreboard features for free, replacing expensive physical hardware.</li></ul>`
       }
     ]
   },
   es: {
-    title: `Marcador Digital de Fútbol Sala: Calidad Profesional`,
+    title: `Marcador Digital de Fútbol Sala Online: Estadio Profesional Gratis`,
     sections: [
       {
         title: `Termina con las Discusiones`,
-        content: `<p>La transparencia es clave en los partidos de alta tensión. El <strong>Marcador VersoKit</strong> transforma tu campo en un estadio profesional.</p>`
+        content: `<p>¿Tus partidos terminan en discusiones por olvidar el marcador? ¿Los jugadores preguntan constantemente cuánto tiempo queda? La transparencia es clave.</p><p>El <strong>Marcador VersoKit</strong> transforma tu campo en un estadio profesional usando solo un portátil y un cable HDMI. Una solución inteligente y gratuita frente a los costosos marcadores físicos.</p>`
+      },
+      {
+        title: `Características Principales`,
+        content: `<ul><li><strong>Nombres Personalizados:</strong> Cambia "Local" y "Visitante" por los nombres reales de los equipos.</li><li><strong>Temporizador Flexible:</strong> Configura la duración (15, 20, 25 min) con control total de pausa.</li><li><strong>Modo Pantalla Completa:</strong> Diseño limpio tipo transmisión de TV, sin menús del navegador.</li></ul>`
       }
     ]
   },
   pt: {
-    title: `Placar Digital Online para Futsal: Qualidade Profissional`,
+    title: `Placar Digital Online para Futsal: Sua Quadra Virou Arena Profissional`,
     sections: [
       {
         title: `Fim das Discussões sobre o Placar`,
-        content: `<p>O <strong>VersoKit Futsal Scoreboard</strong> transforma sua quadra comum em uma arena profissional, pronta para transmissões e torneios.</p>`
+        content: `<p>Seus treinos terminam em brigas porque esqueceram o placar? Os jogadores perguntam "Quanto tempo falta?" o tempo todo?</p><p>O <strong>VersoKit Futsal Scoreboard</strong> resolve isso. Com apenas um laptop e um cabo HDMI, sua quadra comum se transforma em uma arena profissional, pronta para transmissões, sem o custo alto de placares físicos.</p>`
+      }
+    ]
+  },
+  de: {
+    title: `Online-Anzeigetafel für Futsal: Verwandeln Sie Ihren Platz in eine Profi-Arena`,
+    sections: [
+      {
+        title: `Schluss mit Diskussionen`,
+        content: `<p>Enden Ihre Spiele oft in Streitigkeiten über den Spielstand oder die verbleibende Zeit? Transparenz ist entscheidend.</p><p>Die <strong>VersoKit Futsal-Anzeigetafel</strong> verwandelt Ihren Platz mit nur einem Laptop und HDMI-Kabel in eine Profi-Arena. Sparen Sie sich teure physische Anzeigetafeln.</p>`
       }
     ]
   },
   fr: {
-    title: `Tableau de Score Futsal en Ligne : Qualité Professionnelle`,
+    title: `Tableau de Score Futsal en Ligne : Une Arène Professionnelle Gratuite`,
     sections: [
       {
         title: `Finis les Débats sur le Score`,
-        content: `<p>Le <strong>Tableau de Score VersoKit</strong> transforme votre terrain en arène pro pour vos matchs amicaux et championnats.</p>`
+        content: `<p>Vos matchs finissent-ils en disputes à cause d'un oubli de score ou de temps ? La transparence est primordiale.</p><p>Le <strong>Tableau de Score VersoKit</strong> transforme votre terrain en arène pro avec un simple ordinateur et un câble HDMI. Une solution intelligente et gratuite qui remplace les équipements coûteux.</p>`
       }
     ]
   },
   it: {
-    title: `Tabellone Digitale Futsal Online: Qualità Professionale`,
+    title: `Tabellone Digitale Futsal Online: Trasforma il Campo in Arena Pro`,
     sections: [
       {
         title: `Basta Discussioni sul Punteggio`,
-        content: `<p>Il <strong>Tabellone VersoKit</strong> trasforma il tuo campo in un'arena professionale per ogni sfida e torneo.</p>`
+        content: `<p>Le tue partite finiscono in liti per il punteggio dimenticato? I giocatori chiedono sempre "Quanto manca"?</p><p>Il <strong>Tabellone VersoKit</strong> trasforma il tuo campo in un'arena professionale usando solo un PC e un cavo HDMI. Una soluzione smart che sostituisce i costosi tabelloni fisici.</p>`
       }
     ]
   }
