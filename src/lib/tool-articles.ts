@@ -669,67 +669,208 @@ const AMERICANO_CONTENT: { [lang: string]: ToolArticle } = {
 };
 
 // --- 9. FUTSAL CONTENT ---
+// --- 9. FUTSAL CONTENT ---
 const FUTSAL_CONTENT: { [lang: string]: ToolArticle } = {
   id: {
-    title: `Papan Skor Futsal Digital: Timer & Hitung Foul`,
+    title: `Papan Skor Futsal Digital Online: Ubah Lapangan Anda Jadi Arena Profesional`,
     sections: [
       {
-        title: `Fasilitas GOR Profesional`,
-        content: `<p>Papan skor futsal digital profesional dengan hitungan foul standar FIFA. Cocok untuk liga amatir, sparing antar komunitas, atau kompetisi sekolah dengan kontrol timer yang akurat.</p>`
+        title: `Akhiri Debat Skor di Lapangan`,
+        content: `<p>Pernahkah sesi sparring futsal Anda berakhir dengan perdebatan sengit hanya karena lupa skor? Atau pemain terus bertanya "Sisa berapa menit?" karena stopwatch wasit tidak terlihat?</p><p>Dalam pertandingan tensi tinggi, transparansi adalah segalanya. <strong>VersoKit Futsal Scoreboard</strong> hadir sebagai solusi cerdas. Cukup dengan Laptop/Tablet dan kabel HDMI ke TV, ubah lapangan biasa menjadi arena profesional layaknya liga nasional.</p>`
+      },
+      {
+        title: `Masalah Klasik yang Kami Selesaikan`,
+        content: `<ul><li><strong>Hakim yang Adil:</strong> Tampilan Timer/Countdown besar mengakhiri debat sisa waktu antara pemain dan wasit.</li><li><strong>Foul Counter:</strong> Jangan lupa aturan futsal! Pelanggaran ke-6 berarti penalti titik kedua. Fitur kami mencatat ini dengan akurat.</li><li><strong>Hemat Jutaan Rupiah:</strong> Tidak perlu beli papan skor fisik mahal. Dapatkan fitur lebih canggih secara Gratis.</li></ul>`
+      },
+      {
+        title: `Fitur Unggulan`,
+        content: `<ul><li><strong>Custom Team Name:</strong> Ubah nama "Home" & "Away" jadi nama tim asli.</li><li><strong>Timer Fleksibel:</strong> Atur durasi babak (15, 20, 25 menit) lengkap dengan tombol Pause/Resume.</li><li><strong>Fullscreen Mode TV:</strong> Tampilan bersih tanpa menu browser, tajam di TV besar.</li><li><strong>Period Indicator:</strong> Penanda Babak 1, Babak 2, hingga Extra Time.</li></ul>`
+      },
+      {
+        title: `Cara Menggunakan (Siapapun Bisa!)`,
+        content: `<ol><li><strong>Hubungkan:</strong> Sambungkan Laptop ke TV menggunakan kabel HDMI.</li><li><strong>Buka & Atur:</strong> Buka VersoKit, masukkan nama tim dan durasi waktu.</li><li><strong>Fullscreen:</strong> Klik ikon layar penuh agar terlihat profesional.</li><li><strong>Kick Off:</strong> Mulai pertandingan dan nikmati atmosfer liga pro!</li></ol>`
+      },
+      {
+        title: `Siapa yang Wajib Mencoba Alat Ini?`,
+        content: `<ul><li><strong>Pengelola Lapangan Futsal:</strong> Berikan nilai tambah (add-on) bagi penyewa lapangan agar mereka lebih puas dan betah berlangganan di tempat Anda.</li><li><strong>Panitia Turnamen:</strong> Baik turnamen antar kampung, antar kelas (class meeting), maupun liga internal perusahaan, alat ini akan meningkatkan gengsi acara Anda.</li><li><strong>Wasit & Komunitas:</strong> Memudahkan tugas memimpin pertandingan tanpa perlu membawa stopwatch fisik atau kertas catatan yang ribet.</li></ul>`
+      },
+      {
+        title: `Jadikan Lapangan Anda Berbeda!`,
+        content: `<p>Di tengah persaingan bisnis lapangan futsal, pelayanan kecil seperti penyediaan papan skor digital bisa membuat lapangan Anda jauh lebih unggul dibanding kompetitor. Lebih profesional, lebih adil, dan pastinya lebih seru.</p>`
       }
     ]
   },
   en: {
-    title: `Futsal Digital Scoreboard: Timer & Fouls`,
+    title: `Online Digital Futsal Scoreboard: Transform Your Pitch into a Professional Arena`,
     sections: [
       {
-        title: `Pro Match Control`,
-        content: `<p>FIFA-standard foul tracking and timer for your local matches. Turn any laptop or tablet into a professional futsal scoreboard with a large, clear display.</p>`
+        title: `Stop the Score Debates`,
+        content: `<p>Have your sparring sessions ever ended in arguments because someone forgot the score? Or players constantly asking, "How much time is left, Coach?"</p><p>Transparency is everything in high-tension matches. <strong>VersoKit Futsal Scoreboard</strong> transforms your ordinary pitch into a professional arena using just a laptop and an HDMI connection. Save money on expensive physical scoreboards.</p>`
+      },
+      {
+        title: `Problems We Solve`,
+        content: `<ul><li><strong>The Fair Judge:</strong> A large, clear Timer/Countdown display ends all time disputes instantly.</li><li><strong>Foul Counter:</strong> In futsal, the 6th foul means a Second Penalty Point. Our tool tracks this crucial rule strictly.</li><li><strong>Cost-Effective:</strong> Get advanced scoreboard features for free, replacing expensive physical hardware.</li></ul>`
+      },
+      {
+        title: `Key Features`,
+        content: `<ul><li><strong>Custom Team Names:</strong> Rename "Home" & "Away" to actual team names.</li><li><strong>Flexible Timer:</strong> Set match duration (15, 20, 25 mins) with Start, Pause, and Reset controls.</li><li><strong>TV Fullscreen Mode:</strong> Clean, broadcast-quality display without browser distractions.</li><li><strong>Responsive Design:</strong> Fits perfectly on a referee's phone or a large stadium TV.</li></ul>`
+      },
+      {
+        title: `How to Use`,
+        content: `<ol><li><strong>Connect:</strong> Plug your laptop into a TV via HDMI.</li><li><strong>Setup:</strong> Enter team names and set the half-time duration.</li><li><strong>Go Fullscreen:</strong> Click the fullscreen icon for a pro look.</li><li><strong>Kick Off:</strong> Start the match and enjoy the professional league atmosphere!</li></ol>`
+      },
+      {
+        title: `Who Should Try This Tool?`,
+        content: `<ul><li><strong>Futsal Field Managers:</strong> Provide added value for pitch renters to make them more satisfied and stay longer at your venue.</li><li><strong>Tournament Committees:</strong> Whether it's an inter-village tournament or an internal company league, this tool will enhance the prestige of your event.</li><li><strong>Referees & Community:</strong> Simplify the task of officiating matches without the need to carry a physical stopwatch.</li></ul>`
+      },
+      {
+        title: `Set Your Field Apart!`,
+        content: `<p>In the competitive futsal field business, a simple service like providing a digital scoreboard can make your field stand out from the competition. More professional, fairer, and definitely more fun.</p>`
       }
     ]
   },
   es: {
-    title: `Marcador Digital de Futsal: Tiempo y Faltas`,
+    title: `Marcador Digital de Fútbol Sala Online: Estadio Profesional Gratis`,
     sections: [
       {
-        title: `Control Profesional de Partidos`,
-        content: `<p>Cronómetro y control de faltas estándar para tus partidos de fútbol sala. Convierte cualquier pantalla en un marcador profesional visible para todos los jugadores.</p>`
+        title: `Termina con las Discusiones`,
+        content: `<p>¿Tus partidos terminan en discusiones por olvidar el marcador? ¿Los jugadores preguntan constantemente cuánto tiempo queda? La transparencia es clave.</p><p>El <strong>Marcador VersoKit</strong> transforma tu campo en un estadio profesional usando solo un portátil y un cable HDMI. Una solución inteligente y gratuita frente a los costosos marcadores físicos.</p>`
+      },
+      {
+        title: `Problemas que Resolvemos`,
+        content: `<ul><li><strong>Juez Imparcial:</strong> El cronómetro grande y claro elimina las dudas sobre el tiempo restante.</li><li><strong>Contador de Faltas:</strong> La 6ª falta es penal. Nuestro contador asegura que esta regla vital se cumpla estrictamente.</li><li><strong>Ahorro Total:</strong> Obtén funciones avanzadas sin gastar millones en hardware.</li></ul>`
+      },
+      {
+        title: `Características Principales`,
+        content: `<ul><li><strong>Nombres Personalizados:</strong> Cambia "Local" y "Visitante" por los nombres reales de los equipos.</li><li><strong>Temporizador Flexible:</strong> Configura la duración (15, 20, 25 min) con control total de pausa.</li><li><strong>Modo Pantalla Completa:</strong> Diseño limpio tipo transmisión de TV, sin menús del navegador.</li><li><strong>Indicador de Periodo:</strong> Marca claramente la 1ª mitad, 2ª mitad y prórroga.</li></ul>`
+      },
+      {
+        title: `Cómo Usarlo`,
+        content: `<ol><li><strong>Conectar:</strong> Conecta tu portátil a la TV por HDMI.</li><li><strong>Configurar:</strong> Escribe los nombres de los equipos y el tiempo.</li><li><strong>Pantalla Completa:</strong> Activa el modo inmersivo.</li><li><strong>¡A Jugar!:</strong> Inicia el partido con atmósfera profesional.</li></ol>`
+      },
+      {
+        title: `¿Quién debería probar esta herramienta?`,
+        content: `<ul><li><strong>Gestores de campos de fútbol sala:</strong> Ofrezca valor añadido a los arrendatarios para que estén más satisfechos.</li><li><strong>Comités de torneos:</strong> Ya sea un torneo municipal o una liga de empresa, esta herramienta realzará el prestigio de su evento.</li><li><strong>Árbitros y comunidad:</strong> Simplifique la tarea de arbitrar sin necesidad de llevar un cronómetro físico.</li></ul>`
+      },
+      {
+        title: `¡Marque su campo como único ganador!`,
+        content: `<p>En el competitivo sector de los campos de fútbol sala, un servicio sencillo como proporcionar un marcador digital puede hacer que su campo destaque entre la competencia.</p>`
       }
     ]
   },
   pt: {
-    title: `Placar Digital de Futsal: Cronômetro e Faltas`,
+    title: `Placar Digital Online para Futsal: Sua Quadra Virou Arena Profissional`,
     sections: [
       {
-        title: `Controle Profissional de Partidas`,
-        content: `<p>Acompanhe o tempo e as faltas dos seus jogos de futsal. Interface clara e fácil de usar para competições, amistosos e treinos intensos.</p>`
+        title: `Fim das Discussões sobre o Placar`,
+        content: `<p>Seus treinos terminam em brigas porque esqueceram o placar? Os jogadores perguntam "Quanto tempo falta?" o tempo todo?</p><p>O <strong>VersoKit Futsal Scoreboard</strong> resolve isso. Com apenas um laptop e um cabo HDMI, sua quadra comum se transforma em uma arena profissional, pronta para transmissões, sem o custo alto de placares físicos.</p>`
+      },
+      {
+        title: `Problemas Resolvidos`,
+        content: `<ul><li><strong>Juiz Imparcial:</strong> O cronômetro grande e claro acaba com as dúvidas sobre o tempo de jogo.</li><li><strong>Contador de Faltas:</strong> No futsal, a 6ª falta gera tiro livre direto. Nosso sistema controla isso rigorosamente.</li><li><strong>Solução Econômica:</strong> Funções avançadas de graça, substituindo equipamentos caros.</li></ul>`
+      },
+      {
+        title: `Recursos Principais`,
+        content: `<ul><li><strong>Nomes Personalizados:</strong> Mude "Casa" e "Visitante" para os nomes reais dos times.</li><li><strong>Cronômetro Flexível:</strong> Ajuste o tempo (15, 20, 25 min) com botões de Iniciar e Pausar.</li><li><strong>Modo Tela Cheia:</strong> Visual limpo de transmissão de TV, sem menus do navegador.</li><li><strong>Responsivo:</strong> Funciona no celular do árbitro ou na TV grande para a torcida.</li></ul>`
+      },
+      {
+        title: `Como Usar`,
+        content: `<ol><li><strong>Conecte:</strong> Ligue seu laptop à TV via HDMI.</li><li><strong>Configure:</strong> Insira os nomes dos times e o tempo de jogo.</li><li><strong>Tela Cheia:</strong> Clique no ícone para visual profissional.</li><li><strong>Apito Inicial:</strong> Comece o jogo com estilo de liga profissional!</li></ol>`
+      },
+      {
+        title: `Quem deve experimentar esta ferramenta?`,
+        content: `<ul><li><strong>Gestores de Campos de Futsal:</strong> Ofereçam valor agregado para aumentar a satisfação e prolongar a permanência dos usuários.</li><li><strong>Organizadores de Torneios:</strong> Seja um torneio entre bairros ou uma liga interna, esta ferramenta elevará o prestígio do seu evento.</li><li><strong>Árbitros e Comunidade:</strong> Simplifiquem a arbitragem sem a necessidade de cronômetros físicos.</li></ul>`
+      },
+      {
+        title: `Destaque o seu Campo!`,
+        content: `<p>No competitivo mercado de campos de futsal, um serviço simples como um placar digital pode fazer com que o seu campo se destaque da concorrência.</p>`
       }
     ]
   },
   de: {
-    title: `Digitales Futsal-Scoreboard: Timer & Fouls`,
+    title: `Online-Anzeigetafel für Futsal: Verwandeln Sie Ihren Platz in eine Profi-Arena`,
     sections: [
       {
-        title: `Professionelle Spielkontrolle`,
-        content: `<p>FIFA-Standard Foul-Tracking und Zeitnahme für Ihre Futsal-Spiele. Verwandeln Sie jedes Tablet in eine professionelle Anzeigetafel für Ihren Sportplatz.</p>`
+        title: `Schluss mit Diskussionen`,
+        content: `<p>Enden Ihre Spiele oft in Streitigkeiten über den Spielstand oder die verbleibende Zeit? Transparenz ist entscheidend.</p><p>Die <strong>VersoKit Futsal-Anzeigetafel</strong> verwandelt Ihren Platz mit nur einem Laptop und HDMI-Kabel in eine Profi-Arena. Sparen Sie sich teure physische Anzeigetafeln.</p>`
+      },
+      {
+        title: `Probleme, die wir lösen`,
+        content: `<ul><li><strong>Der faire Richter:</strong> Ein großer Timer beendet alle Zeitdiskussionen sofort.</li><li><strong>Foulzähler:</strong> Im Futsal führt das 6. Foul zum Strafstoß. Unser Tool überwacht diese Regel genau.</li><li><strong>Kostenlos:</strong> Professionelle Funktionen ohne Investition in Hardware.</li></ul>`
+      },
+      {
+        title: `Hauptfunktionen`,
+        content: `<ul><li><strong>Teamnamen anpassen:</strong> Ersetzen Sie „Heim“ & „Gast“ durch echte Vereinsnamen.</li><li><strong>Flexibler Timer:</strong> Halbzeitdauer (15, 20, 25 Min.) mit Start/Pause-Funktion.</li><li><strong>Vollbildmodus:</strong> Sauberes TV-Design ohne störende Browsermenüs.</li><li><strong>Responsiv:</strong> Perfekt für das Handy des Schiedsrichters oder den großen TV-Screen.</li></ul>`
+      },
+      {
+        title: `So funktioniert's`,
+        content: `<ol><li><strong>Verbinden:</strong> Laptop per HDMI an den TV anschließen.</li><li><strong>Einstellen:</strong> Teamnamen und Zeit eingeben.</li><li><strong>Vollbild:</strong> Für den Profi-Look aktivieren.</li><li><strong>Anpfiff:</strong> Starten Sie das Spiel!</li></ol>`
+      },
+      {
+        title: `Für wen ist dieses Tool geeignet?`,
+        content: `<ul><li><strong>Futsal-Platzmanager:</strong> Bieten Sie Mehrwert, um die Zufriedenheit zu steigern.</li><li><strong>Turnierkomitees:</strong> Ob Dorfturnier oder Firmenliga – dieses Tool wertet Ihre Veranstaltung auf.</li><li><strong>Schiedsrichter:</strong> Vereinfachen Sie die Spielleitung ohne Stoppuhr oder Notizblock.</li></ul>`
+      },
+      {
+        title: `Heben Sie Ihren Platz hervor!`,
+        content: `<p>Im wettbewerbsintensiven Futsal-Platzgeschäft kann ein einfacher Service wie eine digitale Anzeigetafel Ihren Platz von der Konkurrenz abheben.</p>`
       }
     ]
   },
   fr: {
-    title: `Tableau de Score Futsal : Chrono et Fautes`,
+    title: `Tableau de Score Futsal en Ligne : Une Arène Professionnelle Gratuite`,
     sections: [
       {
-        title: `Contrôle de Match Professionnel`,
-        content: `<p>Suivez le temps et les fautes selon les standards du futsal. Idéal pour les matchs locaux, les tournois scolaires et les compétitions amateurs.</p>`
+        title: `Finis les Débats sur le Score`,
+        content: `<p>Vos matchs finissent-ils en disputes à cause d'un oubli de score ou de temps ? La transparence est primordiale.</p><p>Le <strong>Tableau de Score VersoKit</strong> transforme votre terrain en arène pro avec un simple ordinateur et un câble HDMI. Une solution intelligente et gratuite qui remplace les équipements coûteux.</p>`
+      },
+      {
+        title: `Problèmes Résolus`,
+        content: `<ul><li><strong>Juge Impartial :</strong> Le grand chronomètre met fin aux doutes sur le temps restant.</li><li><strong>Compteur de Fautes :</strong> La 6ème faute donne un jet franc. Notre outil suit cette règle cruciale.</li><li><strong>Économique :</strong> Des fonctionnalités pro gratuites, sans achat de matériel.</li></ul>`
+      },
+      {
+        title: `Fonctionnalités Clés`,
+        content: `<ul><li><strong>Noms Personnalisés :</strong> Remplacez "Domicile/Extérieur" par les vrais noms des équipes.</li><li><strong>Minuteur Flexible :</strong> Réglez la durée (15, 20, 25 min) avec pause et reprise.</li><li><strong>Mode Plein Écran :</strong> Affichage TV propre, sans les menus du navigateur.</li><li><strong>Responsive :</strong> Idéal sur le téléphone de l'arbitre ou sur grand écran.</li></ul>`
+      },
+      {
+        title: `Comment l'Utiliser`,
+        content: `<ol><li><strong>Connecter :</strong> Branchez l'ordinateur à la TV via HDMI.</li><li><strong>Configurer :</strong> Entrez les noms et la durée.</li><li><strong>Plein Écran :</strong> Activez pour un rendu pro.</li><li><strong>Coup d'Envoi :</strong> Lancez le match dans une ambiance de ligue !</li></ol>`
+      },
+      {
+        title: `À qui s’adresse cet outil ?`,
+        content: `<ul><li><strong>Gestionnaires de terrains :</strong> Offrez des services à valeur ajoutée pour satisfaire davantage vos clients.</li><li><strong>Organisateurs de tournois :</strong> Qu'il s'agisse d'un tournoi local ou d'un championnat d'entreprise, cet outil rehaussera le prestige de votre événement.</li><li><strong>Arbitres :</strong> Simplifiez l'arbitrage sans chronomètre encombrant.</li></ul>`
+      },
+      {
+        title: `Démarquez-vous !`,
+        content: `<p>Dans le secteur concurrentiel du futsal, un service simple comme la mise à disposition d'un tableau d'affichage numérique peut faire toute la différence.</p>`
       }
     ]
   },
   it: {
-    title: `Tabellone Calcetto Digitale: Timer e Falli`,
+    title: `Tabellone Digitale Futsal Online: Trasforma il Campo in Arena Pro`,
     sections: [
       {
-        title: `Controllo Match Professionale`,
-        content: `<p>Gestisci il tempo e i falli per le tue partite di calcio a 5. Trasforma il tuo dispositivo in un tabellone segnapunti professionale facile da leggere.</p>`
+        title: `Basta Discussioni sul Punteggio`,
+        content: `<p>Le tue partite finiscono in liti per il punteggio dimenticato? I giocatori chiedono sempre "Quanto manca"?</p><p>Il <strong>Tabellone VersoKit</strong> trasforma il tuo campo in un'arena professionale usando solo un PC e un cavo HDMI. Una soluzione smart che sostituisce i costosi tabelloni fisici.</p>`
+      },
+      {
+        title: `Problemi Risolti`,
+        content: `<ul><li><strong>Giudice Imparziale:</strong> Il timer grande e chiaro elimina ogni dubbio sul tempo.</li><li><strong>Contatore Falli:</strong> Nel futsal, il 6° fallo è tiro libero. Il nostro tool tiene il conto preciso.</li><li><strong>Gratis:</strong> Funzioni professionali a costo zero.</li></ul>`
+      },
+      {
+        title: `Caratteristiche Principali`,
+        content: `<ul><li><strong>Nomi Personalizzati:</strong> Cambia "Casa/Ospiti" con i veri nomi delle squadre.</li><li><strong>Timer Flessibile:</strong> Imposta la durata (15, 20, 25 min) con pulsanti start/pausa.</li><li><strong>Schermo Intero:</strong> Design pulito stile TV, senza menu del browser.</li><li><strong>Responsive:</strong> Perfetto sul telefono dell'arbitro o sulla TV per il pubblico.</li></ul>`
+      },
+      {
+        title: `Come Usarlo`,
+        content: `<ol><li><strong>Collega:</strong> Connetti il PC alla TV via HDMI.</li><li><strong>Imposta:</strong> Inserisci nomi squadre e tempo.</li><li><strong>Fullscreen:</strong> Attiva per un look professionale.</li><li><strong>Calcio d'Inizio:</strong> Goditi l'atmosfera da serie A!</li></ol>`
+      },
+      {
+        title: `Chi dovrebbe provare questo strumento?`,
+        content: `<ul><li><strong>Responsabili del campo:</strong> Offrite un valore aggiunto agli affittuari per farli rimanere più a lungo.</li><li><strong>Comitati di torneo:</strong> Che si tratti di un torneo locale o aziendale, questo strumento aumenterà il prestigio del vostro evento.</li><li><strong>Arbitri:</strong> Semplificate il compito di arbitrare senza dover portare un cronometro fisico.</li></ul>`
+      },
+      {
+        title: `Distinguete il vostro campo!`,
+        content: `<p>Nel competitivo settore dei campi da futsal, un servizio semplice come la fornitura di un tabellone segnapunti digitale può far sì che il vostro campo si distingua dalla concorrenza.</p>`
       }
     ]
   }
