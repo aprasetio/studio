@@ -20,18 +20,26 @@ export interface ArticleCollection {
   };
 }
 
-// --- 1. INVENTORY TOOL ---
+// --- 1. INVENTORY TOOL CONTENT ---
 const INVENTORY_CONTENT: { [lang: string]: ToolArticle } = {
   id: {
     title: `Aplikasi Stok Barang Sederhana: Kelola Inventaris UMKM Gratis`,
     sections: [
       {
         title: `Lelah Menghitung Stok Manual?`,
-        content: `<p>Lelah menghitung stok barang setiap malam di buku tulis? Sering pusing karena uang modal "nyangkut" di barang yang tidak laku, sementara barang yang lari manis malah habis stok?</p><p>Manajemen stok adalah jantung dari setiap bisnis perdagangan. Tanpa catatan yang rapi, bisnis kecil sangat rentan mengalami kerugian akibat barang hilang, overstocking, atau kehilangan pembeli karena barang kosong.</p><p><strong>Simple Inventory Manager</strong> dari VersoKit hadir sebagai solusi bagi Anda yang sudah tidak sanggup mengelola stok secara manual, tapi belum butuh sistem POS yang rumit dan mahal.</p>`
+        content: `<p>Lelah menghitung stok barang setiap malam di buku tulis? Sering pusing karena uang modal "nyangkut" di barang yang tidak laku, sementara barang yang lari manis malah habis stok?</p><p>Manajemen stok adalah jantung dari setiap bisnis perdagangan. Tanpa catatan yang rapi, bisnis kecil sangat rentan mengalami kerugian akibat barang hilang, overstocking (kelebihan stok), atau kehilangan pembeli karena barang kosong.</p><p><strong>Simple Inventory Manager</strong> dari VersoKit hadir sebagai solusi bagi Anda yang sudah tidak sanggup mengelola stok secara manual, tapi belum butuh sistem POS yang rumit dan mahal.</p>`
       },
       {
         title: `Masalah Klasik yang Sering Menghambat Bisnis Kecil`,
         content: `<ul><li><strong>"Barang Hilang" Tanpa Jejak:</strong> Stok di rak dan di catatan sering berbeda karena lupa mencatat transaksi secara real-time.</li><li><strong>Uang Mati di Gudang:</strong> Anda terus membeli barang yang ternyata masih banyak, sehingga modal Anda mengendap tanpa menghasilkan keuntungan.</li><li><strong>Kehilangan Pembeli:</strong> Tidak ada yang lebih menyakitkan daripada pembeli datang membawa uang, namun Anda harus menolak karena tidak tahu kalau stok sudah habis.</li><li><strong>Pusing Hitung Aset:</strong> Menghitung total nilai modal yang ada di rak toko secara manual sangat melelahkan dan rawan salah hitung.</li></ul>`
+      },
+      {
+        title: `Fitur Unggulan Simple Inventory Manager`,
+        content: `<ol><li><strong>Stock In & Stock Out (Satu Klik):</strong> Update stok tidak perlu ketik ulang. Gunakan tombol cepat untuk menambah barang masuk atau mengurangi barang yang terjual. Saldo stok akan ter-update secara otomatis saat itu juga.</li><li><strong>Low Stock Alerts:</strong> Alat ini dilengkapi indikator visual (warna merah) yang akan menyala jika stok suatu barang berada di bawah batas minimum yang Anda tentukan. Waktunya belanja stok lagi sebelum habis!</li><li><strong>Hitung Nilai Aset Otomatis:</strong> Anda bisa melihat total nilai uang Anda yang saat ini berbentuk barang di gudang. Sistem akan menghitung akumulasi harga beli/modal sehingga Anda tahu persis berapa total aset bisnis Anda.</li><li><strong>Search & Filter Instan:</strong> Punya ratusan jenis barang? Jangan khawatir. Fitur pencarian kami sangat cepat. Cukup ketik nama barang, dan data akan muncul seketika tanpa perlu scroll satu per satu.</li></ol>`
+      },
+      {
+        title: `Kenapa Harus Menggunakan VersoKit?`,
+        content: `<ul><li><strong>🛡️ 100% Offline & Private:</strong> Data stok, harga modal, dan nama supplier Anda tidak pernah dikirim ke internet. Semuanya tersimpan aman di browser Anda.</li><li><strong>💰 Gratis Selamanya:</strong> Tanpa biaya langganan bulanan. Solusi hemat untuk UMKM yang ingin naik kelas.</li><li><strong>📊 Export ke Excel:</strong> Butuh data untuk laporan pajak atau audit tahunan? Anda bisa menarik semua data ke format Excel (CSV) atau JSON dengan satu klik.</li></ul>`
       }
     ]
   },
@@ -40,18 +48,106 @@ const INVENTORY_CONTENT: { [lang: string]: ToolArticle } = {
     sections: [
       {
         title: `Tired of Manual Counting?`,
-        content: `<p>Stop counting stock every night in a notebook. <strong>Simple Inventory Manager</strong> from VersoKit is the heart of your trading business. Without neat records, small businesses are vulnerable to losses due to missing items, overstocking, or lost buyers. Our tool is the perfect bridge before you need a complex POS system.</p>`
+        content: `<p>Tired of counting stock every night in a notebook? Often stressed because capital is "stuck" in slow-moving items, while popular items run out of stock?</p><p>Stock management is the heart of every trading business. Without neat records, small businesses are very vulnerable to losses. <strong>Simple Inventory Manager</strong> from VersoKit comes as a solution for those who can no longer manage stock manually but don't yet need a complex POS system.</p>`
+      },
+      {
+        title: `Classic Warehouse Management Problems`,
+        content: `<ul><li><strong>"Lost Items":</strong> Stock on shelves and records often differ because of forgetting to record transactions in real-time.</li><li><strong>Idle Capital:</strong> You keep buying items that still have plenty of stock, keeping your capital stationary.</li><li><strong>Losing Customers:</strong> Turning away customers because you didn't know the stock was out is painful.</li><li><strong>Asset Stress:</strong> Manually calculating the total value of capital on store shelves is exhausting.</li></ul>`
+      },
+      {
+        title: `Key Features`,
+        content: `<ul><li><strong>Stock In & Out (One Click):</strong> Manage inventory movements instantly without re-typing.</li><li><strong>Low Stock Alerts:</strong> A visual indicator lights up when items fall below your minimum limit.</li><li><strong>Automatic Asset Valuation:</strong> See the total value of your warehouse inventory in real-time.</li><li><strong>Instant Search:</strong> Find any item in seconds with our high-speed filter.</li></ul>`
       }
     ]
   },
-  de: { title: `Einfache Lagerverwaltung: Kostenloses Inventar für KMU`, sections: [{ title: `Müde vom manuellen Zählen?`, content: `<p>Verwalten Sie Ihren Bestand professionell und kostenlos mit VersoKit.</p>` }] },
-  es: { title: `Gestión de Inventario Sencilla: Control de Stock para PYMES`, sections: [{ title: `¿Cansado de contar a mano?`, content: `<p>Controle su inventario de forma rápida, segura y 100% local.</p>` }] },
-  pt: { title: `Gestão de Inventário Simples: Controle de Stock para PMEs`, sections: [{ title: `Cansado de contar manualmente?`, content: `<p>Organize seu estoque sem custos mensais e com total privacidade.</p>` }] },
-  fr: { title: `Gestion de Stock Simple : Gérer l'inventaire des PME`, sections: [{ title: `Fatigué du comptage manuel ?`, content: `<p>Gérez vos stocks efficacement sans logiciel coûteux.</p>` }] },
-  it: { title: `App Gestione Magazzino Semplice: Inventario PMI Gratuito`, sections: [{ title: `Stanco del conteggio manuale?`, content: `<p>Monitora le tue scorte in modo rapido e sicuro sul tuo dispositivo.</p>` }] }
+  es: {
+    title: `Gestión de Inventario Sencilla: Control de Stock para PYMES Gratis`,
+    sections: [
+      {
+        title: `¿Cansado de contar a mano?`,
+        content: `<p>¿Cansado de anotar el stock cada noche en una libreta? El <strong>Simple Inventory Manager</strong> de VersoKit es la solución ideal para pequeñas empresas que necesitan un control profesional sin costes mensuales.</p>`
+      },
+      {
+        title: `Problemas clásicos de las PYMES`,
+        content: `<ul><li><strong>"Artículos perdidos":</strong> El stock en los estantes y en los registros suele diferir por no registrar transacciones en tiempo real.</li><li><strong>Dinero muerto:</strong> Sigues comprando artículos que ya tienes, dejando tu capital inactivo.</li><li><strong>Pérdida de clientes:</strong> Rechazar a un cliente porque no tienes existencias es frustrante.</li><li><strong>Cálculo de activos:</strong> Calcular manualmente el valor total del inventario es propenso a errores.</li></ul>`
+      },
+      {
+        title: `Características Principales`,
+        content: `<ul><li><strong>Entradas y Salidas:</strong> Gestione sus movimientos de stock con un solo clic.</li><li><strong>Alertas de Stock Bajo:</strong> Indicadores visuales que le avisan cuándo es momento de reponer mercancía.</li><li><strong>Privacidad Total:</strong> Sus datos se procesan 100% localmente en su navegador.</li><li><strong>Valoración Automática:</strong> Vea el valor total de su inversión en inventario al instante.</li></ul>`
+      }
+    ]
+  },
+  pt: {
+    title: `Gestão de Inventário Simples: Controle de Stock para PMEs Grátis`,
+    sections: [
+      {
+        title: `Cansado de contar manualmente?`,
+        content: `<p>Pare de perder tempo com cadernos e planilhas complexas. O <strong>Simple Inventory Manager</strong> da VersoKit ajuda PMEs a organizar o estoque de forma rápida e segura.</p>`
+      },
+      {
+        title: `Problemas clássicos de gestão`,
+        content: `<ul><li><strong>"Itens perdidos":</strong> O estoque físico e os registros costumam divergir por falta de atualização em tempo real.</li><li><strong>Capital parado:</strong> Comprar itens em excesso deixa seu dinheiro imobilizado sem gerar lucro.</li><li><strong>Perda de clientes:</strong> Não há nada pior do que recusar uma venda por não saber que o estoque acabou.</li><li><strong>Cálculo de ativos:</strong> Calcular manualmente o valor total do estoque é exaustivo e sujeito a erros.</li></ul>`
+      },
+      {
+        title: `Recursos Principais`,
+        content: `<ul><li><strong>Entradas e Saídas:</strong> Atualize seu estoque instantaneamente com um clique.</li><li><strong>Alertas de Baixo Estoque:</strong> Saiba exatamente quando comprar novos produtos.</li><li><strong>Exportação para Excel:</strong> Baixe seus dados em CSV ou JSON com facilidade.</li><li><strong>Segurança Local:</strong> Seus dados de estoque nunca saem do seu dispositivo.</li></ul>`
+      }
+    ]
+  },
+  de: {
+    title: `Einfache Lagerverwaltungs-App: Kostenloses Inventar für KMU`,
+    sections: [
+      {
+        title: `Müde vom manuellen Zählen?`,
+        content: `<p>Haben Sie es satt, jeden Abend den Lagerbestand in ein Notizheft zu schreiben? Bestandsverwaltung ist das Herzstück jedes Handelsgeschäfts. <strong>Simple Inventory Manager</strong> von VersoKit ist die Lösung für KMU.</p>`
+      },
+      {
+        title: `Klassische Probleme im Lager`,
+        content: `<ul><li><strong>"Verlorene Artikel":</strong> Physischer Bestand und Aufzeichnungen weichen oft ab, weil Transaktionen nicht in Echtzeit erfasst werden.</li><li><strong>Totes Kapital:</strong> Sie kaufen Artikel nach, die noch vorrätig sind, und binden so unnötig Kapital.</li><li><strong>Kundenverlust:</strong> Kunden wegzuschicken, weil man den Lagerstand nicht kannte, ist ärgerlich.</li><li><strong>Bewertungsstress:</strong> Den Gesamtwert des Inventars manuell zu berechnen, ist fehleranfällig.</li></ul>`
+      },
+      {
+        title: `Hauptmerkmale`,
+        content: `<ul><li><strong>Wareneingang & Warenausgang:</strong> Aktualisieren Sie Ihren Bestand mit einem Klick.</li><li><strong>Warnungen bei niedrigem Bestand:</strong> Visuelle Hinweise zeigen Ihnen sofort, wenn Artikel nachbestellt werden müssen.</li><li><strong>Automatische Bewertung:</strong> Berechnen Sie den Gesamtwert Ihres Lagers automatisch.</li><li><strong>Sofortige Suche:</strong> Finden Sie jeden Artikel in Sekunden mit unserem schnellen Filter.</li></ul>`
+      }
+    ]
+  },
+  fr: {
+    title: `Application de gestion des stocks simplifiée : Gérer l'inventaire des PME Gratuitement`,
+    sections: [
+      {
+        title: `Fatigué du comptage manuel ?`,
+        content: `<p>Ne perdez plus de temps avec des registres papier. Le <strong>Simple Inventory Manager</strong> de VersoKit est conçu pour les petites entreprises qui veulent une gestion moderne et gratuite.</p>`
+      },
+      {
+        title: `Problèmes classiques de gestion`,
+        content: `<ul><li><strong>"Articles perdus" :</strong> Le stock réel et théorique diffèrent souvent par manque de saisie en temps réel.</li><li><strong>Argent immobilisé :</strong> Acheter des articles déjà en stock bloque votre capital inutilement.</li><li><strong>Perte de clients :</strong> Refuser une vente par méconnaissance de ses stocks est frustrant.</li><li><strong>Calcul des actifs :</strong> Valoriser son stock manuellement est une tâche pénible et risquée.</li></ul>`
+      },
+      {
+        title: `Points Forts`,
+        content: `<ul><li><strong>Entrées et Sorties :</strong> Mettez à jour vos stocks d'un simple clic sans ressaisie.</li><li><strong>Alertes de Rupture :</strong> Soyez prévenu visuellement quand le stock est critique.</li><li><strong>Valorisation des Actifs :</strong> Calculez automatiquement la valeur totale de vos marchandises.</li><li><strong>Recherche Rapide :</strong> Filtrez vos centaines d'articles en un clin d'œil.</li></ul>`
+      }
+    ]
+  },
+  it: {
+    title: `App Gestione Magazzino Semplice: Inventario PMI Gratuito`,
+    sections: [
+      {
+        title: `Stanco del conteggio manuale?`,
+        content: `<p>Gestire le scorte non deve essere complicato. Con <strong>Simple Inventory Manager</strong> di VersoKit, le PMI possono monitorare il magazzino in modo rapido e sicuro senza costi di abbonamento.</p>`
+      },
+      {
+        title: `Problemi classici di magazzino`,
+        content: `<ul><li><strong>"Articoli smarriti" :</strong> La giacenza reale e quella registrata differiscono spesso per dimenticanze.</li><li><strong>Capitale bloccato :</strong> Continuare ad acquistare merce già presente immobilizza i tuoi fondi.</li><li><strong>Perdita di clienti :</strong> Mandare via un cliente perché non sapevi di aver finito lo stock è un danno evitabile.</li><li><strong>Calcolo risorse :</strong> Calcolare manualmente il valore del magazzino è faticoso e impreciso.</li></ul>`
+      },
+      {
+        title: `Funzionalità Chiave`,
+        content: `<ul><li><strong>Carico e Scarico:</strong> Aggiorna le giacenze con un semplice clic.</li><li><strong>Avvisi Sotto-Scorta:</strong> Monitora visivamente gli articoli in esaurimento per non perdere vendite.</li><li><strong>Valutazione Inventario:</strong> Scopri il valore totale del tuo capitale investito in merce.</li><li><strong>Privato e Offline:</strong> I tuoi dati aziendali rimangono sul tuo dispositivo.</li></ul>`
+      }
+    ]
+  }
 };
 
-// --- 2. BUDGET PLANNER TOOL ---
+// --- 2. BUDGET PLANNER CONTENT ---
 const BUDGET_CONTENT: { [lang: string]: ToolArticle } = {
   id: {
     title: `Budget Planner Online: Atur Keuangan Metode Zero-Based Budgeting`,
@@ -63,6 +159,10 @@ const BUDGET_CONTENT: { [lang: string]: ToolArticle } = {
       {
         title: `Apa Itu Zero-Based Budgeting (ZBB)?`,
         content: `<p>Filosofi di balik alat ini sangat sederhana namun powerful: <strong>"Berikan pekerjaan untuk setiap rupiah yang Anda miliki."</strong></p><p>Bayangkan metode "Amplop" nenek moyang kita. Jika Anda punya uang tunai Rp 5.000.000 di tangan, Anda akan memasukkannya ke dalam amplop-amplop fisik: Makan, Kost, Tabungan, dan Hiburan. Anda terus membagi uang tersebut sampai uang di tangan Anda sisa NOL (0). Artinya, semua uang sudah punya pos masing-masing.</p>`
+      },
+      {
+        title: `Masalah Keuangan yang Kami Selesaikan`,
+        content: `<ul><li><strong>Sindrom "Bocor Alus":</strong> Pengeluaran kecil sering tidak terasa. Dengan ZBB, Anda dipaksa menganggarkan hal-hal kecil ini di awal.</li><li><strong>Ketakutan Cek Saldo:</strong> Dengan alat ini, Anda akan merasa tenang karena tahu uang untuk bayar kost dan makan sudah disisihkan.</li><li><strong>Uang Tanpa Tujuan:</strong> Di ZBB, uang "menganggur" itu haram hukumnya. Semua harus dialokasikan, entah itu untuk belanja atau investasi.</li></ul>`
       }
     ]
   },
@@ -71,60 +171,222 @@ const BUDGET_CONTENT: { [lang: string]: ToolArticle } = {
     sections: [
       {
         title: `Is Your Salary Just Passing Through?`,
-        content: `<p>Stop reactive tracking and start proactive planning. <strong>VersoKit Budget Planner</strong> uses the Zero-Based Budgeting (ZBB) method to give every dollar a job. Reach zero "To be Budgeted" and take control of your financial future.</p>`
+        content: `<p>Have you ever felt like your salary is just "passing through"? You receive your paycheck on the 25th, but by the 10th of the next month, your account balance is already low. The problem isn't the size of your salary, but how you treat that money.</p><p>Many people use Expense Trackers, but that's just recording history. It's time for a change with <strong>VersoKit Budget Planner</strong>, a future-planning tool based on the Zero-Based Budgeting (ZBB) method.</p>`
+      },
+      {
+        title: `The Zero-Based Philosophy`,
+        content: `<p>The philosophy is simple: <strong>"Give every dollar a job."</strong> Imagine putting your cash into physical envelopes for rent, food, and savings until you have zero unassigned dollars left. VersoKit digitizes this envelope system, moving you from reactive tracking to proactive control.</p>`
       }
     ]
   },
-  de: { title: `Online-Budgetplaner: Nullbasierte Budgetierung`, sections: [{ title: `Wo ist das Geld hin?`, content: `<p>Planen Sie Ihre Finanzen mit der bewährten Umschlagmethode im digitalen Format.</p>` }] },
-  es: { title: `Planificador de Presupuesto: Método Base Cero`, sections: [{ title: `¿Su Salario es Solo de Paso?`, content: `<p>Asigne un trabajo a cada unidad de su moneda y ahorre más cada mes.</p>` }] },
-  pt: { title: `Planejador de Orçamento: Orçamento Base Zero`, sections: [{ title: `O Seu Salário está de Passagem?`, content: `<p>Controle suas finanças dando uma missão a cada real antes do mês começar.</p>` }] },
-  fr: { title: `Planificateur de Budget : Méthode Budget Base Zéro`, sections: [{ title: `Maîtrisez vos Finances`, content: `<p>Allouez vos revenus de manière proactive pour épargner davantage.</p>` }] },
-  it: { title: `Pianificatore di Budget: Budget a Base Zero`, sections: [{ title: `Pianifica Ogni Centesimo`, content: `<p>Decidi oggi come spenderai i tuoi soldi invece di rimpiangere le spese passate.</p>` }] }
-};
-
-// --- 3. FUTSAL SCOREBOARD TOOL ---
-const FUTSAL_CONTENT: { [lang: string]: ToolArticle } = {
-  id: {
-    title: `Papan Skor Futsal Digital Online: Ubah Lapangan Anda Jadi Arena Profesional`,
+  es: {
+    title: `Planificador de Presupuesto: Método de Presupuesto Base Cero`,
     sections: [
       {
-        title: `Akhiri Debat Skor di Lapangan`,
-        content: `<p>Pernahkah sesi sparring futsal Anda berakhir dengan perdebatan sengit hanya karena lupa skor? Atau pemain terus bertanya "Sisa berapa menit?" karena stopwatch wasit tidak terlihat?</p><p>Dalam pertandingan tensi tinggi, transparansi adalah segalanya. <strong>VersoKit Futsal Scoreboard</strong> hadir sebagai solusi cerdas. Cukup dengan Laptop/Tablet dan kabel HDMI ke TV, ubah lapangan biasa menjadi arena profesional layaknya liga nasional.</p>`
+        title: `¿Su Salario es Solo un "Paso de Dinero"?`,
+        content: `<p>¿Alguna vez ha sentido que su salario desaparece rápidamente? El problema principal no suele ser el tamaño de su salario, sino cómo trata ese dinero. Registrar gastos es un acto de arrepentimiento. Es hora de planificar su futuro con <strong>VersoKit Budget Planner</strong>.</p>`
       },
       {
-        title: `Fitur Unggulan Wasit Futsal`,
-        content: `<ul><li><strong>Foul Counter:</strong> Jangan lupa aturan futsal! Pelanggaran ke-6 berarti penalti titik kedua. Fitur kami mencatat ini dengan akurat.</li><li><strong>Timer Fleksibel:</strong> Atur durasi babak (15, 20, 25 menit) lengkap dengan tombol Pause/Resume.</li><li><strong>Lokal & Offline:</strong> Aplikasi tetap berjalan lancar meski sinyal di dalam gedung olahraga kurang stabil.</li></ul>`
+        title: `Presupuesto Base Cero (ZBB)`,
+        content: `<p>La filosofía es simple: <strong>"Asigne un trabajo a cada unidad de su moneda."</strong> Al igual que el método de los sobres, usted distribuye sus ingresos hasta que el saldo por presupuestar sea cero. Esto le da el control total sobre sus ahorros y gastos de forma proactiva.</p>`
+      }
+    ]
+  },
+  pt: {
+    title: `Planejador de Orçamento: Orçamento Base Zero`,
+    sections: [
+      {
+        title: `O Seu Salário está Apenas "de Passagem"?`,
+        content: `<p>Você sente que o seu dinheiro desaparece logo após o pagamento? Registrar despesas é apenas olhar para o passado. Com o <strong>VersoKit Budget Planner</strong>, você utiliza a metodologia de <strong>Orçamento Base Zero</strong> para planejar o futuro e dar uma missão a cada real.</p>`
+      },
+      {
+        title: `Como Funciona`,
+        content: `<p>Imagine colocar seu dinheiro em envelopes para aluguel, alimentação e lazer. Você continua distribuindo até que reste zero reais para orçar. Isso garante que cada centavo seja usado com propósito, ajudando você a economizar mais e gastar com consciência.</p>`
+      }
+    ]
+  },
+  de: {
+    title: `Online-Budgetplaner: Nullbasierte Budgetierung`,
+    sections: [
+      {
+        title: `Wo ist das Geld hin?`,
+        content: `<p>Haben Sie das Gefühl, dass Ihr Gehalt nur ein „Durchlaufposten“ ist? Am 25. kommt das Geld, am 10. ist es weg. Das Problem ist oft nicht die Höhe des Gehalts, sondern die fehlende Planung.</p><p>Mit der <strong>Zero-Based Budgeting (ZBB)</strong> Methode von VersoKit geben Sie jedem Cent eine Aufgabe, bevor er ausgegeben wird. Verwandeln Sie reaktives Verfolgen in proaktive Kontrolle.</p>`
+      }
+    ]
+  },
+  fr: {
+    title: `Planificateur de Budget : Méthode Budget Base Zéro`,
+    sections: [
+      {
+        title: `Maîtrisez vos Finances`,
+        content: `<p>Votre salaire n'est-il qu'un "passage d'argent" ? Donnez un rôle à chaque euro avec le <strong>Budget Base Zéro</strong>. Notre outil vous aide à allouer vos revenus de manière proactive pour épargner davantage et dépenser avec intention.</p>`
+      }
+    ]
+  },
+  it: {
+    title: `Pianificatore di Budget: Budget a Base Zero`,
+    sections: [
+      {
+        title: `Pianifica Ogni Centesimo`,
+        content: `<p>Hai l'impressione che il tuo stipendio sia solo di "passaggio"? La filosofia del <strong>Budget a Base Zero</strong> ti permette di avere il controllo totale. Ogni euro guadagnato deve avere un compito preciso prima bahwa il mese inizi.</p>`
+      }
+    ]
+  }
+};
+
+// --- 3. LINEUP BUILDER CONTENT ---
+const LINEUP_CONTENT: { [lang: string]: ToolArticle } = {
+  id: {
+    title: `Football Lineup Builder: Buat Formasi Tim Bola & Download Gambar`,
+    sections: [
+      {
+        title: `Visualisasi Strategi XI Anda`,
+        content: `<p>Mau posting susunan pemain (Starting XI) tim Anda di Instagram tapi tidak bisa desain grafis? <strong>Football Lineup Builder</strong> dari VersoKit adalah solusinya. Ubah ide taktik Anda menjadi grafis profesional dalam hitungan detik.</p>`
       }
     ]
   },
   en: {
-    title: `Online Digital Futsal Scoreboard: Transform Your Pitch into a Pro Arena`,
+    title: `Football Lineup Builder: Create & Download Team Formations`,
     sections: [
       {
-        title: `Stop the Score Debates`,
-        content: `<p>Transparency is everything in high-tension matches. <strong>VersoKit Futsal Scoreboard</strong> transforms your ordinary pitch into a professional arena using just a laptop and an HDMI connection to a TV. Track goals, fouls, and time with FIFA-standard precision.</p>`
+        title: `Visualize Your Strategy`,
+        content: `<p>Our <strong>Football Lineup Builder</strong> transforms your tactical ideas into professional graphics. Perfect for social media admins, coaches, and fans who want to share their Starting XI with style.</p>`
+      }
+    ]
+  }
+};
+
+// --- 4. TOURNAMENT MANAGER CONTENT ---
+const TOURNAMENT_CONTENT: { [lang: string]: ToolArticle } = {
+  id: {
+    title: `Tournament Manager Pro: Buat Bagan & Klasemen Liga Otomatis`,
+    sections: [
+      {
+        title: `Solusi Panitia Anti-Ribet`,
+        content: `<p>Mengelola turnamen Futsal, E-Sports, atau lomba kampung kini lebih mudah. Gunakan <strong>Tournament Manager Pro</strong> dari VersoKit untuk membuat jadwal pertandingan dalam hitungan detik.</p>`
       }
     ]
   },
-  es: { title: `Marcador Digital de Fútbol Sala Online`, sections: [{ title: `Termina con las Discusiones`, content: `<p>Transforma tu campo en un estadio profesional con nuestro marcador digital gratuito.</p>` }] },
-  pt: { title: `Placar Digital Online para Futsal`, sections: [{ title: `Fim das Discussões`, content: `<p>Controle gols, faltas e tempo com precisão de liga profissional.</p>` }] },
-  de: { title: `Online-Anzeigetafel für Futsal`, sections: [{ title: `Schluss mit Diskussionen`, content: `<p>Verwandeln Sie Ihren Platz mit nur einem Laptop in eine Profi-Arena.</p>` }] },
-  fr: { title: `Tableau de Score Futsal en Ligne`, sections: [{ title: `Finis les Débats`, content: `<p>Une arène professionnelle gratuite sur votre écran ou TV.</p>` }] },
-  it: { title: `Tabellone Digitale Futsal Online`, sections: [{ title: `Basta Discussioni`, content: `<p>Trasforma il tuo campo in un'arena professionale usando solo un browser.</p>` }] }
+  en: {
+    title: `Tournament Manager Pro: League Standings & Schedule`,
+    sections: [
+      {
+        title: `Professional Event Management`,
+        content: `<p>Organize Futsal, E-Sports, or community tournaments with ease. Our <strong>Tournament Manager</strong> handles the math and logic so you can focus on the action.</p>`
+      }
+    ]
+  }
 };
 
-// --- 4. INVOICE TOOL ---
+// --- 5. SCOREBOARD CONTENT ---
+const SCOREBOARD_CONTENT: { [lang: string]: ToolArticle } = {
+  id: {
+    title: `Universal Scoreboard: Papan Skor Digital Badminton, Voli & Ping Pong`,
+    sections: [
+      {
+        title: `Satu Papan Skor, Banyak Olahraga`,
+        content: `<p>Pernahkah Anda bermain bulu tangkis atau voli di GOR, tapi wasitnya sering lupa skor saat ini berapa? Solusinya adalah <strong>Universal Scoreboard</strong> dari VersoKit.</p>`
+      }
+    ]
+  },
+  en: {
+    title: `Universal Scoreboard: Digital Points for Badminton & Volleyball`,
+    sections: [
+      {
+        title: `The Swiss Army Knife of Scoreboards`,
+        content: `<p>Perfect for any point-based sport. Our <strong>Universal Scoreboard</strong> supports set tracking and rally point systems used in social matches.</p>`
+      }
+    ]
+  }
+};
+
+// --- 6. SHIFT SCHEDULER CONTENT ---
+const SHIFT_CONTENT: { [lang: string]: ToolArticle } = {
+  id: {
+    title: `Aplikasi Jadwal Shift Kerja Gratis: Atur Roster & Share ke WA`,
+    sections: [
+      {
+        title: `Pusing Mengatur Jadwal Shift Karyawan?`,
+        content: `<p>Pusing mengatur jadwal kerja karyawan setiap minggu? Masih pakai tulis tangan di papan pengumuman atau rumus Excel yang ribet? Hentikan kebingungan tersebut sekarang juga. Gunakan <strong>Shift Scheduler</strong> dari VersoKit—asisten pribadi digital Anda.</p>`
+      },
+      {
+        title: `Fitur "WhatsApp Mode" (Killer Feature!)`,
+        content: `<p>Ini adalah penyelamat bagi para manajer. Anda tidak perlu lagi mengetik ulang jadwal panjang di chat WhatsApp. Cukup satu klik <strong>Copy to Clipboard</strong>, dan sistem akan mengubah tabel jadwal menjadi teks rapi siap paste.</p>`
+      }
+    ]
+  },
+  en: {
+    title: `Free Shift Roster App: Manage Employee Schedules & Share to WhatsApp`,
+    sections: [
+      {
+        title: `Streamline Your Team Rosters`,
+        content: `<p>Stop the scheduling drama. Our <strong>Shift Scheduler</strong> is designed for Retail, F&B, and Security teams to build clear weekly rosters in under a minute.</p>`
+      },
+      {
+        title: `WhatsApp Mode Feature`,
+        content: `<p>The ultimate time-saver! Convert your complex schedule grid into a neatly formatted text message for your team groups with a single click.</p>`
+      }
+    ]
+  },
+  es: {
+    title: `Planificador de Turnos Gratis: Crea Rosters y Comparte en WhatsApp`,
+    sections: [
+      {
+        title: `Gestión de Personal Sin Esfuerzo`,
+        content: `<p>Organiza los turnos de tu equipo en minutos. Diseñado para restaurantes, tiendas y seguridad con una interfaz visual intuitiva y descarga de imagen.</p>`
+      }
+    ]
+  },
+  pt: {
+    title: `Criador de Escalas de Trabalho Grátis: Partilhe no WhatsApp`,
+    sections: [
+      {
+        title: `Dores de cabeça com escalas?`,
+        content: `<p>Uma má gestão de escalas pode ser fatal. Abandone o Excel e use o <strong>VersoKit Shift Scheduler</strong> para criar escalas organizadas e justas em minutos.</p>`
+      },
+      {
+        title: `Modo WhatsApp`,
+        content: `<p>Converta a tabela em texto organizado para o grupo da equipa com um clique. Prático, rápido e profissional.</p>`
+      }
+    ]
+  },
+  de: {
+    title: `Schichtplaner Kostenlos: Dienstpläne Erstellen & Teilen`,
+    sections: [
+      {
+        title: `Mühelose Personalverwaltung`,
+        content: `<p>Erstellen Sie wöchentliche Schichtpläne für Ihr Team. Ideal für Gastronomie und Einzelhandel mit praktischer WhatsApp-Exportfunktion.</p>`
+      }
+    ]
+  },
+  fr: {
+    title: `Planning d'Équipe Gratuit : Gérer les Shifts et Partager sur WhatsApp`,
+    sections: [
+      {
+        title: `Gestion du Personnel Simplifiée`,
+        content: `<p>Organisez les horaires de votre équipe en quelques clics. Idéal pour la restauration et le commerce de détail avec un export texte optimisé pour mobile.</p>`
+      }
+    ]
+  },
+  it: {
+    title: `Pianificatore Turni Gratis: Crea il Roster e Condividi su WhatsApp`,
+    sections: [
+      {
+        title: `Gestione del Personale Semplificata`,
+        content: `<p>Organizza i turni di lavoro settimanali in meno di un minuto. Perfetto per negozi, bar e servizi di sicurezza con supporto offline completo.</p>`
+      }
+    ]
+  }
+};
+
+// --- 7. INVOICE GENERATOR CONTENT ---
 const INVOICE_CONTENT: { [lang: string]: ToolArticle } = {
   id: {
     title: `Invoice Generator Gratis: Buat Invoice PDF Profesional (1 Menit)`,
     sections: [
       {
         title: `Tinggalkan Tagihan Berantakan`,
-        content: `<p>Masih mengirim tagihan lewat chat WhatsApp atau Excel yang berantakan? Cara menagih yang tidak rapi membuat bisnis terlihat amatir. <strong>Free Invoice Generator</strong> dari VersoKit adalah solusi instan untuk faktur PDF standar industri.</p>`
-      },
-      {
-        title: `Fitur Unggulan`,
-        content: `<ul><li><strong>Otomatis & Anti Salah Hitung:</strong> Sistem menghitung total, pajak, dan subtotal secara otomatis.</li><li><strong>Privasi 100%:</strong> Data bisnis Anda diproses hanya di browser Anda dan tidak disimpan di server kami.</li></ul>`
+        content: `<p>Masih mengirim tagihan lewat chat WhatsApp atau Excel yang berantakan? <strong>Free Invoice Generator</strong> dari VersoKit adalah solusi instan untuk faktur PDF standar industri.</p>`
       }
     ]
   },
@@ -133,113 +395,155 @@ const INVOICE_CONTENT: { [lang: string]: ToolArticle } = {
     sections: [
       {
         title: `Impress Your Clients`,
-        content: `<p>Send polished, professional invoices that demand attention. Our <strong>Invoice Generator</strong> is the fastest way for small businesses to bill clients without expensive software. No signup required.</p>`
+        content: `<p>Send polished, professional invoices that demand attention. Our <strong>Invoice Generator</strong> is the fastest way for small businesses to bill clients instantly.</p>`
       }
     ]
   },
-  es: { title: `Generador de Facturas Gratis: Crea Invoices en PDF`, sections: [{ title: `Impresiona a tus Clientes`, content: `<p>Crea facturas profesionales en segundos de forma segura y gratuita.</p>` }] },
-  pt: { title: `Gerador de Faturas Grátis: Criar Invoice em PDF`, sections: [{ title: `Impressione seus Clientes`, content: `<p>A forma mais rápida para pequenos negócios cobrarem clientes com profissionalismo.</p>` }] },
-  de: { title: `Rechnungsgenerator Kostenlos: PDF-Rechnungen`, sections: [{ title: `Überzeugen Sie Ihre Kunden`, content: `<p>Erstellen Sie saubere und professionelle Rechnungen in Minuten ohne Datenupload.</p>` }] },
-  fr: { title: `Générateur de Factures Gratuit : Créer des Factures PDF`, sections: [{ title: `Impressionnez vos Clients`, content: `<p>Envoyez des factures soignées avec un rendu PDF impeccable.</p>` }] },
-  it: { title: `Generatore Fatture Gratis: Crea Fatture PDF`, sections: [{ title: `Impressione i tuoi Clienti`, content: `<p>Crea fatture professionali ed eleganti in pochi secondi senza registrazione.</p>` }] }
-};
-
-// --- 5. SHIFT SCHEDULER TOOL ---
-const SHIFT_CONTENT: { [lang: string]: ToolArticle } = {
-  id: {
-    title: `Aplikasi Jadwal Shift Kerja Gratis: Atur Roster & Share ke WA`,
+  es: {
+    title: `Generador de Facturas Gratis: Crea Invoices en PDF`,
     sections: [
       {
-        title: `Kenapa Harus Pindah dari Excel?`,
-        content: `<p>Manajemen jadwal yang buruk bisa berdampak fatal bagi bisnis. Mulai dari drama di grup WhatsApp karena salah ketik, hingga toko yang kosong karena shift yang terlewat. <strong>Shift Scheduler</strong> dari VersoKit adalah asisten pribadi Anda untuk membuat roster kerja yang rapi dan adil.</p>`
+        title: `Impresiona a tus Clientes`,
+        content: `<p>Crea facturas profesionales en segundos. Ideal para freelancers y PYMES que buscan una imagen corporativa limpia y segura.</p>`
       }
     ]
   },
-  en: {
-    title: `Free Shift Roster Maker: Manage Schedules & Share to WhatsApp`,
+  pt: {
+    title: `Gerador de Faturas Grátis: Criar Invoice em PDF Profissional`,
     sections: [
       {
-        title: `Effortless Workforce Management`,
-        content: `<p>Stop the scheduling drama. Our <strong>Shift Scheduler</strong> is designed for Retail, F&B, and Security teams to build clear weekly rosters in under a minute. Visual and easy to read on mobile devices.</p>`
+        title: `Impressione seus Clientes`,
+        content: `<p>Envie faturas elegantes e profissionais. A forma mais rápida para pequenos negócios cobrarem clientes sem software caro.</p>`
       }
     ]
   },
-  es: { title: `Planificador de Turnos Gratis: Crea Rosters`, sections: [{ title: `Gestión de Personal Sin Esfuerzo`, content: `<p>Organiza los turnos de tu equipo en minutos con una interfaz visual intuitiva.</p>` }] },
-  pt: { title: `Gerador de Escala de Trabalho: Criar Turnos`, sections: [{ title: `Gestão de Equipe Sem Esforço`, content: `<p>Organize os turnos da sua equipe rapidamente e compartilhe via WhatsApp.</p>` }] },
-  de: { title: `Schichtplaner Kostenlos: Dienstpläne Erstellen`, sections: [{ title: `Mühelose Personalverwaltung`, content: `<p>Erstellen Sie wöchentliche Schichtpläne für Ihr Team einfach und schnell.</p>` }] },
-  fr: { title: `Planning d'Équipe Gratuit : Gérer les Shifts`, sections: [{ title: `Gestion du Personnel Simplifiée`, content: `<p>Organisez les horaires de votre équipe en quelques clics.</p>` }] },
-  it: { title: `Pianificatore Turni Gratis: Crea il Roster`, sections: [{ title: `Gestione del Personale Semplificata`, content: `<p>Organizza i turni di lavoro settimanali in meno di un minuto.</p>` }] }
+  de: {
+    title: `Rechnungsgenerator Kostenlos: Professionelle PDF-Rechnungen`,
+    sections: [
+      {
+        title: `Überzeugen Sie Ihre Kunden`,
+        content: `<p>Erstellen Sie saubere und professionelle Rechnungen in Minuten. Die schnellste Lösung für Kleinunternehmer ohne teure Software-Abos.</p>`
+      }
+    ]
+  },
+  fr: {
+    title: `Générateur de Factures Gratuit : Créer des Factures PDF`,
+    sections: [
+      {
+        title: `Impressionnez vos Clients`,
+        content: `<p>Envoyez des factures soignées et professionnelles. Le moyen le plus rapide pour les indépendants de facturer leurs clients avec un rendu PDF impeccable.</p>`
+      }
+    ]
+  },
+  it: {
+    title: `Generatore Fatture Gratis: Crea Fatture PDF Professionali`,
+    sections: [
+      {
+        title: `Impressiona i tuoi Clienti`,
+        content: `<p>Crea fatture professionali ed eleganti in pochi secondi. Perfetto per freelance e piccole imprese yang non vogliono complicazioni.</p>`
+      }
+    ]
+  }
 };
 
-// --- 6. LINEUP BUILDER ---
-const LINEUP_CONTENT: { [lang: string]: ToolArticle } = {
-  id: {
-    title: `Football Lineup Builder: Buat Formasi Tim Bola & Download Gambar`,
-    sections: [{ title: `Visualisasi Strategi XI Anda`, content: `<p>Ubah ide taktik Anda menjadi grafis profesional Starting XI untuk media sosial dalam hitungan detik.</p>` }]
-  },
-  en: {
-    title: `Football Lineup Builder: Create & Download Team Formations`,
-    sections: [{ title: `Visualize Your Strategy`, content: `<p>Our Football Lineup Builder transforms your tactical ideas into professional graphics. Perfect for fans and coaches.</p>` }]
-  },
-  es: { title: `Creador de Alineaciones: Crea Formaciones de Fútbol`, sections: [{ title: `Visualiza tu Estrategia`, content: `<p>Convierte tus ideas tácticas en gráficos profesionales para redes sociales.</p>` }] },
-  pt: { title: `Montar Time de Futebol: Criar Escalação`, sections: [{ title: `Visualize sua Estratégia`, content: `<p>Crie escalações profissionais e baixe a imagem em alta definição.</p>` }] },
-  de: { title: `Fußball Aufstellungs-Builder: Formation Erstellen`, sections: [{ title: `Visualisieren Sie Ihre Taktik`, content: `<p>Erstellen Sie professionelle Grafiken Ihrer Startelf einfach im Browser.</p>` }] },
-  fr: { title: `Compo d'Équipe Foot : Créer une Formation`, sections: [{ title: `Visualisez votre Stratégie`, content: `<p>Transformez vos idées tactiques en graphismes professionnels.</p>` }] },
-  it: { title: `Formazione Calcio: Crea lo Schema`, sections: [{ title: `Visualizza la tua Strategia`, content: `<p>Trasforma le tue idee tattiche in grafiche professionali per i tuoi follower.</p>` }] }
-};
-
-// --- 7. TOURNAMENT MANAGER ---
-const TOURNAMENT_CONTENT: { [lang: string]: ToolArticle } = {
-  id: {
-    title: `Tournament Manager Pro: Buat Bagan & Klasemen Liga Otomatis`,
-    sections: [{ title: `Solusi Panitia Anti-Ribet`, content: `<p>Mengelola turnamen Futsal, E-Sports, atau lomba kampung kini lebih mudah dengan klasemen otomatis.</p>` }]
-  },
-  en: {
-    title: `Tournament Manager Pro: League Standings & Schedule`,
-    sections: [{ title: `Professional Event Management`, content: `<p>Organize sports or community tournaments with real-time standings and Round Robin logic.</p>` }]
-  },
-  es: { title: `Gestor de Torneos: Clasificaciones de Liga`, sections: [{ title: `Gestión Profesional de Eventos`, content: `<p>Organiza torneos con cálculos automáticos de puntos y clasificación en tiempo real.</p>` }] },
-  pt: { title: `Gerador de Torneios: Tabelas e Classificação`, sections: [{ title: `Gestão Profissional de Eventos`, content: `<p>Organize campeonatos com atualização automática da tabela de pontos.</p>` }] },
-  de: { title: `Turniermanager Pro: Spielpläne & Ligatabellen`, sections: [{ title: `Professionelle Eventverwaltung`, content: `<p>Erstellen Sie Spielpläne für Ihre Turniere mit automatischer Punkteberechnung.</p>` }] },
-  fr: { title: `Gestion de Tournoi : Tableaux et Classements`, sections: [{ title: `Gestion d'Événements Professionnelle`, content: `<p>Organisez vos championnats avec calcul automatique des points.</p>` }] },
-  it: { title: `Gestore Tornei Pro: Tabelloni e Classifiche`, sections: [{ title: `Gestione Eventi Professionale`, content: `<p>Organizza tornei sportivi con classifiche aggiornate in tempo reale.</p>` }] }
-};
-
-// --- 8. SCOREBOARD CONTENT ---
-const SCOREBOARD_CONTENT: { [lang: string]: ToolArticle } = {
-  id: {
-    title: `Universal Scoreboard: Papan Skor Digital Badminton, Voli & Ping Pong`,
-    sections: [{ title: `Satu Papan Skor, Banyak Olahraga`, content: `<p>Satu alat canggih untuk berbagai cabang olahraga berbasis poin (Rally Point) dan set.</p>` }]
-  },
-  en: {
-    title: `Universal Scoreboard: Digital Points for Badminton & Volleyball`,
-    sections: [{ title: `The Swiss Army Knife of Scoreboards`, content: `<p>Perfect for any point-based sport. Supports set tracking and rally point systems.</p>` }]
-  },
-  es: { title: `Marcador Universal: Puntos para Bádminton y Voleibol`, sections: [{ title: `Versatilidad Deportiva`, content: `<p>Un marcador digital diseñado para cualquier deporte basado en puntos y sets.</p>` }] },
-  pt: { title: `Placar Universal: Pontuação Digital`, sections: [{ title: `Versatilidade Esportiva`, content: `<p>Um placar digital versátil para qualquer esporte baseado em pontos e sets.</p>` }] },
-  de: { title: `Universal-Anzeigetafel: Punkte für Badminton & Volleyball`, sections: [{ title: `Vielseitige Sportanzeige`, content: `<p>Unterstützt Satz-Tracking und Rally-Point-Systeme für Ihre Wettkämpfe.</p>` }] },
-  fr: { title: `Tableau de Score Universel : Badminton et Volleyball`, sections: [{ title: `Polyvalence Sportive`, content: `<p>Un tableau de score numérique conçu pour tous les sports à points et sets.</p>` }] },
-  it: { title: `Tabellone Universale: Punti per Badminton e Pallavolo`, sections: [{ title: `Versatilità Sportiva`, content: `<p>Un tabellone digitale versatile per ogni sport basato su punti e set.</p>` }] }
-};
-
-// --- 9. AMERICANO GENERATOR ---
+// --- 8. AMERICANO CONTENT ---
 const AMERICANO_CONTENT: { [lang: string]: ToolArticle } = {
   id: {
     title: `Generator Jadwal Americano: Padel, Pickleball & Tenis`,
-    sections: [{ title: `Main Americano Tanpa Ribet`, content: `<p>Atur turnamen sosial Anda dengan rotasi partner otomatis dan klasemen individu real-time.</p>` }]
+    sections: [
+      {
+        title: `Main Americano Tanpa Ribet`,
+        content: `<p>Atur turnamen sosial Anda dengan rotasi partner otomatis. Americano adalah format di mana setiap pemain akan berganti pasangan di setiap babak.</p>`
+      }
+    ]
   },
   en: {
     title: `Americano Schedule Generator: Padel & Pickleball`,
-    sections: [{ title: `Fair Partner Rotation`, content: `<p>Automated partner rotation for your social sports sessions. Track individual leaderboards easily.</p>` }]
-  },
-  es: { title: `Generador de Torneos Americano: Pádel y Pickleball`, sections: [{ title: `Rotación Justa de Compañeros`, content: `<p>Organiza tus sesiones de pádel con rotaciones automáticas y seguimiento transparente.</p>` }] },
-  pt: { title: `Gerador de Torneio Americano: Padel e Pickleball`, sections: [{ title: `Rotação Justa de Parceiros`, content: `<p>Organize suas partidas de padel com rotação automática e ranking em tempo real.</p>` }] },
-  de: { title: `Americano-Turnier-Generator: Padel & Pickleball`, sections: [{ title: `Faire Partner-Rotation`, content: `<p>Organisieren Sie Ihre Padel-Runden mit automatischer Partner-Rotation und Bestenlisten.</p>` }] },
-  fr: { title: `Générateur de Tournoi Americano : Padel et Pickleball`, sections: [{ title: `Rotation Équitable des Partenaires`, content: `<p>Tout le monde joue avec tout le monde dan le classement est géré en temps réel.</p>` }] },
-  it: { title: `Generatore Torneo Americano: Padel e Pickleball`, sections: [{ title: `Rotazione Equa dei Partner`, content: `<p>Ogni giocatore cambia partner ad ogni turno con classifica automatica.</p>` }] }
+    sections: [
+      {
+        title: `Fair Partner Rotation`,
+        content: `<p>Automated partner rotation for your social sports sessions. Ensure every player pairs with everyone else fairly.</p>`
+      }
+    ]
+  }
 };
 
-// --- 10. TENNIS GENERATOR ---
+// --- 9. FUTSAL CONTENT ---
+const FUTSAL_CONTENT: { [lang: string]: ToolArticle } = {
+  id: {
+    title: `Papan Skor Futsal Digital Online: Ubah Lapangan Anda Jadi Arena Profesional`,
+    sections: [
+      {
+        title: `Akhiri Debat Skor di Lapangan`,
+        content: `<p>Dalam pertandingan futsal tensi tinggi, transparansi skor dan waktu adalah segalanya. <strong>VersoKit Futsal Scoreboard</strong> hadir sebagai solusi cerdas untuk sparring dan liga.</p>`
+      },
+      {
+        title: `Fitur Unggulan`,
+        content: `<ul><li><strong>Foul Counter:</strong> Pantau pelanggaran kumulatif tim secara akurat.</li><li><strong>Timer Fleksibel:</strong> Atur durasi babak sesuai kebutuhan liga Anda.</li><li><strong>TV Fullscreen Mode:</strong> Tampilan bersih tajam di TV besar lapangan.</li></ul>`
+      }
+    ]
+  },
+  en: {
+    title: `Online Digital Futsal Scoreboard: Professional Arena Quality`,
+    sections: [
+      {
+        title: `Stop the Score Debates`,
+        content: `<p>Transparency is everything in high-tension matches. <strong>VersoKit Futsal Scoreboard</strong> transforms your ordinary pitch into a professional arena.</p>`
+      },
+      {
+        title: `Pro Features`,
+        content: `<ul><li><strong>Foul Tracking:</strong> Kumulative fouls with visual alerts.</li><li><strong>Flexible Timer:</strong> Customizable period durations.</li><li><strong>Broadcast Ready:</strong> Clean fullscreen UI for stadium displays.</li></ul>`
+      }
+    ]
+  },
+  es: {
+    title: `Marcador Digital de Fútbol Sala: Calidad Profesional`,
+    sections: [
+      {
+        title: `Termina con las Discusiones`,
+        content: `<p>La transparencia es clave en los partidos de alta tensión. El <strong>Marcador VersoKit</strong> transforma tu campo en un estadio profesional.</p>`
+      }
+    ]
+  },
+  pt: {
+    title: `Placar Digital Online para Futsal: Qualidade Profissional`,
+    sections: [
+      {
+        title: `Fim das Discussões sobre o Placar`,
+        content: `<p>O <strong>VersoKit Futsal Scoreboard</strong> transforma sua quadra comum em uma arena profissional, pronta para transmissões e torneios.</p>`
+      }
+    ]
+  },
+  de: {
+    title: `Online-Anzeigetafel für Futsal: Profi-Qualität`,
+    sections: [
+      {
+        title: `Schluss mit Diskussionen`,
+        content: `<p>Die <strong>VersoKit Futsal-Anzeigetafel</strong> verwandelt Ihren Platz mit nur einem Laptop in eine Profi-Arena für Sparring und Ligen.</p>`
+      }
+    ]
+  },
+  fr: {
+    title: `Tableau de Score Futsal en Ligne : Qualité Professionnelle`,
+    sections: [
+      {
+        title: `Finis les Débats sur le Score`,
+        content: `<p>Le <strong>Tableau de Score VersoKit</strong> transforme votre terrain en arène pro pour vos matchs amicaux et championnats.</p>`
+      }
+    ]
+  },
+  it: {
+    title: `Tabellone Digitale Futsal Online: Qualità Professionale`,
+    sections: [
+      {
+        title: `Basta Discussioni sul Punteggio`,
+        content: `<p>Il <strong>Tabellone VersoKit</strong> trasforma il tuo campo in un'arena professionale per ogni sfida e torneo.</p>`
+      }
+    ]
+  }
+};
+
+// --- 10. TENNIS CONTENT ---
 const TENNIS_CONTENT: { [lang: string]: ToolArticle } = {
   id: {
     title: `Generator Jadwal Tenis Ganda: Matchmaking Berdasarkan Skill`,
@@ -248,12 +552,7 @@ const TENNIS_CONTENT: { [lang: string]: ToolArticle } = {
   en: {
     title: `Tennis Match Generator: Fair Double Schedules`,
     sections: [{ title: `Skill-Based Matchmaking`, content: `<p>Generate balanced tennis double matches based on skill levels and equal court time.</p>` }]
-  },
-  es: { title: `Generador de Partidos de Tenis: Dobles Justos`, sections: [{ title: `Emparejamiento por Nivel`, content: `<p>Genera partidos de dobles equilibrados basados en el nivel de habilidad.</p>` }] },
-  pt: { title: `Gerador de Partidas de Tênis: Duplas Equilibradas`, sections: [{ title: `Matchmaking por Habilidade`, content: `<p>Gere partidas de duplas equilibradas com tempo de quadra igual para todos.</p>` }] },
-  de: { title: `Tennis-Match-Generator: Faire Doppel-Spielpläne`, sections: [{ title: `Skill-basiertes Matchmaking`, content: `<p>Erstellen Sie ausgeglichene Doppelspiele basierend auf Spielstärke.</p>` }] },
-  fr: { title: `Générateur de Matchs Tennis : Doubles Équitables`, sections: [{ title: `Matchmaking par Niveau`, content: `<p>Générez des plannings de doubles équitables avec équilibrage des niveaux.</p>` }] },
-  it: { title: `Generatore Partite Tennis: Doppi Equi`, sections: [{ title: `Bilanciamento Abilità`, content: `<p>Crea programmi di doppio equi con bilanciamento basato sulle abilità.</p>` }] }
+  }
 };
 
 // --- MAIN EXPORT REGISTRY ---
