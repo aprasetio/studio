@@ -23,113 +23,205 @@ export interface ArticleCollection {
 // --- 1. INVENTORY TOOL CONTENT ---
 const INVENTORY_CONTENT: { [lang: string]: ToolArticle } = {
   id: {
-    title: `Aplikasi Stok Barang Sederhana: Kelola Inventaris UMKM Gratis`,
+    title: `Aplikasi Stok Barang Sederhana: Kelola Inventaris UMKM Gratis & Aman`,
     sections: [
       {
-        title: `Lelah Menghitung Stok Manual?`,
-        content: `<p>Lelah menghitung stok barang setiap malam di buku tulis? Sering pusing karena uang modal "nyangkut" di barang yang tidak laku, sementara barang yang lari manis malah habis stok?</p><p>Manajemen stok adalah jantung dari setiap bisnis perdagangan. Tanpa catatan yang rapi, bisnis kecil sangat rentan mengalami kerugian akibat barang hilang, overstocking (kelebihan stok), atau kehilangan pembeli karena barang kosong.</p><p><strong>Simple Inventory Manager</strong> dari VersoKit hadir sebagai solusi bagi Anda yang sudah tidak sanggup mengelola stok secara manual, tapi belum butuh sistem POS yang rumit dan mahal.</p>`
+        title: `Hentikan Kebiasaan Hitung Stok Manual yang Melelahkan`,
+        content: `<p>Lelah menghitung stok barang setiap malam di buku tulis? Sering pusing karena uang modal "nyangkut" di barang yang tidak laku, sementara barang yang lari manis malah habis stok?</p><p>Manajemen stok adalah jantung dari bisnis. Tanpa catatan yang rapi, bisnis kecil rentan merugi akibat barang hilang, <em>overstocking</em>, atau kehilangan pembeli karena barang kosong. <strong>Simple Inventory Manager</strong> dari VersoKit hadir bagi Anda yang ingin beralih dari manual ke sistem digital tanpa ribet.</p>`
       },
       {
         title: `Masalah Klasik yang Sering Menghambat Bisnis Kecil`,
-        content: `<p>Banyak pemilik UMKM terjebak dalam masalah manajemen gudang karena tidak memiliki alat yang tepat:</p><ul><li><strong>"Barang Hilang" Tanpa Jejak:</strong> Stok di rak dan di catatan sering berbeda karena lupa mencatat transaksi secara real-time.</li><li><strong>Uang Mati di Gudang:</strong> Anda terus membeli barang yang ternyata masih banyak, sehingga modal Anda mengendap tanpa menghasilkan keuntungan.</li><li><strong>Kehilangan Pembeli:</strong> Tidak ada yang lebih menyakitkan daripada pembeli datang membawa uang, namun Anda harus menolak karena tidak tahu kalau stok sudah habis.</li><li><strong>Pusing Hitung Aset:</strong> Menghitung total nilai modal yang ada di rak toko secara manual sangat melelahkan dan rawan salah hitung.</li></ul>`
+        content: `<p>Banyak pemilik UMKM terjebak dalam masalah manajemen gudang karena tidak memiliki alat yang tepat:</p><ul><li><strong>Barang Hilang Tanpa Jejak:</strong> Stok fisik dan catatan sering berbeda karena lupa mencatat transaksi secara real-time.</li><li><strong>Uang Mati di Gudang:</strong> Membeli barang yang ternyata masih banyak, sehingga modal mengendap tanpa keuntungan.</li><li><strong>Kehilangan Pembeli:</strong> Pembeli datang, namun Anda harus menolak karena tidak tahu stok sudah habis di rak.</li><li><strong>Pusing Hitung Aset:</strong> Menghitung total nilai modal secara manual sangat melelahkan dan rawan salah hitung.</li></ul>`
       },
       {
         title: `Fitur Unggulan Simple Inventory Manager`,
-        content: `<p>Alat ini adalah buku stok digital yang melakukan semua perhitungan matematika rumit untuk Anda secara otomatis.</p><ol><li><strong>Stock In & Stock Out (Satu Klik):</strong> Update stok tidak perlu ketik ulang. Gunakan tombol cepat untuk menambah barang masuk atau mengurangi barang yang terjual. Saldo stok akan ter-update secara otomatis saat itu juga.</li><li><strong>Low Stock Alerts (Peringatan Stok Tipis):</strong> Jangan biarkan stok Anda kosong melompong. Alat ini dilengkapi indikator visual (warna merah) yang akan menyala jika stok suatu barang berada di bawah batas minimum yang Anda tentukan. Waktunya belanja stok lagi sebelum habis!</li><li><strong>Hitung Nilai Aset Otomatis (Valuation):</strong> Anda bisa melihat total nilai uang Anda yang saat ini berbentuk barang di gudang. Sistem akan menghitung akumulasi harga beli/modal sehingga Anda tahu persis berapa total aset bisnis Anda.</li><li><strong>Search & Filter Instan:</strong> Punya ratusan jenis barang? Jangan khawatir. Fitur pencarian kami sangat cepat. Cukup ketik nama barang, dan data akan muncul seketika tanpa perlu scroll satu per satu.</li></ol>`
+        content: `<p>Alat ini adalah buku stok digital yang melakukan semua perhitungan matematis rumit untuk Anda secara otomatis:</p><ol><li><strong>Stock In & Out (Satu Klik):</strong> Update stok dengan cepat tanpa ketik ulang. Saldo stok akan ter-update otomatis seketika transaksi dicatat.</li><li><strong>Low Stock Alerts (Peringatan Stok Tipis):</strong> Indikator visual warna merah akan menyala jika stok berada di bawah batas minimum yang Anda tentukan. Waktunya belanja sebelum habis!</li><li><strong>Hitung Nilai Aset Otomatis:</strong> Sistem akan menghitung akumulasi harga beli sehingga Anda tahu persis total nilai aset modal yang ada di gudang.</li><li><strong>Search & Filter Instan:</strong> Cukup ketik nama barang untuk menemukan data tanpa perlu melakukan scroll pada ratusan item.</li></ol>`
       },
       {
         title: `Kenapa Harus Menggunakan VersoKit?`,
-        content: `<ul><li><strong>100% Offline & Private:</strong> Ini adalah keunggulan utama kami. Data stok, harga modal, and nama supplier Anda tidak pernah dikirim ke internet. Semuanya tersimpan aman di browser Anda. Rahasia dapur bisnis Anda tetap menjadi milik Anda sepenuhnya.</li><li><strong>Gratis Selamanya:</strong> Tanpa biaya langganan bulanan (No Monthly Fee). Solusi hemat untuk UMKM yang ingin naik kelas.</li><li><strong>Export ke Excel:</strong> Butuh data untuk laporan pajak atau audit tahunan? Anda bisa menarik semua data ke format Excel (CSV) atau JSON dengan satu klik.</li><li><strong>Tanpa Install:</strong> Tidak perlu memenuhi memori HP. Buka dari browser, dan alat siap digunakan kapan saja.</li></ul>`
+        content: `<ul><li><strong>🛡️ 100% Offline & Private:</strong> Data stok, harga modal, dan nama supplier tidak pernah dikirim ke internet. Semuanya tersimpan aman di browser Anda.</li><li><strong>💰 Gratis Selamanya:</strong> Tanpa biaya langganan bulanan (No Monthly Fee). Solusi hemat untuk UMKM yang ingin naik kelas.</li><li><strong>📊 Export ke Excel:</strong> Tarik semua data ke format CSV atau JSON dengan satu klik untuk laporan pajak atau audit tahunan.</li><li><strong>🚀 Tanpa Install:</strong> Tidak perlu memenuhi memori HP. Buka dari browser dan alat siap digunakan kapan saja.</li></ul>`
+      },
+      {
+        title: `Cara Mulai Mengelola Stok dalam 4 Langkah`,
+        content: `<ol><li><strong>Tambah Barang:</strong> Masukkan nama barang, stok awal, harga modal, dan batas minimum stok.</li><li><strong>Input Barang Masuk:</strong> Klik tombol (+) setiap ada kiriman baru dari supplier.</li><li><strong>Input Barang Keluar:</strong> Klik tombol (-) setiap ada barang terjual atau keluar.</li><li><strong>Pantau Dashboard:</strong> Lihat total modal dan segera belanja untuk barang-barang yang indikatornya sudah berwarna merah.</li></ol>`
+      },
+      {
+        title: `Mulai Rapikan Manajemen Gudang Anda Hari Ini!`,
+        content: `<p>Bisnis yang lancar dimulai dari manajemen stok yang benar. Berhenti menebak-nebak jumlah barang Anda dan mulailah menggunakan sistem digital yang presisi. Lebih rapi stoknya, lebih lancar bisnisnya. Coba Simple Inventory Manager sekarang juga!</p>`
       }
     ]
   },
   en: {
-    title: `Simple Inventory App: Manage SME Stock for Free`,
+    title: `Simple Inventory App: Manage MSME Inventory for Free & Securely`,
     sections: [
       {
-        title: `Tired of Manual Counting?`,
-        content: `<p>Tired of counting stock every night in a notebook? Often stressed because capital is "stuck" in slow-moving items, while popular items run out of stock?</p><p>Stock management is the heart of every trading business. Without neat records, small businesses are very vulnerable to losses from missing items, overstocking, or turning away customers.</p><p><strong>Simple Inventory Manager</strong> from VersoKit is the solution for those who can no longer manage stock manually but don't yet need a complex and expensive POS system.</p>`
+        title: `Stop the Headache of Manual Stock Counting`,
+        content: `<p>Tired of counting inventory every night in a notebook? It’s frustrating when your capital is "stuck" in unsold items, while your best-sellers are constantly out of stock. Without organized records, small businesses are vulnerable to losses from missing items, overstocking, or turned-away customers.</p><p><strong>VersoKit's Simple Inventory Manager</strong> is the perfect solution for those who have outgrown manual logs but aren't ready for a complex, expensive POS system.</p>`
       },
       {
-        title: `Classic SME Warehouse Problems`,
-        content: `<p>Many SME owners get stuck in warehouse management problems because they lack the right tools:</p><ul><li><strong>"Missing Items":</strong> Stock on shelves and records often differ because of forgetting to record transactions in real-time.</li><li><strong>Dead Capital:</strong> Buying items that still have plenty of stock, keeping your capital stationary without generating profit.</li><li><strong>Losing Customers:</strong> Turning away customers because you didn't know the stock was out is painful for any business owner.</li><li><strong>Asset Calculation Stress:</strong> Manually calculating the total value of capital on store shelves is exhausting and error-prone.</li></ul>`
+        title: `Classic Hurdles for Small Businesses`,
+        content: `<p>Many MSME owners struggle with warehouse management due to a lack of proper tools:</p><ul><li><strong>"Lost" Items:</strong> Discrepancies between shelves and records because transactions weren't logged in real-time.</li><li><strong>Dead Capital:</strong> Buying more of what you already have, leaving cash idle instead of generating profit.</li><li><strong>Missed Sales:</strong> Turning away customers with cash in hand because you didn't realize an item was out of stock.</li><li><strong>Valuation Headaches:</strong> Tedious manual calculations of total asset values that are prone to human error.</li></ul>`
       },
       {
-        title: `Key Features of Simple Inventory Manager`,
-        content: `<p>This tool is a digital stock book that performs all complex math calculations for you automatically.</p><ol><li><strong>Stock In & Out (One Click):</strong> Manage movements instantly without re-typing. Totals update automatically in real-time.</li><li><strong>Low Stock Alerts:</strong> A visual red indicator lights up when items fall below your minimum limit. Never run out of best-sellers again!</li><li><strong>Automatic Asset Valuation:</strong> See the total value of your warehouse inventory in real-time based on cost price. Know exactly how much capital is on your shelves.</li><li><strong>Instant Search:</strong> High-speed filtering for hundreds of items without manual scrolling.</li></ol>`
+        title: `Featured Features of Simple Inventory Manager`,
+        content: `<p>This digital stock book handles all the complicated math for you automatically:</p><ol><li><strong>Stock In & Out (One Click):</strong> Update levels instantly without retyping. The balance refreshes the moment you record a movement.</li><li><strong>Low Stock Alerts:</strong> A visual red indicator lights up when an item falls below your custom minimum limit. Know exactly when to restock before you run out.</li><li><strong>Automatic Asset Valuation:</strong> See the total value of your warehouse at a glance. The system accumulates purchase prices so you know your exact business worth.</li><li><strong>Instant Search & Filter:</strong> No more scrolling. Even with hundreds of items, our lightning-fast search finds what you need in a split second.</li></ol>`
       },
       {
-        title: `Why Use VersoKit?`,
-        content: `<ul><li><strong>100% Offline & Private:</strong> This is our main advantage. Your stock data and prices are never sent to the internet. Your business secrets remain entirely yours.</li><li><strong>Free Forever:</strong> No monthly subscription fees. A budget-friendly solution for growing SMEs.</li><li><strong>Export to Excel:</strong> Pull all your data into Excel (CSV) or JSON format with one click for tax reports or audits.</li></ul>`
+        title: `Why Choose VersoKit?`,
+        content: `<ul><li><strong>🛡️ 100% Offline & Private:</strong> Your stock data, prices, and supplier names never leave your device. Everything is stored locally in your browser, keeping your business secrets safe.</li><li><strong>💰 Free Forever:</strong> No monthly subscription fees. A truly cost-effective way for MSMEs to level up their professionalism.</li><li><strong>📊 Export to Excel:</strong> Need data for tax reports or audits? Export everything to CSV or JSON format with a single click.</li><li><strong>🚀 No Installation Required:</strong> Don't waste phone memory. Access it directly from your browser on any device.</li></ul>`
+      },
+      {
+        title: `Start Managing Inventory in 4 Steps`,
+        content: `<ol><li><strong>Add Items:</strong> Enter the name, initial stock, cost price, and minimum stock threshold.</li><li><strong>Log Incoming Stock:</strong> Click (+) whenever new shipments arrive from suppliers.</li><li><strong>Log Outgoing Stock:</strong> Click (-) every time an item is sold or used.</li><li><strong>Monitor the Dashboard:</strong> Keep an eye on your total capital and restock items highlighted in red.</li></ol>`
+      },
+      {
+        title: `Streamline Your Warehouse Management Today`,
+        content: `<p>A smooth business starts with precise inventory control. Stop guessing your numbers and start using a digital system designed for accuracy. The tidier your stock, the smoother your cash flow. Try Simple Inventory Manager now!</p>`
       }
     ]
   },
   es: {
-    title: `Gestión de Inventario Sencilla: Control de Stock para PYMES Gratis`,
+    title: `App de Inventario Simple: Gestiona el Inventario de tu PyME de forma gratuita y segura`,
     sections: [
       {
-        title: `¿Cansado de contar a mano?`,
-        content: `<p>¿Cansado de anotar el stock cada noche en una libreta? ¿Preocupado porque su capital está "atrapado" en artículos que no se venden, mientras que los más populares se agotan?</p><p>La gestión de stock es el corazón de cualquier negocio comercial. El <strong>Simple Inventory Manager</strong> de VersoKit es la solución para quienes ya no pueden gestionar el stock manualmente pero aún no necesitan un sistema POS complejo.</p>`
+        title: `Pon fin al caos de contar stock manualmente`,
+        content: `<p>¿Cansado de contar el inventario todas las noches en una libreta? Es frustrante ver cómo tu capital se queda "atascado" en artículos que no se venden, mientras tus productos estrella están agotados. Sin registros ordenados, las pequeñas empresas son vulnerables a pérdidas por mercancía extraviada, exceso de stock o clientes perdidos.</p><p>El <strong>Gestor de Inventario Simple de VersoKit</strong> es la solución ideal para quienes han superado las libretas de apuntes pero no necesitan un sistema TPV complejo y costoso.</p>`
       },
       {
-        title: `Problemas Clásicos de Almacén`,
-        content: `<ul><li><strong>"Artículos Perdidos":</strong> El stock real y el registrado suelen diferir por olvidos en el registro en tiempo real.</li><li><strong>Capital Inactivo:</strong> Comprar artículos que aún tienen stock, manteniendo su capital detenido sin generar beneficios.</li><li><strong>Pérdida de Clientes:</strong> Rechazar clientes por no saber que el stock se había agotado es doloroso para cualquier dueño.</li></ul>`
+        title: `Problemas clásicos que frenan el crecimiento de tu PyME`,
+        content: `<p>Muchos dueños de negocios sufren con la gestión de almacén por no contar con las herramientas adecuadas:</p><ul><li><strong>"Artículos perdidos":</strong> Diferencias entre lo que hay en el estante y lo que dice el papel por olvidar registrar ventas en tiempo real.</li><li><strong>Dinero muerto en el almacén:</strong> Comprar más de lo que ya tienes, dejando tu capital inactivo en lugar de generar ganancias.</li><li><strong>Ventas perdidas:</strong> Tener que rechazar a un cliente con dinero en mano porque no sabías que el producto estaba agotado.</li><li><strong>Cálculos de activos tediosos:</strong> Pasar horas calculando el valor total de tu mercancía con el riesgo de cometer errores humanos.</li></ul>`
       },
       {
-        title: `Características Principales`,
-        content: `<ul><li><strong>Entradas y Salidas (Un Clic):</strong> Actualice sus movimientos al instante sin volver a escribir todo.</li><li><strong>Alertas de Stock Bajo:</strong> Un indicador visual rojo le avisa cuando los artículos bajan de su límite mínimo.</li><li><strong>Privacidad Total:</strong> Sus datos se procesan 100% localmente en su navegador. Sus secretos comerciales están seguros.</li></ul>`
+        title: `Características destacadas de Simple Inventory Manager`,
+        content: `<p>Esta herramienta funciona como un libro de stock digital que automatiza todos los cálculos por ti:</p><ol><li><strong>Entrada y salida (Un clic):</strong> Actualiza los niveles de stock al instante sin tener que escribir todo de nuevo. El saldo se refresca en el momento en que registras el movimiento.</li><li><strong>Alertas de stock bajo:</strong> Un indicador visual rojo se enciende cuando un artículo cae por debajo del límite mínimo que tú definas. ¡Sabrás exactamente cuándo reponer antes de quedarte en cero!</li><li><strong>Valoración automática de activos:</strong> Conoce el valor total de tu almacén de un vistazo. El sistema suma los precios de costo para que sepas el valor real de tus activos comerciales.</li><li><strong>Búsqueda y filtros instantáneos:</strong> No pierdas tiempo desplazándote. Encuentra cualquier artículo entre cientos de opciones en una fracción de segundo.</li></ol>`
+      },
+      {
+        title: `¿Por qué elegir VersoKit?`,
+        content: `<ul><li><strong>🛡️ 100% Offline y Privado:</strong> Tus datos de stock, precios y proveedores nunca salen de tu dispositivo. Todo se guarda localmente en tu navegador, manteniendo tus secretos comerciales a salvo.</li><li><strong>💰 Gratis para siempre:</strong> Sin cuotas de suscripción mensual. Una solución rentable para PyMEs que buscan profesionalizar su gestión.</li><li><strong>📊 Exportación a Excel:</strong> ¿Necesitas datos para informes fiscales o auditorías? Exporta todo a formato CSV o JSON con un solo clic.</li><li><strong>🚀 Sin instalación:</strong> No ocupa memoria en tu teléfono. Accede directamente desde tu navegador en cualquier dispositivo.</li></ul>`
+      },
+      {
+        title: `Cómo empezar a gestionar tu stock en 4 pasos`,
+        content: `<ol><li><strong>Añade artículos:</strong> Introduce el nombre, stock inicial, precio de costo y umbral mínimo de stock.</li><li><strong>Registra entradas:</strong> Haz clic en (+) cada vez que llegue mercancía nueva de tus proveedores.</li><li><strong>Registra salidas:</strong> Haz clic en (-) cada vez que se venda o envíe un producto.</li><li><strong>Monitorea el panel:</strong> Observa tu capital total y repón inmediatamente los artículos resaltados en rojo.</li></ol>`
+      },
+      {
+        title: `Optimiza la gestión de tu almacén hoy mismo`,
+        content: `<p>Un negocio eficiente comienza con un control de inventario preciso. Deja de adivinar tus números y comienza a usar un sistema digital diseñado para la exactitud. Cuanto más ordenado esté tu stock, mejor fluirá tu caja. ¡Prueba Simple Inventory Manager ahora!</p>`
       }
     ]
   },
   pt: {
-    title: `Gestão de Inventário Simples: Controle de Stock para PMEs Grátis`,
+    title: `Aplicação de Inventário Simples: Gerir o Inventário de Micro, Pequenas e Médias Empresas de forma Gratuita e Segura`,
     sections: [
       {
-        title: `Cansado de contar manualmente?`,
-        content: `<p>Cansado de contar o estoque todas as noites em um caderno? O <strong>Simple Inventory Manager</strong> da VersoKit ajuda PMEs a organizar o estoque de forma rápida e segura, sem custos mensais.</p>`
+        title: `Ponha fim ao caos da contagem manual de stock`,
+        content: `<p>Cansado de contar o stock todas as noites num caderno? É frustrante ter o seu capital "preso" em artigos que não vendem, enquanto os seus produtos estrela estão esgotados. Sem registos organizados, as pequenas empresas ficam vulneráveis a perdas por mercadorias extraviadas, excesso de stock ou clientes perdidos.</p><p>O <strong>Gestor de Inventário Simples da VersoKit</strong> é a solução ideal para quem superou os registos manuais, mas não precisa de um sistema POS complexo e dispendioso.</p>`
       },
       {
-        title: `Recursos Principais`,
-        content: `<ul><li><strong>Entradas e Saídas:</strong> Atualize seu estoque instantaneamente com um clique.</li><li><strong>Alertas de Baixo Estoque:</strong> Saiba exatamente quando comprar novos produtos com indicadores visuais.</li><li><strong>Valorização de Ativos:</strong> Veja o valor total do seu capital em estoque em tempo real.</li><li><strong>Segurança Local:</strong> Seus dados de estoque nunca saem do seu dispositivo.</li></ul>`
+        title: `Problemas clássicos que travam o crescimento do seu negócio`,
+        content: `<p>Muitos proprietários de PMEs sofrem com a gestão de armazém por não possuírem as ferramentas adequadas:</p><ul><li><strong>"Itens Perdidos":</strong> Diferenças entre a prateleira e o papel por se esquecer de registar vendas em tempo real.</li><li><strong>Dinheiro parado em stock:</strong> Comprar mais do que já tem, deixando o capital imóvel em vez de gerar lucro.</li><li><strong>Vendas perdidas:</strong> Ter de recusar um cliente com dinheiro na mão porque não sabia que o produto tinha esgotado.</li><li><strong>Cálculos de ativos tediosos:</strong> Horas perdidas a calcular o valor total da mercadoria com o risco de cometer erros humanos.</li></ul>`
+      },
+      {
+        title: `Características do Simple Inventory Manager`,
+        content: `<p>Esta ferramenta funciona como um livro de inventário digital que automatiza todos os cálculos por si:</p><ol><li><strong>Entrada e saída (Um clique):</strong> Atualize os níveis de stock instantaneamente sem ter de digitar tudo novamente. O saldo atualiza-se no momento em que regista o movimento.</li><li><strong>Alertas de stock baixo:</strong> Um indicador visual vermelho acende-se quando um artigo desce abaixo do limite mínimo definido por si. Saiba exatamente quando reabastecer antes de ficar a zeros!</li><li><strong>Avaliação Automática de Ativos:</strong> Conheça o valor total do seu armazém num relance. O sistema soma os preços de custo para que saiba o valor real dos seus ativos comerciais.</li><li><strong>Busca e Filtro Instantâneos:</strong> Não perca tempo a percorrer listas. Encontre qualquer artigo entre centenas de opções numa fração de segundo.</li></ol>`
+      },
+      {
+        title: `Porquê escolher o VersoKit?`,
+        content: `<ul><li><strong>🛡️ 100% Offline e Privado:</strong> Os seus dados de stock, preços e fornecedores nunca saem do seu dispositivo. Tudo é guardado localmente no seu navegador, mantendo os segredos do seu negócio a salvo.</li><li><strong>💰 Gratuito para Sempre:</strong> Sem taxas de subscrição mensal. Uma solução económica para quem quer profissionalizar a gestão.</li><li><strong>📊 Exportação para Excel:</strong> Precisa de dados para relatórios fiscais ou auditorias? Exporte tudo para formato CSV ou JSON com um único clique.</li><li><strong>🚀 Sem instalação:</strong> Não ocupa memória no seu telemóvel. Aceda diretamente através do browser em qualquer dispositivo.</li></ul>`
+      },
+      {
+        title: `Como começar a gerir o seu stock em 4 passos`,
+        content: `<ol><li><strong>Adicionar artigos:</strong> Introduza o nome, stock inicial, preço de custo e limite mínimo de stock.</li><li><strong>Registar entradas:</strong> Clique em (+) sempre que chegar mercadoria nova dos seus fornecedores.</li><li><strong>Registar saídas:</strong> Clique em (-) sempre chegue uma venda ou o artigo saia do armazém.</li><li><strong>Monitorizar o Painel:</strong> Observe o seu capital total e reabasteça imediatamente os artigos realçados a vermelho.</li></ol>`
+      },
+      {
+        title: `Otimize a gestão do seu armazém hoje mesmo`,
+        content: `<p>Um negócio eficiente começa com um controlo de inventario preciso. Deixe de adivinhar as suas quantidades e comece a utilizar um sistema digital desenhado para a exatidão. Quanto mais organizado estiver o seu stock, melhor fluirá o seu negócio. Experimente o Simple Inventory Manager agora!</p>`
       }
     ]
   },
   de: {
-    title: `Einfache Lagerverwaltungs-App: Kostenloses Inventar für KMU`,
+    title: `Einfache Bestandsverwaltungs-App: Kostenloses und sicheres Bestandsmanagement für KMU`,
     sections: [
       {
-        title: `Müde vom manuellen Zählen?`,
-        content: `<p>Haben Sie es satt, jeden Abend den Lagerbestand in ein Notizheft zu schreiben? Bestandsverwaltung ist das Herzstück jedes Handelsgeschäfts. Der <strong>Simple Inventory Manager</strong> von VersoKit ist die ideale Lösung für KMU.</p>`
+        title: `Schluss mit dem Chaos bei der manuellen Bestandszählung`,
+        content: `<p>Sind Sie es leid, jeden Abend den Bestand mühsam in einem Notizbuch zu zählen? Es ist frustrierend, wenn Ihr Kapital in unverkauften Ladenhütern gebunden ist, während Ihre Bestseller ständig vergriffen sind. Ohne ordentliche Aufzeichnungen riskieren kleine Unternehmen Verluste durch Warenschwund, Überbestände oder enttäuschte Kunden.</p><p>Der <strong>Simple Inventory Manager von VersoKit</strong> ist die perfekte Lösung für alle, die dem Notizbuch entwachsen sind, aber kein komplexes und teures Kassensystem benötigen.</p>`
       },
       {
-        title: `Hauptmerkmale`,
-        content: `<ul><li><strong>Ein- & Ausgang:</strong> Aktualisieren Sie Ihren Bestand mit einem Klick.</li><li><strong>Warnungen bei niedrigem Bestand:</strong> Visuelle Hinweise zeigen Ihnen sofort, wenn Artikel nachbestellt werden müssen.</li><li><strong>Automatische Bewertung:</strong> Berechnen Sie den Gesamtwert Ihres Lagers basierend auf Einkaufspreisen automatisch.</li><li><strong>Sofortige Suche:</strong> Finden Sie jeden Artikel in Sekunden mit unserem schnellen Filter.</li></ul>`
+        title: `Klassische Hürden für kleine Unternehmen`,
+        content: `<p>Viele KMU-Inhaber kämpfen mit der Lagerverwaltung, weil ihnen die passenden Werkzeuge fehlen:</p><ul><li><strong>Verschwundene Artikel:</strong> Differenzen zwischen Regal und Liste, weil Verkäufe nicht in Echtzeit erfasst wurden.</li><li><strong>Totes Kapital:</strong> Sie kaufen Waren nach, die eigentlich noch vorrätig sind, wodurch Bargeld ungenutzt im Lager liegt.</li><li><strong>Umsatzeinbußen:</strong> Kunden mit Kaufabsicht müssen abgewiesen werden, weil Sie nicht wussten, dass der Vorrat erschöpft ist.</li><li><strong>Mühsame Inventur:</strong> Die manuelle Berechnung des Gesamtwerts aller Waren ist zeitraubend und extrem fehleranfällig.</li></ul>`
+      },
+      {
+        title: `Top-Funktionen des Simple Inventory Manager`,
+        content: `<p>Dieses digitale Inventarbuch nimmt Ihnen die komplizierte Mathematik automatisch ab:</p><ol><li><strong>Wareneingang & -ausgang (1 Klick):</strong> Aktualisieren Sie Bestände sofort ohne erneute Dateneingabe. Der Saldo aktualisiert sich in dem Moment, in dem Sie die Bewegung erfassen.</li><li><strong>Warnung bei niedrigem Lagerbestand:</strong> Eine visuelle rote Anzeige leuchtet auf, wenn ein Artikel Ihren festgelegten Mindestbestand unterschreitet. So wissen Sie genau, wann Sie nachbestellen müssen.</li><li><strong>Automatische Bestandsbewertung:</strong> Sehen Sie den Gesamtwert Ihres Lagers auf einen Blick. Das System addiert die Einkaufspreise, damit Sie den exakten Wert Ihres Betriebsvermögens kennen.</li><li><strong>Sofortsuche & Filter:</strong> Kein langes Scrollen mehr. Finden Sie jeden Artikel unter Hunderten von Einträgen in Bruchteilen einer Sekunde.</li></ol>`
+      },
+      {
+        title: `Warum VersoKit wählen?`,
+        content: `<ul><li><strong>🛡️ 100 % offline & privat:</strong> Ihre Lagerdaten, Preise und Lieferanteninfos verlassen niemals Ihr Gerät. Alles wird lokal im Browser gespeichert – Ihre Geschäftsgeheimnisse gehören Ihnen.</li><li><strong>💰 Dauerhaft kostenlos:</strong> Keine monatlichen Abogebühren. Eine kosteneffiziente Methode für KMU, um professioneller zu werden.</li><li><strong>📊 Export nach Excel:</strong> Benötigen Sie Daten für die Steuererklärung oder Betriebsprüfung? Exportieren Sie alles mit einem Klick als CSV oder JSON.</li><li><strong>🚀 Keine Installation nötig:</strong> Verschwenden Sie keinen Speicherplatz auf dem Handy. Greifen Sie direkt über den Browser von jedem Gerät aus zu.</li></ul>`
+      },
+      {
+        title: `In 4 Schritten zum perfekten Lagerüberblick`,
+        content: `<ol><li><strong>Artikel anlegen:</strong> Geben Sie Name, Anfangsbestand, Einkaufspreis und Mindestbestand ein.</li><li><strong>Eingänge erfassen:</strong> Klicken Sie auf (+), sobald neue Lieferungen eintreffen.</li><li><strong>Ausgänge erfassen:</strong> Klicken Sie auf (-), wann immer ein Artikel verkauft oder entnommen wird.</li><li><strong>Dashboard überwachen:</strong> Behalten Sie Ihr Gesamtkapital im Auge und bestellen Sie rot markierte Artikel sofort nach.</li></ol>`
+      },
+      {
+        title: `Optimieren Sie Ihre Lagerverwaltung noch heute`,
+        content: `<p>Ein reibungsloser Geschäftsablauf beginnt mit präziser Bestandskontrolle. Hören Sie auf zu raten und nutzen Sie ein digitales System, das auf Genauigkeit ausgelegt ist. Je ordentlicher Ihr Lager, desto besser läuft Ihr Geschäft. Testen Sie den Simple Inventory Manager jetzt!</p>`
       }
     ]
   },
   fr: {
-    title: `Gestion de Stock Simple : Gérer l'inventaire des PME Gratuitement`,
+    title: `Application de gestion des stocks simplifiée : Gérez gratuitement et en toute sécurité les stocks de votre PME`,
     sections: [
       {
-        title: `Fatigué du comptage manuel ?`,
-        content: `<p>Fatigué de compter le stock chaque soir dans un carnet ? La gestion de stock est le cœur de toute activité commerciale. Le <strong>Simple Inventory Manager</strong> de VersoKit est la solution pour les PME.</p>`
+        title: `Dites adieu au chaos du comptage manuel des stocks`,
+        content: `<p>Marre de compter vos stocks chaque soir dans un carnet ? Il est frustrant de voir votre capital immobilisé dans des invendus alors que vos produits phares sont en rupture. Sans un suivi rigoureux, les petites entreprises sont vulnérables aux pertes, au surstockage ou à la perte de clients.</p><p>Le <strong>Gestionnaire de stocks simplifié de VersoKit</strong> est la solution idéale pour ceux qui ont dépassé le stade du carnet mais n'ont pas encore besoin d'un système de caisse complexe et coûteux.</p>`
       },
       {
-        title: `Fonctionnalités Clés`,
-        content: `<ul><li><strong>Entrées et Sorties :</strong> Mettez à jour vos stocks d'un simple clic sans ressaisie.</li><li><strong>Alertes de Rupture :</strong> Soyez prévenu visuellement quand le stock est critique.</li><li><strong>Valorisation des Actifs :</strong> Calculez automatiquement la valeur totale de vos marchandises.</li><li><strong>Recherche Rapide :</strong> Filtrez vos centaines d'articles en un clin d'œil.</li></ul>`
+        title: `Les obstacles classiques qui freinent votre croissance`,
+        content: `<p>De nombreux dirigeants de PME peinent à gérer leur entrepôt faute d'outils adaptés :</p><ul><li><strong>Articles « perdus » :</strong> Des écarts entre les rayons et vos notes car les ventes ne sont pas enregistrées en temps réel.</li><li><strong>Capital dormant :</strong> Vous rachetez des produits déjà en stock, immobilisant votre trésorerie au lieu de générer du profit.</li><li><strong>Ventes manquées :</strong> Devoir refuser un client car vous ignoriez que le produit était épuisé.</li><li><strong>Valorisation fastidieuse :</strong> Calculer manuellement la valeur totale de vos actifs est long et propice aux erreurs humaines.</li></ul>`
+      },
+      {
+        title: `Fonctionnalités clés de Simple Inventory Manager`,
+        content: `<p>Ce registre numérique effectue automatiquement tous les calculs complexes pour vous :</p><ol><li><strong>Entrées et sorties (1 clic) :</strong> Mettez à jour vos niveaux de stock instantanément sans tout ressaisir. Le solde s'actualise dès que vous enregistrez le mouvement.</li><li><strong>Alertes de stock faible :</strong> Un indicateur visuel rouge s'allume dès qu'un article passe sous le seuil minimum défini. Anticipez vos commandes avant la rupture !</li><li><strong>Calcul automatique de la valeur des actifs :</strong> Visualisez la valeur totale de votre entrepôt en un coup d'œil. Le système cumule les prix d'achat pour connaître la valeur exacte de vos actifs.</li><li><strong>Recherche et filtrage instantanés :</strong> Ne perdez plus de temps à faire défiler vos listes. Trouvez n'importe quelle référence parmi des centaines en une fraction de seconde.</li></ol>`
+      },
+      {
+        title: `Pourquoi choisir VersoKit ?`,
+        content: `<ul><li><strong>🛡️ 100 % hors ligne et confidentiel :</strong> Vos données, prix et fournisseurs ne quittent jamais votre appareil. Tout est stocké localement dans votre navigateur, protégeant ainsi vos secrets commerciaux.</li><li><strong>💰 Gratuit à vie :</strong> Aucun abonnement mensuel. Une solution économique pour les PME qui souhaitent se professionnaliser.</li><li><strong>📊 Exportation vers Excel :</strong> Besoin de données pour vos bilans ou audits ? Exportez tout au format CSV ou JSON en un clic.</li><li><strong>🚀 Aucune installation requise :</strong> Ne saturez pas la mémoire de votre téléphone. Accédez-y directement via votre navigateur sur n'importe quel appareil.</li></ul>`
+      },
+      {
+        title: `Gérer vos stocks en 4 étapes`,
+        content: `<ol><li><strong>Ajouter des articles :</strong> Saisissez le nom, le stock initial, le prix d'achat et le seuil d'alerte.</li><li><strong>Enregistrer les arrivages :</strong> Cliquez sur (+) à chaque nouvelle livraison de vos fournisseurs.</li><li><strong>Enregistrer les sorties :</strong> Cliquez sur (-) à chaque vente ou expédition de produit.</li><li><strong>Suivre le tableau de bord :</strong> Surveillez votre capital total et réapprovisionnez les articles marqués en rouge.</li></ol>`
+      },
+      {
+        title: `Optimisez la gestion de votre entrepôt dès aujourd'hui`,
+        content: `<p>Une entreprise fluide commence par une gestion de stock précise. Arrêtez de deviner vos chiffres et utilisez un système numérique conçu pour l'exactitude. Plus votre inventaire est clair, plus votre activité est rentable. Essayez Simple Inventory Manager dès maintenant !</p>`
       }
     ]
   },
   it: {
-    title: `App Gestione Magazzino Semplice: Inventario PMI Gratuito`,
+    title: `App Simple Inventory: gestisci l'inventario delle PMI gratuitamente e in modo sicuro`,
     sections: [
       {
-        title: `Stanco del conteggio manuale?`,
-        content: `<p>Gestire le scorte non deve essere complicato. Con <strong>Simple Inventory Manager</strong> di VersoKit, le PMI possono monitorare il magazzino in modo rapido e sicuro senza costi di abbonamento.</p>`
+        title: `Basta con il caos del conteggio manuale delle scorte`,
+        content: `<p>Stanco di contare l'inventario ogni sera su un quaderno? È frustrante vedere il capitale "bloccato" in articoli che non si vendono, mentre i tuoi prodotti di punta sono costantemente esauriti. Senza registri ordinati, le piccole imprese sono vulnerabili a perdite dovute a merci smarrite, eccesso di scorte o clienti persi.</p><p><strong>Simple Inventory Manager di VersoKit</strong> è la soluzione ideale per chi ha superato la fase del registro cartaceo ma non ha bisogno di un sistema POS complesso e costoso.</p>`
       },
       {
-        title: `Funzionalità Chiave`,
-        content: `<ul><li><strong>Carico e Scarico:</strong> Aggiorna le giacenze con un semplice clic.</li><li><strong>Avvisi Sotto-Scorta:</strong> Monitora visivamente gli articoli in esaurimento per non perdere vendite.</li><li><strong>Valutazione Inventario:</strong> Scopri il valore totale del tuo capitale investito in merce.</li><li><strong>Privato e Offline:</strong> I tuoi dati aziendali rimangono sul tuo dispositivo.</li></ul>`
+        title: `Ostacoli classici che frenano la crescita della tua PMI`,
+        content: `<p>Molti titolari di PMI faticano con la gestione del magazzino a causa della mancanza di strumenti adeguati:</p><ul><li><strong>Articoli "Smarriti":</strong> Discrepanze tra scaffale e registro perché le vendite non sono state annotate in tempo reale.</li><li><strong>Capitale Morto:</strong> Continuare ad acquistare merce già presente in abbondanza, lasciando la liquidità immobile invece di generare profitto.</li><li><strong>Vendite Perse:</strong> Dover mandare via un cliente con i contanti in mano perché non sapevi che il prodotto fosse esaurito.</li><li><strong>Calcolo dei Beni Tedioso:</strong> Calcolare manualmente il valore totale della merce è lungo e soggetto a frequenti errori umani.</li></ul>`
+      },
+      {
+        title: `Funzionalità Principali di Simple Inventory Manager`,
+        content: `<p>Questo registro digitale gestisce automaticamente tutti i calcoli complicati per te:</p><ol><li><strong>Carico e Scarico (Un clic):</strong> Aggiorna i livelli delle scorte all'istante senza dover digitare tutto daccapo. Il saldo si aggiorna nel momento esatto in cui registri il movimento.</li><li><strong>Avvisi Scorte Basse:</strong> Un indicatore visivo rosso si accende quando un articolo scende sotto il limite minimo che hai impostato. Saprai esattamente quando rifornirti prima di restare a secco!</li><li><strong>Valutazione Automatica dei Beni:</strong> Visualizza il valore totale del tuo magazzino in un colpo d'occhio. Il sistema somma i prezzi di acquisto per darti il valore reale dei tuoi asset aziendali.</li><li><strong>Ricerca e Filtro Istantanei:</strong> Non perdere tempo a scorrere lunghe liste. Trova qualsiasi articolo tra centinaia di opzioni in una frazione di secondo.</li></ol>`
+      },
+      {
+        title: `Perché scegliere VersoKit?`,
+        content: `<ul><li><strong>🛡️ 100% Offline e Privato:</strong> I tuoi dati di magazzino, i prezzi e i fornitori non lasciano mai il tuo dispositivo. Tutto viene salvato localmente nel browser, proteggendo i tuoi segreti aziendali.</li><li><strong>💰 Gratuito per Sempre:</strong> Nessun canone di abbonamento mensile. Una soluzione economica per le PMI che vogliono professionalizzare la gestione.</li><li><strong>📊 Esportazione in Excel:</strong> Hai bisogno di dati per la dichiarazione dei redditi o revisioni? Esporta tutto in formato CSV o JSON con un solo clic.</li><li><strong>🚀 Nessuna Installazione:</strong> Non occupa memoria sul telefono. Accedi direttamente dal browser su qualsiasi dispositivo.</li></ul>`
+      },
+      {
+        title: `Gestisci l'inventario in 4 passaggi`,
+        content: `<ol><li><strong>Aggiungi Articoli:</strong> Inserisci nome, scorta iniziale, prezzo di acquisto e soglia minima di scorta.</li><li><strong>Registra Entrate:</strong> Clicca su (+) ogni volta che arriva nuova merce dai tuoi fornitori.</li><li><strong>Registra Uscite:</strong> Clicca su (-) ogni volta che un articolo viene venduto o spedito.</li><li><strong>Monitora la Dashboard:</strong> Tieni d'occhio il capitale totale e rifornisci immediatamente gli articoli evidenziati in rosso.</li></ol>`
+      },
+      {
+        title: `Ottimizza la gestione del tuo magazzino oggi stesso`,
+        content: `<p>Un'attività fluida inizia con un controllo preciso dell'inventario. Smetti di tirare a indovinare i numeri e inizia a usare un sistema digitale progettato per l'accuratezza. Più ordinato è il magazzino, più efficiente sarà il tuo business. Prova Simple Inventory Manager ora!</p>`
       }
     ]
   }
@@ -138,73 +230,205 @@ const INVENTORY_CONTENT: { [lang: string]: ToolArticle } = {
 // --- 2. BUDGET PLANNER CONTENT ---
 const BUDGET_CONTENT: { [lang: string]: ToolArticle } = {
   id: {
-    title: `Budget Planner Online: Atur Keuangan Metode Zero-Based Budgeting`,
+    title: `Budget Planner Online: Atur Keuangan dengan Metode Zero-Based Budgeting (Gratis)`,
     sections: [
       {
-        title: `Gaji Cuma Numpang Lewat?`,
-        content: `<p>Pernahkah Anda merasa gaji "numpang lewat"? Tanggal 25 terima gaji, tapi baru tanggal 10 bulan depan, saldo rekening sudah menipis dan Anda bingung: "Uangku habis buat apa saja, ya?"</p><p>Masalah utamanya seringkali bukan pada besarnya gaji Anda, melainkan pada cara Anda memperlakukan uang tersebut. <strong>VersoKit Budget Planner</strong> adalah alat perencana masa depan berbasis metode Zero-Based Budgeting (ZBB).</p>`
+        title: `Hentikan Kebiasaan Gaji "Numpang Lewat"`,
+        content: `<p>Pernahkah Anda merasa gaji hanya "numpang lewat"? Tanggal 25 terima gaji, tapi baru tanggal 10 bulan depan saldo rekening sudah menipis dan Anda bingung uangnya habis buat apa saja.</p><p>Masalah utamanya seringkali bukan pada besarnya gaji, melainkan pada cara Anda memperlakukan uang tersebut. Mencatat pengeluaran saja (Expense Tracker) sifatnya hanya penyesalan sejarah. Sudah saatnya Anda beralih ke <strong>VersoKit Budget Planner</strong>, alat perencana masa depan berbasis metode <em>Zero-Based Budgeting</em> (ZBB).</p>`
       },
       {
         title: `Apa Itu Zero-Based Budgeting (ZBB)?`,
-        content: `<p>Filosofi di balik alat ini sangat sederhana namun powerful: <strong>"Berikan pekerjaan untuk setiap rupiah yang Anda miliki."</strong></p><p>Bayangkan metode "Amplop" nenek moyang kita. Masukkan dana ke amplop Makan, Kost, dan Tabungan sampai sisa NOL (0). Artinya, semua uang sudah punya pos masing-masing. VersoKit Budget Planner mendigitalkan sistem amplop ini.</p>`
+        content: `<p>Filosofi di balik alat ini adalah: <strong>"Berikan pekerjaan untuk setiap rupiah yang Anda miliki."</strong></p><p>Bayangkan metode "Amplop" tradisional. Jika Anda punya Rp 5.000.000, Anda akan membaginya ke dalam amplop-amplop fisik (Makan, Listrik, Tabungan, Hiburan) sampai uang di tangan Anda sisa <strong>NOL</strong>. Artinya, semua uang sudah punya pos masing-masing.</p><ul><li><strong>Expense Tracker Biasa:</strong> "Uangku sisa berapa ya?" (Reaktif).</li><li><strong>VersoKit Budget Planner:</strong> "Aku punya rencana apa untuk uang ini?" (Proaktif).</li></ul>`
+      },
+      {
+        title: `Masalah Keuangan yang Kami Selesaikan`,
+        content: `<p>Alat ini dirancang khusus untuk mengatasi "penyakit" finansial umum:</p><ul><li><strong>Sindrom "Bocor Alus":</strong> Pengeluaran kecil seperti kopi, parkir, atau biaya admin sering tidak terasa namun totalnya jutaan. ZBB memaksa Anda menganggarkan hal ini di awal.</li><li><strong>Ketakutan Cek Saldo:</strong> Anda akan merasa tenang membuka mobile banking karena tahu persis bahwa semua tagihan penting dan tabungan sudah aman di posnya masing-masing.</li><li><strong>Uang Tanpa Tujuan:</strong> Di ZBB, tidak ada uang "menganggur" yang menggoda Anda untuk belanja impulsif. Semua dialokasikan untuk konsumsi atau investasi.</li></ul>`
+      },
+      {
+        title: `Fitur Unggulan VersoKit Budget Planner`,
+        content: `<ul><li><strong>✅ Sistem "Siap Dianggarkan" (To be Budgeted):</strong> Misi Anda adalah menghabiskan angka pemasukan ke dalam kategori-kategori sampai indikator bernilai Nol.</li><li><strong>✅ Subsidi Silang (Roll with the Punches):</strong> Jika kategori Makan Anda minus, alat ini memaksa Anda mengambil jatah dari kategori lain (misal: Hiburan) untuk menutupinya. Ini mengajarkan realita keuangan yang sehat.</li><li><strong>✅ Privasi 100% (Client-Side):</strong> Data tersimpan di LocalStorage perangkat Anda. Kami tidak meminta akses bank, tanpa upload KTP, dan server kami tidak melihat data Anda sama sekali.</li><li><strong>✅ Export & Import Data:</strong> Backup data Anda ke format JSON atau CSV (Excel) kapan saja untuk kendali penuh atas data keuangan Anda.</li></ul>`
+      },
+      {
+        title: `Cara Memulai Budgeting dalam 4 Langkah`,
+        content: `<ol><li><strong>Input Pemasukan:</strong> Masukkan total gaji atau pemasukan Anda bulan ini.</li><li><strong>Pos-poskan (Budgeting):</strong> Masukkan nominal ke kolom Anggaran di setiap kategori (Kebutuhan, Cicilan, Tabungan) sampai angka "Siap Dianggarkan" menjadi Rp 0.</li><li><strong>Catat Transaksi:</strong> Setiap kali belanja, klik tombol (+). Saldo kategori akan otomatis berkurang secara real-time.</li><li><strong>Evaluasi:</strong> Jika ada kategori yang "merah" (over-budget), geser anggaran dari kategori lain yang masih memiliki sisa.</li></ol>`
+      },
+      {
+        title: `Kendalikan Uang Anda Sekarang`,
+        content: `<p>Jangan biarkan uang mengendalikan hidup Anda. Rasakan ketenangan pikiran saat mengetahui semua tagihan sudah terbayar dan tabungan sudah terisi. Gratis, aman, dan tanpa perlu instalasi aplikasi berat. Coba buat anggaran pertama Anda sekarang!</p>`
       }
     ]
   },
   en: {
-    title: `Budget Planner Online: Zero-Based Budgeting Method`,
+    title: `Online Budget Planner: Manage Your Finances with Zero-Based Budgeting`,
     sections: [
       {
-        title: `Is Your Salary Just Passing Through?`,
-        content: `<p>Have you ever felt like your salary is just "passing through"? You receive your paycheck, but by mid-month, your balance is already low. The problem isn't the size of your salary, but how you treat that money.</p><p><strong>VersoKit Budget Planner</strong> is a future-planning tool based on the Zero-Based Budgeting (ZBB) method.</p>`
+        title: `Stop the Cycle of Paycheck-to-Paycheck Living`,
+        content: `<p>Have you ever felt like your paycheck just slipped by? You get paid on the 25th, but by the 10th of the next month, your balance is low and you're wondering, "Where did it all go?"</p><p>The problem often isn't the size of your salary, but how you handle it. Traditional expense trackers only record history—telling you what you've already spent. It's time for a proactive change. Introducing <strong>VersoKit Budget Planner</strong>, a future-planning tool based on the <strong>Zero-Based Budgeting (ZBB)</strong> method.</p>`
       },
       {
-        title: `The Zero-Based Philosophy`,
-        content: `<p>The philosophy is simple: <strong>"Give every dollar a job."</strong> Imagine putting your cash into physical envelopes for rent, food, and savings until you have zero unassigned dollars left. VersoKit digitizes this envelope system, moving you from reactive tracking to proactive control.</p>`
+        title: `What is Zero-Based Budgeting (ZBB)?`,
+        content: `<p>The philosophy is simple: <strong>"Give every dollar a job."</strong></p><p>Imagine the traditional "Envelope" method. If you have $1,000, you divide it into physical envelopes for Food, Rent, Savings, and Fun until you have <strong>ZERO</strong> left in your hand. This ensures every cent is designated for a purpose.</p><ul><li><strong>Expense Tracker:</strong> "How much do I have left?" (Reactive/Fearful).</li><li><strong>VersoKit Budget Planner:</strong> "What is my plan for this money?" (Proactive/Control).</li></ul>`
+      },
+      {
+        title: `Financial Problems We Solve`,
+        content: `<p>This tool is specifically designed to address common financial habits:</p><ul><li><strong>The "Leaking Money" Syndrome:</strong> Small costs like coffee, parking, or subscriptions often go unnoticed. ZBB forces you to budget for these small things upfront so they don't surprise you.</li><li><strong>Fear of Checking Your Balance:</strong> Gain peace of mind knowing exactly that your rent is covered and your savings are set aside before you even spend a dime.</li><li><strong>Money Without a Purpose:</strong> "Idle" money in an account often leads to impulsive spending. We help you allocate every bit of income toward your goals.</li></ul>`
+      },
+      {
+        title: `VersoKit Budget Planner Featured Features`,
+        content: `<ul><li><strong>✅ "Ready to Budget" System:</strong> Your mission is to allocate your total income across categories until the indicator reaches 0 (Zero).</li><li><strong>✅ Cross-Subsidization (Roll with the Punches):</strong> Life happens. If you overspend in one category, the tool forces you to take money from another to cover it, teaching you the reality of trade-offs.</li><li><strong>✅ 100% Privacy (Client-Side):</strong> We don't ask for bank logins or ID uploads. Your data is stored locally on your device; our servers never see it.</li><li><strong>✅ Export & Import Data:</strong> Switch devices or analyze your data in Excel by exporting to JSON or CSV formats at any time.</li></ul>`
+      },
+      {
+        title: `How to Start Budgeting in 4 Steps`,
+        content: `<ol><li><strong>Input Income:</strong> Enter your salary or total income. The "Ready to Budget" indicator will turn green.</li><li><strong>Allocate (Budgeting):</strong> Enter amounts into each category (Needs, Savings, Fun) until the "Ready to Budget" amount is 0.</li><li><strong>Record Transactions:</strong> As you spend, click the (+) button. Your category balance will decrease automatically in real-time.</li><li><strong>Adjust:</strong> If a category turns red (over-budget), move funds from a category that still has a remaining balance.</li></ol>`
+      },
+      {
+        title: `Take Control of Your Money Now`,
+        content: `<p>Don't let money control your life. Start planning where every dollar goes before the month ends. Experience the relief of knowing your bills are handled and your future is funded. Free, safe, and no installation required. Try creating your first budget below!</p>`
       }
     ]
   },
   es: {
-    title: `Planificador de Presupuesto: Método Base Cero`,
+    title: `Planificador de Presupuesto Online: Gestiona tus Finanzas con Presupuesto Base Cero`,
     sections: [
       {
-        title: `Presupuesto Base Cero (ZBB)`,
-        content: `<p>La filosofía es simple: <strong>"Asigne un trabajo a cada unidad de su moneda."</strong> Al igual que el método de los sobres, usted distribuye sus ingresos hasta que el saldo por presupuestar sea cero. Esto le da el control total sobre sus ahorros y gastos de forma proactiva.</p>`
+        title: `Detén el Ciclo de Vivir al Día`,
+        content: `<p>¿Alguna vez has sentido que el sueldo se te escapa de las manos? Cobras el día 25, pero para el 10 del mes siguiente el saldo de tu cuenta es mínimo y te preguntas: "¿En qué se me fue el dinero?".</p><p>El problema principal no suele ser el monto de tu salario, sino cómo lo administras. Las aplicaciones tradicionales de control de gastos solo registran el pasado, generándote arrepentimiento. Es hora de un cambio proactivo. Presentamos el <strong>Planificador de Presupuesto VersoKit</strong>, una herramienta de planificación futura basada en el método de <strong>Presupuesto Base Cero (PBC)</strong>.</p>`
+      },
+      {
+        title: `¿Qué es el Presupuesto Base Cero (PBC)?`,
+        content: `<p>La filosofía es simple pero poderosa: <strong>"Dale un trabajo a cada centavo que tengas".</strong></p><p>Imagina el método tradicional de los sobres. Si tienes $1.000, los divides en sobres físicos para Comida, Alquiler, Ahorros y Diversión hasta que te quede <strong>CERO</strong> en la mano. Esto asegura que todo tu dinero tenga un propósito designado.</p><ul><li><strong>Control de Gastos Común:</strong> "¿Cuánto dinero me queda?" (Reactivo/Temeroso).</li><li><strong>VersoKit Budget Planner:</strong> "¿Qué planes tengo para este dinero?" (Proactivo/Control).</li></ul>`
+      },
+      {
+        title: `Problemas Financieros que Solucionamos`,
+        content: `<p>Esta herramienta está diseñada específicamente para corregir hábitos financieros comunes:</p><ul><li><strong>Síndrome de la "Fuga de Dinero":</strong> Los gastos hormiga (café, estacionamiento, suscripciones) suelen pasar desapercibidos. El PBC te obliga a presupuestar estos detalles con antelación.</li><li><strong>Miedo a Consultar el Saldo:</strong> Gana tranquilidad sabiendo que el alquiler está cubierto y los ahorros reservados antes de gastar el primer billete.</li><li><strong>Dinero sin Propósito:</strong> El dinero "inactivo" suele terminar en compras impulsivas. Te ayudamos a asignar cada parte de tus ingresos hacia tus metas reales.</li></ul>`
+      },
+      {
+        title: `Características Destacadas de VersoKit`,
+        content: `<ul><li><strong>✅ Sistema "Listo para Presupuestar":</strong> Tu misión es asignar tus ingresos en las categorías hasta que el indicador llegue a 0 (Cero).</li><li><strong>✅ Ajuste Dinámico (Acepta los Golpes):</strong> La vida cambia. Si gastas de más en una categoría, la herramienta te obliga a sacar dinero de otra para cubrirlo, enseñándote la realidad de tus prioridades.</li><li><strong>✅ 100% Privacidad (Local y Offline):</strong> Sin conexión a bancos ni registros de identidad. Tus datos se guardan en tu dispositivo; nuestros servidores nunca ven tu información.</li><li><strong>✅ Exportar e Importar:</strong> Cambia de dispositivo o analiza tus datos en Excel exportando a formatos JSON o CSV en cualquier momento.</li></ul>`
+      },
+      {
+        title: `Cómo Empezar en 4 Pasos`,
+        content: `<ol><li><strong>Ingresa tus Ingresos:</strong> Introduce tu salario o ingresos totales. El indicador "Listo para Presupuestar" se pondrá en verde.</li><li><strong>Asigna (Presupuestar):</strong> Reparte el monto en las columnas de cada categoría (Necesidades, Ahorros, Ocio) hasta que el indicador llegue a 0.</li><li><strong>Registra Transacciones:</strong> Cada vez que gastes, haz clic en (+). El saldo de la categoría disminuirá automáticamente en tiempo real.</li><li><strong>Evalúa y Ajusta:</strong> Si una categoría se pone en rojo, mueve fondos de otra categoría que aún tenga saldo disponible.</li></ol>`
+      },
+      {
+        title: `Toma el Control de tu Dinero Ahora`,
+        content: `<p>No dejes que el dinero controle tu vida. Comienza a planificar el destino de cada moneda antes de que termine el mes. Experimenta la paz mental de saber que tus facturas están pagadas y tu futuro está financiado. Gratis, seguro y sin instalaciones. ¡Crea tu primer presupuesto abajo!</p>`
       }
     ]
   },
   pt: {
-    title: `Planejador de Orçamento: Orçamento Base Zero`,
+    title: `Planeador de Orçamentos Online: Faça a gestão das suas Finanças com o Orçamento Base Zero`,
     sections: [
       {
-        title: `Dê uma missão a cada centavo`,
-        content: `<p>Imagine colocar seu dinheiro em envelopes para aluguel, alimentação e lazer. Você continua distribuindo até que reste zero reais para orçar. Isso garante que cada centavo seja usado com propósito, ajudando você a economizar mais e gastar com consciência.</p>`
+        title: `Pare de Viver de Salário em Salário`,
+        content: `<p>Já teve a sensação de que o seu salário simplesmente voou? Recebe o pagamento no dia 25, mas no dia 10 do mês seguinte o saldo já está baixo e pergunta-se: "Em que é que gastei o meu dinheiro?".</p><p>O problema não é o tamanho do seu salário, mas a forma como o gere. As aplicações tradicionais de controlo de despesas apenas registam o passado, gerando arrependimento. É hora de uma mudança proativa. Apresentamos o <strong>Planeador de Orçamento VersoKit</strong>, uma ferramenta de planeamento baseada no método de <strong>Orçamento Base Zero (OBZ)</strong>.</p>`
+      },
+      {
+        title: `O que é o Orçamento Base Zero (OBZ)?`,
+        content: `<p>A filosofia é simples: <strong>"Dê uma função a cada cêntimo que possui."</strong></p><p>Imagine o método tradicional dos envelopes. Se tiver 1.000€, divide-os em envelopes físicos para Alimentação, Renda, Poupança e Lazer até ter <strong>ZERO</strong> na mão. Isto garante que todo o seu dinheiro tem um destino definido.</p><ul><li><strong>Controlo de Despesas Comum:</strong> "Quanto dinheiro me resta?" (Reativo/Medo).</li><li><strong>VersoKit Budget Planner:</strong> "Qual é o meu plano para este dinheiro?" (Proativo/Controlo).</li></ul>`
+      },
+      {
+        title: `Problemas Financeiros que Resolvemos`,
+        content: `<p>Esta ferramenta foi desenhada para corrigir hábitos financeiros comuns:</p><ul><li><strong>Síndrome do "Dinheiro a Fugir":</strong> Pequenas despesas (café, estacionamento, subscrições) passam despercebidas. O OBZ obriga-o a orçamentar estes detalhes antecipadamente.</li><li><strong>Medo de Verificar o Saldo:</strong> Ganhe tranquilidade sabendo que a renda está segura e as poupanças reservadas antes mesmo de começar a gastar.</li><li><strong>Dinero sem Finalidade:</strong> O dinheiro "ocioso" na conta é um convite ao gasto impulsivo. Ajudamos a alocar cada parte do rendimento para os seus objetivos reais.</li></ul>`
+      },
+      {
+        title: `Características em Destaque do VersoKit`,
+        content: `<ul><li><strong>✅ Sistema "Pronto a Orçamentar":</strong> A sua missão é distribuir os seus rendimentos pelas categorias até que o indicador chegue a 0 (Zero).</li><li><strong>✅ Ajuste Dinâmico (Avance com os Imprevistos):</strong> A vida muda. Se gastar demais numa categoria, a ferramenta obriga-o a tirar de outra para cobrir, ensinando a realidade das suas prioridades.</li><li><strong>✅ 100% Privacidade (Local e Offline):</strong> Sem ligações bancárias ou registos de identidade. Os dados são guardados no seu dispositivo; os nossos servidores nunca veem a sua informação.</li><li><strong>✅ Exportar e Importar:</strong> Mude de dispositivo ou analise os dados no Excel exportando para formatos JSON ou CSV a qualquer momento.</li></ul>`
+      },
+      {
+        title: `Como Começar em 4 Passos`,
+        content: `<ol><li><strong>Insira os Rendimentos:</strong> Introduza o seu salário ou rendimento total. O indicador "Pronto a Orçamentar" ficará verde.</li><li><strong>Aloque (Orçamentar):</strong> Distribua o valor pelas colunas de cada categoria (Necessidades, Poupança, Lazer) até o indicador chegar a 0.</li><li><strong>Registe Transações:</strong> Sempre que gastar, clique em (+). O saldo da categoria diminuirá automaticamente em tempo real.</li><li><strong>Avalie e Ajuste:</strong> Se uma categoria ficar no vermelho, mova fundos de outra categoria que ainda tenha saldo disponível.</li></ol>`
+      },
+      {
+        title: `Assuma o Controlo do Seu Dinheiro Agora`,
+        content: `<p>Não deixe que o dinheiro controle a sua vida. Comece a planear o destino de cada cêntimo antes do mês terminar. Experimente a paz de espírito de saber que as suas contas estão pagas e o seu futuro está financiado. Gratuito, seguro e sem instalações. Crie o seu primeiro orçamento abaixo!</p>`
       }
     ]
   },
   de: {
-    title: `Online-Budgetplaner: Nullbasierte Budgetierung`,
+    title: `Online-Budgetplaner: Finanzen im Griff mit der Nullbasisbudgetierung`,
     sections: [
       {
-        title: `Gehalt am Monatsende weg?`,
-        content: `<p>Mit der <strong>Zero-Based Budgeting (ZBB)</strong> Methode von VersoKit geben Sie jedem Cent eine Aufgabe, bevor er ausgegeben wird. Verwandeln Sie reaktives Verfolgen in proaktive Kontrolle mit dem bewährten „Umschlag-System“ in digitaler Form.</p>`
+        title: `Schluss mit dem Gefühl, dass das Geld einfach verpufft`,
+        content: `<p>Haben Sie jemals das Gefühl gehabt, Ihr Gehalt sei einfach durchgerauscht? Sie erhalten Ihr Geld am 25., aber schon am 10. des Folgemonats fragen Sie sich: „Wofür habe ich mein Geld bloß ausgegeben?“</p><p>Das Problem ist oft nicht die Höhe Ihres Gehalts, sondern der Umgang damit. Herkömmliche Ausgaben-Tracker dokumentieren nur die Vergangenheit. Es ist Zeit für eine proaktive Veränderung. Der <strong>VersoKit Budgetplaner</strong> ist ein Zukunftsplanungstool, das auf der <strong>Nullbasisbudgetierungsmethode (ZBB)</strong> basiert.</p>`
+      },
+      {
+        title: `Was ist Nullbasierte Budgetierung (ZBB)?`,
+        content: `<p>Die Philosophie ist simpel: <strong>„Jeder Euro, den du hast, bekommt eine Aufgabe.“</strong></p><p>Stellen Sie sich die klassische Umschlagmethode vor: Wenn Sie 1.000 € haben, teilen Sie diese physisch auf Umschläge für Miete, Lebensmittel, Sparen und Freizeit auf, bis Sie <strong>NULL</strong> in der Hand halten. So hat jeder Cent einen festen Bestimmungsort.</p><ul><li><strong>Ausgaben-Tracker:</strong> „Wie viel Geld habe ich noch?“ (Reaktiv/Ängstlich).</li><li><strong>VersoKit Budgetplaner:</strong> „Was ist mein Plan für dieses Geld?“ (Proaktiv/Kontrolle).</li></ul>`
+      },
+      {
+        title: `Finanzielle Probleme, die wir lösen`,
+        content: `<p>Dieses Tool wurde entwickelt, um typische finanzielle Fallstricke zu vermeiden:</p><ul><li><strong>Das „Geld-verpuffen“-Syndrom:</strong> Kleinstbeträge wie Kaffee, Parkgebühren oder Abos summieren sich unbemerkt. ZBB zwingt Sie, diese Dinge vorab einzuplanen.</li><li><strong>Keine Angst mehr vor dem Kontostand:</strong> Sie gewinnen Seelenfrieden, weil Sie wissen, dass die Miete gedeckt und die Ersparnisse beiseitegelegt sind, bevor Sie den ersten Euro ausgeben.</li><li><strong>Geld ohne Verwendungszweck:</strong> „Ungenutztes“ Geld auf dem Konto führt oft zu Impulskäufen. Wir helfen Ihnen, jeden Betrag Ihren Zielen zuzuweisen.</li></ul>`
+      },
+      {
+        title: `Die wichtigsten Funktionen des VersoKit Budgetplaners`,
+        content: `<ul><li><strong>✅ „Bereit zum Budgetieren“-System:</strong> Ihre Mission ist es, Ihr Einkommen so auf Kategorien zu verteilen, bis die Anzeige genau 0 (Null) erreicht.</li><li><strong>✅ Flexibel bleiben (Roll with the Punches):</strong> Das Leben ist dynamisch. Wenn Sie in einer Kategorie zu viel ausgeben, zwingt Sie das Tool, das Geld aus einer anderen Kategorie zu nehmen. Das lehrt den bewussten Umgang mit Ressourcen.</li><li><strong>✅ 100 % Datenschutz (Lokal & Offline):</strong> Kein Bank-Login, kein Ausweis-Upload. Ihre Daten werden lokal in Ihrem Browser gespeichert; unsere Server sehen Ihre Daten niemals.</li><li><strong>✅ Daten exportieren & importieren:</strong> Sichern Sie Ihre Planung jederzeit als JSON- oder CSV-Datei, um die volle Kontrolle über Ihre Finanzdaten zu behalten.</li></ul>`
+      },
+      {
+        title: `In 4 Schritten zum perfekten Budget`,
+        content: `<ol><li><strong>Einkommen eingeben:</strong> Tragen Sie Ihr Gehalt oder Ihren Umsatz ein. Die Anzeige „Bereit zum Budgetieren“ wird grün.</li><li><strong>Zuweisen (Budgetierung):</strong> Verteilen Sie den Betrag auf Kategorien (Bedarf, Sparen, Freizeit), bis die Anzeige 0 erreicht.</li><li><strong>Transaktionen erfassen:</strong> Klicken Sie bei jeder Ausgabe auf (+). Der Kategoriesaldo verringert sich sofort in Echtzeit.</li><li><strong>Anpassen:</strong> Wenn eine Kategorie „rot“ wird, verschieben Sie Budget aus einer anderen Kategorie, in der noch Guthaben vorhanden ist.</li></ol>`
+      },
+      {
+        title: `Übernehmen Sie jetzt die Kontrolle`,
+        content: `<p>Lassen Sie sich nicht von Ihrem Geld beherrschen. Planen Sie den Weg jedes Euros, bevor der Monat endet. Erleben Sie die Gewissheit, dass alle Fixkosten gedeckt sind. Kostenlos, sicher und ohne Installation. Erstellen Sie jetzt Ihr erstes Budget!</p>`
       }
     ]
   },
   fr: {
-    title: `Planificateur de Budget : Méthode Budget Base Zéro`,
+    title: `Planificateur de budget en ligne : Gérez vos finances avec la méthode du budget à base zéro`,
     sections: [
       {
-        title: `Maîtrisez vos Finances`,
-        content: `<p>Donnez un rôle à chaque euro avec le <strong>Budget Base Zéro</strong>. Notre outil vous aide à allouer vos revenus de manière proactive pour épargner davantage et dépenser avec intention grâce au système d'enveloppes numériques.</p>`
+        title: `Prenez enfin le contrôle de vos finances`,
+        content: `<p>Avez-vous déjà eu l'impression que votre salaire vous filait entre les doigts ? Vous le recevez le 25, mais dès le 10 du mois suivant, votre compte est à sec et vous vous demandez : « Où est passé mon argent ? »</p><p>Le problème ne vient pas du montant de votre salaire, mais de la manière dont vous l'allouez. Les applications de suivi classique ne font que consigner le passé. Il est temps de changer pour une approche proactive. Découvrez <strong>VersoKit Budget Planner</strong>, l'outil basé sur la méthode du <strong>Budget à Base Zéro (BBZ)</strong>.</p>`
+      },
+      {
+        title: `Qu'est-ce que la budgétisation à base zéro (BBZ) ?`,
+        content: `<p>La philosophie est simple : <strong>« Donnez une mission à chaque euro que vous possédez. »</strong></p><p>Imaginez la méthode traditionnelle des enveloppes : si vous avez 1 000 €, vous les répartissez physiquement dans des enveloppes (Loyer, Courses, Épargne, Loisirs) jusqu'à ce qu'il reste <strong>ZÉRO</strong> dans votre main. Chaque centime a ainsi une destination précise.</p><ul><li><strong>Suivi classique :</strong> « Combien me reste-t-il ? » (Réactif/Anxieux).</li><li><strong>VersoKit Budget Planner :</strong> « Quel est mon projet pour cet argent ? » (Proactif/Maîtrisé).</li></ul>`
+      },
+      {
+        title: `Les maux financiers que nous guérissons`,
+        content: `<p>Cet outil est conçu pour corriger les mauvaises habitudes financières courantes :</p><ul><li><strong>Le syndrome de la « fuite d'argent » :</strong> Les petites dépenses (cafés, parkings, abonnements) passent souvent inaperçues. Le BBZ vous force à les anticiper dès le début du mois.</li><li><strong>La peur de consulter son compte :</strong> Gagnez en sérénité en sachant que votre loyer est payé et votre épargne constituée avant même de dépenser votre premier euro.</li><li><strong>L'argent dormant sans but :</strong> L'argent non alloué finit souvent en achats impulsifs. Nous vous aidons à diriger chaque somme vers vos objectifs réels.</li></ul>`
+      },
+      {
+        title: `Fonctionnalités phares de VersoKit Budget Planner`,
+        content: `<ul><li><strong>✅ Système « Prêt à budgétiser » :</strong> Votre mission est de répartir vos revenus dans les catégories jusqu'à ce que l'indicateur atteigne zéro.</li><li><strong>✅ Adaptabilité (S'adapter aux imprévus) :</strong> La vie bouge. Si vous dépassez votre budget « Courses », l'outil vous oblige à prendre l'argent dans une autre catégorie (ex: Loisirs) pour équilibrer, vous confrontant à la réalité de vos priorisatons.</li><li><strong>✅ Confidentialité totale (Locale & Hors ligne) :</strong> Pas de connexion bancaire, pas d'inscription complexe. Vos données sont stockées sur votre appareil ; nos serveurs n'y ont jamais accès.</li><li><strong>✅ Export & Import :</strong> Sauvegardez vos données en JSON ou CSV (Excel) à tout moment pour garder une maîtrise totale de vos archives.</li></ul>`
+      },
+      {
+        title: `Établir votre budget en 4 étapes`,
+        content: `<ol><li><strong>Saisissez vos revenus :</strong> Indiquez votre salaire ou total de revenus. L'indicateur « Prêt à budgétiser » devient vert.</li><li><strong>Allouez (Budgétisation) :</strong> Répartissez les montants dans chaque catégorie (Besoins, Épargne, Plaisirs) jusqu'à ce que l'indicateur affiche 0.</li><li><strong>Enregistrez vos achats :</strong> À chaque dépense, cliquez sur (+). Le solde de la catégorie se met à jour instantanément.</li><li><strong>Ajustez :</strong> Si une catégorie passe en rouge (déficit), déplacez les fonds d'une catégorie qui possède encore un solde positif.</li></ol>`
+      },
+      {
+        title: `Reprenez le contrôle dès maintenant`,
+        content: `<p>Ne laissez plus l'argent contrôler votre vie. Planifiez le destin de chaque euro avant que le mois ne commence. Profitez de la tranquillité d'esprit que procure un budget maîtrisé. Gratuit, sûr et sans installation requise. Créez votre premier budget ci-dessous !</p>`
       }
     ]
   },
   it: {
-    title: `Pianificatore di Budget: Budget a Base Zero`,
+    title: `Budget Planner Online: Gestisci le Tue Finanze con il Budget a Base Zero`,
     sections: [
       {
-        title: `Pianifica Ogni Centesimo`,
-        content: `<p>La filosofia del <strong>Budget a Base Zero</strong> ti permette di avere il controllo totale. Ogni euro guadagnato deve avere un compito preciso prima che il mese inizi, eliminando lo stress finanziario una volta per tutte.</p>`
+        title: `Smetti di Vivere Aspettando lo Stipendio Successivo`,
+        content: `<p>Ti è mai capitato di avere la sensazione che lo stipendio ti sia sfuggito di mano? Lo ricevi il 25, ma entro il 10 del mese successivo il saldo è già basso e ti chiedi: "Dove sono finiti i miei soldi?".</p><p>Il problema spesso non è l'entità delle entrate, ma come le gestisci. I comuni tracker delle spese registrano solo il passato, generando rimpianti. È ora di un cambiamento proattivo. Scopri il <strong>Budget Planner VersoKit</strong>, uno strumento di pianificazione basato sul metodo del <strong>Budget a Base Zero (ZBB)</strong>.</p>`
+      },
+      {
+        title: `Cos'è il Budget a Base Zero (ZBB)?`,
+        content: `<p>La filosofia è semplice: <strong>"Dai a ogni euro che hai un lavoro."</strong></p><p>Immagina il metodo tradizionale delle buste: se hai 1.000 €, li dividi fisicamente in buste per Affitto, Spesa, Risparmi e Svago finché non ti rimane <strong>ZERO</strong> in mano. Questo assicura che ogni centesimo sia destinato a uno scopo preciso.</p><ul><li><strong>Tracker Spese Comune:</strong> "Quanti soldi mi sono rimasti?" (Reattivo/Pauroso).</li><li><strong>VersoKit Budget Planner:</strong> "Qual è il mio piano per questi soldi?" (Proattivo/Controllo).</li></ul>`
+      },
+      {
+        title: `Problemi Finanziari che Risolviamo`,
+        content: `<p>Questo strumento è progettato per correggere le abitudini finanziarie comuni:</p><ul><li><strong>Sindrome della "Perdita di Denaro":</strong> Le piccole spese (caffè, parcheggio, abbonamenti) passano inosservate. Lo ZBB ti obbliga a pianificarle in anticipo.</li><li><strong>Paura di Controllare il Saldo:</strong> Guadagna tranquillità sapendo che l'affitto è coperto e i risparmi accantonati prima ancora di spendere il primo euro.</li><li><strong>Soldi Senza Scopo:</strong> Il denaro "fermo" sul conto spesso finisce in acquisti impulsivi. Ti aiutiamo ad allocare ogni parte del reddito verso i tuoi obiettivi reali.</li></ul>`
+      },
+      {
+        title: `Funzionalità Esclusive di VersoKit`,
+        content: `<ul><li><strong>✅ Sistema "Pronto per il Budget":</strong> La tua missione è allocare le entrate nelle categorie finché l'indicatore non raggiunge lo 0 (Zero).</li><li><strong>✅ Regolazione Dinamica (Roll with the Punches):</strong> La vita cambia. Se spendi troppo in una categoria, lo strumento ti obbliga a prelevare fondi da un'altra per coprire l'eccesso, mostrandoti la realtà delle tue priorità.</li><li><strong>✅ Privacy al 100% (Locale e Offline):</strong> Nessun accesso bancario né registrazione. I dati sono salvati sul tuo dispositivo; i nostri server non vedono mai le tue informazioni.</li><li><strong>✅ Esporta e Importa:</strong> Cambia dispositivo o analizza i dati in Excel esportando in formato JSON o CSV in qualsiasi momento.</li></ul>`
+      },
+      {
+        title: `Inizia in 4 Semplici Passaggi`,
+        content: `<ol><li><strong>Inserisci le Entrate:</strong> Indica lo stipendio o le entrate totali. L'indicatore "Pronto per il budget" diventerà verde.</li><li><strong>Alloca (Budgeting):</strong> Distribuisci l'importo nelle colonne delle categorie (Bisogni, Risparmi, Svago) fino a raggiungere lo 0.</li><li><strong>Registra le Transazioni:</strong> Ogni volta che spendi, clicca su (+). Il saldo della categoria si aggiornerà istantaneamente.</li><li><strong>Valuta e Modifica:</strong> Se una categoria diventa rossa (fuori budget), sposta i fondi da una categoria che ha ancora disponibilità.</li></ol>`
+      },
+      {
+        title: `Prendi il Controllo del Tuo Denaro Ora`,
+        content: `<p>Non lasciare che il denaro controlli la tua vita. Inizia a pianificare il destino di ogni centesimo prima che il mese finisca. Scopri la pace mentale di sapere che le bollette sono pagate e il tuo futuro è finanziato. Gratuito, sicuro e senza installazione. Crea il tuo primo budget qui sotto!</p>`
       }
     ]
   }
@@ -598,69 +822,210 @@ const TOURNAMENT_CONTENT: { [lang: string]: ToolArticle } = {
 
 // --- 5. SCOREBOARD CONTENT ---
 const SCOREBOARD_CONTENT: { [lang: string]: ToolArticle } = {
-  id: {
-    title: `Universal Scoreboard: Papan Skor Digital Badminton, Voli & Ping Pong`,
-    sections: [
-      {
-        title: `Satu Papan Skor, Banyak Olahraga`,
-        content: `<p>Pernahkah Anda bermain bulu tangkis atau voli di GOR, tapi wasitnya sering lupa skor saat ini berapa? Solusinya adalah <strong>Universal Scoreboard</strong> dari VersoKit.</p>`
-      }
-    ]
-  },
-  en: {
-    title: `Universal Scoreboard: Digital Points for Badminton & Volleyball`,
-    sections: [
-      {
-        title: `The Swiss Army Knife of Scoreboards`,
-        content: `<p>Perfect for any point-based sport. Our <strong>Universal Scoreboard</strong> supports set tracking and rally point systems used in social matches.</p>`
-      }
-    ]
-  },
-  es: {
-    title: `Marcador Universal: Puntos para Bádminton y Voleibol`,
-    sections: [
-      {
-        title: `Versatilidad Deportiva`,
-        content: `<p>Un marcador digital diseñado para cualquier deporte basado en puntos y sets. Ideal para torneos locales.</p>`
-      }
-    ]
-  },
-  pt: {
-    title: `Placar Universal: Pontuação Digital para Badminton e Vôlei`,
-    sections: [
-      {
-        title: `Versatilidade Esportiva`,
-        content: `<p>Um placar digital versátil para qualquer esporte. Perfeito para competições de Badminton, Vôlei e Tênis de Mesa.</p>`
-      }
-    ]
-  },
-  de: {
-    title: `Universal-Anzeigetafel: Punkte für Badminton & Volleyball`,
-    sections: [
-      {
-        title: `Vielseitige Sportanzeige`,
-        content: `<p>Perfekt für jede punktebasierte Sportart. Unterstützt Satz-Tracking für Hobby-Turniere.</p>`
-      }
-    ]
-  },
-  fr: {
-    title: `Tableau de Score Universel : Badminton et Volleyball`,
-    sections: [
-      {
-        title: `Polyvalence Sportive`,
-        content: `<p>Un tableau de score numérique conçu pour tous les sports à points et sets avec une visibilité optimale.</p>`
-      }
-    ]
-  },
-  it: {
-    title: `Tabellone Universale: Punti per Badminton e Pallavolo`,
-    sections: [
-      {
-        title: `Versatilità Sportiva`,
-        content: `<p>Un tabellone digitale versatile per ogni sport basato su punti e set con supporto offline completo.</p>`
-      }
-    ]
-  }
+  // --- UNIVERSAL SCOREBOARD CONTENT ---
+id: {
+  title: `Universal Scoreboard: Papan Skor Digital untuk Badminton, Voli & Ping Pong`,
+  sections: [
+    {
+      title: `Solusi Modern untuk Olahraga Cepat`,
+      content: `<p>Pernahkah Anda bermain bulu tangkis atau voli di GOR, tapi wasitnya sering lupa skor saat ini berapa? Atau mungkin papan skor lipat (flip board) manual yang tersedia sudah robek, angkanya hilang, dan terlalu kecil untuk dilihat penonton di tribun belakang?</p><p>Dalam olahraga tempo cepat seperti Tenis Meja atau Badminton, skor berubah setiap detik. Kehilangan fokus sedikit saja bisa memicu perdebatan panjang antar pemain.</p><p>Solusinya? Tinggalkan papan manual kuno. Gunakan <strong>Universal Scoreboard</strong> dari VersoKit. Ini adalah "Pisau Lipat Swiss Army"-nya papan skor digital. Satu alat canggih yang bisa digunakan untuk berbagai cabang olahraga berbasis poin (Rally Point) dan set.</p>`
+    },
+    {
+      title: `Satu Papan Skor, Banyak Olahraga`,
+      content: `<p>Berbeda dengan papan skor futsal yang fokus pada waktu, Universal Scoreboard dirancang khusus untuk mencatat Poin dan Set (Babak). Alat ini sangat fleksibel dan ideal untuk olahraga berikut:</p><ul><li><strong>Badminton (Bulu Tangkis):</strong> Sempurna untuk sistem skor 21 poin dan format Best of 3 Sets.</li><li><strong>Bola Voli (Volleyball):</strong> Mendukung reli panjang hingga 25 poin dan Best of 5 Sets.</li><li><strong>Tenis Meja (Ping Pong):</strong> Cocok untuk permainan cepat 11 poin.</li><li><strong>Sepak Takraw:</strong> Mencatat poin dan set dengan akurat.</li><li><strong>Basket 3x3:</strong> Pilihan simpel untuk streetball yang tidak membutuhkan shot clock rumit.</li></ul>`
+    },
+    {
+      title: `Fitur Unggulan untuk Operator & Wasit`,
+      content: `<p>Kami memahami bahwa operator skor butuh kecepatan. Oleh karena itu, fitur-fitur ini kami rancang untuk menyelesaikan masalah di lapangan:</p><ol><li><strong>Keyboard Shortcuts (Kendali Cepat):</strong> Anda tidak perlu repot menggerakkan mouse. Cukup tekan tombol tertentu di keyboard laptop Anda untuk menambah poin secara instan. Sangat responsif untuk mengimbangi smash cepat!</li><li><strong>Fitur Tukar Posisi (Swap Sides):</strong> Cukup klik tombol "Swap", maka posisi nama, skor, dan warna tim akan bertukar kiri-kanan secara otomatis saat pemain berpindah lapangan (change ends).</li><li><strong>Sistem Poin & Set Terpisah:</strong> Alat ini membedakan antara Skor Game (Poin saat ini) dan Skor Set (Jumlah kemenangan babak). Operator tidak perlu lagi mengingat manual siapa yang memenangkan set sebelumnya.</li></ol>`
+    },
+    {
+      title: `Keunggulan Visual untuk Penonton`,
+      content: `<p>Jadikan pertandingan antar teman atau turnamen level kampung terasa seperti siaran TV profesional:</p><ul><li><strong>Fullscreen Mode:</strong> Tampilkan papan skor dalam layar penuh tanpa gangguan bar browser. Sambungkan laptop ke TV besar agar seluruh GOR bisa melihat skor dengan jelas.</li><li><strong>Warna Tim Kustom:</strong> Sesuaikan warna latar papan skor dengan jersey pemain agar penonton tidak bingung membedakan mana skor kawan dan lawan.</li><li><strong>Match Point Indicator:</strong> Memberikan tanda visual ketegangan saat satu tim hanya butuh 1 poin lagi untuk memenangkan pertandingan.</li></ul>`
+    },
+    {
+      title: `Cara Menggunakan Universal Scoreboard`,
+      content: `<p>Ubah perangkat Anda menjadi papan skor profesional dengan langkah mudah ini:</p><ol><li><strong>Siapkan Alat:</strong> Buka halaman ini di Laptop atau Tablet. Sambungkan ke TV jika tersedia.</li><li><strong>Atur Identitas:</strong> Masukkan nama pemain/tim dan pilih warna jersey mereka.</li><li><strong>Mulai Pertandingan:</strong> Gunakan tombol (+) atau Shortcut Keyboard untuk menambah poin. Jika salah pencet, gunakan tombol Undo atau (-) untuk koreksi cepat.</li><li><strong>Pindah Set:</strong> Jika game selesai, tambahkan poin pada kolom Set, klik Reset Poin untuk set baru, dan klik Swap jika pemain bertukar lapangan.</li></ol>`
+    },
+    {
+      title: `Gratis & Anti-Ribet`,
+      content: `<p>Jangan biarkan wasit yang "lupa skor" merusak keseruan pertandingan sengit Anda. Gunakan Universal Scoreboard VersoKit sekarang. Tidak perlu instal, tidak perlu bayar, dan siap pakai dalam hitungan detik untuk menjamin pertandingan yang adil dan profesional!</p>`
+    }
+  ]
+},
+en: {
+  title: `Universal Scoreboard: Digital Scoreboard for Badminton, Volleyball & Ping Pong`,
+  sections: [
+    {
+      title: `Modern Solution for Fast-Paced Sports`,
+      content: `<p>Have you ever played badminton or volleyball at the sports hall, but the referee often forgets the current score? Or perhaps the manual flipboard is torn, the numbers are missing, and it's too small for the spectators in the back stands to see?</p><p>In fast-paced sports like table tennis or badminton, the score changes every second. The slightest lapse in focus can spark a lengthy argument between players.</p><p>The solution? Ditch the old-fashioned manual scoreboard. Use <strong>VersoKit's Universal Scoreboard</strong>. It's the "Swiss Army knife" of digital scoreboards—a powerful tool for various point-based sports (Rally Points) and sets.</p>`
+    },
+    {
+      title: `One Scoreboard, Many Sports`,
+      content: `<p>Unlike futsal scoreboards that focus on time, the Universal Scoreboard is specifically designed to record Points and Sets. This tool is highly flexible and ideal for the following sports:</p><ul><li><strong>Badminton:</strong> Perfect for a 21-point scoring system and Best of 3 Sets format.</li><li><strong>Volleyball:</strong> Supports long rallies of up to 25 points and Best of 5 Sets.</li><li><strong>Table Tennis (Ping Pong):</strong> Suitable for fast-paced 11-point games.</li><li><strong>Sepak Takraw:</strong> Accurately record points and sets.</li><li><strong>3x3 Basketball:</strong> A simple option for streetball that doesn't require a complicated shot clock.</li></ul>`
+    },
+    {
+      title: `"Killer" Features for Operators & Referees`,
+      content: `<p>We understand that score operators need speed. These features are designed to solve problems on the court:</p><ol><li><strong>Keyboard Shortcuts (Quick Control):</strong> You don't have to bother moving the mouse every second. Simply press a key on your laptop keyboard to add points instantly. Very responsive for those fast smashes!</li><li><strong>Swap Sides Feature:</strong> In racquet sports and volleyball, players often switch sides. Simply click the "Swap" button, and team names, scores, and colors will automatically switch left and right.</li><li><strong>Separate Point & Set System:</strong> This tool differentiates between the Game Score and Set Score. The operator doesn't need to manually remember who won the previous set.</li></ol>`
+    },
+    {
+      title: `Visual Excellence for Viewers`,
+      content: `<p>Make a friendly match or a local tournament feel like a professional TV broadcast:</p><ul><li><strong>Fullscreen Mode:</strong> Display the scoreboard in full screen without browser distractions. Connect your laptop to a large TV or projector so everyone can see the score clearly.</li><li><strong>Custom Team Colors:</strong> Match the scoreboard background to the team jerseys so spectators don't confuse the scores.</li><li><strong>Match Point Indicator:</strong> Provides a visual cue when the tension rises and a team needs just one more point to win.</li></ul>`
+    },
+    {
+      title: `How to Use Universal Scoreboard`,
+      content: `<p>Turn your device into a professional scoreboard with these easy steps:</p><ol><li><strong>Prepare Your Device:</strong> Open this page on your laptop or tablet. Connect to a TV if available.</li><li><strong>Set Identity:</strong> Enter player/team names and select team colors.</li><li><strong>Start the Match:</strong> Use the (+) button or keyboard shortcuts to add points. Made a mistake? Press Undo or (-) for quick correction.</li><li><strong>Change Set:</strong> When the game is over, add a point to the Set column, click Reset Points for the new set, and click Swap if players switch courts.</li></ol>`
+    },
+    {
+      title: `Free & Hassle-Free Solution`,
+      content: `<p>Don't let a referee who "forgets the score" ruin the excitement of your intense match. Use VersoKit Universal Scoreboard now. No installation, no payment, and ready to use in seconds to ensure a fair and professional game!</p>`
+    }
+  ]
+},
+es: {
+  title: `Marcador Universal: Marcador Digital para Bádminton, Voleibol y Ping Pong`,
+  sections: [
+    {
+      title: `Solución Moderna para Deportes de Ritmo Rápido`,
+      content: `<p>¿Alguna vez has jugado bádminton o voleibol en el polideportivo, pero el árbitro a menudo olvida el marcador actual? ¿O quizás el marcador manual está roto, faltan los números y es demasiado pequeño para que lo vean los espectadores de las gradas traseras?</p><p>En deportes de ritmo rápido como el tenis de mesa o el bádminton, el marcador cambia cada segundo. La más mínima distracción puede provocar una larga discusión entre los jugadores.</p><p>¿La solución? Olvídate del anticuado marcador manual. Usa el <strong>Marcador Universal de VersoKit</strong>. Es la "navaja suiza" de los marcadores digitales: una potente herramienta para diversos deportes basados en puntos (Puntos de Rally) y sets.</p>`
+    },
+    {
+      title: `Un Marcador, Múltiples Deportes`,
+      content: `<p>A diferencia de los marcadores de fútbol sala que se centran en el tiempo, el Marcador Universal está diseñado específicamente para registrar Puntos y Sets. Esta herramienta es muy flexible e ideal para los siguientes deportes:</p><ul><li><strong>Bádminton:</strong> Perfecto para un sistema de puntuación de 21 puntos y al mejor de 3 sets.</li><li><strong>Voleibol:</strong> Admite peloteos largos de hasta 25 puntos y al mejor de 5 sets.</li><li><strong>Tenis de Mesa (Ping Pong):</strong> Adecuado para partidos rápidos de 11 puntos.</li><li><strong>Sepak Takraw:</strong> Registra puntos y sets con precisión.</li><li><strong>Baloncesto 3x3:</strong> Una opción sencilla para el streetball que no requiere un reloj de posesión complicado.</li></ul>`
+    },
+    {
+      title: `Funciones Clave para Operadores y Árbitros`,
+      content: `<p>Entendemos que los encargados del marcador necesitan velocidad. Hemos diseñado estas funciones para resolver problemas en tiempo real:</p><ol><li><strong>Atajos de teclado (Control rápido):</strong> No tienes que usar el ratón constantemente. Simplemente pulsa una tecla en el teclado de tu portátil para sumar puntos al instante. ¡Ideal para seguir el ritmo de los remates más rápidos!</li><li><strong>Función de cambio de lado:</strong> En deportes de raqueta y voleibol, los jugadores cambian de lado tras cada set. Con el botón "Cambiar", los nombres, puntuaciones y colores se intercambian automáticamente en un instante.</li><li><strong>Sistema independiente de puntos y sets:</strong> Diferencia claramente entre la puntuación del juego actual y el número de sets ganados. El operador no necesita recordar manualmente quién ganó las rondas anteriores.</li></ol>`
+    },
+    {
+      title: `Excelente Visual para los Espectadores`,
+      content: `<p>Convierta un partido amistoso o un torneo local en una transmisión de televisión profesional:</p><ul><li><strong>Modo de pantalla completa:</strong> Visualice el marcador sin distracciones del navegador. Conecte su portátil a un televisor grande o proyector para que todo el pabellón vea el marcador con claridad.</li><li><strong>Colores de equipo personalizados:</strong> Haga coincidir el fondo del marcador con las camisetas de los jugadores para evitar confusiones.</li><li><strong>Indicador de puntos de partido:</strong> Proporciona una señal visual de tensión cuando un equipo está a solo un punto de ganar.</li></ul>`
+    },
+    {
+      title: `Cómo usar el Marcador Universal`,
+      content: `<p>Convierta su dispositivo en un marcador profesional con estos sencillos pasos:</p><ol><li><strong>Prepare su dispositivo:</strong> Abra esta página en su portátil o tableta. Conéctelo a un televisor si está disponible.</li><li><strong>Configuración inicial:</strong> Introduzca los nombres de los jugadores o equipos y seleccione los colores.</li><li><strong>Inicie el partido:</strong> Use el botón (+) o los atajos de teclado para sumar puntos. ¿Error de dedo? Pulse "Deshacer" o el botón (-) para corregirlo rápido.</li><li><strong>Cambio de Set:</strong> Al finalizar el juego, añada un punto a la columna Set, restablezca los puntos a 0-0 y pulse "Cambiar" si los jugadores rotan de cancha.</li></ol>`
+    },
+    {
+      title: `Solución Gratuita y Sin Complicaciones`,
+      content: `<p>No dejes que un árbitro distraído arruine la emoción de tu partido. Usa el Marcador Universal VersoKit ahora. Sin instalaciones ni pagos, listo para usar en segundos para garantizar un juego justo y profesional.</p>`
+    }
+  ]
+},
+pt: {
+  title: `Placar Universal: Placar Digital para Badminton, Voleibol e Ténis de Mesa`,
+  sections: [
+    {
+      title: `Solução Moderna para Desportos Dinâmicos`,
+      content: `<p>Já jogou badminton ou voleibol num ginásio, mas o árbitro esquece-se frequentemente do placar atual? Ou talvez o marcador manual esteja rasgado, os números estejam em falta e seja demasiado pequeno para os espectadores nas bancadas verem?</p><p>Em desportos dinâmicos como o ténis de mesa ou o badminton, o marcador muda a cada segundo. A mais pequena falha de concentração pode gerar uma longa discussão entre os jogadores.</p><p>A solução? Abandone o placar manual antiquado. Use o <strong>Placar Universal da VersoKit</strong>. É o "canivete suíço" dos placares digitais: uma ferramenta poderosa para diversos desportos com pontuação (Rally Points) e sets.</p>`
+    },
+    {
+      title: `Um Placar, Vários Desportos`,
+      content: `<p>Ao contrário dos placares de futsal, que priorizam o tempo, o Placar Universal foi especificamente concebido para registar Pontos e Sets. Esta ferramenta é altamente flexível e ideal para os seguintes desportos:</p><ul><li><strong>Badminton:</strong> Perfeito para o sistema de 21 pontos e formato Melhor de 3 sets.</li><li><strong>Voleibol:</strong> Suporta trocas de bola até 25 pontos e Melhor de 5 sets.</li><li><strong>Ténis de Mesa (Ping Pong):</strong> Adequado para jogos rápidos de 11 pontos.</li><li><strong>Sepak Takraw:</strong> Registe pontos e sets com precisão.</li><li><strong>Basquetebol 3x3:</strong> Uma opção simples para streetball que não requer cronómetros de lançamento complexos.</li></ul>`
+    },
+    {
+      title: `Recursos "Matadores" para Operadores e Árbitros`,
+      content: `<p>Entendemos que os operadores de placar precisam de velocidade. Desenvolvemos estes recursos para solucionar problemas na quadra:</p><ol><li><strong>Atalhos de Teclado (Controlo Rápido):</strong> Não precisa de usar o rato a cada segundo. Basta premir uma tecla no teclado do portátil para somar pontos instantaneamente. Muito ágil para acompanhar as cortadas mais rápidas!</li><li><strong>Recurso de Troca de Lados (Swap):</strong> Nos desportos de raquete e voleibol, os jogadores trocam de lado após cada set. Com um clique, os nomes, pontuações e cores trocam automaticamente de posição no ecrã.</li><li><strong>Sistema Separado de Pontos e Sets:</strong> A ferramenta diferencia a pontuação do jogo atual do número de sets vencidos. O operador não precisa de se lembrar manualmente de quem ganhou a primeira parte.</li></ol>`
+    },
+    {
+      title: `Excelência Visual para os Espectadores`,
+      content: `<p>Transforme um jogo amigável ou um torneio local numa transmissão profissional de TV:</p><ul><li><strong>Modo de Ecrã Inteiro:</strong> Apresente o placar sem as distrações do browser. Ligue o portátil a uma TV grande ou projetor para que todos no ginásio vejam o placar com clareza.</li><li><strong>Cores Personalizadas:</strong> Combine a cor de fundo do marcador com os equipamentos das equipas para evitar confusões entre os adeptos.</li><li><strong>Indicador de Match Point:</strong> Fornece um sinal visual de tensão quando uma equipa está a apenas um ponto da vitória.</li></ul>`
+    },
+    {
+      title: `Como Usar o Placar Universal`,
+      content: `<p>Transforme o seu dispositivo num placar profissional com estes passos simples:</p><ol><li><strong>Prepare o Dispositivo:</strong> Abra esta página no portátil ou tablet. Ligue a uma TV, se disponível.</li><li><strong>Identifique as Equipas:</strong> Introduza os nomes dos jogadores e selecione as cores de fundo.</li><li><strong>Inicie a Partida:</strong> Utilize o botão (+) ou atalhos de teclado para adicionar pontos. Cometeu um erro? Prima "Desfazer" ou (-) para corrigir rapidamente.</li><li><strong>Mudar de Set:</strong> No fim do jogo, adicione o ponto na coluna Set, clique em "Zerar Pontos" e use o "Swap" se os jogadores trocarem de campo.</li></ol>`
+    },
+    {
+      title: `Solução Gratuita e Sem Complicações`,
+      content: `<p>Não deixe que um árbitro distraído estrague a emoção do seu jogo. Utilize o Placar Universal VersoKit agora mesmo. Sem instalações nem pagamentos, pronto a usar em segundos para garantir uma partida justa e profissional!</p>`
+    }
+  ]
+},
+de: {
+  title: `Universelle Anzeigetafel: Digitale Anzeigetafel für Badminton, Volleyball & Tischtennis`,
+  sections: [
+    {
+      title: `Die moderne Lösung für schnelle Sportarten`,
+      content: `<p>Haben Sie schon einmal in der Sporthalle Badminton oder Volleyball gespielt, aber der Schiedsrichter vergisst ständig den aktuellen Spielstand? Oder ist die manuelle Anzeigetafel kaputt, die Zahlen fehlen und sie ist für die Zuschauer auf den hinteren Rängen zu klein?</p><p>Bei schnellen Sportarten wie Tischtennis oder Badminton ändert sich der Spielstand sekündlich. Die kleinste Unaufmerksamkeit kann zu einer längeren Diskussion zwischen den Spielern führen.</p><p>Die Lösung? Weg mit der altmodischen, manuellen Anzeigetafel! Nutzen Sie die <strong>Universelle Anzeigetafel von VersoKit</strong>. Sie ist das „Schweizer Taschenmesser“ unter den digitalen Anzeigetafeln – ein leistungsstarkes Werkzeug für punktbasierte Sportarten (Rally Points) und Sätze.</p>`
+    },
+    {
+      title: `Eine Anzeigetafel, viele Sportarten`,
+      content: `<p>Im Gegensatz zu Futsal-Anzeigetafeln, die sich auf die Zeit konzentrieren, ist die Universal-Anzeigetafel speziell für die Erfassung von Punkten und Sätzen konzipiert. Dieses Tool ist äußerst flexibel und ideal für folgende Sportarten:</p><ul><li><strong>Badminton:</strong> Perfekt für ein 21-Punkte-System und das Best-of-3-Satz-Format.</li><li><strong>Volleyball:</strong> Unterstützt lange Ballwechsel mit bis zu 25 Punkten und Best-of-5-Sätze.</li><li><strong>Tischtennis (Pingpong):</strong> Geeignet für schnelle Spiele mit 11 Punkten.</li><li><strong>Sepak Takraw:</strong> Erfasst Punkte und Sätze präzise.</li><li><strong>3x3-Basketball:</strong> Eine einfache Option für Streetball, die keine komplizierte Wurfuhr benötigt.</li></ul>`
+    },
+    {
+      title: `Profi-Funktionen für Bediener und Schiedsrichter`,
+      content: `<p>Wir wissen, dass Bediener der Anzeigetafel auf Schnelligkeit angewiesen sind. Diese Funktionen lösen die typischen Probleme auf dem Spielfeld:</p><ol><li><strong>Tastenkombinationen (Schnellsteuerung):</strong> Sie müssen weder die Maus bewegen noch den Bildschirm berühren. Drücken Sie einfach Tasten auf Ihrer Tastatur, um Punkte sofort zu addieren. Ideal für die schnellen Ballwechsel beim Tischtennis!</li><li><strong>Seitenwechsel-Funktion:</strong> Klicken Sie einfach auf „Wechseln“, und die Teamnamen, Punkte und Farben werden sofort auf dem Bildschirm getauscht, wenn die Spieler die Spielfeldseiten wechseln.</li><li><strong>Separates Punkte- und Satzsystem:</strong> Das Tool unterscheidet präzise zwischen dem aktuellen Spielstand und der Anzahl der gewonnenen Sätze. Der Schiedsrichter muss sich nicht mehr manuell merken, wer den vorherigen Satz gewonnen hat.</li></ol>`
+    },
+    {
+      title: `Optimale Darstellung für Zuschauer`,
+      content: `<p>Verleihen Sie jedem Freundschaftsspiel oder lokalen Turnier den Charme einer professionellen TV-Übertragung:</p><ul><li><strong>Vollbildmodus:</strong> Zeigen Sie die Anzeigetafel ohne störende Browser-Elemente an. Schließen Sie Ihren Laptop an einen großen Fernseher oder Beamer an, damit jeder in der Halle den Stand klar erkennen kann.</li><li><strong>Benutzerdefinierte Teamfarben:</strong> Passen Sie die Hintergrundfarben an die Trikots der Teams an, um Verwechslungen beim Publikum zu vermeiden.</li><li><strong>Matchpunkt-Anzeige:</strong> Ein visueller Indikator signalisiert die Hochspannung, wenn ein Team nur noch einen Punkt zum Sieg benötigt.</li></ul>`
+    },
+    {
+      title: `So verwenden Sie die universelle Anzeigetafel`,
+      content: `<p>Verwandeln Sie Ihr Gerät in wenigen Schritten in eine professionelle Anzeigetafel:</p><ol><li><strong>Gerät vorbereiten:</strong> Öffnen Sie diese Seite auf Ihrem Laptop oder Tablet. Verbinden Sie das Gerät bei Bedarf mit einem Fernseher.</li><li><strong>Identität festlegen:</strong> Geben Sie die Teamnamen ein und wählen Sie die passenden Farben aus.</li><li><strong>Spiel starten:</strong> Nutzen Sie (+) oder Tastenkombinationen für Punkte. Fehler gemacht? Mit „Rückgängig“ oder (-) lässt sich der Stand schnell korrigieren.</li><li><strong>Satz wechseln:</strong> Ist ein Satz beendet, erhöhen Sie den Satzstand, setzen die Punkte auf 0:0 zurück und nutzen „Wechseln“, falls die Seiten getauscht werden.</li></ol>`
+    },
+    {
+      title: `Kostenlose und unkomplizierte Lösung`,
+      content: `<p>Lassen Sie sich die Spannung eines packenden Matches nicht durch einen Schiedsrichter verderben, der den Stand vergisst. Nutzen Sie jetzt VersoKit Universal Scoreboard – keine Installation, keine Kosten und in Sekundenschnelle einsatzbereit für ein faires und professionelles Spiel!</p>`
+    }
+  ]
+},
+fr: {
+  title: `Tableau de score universel : Tableau de score numérique pour badminton, volley-ball et ping-pong`,
+  sections: [
+    {
+      title: `Une solution moderne pour les sports de rythme rapide`,
+      content: `<p>Vous est-il déjà arrivé de jouer au badminton ou au volley-ball en salle et de constater que l'arbitre oublie souvent le score ? Ou peut-être que le tableau d'affichage manuel est déchiré, les chiffres illisibles, et trop petit pour être lisible par les spectateurs du fond de la salle ?</p><p>Dans les sports rapides comme le tennis de table ou le badminton, le score change constamment. Le moindre moment d'inattention peut déclencher une longue dispute entre les joueurs.</p><p>La solution ? Oubliez le vieux tableau de score manuel. Utilisez le <strong>tableau de score universel de VersoKit</strong>. C'est le couteau suisse des tableaux de score numériques : un outil puissant utilisable pour divers sports à points (Rally Points) et pour les sets.</p>`
+    },
+    {
+      title: `Un seul tableau de score, plusieurs sports`,
+      content: `<p>Contrairement aux tableaux de score de futsal qui se concentrent sur le temps, le Tableau de Score Universel est spécialement conçu pour enregistrer les Points et les Sets. Cet outil est extrêmement flexible et idéal pour les sports suivants :</p><ul><li><strong>Badminton :</strong> Parfait pour un système de score à 21 points et un format de 3 sets gagnants.</li><li><strong>Volleyball :</strong> Prend en charge les longs échanges jusqu’à 25 points et les 5 sets gagnants.</li><li><strong>Tennis de table (ping-pong) :</strong> Convient aux matchs rapides à 11 points.</li><li><strong>Sepak Takraw :</strong> Enregistrement précis des points et des sets.</li><li><strong>Basketball 3x3 :</strong> Une option simple pour le streetball sans chronomètre complexe.</li></ul>`
+    },
+    {
+      title: `Fonctionnalités exceptionnelles pour les arbitres`,
+      content: `<p>Nous savons que la rapidité est essentielle. C'est pourquoi nous avons conçu ces fonctionnalités pour simplifier l'arbitrage :</p><ol><li><strong>Raccourcis clavier (Contrôle rapide) :</strong> Plus besoin de déplacer la souris. Appuyez simplement sur une touche de votre clavier pour ajouter des points instantanément. Une réactivité optimale pour suivre les smashs rapides !</li><li><strong>Inversion des côtés (Swap) :</strong> Dans les sports de raquette et le volley-ball, les joueurs changent souvent de côté. Cliquez simplement sur le bouton « Inverser » pour que les noms, les scores et les couleurs s'inversent automatiquement.</li><li><strong>Système de points et de sets distinct :</strong> Cet outil distingue le score du jeu actuel du nombre de manches gagnées. L'opérateur n'a pas besoin de mémoriser manuellement qui a remporté le set précédent.</li></ol>`
+    },
+    {
+      title: `Une expérience visuelle pour les spectateurs`,
+      content: `<p>Transformez un match amical ou un tournoi local en une retransmission télévisée professionnelle :</p><ul><li><strong>Mode plein écran :</strong> Affichez le tableau sans les distractions du navigateur. Connectez votre ordinateur à un grand écran ou un projecteur pour que toute la salle puisse voir le score clairement.</li><li><strong>Couleurs personnalisées :</strong> Harmonisez la couleur de fond du tableau avec les maillots des joueurs pour éviter toute confusion.</li><li><strong>Indicateur de point de match :</strong> Indique visuellement la tension lorsqu'une équipe n'a plus qu'un point à marquer pour gagner.</li></ul>`
+    },
+    {
+      title: `Comment utiliser le tableau d'affichage universel`,
+      content: `<p>Transformez votre appareil en tableau d'affichage professionnel en quelques étapes simples :</p><ol><li><strong>Préparez votre appareil :</strong> Ouvrez cette page sur votre ordinateur ou tablette. Connectez-vous à un téléviseur si possible.</li><li><strong>Configuration :</strong> Saisissez les noms des joueurs/équipes et sélectionnez les couleurs.</li><li><strong>Démarrer le match :</strong> Utilisez le bouton (+) ou les raccourcis clavier pour ajouter des points. Une erreur ? Appuyez sur "Annuler" ou sur le bouton (-) pour corriger rapidement.</li><li><strong>Changer de set :</strong> À la fin de la manche, ajoutez un point dans la colonne Set, réinitialisez les points à 0-0 et cliquez sur "Inverser" si les joueurs changent de terrain.</li></ol>`
+    },
+    {
+      title: `Solution gratuite et simple`,
+      content: `<p>Ne laissez pas un arbitre qui « oublie le score » gâcher l’intensité de votre match. Utilisez le tableau de score universel VersoKit dès maintenant. Sans installation ni paiement, il est prêt à l’emploi en quelques secondes pour garantir un match juste et professionnel !</p>`
+    }
+  ]
+},
+it: {
+  title: `Tabellone segnapunti universale: Tabellone digitale per badminton, pallavolo e ping pong`,
+  sections: [
+    {
+      title: `Soluzione Moderna per Sport Frenetici`,
+      content: `<p>Hai mai giocato a badminton o pallavolo in palestra, ma l'arbitro dimentica spesso il punteggio attuale? O forse il tabellone segnapunti manuale è rotto, mancano i numeri ed è troppo piccolo per essere visto dagli spettatori in tribuna?</p><p>In sport frenetici come il tennistavolo o il badminton, il punteggio cambia ogni secondo. La minima disattenzione può scatenare una lunga discussione tra i giocatori.</p><p>La soluzione? Abbandona il vecchio tabellone segnapunti manuale. Usa il <strong>Tabellone segnapunti universale di VersoKit</strong>. È il "coltellino svizzero" dei tabelloni segnapunti digitali: uno strumento potente per vari sport basati sui punti (Rally Points) e set.</p>`
+    },
+    {
+      title: `Un Tabellone, Molti Sport`,
+      content: `<p>A differenza dei tabelloni per il futsal che si concentrano sul tempo, il Tabellone Universale è progettato specificamente per registrare Punti e Set. Questo strumento è altamente flessibile e ideale per i seguenti sport:</p><ul><li><strong>Badminton:</strong> Perfetto per un sistema di punteggio a 21 punti e il formato al meglio dei 3 set.</li><li><strong>Pallavolo:</strong> Supporta scambi lunghi fino a 25 punti e il formato al meglio dei 5 set.</li><li><strong>Tennistavolo (Ping Pong):</strong> Adatto a partite veloci a 11 punti.</li><li><strong>Sepak Takraw:</strong> Registra con precisione punti e set.</li><li><strong>Pallacanestro 3x3:</strong> Un'opzione semplice per lo streetball che non richiede un complicato cronometro dei tiri.</li></ul>`
+    },
+    {
+      title: `Funzionalità "Killer" per Operatori e Arbitri`,
+      content: `<p>Sappiamo che gli operatori segnapunti hanno bisogno di velocità. Abbiamo progettato queste funzionalità per risolvere i problemi in campo:</p><ol><li><strong>Scorciatoie da tastiera (Controllo rapido):</strong> Non è necessario spostare il mouse ogni secondo. Basta premere un tasto sulla tastiera del portatile per aggiungere punti istantaneamente. Molto reattivo per tenere il passo con i rapidi smash del ping pong!</li><li><strong>Funzione "Cambia lato" (Swap):</strong> Negli sport con racchetta e nella pallavolo, i giocatori cambiano lato dopo ogni set. Con un clic, i nomi, i punteggi e i colori verranno automaticamente scambiati a sinistra e a destra.</li><li><strong>Sistema separato di punti e set:</strong> Questo strumento distingue tra punteggio di gioco attuale e punteggio di set (round vinti). L'operatore non ha bisogno di ricordare manualmente chi ha vinto il set precedente.</li></ol>`
+    },
+    {
+      title: `Eccellenza Visiva per gli Spettatori`,
+      content: `<p>Trasforma una partita amichevole o un torneo locale in una trasmissione televisiva professionale:</p><ul><li><strong>Modalità a schermo intero:</strong> Visualizza il tabellone senza la distrazione della barra del browser. Collega il laptop a una TV o a un proiettore in modo che tutta la palestra possa vedere chiaramente il punteggio.</li><li><strong>Colori di squadra personalizzati:</strong> Abbina lo sfondo del tabellone alle maglie dei giocatori per evitare confusioni tra gli spettatori.</li><li><strong>Indicatore Match Point:</strong> Fornisce un segnale visivo di tensione quando una squadra ha bisogno di un solo punto per vincere la partita.</li></ul>`
+    },
+    {
+      title: `Come utilizzare il Tabellone segnapunti universale`,
+      content: `<p>Trasforma il tuo dispositivo in un tabellone professionale con questi semplici passaggi:</p><ol><li><strong>Prepara il dispositivo:</strong> Apri questa pagina sul tuo laptop o tablet. Collegalo a una TV, se disponibile.</li><li><strong>Configurazione:</strong> Inserisci i nomi dei giocatori/squadre e seleziona i colori sociali.</li><li><strong>Inizia la partita:</strong> Usa il pulsante (+) o le scorciatoie da tastiera per aggiungere punti. Errore di distrazione? Premi "Annulla" o il tasto (-) per una correzione rapida.</li><li><strong>Cambia set:</strong> Al termine del gioco, aggiungi il punto nella colonna Set, azzera i punti per il nuovo set e clicca su "Scambia" se i giocatori cambiano campo.</li></ol>`
+    },
+    {
+      title: `Soluzione Gratuita e Senza Problemi`,
+      content: `<p>Non lasciare che un arbitro distratto rovini l'emozione della tua partita intensa. Usa subito il Tabellone universale VersoKit. Nessuna installazione, nessun pagamento e pronto all'uso in pochi secondi per garantire un gioco giusto e professionale!</p>`
+    }
+  ]
+}
 };
 
 // --- 6. SHIFT SCHEDULER CONTENT ---
@@ -828,24 +1193,28 @@ const INVOICE_CONTENT: { [lang: string]: ToolArticle } = {
     title: `Invoice Generator Gratis: Buat Invoice PDF Profesional dalam 1 Menit`,
     sections: [
       {
-        title: `Tinggalkan Tagihan Berantakan`,
-        content: `<p>Masih mengirim tagihan ke klien hanya lewat chat WhatsApp? Atau masih menggunakan file Excel yang formatnya berantakan saat dibuka di HP orang lain? Hati-hati, cara menagih yang tidak rapi bisa membuat citra bisnis Anda terlihat amatir. Lebih buruk lagi, klien mungkin ragu atau menunda pembayaran Anda.</p><p>Tinggalkan cara lama. Gunakan <strong>Free Invoice Generator</strong> dari VersoKit. Alat ini adalah solusi instan bagi freelancer, UMKM, dan pemilik bisnis kecil untuk membuat dokumen tagihan (faktur) yang rapi, terstruktur, dan siap kirim dalam format PDF standar industri.</p>`
+        title: `Tinggalkan Tagihan Berantakan, Tingkatkan Kredibilitas`,
+        content: `<p>Masih mengirim tagihan ke klien hanya lewat chat WhatsApp? Atau masih menggunakan file Excel yang formatnya berantakan saat dibuka di HP orang lain? Hati-hati, cara menagih yang tidak rapi bisa membuat citra bisnis Anda terlihat amatir, bahkan membuat klien ragu untuk membayar tepat waktu.</p><p>Gunakan <strong>Free Invoice Generator</strong> dari VersoKit. Alat ini adalah solusi instan bagi freelancer, UMKM, dan pemilik bisnis kecil untuk membuat dokumen tagihan (faktur) yang rapi, terstruktur, dan siap kirim dalam format PDF standar industri.</p>`
       },
       {
         title: `Mengapa Anda Wajib Pakai Alat Ini?`,
-        content: `<ul><li><strong>Hemat Biaya:</strong> Software akuntansi memang bagus, tapi biaya langganannya mahal. Alat kami Gratis.</li><li><strong>Anti Error:</strong> Menggunakan Excel/Word rentan salah rumus. Alat kami menggabungkan kelebihan keduanya: Gratis tapi Profesional.</li></ul>`
+        content: `<p>Software akuntansi berbayar sangat mahal, sementara Excel rentan salah rumus. Alat kami menggabungkan kelebihan keduanya: <strong>Gratis tapi Profesional.</strong></p><ul><li><strong>Otomatis & Anti Salah Hitung:</strong> Tidak perlu kalkulator. Masukkan Jumlah (Qty) dan Harga Satuan, sistem akan otomatis menghitung Total, termasuk Pajak (PPN) atau Diskon secara akurat.</li><li><strong>Format PDF Standar Industri:</strong> Menghasilkan file PDF yang elegan, bersih, dan aman. Tampilan invoice Anda akan tetap rapi baik dibuka di Laptop maupun Smartphone klien.</li><li><strong>Dukungan Mata Uang Global:</strong> Bisa mengubah mata uang dari Rupiah (IDR) ke Dollar (USD), Euro (EUR), dan lainnya sesuai kebutuhan kontrak kerja Anda.</li></ul>`
       },
       {
-        title: `Fitur Unggulan`,
-        content: `<ol><li><strong>Otomatis & Anti Salah Hitung:</strong> Cukup masukkan Jumlah (Qty) dan Harga Satuan, sistem akan otomatis menghitung Total, termasuk kalkulasi Pajak (PPN) atau Diskon.</li><li><strong>Format PDF Standar Industri:</strong> Jangan kirim file Word (.doc) yang bisa diedit sembarangan. Alat ini menghasilkan file PDF yang terlihat elegan, bersih, dan aman.</li><li><strong>Dukungan Mata Uang Global:</strong> Bisa mengubah mata uang dari Rupiah (IDR) ke Dollar (USD), Euro (EUR), dll.</li></ol>`
+        title: `Fitur Unggulan: Privasi & Branding`,
+        content: `<p>Kami merancang alat ini dengan fitur-fitur yang biasanya hanya ada di aplikasi berbayar:</p><ul><li><strong>🔒 Privasi 100% (Client-Side):</strong> Data klien dan rincian nominal diproses hanya di browser Anda. Kami <strong>TIDAK</strong> menyimpan data bisnis sensitif Anda di server kami.</li><li><strong>🏢 Upload Logo Bisnis:</strong> Unggah logo brand Anda untuk meningkatkan kredibilitas dan terlihat lebih profesional.</li><li><strong>✨ Tanpa Watermark:</strong> Hasil PDF yang Anda unduh bersih tanpa gangguan logo kami. Invoice ini sepenuhnya milik bisnis Anda.</li><li><strong>📝 Notes & Terms:</strong> Tersedia kolom khusus untuk instruksi pembayaran atau syarat ketentuan garansi.</li></ul>`
       },
       {
-        title: `Privasi & Branding (Fitur Premium Gratis)`,
-        content: `<ul><li><strong>🔒 Privasi 100% (Client-Side):</strong> Data klien dan nominal uang diproses hanya di browser Anda. Kami TIDAK mengirim atau menyimpan data bisnis sensitif Anda di server kami.</li><li><strong>🏢 Upload Logo Bisnis:</strong> Unggah logo brand Anda di bagian header invoice untuk meningkatkan kredibilitas.</li><li><strong>✨ No Watermark:</strong> Hasil PDF bersih tanpa tulisan "Created by..." yang mengganggu.</li></ul>`
+        title: `Siapa yang Cocok Menggunakan Alat Ini?`,
+        content: `<ul><li><strong>Freelancer:</strong> Desainer, penulis, dan programmer yang butuh tagihan cepat untuk pencairan DP atau pelunasan.</li><li><strong>UMKM & Online Shop:</strong> Penjual katering, toko baju, hingga penyedia jasa yang ingin pembukuan lebih rapi.</li><li><strong>Konsultan & Jasa Profesional:</strong> Fotografer, teknisi, konsultan bisnis, hingga pengacara.</li></ul>`
       },
       {
         title: `Cara Membuat Invoice dalam 4 Langkah`,
-        content: `<ol><li><strong>Isi Identitas:</strong> Lengkapi kolom "Dari" (Info Bisnis Anda) dan "Kepada" (Info Klien). Jangan lupa upload logo.</li><li><strong>Masukkan Barang/Jasa:</strong> Ketik nama barang, deskripsi singkat, kuantitas, dan harga satuan.</li><li><strong>Tambahkan Pajak/Diskon:</strong> Klik tombol tambah pajak (misal PPN 11%) atau diskon jika ada promo.</li><li><strong>Download PDF:</strong> Periksa kembali data, lalu klik tombol "Download Invoice".</li></ol>`
+        content: `<p>Tanpa perlu daftar atau login, Anda bisa langsung membuat tagihan:</p><ol><li><strong>Isi Identitas:</strong> Lengkapi kolom info bisnis Anda dan detail informasi klien.</li><li><strong>Masukkan Barang/Jasa:</strong> Ketik nama jasa/barang, kuantitas, dan harganya.</li><li><strong>Tambahkan Pajak/Diskon:</strong> Masukkan persentase pajak atau diskon jika ada, total akan terhitung otomatis.</li><li><strong>Download PDF:</strong> Periksa kembali tanggal jatuh tempo, lalu klik "Download Invoice". Selesai!</li></ol>`
+      },
+      {
+        title: `Tingkatkan Citra Bisnis Anda Sekarang`,
+        content: `<p>Kirimkan tagihan yang membuat klien terkesan dan ingin segera membayar. Tanpa biaya, tanpa instalasi, dan privasi terjaga sepenuhnya. Buat invoice profesional pertama Anda sekarang juga!</p>`
       }
     ]
   },
@@ -853,24 +1222,28 @@ const INVOICE_CONTENT: { [lang: string]: ToolArticle } = {
     title: `Free Invoice Generator: Create Professional PDF Invoices in 1 Minute`,
     sections: [
       {
-        title: `Stop Sending Messy Invoices`,
-        content: `<p>Still sending invoices to clients only via WhatsApp chat? Or using Excel files that look messy on mobile? A messy invoice format can make your business look amateurish and delay payments.</p><p>Leave the old ways behind. Use <strong>VersoKit's Free Invoice Generator</strong>. This tool is an instant solution for freelancers and MSMEs to create neat, structured, industry-standard PDF invoices.</p>`
+        title: `Elevate Your Business Image with Professional Invoicing`,
+        content: `<p>Still sending invoices to clients only via WhatsApp chat? Or using Excel files that look messy when opened on someone else's phone? Be careful—a disorganized billing process can make your business look amateurish, potentially causing clients to hesitate or delay your payment.</p><p>Leave the old ways behind. Use <strong>VersoKit's Free Invoice Generator</strong>. This tool is an instant solution for freelancers, MSMEs, and small business owners to create neat, structured, and ready-to-send invoices in industry-standard PDF format.</p>`
       },
       {
-        title: `Why Use This Tool?`,
-        content: `<ul><li><strong>Cost Effective:</strong> Accounting software subscriptions are expensive. Excel is prone to errors. Our tool is Free but Professional.</li><li><strong>100% Accuracy:</strong> No calculator needed. Simply enter Quantity and Unit Price; the system automatically calculates Totals, VAT, and Discounts.</li></ul>`
+        title: `Why Should You Use This Tool?`,
+        content: `<p>Accounting software can be expensive, and manual documents are prone to errors. Our tool combines the best of both worlds: <strong>Free but Professional.</strong></p><ul><li><strong>Automatic & Error-Proof:</strong> No need for a calculator. Simply enter the Quantity and Unit Price, and the system automatically calculates the Total, including VAT or Discounts.</li><li><strong>Industry-Standard PDF Format:</strong> Don't send editable Word files. Our tool produces elegant, secure, and clean PDFs that maintain their formatting on any device.</li><li><strong>Global Currency Support:</strong> Working with international clients? You can easily switch between IDR, USD, EUR, and other global currencies to match your contract requirements.</li></ul>`
       },
       {
-        title: `Key Features`,
-        content: `<ul><li><strong>Industry-Standard PDF:</strong> Don't send editable Word files. Create elegant, secure PDFs that look great on laptops and mobile phones.</li><li><strong>Global Currency:</strong> Supports USD, EUR, IDR, and other currencies for international clients.</li></ul>`
+        title: `Premium Features: Privacy & Branding`,
+        content: `<p>We designed this tool with features typically reserved for paid applications:</p><ul><li><strong>🔒 100% Privacy (Client-Side):</strong> This is our most important feature. Your sensitive business data is processed solely in your browser. We <strong>DO NOT</strong> store or see your client details or financial amounts.</li><li><strong>🏢 Custom Branding:</strong> Upload your business logo to the invoice header to build credibility and look like an established company.</li><li><strong>✨ No Watermark:</strong> Your downloaded PDF is clean and professional. There are no "Created by VersoKit" marks—the invoice is entirely yours.</li><li><strong>📝 Notes & Terms:</strong> Use dedicated fields for payment instructions (e.g., Bank details) or specific warranty terms.</li></ul>`
       },
       {
-        title: `Privacy & Branding`,
-        content: `<ul><li><strong>🔒 100% Privacy (Client-Side):</strong> Your client data and amounts are processed solely in your browser. We DO NOT store your sensitive data.</li><li><strong>🏢 Business Logo:</strong> Upload your brand logo to the header to increase credibility.</li><li><strong>✨ No Watermark:</strong> The downloaded PDF is clean and professional. It is completely yours.</li></ul>`
+        title: `Who Is This Tool For?`,
+        content: `<ul><li><strong>Freelancers:</strong> Graphic designers, writers, and developers who need quick, professional billing to receive down payments or final transfers.</li><li><strong>MSMEs & Online Shops:</strong> Catering vendors, clothing boutiques, and service providers looking for organized bookkeeping.</li><li><strong>Consultants & Professionals:</strong> Photographers, technicians, legal services, and business consultants.</li></ul>`
       },
       {
-        title: `How to Create an Invoice`,
-        content: `<ol><li><strong>Fill Identity:</strong> Complete "From" and "To" fields. Upload your logo.</li><li><strong>Enter Items:</strong> Type item name, description, quantity, and price.</li><li><strong>Add Tax/Discount:</strong> Easily add VAT or promotional discounts.</li><li><strong>Download:</strong> Check the due date and click "Download Invoice".</li></ol>`
+        title: `How to Create an Invoice in 4 Steps`,
+        content: `<p>No sign-up or login required. You can start invoicing immediately:</p><ol><li><strong>Fill in Identity:</strong> Complete the "From" (Your Info) and "To" (Client Info) fields and upload your logo.</li><li><strong>Enter Items:</strong> Type the service or product name, description, quantity, and unit price.</li><li><strong>Add Tax/Discount:</strong> Include any applicable taxes or promotional discounts; the system handles the math.</li><li><strong>Download PDF:</strong> Double-check your due date and data, then click "Download Invoice." It’s that simple!</li></ol>`
+      },
+      {
+        title: `Boost Your Business Image Now`,
+        content: `<p>Send invoices that impress your clients and streamline your payment process. No fees, no installation, and absolute privacy. Create your first professional invoice below!</p>`
       }
     ]
   },
@@ -878,41 +1251,57 @@ const INVOICE_CONTENT: { [lang: string]: ToolArticle } = {
     title: `Generador de Facturas Gratis: Crea Facturas PDF Profesionales en 1 Minuto`,
     sections: [
       {
-        title: `Deja atrás las facturas desordenadas`,
-        content: `<p>¿Aún envías facturas por WhatsApp o Excel? Un formato desordenado da imagen de inexperiencia y puede retrasar los pagos. Usa el <strong>Generador de Facturas Gratis de VersoKit</strong> para crear documentos PDF ordenados y listos para enviar.</p>`
+        title: `Eleva la Imagen de tu Negocio con Facturación Profesional`,
+        content: `<p>¿Aún envías facturas a tus clientes solo por WhatsApp o usas archivos de Excel que se desconfiguran al abrirlos en el móvil? Ten cuidado: un formato descuidado puede proyectar una imagen amateur de tu negocio, lo que podría causar que los clientes duden o retrasen tus pagos.</p><p>Deja atrás los métodos obsoletos. Usa el <strong>Generador de Facturas Gratis de VersoKit</strong>. Esta herramienta es la solución instantánea para autónomos, pymes y emprendedores que buscan crear facturas ordenadas, estructuradas y listas para enviar en el formato PDF estándar de la industria.</p>`
       },
       {
-        title: `Características Principales`,
-        content: `<ul><li><strong>Automático y a prueba de errores:</strong> No necesita calculadora. El sistema calcula automáticamente el total, IVA y descuentos con 100% de precisión.</li><li><strong>Formato PDF Estándar:</strong> Genere archivos PDF elegantes y seguros, imposibles de modificar fácilmente, que se ven perfectos en cualquier dispositivo.</li></ul>`
+        title: `¿Por qué deberías usar esta herramienta?`,
+        content: `<p>Los programas de contabilidad son caros y los documentos manuales son propensos a errores. Nuestra herramienta combina lo mejor de ambos mundos: <strong>Gratis pero Profesional.</strong></p><ul><li><strong>Automático y Sin Errores:</strong> Olvida la calculadora. Ingresa la cantidad y el precio unitario, y el sistema calculará automáticamente el total, incluyendo IVA o descuentos con precisión total.</li><li><strong>Formato PDF Estándar:</strong> No envíes archivos editables. Generamos PDFs elegantes y seguros que mantienen su diseño impecable en cualquier dispositivo, ya sea ordenador o smartphone.</li><li><strong>Soporte de Divisas Global:</strong> ¿Tienes clientes en el extranjero? Cambia fácilmente entre pesos, dólares, euros y otras divisas según los requisitos de tu contrato.</li></ul>`
       },
       {
-        title: `Privacidad y Marca`,
-        content: `<ul><li><strong>🔒 100% Privacidad:</strong> Los datos se procesan únicamente en su navegador. NO almacenamos su información confidencial.</li><li><strong>🏢 Logotipo:</strong> Suba el logotipo de su marca para aumentar la credibilidad.</li><li><strong>✨ Sin marca de agua:</strong> El PDF es limpio y profesional, sin publicidad de VersoKit.</li></ul>`
+        title: `Funciones Premium: Privacidad y Marca`,
+        content: `<p>Diseñamos esta herramienta con características que normalmente solo encuentras en aplicaciones de pago:</p><ul><li><strong>🔒 Privacidad 100% (Local):</strong> Esta es nuestra función más importante. Tus datos comerciales sensibles se procesan únicamente en tu navegador. <strong>NO</strong> almacenamos ni vemos los detalles de tus clientes o montos financieros.</li><li><strong>🏢 Branding Personalizado:</strong> Sube el logotipo de tu empresa para aumentar tu credibilidad y proyectar la imagen de una empresa establecida.</li><li><strong>✨ Sin Marcas de Agua:</strong> El PDF descargado está limpio. No hay molestos textos de "Creado por VersoKit"; la factura es completamente tuya.</li><li><strong>📝 Notas y Condiciones:</strong> Campos dedicados para instrucciones de pago (datos bancarios) o términos específicos de garantía.</li></ul>`
       },
       {
-        title: `Cómo crear una factura`,
-        content: `<ol><li><strong>Identidad:</strong> Complete la información de su empresa y del cliente.</li><li><strong>Productos:</strong> Ingrese nombre, cantidad y precio.</li><li><strong>Impuestos:</strong> Añada IVA o descuentos con un clic.</li><li><strong>Descargar:</strong> Revise los datos y descargue su PDF al instante.</li></ol>`
+        title: `¿Para quién es esta herramienta?`,
+        content: `<ul><li><strong>Autónomos (Freelancers):</strong> Diseñadores, redactores y desarrolladores que necesitan cobrar anticipos o pagos finales de forma rápida.</li><li><strong>Pymes y Tiendas Online:</strong> Servicios de catering, tiendas de ropa y negocios locales que buscan una contabilidad más organizada.</li><li><strong>Consultores y Profesionales:</strong> Fotógrafos, técnicos, servicios legales y consultores de negocios.</li></ul>`
+      },
+      {
+        title: `Cómo crear tu factura en 4 pasos`,
+        content: `<p>Sin registros ni inicios de sesión. Puedes empezar a facturar de inmediato:</p><ol><li><strong>Identidad:</strong> Completa los campos "De" (tus datos) y "Para" (datos del cliente) y sube tu logo.</li><li><strong>Productos o Servicios:</strong> Añade el nombre del servicio, descripción, cantidad y precio.</li><li><strong>Impuestos y Descuentos:</strong> Incluye los impuestos aplicables o descuentos promocionales; el sistema hará los cálculos por ti.</li><li><strong>Descargar PDF:</strong> Revisa la fecha de vencimiento y los datos, y haz clic en "Descargar factura". ¡Así de fácil!</li></ol>`
+      },
+      {
+        title: `Impulsa la imagen de tu negocio ahora`,
+        content: `<p>Envía facturas que impresionen a tus clientes y agilicen tus procesos de pago. Sin comisiones, sin instalación y con privacidad absoluta. ¡Crea tu primera factura profesional a continuación!</p>`
       }
     ]
   },
   fr: {
-    title: `Générateur de factures gratuit : Créez des factures PDF professionnelles`,
+    title: `Générateur de factures gratuit : Créez des factures PDF professionnelles en 1 minute`,
     sections: [
       {
-        title: `Fini les factures amateurs`,
-        content: `<p>Attention, une facture mal formatée sur Excel ou WhatsApp peut donner une image amateur et retarder vos paiements. Utilisez le <strong>Générateur de factures VersoKit</strong> pour créer des documents PDF clairs et structurés en une minute.</p>`
+        title: `Optimisez votre image de marque avec une facturation professionnelle`,
+        content: `<p>Vous envoyez encore vos factures à vos clients uniquement par WhatsApp ? Ou vous utilisez toujours des fichiers Excel illisibles sur smartphone ? Attention : une facture mal formatée peut donner une image amateur de votre entreprise, incitant vos clients à hésiter ou à retarder vos paiements.</p><p>Oubliez les vieilles méthodes. Utilisez le <strong>générateur de factures gratuit de VersoKit</strong>. Cet outil est la solution instantanée pour les indépendants et les PME afin de créer des factures claires, structurées et prêtes à l'envoi au format PDF standard.</p>`
       },
       {
-        title: `Pourquoi choisir cet outil ?`,
-        content: `<ul><li><strong>Automatique :</strong> Plus besoin de calculatrice. Saisissez quantité et prix, le système calcule le total, la TVA et les remises.</li><li><strong>Format PDF Standard :</strong> Générez des fichiers PDF élégants et sécurisés, lisibles sur tous les appareils.</li></ul>`
+        title: `Pourquoi utiliser cet outil ?`,
+        content: `<p>Les logiciels de comptabilité sont coûteux et les documents manuels sont sources d'erreurs. Notre outil combine le meilleur des deux mondos : <strong>Gratuit et Professionnel.</strong></p><ul><li><strong>Automatique et sans erreur :</strong> Plus besoin de calculatrice. Saisissez la quantité et le prix unitaire, et le système calcule automatiquement le total, TVA et remises incluses.</li><li><strong>Format PDF standard :</strong> N'envoyez plus de fichiers Word modifiables. Nous générons des PDF élégants et sécurisés qui conservent leur mise en page sur n'importe quel appareil.</li><li><strong>Devises internationales :</strong> Vous travaillez à l'étranger ? Basculez facilement entre l'Euro (EUR), le Dollar (USD) et d'autres devises selon les exigences de votre contrat.</li></ul>`
       },
       {
-        title: `Confidentialité et Image de marque`,
-        content: `<ul><li><strong>🔒 Confidentialité totale :</strong> Vos données restent dans votre navigateur. Nous ne stockons aucune donnée sensible sur nos serveurs.</li><li><strong>🏢 Logo d'entreprise :</strong> Intégrez votre logo pour renforcer votre crédibilité.</li><li><strong>✨ Sans filigrane :</strong> Le PDF est vierge de toute publicité. Cette facture vous appartient entièrement.</li></ul>`
+        title: `Fonctionnalités Premium : Confidentialité et Branding`,
+        content: `<p>Nous avons conçu cet outil avec des fonctionnalités généralement réservées aux applications payantes :</p><ul><li><strong>🔒 Confidentialité totale (Côté client) :</strong> C’est notre priorité. Vos données commerciales sensibles sont traitées exclusivement dans votre navigateur. Nous <strong>NE stockons NI ne consultons</strong> vos informations clients ou financières.</li><li><strong>🏢 Branding personnalisé :</strong> Intégrez le logo de votre entreprise pour renforcer votre crédibilité et projeter l'image d'une structure établie.</li><li><strong>✨ Sans filigrane :</strong> Le PDF téléchargé est propre. Aucune mention "Créé par VersoKit" n'apparaît : la facture est entièrement la vôtre.</li><li><strong>📝 Notes et conditions :</strong> Utilisez les champs dédiés pour vos coordonnées bancaires ou vos conditions de garantie spécifiques.</li></ul>`
       },
       {
-        title: `Créer une facture en 4 étapes`,
-        content: `<ol><li><strong>Informations :</strong> Remplissez les champs émetteur et client. Ajoutez votre logo.</li><li><strong>Saisie :</strong> Indiquez les articles, quantités et prix.</li><li><strong>Taxes :</strong> Ajoutez la TVA ou une réduction en un clic.</li><li><strong>Télécharger :</strong> Vérifiez et obtenez votre facture PDF.</li></ol>`
+        title: `À qui s'adresse cet outil ?`,
+        content: `<ul><li><strong>Indépendants (Freelancers) :</strong> Graphistes, rédacteurs et développeurs ayant besoin de facturer rapidement des acomptes ou des soldes.</li><li><strong>PME et Boutiques en ligne :</strong> Traiteurs, boutiques de mode et services de proximité cherchant une comptabilité organisée.</li><li><strong>Consultants et Professionnels :</strong> Photographes, techniciens, services juridiques et experts métier.</li></ul>`
+      },
+      {
+        title: `Comment créer votre facture en 4 étapes`,
+        content: `<p>Aucune inscription requise. Vous pouvez commencer à facturer immédiatement :</p><ol><li><strong>Identité :</strong> Remplissez les champs "De" (vos infos) et "À" (infos client) et ajoutez votre logo.</li><li><strong>Articles ou Services :</strong> Saisissez le nom du service, la description, la quantité et le prix.</li><li><strong>Taxes et Remises :</strong> Ajoutez les taxes applicables ou des réductions ; le système s'occupe des calculs.</li><li><strong>Télécharger le PDF :</strong> Vérifiez la date d'échéance et cliquez sur "Télécharger la facture". C'est aussi simple que cela !</li></ol>`
+      },
+      {
+        title: `Améliorez votre image de marque dès maintenant`,
+        content: `<p>Envoyez des factures qui impressionnent vos clients et accélèrent vos paiements. Sans frais, sans installation et avec une confidentialité absolue. Créez votre première facture professionnelle ci-dessous !</p>`
       }
     ]
   },
@@ -920,62 +1309,86 @@ const INVOICE_CONTENT: { [lang: string]: ToolArticle } = {
     title: `Generatore di fatture gratuito: crea fatture PDF professionali in 1 minuto`,
     sections: [
       {
-        title: `Basta fatture disordinate`,
-        content: `<p>Un formato di fattura disordinato su Excel può far sembrare la tua attività poco professionale. Abbandona i vecchi metodi e usa il <strong>Generatore di fatture VersoKit</strong> per creare PDF ordinati e pronti per l'invio.</p>`
+        title: `Migliora l'immagine della tua attività con una fatturazione professionale`,
+        content: `<p>Invii ancora fatture ai clienti solo tramite chat WhatsApp o usi file Excel che si scoordinano quando vengono aperti su uno smartphone? Fai attenzione: una gestione disordinata può far sembrare la tua attività poco professionale, portando i clienti a esitare o a ritardare i pagamenti.</p><p>Abbandona i vecchi metodi. Usa il <strong>Generatore di fatture gratuito di VersoKit</strong>. Questo strumento è la soluzione immediata per liberi professionisti e PMI per creare fatture ordinate, strutturate e pronte per l'invio in formato PDF standard di settore.</p>`
       },
       {
-        title: `Funzionalità Principali`,
-        content: `<ul><li><strong>A prova di errore:</strong> Il sistema calcola automaticamente Totale, IVA e Sconti. Non serve la calcolatrice.</li><li><strong>PDF Standard:</strong> Crea file PDF eleganti e sicuri, perfetti sia su laptop che su smartphone.</li></ul>`
+        title: `Perché dovresti usare questo strumento?`,
+        content: `<p>I software di contabilità sono costosi e i documenti manuali sono soggetti a errori. Il nostro strumento combina il meglio dei due mondi: <strong>Gratuito ma Professionale.</strong></p><ul><li><strong>Automatico e a prova di errore:</strong> Dimentica la calcolatrice. Inserisci Quantità e Prezzo Unitario e il sistema calcolerà automaticamente il Totale, includendo IVA o Sconti con precisione assoluta.</li><li><strong>Formato PDF standard:</strong> Non inviare file Word modificabili. Produciamo PDF eleganti e sicuri che mantengono un layout impeccabile su qualsiasi dispositivo, computer o smartphone.</li><li><strong>Supporto valute globali:</strong> Hai clienti all'estero? Cambia facilmente tra Euro (EUR), Dollari (USD) e altre valute in base ai requisiti del tuo contratto.</li></ul>`
       },
       {
-        title: `Privacy e Branding`,
-        content: `<ul><li><strong>🔒 Privacy al 100%:</strong> I dati vengono elaborati esclusivamente nel tuo browser. Non salviamo i tuoi dati sensibili.</li><li><strong>🏢 Logo Aziendale:</strong> Carica il tuo logo nell'intestazione per aumentare la credibilità.</li><li><strong>✨ Nessuna filigrana:</strong> Il PDF è pulito e professionale, senza scritte pubblicitarie.</li></ul>`
+        title: `Funzionalità Premium: Privacy e Branding`,
+        content: `<p>Abbiamo progettato questo strumento con funzionalità solitamente riservate alle applicazioni a pagamento:</p><ul><li><strong>🔒 Privacy al 100% (Locale):</strong> Questa è la nostra caratteristica più importante. I tuoi dati aziendali sensibili vengono elaborati esclusivamente nel tuo browser. <strong>NON</strong> salviamo né visualizziamo i dettagli dei tuoi clienti o i tuoi importi.</li><li><strong>🏢 Branding personalizzato:</strong> Carica il logo della tua azienda per aumentare la credibilità e proiettare l'immagine di un'impresa consolidata.</li><li><strong>✨ Nessuna filigrana:</strong> Il PDF scaricato è pulito. Non ci sono scritte "Creato da VersoKit"; la fattura appartiene interamente a te.</li><li><strong>📝 Note e Termini:</strong> Campi dedicati per istruzioni di pagamento (coordinate bancarie) o termini di garanzia specifici.</li></ul>`
       },
       {
-        title: `Come creare una fattura`,
-        content: `<ol><li><strong>Identità:</strong> Compila i campi "Da" e "A". Carica il logo.</li><li><strong>Beni/Servizi:</strong> Inserisci nome, quantità e prezzo unitario.</li><li><strong>Tasse:</strong> Aggiungi IVA o sconti con un clic.</li><li><strong>Scarica:</strong> Controlla i dati e scarica il tuo PDF.</li></ol>`
+        title: `A chi è rivolto questo strumento?`,
+        content: `<ul><li><strong>Freelance:</strong> Grafici, copywriter e programmatori che necessitano di fatture rapide per acconti o saldi.</li><li><strong>PMI e Negozi Online:</strong> Servizi di catering, boutique e attività locali che cercano una contabilità più organizzata.</li><li><strong>Consulenti e Professionisti:</strong> Fotografi, tecnici, studi legali e consulenti aziendali.</li></ul>`
+      },
+      {
+        title: `Come creare la tua fattura in 4 passaggi`,
+        content: `<p>Nessuna registrazione richiesta. Puoi iniziare a fatturare immediatamente:</p><ol><li><strong>Identità:</strong> Compila i campi "Da" (i tuoi dati) e "A" (dati del cliente) e carica il tuo logo.</li><li><strong>Prodotti o Servizi:</strong> Aggiungi il nome del servizio, la descrizione, la quantità e il prezzo.</li><li><strong>IVA e Sconti:</strong> Inserisci l'aliquota IVA o eventuali sconti; il sistema si occuperà dei calcoli per te.</li><li><strong>Scarica PDF:</strong> Controlla la data di scadenza e i dati, quindi clicca su "Scarica fattura". È semplicissimo!</li></ol>`
+      },
+      {
+        title: `Migliora subito l'immagine della tua attività`,
+        content: `<p>Invia fatture che colpiscano i tuoi clienti e accelerino i tuoi processi di pagamento. Senza costi, senza installazione e con privacy assoluta. Crea la tua prima fattura professionale qui sotto!</p>`
       }
     ]
   },
   pt: {
-    title: `Gerador de Faturas Gratuito: Crie Faturas em PDF Profissionais`,
+    title: `Gerador de Faturas Gratuito: Crie Faturas em PDF Profissionais em 1 Minuto`,
     sections: [
       {
-        title: `Deixe os métodos antigos para trás`,
-        content: `<p>Faturas desorganizadas no WhatsApp ou Excel dão um aspeto amador ao seu negócio. Utilize o <strong>Gerador de Faturas do VersoKit</strong> para criar documentos PDF organizados e estruturados instantaneamente.</p>`
+        title: `Melhore a Imagem do seu Negócio com Faturação Profissional`,
+        content: `<p>Ainda envia faturas aos clientes apenas pelo WhatsApp ou utiliza ficheiros Excel que ficam desorganizados ao serem abertos no telemóvel? Cuidado: um formato desorganizado pode transmitir uma imagem amadora do seu negócio, levando os clientes a hesitar ou a atrasar o pagamento.</p><p>Deixe os métodos antigos para trás. Utilize o <strong>Gerador de Faturas Gratuito do VersoKit</strong>. Esta ferramenta é uma solução instantânea para freelancers e PMEs criarem faturas organizadas, estruturadas e prontas para envio no formato PDF padrão do setor.</p>`
       },
       {
-        title: `Vantagens`,
-        content: `<ul><li><strong>Automático:</strong> Basta introduzir a quantidade e o preço. O sistema calcula o total, IVA e descontos com 100% de precisão.</li><li><strong>PDF Profissional:</strong> Gere ficheiros seguros e elegantes que funcionam em qualquer dispositivo.</li></ul>`
+        title: `Por que razão deve utilizar esta ferramenta?`,
+        content: `<p>Softwares de contabilidade são caros e documentos manuais são propensos a erros. A nossa ferramenta combina o melhor dos dois mundos: <strong>Gratuita, mas Profissional.</strong></p><ul><li><strong>Automático e à Prova de Erros:</strong> Esqueça a calculadora. Introduza a quantidade e o preço unitário, e o sistema calcula automaticamente o total, incluindo IVA ou descontos com precisão de 100%.</li><li><strong>Formato PDF Padrão do Setor:</strong> Não envie ficheiros Word editáveis. Geramos PDFs elegantes e seguros que mantêm o layout impecável em qualquer dispositivo, seja computador ou smartphone.</li><li><strong>Suporte a Moedas Internacionais:</strong> Tem clientes no estrangeiro? Altere facilmente entre Euros (EUR), Dólares (USD) e outras moedas de acordo com os requisitos do seu contrato.</li></ul>`
       },
       {
-        title: `Privacidade e Marca`,
-        content: `<ul><li><strong>🔒 Privacidade Total:</strong> Os dados são processados apenas no seu browser. Não armazenamos os seus segredos comerciais.</li><li><strong>🏢 Logótipo:</strong> Carregue a imagem da sua marca para aumentar a credibilidade.</li><li><strong>✨ Sem marca de água:</strong> O PDF é limpo, sem publicidade intrusiva.</li></ul>`
+        title: `Funcionalidades Premium: Privacidade e Marca`,
+        content: `<p>Desenvolvemos esta ferramenta com funcionalidades normalmente apenas disponíveis em aplicações pagas:</p><ul><li><strong>🔒 Privacidade Total (Lado do Cliente):</strong> Esta é a nossa funcionalidade mais importante. Os seus dados sensíveis são processados exclusivamente no seu browser. <strong>NÃO</strong> armazenamos nem vemos os detalhes dos seus clientes ou valores.</li><li><strong>🏢 Branding Personalizado:</strong> Carregue o logótipo da sua empresa para aumentar a credibilidade e transmitir a imagem de uma empresa estabelecida.</li><li><strong>✨ Sem Marca de Água:</strong> O PDF descarregado é limpo. Não existem marcas de "Criado por VersoKit"; a fatura é inteiramente sua.</li><li><strong>📝 Notas e Termos:</strong> Campos dedicados para dados de pagamento (IBAN/SWIFT) ou termos de garantia específicos.</li></ul>`
       },
       {
-        title: `Como criar`,
-        content: `<ol><li><strong>Dados:</strong> Preencha as informações da empresa e do cliente.</li><li><strong>Produtos:</strong> Insira os itens, quantidades e preços.</li><li><strong>Impostos:</strong> Adicione IVA ou descontos facilmente.</li><li><strong>Descarregar:</strong> Obtenha a sua fatura em PDF pronta a enviar.</li></ol>`
+        title: `Para quem é indicada esta ferramenta?`,
+        content: `<ul><li><strong>Freelancers:</strong> Designers, redatores e programadores que necessitam de faturas rápidas para pagamentos iniciais ou finais.</li><li><strong>PMEs e Lojas Online:</strong> Fornecedores de catering, lojas de retalho e serviços locais que pretendem uma contabilidade organizada.</li><li><strong>Consultores e Profissionais:</strong> Advogados, consultores de gestão, fotógrafos e técnicos especializados.</li></ul>`
+      },
+      {
+        title: `Como criar a sua fatura em 4 passos`,
+        content: `<p>Sem necessidade de registo ou login. Pode começar a faturar imediatamente:</p><ol><li><strong>Identidade:</strong> Preencha os campos "De" (os seus dados) e "Para" (dados do cliente) e adicione o seu logótipo.</li><li><strong>Produtos ou Serviços:</strong> Introduza o nome do item, descrição, quantidade e preço unitário.</li><li><strong>Impostos e Descontos:</strong> Adicione o IVA aplicável ou descontos promocionais; o sistema faz as contas por si.</li><li><strong>Descarregue o PDF:</strong> Verifique a data de vencimento e clique em "Descarregar Fatura". É simples assim!</li></ol>`
+      },
+      {
+        title: `Melhore a imagem da sua empresa agora mesmo`,
+        content: `<p>Envie faturas que impressionem os seus clientes e agilizem os seus recebimentos. Sem taxas, sem instalação e com privacidade garantida. Crie a sua primeira fatura profissional abaixo!</p>`
       }
     ]
   },
   de: {
-    title: `Kostenloser Rechnungsgenerator: Professionelle PDF-Rechnungen`,
+    title: `Kostenloser Rechnungsgenerator: Professionelle PDF-Rechnungen in nur 1 Minute erstellen`,
     sections: [
       {
-        title: `Verabschieden Sie sich von Excel-Chaos`,
-        content: `<p>Unübersichtliche Rechnungen lassen Ihr Unternehmen unprofessionell wirken und können Zahlungen verzögern. Nutzen Sie den <strong>VersoKit Rechnungsgenerator</strong> für strukturierte, versandfertige PDF-Rechnungen.</p>`
+        title: `Steigern Sie Ihr Firmenimage durch professionelle Fakturierung`,
+        content: `<p>Senden Sie Rechnungen immer noch per WhatsApp an Ihre Kunden oder verwenden Sie Excel-Dateien, die auf Smartphones unübersichtlich aussehen? Vorsicht: Unprofessionelle Rechnungen können Ihr Image schädigen und dazu führen, dass Kunden Zahlungen hinauszögern.</p><p>Verabschieden Sie sich von alten Methoden. Nutzen Sie den <strong>kostenlosen Rechnungsgenerator von VersoKit</strong>. Dieses Tool ist die ideale Lösung für Freelancer und KMU, um strukturierte und versandfertige Rechnungen im branchenüblichen PDF-Format zu erstellen.</p>`
       },
       {
-        title: `Warum dieses Tool?`,
-        content: `<ul><li><strong>Automatisch & Fehlerfrei:</strong> Keine Rechenfehler mehr. Das System berechnet Summen, MwSt. und Rabatte automatisch.</li><li><strong>Branchenübliches PDF:</strong> Erstellen Sie elegante, sichere Dokumente, die auf jedem Gerät gut aussehen.</li></ul>`
+        title: `Warum sollten Sie dieses Tool nutzen?`,
+        content: `<p>Teure Buchhaltungssoftware ist oft unnötig komplex, während manuelle Dokumente fehleranfällig sind. Unser Tool vereint das Beste aus beiden Welten: <strong>Kostenlos und professionell.</strong></p><ul><li><strong>Automatisch & fehlerfrei:</strong> Vergessen Sie den Taschenrechner. Geben Sie Menge und Einzelpreis ein – das System berechnet den Gesamtbetrag inklusive MwSt. und Rabatten mit 100 % Genauigkeit.</li><li><strong>Branchenübliches PDF-Format:</strong> Versenden Sie keine bearbeitbaren Word-Dateien. Wir erstellen sichere PDFs, die auf jedem Gerät – ob Laptop oder Smartphone – perfekt formatiert bleiben.</li><li><strong>Unterstützung internationaler Währungen:</strong> Arbeiten Sie mit globalen Kunden? Wechseln Sie flexibel zwischen Euro (EUR), Dollar (USD) und anderen Währungen je nach Vertrag.</li></ul>`
       },
       {
-        title: `Datenschutz & Funktionen`,
-        content: `<ul><li><strong>🔒 100% Datenschutz:</strong> Alle Daten werden nur in Ihrem Browser verarbeitet. Wir speichern keine sensiblen Geschäftsdaten.</li><li><strong>🏢 Firmenlogo:</strong> Laden Sie Ihr Logo hoch, um professionell zu wirken.</li><li><strong>✨ Kein Wasserzeichen:</strong> Die PDF-Datei ist sauber und gehört vollständig Ihnen.</li></ul>`
+        title: `Premium-Funktionen: Datenschutz & Branding`,
+        content: `<p>Wir haben dieses Tool mit Funktionen ausgestattet, die normalerweise nur in bezahlten Anwendungen zu finden sind:</p><ul><li><strong>🔒 100 % Datenschutz (Clientseitig):</strong> Dies ist unsere wichtigste Funktion. Ihre sensiblen Geschäftsdaten werden ausschließlich in Ihrem Browser verarbeitet. Wir <strong>speichern oder sehen</strong> Ihre Kundendaten oder Beträge niemals.</li><li><strong>🏢 Individuelles Branding:</strong> Laden Sie Ihr Firmenlogo hoch, um sofort seriös und wie ein etabliertes Unternehmen zu wirken.</li><li><strong>✨ Kein Wasserzeichen:</strong> Die heruntergeladene PDF ist sauber. Keine „Erstellt von VersoKit“-Markierungen – die Rechnung gehört allein Ihrem Unternehmen.</li><li><strong>📝 Hinweise & Bedingungen:</strong> Nutzen Sie dedizierte Felder für Zahlungsinstruktionen (Bankdaten) oder spezifische Garantiebedingungen.</li></ul>`
       },
       {
-        title: `Anleitung in 4 Schritten`,
-        content: `<ol><li><strong>Daten eingeben:</strong> Füllen Sie Sender- und Empfängerinfos aus. Logo hochladen.</li><li><strong>Positionen:</strong> Artikel, menge und Einzelpreis eintragen.</li><li><strong>Steuer/Rabatt:</strong> MwSt. oder Rabatte hinzufügen.</li><li><strong>Herunterladen:</strong> PDF generieren und speichern.</li></ol>`
+        title: `Für wen ist dieses Tool geeignet?`,
+        content: `<ul><li><strong>Freelancer:</strong> Grafikdesigner, Texter und Programmierer, die schnell professionelle Belege für Anzahlungen oder Schlussrechnungen benötigen.</li><li><strong>KMU & Online-Shops:</strong> Catering-Services, Boutiquen und lokale Dienstleister, die eine organisierte Buchhaltung schätzen.</li><li><strong>Berater & Profis:</strong> Fotografen, Techniker, Rechtsberater und Unternehmensberater.</li></ul>`
+      },
+      {
+        title: `In 4 Schritten zur fertigen Rechnung`,
+        content: `<p>Keine Registrierung oder Login erforderlich. Sie können sofort loslegen:</p><ol><li><strong>Identität angeben:</strong> Füllen Sie die Felder „Von“ (Ihre Info) und „An“ (Kundeninfo) aus und laden Sie Ihr Logo hoch.</li><li><strong>Posten eingeben:</strong> Geben Sie Bezeichnung, Beschreibung, Menge und Einzelpreis Ihrer Dienstleistung ein.</li><li><strong>Steuer & Rabatt:</strong> Fügen Sie MwSt.-Sätze oder Rabatte hinzu – das System erledigt die Mathematik für Sie.</li><li><strong>PDF herunterladen:</strong> Überprüfen Sie das Fälligkeitsdatum und klicken Sie auf „Rechnung herunterladen“. So einfach ist es!</li></ol>`
+      },
+      {
+        title: `Verbessern Sie jetzt Ihr Firmenimage`,
+        content: `<p>Versenden Sie Rechnungen, die Ihre Kunden beeindrucken und den Zahlungsprozess beschleunigen. Keine Gebühren, keine Installation und garantierte Privatsphäre. Erstellen Sie unten Ihre erste professionelle Rechnung!</p>`
       }
     ]
   }
