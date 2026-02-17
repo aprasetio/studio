@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { 
   Users, 
   Clock, 
@@ -9,12 +9,17 @@ import {
   UserPlus, 
   Trophy,
   Activity,
-  AlertCircle,
   ArrowLeft,
   CalendarDays,
   User,
   RefreshCw,
-  Edit2
+  Edit2,
+  Trash2,
+  ArrowLeftRight,
+  Check,
+  Medal,
+  AlertCircle,
+  X
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -27,12 +32,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Badge } from '@/components/ui/badge';
 import TrustBadges from '@/components/ui/TrustBadges';
 import { ArticleSection } from '@/components/ArticleSection';
 import { SeoContent } from '@/components/SeoContent';
 import { SmartAd } from '@/components/smart-ad';
 import { cn } from '@/lib/utils';
+import { toast } from '@/hooks/use-toast';
 
 // --- INTERFACES ---
 type SkillLevel = 'Newbie' | 'Beginner' | 'Intermediate' | 'Advance' | 'Pro';
@@ -83,6 +94,9 @@ export default function TennisGeneratorRefactored() {
   });
   const [players, setPlayers] = useState<Player[]>([]);
   const [schedule, setSchedule] = useState<Match[]>([]);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => { setMounted(true); }, []);
 
   // --- ALGORITHM LOGIC ---
 
@@ -100,8 +114,7 @@ export default function TennisGeneratorRefactored() {
       for (let c = 0; c < courtsPerRound; c++) {
         if (availableInRound.length < 4) break;
 
-        // 1. Weighted Priority: Lowest play count first
-        // Play count = matches already in newMatches
+        // Weighted Priority: Lowest play count first
         const getPlayCount = (pid: string) => 
           newMatches.filter(m => [...m.team1.players, ...m.team2.players].includes(pid)).length;
 
@@ -110,11 +123,11 @@ export default function TennisGeneratorRefactored() {
         // Pick top 4 priority players
         const selected = availableInRound.splice(0, 4);
 
-        // 2. Skill Balancing: 1+4 vs 2+3
+        // Skill Balancing: 1+4 vs 2+3
         selected.sort((a, b) => b.level - a.level);
 
         newMatches.push({
-          id: Math.random().toString(36).substr(2, 9),
+          id: `m-${r}-${c}-${Math.random().toString(36).substr(2, 5)}`,
           type: 'Auto',
           timeStart,
           timeEnd,
@@ -136,7 +149,7 @@ export default function TennisGeneratorRefactored() {
     const lastTimeEnd = schedule[matchIndex].timeEnd;
 
     // Filter out all future 'Auto' matches
-    const manualFutures = schedule.slice(matchIndex + 1).filter(m => m.type === 'Manual');
+    const manualFutures = schedule.slice(matchIndex + 1).filter(m => m.type === 'Manual' || m.status === 'Completed');
     
     // Regenerate Auto matches for remaining time slots
     const totalMinutes = config.durationMinutes;
@@ -163,7 +176,7 @@ export default function TennisGeneratorRefactored() {
         selected.sort((a, b) => b.level - a.level);
 
         regenerated.push({
-          id: Math.random().toString(36).substr(2, 9),
+          id: `m-reg-${r}-${c}-${Math.random().toString(36).substr(2, 5)}`,
           type: 'Auto',
           timeStart,
           timeEnd,
@@ -175,6 +188,7 @@ export default function TennisGeneratorRefactored() {
     }
 
     setSchedule([...keptMatches, ...manualFutures, ...regenerated].sort((a, b) => a.timeStart - b.timeStart));
+    toast({ title: "Future matches rebalanced" });
   };
 
   // --- HANDLERS ---
@@ -202,7 +216,7 @@ export default function TennisGeneratorRefactored() {
 
   const startTournament = () => {
     if (players.some(p => !p.name.trim())) {
-      alert("Please fill in all player names.");
+      toast({ title: "Validation Error", description: "Please fill in all player names.", variant: "destructive" });
       return;
     }
     const newSchedule = generateSchedule(players, config);
@@ -210,11 +224,75 @@ export default function TennisGeneratorRefactored() {
     setStep(3);
   };
 
+  const updateMatchScore = (matchId: string, team1Score: number, team2Score: number) => {
+    setSchedule(prev => prev.map(m => 
+      m.id === matchId 
+        ? { 
+            ...m, 
+            team1: { ...m.team1, score: team1Score }, 
+            team2: { ...m.team2, score: team2Score },
+            status: 'Completed'
+          } 
+        : m
+    ));
+  };
+
+  const swapPlayer = (matchId: string, team: 1 | 2, playerIndex: number, newPlayerId: string) => {
+    setSchedule(prev => prev.map(m => {
+      if (m.id !== matchId) return m;
+      const newTeam = team === 1 ? { ...m.team1 } : { ...m.team2 };
+      newTeam.players[playerIndex] = newPlayerId;
+      return { 
+        ...m, 
+        [team === 1 ? 'team1' : 'team2']: newTeam,
+        type: 'Manual' // Flag as manual so rebalance doesn't overwrite
+      };
+    }));
+    rebalanceFutureMatches(matchId);
+  };
+
+  const deleteMatch = (matchId: string) => {
+    if (!confirm("Are you sure you want to delete this match?")) return;
+    setSchedule(prev => prev.filter(m => m.id !== matchId));
+  };
+
   const formatMinutes = (mins: number) => {
     const h = Math.floor(mins / 60);
     const m = mins % 60;
     return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
   };
+
+  // --- LEADERBOARD LOGIC ---
+  const leaderboardData = useMemo(() => {
+    const stats: Record<string, { wins: number; losses: number; points: number }> = {};
+    players.forEach(p => stats[p.id] = { wins: 0, losses: 0, points: 0 });
+
+    schedule.filter(m => m.status === 'Completed').forEach(m => {
+      const isTeam1Win = m.team1.score > m.team2.score;
+      const isDraw = m.team1.score === m.team2.score;
+
+      m.team1.players.forEach(pid => {
+        if (isTeam1Win) { stats[pid].wins++; stats[pid].points += 3; }
+        else if (!isDraw) { stats[pid].losses++; }
+        else { stats[pid].points += 1; }
+      });
+
+      m.team2.players.forEach(pid => {
+        if (!isTeam1Win && !isDraw) { stats[pid].wins++; stats[pid].points += 3; }
+        else if (isTeam1Win) { stats[pid].losses++; }
+        else { stats[pid].points += 1; }
+      });
+    });
+
+    return players
+      .map(p => ({
+        ...p,
+        ...stats[p.id]
+      }))
+      .sort((a, b) => b.points - a.points || b.wins - a.wins || b.level - a.level || a.name.localeCompare(b.name));
+  }, [players, schedule]);
+
+  if (!mounted) return null;
 
   return (
     <div className="flex flex-col items-center p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-8">
@@ -227,6 +305,7 @@ export default function TennisGeneratorRefactored() {
         <p className="text-muted-foreground font-medium uppercase tracking-widest text-[10px]">Professional Tournament Management</p>
       </div>
 
+      {/* Progress Wizard Header */}
       <div className="w-full max-w-2xl flex items-center justify-between mb-4 px-4">
         {[1, 2, 3].map((s) => (
           <div key={s} className="flex items-center gap-2 flex-1 last:flex-none">
@@ -352,6 +431,7 @@ export default function TennisGeneratorRefactored() {
 
       {step === 3 && (
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 animate-in fade-in zoom-in-95 duration-500">
+          {/* DASHBOARD LEFT: SCHEDULE */}
           <div className="lg:col-span-8 space-y-6">
             <div className="flex items-center justify-between bg-card p-6 rounded-[2rem] border-2 shadow-sm">
               <div className="flex items-center gap-3">
@@ -361,52 +441,53 @@ export default function TennisGeneratorRefactored() {
                   <p className="text-[10px] font-bold text-muted-foreground uppercase">{config.matchDuration} Min Rounds</p>
                 </div>
               </div>
-              <Button variant="outline" onClick={() => setStep(2)} className="font-black uppercase text-[10px] border-2">
-                <RefreshCw className="mr-2 h-4 w-4" /> Regenerate
+              <Button variant="outline" onClick={() => { if(confirm("Reset schedule?")) setStep(2); }} className="font-black uppercase text-[10px] border-2">
+                <RefreshCw className="mr-2 h-4 w-4" /> Reset
               </Button>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-12">
               {Array.from({ length: Math.floor(config.durationMinutes / config.matchDuration) }).map((_, rIdx) => {
                 const roundStart = rIdx * config.matchDuration;
                 const roundMatches = schedule.filter(m => m.timeStart === roundStart);
                 
+                // Identify Bench players for this slot
+                const playersInSlot = new Set(roundMatches.flatMap(m => [...m.team1.players, ...m.team2.players]));
+                const benchPlayers = players.filter(p => !playersInSlot.has(p.id));
+
                 return (
-                  <div key={rIdx} className="space-y-4">
+                  <div key={rIdx} className="space-y-6">
                     <div className="flex items-center gap-4">
-                      <Badge className="bg-primary text-white font-black px-4 py-1.5 rounded-full text-xs">
+                      <Badge className="bg-primary text-white font-black px-6 py-2 rounded-full text-sm shadow-md">
                         {formatMinutes(roundStart)} - {formatMinutes(roundStart + config.matchDuration)}
                       </Badge>
                       <div className="h-px bg-border flex-1" />
+                      {benchPlayers.length > 0 && (
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] font-black uppercase opacity-40">Bench:</span>
+                          <div className="flex -space-x-2">
+                            {benchPlayers.map(p => (
+                              <div key={p.id} className="w-6 h-6 rounded-full bg-muted border-2 border-background flex items-center justify-center text-[8px] font-black uppercase" title={p.name}>
+                                {p.name.charAt(0)}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {roundMatches.map((match, mIdx) => (
-                        <Card key={match.id} className="overflow-hidden border-2 rounded-3xl shadow-md hover:shadow-xl transition-all">
-                          <div className="bg-muted/30 px-4 py-2 border-b flex justify-between items-center">
-                            <span className="text-[9px] font-black uppercase tracking-widest opacity-50">Court {mIdx + 1}</span>
-                            <Badge variant="outline" className="text-[8px] font-black uppercase">{match.type}</Badge>
-                          </div>
-                          <CardContent className="p-6">
-                            <div className="flex items-center justify-between gap-4">
-                              <div className="flex-1 space-y-1 text-center">
-                                {match.team1.players.map(pid => (
-                                  <p key={pid} className="font-black uppercase text-xs truncate">
-                                    {players.find(p => p.id === pid)?.name || '???'}
-                                  </p>
-                                ))}
-                              </div>
-                              <div className="flex items-center gap-2 bg-muted/50 px-3 py-1 rounded-xl font-black text-xs opacity-30">VS</div>
-                              <div className="flex-1 space-y-1 text-center">
-                                {match.team2.players.map(pid => (
-                                  <p key={pid} className="font-black uppercase text-xs truncate">
-                                    {players.find(p => p.id === pid)?.name || '???'}
-                                  </p>
-                                ))}
-                              </div>
-                            </div>
-                          </CardContent>
-                        </Card>
+                        <MatchCard 
+                          key={match.id} 
+                          match={match} 
+                          courtNumber={mIdx + 1}
+                          players={players}
+                          benchPlayers={benchPlayers}
+                          onUpdateScore={updateMatchScore}
+                          onSwapPlayer={swapPlayer}
+                          onDelete={deleteMatch}
+                        />
                       ))}
                     </div>
                   </div>
@@ -415,35 +496,60 @@ export default function TennisGeneratorRefactored() {
             </div>
           </div>
 
+          {/* DASHBOARD RIGHT: LEADERBOARD */}
           <div className="lg:col-span-4 space-y-6">
-            <Card className="shadow-2xl border-2 rounded-[2.5rem] sticky top-24">
+            <Card className="shadow-2xl border-2 rounded-[2.5rem] sticky top-24 overflow-hidden">
               <CardHeader className="bg-primary p-6 text-white border-b">
                 <CardTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-2">
-                  <User className="h-5 w-5 text-accent" /> Player Stats
+                  <Medal className="h-5 w-5 text-accent" /> Standings
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-0">
-                <div className="divide-y max-h-[600px] overflow-y-auto custom-scrollbar">
-                  {players.sort((a, b) => b.level - a.level).map(p => {
-                    const playCount = schedule.filter(m => [...m.team1.players, ...m.team2.players].includes(p.id)).length;
-                    return (
-                      <div key={p.id} className="p-4 flex items-center justify-between hover:bg-muted/10 transition-colors">
-                        <div className="flex items-center gap-3">
-                          <div className={cn("w-2 h-8 rounded-full", SKILL_CONFIG[p.skill].color.split(' ')[0])} />
-                          <div>
-                            <p className="font-black uppercase text-xs tracking-tight">{p.name}</p>
-                            <p className="text-[9px] font-bold text-muted-foreground uppercase">{p.skill}</p>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-lg font-black text-primary tabular-nums leading-none">{playCount}</p>
-                          <p className="text-[8px] font-black uppercase opacity-40">Matches</p>
-                        </div>
-                      </div>
-                    );
-                  })}
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left">
+                    <thead className="bg-muted/50 border-b">
+                      <tr className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">
+                        <th className="p-4 w-12 text-center">#</th>
+                        <th className="p-4">Player</th>
+                        <th className="p-4 text-center">W-L</th>
+                        <th className="p-4 text-center bg-primary/5 text-primary">PTS</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y">
+                      {leaderboardData.map((p, i) => (
+                        <tr key={p.id} className={cn("hover:bg-muted/5 transition-colors", i < 3 && "bg-accent/5")}>
+                          <td className="p-4 text-center font-black text-sm opacity-40">{i + 1}</td>
+                          <td className="p-4">
+                            <div className="flex flex-col">
+                              <span className="font-black uppercase text-xs truncate max-w-[120px]">{p.name}</span>
+                              <Badge variant="outline" className={cn("mt-1 text-[8px] h-4 w-fit px-1.5 font-bold uppercase", SKILL_CONFIG[p.skill].color)}>
+                                {p.skill}
+                              </Badge>
+                            </div>
+                          </td>
+                          <td className="p-4 text-center">
+                            <span className="text-[10px] font-black tabular-nums">{p.wins}-{p.losses}</span>
+                          </td>
+                          <td className="p-4 text-center font-black text-primary text-lg tabular-nums bg-primary/5">{p.points}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               </CardContent>
+            </Card>
+
+            <Card className="bg-muted/30 border-2 border-dashed p-6 rounded-3xl">
+               <div className="flex gap-3">
+                  <AlertCircle className="h-5 w-5 text-primary shrink-0" />
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-black uppercase tracking-widest">Scoring Rule</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Win: 3 Pts | Draw: 1 Pt | Loss: 0 Pts. <br/>
+                      Tie-breaker: Most wins, then higher skill.
+                    </p>
+                  </div>
+               </div>
             </Card>
           </div>
         </div>
@@ -453,5 +559,166 @@ export default function TennisGeneratorRefactored() {
       <SmartAd />
       <SeoContent toolId="tennis" />
     </div>
+  );
+}
+
+// --- SUB-COMPONENTS ---
+
+function MatchCard({ 
+  match, 
+  courtNumber, 
+  players, 
+  benchPlayers, 
+  onUpdateScore, 
+  onSwapPlayer,
+  onDelete 
+}: { 
+  match: Match; 
+  courtNumber: number; 
+  players: Player[]; 
+  benchPlayers: Player[];
+  onUpdateScore: (id: string, s1: number, s2: number) => void;
+  onSwapPlayer: (matchId: string, team: 1 | 2, idx: number, newPid: string) => void;
+  onDelete: (id: string) => void;
+}) {
+  const [s1, setS1] = useState(match.team1.score);
+  const [s2, setS2] = useState(match.team2.score);
+
+  const getPlayer = (id: string) => players.find(p => p.id === id);
+
+  return (
+    <Card className={cn(
+      "overflow-hidden border-2 rounded-[2rem] shadow-lg transition-all",
+      match.status === 'Completed' ? "border-green-500/20 opacity-90" : "border-primary/5"
+    )}>
+      <div className="bg-muted/30 px-6 py-2 border-b flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <span className="text-[10px] font-black uppercase tracking-widest opacity-50">Court {courtNumber}</span>
+          <Badge variant="outline" className="text-[8px] font-black h-4 px-1.5 uppercase opacity-40">{match.type}</Badge>
+        </div>
+        <div className="flex items-center gap-2">
+          {match.status === 'Completed' && <Check className="h-4 w-4 text-green-500" />}
+          <Button variant="ghost" size="icon" onClick={() => onDelete(match.id)} className="h-6 w-6 text-red-400 hover:text-red-600">
+            <Trash2 className="h-3 w-3" />
+          </Button>
+        </div>
+      </div>
+      
+      <CardContent className="p-8 space-y-8">
+        <div className="flex items-center gap-6">
+          {/* Team 1 */}
+          <div className="flex-1 space-y-3">
+            {match.team1.players.map((pid, idx) => {
+              const p = getPlayer(pid);
+              return (
+                <div key={pid} className="flex flex-col items-end group">
+                  <div className="flex items-center gap-2">
+                    <PlayerSwapPopover 
+                      currentPlayer={p!} 
+                      available={benchPlayers} 
+                      onSelect={(newId) => onSwapPlayer(match.id, 1, idx, newId)} 
+                    />
+                    <span className="font-black uppercase text-xs truncate max-w-[80px]">{p?.name || '???'}</span>
+                  </div>
+                  <Badge className={cn("text-[7px] h-3 px-1 font-bold uppercase", SKILL_CONFIG[p?.skill || 'Intermediate'].color)}>
+                    {p?.skill || 'N/A'}
+                  </Badge>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* VS & SCORE */}
+          <div className="flex flex-col items-center gap-3">
+            <div className="flex items-center gap-2">
+              <Input 
+                type="number" 
+                value={s1} 
+                onChange={(e) => {
+                  const val = parseInt(e.target.value) || 0;
+                  setS1(val);
+                  onUpdateScore(match.id, val, s2);
+                }}
+                className="w-12 h-12 text-center font-black text-xl border-2 rounded-xl bg-card"
+              />
+              <span className="font-black opacity-20 text-[10px] uppercase tracking-widest">vs</span>
+              <Input 
+                type="number" 
+                value={s2} 
+                onChange={(e) => {
+                  const val = parseInt(e.target.value) || 0;
+                  setS2(val);
+                  onUpdateScore(match.id, s1, val);
+                }}
+                className="w-12 h-12 text-center font-black text-xl border-2 rounded-xl bg-card"
+              />
+            </div>
+            {match.status === 'Scheduled' && (s1 > 0 || s2 > 0) && (
+              <Badge className="bg-orange-500 text-[8px] animate-pulse">In Progress</Badge>
+            )}
+          </div>
+
+          {/* Team 2 */}
+          <div className="flex-1 space-y-3">
+            {match.team2.players.map((pid, idx) => {
+              const p = getPlayer(pid);
+              return (
+                <div key={pid} className="flex flex-col items-start group">
+                  <div className="flex items-center gap-2">
+                    <span className="font-black uppercase text-xs truncate max-w-[80px]">{p?.name || '???'}</span>
+                    <PlayerSwapPopover 
+                      currentPlayer={p!} 
+                      available={benchPlayers} 
+                      onSelect={(newId) => onSwapPlayer(match.id, 2, idx, newId)} 
+                    />
+                  </div>
+                  <Badge className={cn("text-[7px] h-3 px-1 font-bold uppercase", SKILL_CONFIG[p?.skill || 'Intermediate'].color)}>
+                    {p?.skill || 'N/A'}
+                  </Badge>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function PlayerSwapPopover({ currentPlayer, available, onSelect }: { currentPlayer: Player; available: Player[]; onSelect: (id: string) => void }) {
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <button className="p-1 hover:bg-muted rounded-full transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+          <ArrowLeftRight className="h-3 w-3 text-primary" />
+        </button>
+      </PopoverTrigger>
+      <PopoverContent className="w-56 p-2 rounded-2xl shadow-2xl border-2">
+        <div className="space-y-2">
+          <p className="text-[9px] font-black uppercase tracking-widest text-muted-foreground p-2">Swap "{currentPlayer.name}" with:</p>
+          <div className="max-h-48 overflow-y-auto space-y-1">
+            {available.length === 0 ? (
+              <p className="text-[10px] font-bold text-center py-4 opacity-40">No bench players available</p>
+            ) : (
+              available.map(p => (
+                <button
+                  key={p.id}
+                  onClick={() => onSelect(p.id)}
+                  className="w-full flex items-center justify-between p-2 hover:bg-primary/5 rounded-xl transition-colors text-left group/btn"
+                >
+                  <div className="flex flex-col">
+                    <span className="text-xs font-black uppercase">{p.name}</span>
+                    <span className="text-[8px] font-bold text-muted-foreground uppercase">{p.skill}</span>
+                  </div>
+                  <Badge className={cn("text-[8px] group-hover/btn:bg-primary group-hover/btn:text-white transition-colors", SKILL_CONFIG[p.skill].color.split(' ')[0])}>
+                    LVL {p.level}
+                  </Badge>
+                </button>
+              ))
+            )}
+          </div>
+        </div>
+      </PopoverContent>
+    </Popover>
   );
 }
