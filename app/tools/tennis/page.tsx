@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { 
   Users, 
   Clock, 
@@ -11,20 +11,21 @@ import {
   Activity,
   ArrowLeft,
   CalendarDays,
-  User,
   RefreshCw,
-  Edit2,
   Trash2,
   ArrowLeftRight,
   Check,
   Medal,
   AlertCircle,
-  X
+  Download,
+  Upload,
+  FileJson,
+  FileSpreadsheet
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   Select,
   SelectContent,
@@ -44,6 +45,7 @@ import { SeoContent } from '@/components/SeoContent';
 import { SmartAd } from '@/components/smart-ad';
 import { cn } from '@/lib/utils';
 import { toast } from '@/hooks/use-toast';
+import * as XLSX from 'xlsx';
 
 // --- INTERFACES ---
 type SkillLevel = 'Newbie' | 'Beginner' | 'Intermediate' | 'Advance' | 'Pro';
@@ -95,6 +97,9 @@ export default function TennisGeneratorRefactored() {
   const [players, setPlayers] = useState<Player[]>([]);
   const [schedule, setSchedule] = useState<Match[]>([]);
   const [mounted, setMounted] = useState(false);
+  
+  const jsonInputRef = useRef<HTMLInputElement>(null);
+  const excelInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => { setMounted(true); }, []);
 
@@ -114,16 +119,11 @@ export default function TennisGeneratorRefactored() {
       for (let c = 0; c < courtsPerRound; c++) {
         if (availableInRound.length < 4) break;
 
-        // Weighted Priority: Lowest play count first
         const getPlayCount = (pid: string) => 
           newMatches.filter(m => [...m.team1.players, ...m.team2.players].includes(pid)).length;
 
         availableInRound.sort((a, b) => getPlayCount(a.id) - getPlayCount(b.id));
-
-        // Pick top 4 priority players
         const selected = availableInRound.splice(0, 4);
-
-        // Skill Balancing: 1+4 vs 2+3
         selected.sort((a, b) => b.level - a.level);
 
         newMatches.push({
@@ -144,29 +144,22 @@ export default function TennisGeneratorRefactored() {
     const matchIndex = schedule.findIndex(m => m.id === fromMatchId);
     if (matchIndex === -1) return;
 
-    // Keep all matches up to the edited one
     const keptMatches = schedule.slice(0, matchIndex + 1);
     const lastTimeEnd = schedule[matchIndex].timeEnd;
-
-    // Filter out all future 'Auto' matches
     const manualFutures = schedule.slice(matchIndex + 1).filter(m => m.type === 'Manual' || m.status === 'Completed');
     
-    // Regenerate Auto matches for remaining time slots
-    const totalMinutes = config.durationMinutes;
-    const remainingMinutes = totalMinutes - lastTimeEnd;
+    const remainingMinutes = config.durationMinutes - lastTimeEnd;
     const roundsToGenerate = Math.floor(remainingMinutes / config.matchDuration);
     
     const regenerated: Match[] = [];
     for (let r = 0; r < roundsToGenerate; r++) {
       const timeStart = lastTimeEnd + (r * config.matchDuration);
       const timeEnd = timeStart + config.matchDuration;
-      
       let available = [...players];
       const courts = Math.floor(players.length / 4);
 
       for (let c = 0; c < courts; c++) {
         if (available.length < 4) break;
-
         const getPlayCount = (pid: string) => 
           [...keptMatches, ...manualFutures, ...regenerated]
             .filter(m => [...m.team1.players, ...m.team2.players].includes(pid)).length;
@@ -189,6 +182,100 @@ export default function TennisGeneratorRefactored() {
 
     setSchedule([...keptMatches, ...manualFutures, ...regenerated].sort((a, b) => a.timeStart - b.timeStart));
     toast({ title: "Future matches rebalanced" });
+  };
+
+  // --- DATA PERSISTENCE ---
+
+  const exportToJson = () => {
+    const data = { config, players, schedule };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `tennis-backup-${new Date().toISOString().split('T')[0]}.json`;
+    link.click();
+    toast({ title: "Backup Exported (JSON)" });
+  };
+
+  const importFromJson = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const data = JSON.parse(event.target?.result as string);
+        if (data.config && data.players && data.schedule) {
+          setConfig(data.config);
+          setPlayers(data.players);
+          setSchedule(data.schedule);
+          setStep(3);
+          toast({ title: "Tournament State Restored" });
+        }
+      } catch (err) {
+        toast({ title: "Invalid Backup File", variant: "destructive" });
+      }
+    };
+    reader.readAsText(file);
+  };
+
+  const exportToExcel = () => {
+    const wb = XLSX.utils.book_new();
+    
+    const leaderboardWS = XLSX.utils.json_to_sheet(leaderboardData.map((p, i) => ({
+      Rank: i + 1,
+      Name: p.name,
+      Skill: p.skill,
+      Level: p.level,
+      Wins: p.wins,
+      Losses: p.losses,
+      Points: p.points
+    })));
+    XLSX.utils.book_append_sheet(wb, leaderboardWS, "Leaderboard");
+    
+    const matchesWS = XLSX.utils.json_to_sheet(schedule.map(m => ({
+      Time: `${formatMinutes(m.timeStart)} - ${formatMinutes(m.timeEnd)}`,
+      Team1: m.team1.players.map(pid => players.find(p => p.id === pid)?.name).join(' & '),
+      Score1: m.team1.score,
+      Score2: m.team2.score,
+      Team2: m.team2.players.map(pid => players.find(p => p.id === pid)?.name).join(' & '),
+      Status: m.status
+    })));
+    XLSX.utils.book_append_sheet(wb, matchesWS, "Matches");
+    
+    XLSX.writeFile(wb, `tennis-report-${new Date().toISOString().split('T')[0]}.xlsx`);
+    toast({ title: "Report Exported (Excel)" });
+  };
+
+  const importFromExcel = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const data = new Uint8Array(event.target?.result as ArrayBuffer);
+      const workbook = XLSX.read(data, { type: 'array' });
+      const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+      const rows = XLSX.utils.sheet_to_json(firstSheet, { header: 1 }) as any[][];
+      
+      const newPlayers: Player[] = rows.slice(1).map((row, i) => {
+        const name = String(row[0] || '').trim();
+        const skillRaw = String(row[1] || 'Intermediate').trim();
+        const skill = (SKILL_CONFIG[skillRaw as SkillLevel] ? skillRaw : 'Intermediate') as SkillLevel;
+        return {
+          id: `p-imp-${i}-${Math.random().toString(36).substr(2, 5)}`,
+          name: name.toUpperCase(),
+          skill,
+          level: SKILL_CONFIG[skill].level
+        };
+      }).filter(p => p.name);
+
+      if (newPlayers.length > 0) {
+        setPlayers(newPlayers);
+        setConfig(prev => ({ ...prev, numPlayers: newPlayers.length }));
+        setStep(2);
+        toast({ title: `Imported ${newPlayers.length} players from Excel` });
+      }
+    };
+    reader.readAsArrayBuffer(file);
   };
 
   // --- HANDLERS ---
@@ -245,7 +332,7 @@ export default function TennisGeneratorRefactored() {
       return { 
         ...m, 
         [team === 1 ? 'team1' : 'team2']: newTeam,
-        type: 'Manual' // Flag as manual so rebalance doesn't overwrite
+        type: 'Manual' 
       };
     }));
     rebalanceFutureMatches(matchId);
@@ -262,7 +349,6 @@ export default function TennisGeneratorRefactored() {
     return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
   };
 
-  // --- LEADERBOARD LOGIC ---
   const leaderboardData = useMemo(() => {
     const stats: Record<string, { wins: number; losses: number; points: number }> = {};
     players.forEach(p => stats[p.id] = { wins: 0, losses: 0, points: 0 });
@@ -302,7 +388,28 @@ export default function TennisGeneratorRefactored() {
           Tennis Match Generator
         </h1>
         <TrustBadges />
-        <p className="text-muted-foreground font-medium uppercase tracking-widest text-[10px]">Professional Tournament Management</p>
+        
+        {/* DATA UTILITIES HEADER */}
+        <div className="flex flex-wrap items-center justify-center gap-2 pt-4">
+          <Button variant="outline" size="sm" onClick={() => jsonInputRef.current?.click()} className="text-[10px] font-black uppercase border-2">
+            <Upload className="h-3 w-3 mr-1" /> Import Backup (JSON)
+          </Button>
+          <Button variant="outline" size="sm" onClick={() => excelInputRef.current?.click()} className="text-[10px] font-black uppercase border-2">
+            <FileSpreadsheet className="h-3 w-3 mr-1" /> Import Players (Excel)
+          </Button>
+          {step === 3 && (
+            <>
+              <Button variant="outline" size="sm" onClick={exportToJson} className="text-[10px] font-black uppercase border-2">
+                <FileJson className="h-3 w-3 mr-1" /> Export Backup
+              </Button>
+              <Button variant="outline" size="sm" onClick={exportToExcel} className="text-[10px] font-black uppercase border-2 text-emerald-600">
+                <Download className="h-3 w-3 mr-1" /> Export Report (Excel)
+              </Button>
+            </>
+          )}
+          <input type="file" ref={jsonInputRef} onChange={importFromJson} accept=".json" className="hidden" />
+          <input type="file" ref={excelInputRef} onChange={importFromExcel} accept=".xlsx,.xls" className="hidden" />
+        </div>
       </div>
 
       {/* Progress Wizard Header */}
@@ -451,7 +558,6 @@ export default function TennisGeneratorRefactored() {
                 const roundStart = rIdx * config.matchDuration;
                 const roundMatches = schedule.filter(m => m.timeStart === roundStart);
                 
-                // Identify Bench players for this slot
                 const playersInSlot = new Set(roundMatches.flatMap(m => [...m.team1.players, ...m.team2.players]));
                 const benchPlayers = players.filter(p => !playersInSlot.has(p.id));
 
