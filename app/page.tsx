@@ -17,7 +17,8 @@ import {
   Scissors,
   ShieldCheck,
   WifiOff,
-  Heart
+  Heart,
+  Navigation
 } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -25,7 +26,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useLang } from '@/components/Providers';
 
-type Category = 'sports' | 'business' | 'finance' | 'productivity';
+type Category = 'sports' | 'business' | 'finance' | 'productivity' | 'religious';
 
 interface Tool {
   id: string;
@@ -38,13 +39,22 @@ interface Tool {
 }
 
 const TOOLS_DATA: Tool[] = [
+  // --- RELIGIOUS ---
+  {
+    id: "prayer-times",
+    icon: Navigation,
+    category: "religious",
+    href: "/tools/prayer-times",
+    isNew: true,
+    name: { en: "Prayer Times & Qibla", id: "Jadwal Sholat & Kiblat", de: "Gebetszeiten & Qibla", es: "Horarios de Oración", pt: "Horários de Oração", fr: "Heures de Prière", it: "Orari Preghiera" },
+    desc: { en: "Accurate local prayer times and real-time compass for Qibla direction.", id: "Jadwal sholat akurat dan kompas arah kiblat real-time.", de: "Genaue Gebetszeiten und Qibla-Kompass.", es: "Horarios de oración y brújula de Qibla en tiempo real.", pt: "Horários de oração e bússola Qibla em tempo real.", fr: "Heures de prière et boussole Qibla en temps réel.", it: "Orari di preghiera e bussola Qibla in tempo reale." }
+  },
   // --- SPORTS ---
   {
     id: "americano",
     icon: Trophy,
     category: "sports",
     href: "/tools/americano",
-    isNew: true,
     name: { en: "Americano Generator", id: "Generator Americano", de: "Americano Generator", es: "Generador Americano", pt: "Gerador Americano", fr: "Générateur Americano", it: "Generatore Americano" },
     desc: { en: "Organize Padel or Pickleball tournaments. Auto-pairing & scoring.", id: "Atur turnamen Padel atau Pickleball. Rotasi pasangan otomatis.", de: "Organisieren Sie Padel- oder Pickleball-Turniere. Automatische Paarung.", es: "Organiza torneos de Pádel o Pickleball. Emparejamiento automático.", pt: "Organize torneios de Padel ou Pickleball. Emparelhamento automático.", fr: "Organisez des tournois de Padel ou Pickleball. Appariement auto.", it: "Organizza tornei di Padel o Pickleball. Abbinamento automatico." }
   },
@@ -62,7 +72,7 @@ const TOOLS_DATA: Tool[] = [
     category: "sports",
     href: "/tools/futsal",
     name: { en: "Futsal Scoreboard", id: "Papan Skor Futsal", de: "Futsal-Anzeigetafel", es: "Marcador Futsal", pt: "Placar de Futsal", fr: "Score Futsal", it: "Tabellone Calcetto" },
-    desc: { en: "Digital scoreboard with timer and fouls.", id: "Papan skor digital dengan timer dan pelanggaran.", de: "Digitale Tafel mit Timer und Fouls.", es: "Marcador digital con temporizador y faltas.", pt: "Placar digital com cronômetro e faltas.", fr: "Tableau numérique avec minuterie et fautes.", it: "Tabellone digitale con timer e falli." }
+    desc: { en: "Digital scoreboard with timer and fouls.", id: "Papan skor digital dengan timer dan pelanggaran.", de: "Digitale Tafel mit Timer und Fouls.", es: "Marcador digital con temporizador y faltas.", pt: "Placar digital con cronômetro e faltas.", fr: "Tableau numérique avec minuterie et fautes.", it: "Tabellone digitale con timer e falli." }
   },
   {
     id: "scoreboard",
@@ -137,7 +147,7 @@ const TOOLS_DATA: Tool[] = [
     category: "productivity",
     href: "/tools/image-resizer",
     name: { en: "Image Resizer", id: "Ubah Ukuran Foto", de: "Bildgröße ändern", es: "Redimensionar", pt: "Redimensionar", fr: "Redimensionner", it: "Ridimensiona" },
-    desc: { en: "Resize dimensions (px) accurately.", id: "Ubah dimensi (px) secara akurat.", de: "Dimensionen (px) genau ändern.", es: "Cambia dimensiones (px) con precisión.", pt: "Mude dimensões (px) com precisão.", fr: "Changez dimensions (px) avec précision.", it: "Cambia dimensioni (px) con precisione." }
+    desc: { en: "Resize dimensions (px) accurately.", id: "Ubah dimensi (px) secara akurat.", de: "Dimensionen (px) genau ändern.", es: "Cambia dimensiones (px) con precisión.", pt: "Mude dimensiões (px) con precisión.", fr: "Changez dimensions (px) avec précision.", it: "Cambia dimensioni (px) con precisione." }
   },
   {
     id: "cropper",
@@ -145,7 +155,7 @@ const TOOLS_DATA: Tool[] = [
     category: "productivity",
     href: "/tools/image-cropper",
     name: { en: "Image Cropper", id: "Potong Foto", de: "Bild zuschneiden", es: "Recortar Imagen", pt: "Cortar Imagem", fr: "Rogner Image", it: "Ritaglia" },
-    desc: { en: "Crop to 1:1, 16:9 or custom ratio.", id: "Potong ke 1:1, 16:9 atau rasio bebas.", de: "Auf 1:1, 16:9 oder benutzerdefiniert.", es: "Recorta a 1:1, 16:9 o personalizado.", pt: "Corte em 1:1, 16:9 ou personalizado.", fr: "Rognez en 1:1, 16:9 ou personnalisé.", it: "Ritaglia in 1:1, 16:9 o personalizzato." }
+    desc: { en: "Crop to 1:1, 16:9 or custom ratio.", id: "Potong ke 1:1, 16:9 atau rasio bebas.", de: "Auf 1:1, 16:9 oder benutzerdefiniert.", es: "Recorta a 1:1, 16:9 o personalizado.", pt: "Corte em 1:1, 16:9 o personalizado.", fr: "Rognez en 1:1, 16:9 ou personnalisé.", it: "Ritaglia in 1:1, 16:9 o personalizzato." }
   }
 ];
 
@@ -190,6 +200,7 @@ const UI_LABELS: Record<string, Record<string, string>> = {
   cat_business: { en: "Business Tools", id: "Bisnis & Usaha", de: "Geschäftswerkzeuge", es: "Herramientas de Negocio", pt: "Ferramentas de Negócio", fr: "Outils de Business", it: "Strumenti di Business" },
   cat_finance: { en: "Finance & Budget", id: "Keuangan & Anggaran", de: "Finanz-Werkzeuge", es: "Finanzas y Presupuesto", pt: "Ferramentas Financeiras", fr: "Outils de Finance", it: "Strumenti Finanziari" },
   cat_productivity: { en: "Productivity & Utilities", id: "Produktivitas & Utilitas", de: "Produktivitas", es: "Productividad", pt: "Produtividade", fr: "Productivité", it: "Produttività" },
+  cat_religious: { en: "Religious Utilities", id: "Alat Ibadah", de: "Religiöse Werkzeuge", es: "Utilidades Religiosas", pt: "Utilidades Religiosas", fr: "Outils Religieux", it: "Utilità Religiose" },
   badge_new: { en: "NEW", id: "BARU", de: "NEU", es: "NUEVO", pt: "NOVO", fr: "NOUVEAU", it: "NUOVO" }
 };
 
@@ -216,6 +227,7 @@ export default function ToolPortalPage() {
 
   const categorized = useMemo(() => {
     const groups: Record<Category, Tool[]> = {
+      religious: [],
       sports: [],
       business: [],
       finance: [],
@@ -240,19 +252,14 @@ export default function ToolPortalPage() {
 
           {/* Badge Pill Row */}
           <div className="flex flex-wrap justify-center gap-3 mt-6 mb-8 animate-in fade-in slide-in-from-bottom duration-1000 delay-300">
-            {/* Badge 1: Privacy */}
             <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-800/50 transition-transform hover:scale-105 cursor-default">
               <ShieldCheck size={16} />
               <span className="text-sm font-bold uppercase tracking-tight">{BADGE_TEXT.privacy[lang] || BADGE_TEXT.privacy.en}</span>
             </div>
-
-            {/* Badge 2: Offline */}
             <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 border border-blue-100 dark:border-blue-800/50 transition-transform hover:scale-105 cursor-default">
               <WifiOff size={16} />
               <span className="text-sm font-bold uppercase tracking-tight">{BADGE_TEXT.offline[lang] || BADGE_TEXT.offline.en}</span>
             </div>
-
-            {/* Badge 3: Free */}
             <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-400 border border-purple-100 dark:border-purple-800/50 transition-transform hover:scale-105 cursor-default">
               <Heart size={16} />
               <span className="text-sm font-bold uppercase tracking-tight">{BADGE_TEXT.free[lang] || BADGE_TEXT.free.en}</span>

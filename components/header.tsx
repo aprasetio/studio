@@ -17,16 +17,18 @@ import {
   Briefcase, 
   Wrench, 
   ChevronDown,
-  LayoutGrid
+  LayoutGrid,
+  Navigation,
+  BookOpen
 } from 'lucide-react';
 
 const MENU_TEXT: Record<string, any> = {
-  // Categories
   cat_sports: { en: "Sports", id: "Olahraga", de: "Sport", es: "Deportes", pt: "Esportes", fr: "Sports", it: "Sport" },
   cat_business: { en: "Business", id: "Bisnis", de: "Geschäft", es: "Negocios", pt: "Negócios", fr: "Affaires", it: "Business" },
   cat_utilities: { en: "Utilities", id: "Utilitas", de: "Dienstprogramme", es: "Utilidades", pt: "Utilitários", fr: "Utilitaires", it: "Utilità" },
+  cat_religious: { en: "Religious", id: "Ibadah", de: "Religiös", es: "Religioso", pt: "Religioso", fr: "Religieux", it: "Religioso" },
 
-  // Tool Names
+  prayer_times: { en: "Prayer Times & Qibla", id: "Jadwal Sholat & Kiblat", de: "Gebetszeiten", es: "Horarios Oración", pt: "Horários Oração", fr: "Prière & Qibla", it: "Preghiera" },
   americano: { en: "Americano Generator", id: "Generator Americano", de: "Americano Generator", es: "Generador Americano", pt: "Gerador Americano", fr: "Générateur Americano", it: "Generatore Americano" },
   futsal: { en: "Futsal Scoreboard", id: "Skor Futsal", de: "Futsal-Anzeige", es: "Marcador Futsal", pt: "Placar Futsal", fr: "Score Futsal", it: "Tabellone Calcetto" },
   tennis: { en: "Tennis Generator", id: "Generator Tenis", de: "Tennis-Generator", es: "Generador Tenis", pt: "Gerador Tênis", fr: "Générateur Tennis", it: "Generatore Tennis" },
@@ -44,7 +46,7 @@ const MENU_TEXT: Record<string, any> = {
   cropper: { en: "Image Cropper", id: "Potong Foto", de: "Zuschneiden", es: "Recortar", pt: "Cortar", fr: "Rogner", it: "Ritaglia" },
   compressor: { en: "Image Compressor", id: "Kompres Foto", de: "Bildkompressor", es: "Compresor", pt: "Compressor", fr: "Compresseur", it: "Compressore" },
   pdf_merge: { en: "PDF Merge", id: "Gabung PDF", de: "PDF Zusammenfügen", es: "Combinar PDF", pt: "Combinar PDF", fr: "Fusion PDF", it: "Unisci PDF" },
-  image_to_pdf: { en: "Image to PDF", id: "Gambar ke PDF", de: "Bild zu PDF", es: "Imagen a PDF", pt: "Imagem para PDF", fr: "Image en PDF", it: "Immagine in PDF" },
+  image_to_pdf: { en: "Image to PDF", id: "Gambar ke PDF", de: "Bild zu PDF", es: "Imagen a PDF", pt: "Imagen para PDF", fr: "Image en PDF", it: "Immagine in PDF" },
   calculator: { en: "Material Calc", id: "Kalkulator", de: "Baurechner", es: "Calculadora", pt: "Calculadora", fr: "Calculateur", it: "Calcolatore" },
   csv_helper: { en: "CSV Cleaner", id: "Pembersih CSV", de: "CSV-Reiniger", es: "Limpiador CSV", pt: "Limpeza CSV", fr: "Nettoyeur CSV", it: "Pulitore CSV" },
   split_bill: { en: "Split Bill", id: "Bagi Tagihan", de: "Rechnung teilen", es: "Dividir Cuenta", pt: "Dividir Conta", fr: "Partager l'Addition", it: "Dividi Conto" },
@@ -54,6 +56,13 @@ export default function Header() {
   const { lang } = useLang();
 
   const categories = [
+    {
+      label: MENU_TEXT.cat_religious[lang] || MENU_TEXT.cat_religious['en'],
+      icon: <Navigation className="h-4 w-4 mr-2" />,
+      items: [
+        { href: '/tools/prayer-times', label: MENU_TEXT.prayer_times[lang] || MENU_TEXT.prayer_times['en'] },
+      ]
+    },
     {
       label: MENU_TEXT.cat_sports[lang] || MENU_TEXT.cat_sports['en'],
       icon: <Trophy className="h-4 w-4 mr-2" />,

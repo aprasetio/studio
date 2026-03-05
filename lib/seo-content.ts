@@ -1,4 +1,3 @@
-
 /**
  * Centralized SEO Content for VersoKit tools.
  * Supports: en, id, es, pt, de, fr, it.
@@ -19,6 +18,22 @@ export interface SeoCollection {
 }
 
 export const SEO_DATA: SeoCollection = {
+  "prayer-times": {
+    en: {
+      title: "Prayer Times & Qibla Finder",
+      description: "Find accurate prayer times and Qibla direction based on your GPS location. Works offline and in-browser.",
+      steps: ["Click 'Use Current Location'.", "Allow GPS permission.", "View local prayer times.", "Use the live compass for Qibla."],
+      article: "Our tool calculates prayer times using the ISNA method and determined Qibla using spherical trigonometry. The live compass connects directly to your phone's magnetometer for real-time accuracy.",
+      faq: [{ q: "Is the compass accurate?", a: "Accuracy depends on your device's hardware sensors and environmental magnetic interference." }]
+    },
+    id: {
+      title: "Jadwal Sholat & Arah Kiblat",
+      description: "Temukan jadwal sholat akurat dan arah kiblat berdasarkan lokasi GPS Anda. Berjalan lancar di browser.",
+      steps: ["Klik 'Gunakan Lokasi Saat Ini'.", "Izinkan akses GPS.", "Lihat jadwal sholat lokal.", "Gunakan kompas live untuk mencari kiblat."],
+      article: "Alat ini menghitung waktu sholat menggunakan data koordinat presisi dan menentukan arah Ka'bah di Makkah. Kompas live terhubung langsung dengan sensor magnetik HP Anda.",
+      faq: [{ q: "Apakah kompasnya akurat?", a: "Akurasi tergantung pada kualitas sensor hardware HP Anda dan gangguan magnet di sekitar." }]
+    }
+  },
   "padel-americano": {
     en: {
       title: "Padel Americano Generator",
@@ -49,41 +64,6 @@ export const SEO_DATA: SeoCollection = {
       steps: ["Tambah pemain dan level skill.", "Atur jumlah lapangan.", "Klik Buat Jadwal.", "Isi skor untuk update klasemen."],
       article: "Algoritma Fair Play kami memastikan setiap pemain mendapatkan waktu bermain yang sama sambil menyeimbangkan tim berdasarkan skill.",
       faq: [{ q: "Bagaimana cara kerjanya?", a: "Algoritma memprioritaskan pemain yang paling sedikit bermain untuk masuk ke babak berikutnya." }]
-    },
-    de: {
-      title: "Tennis-Match-Generator",
-      description: "Erstellen Sie faire Doppel-Spielpläne mit Skill-Balancing und Bestenlisten.",
-      steps: ["Spieler und Spielstärke hinzufügen.", "Platzanzahl und Dauer festlegen.", "Zeitplan generieren.", "Ergebnisse eingeben."],
-      article: "Unser Fair-Play-Algorithmus stellt sicher, dass jeder Spieler die gleiche Spielzeit erhält, während die Teams nach Spielstärke ausgeglichen werden.",
-      faq: [{ q: "Wie ist es fair?", a: "Der Algorithmus priorisiert Spieler, die bisher am wenigsten gespielt haben." }]
-    },
-    es: {
-      title: "Generador de Partidos",
-      description: "Genera horarios de dobles justos con equilibrio de habilidades y clasificación.",
-      steps: ["Añadir jugadores y niveles.", "Fijar canchas y duración.", "Generar calendario.", "Ingresar resultados."],
-      article: "Nuestro algoritmo de Fair Play garantiza que cada jugador tenga el mismo tiempo en cancha mientras equilibra los equipos por nivel.",
-      faq: [{ q: "¿Cómo es justo?", a: "El algoritmo prioriza a los jugadores que han jugado menos rondas." }]
-    },
-    fr: {
-      title: "Générateur de Matchs",
-      description: "Générez des plannings de doubles équitables avec équilibrage des niveaux.",
-      steps: ["Ajouter joueurs et niveaux.", "Régler terrains et durée.", "Générer planning.", "Saisir les scores."],
-      article: "Notre algorithme Fair Play garantit que chaque joueur dispose d'un temps de jeu égal tout en équilibrant les équipes par niveau.",
-      faq: [{ q: "Comment est-ce équitable ?", a: "L'algorithme donne la priorité aux joueurs ayant disputé le moins de tours." }]
-    },
-    pt: {
-      title: "Gerador de Partidas",
-      description: "Gere horários de duplas justos com balanceamento de habilidades e placar.",
-      steps: ["Adicionar jogadores e níveis.", "Definir quadras e duração.", "Gerar tabela.", "Inserir placares."],
-      article: "Nosso algoritmo Fair Play garante que cada jogador receba tempo de quadra igual, equilibrando as equipes por nível técnico.",
-      faq: [{ q: "Como é feito o equilíbrio?", a: "O algoritmo prioriza jogadores que participaram de menos rodadas." }]
-    },
-    it: {
-      title: "Generatore Partite Tennis",
-      description: "Crea programmi di doppio equi con bilanciamento abilità e classifiche.",
-      steps: ["Aggiungi giocatori e abilità.", "Imposta campi e durata.", "Genera programma.", "Inserisci punteggi."],
-      article: "Il nostro algoritmo Fair Play assicura che ogni giocatore riceva lo stesso tempo di gioco, bilanciando le squadre per abilità.",
-      faq: [{ q: "Com'è garantita l'equità?", a: "L'algoritmo prioritizza i giocatori che hanno disputato meno turni." }]
     }
   },
   "budget-planner": {
