@@ -14,10 +14,20 @@ import {
   Sunset, 
   Navigation,
   RefreshCcw,
-  AlertCircle,
   Loader2,
-  Info
+  Info,
+  Maximize2,
+  AlertCircle,
+  X
 } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import TrustBadges from '@/components/ui/TrustBadges';
@@ -40,11 +50,15 @@ const UI_TEXT: Record<string, any> = {
     qibla_title: "Qibla Direction",
     qibla_desc: "Point your phone towards the arrow. Note: Compass accuracy depends on your device sensors.",
     enable_compass: "Enable Live Compass",
-    compass_error: "Orientation sensors not available.",
+    calibrate_btn: "Calibrate Compass",
+    calibrate_title: "Calibrate Your Sensors",
+    calibrate_desc: "To ensure the Qibla direction is accurate, please move your phone in a 'Figure-8' motion for a few seconds.",
+    calibrate_close: "Got it, ready!",
     location_denied: "Location access denied. Please enable GPS.",
     fetching_api: "Fetching prayer data...",
     degree: "degrees from North",
-    kaaba: "Kaaba"
+    kaaba: "Kaaba",
+    at: "at"
   },
   id: {
     title: "Jadwal Sholat & Kiblat",
@@ -60,11 +74,15 @@ const UI_TEXT: Record<string, any> = {
     qibla_title: "Arah Kiblat",
     qibla_desc: "Arahkan HP Anda mengikuti panah. Akurasi tergantung pada sensor perangkat Anda.",
     enable_compass: "Aktifkan Kompas Live",
-    compass_error: "Sensor orientasi tidak tersedia.",
+    calibrate_btn: "Kalibrasi Kompas",
+    calibrate_title: "Kalibrasi Sensor Anda",
+    calibrate_desc: "Agar arah kiblat akurat, gerakkan HP Anda membentuk angka 8 selama beberapa detik.",
+    calibrate_close: "Oke, Mengerti!",
     location_denied: "Izin lokasi ditolak. Mohon aktifkan GPS.",
     fetching_api: "Mengambil data jadwal...",
     degree: "derajat dari Utara",
-    kaaba: "Ka'bah"
+    kaaba: "Ka'bah",
+    at: "di"
   }
 };
 
@@ -82,14 +100,16 @@ export default function PrayerTimesPage() {
   const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
 
   const [coords, setCoords] = useState<{ lat: number; lng: number } | null>(null);
+  const [locationName, setLocationName] = useState<string>('');
   const [timings, setTimings] = useState<PrayerTimings | null>(null);
   const [loading, setLoading] = useState(false);
   const [nextPrayer, setNextPrayer] = useState<string | null>(null);
   const [qiblaAngle, setQiblaAngle] = useState<number | null>(null);
   const [deviceHeading, setDeviceHeading] = useState<number>(0);
   const [isCompassActive, setIsCompassActive] = useState(false);
+  const [isCalibrating, setIsCalibrationOpen] = useState(false);
 
-  // --- 1. GEOLOCATION LOGIC ---
+  // --- 1. GEOLOCATION & REVERSE GEOCODING ---
   const handleGetLocation = () => {
     setLoading(true);
     if (!navigator.geolocation) {
@@ -103,6 +123,7 @@ export default function PrayerTimesPage() {
         const { latitude, longitude } = pos.coords;
         setCoords({ lat: latitude, lng: longitude });
         calculateQibla(latitude, longitude);
+        fetchLocationName(latitude, longitude);
         fetchPrayerTimes(latitude, longitude);
       },
       (err) => {
@@ -114,7 +135,22 @@ export default function PrayerTimesPage() {
     );
   };
 
-  // --- 2. PRAYER TIMES API ---
+  const fetchLocationName = async (lat: number, lng: number) => {
+    try {
+      const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`);
+      const data = await res.json();
+      if (data.address) {
+        const village = data.address.village || data.address.suburb || data.address.neighbourhood || '';
+        const city = data.address.city || data.address.town || data.address.city_district || '';
+        const country = data.address.country || '';
+        const name = [village, city, country].filter(Boolean).join(', ');
+        setLocationName(name);
+      }
+    } catch (err) {
+      console.error("Nominatim Error:", err);
+    }
+  };
+
   const fetchPrayerTimes = async (lat: number, lng: number) => {
     try {
       const res = await fetch(`https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lng}&method=2`);
@@ -130,7 +166,7 @@ export default function PrayerTimesPage() {
     }
   };
 
-  // --- 3. QIBLA CALCULATION ---
+  // --- 2. QIBLA CALCULATION ---
   const calculateQibla = (lat: number, lng: number) => {
     const kaabaLat = 21.422487;
     const kaabaLng = 39.826206;
@@ -147,43 +183,47 @@ export default function PrayerTimesPage() {
     setQiblaAngle((qibla + 360) % 360);
   };
 
-  // --- 4. COMPASS LOGIC ---
+  // --- 3. COMPASS LOGIC (Device Orientation) ---
   const startCompass = async () => {
-    // Check for iOS permission
     if (typeof (DeviceOrientationEvent as any).requestPermission === 'function') {
       try {
         const response = await (DeviceOrientationEvent as any).requestPermission();
         if (response === 'granted') {
-          window.addEventListener('deviceorientation', handleOrientation, true);
-          setIsCompassActive(true);
+          initOrientationListeners();
         }
       } catch (err) {
-        console.error(err);
+        console.error("iOS Permission Error:", err);
       }
     } else {
-      window.addEventListener('deviceorientationabsolute', handleOrientation, true);
-      // Fallback for older browsers
-      window.addEventListener('deviceorientation', handleOrientation, true);
-      setIsCompassActive(true);
+      initOrientationListeners();
     }
+  };
+
+  const initOrientationListeners = () => {
+    if ('ondeviceorientationabsolute' in window) {
+      window.addEventListener('deviceorientationabsolute', handleOrientation, true);
+    } else {
+      window.addEventListener('deviceorientation', handleOrientation, true);
+    }
+    setIsCompassActive(true);
   };
 
   const handleOrientation = (e: DeviceOrientationEvent) => {
-    // alpha: rotation around z-axis (0-360)
-    // webkitCompassHeading: provided by Safari/iOS
-    let heading = (e as any).webkitCompassHeading || e.alpha;
-    if (heading !== null && heading !== undefined) {
-      // In some browsers, alpha is counter-clockwise, we need clockwise
-      if (e.absolute === false && !(e as any).webkitCompassHeading) {
-        // Simple fallback
-        setDeviceHeading(360 - heading);
-      } else {
-        setDeviceHeading(heading);
-      }
+    let heading = 0;
+    if ((e as any).webkitCompassHeading) {
+      // iOS
+      heading = (e as any).webkitCompassHeading;
+    } else if (e.absolute && e.alpha !== null) {
+      // Android / standard with absolute flag
+      heading = 360 - e.alpha;
+    } else if (e.alpha !== null) {
+      // Non-absolute fallback
+      heading = 360 - e.alpha;
     }
+    setDeviceHeading(heading);
   };
 
-  // --- 5. NEXT PRAYER HIGHLIGHTER ---
+  // --- 4. UTILS ---
   const findNextPrayer = (times: any) => {
     const now = new Date();
     const currentTime = now.getHours() * 60 + now.getMinutes();
@@ -204,7 +244,7 @@ export default function PrayerTimesPage() {
         return;
       }
     }
-    setNextPrayer('Fajr'); // Tomorrow
+    setNextPrayer('Fajr'); 
   };
 
   useEffect(() => {
@@ -225,17 +265,17 @@ export default function PrayerTimesPage() {
       </div>
 
       {!coords ? (
-        <Card className="w-full max-w-xl shadow-2xl border-2 rounded-[2.5rem] overflow-hidden">
+        <Card className="w-full max-w-xl shadow-2xl border-2 rounded-[2.5rem] overflow-hidden animate-in fade-in zoom-in duration-500">
           <CardContent className="p-12 flex flex-col items-center text-center space-y-6">
             <div className="p-6 bg-primary/10 rounded-full text-primary">
               <MapPin size={48} />
             </div>
             <div className="space-y-2">
-              <h2 className="text-2xl font-black uppercase tracking-tight">{lang === 'id' ? 'Aktifkan Lokasi' : 'Enable Location'}</h2>
+              <h2 className="text-2xl font-black uppercase tracking-tight">{lang === 'id' ? 'Deteksi Lokasi Otomatis' : 'Detect Location'}</h2>
               <p className="text-muted-foreground font-medium text-sm">
                 {lang === 'id' 
-                  ? 'Kami membutuhkan akses GPS untuk menghitung waktu sholat dan arah kiblat yang akurat di tempat Anda.' 
-                  : 'We need GPS access to calculate accurate prayer times and Qibla direction for your location.'}
+                  ? 'Gunakan GPS untuk hasil jadwal sholat dan kiblat yang paling presisi.' 
+                  : 'Use GPS for the most precise prayer times and Qibla direction.'}
               </p>
             </div>
             <Button 
@@ -249,21 +289,23 @@ export default function PrayerTimesPage() {
           </CardContent>
         </Card>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full animate-in fade-in slide-in-from-bottom-4 duration-700">
           
           {/* PRAYER TIMES LIST */}
           <div className="lg:col-span-7 space-y-6">
             <div className="flex justify-between items-center bg-card p-6 rounded-3xl border-2 shadow-sm">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-2xl text-primary"><Clock className="h-6 w-6" /></div>
+                <div className="p-3 bg-primary/10 rounded-2xl text-primary"><MapPin className="h-6 w-6" /></div>
                 <div>
-                  <h2 className="font-black uppercase tracking-tight text-xl">{new Date().toLocaleDateString(lang === 'id' ? 'id-ID' : 'en-US', { weekday: 'long', day: 'numeric', month: 'long' })}</h2>
-                  <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest flex items-center gap-1">
-                    <MapPin size={10} /> {coords.lat.toFixed(4)}, {coords.lng.toFixed(4)}
+                  <h2 className="font-black uppercase tracking-tight text-lg truncate max-w-[200px] md:max-w-md">
+                    {locationName || (lang === 'id' ? 'Lokasi Terdeteksi' : 'Detected Location')}
+                  </h2>
+                  <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
+                    {new Date().toLocaleDateString(lang === 'id' ? 'id-ID' : 'en-US', { weekday: 'long', day: 'numeric', month: 'long' })}
                   </p>
                 </div>
               </div>
-              <Button variant="ghost" size="icon" onClick={handleGetLocation} className="rounded-full hover:bg-muted">
+              <Button variant="ghost" size="icon" onClick={handleGetLocation} className="rounded-full hover:bg-muted shrink-0">
                 <RefreshCcw size={20} className={loading ? "animate-spin" : ""} />
               </Button>
             </div>
@@ -275,21 +317,26 @@ export default function PrayerTimesPage() {
                   <Card 
                     key={key} 
                     className={cn(
-                      "border-2 transition-all duration-500 rounded-3xl overflow-hidden",
-                      isNext ? "border-primary bg-primary text-primary-foreground shadow-xl scale-105 z-10" : "hover:border-primary/20"
+                      "border-2 transition-all duration-500 rounded-3xl overflow-hidden group",
+                      isNext ? "border-primary bg-primary text-primary-foreground shadow-xl scale-105 z-10" : "hover:border-primary/20 bg-card"
                     )}
                   >
                     <CardContent className="p-6 flex flex-col items-center gap-2">
-                      {key === 'Fajr' || key === 'Imsak' ? <Sunrise size={20} className={isNext ? "text-white" : "text-primary"} /> : 
-                       key === 'Dhuhr' ? <Sun size={20} className={isNext ? "text-white" : "text-orange-500"} /> :
-                       key === 'Maghrib' || key === 'Asr' ? <Sunset size={20} className={isNext ? "text-white" : "text-amber-600"} /> :
-                       <Moon size={20} className={isNext ? "text-white" : "text-indigo-500"} />}
+                      <div className={cn(
+                        "p-2 rounded-xl transition-colors",
+                        isNext ? "bg-white/20" : "bg-muted group-hover:bg-primary/5"
+                      )}>
+                        {key === 'Fajr' || key === 'Imsak' ? <Sunrise size={20} /> : 
+                         key === 'Dhuhr' ? <Sun size={20} /> :
+                         key === 'Maghrib' || key === 'Asr' ? <Sunset size={20} /> :
+                         <Moon size={20} />}
+                      </div>
                       
                       <span className={cn("text-[10px] font-black uppercase tracking-widest opacity-60", isNext && "opacity-100")}>{t(key.toLowerCase())}</span>
                       <span className="text-2xl font-black tabular-nums">{time}</span>
                       
                       {isNext && (
-                        <div className="mt-2 bg-white/20 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-tighter">
+                        <div className="mt-2 bg-white/20 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-tighter animate-pulse">
                           {t('next_prayer')}
                         </div>
                       )}
@@ -302,7 +349,7 @@ export default function PrayerTimesPage() {
 
           {/* QIBLA COMPASS */}
           <div className="lg:col-span-5 space-y-6">
-            <Card className="shadow-2xl border-2 rounded-[3rem] overflow-hidden bg-card">
+            <Card className="shadow-2xl border-2 rounded-[3rem] overflow-hidden bg-card relative">
               <CardHeader className="bg-primary p-6 text-white border-b">
                 <CardTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-2">
                   <Compass className="h-5 w-5 text-accent" /> {t('qibla_title')}
@@ -312,66 +359,118 @@ export default function PrayerTimesPage() {
                 
                 {/* Visual Compass */}
                 <div className="relative w-64 h-64 md:w-72 md:h-72">
-                  {/* Outer Circle (North/South/East/West) */}
                   <div 
-                    className="absolute inset-0 rounded-full border-4 border-muted flex items-center justify-center transition-transform duration-300 ease-out"
+                    className="absolute inset-0 rounded-full border-4 border-muted/50 flex items-center justify-center transition-transform duration-300 ease-out shadow-inner"
                     style={{ transform: `rotate(${-deviceHeading}deg)` }}
                   >
-                    <span className="absolute top-2 font-black text-xs text-red-500">N</span>
-                    <span className="absolute bottom-2 font-black text-xs">S</span>
-                    <span className="absolute right-2 font-black text-xs">E</span>
-                    <span className="absolute left-2 font-black text-xs">W</span>
+                    <span className="absolute top-3 font-black text-sm text-red-500">N</span>
+                    <span className="absolute bottom-3 font-black text-sm">S</span>
+                    <span className="absolute right-3 font-black text-sm">E</span>
+                    <span className="absolute left-3 font-black text-sm">W</span>
                     
-                    {/* Compass Ticks */}
                     {Array.from({ length: 12 }).map((_, i) => (
                       <div 
                         key={i} 
-                        className="absolute w-0.5 h-2 bg-muted-foreground/30" 
+                        className="absolute w-0.5 h-3 bg-muted-foreground/20 rounded-full" 
                         style={{ transform: `rotate(${i * 30}deg) translateY(-120px)` }}
                       />
                     ))}
                   </div>
 
-                  {/* Qibla Arrow (Points to Kaaba relative to North) */}
+                  {/* Qibla Arrow */}
                   <div 
                     className="absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-out"
                     style={{ transform: `rotate(${(qiblaAngle || 0) - deviceHeading}deg)` }}
                   >
                     <div className="relative flex flex-col items-center">
-                      <Navigation className="h-16 w-16 text-accent fill-accent" style={{ filter: 'drop-shadow(0 0 10px rgba(234, 88, 12, 0.4))' }} />
-                      <div className="absolute -top-10 bg-accent text-white px-3 py-1 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg">
+                      <div className="w-1 h-32 bg-accent absolute top-[-64px] rounded-full" style={{ filter: 'blur(1px)', opacity: 0.3 }} />
+                      <Navigation className="h-20 w-20 text-accent fill-accent" style={{ filter: 'drop-shadow(0 0 15px rgba(234, 88, 12, 0.5))' }} />
+                      <div className="absolute -top-12 bg-accent text-white px-4 py-1.5 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-2xl border-2 border-white/20 whitespace-nowrap">
                         {t('kaaba')}
                       </div>
                     </div>
                   </div>
 
-                  {/* Inner Center Point */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-4 h-4 bg-primary rounded-full border-4 border-white shadow-md"></div>
+                    <div className="w-6 h-6 bg-primary rounded-full border-4 border-white shadow-xl ring-4 ring-primary/10"></div>
                   </div>
                 </div>
 
-                <div className="text-center space-y-2">
-                  <div className="text-3xl font-black text-primary tabular-nums">
-                    {qiblaAngle?.toFixed(1)}°
+                <div className="text-center space-y-3">
+                  <div className="flex flex-col items-center">
+                    <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">{t('kaaba')} {t('at')}</span>
+                    <div className="text-4xl font-black text-primary tabular-nums">
+                      {qiblaAngle?.toFixed(1)}°
+                    </div>
                   </div>
-                  <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest px-4 leading-relaxed">
+                  <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest px-6 leading-relaxed max-w-xs">
                     {t('qibla_desc')}
                   </p>
                 </div>
 
-                {!isCompassActive ? (
-                  <Button 
-                    onClick={startCompass}
-                    className="w-full h-14 bg-accent hover:bg-accent/90 text-white font-black uppercase tracking-widest rounded-2xl shadow-lg"
-                  >
-                    <Compass className="mr-2 h-5 w-5" /> {t('enable_compass')}
-                  </Button>
-                ) : (
-                  <div className="flex items-center gap-2 text-green-600 font-bold uppercase text-[10px] tracking-widest bg-green-50 px-4 py-2 rounded-full border border-green-100">
-                    <Navigation size={12} className="rotate-45" /> Live Compass Active
-                  </div>
-                )}
+                <div className="w-full space-y-3">
+                  {!isCompassActive ? (
+                    <Button 
+                      onClick={startCompass}
+                      className="w-full h-14 bg-accent hover:bg-accent/90 text-white font-black uppercase tracking-widest rounded-2xl shadow-lg"
+                    >
+                      <Compass className="mr-2 h-5 w-5" /> {t('enable_compass')}
+                    </Button>
+                  ) : (
+                    <div className="flex items-center justify-center gap-2 text-green-600 font-bold uppercase text-[10px] tracking-widest bg-green-50 py-3 rounded-2xl border-2 border-green-100">
+                      <div className="w-2 h-2 bg-green-500 rounded-full animate-ping" />
+                      Live Compass Active
+                    </div>
+                  )}
+
+                  <Dialog open={isCalibrating} onOpenChange={setIsCalibrationOpen}>
+                    <DialogTrigger asChild>
+                      <Button variant="outline" className="w-full h-12 font-black uppercase text-[10px] tracking-[0.2em] rounded-2xl border-2 border-dashed">
+                        <RefreshCcw className="mr-2 h-4 w-4" /> {t('calibrate_btn')}
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="rounded-[2.5rem] sm:max-w-md">
+                      <DialogHeader className="items-center text-center space-y-4">
+                        <div className="p-4 bg-orange-100 rounded-full text-orange-600">
+                          <Maximize2 className="h-10 w-10 animate-pulse" />
+                        </div>
+                        <DialogTitle className="text-2xl font-black uppercase tracking-tight">{t('calibrate_title')}</DialogTitle>
+                      </DialogHeader>
+                      <div className="flex flex-col items-center py-6 space-y-6">
+                        <svg width="120" height="120" viewBox="0 0 120 120" className="opacity-80">
+                          <path 
+                            d="M30,60 C30,30 55,30 60,60 C65,90 90,90 90,60 C90,30 65,30 60,60 C55,90 30,90 30,60 Z" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            strokeWidth="4" 
+                            className="text-primary animate-[dash_3s_linear_infinite]"
+                            strokeDasharray="300"
+                            strokeDashoffset="300"
+                          />
+                          <rect x="50" y="45" width="20" height="35" rx="4" fill="currentColor" className="text-accent animate-[move_3s_linear_infinite]" />
+                          <style>{`
+                            @keyframes dash { to { stroke-dashoffset: 0; } }
+                            @keyframes move {
+                              0% { transform: translate(-30px, 15px) rotate(-20deg); }
+                              25% { transform: translate(0px, -15px) rotate(0deg); }
+                              50% { transform: translate(30px, 15px) rotate(20deg); }
+                              75% { transform: translate(0px, -15px) rotate(0deg); }
+                              100% { transform: translate(-30px, 15px) rotate(-20deg); }
+                            }
+                          `}</style>
+                        </svg>
+                        <p className="text-center text-muted-foreground font-medium px-4 leading-relaxed">
+                          {t('calibrate_desc')}
+                        </p>
+                      </div>
+                      <DialogFooter>
+                        <Button onClick={() => setIsCalibrationOpen(false)} className="w-full h-14 font-black uppercase tracking-widest rounded-2xl">
+                          {t('calibrate_close')}
+                        </Button>
+                      </DialogFooter>
+                    </DialogContent>
+                  </Dialog>
+                </div>
 
                 <div className="bg-muted/30 p-4 rounded-2xl border-2 border-dashed flex gap-3 w-full">
                   <Info className="h-5 w-5 text-primary shrink-0" />
