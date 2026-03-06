@@ -48,7 +48,7 @@ const UI_TEXT: Record<string, any> = {
     maghrib: "Maghrib",
     isha: "Isha",
     qibla_title: "Qibla Direction",
-    qibla_desc: "Rotate your phone until the needle points straight up. Accuracy depends on your device sensors.",
+    qibla_desc: "Rotate your phone until the arrow points straight up. Accuracy depends on your device sensors.",
     enable_compass: "Enable Live Compass",
     calibrate_btn: "Calibrate Compass",
     calibrate_title: "Calibrate Your Sensors",
@@ -58,6 +58,7 @@ const UI_TEXT: Record<string, any> = {
     fetching_api: "Fetching prayer data...",
     degree: "degrees from North",
     kaaba: "Kaaba",
+    kiblat: "KIBLAT",
     at: "at"
   },
   id: {
@@ -72,7 +73,7 @@ const UI_TEXT: Record<string, any> = {
     maghrib: "Maghrib",
     isha: "Isya",
     qibla_title: "Arah Kiblat",
-    qibla_desc: "Putar HP Anda sampai jarum menunjuk lurus ke atas. Akurasi tergantung pada sensor perangkat Anda.",
+    qibla_desc: "Putar HP Anda sampai panah menunjuk lurus ke atas. Akurasi tergantung pada sensor perangkat Anda.",
     enable_compass: "Aktifkan Kompas Live",
     calibrate_btn: "Kalibrasi Kompas",
     calibrate_title: "Kalibrasi Sensor Anda",
@@ -82,6 +83,7 @@ const UI_TEXT: Record<string, any> = {
     fetching_api: "Mengambil data jadwal...",
     degree: "derajat dari Utara",
     kaaba: "Ka'bah",
+    kiblat: "KIBLAT",
     at: "di"
   }
 };
@@ -109,7 +111,6 @@ export default function PrayerTimesPage() {
   const [isCompassActive, setIsCompassActive] = useState(false);
   const [isCalibrating, setIsCalibrationOpen] = useState(false);
 
-  // --- 1. GEOLOCATION & REVERSE GEOCODING ---
   const handleGetLocation = () => {
     setLoading(true);
     if (!navigator.geolocation) {
@@ -166,7 +167,6 @@ export default function PrayerTimesPage() {
     }
   };
 
-  // --- 2. QIBLA CALCULATION (Great Circle Math) ---
   const calculateQibla = (lat: number, lng: number) => {
     const kaabaLat = 21.422487 * (Math.PI / 180);
     const kaabaLng = 39.826206 * (Math.PI / 180);
@@ -179,7 +179,6 @@ export default function PrayerTimesPage() {
     setQiblaAngle((qAngle + 360) % 360);
   };
 
-  // --- 3. COMPASS LOGIC (Device Orientation) ---
   const startCompass = async () => {
     if (typeof (DeviceOrientationEvent as any).requestPermission === 'function') {
       try {
@@ -214,7 +213,6 @@ export default function PrayerTimesPage() {
     setDeviceHeading(heading);
   };
 
-  // --- 4. UTILS ---
   const findNextPrayer = (times: any) => {
     const now = new Date();
     const currentTime = now.getHours() * 60 + now.getMinutes();
@@ -282,7 +280,6 @@ export default function PrayerTimesPage() {
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full animate-in fade-in slide-in-from-bottom-4 duration-700">
           
-          {/* PRAYER TIMES LIST */}
           <div className="lg:col-span-7 space-y-6">
             <div className="flex justify-between items-center bg-card p-6 rounded-3xl border-2 shadow-sm">
               <div className="flex items-center gap-3">
@@ -338,7 +335,6 @@ export default function PrayerTimesPage() {
             </div>
           </div>
 
-          {/* QIBLA COMPASS */}
           <div className="lg:col-span-5 space-y-6">
             <Card className="shadow-2xl border-2 rounded-[3rem] overflow-hidden bg-card relative">
               <CardHeader className="bg-primary p-6 text-white border-b">
@@ -348,10 +344,8 @@ export default function PrayerTimesPage() {
               </CardHeader>
               <CardContent className="p-8 flex flex-col items-center space-y-10">
                 
-                {/* Visual Compass Dial */}
                 <div className="relative w-64 h-64 md:w-72 md:h-72 flex items-center justify-center">
                   
-                  {/* Static Outer Dial (Markers stay relative to the screen) */}
                   <div className="absolute inset-0 rounded-full border-4 border-muted/20 flex items-center justify-center bg-black/[0.02] shadow-inner">
                     <span className="absolute top-3 font-black text-sm text-red-500">N</span>
                     <span className="absolute bottom-3 font-black text-sm opacity-40">S</span>
@@ -367,40 +361,26 @@ export default function PrayerTimesPage() {
                     ))}
                   </div>
 
-                  {/* Rotating Unified Needle (Qibla Direction) */}
                   <div 
                     className="relative flex items-center justify-center transition-transform duration-500 ease-out z-10"
                     style={{ transform: `rotate(${(qiblaAngle || 0) - deviceHeading}deg)` }}
                   >
-                    <div className="relative flex flex-col items-center">
-                      {/* The Needle Body */}
-                      <div className="w-2.5 h-28 bg-emerald-500 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.4)] border border-emerald-400/50" />
-                      
-                      {/* The Arrow Head / Icon at the tip */}
-                      <div className="relative -mt-14 flex flex-col items-center">
-                        <Navigation 
-                          className="h-16 w-16 text-emerald-600 fill-emerald-600 mb-2" 
-                          style={{ filter: 'drop-shadow(0 0 12px rgba(16,185,129,0.6))' }} 
-                        />
-                        
-                        {/* Kaaba Badge at the tip */}
-                        <div className="absolute -top-16 bg-emerald-600/90 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-2xl border-2 border-white/30 whitespace-nowrap">
-                          {t('kaaba')}
-                        </div>
-                      </div>
-                    </div>
+                    <Navigation 
+                      className="h-24 w-24 text-emerald-600 fill-emerald-600" 
+                      style={{ filter: 'drop-shadow(0 0 15px rgba(16,185,129,0.5))' }} 
+                    />
                   </div>
 
-                  {/* Center Pivot Pin */}
                   <div className="absolute w-5 h-5 bg-primary rounded-full border-4 border-white shadow-xl z-20" />
                 </div>
 
                 <div className="text-center space-y-3">
                   <div className="flex flex-col items-center">
-                    <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">{t('kaaba')} {t('at')}</span>
+                    <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">{t('kiblat')}</span>
                     <div className="text-4xl font-black text-primary tabular-nums">
                       {qiblaAngle?.toFixed(1)}°
                     </div>
+                    <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-tighter mt-1">{t('kaaba')}</span>
                   </div>
                   <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest px-6 leading-relaxed max-w-xs">
                     {t('qibla_desc')}
