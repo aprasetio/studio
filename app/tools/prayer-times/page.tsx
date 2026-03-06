@@ -153,7 +153,8 @@ export default function PrayerTimesPage() {
 
   const fetchPrayerTimes = async (lat: number, lng: number) => {
     try {
-      const res = await fetch(`https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lng}&method=2`);
+      // FIX: Using method=20 for Kemenag Indonesia standard
+      const res = await fetch(`https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lng}&method=20`);
       const data = await res.json();
       if (data.code === 200) {
         setTimings(data.data.timings);
@@ -166,21 +167,17 @@ export default function PrayerTimesPage() {
     }
   };
 
-  // --- 2. QIBLA CALCULATION ---
+  // --- 2. QIBLA CALCULATION (Great Circle Math) ---
   const calculateQibla = (lat: number, lng: number) => {
-    const kaabaLat = 21.422487;
-    const kaabaLng = 39.826206;
-
-    const phi1 = (lat * Math.PI) / 180;
-    const phi2 = (kaabaLat * Math.PI) / 180;
-    const lambda1 = (lng * Math.PI) / 180;
-    const lambda2 = (kaabaLng * Math.PI) / 180;
-    const deltaLambda = lambda2 - lambda1;
-
-    const y = Math.sin(deltaLambda);
-    const x = Math.cos(phi1) * Math.tan(phi2) - Math.sin(phi1) * Math.cos(deltaLambda);
-    let qibla = (Math.atan2(y, x) * 180) / Math.PI;
-    setQiblaAngle((qibla + 360) % 360);
+    const kaabaLat = 21.422487 * (Math.PI / 180);
+    const kaabaLng = 39.826206 * (Math.PI / 180);
+    const userLat = lat * (Math.PI / 180);
+    const userLng = lng * (Math.PI / 180);
+    const dLng = kaabaLng - userLng;
+    const y = Math.sin(dLng) * Math.cos(kaabaLat);
+    const x = Math.cos(userLat) * Math.sin(kaabaLat) - Math.sin(userLat) * Math.cos(kaabaLat) * Math.cos(dLng);
+    let qAngle = Math.atan2(y, x) * (180 / Math.PI);
+    setQiblaAngle((qAngle + 360) % 360);
   };
 
   // --- 3. COMPASS LOGIC (Device Orientation) ---
@@ -210,16 +207,17 @@ export default function PrayerTimesPage() {
 
   const handleOrientation = (e: DeviceOrientationEvent) => {
     let heading = 0;
+    
+    // FIX: Enhanced heading logic for iOS vs Android
     if ((e as any).webkitCompassHeading) {
-      // iOS
+      // iOS / Safari
       heading = (e as any).webkitCompassHeading;
-    } else if (e.absolute && e.alpha !== null) {
-      // Android / standard with absolute flag
-      heading = 360 - e.alpha;
     } else if (e.alpha !== null) {
-      // Non-absolute fallback
+      // Android / Chrome / Standard
+      // We use 360 - e.alpha to get correct heading relative to True North
       heading = 360 - e.alpha;
     }
+    
     setDeviceHeading(heading);
   };
 
@@ -377,7 +375,7 @@ export default function PrayerTimesPage() {
                     ))}
                   </div>
 
-                  {/* Qibla Arrow */}
+                  {/* Qibla Arrow (Rotation: Qibla - Heading) */}
                   <div 
                     className="absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-out"
                     style={{ transform: `rotate(${(qiblaAngle || 0) - deviceHeading}deg)` }}
