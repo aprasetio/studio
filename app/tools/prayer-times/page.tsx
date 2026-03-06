@@ -48,7 +48,7 @@ const UI_TEXT: Record<string, any> = {
     maghrib: "Maghrib",
     isha: "Isha",
     qibla_title: "Qibla Direction",
-    qibla_desc: "Point your phone towards the arrow. Note: Compass accuracy depends on your device sensors.",
+    qibla_desc: "Rotate your phone until the needle points straight up. Accuracy depends on your device sensors.",
     enable_compass: "Enable Live Compass",
     calibrate_btn: "Calibrate Compass",
     calibrate_title: "Calibrate Your Sensors",
@@ -72,7 +72,7 @@ const UI_TEXT: Record<string, any> = {
     maghrib: "Maghrib",
     isha: "Isya",
     qibla_title: "Arah Kiblat",
-    qibla_desc: "Arahkan HP Anda mengikuti panah. Akurasi tergantung pada sensor perangkat Anda.",
+    qibla_desc: "Putar HP Anda sampai jarum menunjuk lurus ke atas. Akurasi tergantung pada sensor perangkat Anda.",
     enable_compass: "Aktifkan Kompas Live",
     calibrate_btn: "Kalibrasi Kompas",
     calibrate_title: "Kalibrasi Sensor Anda",
@@ -153,7 +153,6 @@ export default function PrayerTimesPage() {
 
   const fetchPrayerTimes = async (lat: number, lng: number) => {
     try {
-      // FIX: Using method=20 for Kemenag Indonesia standard
       const res = await fetch(`https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lng}&method=20`);
       const data = await res.json();
       if (data.code === 200) {
@@ -207,17 +206,11 @@ export default function PrayerTimesPage() {
 
   const handleOrientation = (e: DeviceOrientationEvent) => {
     let heading = 0;
-    
-    // FIX: Enhanced heading logic for iOS vs Android
     if ((e as any).webkitCompassHeading) {
-      // iOS / Safari
       heading = (e as any).webkitCompassHeading;
     } else if (e.alpha !== null) {
-      // Android / Chrome / Standard
-      // We use 360 - e.alpha to get correct heading relative to True North
       heading = 360 - e.alpha;
     }
-    
     setDeviceHeading(heading);
   };
 
@@ -353,45 +346,53 @@ export default function PrayerTimesPage() {
                   <Compass className="h-5 w-5 text-accent" /> {t('qibla_title')}
                 </CardTitle>
               </CardHeader>
-              <CardContent className="p-8 flex flex-col items-center space-y-8">
+              <CardContent className="p-8 flex flex-col items-center space-y-10">
                 
-                {/* Visual Compass */}
-                <div className="relative w-64 h-64 md:w-72 md:h-72">
-                  <div 
-                    className="absolute inset-0 rounded-full border-4 border-muted/50 flex items-center justify-center transition-transform duration-300 ease-out shadow-inner"
-                    style={{ transform: `rotate(${-deviceHeading}deg)` }}
-                  >
+                {/* Visual Compass Dial */}
+                <div className="relative w-64 h-64 md:w-72 md:h-72 flex items-center justify-center">
+                  
+                  {/* Static Outer Dial (Markers stay relative to the screen) */}
+                  <div className="absolute inset-0 rounded-full border-4 border-muted/20 flex items-center justify-center bg-black/[0.02] shadow-inner">
                     <span className="absolute top-3 font-black text-sm text-red-500">N</span>
-                    <span className="absolute bottom-3 font-black text-sm">S</span>
-                    <span className="absolute right-3 font-black text-sm">E</span>
-                    <span className="absolute left-3 font-black text-sm">W</span>
+                    <span className="absolute bottom-3 font-black text-sm opacity-40">S</span>
+                    <span className="absolute right-3 font-black text-sm opacity-40">E</span>
+                    <span className="absolute left-3 font-black text-sm opacity-40">W</span>
                     
                     {Array.from({ length: 12 }).map((_, i) => (
                       <div 
                         key={i} 
-                        className="absolute w-0.5 h-3 bg-muted-foreground/20 rounded-full" 
+                        className="absolute w-0.5 h-3 bg-muted-foreground/10 rounded-full" 
                         style={{ transform: `rotate(${i * 30}deg) translateY(-120px)` }}
                       />
                     ))}
                   </div>
 
-                  {/* Qibla Arrow (Rotation: Qibla - Heading) */}
+                  {/* Rotating Unified Needle (Qibla Direction) */}
                   <div 
-                    className="absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-out"
+                    className="relative flex items-center justify-center transition-transform duration-500 ease-out z-10"
                     style={{ transform: `rotate(${(qiblaAngle || 0) - deviceHeading}deg)` }}
                   >
                     <div className="relative flex flex-col items-center">
-                      <div className="w-1 h-32 bg-accent absolute top-[-64px] rounded-full" style={{ filter: 'blur(1px)', opacity: 0.3 }} />
-                      <Navigation className="h-20 w-20 text-accent fill-accent" style={{ filter: 'drop-shadow(0 0 15px rgba(234, 88, 12, 0.5))' }} />
-                      <div className="absolute -top-12 bg-accent text-white px-4 py-1.5 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-2xl border-2 border-white/20 whitespace-nowrap">
-                        {t('kaaba')}
+                      {/* The Needle Body */}
+                      <div className="w-2.5 h-28 bg-emerald-500 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.4)] border border-emerald-400/50" />
+                      
+                      {/* The Arrow Head / Icon at the tip */}
+                      <div className="relative -mt-14 flex flex-col items-center">
+                        <Navigation 
+                          className="h-16 w-16 text-emerald-600 fill-emerald-600 mb-2" 
+                          style={{ filter: 'drop-shadow(0 0 12px rgba(16,185,129,0.6))' }} 
+                        />
+                        
+                        {/* Kaaba Badge at the tip */}
+                        <div className="absolute -top-16 bg-emerald-600/90 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-2xl border-2 border-white/30 whitespace-nowrap">
+                          {t('kaaba')}
+                        </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-6 h-6 bg-primary rounded-full border-4 border-white shadow-xl ring-4 ring-primary/10"></div>
-                  </div>
+                  {/* Center Pivot Pin */}
+                  <div className="absolute w-5 h-5 bg-primary rounded-full border-4 border-white shadow-xl z-20" />
                 </div>
 
                 <div className="text-center space-y-3">
@@ -415,8 +416,8 @@ export default function PrayerTimesPage() {
                       <Compass className="mr-2 h-5 w-5" /> {t('enable_compass')}
                     </Button>
                   ) : (
-                    <div className="flex items-center justify-center gap-2 text-green-600 font-bold uppercase text-[10px] tracking-widest bg-green-50 py-3 rounded-2xl border-2 border-green-100">
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-ping" />
+                    <div className="flex items-center justify-center gap-2 text-emerald-600 font-bold uppercase text-[10px] tracking-widest bg-emerald-50 py-3 rounded-2xl border-2 border-emerald-100">
+                      <div className="w-2 h-2 bg-emerald-500 rounded-full animate-ping" />
                       Live Compass Active
                     </div>
                   )}
