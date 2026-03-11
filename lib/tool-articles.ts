@@ -18,6 +18,35 @@ export interface ArticleCollection {
   };
 }
 
+const PDF_WATERMARK_CONTENT: { [lang: string]: ToolArticle } = {
+  id: {
+    title: `Watermark PDF Online: Lindungi Dokumen Anda dengan Privasi 100%`,
+    sections: [
+      {
+        title: `Keamanan Dokumen Tanpa Kompromi`,
+        content: `<p>Banyak layanan watermark online meminta Anda mengunggah file ke server mereka. Hal ini berisiko bagi dokumen sensitif seperti kontrak atau identitas pribadi. <strong>VersoKit</strong> memproses PDF Anda secara lokal di browser, menjamin kerahasiaan data.</p>`
+      },
+      {
+        title: `Pilih Mode Perlindungan Terbaik`,
+        content: `<p>Gunakan mode <strong>Diagonal Tengah</strong> untuk dokumen standar, atau mode <strong>Pola Berulang</strong> untuk perlindungan ekstra yang menutupi seluruh halaman, sehingga sulit untuk disalin secara ilegal.</p>`
+      }
+    ]
+  },
+  en: {
+    title: `Online PDF Watermark: Protect Your Documents with 100% Privacy`,
+    sections: [
+      {
+        title: `Uncompromising Document Security`,
+        content: `<p>Most online watermark services require you to upload files to their servers. This is risky for sensitive documents like contracts or personal IDs. <strong>VersoKit</strong> processes your PDF locally in your browser, guaranteeing data confidentiality.</p>`
+      },
+      {
+        title: `Choose the Best Protection Mode`,
+        content: `<p>Use <strong>Diagonal Center</strong> for standard documents, or <strong>Tiled Pattern</strong> for extra protection that covers the entire page, making illegal copying much harder.</p>`
+      }
+    ]
+  }
+};
+
 const WATERMARK_CONTENT: { [lang: string]: ToolArticle } = {
   id: {
     title: `Watermark Foto Online: Lindungi Karya Visual Anda dengan Pola Berulang`,
@@ -203,6 +232,7 @@ const INVOICE_CONTENT: { [lang: string]: ToolArticle } = {
 };
 
 export const TOOL_ARTICLES: ArticleCollection = {
+  "pdf-watermark": PDF_WATERMARK_CONTENT,
   "image-watermark": WATERMARK_CONTENT,
   "prayer-times": PRAYER_CONTENT,
   inventory: INVENTORY_CONTENT,

@@ -19,7 +19,8 @@ import {
   WifiOff,
   Heart,
   Navigation,
-  Stamp
+  Stamp,
+  FileBadge
 } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -56,7 +57,7 @@ const TOOLS_DATA: Tool[] = [
     category: "sports",
     href: "/tools/americano",
     name: { en: "Americano Generator", id: "Generator Americano", de: "Americano Generator", es: "Generador Americano", pt: "Gerador Americano", fr: "Générateur Americano", it: "Generatore Americano" },
-    desc: { en: "Organize Padel or Pickleball tournaments. Auto-pairing & scoring.", id: "Atur turnamen Padel atau Pickleball. Rotasi pasangan otomatis.", de: "Organisieren Sie Padel- oder Pickleball-Turniere. Automatische Paarung.", es: "Organiza torneos de Pádel o Pickleball. Emparejamiento automático.", pt: "Organize torneios de Padel ou Pickleball. Emparelhamento automático.", fr: "Organisez des tournois de Padel ou Pickleball. Appariement auto.", it: "Organizza tornei di Padel o Pickleball. Abbinamento automatico." }
+    desc: { en: "Organize Padel or Pickleball tournaments. Auto-pairing & scoring.", id: "Atur turnamen Padel atau Pickleball. Rotasi pasangan otomatis.", de: "Organisieren Sie Padel- oder Pickleball-Turniere. Automatische Paarung.", es: "Organiza torneos de Pádel o Pickleball. Emparejamiento automático.", pt: "Organize torneios de Padel atau Pickleball. Emparelhamento automático.", fr: "Organisez des tournois de Padel ou Pickleball. Appariement auto.", it: "Organizza tornei di Padel o Pickleball. Abbinamento automatico." }
   },
   {
     id: "tennis",
@@ -130,17 +131,25 @@ const TOOLS_DATA: Tool[] = [
     category: "finance",
     href: "/tools/split-bill",
     name: { en: "Split Bill", id: "Bagi Tagihan", de: "Rechnung teilen", es: "Dividir Cuenta", pt: "Dividir Conta", fr: "Partager Addition", it: "Dividi Conto" },
-    desc: { en: "Handle tax & service for group dining.", id: "Hitung pajak & layanan untuk makan grup.", de: "Steuern & Service für Gruppen berechnen.", es: "Calcula impuestos y servicio para grupos.", pt: "Calcule impostos e serviço para grupos.", fr: "Calculez taxes et service pour groupes.", it: "Calcola tasse e servizio per gruppi." }
+    desc: { en: "Handle tax & service for group dining.", id: "Hitung pajak & layanan untuk makan grup.", de: "Steuern & Service für Gruppen berechnen.", es: "Calcula impuestos y servicio para grupos.", pt: "Calcule impuestos e serviço para grupos.", fr: "Calculez taxes et service pour groupes.", it: "Calcola tasse e servizio per gruppi." }
   },
   // --- PRODUCTIVITY ---
+  {
+    id: "pdf-watermark",
+    icon: FileBadge,
+    category: "productivity",
+    href: "/tools/pdf-watermark",
+    isNew: true,
+    name: { en: "PDF Watermark", id: "Watermark PDF", de: "PDF-Wasserzeichen", es: "Marca PDF", pt: "Marca d'água PDF", fr: "Filigrane PDF", it: "Filigrana PDF" },
+    desc: { en: "Securely add text watermarks to PDF files locally.", id: "Tambah watermark teks ke file PDF lokal dengan aman.", de: "Sicher Text-Wasserzeichen zu PDF-Dateien hinzufügen.", es: "Añade marcas de agua de teks a PDF localmente.", pt: "Adicione marcas d'água de texto a PDFs localmente.", fr: "Ajoutez des filigranes texte aux PDF localement.", it: "Aggiungi filigrana teks ai PDF localmente." }
+  },
   {
     id: "watermark",
     icon: Stamp,
     category: "productivity",
     href: "/tools/image-watermark",
-    isNew: true,
     name: { en: "Image Watermark", id: "Watermark Foto", de: "Bild-Wasserzeichen", es: "Marca de Agua", pt: "Marca d'água", fr: "Filigrane Image", it: "Filigrana" },
-    desc: { en: "Add text or logo patterns to protect images.", id: "Tambah teks atau logo untuk melindungi foto.", de: "Text oder Logos zum Schutz von Bildern hinzufügen.", es: "Añade texto o logos para proteger imágenes.", pt: "Adicione texto ou logotipos para proteger imagens.", fr: "Ajoutez texte ou logo pour protéger vos images.", it: "Aggiungi testo o loghi per proteggere immagini." }
+    desc: { en: "Add text or logo patterns to protect images.", id: "Tambah teks atau logo untuk melindungi foto.", de: "Text oder Logos zum Schutz von Bildern hinzufügen.", es: "Añade teks o logos para proteger imágenes.", pt: "Adicione texto ou logotipos para proteger imagens.", fr: "Ajoutez texte ou logo pour protéger vos images.", it: "Aggiungi testo o loghi per proteggere immagini." }
   },
   {
     id: "compressor",
@@ -155,8 +164,8 @@ const TOOLS_DATA: Tool[] = [
     icon: Scaling,
     category: "productivity",
     href: "/tools/image-resizer",
-    name: { en: "Image Resizer", id: "Ubah Ukuran Foto", de: "Bildgröße ändern", es: "Redimensionar", pt: "Redimensionar", fr: "Redimensionner", it: "Ridimensiona" },
-    desc: { en: "Resize dimensions (px) accurately.", id: "Ubah dimensi (px) secara akurat.", de: "Dimensionen (px) genau ändern.", es: "Cambia dimensiones (px) con precisión.", pt: "Mude dimensões (px) con precisión.", fr: "Changez dimensions (px) avec précision.", it: "Cambia dimensioni (px) con precisione." }
+    name: { en: "Image Resizer", id: "Ubah Ukuran Foto", de: "Bildgröße mengubah", es: "Redimensionar", pt: "Redimensionar", fr: "Redimensionner", it: "Ridimensiona" },
+    desc: { en: "Resize dimensions (px) accurately.", id: "Ubah dimensi (px) secara akurat.", de: "Dimensionen (px) genau ändern.", es: "Cambia dimensiones (px) con precisión.", pt: "Mude dimensões (px) con precisión.", fr: "Changez dimensions (px) avec précision.", it: "Cambia dimensi (px) con precisione." }
   },
   {
     id: "cropper",

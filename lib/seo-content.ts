@@ -18,6 +18,22 @@ export interface SeoCollection {
 }
 
 export const SEO_DATA: SeoCollection = {
+  "pdf-watermark": {
+    en: {
+      title: "PDF Watermark Generator",
+      description: "Securely add text watermarks to your PDF documents entirely in your browser. No files uploaded.",
+      steps: ["Upload your PDF file.", "Enter the watermark text.", "Adjust font size, color, and opacity.", "Choose placement mode and download."],
+      article: "Protecting your PDF documents is critical for business privacy. VersoKit's PDF Watermark tool uses client-side processing, meaning your documents never touch our servers. This ensures 100% data confidentiality while giving you professional tools to prevent unauthorized copying.",
+      faq: [{ q: "Is it safe for sensitive documents?", a: "Yes, all processing is done locally in your browser using the pdf-lib library. Your files are never transmitted." }]
+    },
+    id: {
+      title: "Pembuat Watermark PDF",
+      description: "Tambah watermark teks ke dokumen PDF Anda dengan aman sepenuhnya di browser. Tanpa upload file.",
+      steps: ["Unggah file PDF Anda.", "Masukkan teks watermark.", "Atur ukuran font, warna, dan transparansi.", "Pilih mode penempatan dan unduh."],
+      article: "Melindungi dokumen PDF sangat penting untuk privasi bisnis. Alat Watermark PDF VersoKit menggunakan pemrosesan client-side, yang berarti dokumen Anda tidak pernah menyentuh server kami. Ini menjamin kerahasiaan data 100% sambil memberi Anda alat profesional untuk mencegah penyalinan tanpa izin.",
+      faq: [{ q: "Apakah aman untuk dokumen sensitif?", a: "Ya, semua pemrosesan dilakukan secara lokal di browser Anda menggunakan library pdf-lib. File Anda tidak pernah dikirim." }]
+    }
+  },
   "image-watermark": {
     en: {
       title: "Image Watermark Generator",
