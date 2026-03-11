@@ -18,7 +18,8 @@ import {
   ShieldCheck,
   WifiOff,
   Heart,
-  Navigation
+  Navigation,
+  Stamp
 } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -45,7 +46,6 @@ const TOOLS_DATA: Tool[] = [
     icon: Navigation,
     category: "religious",
     href: "/tools/prayer-times",
-    isNew: true,
     name: { en: "Prayer Times & Qibla", id: "Jadwal Sholat & Kiblat", de: "Gebetszeiten & Qibla", es: "Horarios de Oración", pt: "Horários de Oração", fr: "Heures de Prière", it: "Orari Preghiera" },
     desc: { en: "Accurate local prayer times and real-time compass for Qibla direction.", id: "Jadwal sholat akurat dan kompas arah kiblat real-time.", de: "Genaue Gebetszeiten und Qibla-Kompass.", es: "Horarios de oración y brújula de Qibla en tiempo real.", pt: "Horários de oração e bússola Qibla em tempo real.", fr: "Heures de prière et boussole Qibla en temps réel.", it: "Orari di preghiera e bussola Qibla in tempo reale." }
   },
@@ -88,7 +88,7 @@ const TOOLS_DATA: Tool[] = [
     category: "sports",
     href: "/tools/lineup-builder",
     name: { en: "Lineup Builder", id: "Pembuat Formasi", de: "Aufstellungs-Builder", es: "Alineaciones", pt: "Escalação", fr: "Compo d'Équipe", it: "Formazione" },
-    desc: { en: "Create football formations (4-4-2) and download image.", id: "Buat formasi bola (4-4-2) dan unduh gambar.", de: "Fußballformationen erstellen und Bild laden.", es: "Crea formaciones de fútbol y descarga imagen.", pt: "Crie formações de futebol e baixe a imagem.", fr: "Créez des formations et téléchargez l'image.", it: "Crea formazioni calcio e scarica immagine." }
+    desc: { en: "Create football formations (4-4-2) and download image.", id: "Buat formasi bola (4-4-2) dan unduh gambar.", de: "Fußballformationen erstellen and Bild laden.", es: "Crea formaciones de fútbol y descarga imagen.", pt: "Crie formações de futebol e baixe a imagem.", fr: "Créez des formations et téléchargez l'image.", it: "Crea formazioni calcio e scarica immagine." }
   },
   // --- BUSINESS ---
   {
@@ -134,12 +134,21 @@ const TOOLS_DATA: Tool[] = [
   },
   // --- PRODUCTIVITY ---
   {
+    id: "watermark",
+    icon: Stamp,
+    category: "productivity",
+    href: "/tools/image-watermark",
+    isNew: true,
+    name: { en: "Image Watermark", id: "Watermark Foto", de: "Bild-Wasserzeichen", es: "Marca de Agua", pt: "Marca d'água", fr: "Filigrane Image", it: "Filigrana" },
+    desc: { en: "Add text or logo patterns to protect images.", id: "Tambah teks atau logo untuk melindungi foto.", de: "Text oder Logos zum Schutz von Bildern hinzufügen.", es: "Añade texto o logos para proteger imágenes.", pt: "Adicione texto ou logotipos para proteger imagens.", fr: "Ajoutez texte ou logo pour protéger vos images.", it: "Aggiungi testo o loghi per proteggere immagini." }
+  },
+  {
     id: "compressor",
     icon: Minimize,
     category: "productivity",
     href: "/tools/image-compressor",
     name: { en: "Image Compressor", id: "Kompres Foto", de: "Bildkompressor", es: "Compresor Imagen", pt: "Compressor Imagem", fr: "Compresseur Image", it: "Compressore" },
-    desc: { en: "Reduce file size securely in browser.", id: "Kecilkan ukuran file aman di browser.", de: "Dateigröße sicher im Browser reduzieren.", es: "Reduce tamaño de archivo en navegador.", pt: "Reduza tamanho do arquivo no navegador.", fr: "Réduisez taille fichier dans navigateur.", it: "Riduci dimensioni file nel browser." }
+    desc: { en: "Reduce file size securely in browser.", id: "Kecilkan ukuran file aman di browser.", de: "Dateigröße sicher im Browser reduzieren.", es: "Reduce tamaño de archivo en navegador.", pt: "Reduza tamanho do arquivo no navegador.", fr: "Réduisez taille fichier dalam navigateur.", it: "Riduci dimensioni file nel browser." }
   },
   {
     id: "resizer",
@@ -147,7 +156,7 @@ const TOOLS_DATA: Tool[] = [
     category: "productivity",
     href: "/tools/image-resizer",
     name: { en: "Image Resizer", id: "Ubah Ukuran Foto", de: "Bildgröße ändern", es: "Redimensionar", pt: "Redimensionar", fr: "Redimensionner", it: "Ridimensiona" },
-    desc: { en: "Resize dimensions (px) accurately.", id: "Ubah dimensi (px) secara akurat.", de: "Dimensionen (px) genau ändern.", es: "Cambia dimensiones (px) con precisión.", pt: "Mude dimensiões (px) con precisión.", fr: "Changez dimensions (px) avec précision.", it: "Cambia dimensioni (px) con precisione." }
+    desc: { en: "Resize dimensions (px) accurately.", id: "Ubah dimensi (px) secara akurat.", de: "Dimensionen (px) genau ändern.", es: "Cambia dimensiones (px) con precisión.", pt: "Mude dimensões (px) con precisión.", fr: "Changez dimensions (px) avec précision.", it: "Cambia dimensioni (px) con precisione." }
   },
   {
     id: "cropper",
@@ -170,13 +179,13 @@ const UI_LABELS: Record<string, Record<string, string>> = {
     it: "VersoKit: Strumenti Quotidiani"
   },
   search_placeholder: {
-    en: "Search for a tool (e.g., Invoice, Tennis)...",
-    id: "Cari alat (misal: Invoice, Tenis)...",
-    de: "Suche nach einem Werkzeug (z. B. Rechnung, Tennis)...",
-    es: "Buscar una herramienta (ej. Factura, Tenis)...",
-    pt: "Procurar ferramenta (ex: Fatura, Ténis)...",
-    fr: "Rechercher un outil (ex: Facture, Tennis)...",
-    it: "Cerca uno strumento (es. Fattura, Tennis)..."
+    en: "Search for a tool (e.g., Invoice, Watermark)...",
+    id: "Cari alat (misal: Invoice, Watermark)...",
+    de: "Suche nach einem Werkzeug (z. B. Rechnung, Wasserzeichen)...",
+    es: "Buscar una herramienta (ej. Factura, Marca de agua)...",
+    pt: "Procurar ferramenta (ex: Fatura, Marca d'água)...",
+    fr: "Rechercher un outil (ex: Facture, Filigrane)...",
+    it: "Cerca uno strumento (es. Fattura, Filigrana)..."
   },
   no_results: {
     en: "No tools found matching",

@@ -18,6 +18,22 @@ export interface SeoCollection {
 }
 
 export const SEO_DATA: SeoCollection = {
+  "image-watermark": {
+    en: {
+      title: "Image Watermark Generator",
+      description: "Create custom text or logo watermarks to protect your photos. Bulk patterns supported.",
+      steps: ["Upload your main photo.", "Choose between Text or Logo watermark.", "Toggle Tiled Pattern for bulk protection.", "Adjust opacity and download."],
+      article: "Protecting your visual assets is easier than ever. VersoKit's watermark tool uses HTML5 Canvas to render patterns directly in your browser, ensuring no data ever leaves your computer. Use the tiled mode for maximum protection against unauthorized use.",
+      faq: [{ q: "Can I use my own logo?", a: "Yes, you can upload any PNG file to use as a transparent logo watermark." }]
+    },
+    id: {
+      title: "Pembuat Watermark Foto",
+      description: "Buat watermark teks atau logo kustom untuk melindungi foto Anda. Mendukung pola berulang.",
+      steps: ["Unggah foto utama Anda.", "Pilih watermark Teks atau Logo.", "Aktifkan Pola Berulang untuk proteksi maksimal.", "Atur transparansi dan unduh."],
+      article: "Melindungi aset visual Anda kini lebih mudah. Alat watermark VersoKit menggunakan HTML5 Canvas untuk memproses pola langsung di browser Anda, menjamin data tidak pernah keluar dari komputer. Gunakan mode berulang (tiled) untuk perlindungan maksimal.",
+      faq: [{ q: "Bisakah saya pakai logo sendiri?", a: "Ya, Anda bisa mengunggah file PNG apa pun untuk digunakan sebagai watermark logo transparan." }]
+    }
+  },
   "prayer-times": {
     en: {
       title: "Prayer Times & Qibla Finder",
@@ -44,7 +60,7 @@ export const SEO_DATA: SeoCollection = {
     },
     id: {
       title: "Generator Padel Americano",
-      description: "Atur turnamen Padel dengan rotasi partner yang adil dan penghitungan skor otomatis.",
+      description: "Atur turnamen Padel dengan rotasi partner yang adid dan penghitungan skor otomatis.",
       steps: ["Tambah pemain dan tentukan target poin.", "Acak nama untuk memulai secara random.", "Masukkan skor setiap pertandingan.", "Pantau klasemen individu secara real-time."],
       article: "Padel Americano adalah format turnamen di mana setiap pemain akan berganti pasangan setiap babak. Skor akhir dihitung secara individu.",
       faq: [{ q: "Apa itu skor 32 poin?", a: "Setiap pertandingan memainkan total 32 poin. Jika Anda menang 20, lawan mendapat 12." }]

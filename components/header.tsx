@@ -19,7 +19,7 @@ import {
   ChevronDown,
   LayoutGrid,
   Navigation,
-  BookOpen
+  Stamp
 } from 'lucide-react';
 
 const MENU_TEXT: Record<string, any> = {
@@ -42,6 +42,7 @@ const MENU_TEXT: Record<string, any> = {
   inventory: { en: "Inventory", id: "Inventaris", de: "Inventar", es: "Inventario", pt: "Estoque", fr: "Stock", it: "Inventario" },
   kanban: { en: "Kanban Board", id: "Papan Kanban", de: "Kanban Board", es: "Tablero Kanban", pt: "Quadro Kanban", fr: "Tableau Kanban", it: "Kanban Board" },
 
+  watermark: { en: "Image Watermark", id: "Watermark Foto", de: "Bild-Wasserzeichen", es: "Marca de Agua", pt: "Marca d'água", fr: "Filigrane", it: "Filigrana" },
   resizer: { en: "Image Resizer", id: "Ubah Ukuran", de: "Bildgröße", es: "Redimensionar", pt: "Redimensionar", fr: "Redimensionner", it: "Ridimensiona" },
   cropper: { en: "Image Cropper", id: "Potong Foto", de: "Zuschneiden", es: "Recortar", pt: "Cortar", fr: "Rogner", it: "Ritaglia" },
   compressor: { en: "Image Compressor", id: "Kompres Foto", de: "Bildkompressor", es: "Compresor", pt: "Compressor", fr: "Compresseur", it: "Compressore" },
@@ -90,6 +91,7 @@ export default function Header() {
       label: MENU_TEXT.cat_utilities[lang] || MENU_TEXT.cat_utilities['en'],
       icon: <Wrench className="h-4 w-4 mr-2" />,
       items: [
+        { href: '/tools/image-watermark', label: MENU_TEXT.watermark[lang] || MENU_TEXT.watermark['en'] },
         { href: '/tools/image-resizer', label: MENU_TEXT.resizer[lang] || MENU_TEXT.resizer['en'] },
         { href: '/tools/image-cropper', label: MENU_TEXT.cropper[lang] || MENU_TEXT.cropper['en'] },
         { href: '/tools/image-compressor', label: MENU_TEXT.compressor[lang] || MENU_TEXT.compressor['en'] },

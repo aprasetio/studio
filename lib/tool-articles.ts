@@ -18,6 +18,35 @@ export interface ArticleCollection {
   };
 }
 
+const WATERMARK_CONTENT: { [lang: string]: ToolArticle } = {
+  id: {
+    title: `Watermark Foto Online: Lindungi Karya Visual Anda dengan Pola Berulang`,
+    sections: [
+      {
+        title: `Pentingnya Melindungi Foto dari Pencurian`,
+        content: `<p>Di era digital, foto produk atau hasil karya seni sangat mudah diambil orang lain tanpa izin. Menggunakan watermark adalah cara termudah untuk memberikan identitas pada foto Anda.</p>`
+      },
+      {
+        title: `Kelebihan Mode Tiled (Pola Berulang)`,
+        content: `<p>Berbeda dengan satu watermark di pojok yang mudah dihapus, mode <strong>Tiled</strong> akan memenuhi seluruh gambar dengan teks transparan. Ini membuat proses penghapusan watermark menjadi jauh lebih sulit bagi orang yang ingin menyalahgunakan foto Anda.</p>`
+      }
+    ]
+  },
+  en: {
+    title: `Online Image Watermark: Protect Your Visuals with Patterned Overlays`,
+    sections: [
+      {
+        title: `Why You Need to Watermark Your Images`,
+        content: `<p>Digital assets are easily stolen. Adding a watermark ensures your brand identity stays attached to your content no matter where it spreads online.</p>`
+      },
+      {
+        title: `The Power of Tiled Patterns`,
+        content: `<p>While a single logo in the corner can be easily cropped out, a <strong>Tiled Pattern</strong> covers the entire image area, making unauthorized removal nearly impossible without ruining the original photo.</p>`
+      }
+    ]
+  }
+};
+
 const PRAYER_CONTENT: { [lang: string]: ToolArticle } = {
   id: {
     title: `Jadwal Sholat Akurat & Kompas Kiblat: Panduan Ibadah Digital Anda`,
@@ -174,6 +203,7 @@ const INVOICE_CONTENT: { [lang: string]: ToolArticle } = {
 };
 
 export const TOOL_ARTICLES: ArticleCollection = {
+  "image-watermark": WATERMARK_CONTENT,
   "prayer-times": PRAYER_CONTENT,
   inventory: INVENTORY_CONTENT,
   "budget-planner": BUDGET_CONTENT,
