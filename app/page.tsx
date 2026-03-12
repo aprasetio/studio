@@ -20,7 +20,8 @@ import {
   Heart,
   Navigation,
   Stamp,
-  FileBadge
+  FileBadge,
+  Lightbulb
 } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -57,7 +58,7 @@ const TOOLS_DATA: Tool[] = [
     category: "sports",
     href: "/tools/americano",
     name: { en: "Americano Generator", id: "Generator Americano", de: "Americano Generator", es: "Generador Americano", pt: "Gerador Americano", fr: "Générateur Americano", it: "Generatore Americano" },
-    desc: { en: "Organize Padel or Pickleball tournaments. Auto-pairing & scoring.", id: "Atur turnamen Padel atau Pickleball. Rotasi pasangan otomatis.", de: "Organisieren Sie Padel- oder Pickleball-Turniere. Automatische Paarung.", es: "Organiza torneos de Pádel o Pickleball. Emparejamiento automático.", pt: "Organize torneios de Padel atau Pickleball. Emparelhamento automático.", fr: "Organisez des tournois de Padel ou Pickleball. Appariement auto.", it: "Organizza tornei di Padel o Pickleball. Abbinamento automatico." }
+    desc: { en: "Organize Padel or Pickleball tournaments. Auto-pairing & scoring.", id: "Atur turnamen Padel atau Pickleball. Rotasi pasangan otomatis.", de: "Organisieren Sie Padel- oder Pickleball-Turniere. Automatische Paarung.", es: "Organiza torneos de Pádel o Pickleball. Emparejamiento automático.", pt: "Organize torneios de Padel atau Pickleball. Emparelhamento automático.", fr: "Organisez des tournois de Padel atau Pickleball. Appariement auto.", it: "Organizza tornei di Padel o Pickleball. Abbinamento automatico." }
   },
   {
     id: "tennis",
@@ -73,7 +74,7 @@ const TOOLS_DATA: Tool[] = [
     category: "sports",
     href: "/tools/futsal",
     name: { en: "Futsal Scoreboard", id: "Papan Skor Futsal", de: "Futsal-Anzeigetafel", es: "Marcador Futsal", pt: "Placar de Futsal", fr: "Score Futsal", it: "Tabellone Calcetto" },
-    desc: { en: "Digital scoreboard with timer and fouls.", id: "Papan skor digital dengan timer dan pelanggaran.", de: "Digitale Tafel mit Timer und Fouls.", es: "Marcador digital con temporizador y faltas.", pt: "Placar digital con cronômetro e faltas.", fr: "Tableau numérique avec minuterie et fautes.", it: "Tabellone digitale con timer e falli." }
+    desc: { en: "Digital scoreboard with timer and fouls.", id: "Papan skor digital dengan timer dan pelanggaran.", de: "Digitale Tafel mit Timer und Fouls.", es: "Marcador digital con temporizador dan faltas.", pt: "Placar digital con cronômetro e faltas.", fr: "Tableau numérique avec minuterie et fautes.", it: "Tabellone digitale con timer e falli." }
   },
   {
     id: "scoreboard",
@@ -92,6 +93,15 @@ const TOOLS_DATA: Tool[] = [
     desc: { en: "Create football formations (4-4-2) and download image.", id: "Buat formasi bola (4-4-2) dan unduh gambar.", de: "Fußballformationen erstellen and Bild laden.", es: "Crea formaciones de fútbol y descarga imagen.", pt: "Crie formações de futebol e baixe a imagem.", fr: "Créez des formations et téléchargez l'image.", it: "Crea formazioni calcio e scarica immagine." }
   },
   // --- BUSINESS ---
+  {
+    id: "idea-tracker",
+    icon: Lightbulb,
+    category: "business",
+    href: "/tools/idea-tracker",
+    isNew: true,
+    name: { en: "Idea Tracker", id: "Pelacak Ide", de: "Ideen-Tracker", es: "Rastreador de Ideas", pt: "Rastreador de Ideias", fr: "Suivi d'Idées", it: "Tracker di Idee" },
+    desc: { en: "Capture and organize brainstorming ideas locally.", id: "Catat dan kelola ide brainstorming secara lokal.", de: "Ideen lokal erfassen und organisieren.", es: "Captura y organiza ideas localmente.", pt: "Capture e organize ideias localmente.", fr: "Capturez et organisez vos idées localement.", it: "Cattura e organizza le idee localmente." }
+  },
   {
     id: "invoice",
     icon: FileText,
@@ -123,7 +133,7 @@ const TOOLS_DATA: Tool[] = [
     category: "finance",
     href: "/tools/budget-planner",
     name: { en: "Budget Planner", id: "Perencana Anggaran", de: "Budgetplaner", es: "Presupuesto", pt: "Orçamento", fr: "Budget", it: "Budget" },
-    desc: { en: "Zero-based budgeting. Track every dollar.", id: "Anggaran berbasis nol. Lacak tiap rupiah.", de: "Nullbasiertes Budgetieren. Jeden Euro verfolgen.", es: "Presupuesto base cero. Controla cada euro.", pt: "Orçamento base zero. Rastreie cada centavo.", fr: "Budget base zero. Suivez chaque euro.", it: "Budget base zero. Traccia ogni euro." }
+    desc: { en: "Zero-based budgeting. Track every dollar.", id: "Anggaran berbasis nol. Lacak tiap rupiah.", de: "Nullbasiertes Budgetieren. Jeden Euro verfolgen.", es: "Presupuesto base cero. Controla cada euro.", pt: "Orçamento base zero. Rastreie cada centavo.", fr: "Budget base zero. Suivez chaque euro.", it: "Budget base zero. Traccia setiap euro." }
   },
   {
     id: "split-bill",
@@ -139,7 +149,6 @@ const TOOLS_DATA: Tool[] = [
     icon: FileBadge,
     category: "productivity",
     href: "/tools/pdf-watermark",
-    isNew: true,
     name: { en: "PDF Watermark", id: "Watermark PDF", de: "PDF-Wasserzeichen", es: "Marca PDF", pt: "Marca d'água PDF", fr: "Filigrane PDF", it: "Filigrana PDF" },
     desc: { en: "Securely add text watermarks to PDF files locally.", id: "Tambah watermark teks ke file PDF lokal dengan aman.", de: "Sicher Text-Wasserzeichen zu PDF-Dateien hinzufügen.", es: "Añade marcas de agua de teks a PDF localmente.", pt: "Adicione marcas d'água de texto a PDFs localmente.", fr: "Ajoutez des filigranes texte aux PDF localement.", it: "Aggiungi filigrana teks ai PDF localmente." }
   },
@@ -149,7 +158,7 @@ const TOOLS_DATA: Tool[] = [
     category: "productivity",
     href: "/tools/image-watermark",
     name: { en: "Image Watermark", id: "Watermark Foto", de: "Bild-Wasserzeichen", es: "Marca de Agua", pt: "Marca d'água", fr: "Filigrane Image", it: "Filigrana" },
-    desc: { en: "Add text or logo patterns to protect images.", id: "Tambah teks atau logo untuk melindungi foto.", de: "Text oder Logos zum Schutz von Bildern hinzufügen.", es: "Añade teks o logos para proteger imágenes.", pt: "Adicione texto ou logotipos para proteger imagens.", fr: "Ajoutez texte ou logo pour protéger vos images.", it: "Aggiungi testo o loghi per proteggere immagini." }
+    desc: { en: "Add text or logo patterns to protect images.", id: "Tambah teks atau logo untuk melindungi foto.", de: "Text oder Logos zum Schutz von Bildern hinzufügen.", es: "Añade teks o logos para proteger imágenes.", pt: "Adicione texto atau logotipos para proteger imagens.", fr: "Ajoutez texte atau logo pour protéger vos images.", it: "Aggiungi testo o loghi per proteggere immagini." }
   },
   {
     id: "compressor",

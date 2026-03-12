@@ -18,6 +18,22 @@ export interface SeoCollection {
 }
 
 export const SEO_DATA: SeoCollection = {
+  "idea-tracker": {
+    en: {
+      title: "Secure Local Idea Tracker",
+      description: "A private brainstorming tool that stores your ideas 100% locally in your browser. Features voice dictation and priority management.",
+      steps: ["Capture your thought using the 'New Idea' button.", "Add details, tags, and set a priority level.", "Use voice dictation to speak your ideas instead of typing.", "Organize and filter your workspace as it grows."],
+      article: "Managing creativity requires a safe and fast space. VersoKit's Idea Tracker provides an enterprise-grade experience with 100% data privacy. By utilizing local storage, your business strategies, product concepts, and personal thoughts never leave your device. The integrated Web Speech API allows for high-speed capturing when your hands are full.",
+      faq: [{ q: "Where are my ideas stored?", a: "They are stored in your browser's Local Storage. We never upload your ideas to any database." }, { q: "Can I sync between devices?", a: "Since data is local, you must use the 'Backup' and 'Restore' feature to move your ideas between devices." }]
+    },
+    id: {
+      title: "Pelacak Ide Lokal Aman",
+      description: "Alat brainstorming pribadi yang menyimpan ide Anda 100% secara lokal di browser. Dilengkapi dengan dikte suara dan manajemen prioritas.",
+      steps: ["Catat pemikiran Anda menggunakan tombol 'Ide Baru'.", "Tambahkan rincian, tag, dan tentukan tingkat prioritas.", "Gunakan fitur dikte suara untuk berbicara daripada mengetik.", "Atur dan filter ruang kerja Anda saat ide-ide mulai bertambah."],
+      article: "Mengelola kreativitas membutuhkan ruang yang aman dan cepat. Idea Tracker dari VersoKit memberikan pengalaman kelas enterprise dengan privasi data 100%. Dengan memanfaatkan penyimpanan lokal, strategi bisnis, konsep produk, dan pemikiran pribadi Anda tidak pernah keluar dari perangkat Anda. API Pengenalan Suara yang terintegrasi memungkinkan penangkapan ide berkecepatan tinggi saat tangan Anda sibuk.",
+      faq: [{ q: "Di mana ide saya disimpan?", a: "Ide-ide Anda disimpan di Penyimpanan Lokal (Local Storage) browser Anda. Kami tidak pernah mengunggah ide Anda ke database mana pun." }, { q: "Bisakah saya sinkronisasi antar perangkat?", a: "Karena data bersifat lokal, Anda harus menggunakan fitur 'Cadangkan' dan 'Pulihkan' untuk memindahkan ide Anda antar perangkat." }]
+    }
+  },
   "pdf-watermark": {
     en: {
       title: "PDF Watermark Generator",

@@ -20,7 +20,8 @@ import {
   LayoutGrid,
   Navigation,
   Stamp,
-  FileBadge
+  FileBadge,
+  Lightbulb
 } from 'lucide-react';
 
 const MENU_TEXT: Record<string, any> = {
@@ -37,6 +38,7 @@ const MENU_TEXT: Record<string, any> = {
   tournament: { en: "Tournament Manager", id: "Manajer Turnamen", de: "Turniermanager", es: "Gestor Torneos", pt: "Gerente Torneio", fr: "Gestion Tournoi", it: "Gestore Torneo" },
   scoreboard: { en: "Universal Scoreboard", id: "Papan Skor", de: "Anzeigetafel", es: "Marcador", pt: "Placar", fr: "Tableau de Score", it: "Tabellone" },
   
+  idea_tracker: { en: "Idea Tracker", id: "Pelacak Ide", de: "Ideen-Tracker", es: "Rastreador de Ideas", pt: "Rastreador de Ideias", fr: "Suivi d'Idées", it: "Idea Tracker" },
   budget: { en: "Budget Planner", id: "Perencana Anggaran", de: "Budgetplaner", es: "Presupuesto", pt: "Orçamento", fr: "Budget", it: "Pianificatore Budget" },
   invoice: { en: "Invoice Maker", id: "Pembuat Invoice", de: "Rechnungsersteller", es: "Facturas", pt: "Faturas", fr: "Factures", it: "Fatturazione" },
   shift: { en: "Shift Roster", id: "Jadwal Shift", de: "Schichtplan", es: "Turnos", pt: "Turnos", fr: "Planning", it: "Turni" },
@@ -82,6 +84,7 @@ export default function Header() {
       label: MENU_TEXT.cat_business[lang] || MENU_TEXT.cat_business['en'],
       icon: <Briefcase className="h-4 w-4 mr-2" />,
       items: [
+        { href: '/tools/idea-tracker', label: MENU_TEXT.idea_tracker[lang] || MENU_TEXT.idea_tracker['en'] },
         { href: '/tools/budget-planner', label: MENU_TEXT.budget[lang] || MENU_TEXT.budget['en'] },
         { href: '/tools/invoice', label: MENU_TEXT.invoice[lang] || MENU_TEXT.invoice['en'] },
         { href: '/tools/shift', label: MENU_TEXT.shift[lang] || MENU_TEXT.shift['en'] },
