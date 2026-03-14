@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 import { useLang } from '@/components/Providers';
 import { 
@@ -217,7 +217,6 @@ function AyahCard({ ayah, surahNum, surahName, lang, settings, bookmarks, lastRe
     if (!tafsirData) return null;
 
     if (lang === 'id') {
-      // Indonesian Tafsir from EQuran is plain text with \n
       return (
         <div className="space-y-4 text-justify leading-relaxed text-slate-700 dark:text-slate-300">
           {tafsirData.split('\n')
@@ -232,7 +231,6 @@ function AyahCard({ ayah, surahNum, surahName, lang, settings, bookmarks, lastRe
       );
     }
 
-    // Others from Quran.com return HTML
     return (
       <div 
         className="prose prose-sm md:prose-base dark:prose-invert max-w-none font-medium text-foreground leading-relaxed text-justify"
@@ -324,7 +322,7 @@ export default function QuranPage() {
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [scrollToAyah, setScrollToAyah] = useState<number | null>(null);
+  const [targetScrollAyah, setTargetScrollAyah] = useState<number | null>(null);
 
   // --- Local Storage States ---
   const [settings, setSettings] = useLocalStorage<UserSettings>('vk-quran-settings-multilingual-v2', {
@@ -352,26 +350,31 @@ export default function QuranPage() {
 
   // --- BULLETPROOF SCROLL LOGIC ---
   useEffect(() => {
-    if (!loading && ayahs.length > 0 && scrollToAyah) {
-      // Use a timer to ensure the DOM has finished painting the list
-      const timer = setTimeout(() => {
-        const element = document.getElementById(`ayah-${scrollToAyah}`);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          
-          // Visual Highlight Effect
-          element.classList.add('bg-primary/5', 'ring-4', 'ring-primary/10', 'rounded-[2rem]');
-          setTimeout(() => {
-            element.classList.remove('bg-primary/5', 'ring-4', 'ring-primary/10');
-          }, 3000);
-          
-          setScrollToAyah(null); // Reset scroll target
-        }
-      }, 300); // 300ms buffer after loading
-      
-      return () => clearTimeout(timer);
+    if (!loading && ayahs.length > 0 && targetScrollAyah) {
+      // requestAnimationFrame ensures the browser has painted the list
+      requestAnimationFrame(() => {
+        // Tiny buffer to allow React to finalize the DOM nodes
+        const timer = setTimeout(() => {
+          const element = document.getElementById(`ayah-${targetScrollAyah}`);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Visual Highlight Effect
+            element.style.transition = 'background-color 0.5s ease';
+            element.style.backgroundColor = 'rgba(59, 130, 246, 0.15)';
+            setTimeout(() => {
+              element.style.backgroundColor = '';
+            }, 2500);
+            
+            setTargetScrollAyah(null); // Reset scroll target
+          } else {
+            console.warn(`Element with ID ayah-${targetScrollAyah} not found in DOM.`);
+          }
+        }, 150);
+        return () => clearTimeout(timer);
+      });
     }
-  }, [loading, ayahs, scrollToAyah]);
+  }, [loading, ayahs, targetScrollAyah]);
 
   // --- API Handlers ---
   const fetchSurahList = async () => {
@@ -395,8 +398,11 @@ export default function QuranPage() {
     setView('reader');
     setSelectedSurah(surah);
     
-    if (targetAyahNum) setScrollToAyah(targetAyahNum);
-    else window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (targetAyahNum) {
+      setTargetScrollAyah(targetAyahNum);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
     try {
       const translationEdition = EDITION_MAP[lang] || 'en.sahih';
@@ -440,6 +446,10 @@ export default function QuranPage() {
       timestamp: Date.now()
     });
     toast({ title: t('last_read') + " Updated", description: `${surahName} : ${ayahNum}` });
+  };
+
+  const handleBookmarkClick = (bookmark: BookmarkItem) => {
+    openSurah(bookmark.surahNumber, bookmark.ayahNumber);
   };
 
   const handleCreateFolder = () => {
@@ -739,7 +749,7 @@ export default function QuranPage() {
                         ) : (
                           folderBookmarks.map(b => (
                             <div key={b.id} className="flex items-center justify-between p-4 bg-muted/30 rounded-2xl border-2 border-transparent hover:border-primary/20 transition-all group">
-                              <button onClick={() => openSurah(b.surahNumber, b.ayahNumber)} className="flex-1 text-left flex items-center gap-4">
+                              <button onClick={() => handleBookmarkClick(b)} className="flex-1 text-left flex items-center gap-4">
                                 <div className="h-8 w-8 rounded-full bg-white flex items-center justify-center font-black text-xs shadow-sm">{b.ayahNumber}</div>
                                 <div>
                                   <span className="font-black uppercase tracking-tight text-sm block">{b.surahName}</span>
