@@ -68,14 +68,8 @@ interface Surah {
 interface Ayah {
   nomorAyat: number;
   teksArab: string;
-  teksLatin: string;
-  teksIndonesia: string;
+  teksIndo: string;
   tafsir?: string;
-}
-
-interface TajweedAyah {
-  number: number;
-  text: string;
 }
 
 interface UserSettings {
@@ -105,7 +99,7 @@ interface BookmarkItem {
   surahNumber: number;
   surahName: string;
   ayahNumber: number;
-  timestamp: number;
+  timestamp: string;
 }
 
 const UI_TEXT: Record<string, any> = {
@@ -176,14 +170,13 @@ export default function QuranPage() {
   const [surahs, setSurahs] = useState<Surah[]>([]);
   const [selectedSurah, setSelectedSurah] = useState<Surah | null>(null);
   const [ayahs, setAyahs] = useState<Ayah[]>([]);
-  const [tajweedAyahs, setTajweedAyahs] = useState<TajweedAyah[]>([]);
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [targetScrollAyah, setTargetScrollAyah] = useState<number | null>(null);
+  const [targetAyah, setTargetAyah] = useState<number | null>(null);
 
   // --- Local Storage States ---
-  const [settings, setSettings] = useLocalStorage<UserSettings>('vk-quran-settings-v2', {
+  const [settings, setSettings] = useLocalStorage<UserSettings>('vk-quran-settings-v4', {
     showLatin: true,
     showTranslation: true,
     showTafsir: false,
@@ -191,11 +184,11 @@ export default function QuranPage() {
     arabicFontSize: 32
   });
 
-  const [lastRead, setLastRead] = useLocalStorage<LastRead | null>('vk-quran-last-read', null);
-  const [folders, setFolders] = useLocalStorage<BookmarkFolder[]>('vk-quran-folders', [
+  const [lastRead, setLastRead] = useLocalStorage<LastRead | null>('vk-quran-last-read-v4', null);
+  const [folders, setFolders] = useLocalStorage<BookmarkFolder[]>('vk-quran-folders-v4', [
     { id: 'default', name: t('default_folder'), timestamp: Date.now() }
   ]);
-  const [bookmarks, setBookmarks] = useLocalStorage<BookmarkItem[]>('vk-quran-bookmarks-v2', []);
+  const [bookmarks, setBookmarks] = useLocalStorage<BookmarkItem[]>('vk-quran-bookmarks-v4', []);
 
   // --- Modal States ---
   const [activeAyah, setActiveAyah] = useState<{ surahNum: number; surahName: string; ayahNum: number } | null>(null);
@@ -207,19 +200,23 @@ export default function QuranPage() {
     fetchSurahList();
   }, []);
 
-  // --- Navigation & Scroll Logic ---
+  // --- Navigation & Scroll Logic (FIX 2) ---
   useEffect(() => {
-    if (!loading && view === 'reader' && targetScrollAyah !== null) {
+    if (!loading && targetAyah && view === 'reader') {
       const timer = setTimeout(() => {
-        const el = document.getElementById(`ayah-${targetScrollAyah}`);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          setTargetScrollAyah(null);
+        const element = document.getElementById(`ayah-${targetAyah}`);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          element.classList.add('bg-primary/5', 'ring-2', 'ring-primary/20', 'rounded-3xl');
+          setTimeout(() => {
+            element.classList.remove('bg-primary/5', 'ring-2', 'ring-primary/20');
+          }, 3000);
+          setTargetAyah(null);
         }
       }, 600);
       return () => clearTimeout(timer);
     }
-  }, [loading, view, targetScrollAyah]);
+  }, [loading, targetAyah, view]);
 
   // --- API Handlers ---
   const fetchSurahList = async () => {
@@ -235,41 +232,41 @@ export default function QuranPage() {
     }
   };
 
-  const openSurah = async (surahNum: number, targetAyah?: number) => {
+  const openSurah = async (surahNum: number, scrollAyah?: number) => {
     const surah = surahs.find(s => s.nomor === surahNum);
     if (!surah) return;
 
     setLoading(true);
     setView('reader');
     setSelectedSurah(surah);
-    if (targetAyah) setTargetScrollAyah(targetAyah);
+    if (scrollAyah) setTargetAyah(scrollAyah);
     else window.scrollTo({ top: 0, behavior: 'smooth' });
 
     try {
-      const [surahRes, tafsirRes, tajweedRes] = await Promise.all([
-        fetch(`https://equran.id/api/v2/surat/${surahNum}`),
-        fetch(`https://equran.id/api/v2/tafsir/${surahNum}`),
-        fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/ar.tajweed`)
-      ]);
-
-      const surahData = await surahRes.json();
-      const tafsirData = await tafsirRes.json();
-      const tajweedData = await tajweedRes.json();
+      // FIX 1: Simplified Single Source of Truth
+      const response = await fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/editions/quran-tajweed,id.indonesian`);
+      const result = await response.json();
       
-      if (surahData.code === 200 && tafsirData.code === 200) {
-        const tafsirMap = new Map();
-        tafsirData.data.tafsir.forEach((t: any) => tafsirMap.set(t.ayat, t.teks));
+      if (result.status === 'OK') {
+        const tajweedData = result.data[0].ayahs;
+        const translationData = result.data[1].ayahs;
         
-        const ayahsWithTafsir = surahData.data.ayat.map((a: any) => ({
-          ...a,
-          tafsir: tafsirMap.get(a.nomorAyat) || "Tafsir tidak tersedia."
+        // Fetch Indonesian Tafsir from EQuran specifically for context
+        const tafsirRes = await fetch(`https://equran.id/api/v2/tafsir/${surahNum}`);
+        const tafsirJson = await tafsirRes.json();
+        const tafsirMap = new Map();
+        if (tafsirJson.code === 200) {
+          tafsirJson.data.tafsir.forEach((t: any) => tafsirMap.set(t.ayat, t.teks));
+        }
+
+        const mergedAyahs: Ayah[] = tajweedData.map((a: any, i: number) => ({
+          nomorAyat: a.numberInSurah,
+          teksArab: a.text,
+          teksIndo: translationData[i].text,
+          tafsir: tafsirMap.get(a.numberInSurah) || "Tafsir tidak tersedia."
         }));
         
-        setAyahs(ayahsWithTafsir);
-      }
-
-      if (tajweedData.status === 'OK') {
-        setTajweedAyahs(tajweedData.data.ayahs);
+        setAyahs(mergedAyahs);
       }
     } catch (err) {
       toast({ title: "Error", description: "Failed to load Surah.", variant: "destructive" });
@@ -278,25 +275,25 @@ export default function QuranPage() {
     }
   };
 
-  // --- Tajweed Parser (Font-Independent) ---
+  // --- Tajweed Parser (FIX 1 Cont.) ---
   const parseTajweed = (text: string) => {
     if (!text) return "";
     
-    const tagToClass: Record<string, string> = {
-      'h': 'tajweed-ghunnah',
-      'i': 'tajweed-ikhfa',
-      'j': 'tajweed-iqlab',
-      'k': 'tajweed-idgham',
-      'l': 'tajweed-madd',
-      'm': 'tajweed-qalqalah',
-      'n': 'tajweed-idgham-bighunnah',
-      'o': 'tajweed-idgham-bilaghunnah'
+    const tagMap: Record<string, string> = {
+      'h': '#db2777', // pink - ghunnah
+      'i': '#16a34a', // green - ikhfa
+      'j': '#0891b2', // cyan - iqlab
+      'k': '#dc2626', // red - idgham
+      'l': '#ea580c', // orange - madd
+      'm': '#2563eb', // blue - qalqalah
+      'n': '#ea580c', // orange - idgham bighunnah
+      'o': '#b91c1c'  // dark red - idgham bilaghunnah
     };
 
-    // Regex handles format like [h:1]text[/h] or [h]text[/h]
-    return text.replace(/\[([a-z])(?::\d+)?\](.*?)\[\/\1\]/g, (match, tag, content) => {
-      const className = tagToClass[tag] || '';
-      return `<span class="${className}">${content}</span>`;
+    // Replace [tag]...[/tag] with inline styles
+    return text.replace(/\[([a-z])\](.*?)\[\/\1\]/g, (match, tag, content) => {
+      const color = tagMap[tag] || '#000000';
+      return `<span style="color: ${color}; font-weight: bold;">${content}</span>`;
     });
   };
 
@@ -331,11 +328,18 @@ export default function QuranPage() {
 
   const handleSaveBookmark = (folderId: string) => {
     if (!activeAyah) return;
+    // FIX 3: Detailed Timestamp
     const newBookmark: BookmarkItem = {
       id: crypto.randomUUID(),
       folderId,
       ...activeAyah,
-      timestamp: Date.now()
+      timestamp: new Date().toLocaleString('id-ID', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      })
     };
     setBookmarks([...bookmarks, newBookmark]);
     setIsFolderModalOpen(false);
@@ -360,16 +364,9 @@ export default function QuranPage() {
   return (
     <div className="flex flex-col items-center p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-8">
       
-      {/* Tajweed Styles Injection - Strict Colors */}
+      {/* Arabic Font Injection */}
       <style jsx global>{`
         .font-arabic { font-family: 'Amiri', serif; }
-        .tajweed-ikhfa, .tajweed-ghunnah { color: #16a34a; font-weight: bold; }
-        .tajweed-idgham { color: #dc2626; font-weight: bold; }
-        .tajweed-idgham-bighunnah { color: #ea580c; font-weight: bold; }
-        .tajweed-idgham-bilaghunnah { color: #b91c1c; font-weight: bold; }
-        .tajweed-qalqalah { color: #2563eb; font-weight: bold; }
-        .tajweed-madd { color: #ea580c; font-weight: bold; }
-        .tajweed-iqlab { color: #0891b2; font-weight: bold; }
       `}</style>
 
       {/* Header UI */}
@@ -400,7 +397,7 @@ export default function QuranPage() {
         </div>
       </div>
 
-      {/* Floating Settings FAB */}
+      {/* Settings FAB */}
       <div className="fixed bottom-8 right-8 z-50">
         <Dialog>
           <DialogTrigger asChild>
@@ -414,10 +411,6 @@ export default function QuranPage() {
               <div className="flex items-center justify-between">
                 <Label className="font-bold uppercase text-[10px] tracking-widest">{t('tajweed')}</Label>
                 <Switch checked={settings.showTajweed} onCheckedChange={v => setSettings({...settings, showTajweed: v})} />
-              </div>
-              <div className="flex items-center justify-between">
-                <Label className="font-bold uppercase text-[10px] tracking-widest">{t('latin')}</Label>
-                <Switch checked={settings.showLatin} onCheckedChange={v => setSettings({...settings, showLatin: v})} />
               </div>
               <div className="flex items-center justify-between">
                 <Label className="font-bold uppercase text-[10px] tracking-widest">{t('translation')}</Label>
@@ -543,10 +536,10 @@ export default function QuranPage() {
                 </div>
               )}
 
-              {ayahs.map((ayah, index) => {
-                const tajweedHtml = parseTajweed(tajweedAyahs[index]?.text || "");
+              {ayahs.map((ayah) => {
+                const displayArabic = settings.showTajweed ? parseTajweed(ayah.teksArab) : ayah.teksArab;
                 return (
-                  <Card key={ayah.nomorAyat} id={`ayah-${ayah.nomorAyat}`} className="border-none bg-transparent shadow-none space-y-8 p-4 rounded-3xl transition-colors hover:bg-muted/5">
+                  <Card key={ayah.nomorAyat} id={`ayah-${ayah.nomorAyat}`} className="border-none bg-transparent shadow-none space-y-8 p-6 rounded-3xl transition-all">
                     <div className="flex items-start justify-between border-b pb-4">
                       <div className="flex items-center gap-2">
                         <div className="h-10 w-10 rounded-full bg-primary/10 border-2 border-primary/20 flex items-center justify-center font-black text-sm text-primary">{ayah.nomorAyat}</div>
@@ -581,13 +574,10 @@ export default function QuranPage() {
                       <div 
                         className="font-arabic leading-[2.5] text-right text-foreground tracking-wide" 
                         style={{ fontSize: `${settings.arabicFontSize}px` }} 
-                        dangerouslySetInnerHTML={{ 
-                          __html: (settings.showTajweed && tajweedHtml) ? tajweedHtml : ayah.teksArab 
-                        }} 
+                        dangerouslySetInnerHTML={{ __html: displayArabic }} 
                       />
                       <div className="space-y-6">
-                        {settings.showLatin && <p className="text-sm font-bold text-primary italic leading-relaxed">{ayah.teksLatin}</p>}
-                        {settings.showTranslation && <p className="text-base font-medium text-muted-foreground leading-relaxed">{ayah.teksIndonesia}</p>}
+                        {settings.showTranslation && <p className="text-base font-medium text-muted-foreground leading-relaxed">{ayah.teksIndo}</p>}
                         {settings.showTafsir && ayah.tafsir && (
                           <Accordion type="single" collapsible className="w-full">
                             <AccordionItem value="tafsir" className="border-none">
@@ -670,7 +660,10 @@ export default function QuranPage() {
                               className="flex-1 text-left flex items-center gap-4"
                             >
                               <div className="h-8 w-8 rounded-full bg-white flex items-center justify-center font-black text-xs shadow-sm">{b.ayahNumber}</div>
-                              <span className="font-black uppercase tracking-tight text-sm">{b.surahName}</span>
+                              <div>
+                                <span className="font-black uppercase tracking-tight text-sm block">{b.surahName}</span>
+                                <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">{b.timestamp}</span>
+                              </div>
                             </button>
                             <Button variant="ghost" size="icon" onClick={() => deleteBookmark(b.id)} className="text-muted-foreground hover:text-red-500 opacity-0 group-hover:opacity-100"><Trash2 className="h-4 w-4" /></Button>
                           </div>
@@ -685,9 +678,7 @@ export default function QuranPage() {
         </div>
       )}
 
-      {/* --- SHARED MODALS --- */}
-
-      {/* Folder Selection Modal */}
+      {/* Save Bookmark Modal */}
       <Dialog open={isFolderModalOpen} onOpenChange={setIsFolderModalOpen}>
         <DialogContent className="rounded-[2.5rem] max-w-sm">
           <DialogHeader>
