@@ -55,6 +55,7 @@ interface Ayah {
   teksArab: string;
   teksLatin: string;
   teksIndonesia: string;
+  tafsir?: string; // Real tafsir from API
 }
 
 interface TajweedAyah {
@@ -159,6 +160,34 @@ export default function QuranPage() {
     }
   };
 
+  /**
+   * Parses proprietary AlQuran.cloud tags [h:1]...[/h] into HTML spans
+   */
+  const parseTajweedTags = (text: string) => {
+    if (!text) return "";
+    
+    // Mapping for proprietary bracket tags
+    // Colors: Ikhfa=Green, Idgham=Red, Qalqalah=Blue, Madd=Orange, Ghunnah=Pink
+    const tagMap: Record<string, string> = {
+      'h': '#ec4899', // Ghunnah
+      'i': '#10b981', // Ikhfa
+      'j': '#ef4444', // Idgham
+      'k': '#3b82f6', // Qalqalah
+      'l': '#f97316', // Madd
+    };
+
+    let processed = text;
+    
+    // Replace [tag:X]text[/tag] or similar patterns
+    // This regex matches [anyChar:anyNum]text[/anyChar]
+    processed = processed.replace(/\[([a-z]):\d+\](.*?)\[\/\1\]/g, (match, tag, content) => {
+      const color = tagMap[tag] || 'inherit';
+      return `<span style="color: ${color}">${content}</span>`;
+    });
+
+    return processed;
+  };
+
   const openSurah = async (surah: Surah) => {
     setLoading(true);
     setView('reader');
@@ -166,23 +195,37 @@ export default function QuranPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     try {
-      // Fetch Content from EQuran (Indonesian Translation & Latin)
-      const res = await fetch(`https://equran.id/api/v2/surat/${surah.nomor}`);
-      const data = await res.json();
+      // Parallel Fetch: Surah Content, Tafsir, and Tajweed
+      const [surahRes, tafsirRes, tajweedRes] = await Promise.all([
+        fetch(`https://equran.id/api/v2/surat/${surah.nomor}`),
+        fetch(`https://equran.id/api/v2/tafsir/${surah.nomor}`),
+        settings.showTajweed ? fetch(`https://api.alquran.cloud/v1/surah/${surah.nomor}/ar.tajweed`) : Promise.resolve(null)
+      ]);
+
+      const surahData = await surahRes.json();
+      const tafsirData = await tafsirRes.json();
       
-      if (data.code === 200) {
-        setAyahs(data.data.ayat);
+      if (surahData.code === 200 && tafsirData.code === 200) {
+        // Map tafsir array to a fast-lookup object
+        const tafsirMap = new Map();
+        tafsirData.data.tafsir.forEach((t: any) => tafsirMap.set(t.ayat, t.teks));
+        
+        const ayahsWithTafsir = surahData.data.ayat.map((a: any) => ({
+          ...a,
+          tafsir: tafsirMap.get(a.nomorAyat) || "Tafsir tidak tersedia untuk ayat ini."
+        }));
+        
+        setAyahs(ayahsWithTafsir);
       }
 
-      // Fetch Tajweed from AlQuran.cloud if enabled
-      if (settings.showTajweed) {
-        const tajweedRes = await fetch(`https://api.alquran.cloud/v1/surah/${surah.nomor}/ar.tajweed`);
+      if (tajweedRes) {
         const tajweedData = await tajweedRes.json();
         if (tajweedData.status === 'OK') {
           setTajweedAyahs(tajweedData.data.ayahs);
         }
       }
     } catch (err) {
+      console.error(err);
       toast({ title: "Error", description: "Failed to load Surah content.", variant: "destructive" });
     } finally {
       setLoading(false);
@@ -224,7 +267,7 @@ export default function QuranPage() {
         <TrustBadges />
       </div>
 
-      {/* Settings Dialog Trigger */}
+      {/* Settings Dialog */}
       <div className="fixed bottom-8 right-8 z-50">
         <Dialog>
           <DialogTrigger asChild>
@@ -410,7 +453,8 @@ export default function QuranPage() {
 
               {/* Ayahs */}
               {ayahs.map((ayah, index) => {
-                const tajweedText = tajweedAyahs[index]?.text;
+                const rawTajweedText = tajweedAyahs[index]?.text || "";
+                const tajweedHtml = parseTajweedTags(rawTajweedText);
                 const ayahBookmarked = isBookmarked(selectedSurah!.nomor, ayah.nomorAyat);
 
                 return (
@@ -445,7 +489,9 @@ export default function QuranPage() {
                       <div 
                         className="font-arabic leading-[2.5] text-right text-foreground tracking-wide"
                         style={{ fontSize: `${settings.arabicFontSize}px` }}
-                        dangerouslySetInnerHTML={{ __html: (settings.showTajweed && tajweedText) ? tajweedText : ayah.teksArab }}
+                        dangerouslySetInnerHTML={{ 
+                          __html: (settings.showTajweed && tajweedHtml) ? tajweedHtml : ayah.teksArab 
+                        }}
                       />
 
                       {/* Content Stack */}
@@ -460,7 +506,7 @@ export default function QuranPage() {
                             {ayah.teksIndonesia}
                           </p>
                         )}
-                        {settings.showTafsir && (
+                        {settings.showTafsir && ayah.tafsir && (
                           <Accordion type="single" collapsible className="w-full">
                             <AccordionItem value="tafsir" className="border-none">
                               <AccordionTrigger className="font-black uppercase text-[10px] tracking-widest text-muted-foreground/60 py-2 hover:no-underline hover:text-primary">
@@ -469,9 +515,8 @@ export default function QuranPage() {
                                   {t('tafsir_btn')}
                                 </span>
                               </AccordionTrigger>
-                              <AccordionContent className="text-sm font-medium text-foreground bg-muted/30 p-6 rounded-3xl mt-2 leading-loose">
-                                {/* Ideally we fetch full tafsir data here, for now using a notice if detailed tafsir isn't mapped */}
-                                Silakan buka tab Tafsir di menu navigasi utama untuk mendapatkan kajian mendalam dari ayat ini.
+                              <AccordionContent className="text-sm font-medium text-foreground bg-muted/30 p-6 rounded-3xl mt-2 leading-loose whitespace-pre-wrap">
+                                {ayah.tafsir}
                               </AccordionContent>
                             </AccordionItem>
                           </Accordion>
@@ -486,16 +531,25 @@ export default function QuranPage() {
         </div>
       )}
 
-      {/* Global CSS for Tajweed Colors */}
+      {/* Global CSS for Tajweed Classes (supports both tag parsing and standard API HTML) */}
       <style jsx global>{`
         .font-arabic { font-family: 'Amiri', serif; }
         .tajweed- { color: inherit; }
+        
+        /* Support for standard AlQuran.cloud Tajweed classes */
+        .tajweed-ghunnah { color: #ec4899; }
+        .tajweed-ikhfa { color: #10b981; }
+        .tajweed-idgham { color: #ef4444; }
+        .tajweed-qalqalah { color: #3b82f6; }
+        .tajweed-madd { color: #f97316; }
+        
+        /* Inline Style Overrides if needed */
         [style*="color:#222222"] { color: #222222; }
-        [style*="color:#EE2222"] { color: #ef4444; } /* Ikhfa/Idgham - Red */
-        [style*="color:#FF4411"] { color: #f97316; } /* Ghunnah - Orange */
-        [style*="color:#00BB00"] { color: #10b981; } /* Madd - Green */
-        [style*="color:#BB00BB"] { color: #8b5cf6; } /* Qalqalah - Purple */
-        [style*="color:#AAAAAA"] { color: #94a3b8; } /* Silent - Gray */
+        [style*="color:#EE2222"] { color: #ef4444; } 
+        [style*="color:#FF4411"] { color: #f97316; }
+        [style*="color:#00BB00"] { color: #10b981; }
+        [style*="color:#BB00BB"] { color: #8b5cf6; }
+        [style*="color:#AAAAAA"] { color: #94a3b8; }
       `}</style>
 
       <ArticleSection toolId="quran" />
