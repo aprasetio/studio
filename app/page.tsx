@@ -24,7 +24,8 @@ import {
   FileBadge,
   Lightbulb,
   Star,
-  Sparkles
+  Sparkles,
+  BookOpen
 } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -47,6 +48,15 @@ interface Tool {
 
 const TOOLS_DATA: Tool[] = [
   // --- RELIGIOUS ---
+  {
+    id: "quran",
+    icon: BookOpen,
+    category: "religious",
+    isNew: true,
+    href: "/tools/quran",
+    name: { en: "Digital Quran Reader", id: "Al-Quran Digital", de: "Digitaler Koran", es: "Corán Digital", pt: "Alcorão Digital", fr: "Coran Digital", it: "Corano Digitale" },
+    desc: { en: "Read Quran with tajweed, translation, and Indonesian tafsir per verse.", id: "Baca Al-Quran dengan tajwid, terjemahan, dan tafsir per ayat.", de: "Koran lesen mit Tajwid und Übersetzung.", es: "Lee el Corán con tajwid y traducción.", pt: "Leia o Alcorão com tajweed e tradução.", fr: "Lisez le Coran dengan tajwid et traduction.", it: "Leggi il Corano con tajwid e traduzione." }
+  },
   {
     id: "prayer-times",
     icon: Navigation,
@@ -83,7 +93,7 @@ const TOOLS_DATA: Tool[] = [
     isNew: true,
     href: "/tools/image-watermark",
     name: { en: "Image Watermark", id: "Watermark Foto", de: "Bild-Wasserzeichen", es: "Marca de Agua", pt: "Marca d'água", fr: "Filigrane Image", it: "Filigrana" },
-    desc: { en: "Add text or logo patterns to protect images locally.", id: "Tambah teks atau logo untuk melindungi foto secara lokal.", de: "Text oder Logos zum Schutz von Bildern hinzufügen.", es: "Añade teks o logos para proteger imágenes.", pt: "Adicione teks atau logotipos para proteger imagens.", fr: "Ajoutez teks atau logo untuk protéger vos images.", it: "Aggiungi testo o loghi per proteggere immagini." }
+    desc: { en: "Add text or logo patterns to protect images locally.", id: "Tambah teks atau logo untuk melindungi foto secara lokal.", de: "Text atau Logos zum Schutz von Bildern hinzufügen.", es: "Añade teks o logos para proteger imágenes.", pt: "Adicione teks atau logotipos para proteger imagens.", fr: "Ajoutez teks atau logo untuk protéger vos images.", it: "Aggiungi testo atau loghi per prottegere immagini." }
   },
   // --- SPORTS ---
   {
@@ -107,7 +117,7 @@ const TOOLS_DATA: Tool[] = [
     icon: Clock,
     category: "sports",
     href: "/tools/futsal",
-    name: { en: "Futsal Scoreboard", id: "Papan Skor Futsal", de: "Futsal-Anzeigetafel", es: "Marcador Futsal", pt: "Placar de Futsal", fr: "Score Futsal", it: "Tabellone Calcetto" },
+    name: { en: "Futsal Scoreboard", id: "Papan Skor Futsal", de: "Futsal-Anzeige", es: "Marcador Futsal", pt: "Placar Futsal", fr: "Score Futsal", it: "Tabellone Calcetto" },
     desc: { en: "Digital scoreboard with timer and fouls.", id: "Papan skor digital dengan timer dan pelanggaran.", de: "Digitale Tafel mit Timer und Fouls.", es: "Marcador digital con temporizador dan faltas.", pt: "Placar digital con cronômetro e faltas.", fr: "Tableau numérique avec minuterie et fautes.", it: "Tabellone digitale con timer e falli." }
   },
   {
@@ -140,7 +150,7 @@ const TOOLS_DATA: Tool[] = [
     icon: Users,
     category: "business",
     href: "/tools/shift",
-    name: { en: "Shift Scheduler", id: "Jadwal Shift", de: "Schichtplaner", es: "Planificador Turnos", pt: "Escala Trabalho", fr: "Planning Équipe", it: "Pianificatore Turni" },
+    name: { en: "Shift Scheduler", id: "Jadwal Shift", de: "Schichtplaner", es: "Planificador Turnos", pt: "Escala Kerja", fr: "Planning Équipe", it: "Pianificatore Turni" },
     desc: { en: "Organize employee shifts (Morning/Night).", id: "Atur shift karyawan (Pagi/Malam).", de: "Mitarbeiterschichten organisieren.", es: "Organiza turnos de empleados.", pt: "Organize turnos de funcionários.", fr: "Organisez les équipes (Matin/Soir).", it: "Organizza turni dipendenti." }
   },
   // --- FINANCE ---
@@ -198,13 +208,13 @@ const UI_LABELS: Record<string, Record<string, string>> = {
     it: "VersoKit: Strumenti Quotidiani"
   },
   search_placeholder: {
-    en: "Search for a tool (e.g., Invoice, Watermark)...",
-    id: "Cari alat (misal: Invoice, Watermark)...",
-    de: "Suche nach einem Werkzeug (z. B. Rechnung, Wasserzeichen)...",
-    es: "Buscar una herramienta (ej. Factura, Marca de agua)...",
-    pt: "Procurar ferramenta (ex: Fatura, Marca d'água)...",
-    fr: "Rechercher un outil (ex: Facture, Filigrane)...",
-    it: "Cerca uno strumento (es. Fattura, Filigrana)..."
+    en: "Search for a tool (e.g., Quran, Invoice, Watermark)...",
+    id: "Cari alat (misal: Quran, Invoice, Watermark)...",
+    de: "Suche nach einem Werkzeug (z. B. Koran, Rechnung)...",
+    es: "Buscar una herramienta (ej. Corán, Factura)...",
+    pt: "Procurar ferramenta (ex: Alcorão, Fatura)...",
+    fr: "Rechercher un outil (ex: Coran, Facture)...",
+    it: "Cerca uno strumento (es. Corano, Fattura)..."
   },
   no_results: {
     en: "No tools found matching",

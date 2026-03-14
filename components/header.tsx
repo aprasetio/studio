@@ -21,7 +21,8 @@ import {
   Navigation,
   Stamp,
   FileBadge,
-  Lightbulb
+  Lightbulb,
+  BookOpen
 } from 'lucide-react';
 
 const MENU_TEXT: Record<string, any> = {
@@ -30,6 +31,7 @@ const MENU_TEXT: Record<string, any> = {
   cat_utilities: { en: "Utilities", id: "Utilitas", de: "Dienstprogramme", es: "Utilidades", pt: "Utilitários", fr: "Utilitaires", it: "Utilità" },
   cat_religious: { en: "Religious", id: "Ibadah", de: "Religiös", es: "Religioso", pt: "Religioso", fr: "Religieux", it: "Religioso" },
 
+  quran: { en: "Digital Quran", id: "Al-Quran Digital", de: "Koran Digital", es: "Corán Digital", pt: "Alcorão Digital", fr: "Coran Digital", it: "Corano Digitale" },
   prayer_times: { en: "Prayer Times & Qibla", id: "Jadwal Sholat & Kiblat", de: "Gebetszeiten", es: "Horarios Oración", pt: "Horários Oração", fr: "Prière & Qibla", it: "Preghiera" },
   americano: { en: "Americano Generator", id: "Generator Americano", de: "Americano Generator", es: "Generador Americano", pt: "Gerador Americano", fr: "Générateur Americano", it: "Generatore Americano" },
   futsal: { en: "Futsal Scoreboard", id: "Skor Futsal", de: "Futsal-Anzeige", es: "Marcador Futsal", pt: "Placar Futsal", fr: "Score Futsal", it: "Tabellone Calcetto" },
@@ -65,6 +67,7 @@ export default function Header() {
       label: MENU_TEXT.cat_religious[lang] || MENU_TEXT.cat_religious['en'],
       icon: <Navigation className="h-4 w-4 mr-2" />,
       items: [
+        { href: '/tools/quran', label: MENU_TEXT.quran[lang] || MENU_TEXT.quran['en'] },
         { href: '/tools/prayer-times', label: MENU_TEXT.prayer_times[lang] || MENU_TEXT.prayer_times['en'] },
       ]
     },

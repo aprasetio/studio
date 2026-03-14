@@ -18,6 +18,35 @@ export interface ArticleCollection {
   };
 }
 
+const QURAN_CONTENT: { [lang: string]: ToolArticle } = {
+  id: {
+    title: `Al-Quran Digital Indonesia: Panduan Lengkap dengan Tajwid & Tafsir`,
+    sections: [
+      {
+        title: `Belajar Membaca dengan Tajwid Berwarna`,
+        content: `<p>Membaca Al-Quran dengan tartil dan benar adalah dambaan setiap Muslim. Namun, menghafal seluruh aturan tajwid bisa memakan waktu. Fitur <strong>Tajwid Berwarna</strong> di VersoKit membantu Anda mengenali hukum bacaan seperti Ikhfa, Idgham, dan Qalqalah secara visual melalui kode warna yang intuitif.</p>`
+      },
+      {
+        title: `Kajian Mendalam dengan Tafsir Jalalayn`,
+        content: `<p>Bukan sekadar membaca, memahami makna setiap ayat sangatlah penting. Kami menyediakan <strong>Tafsir Al-Jalalayn</strong> (ID) yang ringkas dan padat untuk membantu Anda mentadabburi pesan-pesan Allah dalam kehidupan sehari-hari.</p>`
+      }
+    ]
+  },
+  en: {
+    title: `Digital Quran Reader: Your Companion for Tajweed and Study`,
+    sections: [
+      {
+        title: `Master Recitation with Color-Coded Tajweed`,
+        content: `<p>Our Digital Quran features integrated tajweed markers. By using standardized colors for recitation rules, you can improve your fluency and accuracy directly from your browser.</p>`
+      },
+      {
+        title: `Indonesian Translation and Tafsir`,
+        content: `<p>For our Indonesian users, we provide authentic Kemenag translations and concise Tafsir to ensure you understand the context and wisdom of every Ayah.</p>`
+      }
+    ]
+  }
+};
+
 const PDF_WATERMARK_CONTENT: { [lang: string]: ToolArticle } = {
   id: {
     title: `Watermark PDF Online: Lindungi Dokumen Anda dengan Privasi 100%`,
@@ -232,6 +261,7 @@ const INVOICE_CONTENT: { [lang: string]: ToolArticle } = {
 };
 
 export const TOOL_ARTICLES: ArticleCollection = {
+  quran: QURAN_CONTENT,
   "pdf-watermark": PDF_WATERMARK_CONTENT,
   "image-watermark": WATERMARK_CONTENT,
   "prayer-times": PRAYER_CONTENT,
