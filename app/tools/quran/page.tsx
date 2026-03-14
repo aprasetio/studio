@@ -21,7 +21,8 @@ import {
   Edit3,
   Folder,
   History,
-  ArrowRight
+  ArrowRight,
+  Info
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -66,7 +67,7 @@ interface Ayah {
   nomorAyat: number;
   teksArab: string;
   teksLatin: string;
-  teksIndonesia: string;
+  teksTranslation: string;
   tafsir?: string;
 }
 
@@ -108,7 +109,8 @@ const UI_TEXT: Record<string, any> = {
     settings: "Settings",
     latin: "Transliteration",
     translation: "Translation",
-    tafsir: "Tafsir (ID)",
+    tafsir: "Tafsir (Indonesian)",
+    tafsir_unavailable: "Tafsir is currently only available in Indonesian.",
     font_size: "Arabic Font Size",
     back: "Back",
     loading: "Loading Quran data...",
@@ -135,7 +137,8 @@ const UI_TEXT: Record<string, any> = {
     settings: "Pengaturan",
     latin: "Teks Latin",
     translation: "Terjemahan",
-    tafsir: "Tafsir Ringkas",
+    tafsir: "Tafsir Al-Jalalayn",
+    tafsir_unavailable: "Tafsir Al-Jalalayn tersedia untuk Anda.",
     font_size: "Ukuran Font Arab",
     back: "Kembali",
     loading: "Memuat data Al-Quran...",
@@ -156,6 +159,16 @@ const UI_TEXT: Record<string, any> = {
   }
 };
 
+const EDITION_MAP: Record<string, string> = {
+  id: 'id.indonesian',
+  en: 'en.sahih',
+  es: 'es.cortes',
+  pt: 'pt.samir',
+  de: 'de.aburida',
+  fr: 'fr.hamidullah',
+  it: 'it.piccardo'
+};
+
 export default function QuranPage() {
   const { lang } = useLang();
   const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
@@ -168,21 +181,21 @@ export default function QuranPage() {
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [targetAyah, setTargetAyah] = useState<number | null>(null);
+  const [scrollToAyah, setScrollToAyah] = useState<number | null>(null);
 
   // --- Local Storage States ---
-  const [settings, setSettings] = useLocalStorage<UserSettings>('vk-quran-settings-rollback-v1', {
+  const [settings, setSettings] = useLocalStorage<UserSettings>('vk-quran-settings-multilingual-v1', {
     showLatin: true,
     showTranslation: true,
     showTafsir: false,
     arabicFontSize: 32
   });
 
-  const [lastRead, setLastRead] = useLocalStorage<LastRead | null>('vk-quran-last-read-rollback-v1', null);
-  const [folders, setFolders] = useLocalStorage<BookmarkFolder[]>('vk-quran-folders-rollback-v1', [
+  const [lastRead, setLastRead] = useLocalStorage<LastRead | null>('vk-quran-last-read-multilingual-v1', null);
+  const [folders, setFolders] = useLocalStorage<BookmarkFolder[]>('vk-quran-folders-multilingual-v1', [
     { id: 'default', name: t('default_folder'), timestamp: Date.now() }
   ]);
-  const [bookmarks, setBookmarks] = useLocalStorage<BookmarkItem[]>('vk-quran-bookmarks-rollback-v1', []);
+  const [bookmarks, setBookmarks] = useLocalStorage<BookmarkItem[]>('vk-quran-bookmarks-multilingual-v1', []);
 
   // --- Modal States ---
   const [activeAyah, setActiveAyah] = useState<{ surahNum: number; surahName: string; ayahNum: number } | null>(null);
@@ -194,23 +207,27 @@ export default function QuranPage() {
     fetchSurahList();
   }, []);
 
-  // --- Navigation & Scroll Logic ---
+  // --- Robust Scroll Logic ---
   useEffect(() => {
-    if (!loading && targetAyah && view === 'reader') {
-      const timer = setTimeout(() => {
-        const element = document.getElementById(`ayah-${targetAyah}`);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          element.classList.add('bg-primary/5', 'ring-2', 'ring-primary/20', 'rounded-3xl');
-          setTimeout(() => {
-            element.classList.remove('bg-primary/5', 'ring-2', 'ring-primary/20');
-          }, 3000);
-          setTargetAyah(null);
-        }
-      }, 600);
-      return () => clearTimeout(timer);
+    if (!loading && ayahs.length > 0 && scrollToAyah) {
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          const element = document.getElementById(`ayah-${scrollToAyah}`);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Highlight effect
+            element.classList.add('bg-primary/10', 'ring-4', 'ring-primary/20', 'rounded-[2rem]');
+            setTimeout(() => {
+              element.classList.remove('bg-primary/10', 'ring-4', 'ring-primary/20');
+            }, 3000);
+            
+            setScrollToAyah(null); // Reset
+          }
+        }, 400); // Buffer for rendering
+      });
     }
-  }, [loading, targetAyah, view]);
+  }, [loading, ayahs, scrollToAyah]);
 
   // --- API Handlers ---
   const fetchSurahList = async () => {
@@ -226,42 +243,57 @@ export default function QuranPage() {
     }
   };
 
-  const openSurah = async (surahNum: number, scrollAyah?: number) => {
+  const openSurah = async (surahNum: number, targetAyahNum?: number) => {
     const surah = surahs.find(s => s.nomor === surahNum);
     if (!surah) return;
 
     setLoading(true);
     setView('reader');
     setSelectedSurah(surah);
-    if (scrollAyah) setTargetAyah(scrollAyah);
+    
+    if (targetAyahNum) setScrollToAyah(targetAyahNum);
     else window.scrollTo({ top: 0, behavior: 'smooth' });
 
     try {
-      // Use EQuran API for everything (Restores Latin)
-      const surahRes = await fetch(`https://equran.id/api/v2/surat/${surahNum}`);
-      const surahJson = await surahRes.json();
+      const translationEdition = EDITION_MAP[lang] || 'en.sahih';
       
-      const tafsirRes = await fetch(`https://equran.id/api/v2/tafsir/${surahNum}`);
-      const tafsirJson = await tafsirRes.json();
+      // Promise.all for AlQuran Cloud Editions and EQuran Tafsir (if lang is ID)
+      const tasks: any[] = [
+        fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/editions/quran-uthmani,${translationEdition},en.transliteration`).then(r => r.json())
+      ];
 
-      if (surahJson.code === 200) {
+      // Add Tafsir task only if needed/available
+      if (lang === 'id') {
+        tasks.push(fetch(`https://equran.id/api/v2/tafsir/${surahNum}`).then(r => r.json()));
+      }
+
+      const results = await Promise.all(tasks);
+      const cloudData = results[0];
+      const tafsirData = lang === 'id' ? results[1] : null;
+
+      if (cloudData.code === 200) {
+        const arabicAyahs = cloudData.data[0].ayahs;
+        const translationAyahs = cloudData.data[1].ayahs;
+        const transliterationAyahs = cloudData.data[2].ayahs;
+
         const tafsirMap = new Map();
-        if (tafsirJson.code === 200) {
-          tafsirJson.data.tafsir.forEach((t: any) => tafsirMap.set(t.ayat, t.teks));
+        if (tafsirData && tafsirData.code === 200) {
+          tafsirData.data.tafsir.forEach((t: any) => tafsirMap.set(t.ayat, t.teks));
         }
 
-        const mergedAyahs: Ayah[] = surahJson.data.ayat.map((a: any) => ({
-          nomorAyat: a.nomorAyat,
-          teksArab: a.teksArab,
-          teksLatin: a.teksLatin,
-          teksIndonesia: a.teksIndonesia,
-          tafsir: tafsirMap.get(a.nomorAyat) || "Tafsir tidak tersedia."
+        const mergedAyahs: Ayah[] = arabicAyahs.map((a: any, i: number) => ({
+          nomorAyat: a.numberInSurah,
+          teksArab: a.text,
+          teksTranslation: translationAyahs[i].text,
+          teksLatin: transliterationAyahs[i].text,
+          tafsir: tafsirMap.get(a.numberInSurah) || null
         }));
         
         setAyahs(mergedAyahs);
       }
     } catch (err) {
-      toast({ title: "Error", description: "Failed to load Surah.", variant: "destructive" });
+      console.error(err);
+      toast({ title: "Error", description: "Failed to load Surah data.", variant: "destructive" });
     } finally {
       setLoading(false);
     }
@@ -302,7 +334,7 @@ export default function QuranPage() {
       id: crypto.randomUUID(),
       folderId,
       ...activeAyah,
-      timestamp: new Date().toLocaleString('id-ID', {
+      timestamp: new Date().toLocaleString(lang === 'id' ? 'id-ID' : 'en-US', {
         day: '2-digit',
         month: 'short',
         year: 'numeric',
@@ -385,12 +417,15 @@ export default function QuranPage() {
                 <Switch checked={settings.showTranslation} onCheckedChange={v => setSettings({...settings, showTranslation: v})} />
               </div>
               <div className="flex items-center justify-between">
-                <Label className="font-bold uppercase text-[10px] tracking-widest">{t('tafsir')}</Label>
+                <div className="flex flex-col">
+                  <Label className="font-bold uppercase text-[10px] tracking-widest">{t('tafsir')}</Label>
+                  {lang !== 'id' && <span className="text-[8px] text-muted-foreground uppercase">ID Only</span>}
+                </div>
                 <Switch checked={settings.showTafsir} onCheckedChange={v => setSettings({...settings, showTafsir: v})} />
               </div>
               <div className="space-y-3">
                 <Label className="font-bold uppercase text-[10px] tracking-widest">{t('font_size')}: {settings.arabicFontSize}px</Label>
-                <input type="range" min="20" max="60" value={settings.arabicFontSize} onChange={e => setSettings({...settings, arabicFontSize: parseInt(e.target.value)})} className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary" />
+                <input type="range" min="20" max="64" value={settings.arabicFontSize} onChange={e => setSettings({...settings, arabicFontSize: parseInt(e.target.value)})} className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary" />
               </div>
             </div>
           </DialogContent>
@@ -401,7 +436,7 @@ export default function QuranPage() {
       {view === 'list' && (
         <div className="w-full space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
           {lastRead && (
-            <Card className="bg-primary text-primary-foreground border-none rounded-[2rem] overflow-hidden shadow-2xl relative group">
+            <Card className="bg-primary text-primary-foreground border-none rounded-[2.5rem] overflow-hidden shadow-2xl relative group">
               <div className="absolute right-0 top-0 h-full w-1/3 opacity-10 pointer-events-none bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] bg-[length:20px_20px]" />
               <CardContent className="p-8 flex flex-col md:flex-row items-center justify-between gap-6">
                 <div className="flex items-center gap-6">
@@ -500,7 +535,11 @@ export default function QuranPage() {
               )}
 
               {ayahs.map((ayah) => (
-                <Card key={ayah.nomorAyat} id={`ayah-${ayah.nomorAyat}`} className="border-none bg-transparent shadow-none space-y-8 p-6 rounded-3xl transition-all">
+                <Card 
+                  key={ayah.nomorAyat} 
+                  id={`ayah-${ayah.nomorAyat}`} 
+                  className="border-none bg-transparent shadow-none space-y-8 p-6 rounded-3xl transition-all"
+                >
                   <div className="flex items-start justify-between border-b pb-4">
                     <div className="flex items-center gap-2">
                       <div className="h-10 w-10 rounded-full bg-primary/10 border-2 border-primary/20 flex items-center justify-center font-black text-sm text-primary">{ayah.nomorAyat}</div>
@@ -538,14 +577,34 @@ export default function QuranPage() {
                     </div>
                     <div className="space-y-6">
                       {settings.showLatin && <p className="text-sm font-bold text-primary italic leading-relaxed">{ayah.teksLatin}</p>}
-                      {settings.showTranslation && <p className="text-base font-medium text-muted-foreground leading-relaxed">{ayah.teksIndonesia}</p>}
-                      {settings.showTafsir && ayah.tafsir && (
-                        <Accordion type="single" collapsible className="w-full">
-                          <AccordionItem value="tafsir" className="border-none">
-                            <AccordionTrigger className="font-black uppercase text-[10px] tracking-widest text-muted-foreground/60 py-2 hover:no-underline hover:text-primary"><span className="flex items-center gap-2"><BookOpen className="h-3.5 w-3.5" />{t('tafsir_btn')}</span></AccordionTrigger>
-                            <AccordionContent className="text-sm font-medium text-foreground bg-muted/30 p-6 rounded-3xl mt-2 leading-loose whitespace-pre-wrap">{ayah.tafsir}</AccordionContent>
-                          </AccordionItem>
-                        </Accordion>
+                      {settings.showTranslation && <p className="text-base font-medium text-muted-foreground leading-relaxed">{ayah.teksTranslation}</p>}
+                      
+                      {settings.showTafsir && (
+                        <div className="mt-4">
+                          {lang === 'id' ? (
+                            ayah.tafsir ? (
+                              <Accordion type="single" collapsible className="w-full">
+                                <AccordionItem value="tafsir" className="border-none">
+                                  <AccordionTrigger className="font-black uppercase text-[10px] tracking-widest text-muted-foreground/60 py-2 hover:no-underline hover:text-primary">
+                                    <span className="flex items-center gap-2"><BookOpen className="h-3.5 w-3.5" />{t('tafsir_btn')}</span>
+                                  </AccordionTrigger>
+                                  <AccordionContent className="text-sm font-medium text-foreground bg-muted/30 p-6 rounded-3xl mt-2 leading-loose whitespace-pre-wrap">
+                                    {ayah.tafsir}
+                                  </AccordionContent>
+                                </AccordionItem>
+                              </Accordion>
+                            ) : (
+                              <p className="text-[10px] font-bold text-muted-foreground italic">Tafsir sedang dimuat...</p>
+                            )
+                          ) : (
+                            <div className="bg-muted/30 p-4 rounded-2xl flex items-start gap-3">
+                              <Info className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                              <p className="text-[10px] font-bold text-muted-foreground uppercase leading-relaxed">
+                                {t('tafsir_unavailable')}
+                              </p>
+                            </div>
+                          )}
+                        </div>
                       )}
                     </div>
                   </div>
