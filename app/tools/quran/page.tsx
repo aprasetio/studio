@@ -169,15 +169,7 @@ const EDITION_MAP: Record<string, string> = {
   it: 'it.piccardo'
 };
 
-const TAFSIR_MAP: Record<string, number> = {
-  id: 9,   // Kemenag (Indonesian)
-  en: 169, // Ibn Kathir (English)
-  ar: 16,  // Al-Jalalayn (Arabic)
-};
-
-const getTafsirId = (lang: string) => TAFSIR_MAP[lang] || 169;
-
-// --- Sub-Component: Ayah Card (Handles Lazy Tafsir Fetch) ---
+// --- Sub-Component: Ayah Card (Handles Hybrid Lazy Tafsir Fetch) ---
 interface AyahCardProps {
   ayah: Ayah;
   surahNum: number;
@@ -201,15 +193,21 @@ function AyahCard({ ayah, surahNum, surahName, lang, settings, bookmarks, lastRe
     
     setIsLoadingTafsir(true);
     try {
-      const tafsirId = getTafsirId(lang);
-      const res = await fetch(`https://api.quran.com/api/v4/tafsirs/${tafsirId}/by_ayah/${surahNum}:${ayah.nomorAyat}`);
-      const data = await res.json();
-      if (data.tafsir) {
-        setTafsirData(data.tafsir.text);
+      if (lang === 'id') {
+        // Hybrid Strategy: Use EQuran for Indonesian (Official Kemenag Tafsir)
+        const res = await fetch(`https://equran.id/api/v2/tafsir/${surahNum}`);
+        const json = await res.json();
+        // EQuran returns the whole surah, so we find the specific ayah within the data
+        const ayahTafsir = json.data.tafsir.find((t: any) => t.ayat === ayah.nomorAyat);
+        setTafsirData(ayahTafsir ? ayahTafsir.teks : "Tafsir tidak ditemukan.");
       } else {
-        setTafsirData(lang === 'id' ? "Tafsir tidak tersedia untuk bahasa ini." : "Tafsir not available for this language.");
+        // Use Quran.com for English and others (Ibn Kathir - ID 169)
+        const res = await fetch(`https://api.quran.com/api/v4/tafsirs/169/by_ayah/${surahNum}:${ayah.nomorAyat}`);
+        const json = await res.json();
+        setTafsirData(json.tafsir && json.tafsir.text ? json.tafsir.text : "Tafsir not available.");
       }
     } catch (err) {
+      console.error("Tafsir fetch error:", err);
       setTafsirData(lang === 'id' ? "Gagal memuat tafsir." : "Failed to load tafsir.");
     } finally {
       setIsLoadingTafsir(false);
@@ -271,7 +269,9 @@ function AyahCard({ ayah, surahNum, surahName, lang, settings, bookmarks, lastRe
                     {isLoadingTafsir ? (
                       <div className="flex items-center gap-2 py-4">
                         <Loader2 className="h-4 w-4 animate-spin text-primary" />
-                        <span className="text-[10px] font-bold uppercase tracking-widest opacity-60">Fetching Tafsir...</span>
+                        <span className="text-[10px] font-bold uppercase tracking-widest opacity-60">
+                          {lang === 'id' ? 'Memuat Tafsir...' : 'Loading Tafsir...'}
+                        </span>
                       </div>
                     ) : (
                       <div 
