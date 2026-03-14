@@ -213,6 +213,34 @@ function AyahCard({ ayah, surahNum, surahName, lang, settings, bookmarks, lastRe
   const isBookmarked = bookmarks.some(b => b.surahNumber === surahNum && b.ayahNumber === ayah.nomorAyat);
   const isPinned = lastRead?.surahNumber === surahNum && lastRead?.ayahNumber === ayah.nomorAyat;
 
+  const renderTafsirContent = () => {
+    if (!tafsirData) return null;
+
+    if (lang === 'id') {
+      // Indonesian Tafsir from EQuran is plain text with \n
+      return (
+        <div className="space-y-4 text-justify leading-relaxed text-slate-700 dark:text-slate-300">
+          {tafsirData.split('\n')
+            .filter(paragraph => paragraph.trim() !== '')
+            .map((paragraph, index) => (
+              <p key={index} className="indent-4 md:indent-8">
+                {paragraph.trim()}
+              </p>
+            ))
+          }
+        </div>
+      );
+    }
+
+    // Others from Quran.com return HTML
+    return (
+      <div 
+        className="prose prose-sm md:prose-base dark:prose-invert max-w-none font-medium text-foreground leading-relaxed text-justify"
+        dangerouslySetInnerHTML={{ __html: tafsirData }} 
+      />
+    );
+  };
+
   return (
     <Card 
       id={`ayah-${ayah.nomorAyat}`} 
@@ -261,19 +289,16 @@ function AyahCard({ ayah, surahNum, surahName, lang, settings, bookmarks, lastRe
                   <AccordionTrigger className="font-black uppercase text-[10px] tracking-widest text-muted-foreground/60 py-2 hover:no-underline hover:text-primary">
                     <span className="flex items-center gap-2"><BookOpen className="h-3.5 w-3.5" />{t('tafsir_btn')}</span>
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm font-medium text-foreground bg-muted/30 p-6 rounded-3xl mt-2 leading-loose">
+                  <AccordionContent className="text-sm font-medium text-foreground bg-muted/30 p-6 md:p-10 rounded-[2.5rem] mt-4 shadow-inner border">
                     {isLoadingTafsir ? (
-                      <div className="flex items-center gap-2 py-4">
-                        <Loader2 className="h-4 w-4 animate-spin text-primary" />
-                        <span className="text-[10px] font-bold uppercase tracking-widest opacity-60">
-                          {lang === 'id' ? 'Memuat Tafsir...' : 'Loading Tafsir...'}
+                      <div className="flex flex-col items-center justify-center gap-3 py-10">
+                        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                        <span className="text-[10px] font-black uppercase tracking-[0.2em] opacity-40">
+                          {lang === 'id' ? 'Menyusun Paragraf...' : 'Loading Tafsir...'}
                         </span>
                       </div>
                     ) : (
-                      <div 
-                        className="prose prose-sm dark:prose-invert max-w-none font-medium text-foreground leading-relaxed"
-                        dangerouslySetInnerHTML={{ __html: tafsirData || '' }} 
-                      />
+                      renderTafsirContent()
                     )}
                   </AccordionContent>
                 </AccordionItem>
