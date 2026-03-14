@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect, useMemo } from 'react';
@@ -109,7 +108,7 @@ const UI_TEXT: Record<string, any> = {
     settings: "Settings",
     latin: "Transliteration",
     translation: "Translation",
-    tafsir: "Tafsir (Quran.com)",
+    tafsir: "Tafsir",
     tafsir_unavailable: "Tafsir not available.",
     font_size: "Arabic Font Size",
     back: "Back",
@@ -137,7 +136,7 @@ const UI_TEXT: Record<string, any> = {
     settings: "Pengaturan",
     latin: "Teks Latin",
     translation: "Terjemahan",
-    tafsir: "Tafsir (Kemenag)",
+    tafsir: "Tafsir",
     tafsir_unavailable: "Tafsir tidak tersedia.",
     font_size: "Ukuran Font Arab",
     back: "Kembali",
@@ -194,14 +193,11 @@ function AyahCard({ ayah, surahNum, surahName, lang, settings, bookmarks, lastRe
     setIsLoadingTafsir(true);
     try {
       if (lang === 'id') {
-        // Hybrid Strategy: Use EQuran for Indonesian (Official Kemenag Tafsir)
         const res = await fetch(`https://equran.id/api/v2/tafsir/${surahNum}`);
         const json = await res.json();
-        // EQuran returns the whole surah, so we find the specific ayah within the data
         const ayahTafsir = json.data.tafsir.find((t: any) => t.ayat === ayah.nomorAyat);
         setTafsirData(ayahTafsir ? ayahTafsir.teks : "Tafsir tidak ditemukan.");
       } else {
-        // Use Quran.com for English and others (Ibn Kathir - ID 169)
         const res = await fetch(`https://api.quran.com/api/v4/tafsirs/169/by_ayah/${surahNum}:${ayah.nomorAyat}`);
         const json = await res.json();
         setTafsirData(json.tafsir && json.tafsir.text ? json.tafsir.text : "Tafsir not available.");
@@ -306,7 +302,7 @@ export default function QuranPage() {
   const [scrollToAyah, setScrollToAyah] = useState<number | null>(null);
 
   // --- Local Storage States ---
-  const [settings, setSettings] = useLocalStorage<UserSettings>('vk-quran-settings-multilingual-v1', {
+  const [settings, setSettings] = useLocalStorage<UserSettings>('vk-quran-settings-multilingual-v2', {
     showLatin: true,
     showTranslation: true,
     showTafsir: false,
@@ -329,25 +325,26 @@ export default function QuranPage() {
     fetchSurahList();
   }, []);
 
-  // --- Robust Scroll Logic ---
+  // --- BULLETPROOF SCROLL LOGIC ---
   useEffect(() => {
     if (!loading && ayahs.length > 0 && scrollToAyah) {
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          const element = document.getElementById(`ayah-${scrollToAyah}`);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // Highlight effect
-            element.classList.add('bg-primary/10', 'ring-4', 'ring-primary/20', 'rounded-[2rem]');
-            setTimeout(() => {
-              element.classList.remove('bg-primary/10', 'ring-4', 'ring-primary/20');
-            }, 3000);
-            
-            setScrollToAyah(null); // Reset
-          }
-        }, 400); // Buffer for rendering
-      });
+      // Use a timer to ensure the DOM has finished painting the list
+      const timer = setTimeout(() => {
+        const element = document.getElementById(`ayah-${scrollToAyah}`);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          
+          // Visual Highlight Effect
+          element.classList.add('bg-primary/5', 'ring-4', 'ring-primary/10', 'rounded-[2rem]');
+          setTimeout(() => {
+            element.classList.remove('bg-primary/5', 'ring-4', 'ring-primary/10');
+          }, 3000);
+          
+          setScrollToAyah(null); // Reset scroll target
+        }
+      }, 300); // 300ms buffer after loading
+      
+      return () => clearTimeout(timer);
     }
   }, [loading, ayahs, scrollToAyah]);
 

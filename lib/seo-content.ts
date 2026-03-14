@@ -20,17 +20,17 @@ export interface SeoCollection {
 export const SEO_DATA: SeoCollection = {
   "quran": {
     en: {
-      title: "Digital Quran with Tajweed",
-      description: "Read the Holy Quran digital version with color-coded Tajweed, translations, and Indonesian Tafsir per verse.",
-      steps: ["Select a Surah from the index.", "Adjust your reading settings (Tajweed, Translation, Latin).", "Bookmark verses you want to save.", "Read and explore Tafsir for deep study."],
-      article: "Digital Quran Reader by VersoKit provides a premium reading experience. We use high-fidelity APIs to provide Indonesian translations and Tafsir Al-Jalalayn. The color-coded tajweed helps you read with proper pronunciation rules directly in your browser.",
-      faq: [{ q: "Is the tajweed accurate?", a: "Yes, we use the standardized AlQuran.cloud Tajweed API which maps Arabic letters to specific recitation rules." }]
+      title: "Digital Quran Reader",
+      description: "Read the Holy Quran digital version with accurate translations and Indonesian Tafsir per verse.",
+      steps: ["Select a Surah from the index.", "Adjust your reading settings (Translation, Latin, Tafsir).", "Bookmark verses to your custom folders.", "Pin your current verse as 'Last Read' to resume later."],
+      article: "Digital Quran Reader by VersoKit provides a high-quality study experience. We use verified APIs to provide localized translations and detailed Tafsir. The clean interface allows you to focus on the wisdom of the text, with tools designed for daily spiritual growth and reference.",
+      faq: [{ q: "Where are my bookmarks stored?", a: "All your bookmarks and folders are stored locally in your browser's storage, ensuring 100% privacy." }]
     },
     id: {
       title: "Al-Quran Digital Terjemahan Indonesia",
-      description: "Baca Al-Quran digital lengkap dengan tajwid berwarna, terjemahan Kemenag, dan Tafsir per ayat.",
-      steps: ["Pilih Surah dari daftar indeks.", "Atur tampilan bacaan (Tajwid, Latin, Terjemahan).", "Gunakan fitur Bookmark untuk menyimpan ayat.", "Klik tombol Tafsir untuk penjelasan mendalam per ayat."],
-      article: "Al-Quran Digital VersoKit dirancang untuk memudahkan ibadah dan tadabbur harian. Dilengkapi dengan API EQuran.id yang menyediakan teks standar Indonesia dan Tafsir ringkas Jalalayn. Fitur tajwid berwarna sangat membantu bagi yang sedang memperlancar bacaan.",
+      description: "Baca Al-Quran digital lengkap dengan terjemahan Kemenag, dan Tafsir per ayat. Fitur bookmark folder kustom dan Last Read.",
+      steps: ["Pilih Surah dari daftar indeks.", "Atur tampilan bacaan (Latin, Terjemahan, Tafsir).", "Gunakan folder untuk mengelompokkan bookmark.", "Tandai ayat terakhir dibaca untuk melanjutkan di lain waktu."],
+      article: "Al-Quran Digital VersoKit dirancang untuk memudahkan ibadah dan tadabbur harian. Dilengkapi dengan API Al-Quran yang menyediakan teks standar dan Tafsir Jalalayn. Dengan fitur Folder Bookmark, Anda bisa mengelompokkan ayat berdasarkan tema studi Anda.",
       faq: [{ q: "Apakah data bookmark aman?", a: "Ya, bookmark disimpan secara lokal di browser Anda. Tidak ada data yang kami simpan di server." }]
     }
   },
