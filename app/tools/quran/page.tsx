@@ -180,6 +180,7 @@ export default function QuranPage() {
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [targetScrollAyah, setTargetScrollAyah] = useState<number | null>(null);
 
   // --- Local Storage States ---
   const [settings, setSettings] = useLocalStorage<UserSettings>('vk-quran-settings-v2', {
@@ -200,12 +201,25 @@ export default function QuranPage() {
   const [activeAyah, setActiveAyah] = useState<{ surahNum: number; surahName: string; ayahNum: number } | null>(null);
   const [isFolderModalOpen, setIsFolderModalOpen] = useState(false);
   const [newFolderName, setNewFolderName] = useState('');
-  const [selectedFolderId, setSelectedFolderId] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
     fetchSurahList();
   }, []);
+
+  // --- Navigation & Scroll Logic ---
+  useEffect(() => {
+    if (!loading && view === 'reader' && targetScrollAyah !== null) {
+      const timer = setTimeout(() => {
+        const el = document.getElementById(`ayah-${targetScrollAyah}`);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          setTargetScrollAyah(null);
+        }
+      }, 600);
+      return () => clearTimeout(timer);
+    }
+  }, [loading, view, targetScrollAyah]);
 
   // --- API Handlers ---
   const fetchSurahList = async () => {
@@ -228,7 +242,8 @@ export default function QuranPage() {
     setLoading(true);
     setView('reader');
     setSelectedSurah(surah);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (targetAyah) setTargetScrollAyah(targetAyah);
+    else window.scrollTo({ top: 0, behavior: 'smooth' });
 
     try {
       const [surahRes, tafsirRes, tajweedRes] = await Promise.all([
@@ -256,13 +271,6 @@ export default function QuranPage() {
         const tajweedData = await tajweedRes.json();
         if (tajweedData.status === 'OK') setTajweedAyahs(tajweedData.data.ayahs);
       }
-
-      if (targetAyah) {
-        setTimeout(() => {
-          const el = document.getElementById(`ayah-${targetAyah}`);
-          el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 500);
-      }
     } catch (err) {
       toast({ title: "Error", description: "Failed to load Surah.", variant: "destructive" });
     } finally {
@@ -270,15 +278,25 @@ export default function QuranPage() {
     }
   };
 
-  // --- Logic Helpers ---
+  // --- Tajweed Parser ---
   const parseTajweed = (text: string) => {
     if (!text) return "";
-    const tagMap: Record<string, string> = {
-      'h': '#ec4899', 'i': '#10b981', 'j': '#ef4444', 'k': '#3b82f6', 'l': '#f97316',
+    
+    // Mapping brackets to specific tajweed classes
+    const tagToClass: Record<string, string> = {
+      'h': 'tajweed-ghunnah',
+      'i': 'tajweed-ikhfa',
+      'j': 'tajweed-iqlab',
+      'k': 'tajweed-idgham',
+      'l': 'tajweed-madd',
+      'm': 'tajweed-qalqalah',
+      'n': 'tajweed-idgham-bighunnah',
+      'o': 'tajweed-idgham-bilaghunnah'
     };
+
     return text.replace(/\[([a-z]):\d+\](.*?)\[\/\1\]/g, (match, tag, content) => {
-      const color = tagMap[tag] || 'inherit';
-      return `<span style="color: ${color}">${content}</span>`;
+      const className = tagToClass[tag] || '';
+      return `<span class="${className}">${content}</span>`;
     });
   };
 
@@ -342,6 +360,19 @@ export default function QuranPage() {
   return (
     <div className="flex flex-col items-center p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-8">
       
+      {/* Tajweed Styles Injection */}
+      <style jsx global>{`
+        .font-arabic { font-family: 'Amiri', serif; }
+        .tajweed-ikhfa { color: #16a34a; font-weight: bold; }
+        .tajweed-idgham { color: #dc2626; font-weight: bold; }
+        .tajweed-idgham-bighunnah { color: #ea580c; font-weight: bold; }
+        .tajweed-idgham-bilaghunnah { color: #b91c1c; font-weight: bold; }
+        .tajweed-qalqalah { color: #2563eb; font-weight: bold; }
+        .tajweed-madd { color: #d97706; font-weight: bold; }
+        .tajweed-ghunnah { color: #db2777; font-weight: bold; }
+        .tajweed-iqlab { color: #0891b2; font-weight: bold; }
+      `}</style>
+
       {/* Header UI */}
       <div className="text-center space-y-4">
         <div className="flex flex-col items-center gap-2">
@@ -516,7 +547,7 @@ export default function QuranPage() {
               {ayahs.map((ayah, index) => {
                 const tajweedHtml = parseTajweed(tajweedAyahs[index]?.text || "");
                 return (
-                  <Card key={ayah.nomorAyat} id={`ayah-${ayah.nomorAyat}`} className="border-none bg-transparent shadow-none space-y-8">
+                  <Card key={ayah.nomorAyat} id={`ayah-${ayah.nomorAyat}`} className="border-none bg-transparent shadow-none space-y-8 p-4 rounded-3xl transition-colors hover:bg-muted/5">
                     <div className="flex items-start justify-between border-b pb-4">
                       <div className="flex items-center gap-2">
                         <div className="h-10 w-10 rounded-full bg-primary/10 border-2 border-primary/20 flex items-center justify-center font-black text-sm text-primary">{ayah.nomorAyat}</div>
@@ -695,10 +726,6 @@ export default function QuranPage() {
       <ArticleSection toolId="quran" />
       <SmartAd />
       <SeoContent toolId="quran" />
-
-      <style jsx global>{`
-        .font-arabic { font-family: 'Amiri', serif; }
-      `}</style>
     </div>
   );
 }
