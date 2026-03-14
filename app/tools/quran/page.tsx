@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect, useMemo } from 'react';
@@ -68,7 +69,6 @@ interface Ayah {
   teksArab: string;
   teksLatin: string;
   teksTranslation: string;
-  tafsir?: string;
 }
 
 interface UserSettings {
@@ -109,8 +109,8 @@ const UI_TEXT: Record<string, any> = {
     settings: "Settings",
     latin: "Transliteration",
     translation: "Translation",
-    tafsir: "Tafsir (Indonesian)",
-    tafsir_unavailable: "Tafsir is currently only available in Indonesian.",
+    tafsir: "Tafsir (Quran.com)",
+    tafsir_unavailable: "Tafsir not available.",
     font_size: "Arabic Font Size",
     back: "Back",
     loading: "Loading Quran data...",
@@ -137,8 +137,8 @@ const UI_TEXT: Record<string, any> = {
     settings: "Pengaturan",
     latin: "Teks Latin",
     translation: "Terjemahan",
-    tafsir: "Tafsir Al-Jalalayn",
-    tafsir_unavailable: "Tafsir Al-Jalalayn tersedia untuk Anda.",
+    tafsir: "Tafsir (Kemenag)",
+    tafsir_unavailable: "Tafsir tidak tersedia.",
     font_size: "Ukuran Font Arab",
     back: "Kembali",
     loading: "Memuat data Al-Quran...",
@@ -169,6 +169,128 @@ const EDITION_MAP: Record<string, string> = {
   it: 'it.piccardo'
 };
 
+const TAFSIR_MAP: Record<string, number> = {
+  id: 9,   // Kemenag (Indonesian)
+  en: 169, // Ibn Kathir (English)
+  ar: 16,  // Al-Jalalayn (Arabic)
+};
+
+const getTafsirId = (lang: string) => TAFSIR_MAP[lang] || 169;
+
+// --- Sub-Component: Ayah Card (Handles Lazy Tafsir Fetch) ---
+interface AyahCardProps {
+  ayah: Ayah;
+  surahNum: number;
+  surahName: string;
+  lang: string;
+  settings: UserSettings;
+  bookmarks: BookmarkItem[];
+  lastRead: LastRead | null;
+  onMarkLastRead: (sn: number, name: string, an: number) => void;
+  onBookmark: (data: { surahNum: number; surahName: string; ayahNum: number }) => void;
+}
+
+function AyahCard({ ayah, surahNum, surahName, lang, settings, bookmarks, lastRead, onMarkLastRead, onBookmark }: AyahCardProps) {
+  const [tafsirData, setTafsirData] = useState<string | null>(null);
+  const [isLoadingTafsir, setIsLoadingTafsir] = useState(false);
+  
+  const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
+
+  const handleFetchTafsir = async () => {
+    if (tafsirData || isLoadingTafsir) return;
+    
+    setIsLoadingTafsir(true);
+    try {
+      const tafsirId = getTafsirId(lang);
+      const res = await fetch(`https://api.quran.com/api/v4/tafsirs/${tafsirId}/by_ayah/${surahNum}:${ayah.nomorAyat}`);
+      const data = await res.json();
+      if (data.tafsir) {
+        setTafsirData(data.tafsir.text);
+      } else {
+        setTafsirData(lang === 'id' ? "Tafsir tidak tersedia untuk bahasa ini." : "Tafsir not available for this language.");
+      }
+    } catch (err) {
+      setTafsirData(lang === 'id' ? "Gagal memuat tafsir." : "Failed to load tafsir.");
+    } finally {
+      setIsLoadingTafsir(false);
+    }
+  };
+
+  const isBookmarked = bookmarks.some(b => b.surahNumber === surahNum && b.ayahNumber === ayah.nomorAyat);
+  const isPinned = lastRead?.surahNumber === surahNum && lastRead?.ayahNumber === ayah.nomorAyat;
+
+  return (
+    <Card 
+      id={`ayah-${ayah.nomorAyat}`} 
+      className="border-none bg-transparent shadow-none space-y-8 p-6 rounded-3xl transition-all"
+    >
+      <div className="flex items-start justify-between border-b pb-4">
+        <div className="flex items-center gap-2">
+          <div className="h-10 w-10 rounded-full bg-primary/10 border-2 border-primary/20 flex items-center justify-center font-black text-sm text-primary">{ayah.nomorAyat}</div>
+          
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            onClick={() => onBookmark({ surahNum, surahName, ayahNum: ayah.nomorAyat })}
+            className={cn("rounded-full", isBookmarked ? "text-rose-500" : "text-muted-foreground")}
+          >
+            <Star className={cn("h-5 w-5", isBookmarked && "fill-current")} />
+          </Button>
+
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            onClick={() => onMarkLastRead(surahNum, surahName, ayah.nomorAyat)}
+            className={cn("rounded-full", isPinned ? "text-primary" : "text-muted-foreground")}
+          >
+            <Pin className={cn("h-5 w-5", isPinned && "fill-current")} />
+          </Button>
+        </div>
+        <Button variant="ghost" size="icon" className="text-muted-foreground h-10 w-10"><Share2 className="h-4 w-4" /></Button>
+      </div>
+
+      <div className="space-y-10">
+        <div 
+          className="font-arabic leading-[2.5] text-right text-foreground tracking-wide" 
+          style={{ fontSize: `${settings.arabicFontSize}px` }} 
+        >
+          {ayah.teksArab}
+        </div>
+        <div className="space-y-6">
+          {settings.showLatin && <p className="text-sm font-bold text-primary italic leading-relaxed">{ayah.teksLatin}</p>}
+          {settings.showTranslation && <p className="text-base font-medium text-muted-foreground leading-relaxed">{ayah.teksTranslation}</p>}
+          
+          {settings.showTafsir && (
+            <div className="mt-4">
+              <Accordion type="single" collapsible className="w-full" onValueChange={(val) => val === 'tafsir' && handleFetchTafsir()}>
+                <AccordionItem value="tafsir" className="border-none">
+                  <AccordionTrigger className="font-black uppercase text-[10px] tracking-widest text-muted-foreground/60 py-2 hover:no-underline hover:text-primary">
+                    <span className="flex items-center gap-2"><BookOpen className="h-3.5 w-3.5" />{t('tafsir_btn')}</span>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm font-medium text-foreground bg-muted/30 p-6 rounded-3xl mt-2 leading-loose">
+                    {isLoadingTafsir ? (
+                      <div className="flex items-center gap-2 py-4">
+                        <Loader2 className="h-4 w-4 animate-spin text-primary" />
+                        <span className="text-[10px] font-bold uppercase tracking-widest opacity-60">Fetching Tafsir...</span>
+                      </div>
+                    ) : (
+                      <div 
+                        className="prose prose-sm dark:prose-invert max-w-none font-medium text-foreground leading-relaxed"
+                        dangerouslySetInnerHTML={{ __html: tafsirData || '' }} 
+                      />
+                    )}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </div>
+          )}
+        </div>
+      </div>
+    </Card>
+  );
+}
+
+// --- Main Quran Page Component ---
 export default function QuranPage() {
   const { lang } = useLang();
   const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
@@ -256,37 +378,19 @@ export default function QuranPage() {
 
     try {
       const translationEdition = EDITION_MAP[lang] || 'en.sahih';
-      
-      // Promise.all for AlQuran Cloud Editions and EQuran Tafsir (if lang is ID)
-      const tasks: any[] = [
-        fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/editions/quran-uthmani,${translationEdition},en.transliteration`).then(r => r.json())
-      ];
-
-      // Add Tafsir task only if needed/available
-      if (lang === 'id') {
-        tasks.push(fetch(`https://equran.id/api/v2/tafsir/${surahNum}`).then(r => r.json()));
-      }
-
-      const results = await Promise.all(tasks);
-      const cloudData = results[0];
-      const tafsirData = lang === 'id' ? results[1] : null;
+      const res = await fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/editions/quran-uthmani,${translationEdition},en.transliteration`);
+      const cloudData = await res.json();
 
       if (cloudData.code === 200) {
         const arabicAyahs = cloudData.data[0].ayahs;
         const translationAyahs = cloudData.data[1].ayahs;
         const transliterationAyahs = cloudData.data[2].ayahs;
 
-        const tafsirMap = new Map();
-        if (tafsirData && tafsirData.code === 200) {
-          tafsirData.data.tafsir.forEach((t: any) => tafsirMap.set(t.ayat, t.teks));
-        }
-
         const mergedAyahs: Ayah[] = arabicAyahs.map((a: any, i: number) => ({
           nomorAyat: a.numberInSurah,
           teksArab: a.text,
           teksTranslation: translationAyahs[i].text,
-          teksLatin: transliterationAyahs[i].text,
-          tafsir: tafsirMap.get(a.numberInSurah) || null
+          teksLatin: transliterationAyahs[i].text
         }));
         
         setAyahs(mergedAyahs);
@@ -419,7 +523,6 @@ export default function QuranPage() {
               <div className="flex items-center justify-between">
                 <div className="flex flex-col">
                   <Label className="font-bold uppercase text-[10px] tracking-widest">{t('tafsir')}</Label>
-                  {lang !== 'id' && <span className="text-[8px] text-muted-foreground uppercase">ID Only</span>}
                 </div>
                 <Switch checked={settings.showTafsir} onCheckedChange={v => setSettings({...settings, showTafsir: v})} />
               </div>
@@ -460,7 +563,7 @@ export default function QuranPage() {
           )}
 
           <div className="w-full flex flex-col md:flex-row gap-4 items-center justify-between bg-card p-6 rounded-[2.5rem] border-2 shadow-xl">
-            <div className="relative flex-1 w-full max-w-md">
+            <div className="relative flex-1 w-full max-md:max-w-full max-w-md">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
               <Input 
                 value={search}
@@ -535,80 +638,21 @@ export default function QuranPage() {
               )}
 
               {ayahs.map((ayah) => (
-                <Card 
-                  key={ayah.nomorAyat} 
-                  id={`ayah-${ayah.nomorAyat}`} 
-                  className="border-none bg-transparent shadow-none space-y-8 p-6 rounded-3xl transition-all"
-                >
-                  <div className="flex items-start justify-between border-b pb-4">
-                    <div className="flex items-center gap-2">
-                      <div className="h-10 w-10 rounded-full bg-primary/10 border-2 border-primary/20 flex items-center justify-center font-black text-sm text-primary">{ayah.nomorAyat}</div>
-                      
-                      <Button 
-                        variant="ghost" 
-                        size="icon" 
-                        onClick={() => {
-                          setActiveAyah({ surahNum: selectedSurah!.nomor, surahName: selectedSurah!.namaLatin, ayahNum: ayah.nomorAyat });
-                          setIsFolderModalOpen(true);
-                        }}
-                        className={cn("rounded-full", bookmarks.some(b => b.surahNumber === selectedSurah?.nomor && b.ayahNumber === ayah.nomorAyat) ? "text-rose-500" : "text-muted-foreground")}
-                      >
-                        <Star className={cn("h-5 w-5", bookmarks.some(b => b.surahNumber === selectedSurah?.nomor && b.ayahNumber === ayah.nomorAyat) && "fill-current")} />
-                      </Button>
-
-                      <Button 
-                        variant="ghost" 
-                        size="icon" 
-                        onClick={() => handleMarkLastRead(selectedSurah!.nomor, selectedSurah!.namaLatin, ayah.nomorAyat)}
-                        className={cn("rounded-full", lastRead?.surahNumber === selectedSurah?.nomor && lastRead?.ayahNumber === ayah.nomorAyat ? "text-primary" : "text-muted-foreground")}
-                      >
-                        <Pin className={cn("h-5 w-5", lastRead?.surahNumber === selectedSurah?.nomor && lastRead?.ayahNumber === ayah.nomorAyat && "fill-current")} />
-                      </Button>
-                    </div>
-                    <Button variant="ghost" size="icon" className="text-muted-foreground h-10 w-10"><Share2 className="h-4 w-4" /></Button>
-                  </div>
-
-                  <div className="space-y-10">
-                    <div 
-                      className="font-arabic leading-[2.5] text-right text-foreground tracking-wide" 
-                      style={{ fontSize: `${settings.arabicFontSize}px` }} 
-                    >
-                      {ayah.teksArab}
-                    </div>
-                    <div className="space-y-6">
-                      {settings.showLatin && <p className="text-sm font-bold text-primary italic leading-relaxed">{ayah.teksLatin}</p>}
-                      {settings.showTranslation && <p className="text-base font-medium text-muted-foreground leading-relaxed">{ayah.teksTranslation}</p>}
-                      
-                      {settings.showTafsir && (
-                        <div className="mt-4">
-                          {lang === 'id' ? (
-                            ayah.tafsir ? (
-                              <Accordion type="single" collapsible className="w-full">
-                                <AccordionItem value="tafsir" className="border-none">
-                                  <AccordionTrigger className="font-black uppercase text-[10px] tracking-widest text-muted-foreground/60 py-2 hover:no-underline hover:text-primary">
-                                    <span className="flex items-center gap-2"><BookOpen className="h-3.5 w-3.5" />{t('tafsir_btn')}</span>
-                                  </AccordionTrigger>
-                                  <AccordionContent className="text-sm font-medium text-foreground bg-muted/30 p-6 rounded-3xl mt-2 leading-loose whitespace-pre-wrap">
-                                    {ayah.tafsir}
-                                  </AccordionContent>
-                                </AccordionItem>
-                              </Accordion>
-                            ) : (
-                              <p className="text-[10px] font-bold text-muted-foreground italic">Tafsir sedang dimuat...</p>
-                            )
-                          ) : (
-                            <div className="bg-muted/30 p-4 rounded-2xl flex items-start gap-3">
-                              <Info className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                              <p className="text-[10px] font-bold text-muted-foreground uppercase leading-relaxed">
-                                {t('tafsir_unavailable')}
-                              </p>
-                            </div>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </Card>
+                <AyahCard 
+                  key={ayah.nomorAyat}
+                  ayah={ayah}
+                  surahNum={selectedSurah!.nomor}
+                  surahName={selectedSurah!.namaLatin}
+                  lang={lang}
+                  settings={settings}
+                  bookmarks={bookmarks}
+                  lastRead={lastRead}
+                  onMarkLastRead={handleMarkLastRead}
+                  onBookmark={(data) => {
+                    setActiveAyah(data);
+                    setIsFolderModalOpen(true);
+                  }}
+                />
               ))}
             </div>
           )}
