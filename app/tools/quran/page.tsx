@@ -249,11 +249,12 @@ export default function QuranPage() {
       const [surahRes, tafsirRes, tajweedRes] = await Promise.all([
         fetch(`https://equran.id/api/v2/surat/${surahNum}`),
         fetch(`https://equran.id/api/v2/tafsir/${surahNum}`),
-        settings.showTajweed ? fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/ar.tajweed`) : Promise.resolve(null)
+        fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/ar.tajweed`)
       ]);
 
       const surahData = await surahRes.json();
       const tafsirData = await tafsirRes.json();
+      const tajweedData = await tajweedRes.json();
       
       if (surahData.code === 200 && tafsirData.code === 200) {
         const tafsirMap = new Map();
@@ -267,9 +268,8 @@ export default function QuranPage() {
         setAyahs(ayahsWithTafsir);
       }
 
-      if (tajweedRes) {
-        const tajweedData = await tajweedRes.json();
-        if (tajweedData.status === 'OK') setTajweedAyahs(tajweedData.data.ayahs);
+      if (tajweedData.status === 'OK') {
+        setTajweedAyahs(tajweedData.data.ayahs);
       }
     } catch (err) {
       toast({ title: "Error", description: "Failed to load Surah.", variant: "destructive" });
@@ -278,11 +278,10 @@ export default function QuranPage() {
     }
   };
 
-  // --- Tajweed Parser ---
+  // --- Tajweed Parser (Font-Independent) ---
   const parseTajweed = (text: string) => {
     if (!text) return "";
     
-    // Mapping brackets to specific tajweed classes
     const tagToClass: Record<string, string> = {
       'h': 'tajweed-ghunnah',
       'i': 'tajweed-ikhfa',
@@ -294,7 +293,8 @@ export default function QuranPage() {
       'o': 'tajweed-idgham-bilaghunnah'
     };
 
-    return text.replace(/\[([a-z]):\d+\](.*?)\[\/\1\]/g, (match, tag, content) => {
+    // Regex handles format like [h:1]text[/h] or [h]text[/h]
+    return text.replace(/\[([a-z])(?::\d+)?\](.*?)\[\/\1\]/g, (match, tag, content) => {
       const className = tagToClass[tag] || '';
       return `<span class="${className}">${content}</span>`;
     });
@@ -360,16 +360,15 @@ export default function QuranPage() {
   return (
     <div className="flex flex-col items-center p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-8">
       
-      {/* Tajweed Styles Injection */}
+      {/* Tajweed Styles Injection - Strict Colors */}
       <style jsx global>{`
         .font-arabic { font-family: 'Amiri', serif; }
-        .tajweed-ikhfa { color: #16a34a; font-weight: bold; }
+        .tajweed-ikhfa, .tajweed-ghunnah { color: #16a34a; font-weight: bold; }
         .tajweed-idgham { color: #dc2626; font-weight: bold; }
         .tajweed-idgham-bighunnah { color: #ea580c; font-weight: bold; }
         .tajweed-idgham-bilaghunnah { color: #b91c1c; font-weight: bold; }
         .tajweed-qalqalah { color: #2563eb; font-weight: bold; }
-        .tajweed-madd { color: #d97706; font-weight: bold; }
-        .tajweed-ghunnah { color: #db2777; font-weight: bold; }
+        .tajweed-madd { color: #ea580c; font-weight: bold; }
         .tajweed-iqlab { color: #0891b2; font-weight: bold; }
       `}</style>
 
@@ -579,7 +578,13 @@ export default function QuranPage() {
                     </div>
 
                     <div className="space-y-10">
-                      <div className="font-arabic leading-[2.5] text-right text-foreground tracking-wide" style={{ fontSize: `${settings.arabicFontSize}px` }} dangerouslySetInnerHTML={{ __html: (settings.showTajweed && tajweedHtml) ? tajweedHtml : ayah.teksArab }} />
+                      <div 
+                        className="font-arabic leading-[2.5] text-right text-foreground tracking-wide" 
+                        style={{ fontSize: `${settings.arabicFontSize}px` }} 
+                        dangerouslySetInnerHTML={{ 
+                          __html: (settings.showTajweed && tajweedHtml) ? tajweedHtml : ayah.teksArab 
+                        }} 
+                      />
                       <div className="space-y-6">
                         {settings.showLatin && <p className="text-sm font-bold text-primary italic leading-relaxed">{ayah.teksLatin}</p>}
                         {settings.showTranslation && <p className="text-base font-medium text-muted-foreground leading-relaxed">{ayah.teksIndonesia}</p>}
