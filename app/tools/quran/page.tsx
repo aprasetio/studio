@@ -338,7 +338,11 @@ function AyahCard({
               <Pin className={cn("h-5 w-5", isPinned && "fill-current")} />
             </Button>
           </div>
-          <Button variant="ghost" size="icon" className="text-muted-foreground h-10 w-10"><Share2 className="h-4 w-4" /></Button>
+          <Button variant="ghost" size="icon" className="text-muted-foreground h-10 w-10" onClick={() => {
+            const url = `https://versokit.com/tools/quran?surah=${surahNum}&ayah=${ayah.nomorAyat}`;
+            navigator.clipboard.writeText(url);
+            toast({ title: lang === 'id' ? "Link Tersalin" : "Link Copied" });
+          }}><Share2 className="h-4 w-4" /></Button>
         </div>
 
         <div className="space-y-10">
@@ -444,152 +448,28 @@ export default function QuranPage() {
     };
   }, []);
 
-  // Sync Speed with Audio Reference
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.playbackRate = audioState.speed;
+  // --- UNIFIED NAVIGATION HELPER ---
+  const jumpToAyah = async (surahNumber: number, ayahNumber?: number) => {
+    const surah = surahs.find(s => s.nomor === surahNumber);
+    if (!surah) {
+      // If surah list not loaded yet, wait? No, usually list is tiny and pre-loaded.
+      console.error("Surah not found in list:", surahNumber);
+      return;
     }
-  }, [audioState.speed]);
-
-  // Handle Scroll to Ayah
-  useEffect(() => {
-    if (!loading && ayahs.length > 0 && targetScrollAyah) {
-      const timer = setTimeout(() => {
-        const element = document.getElementById(`ayah-${targetScrollAyah}`);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          element.classList.add('bg-primary/5', 'dark:bg-primary/10');
-          setTimeout(() => element.classList.remove('bg-primary/5', 'dark:bg-primary/10'), 2000);
-          setTargetScrollAyah(null);
-        }
-      }, 500);
-      return () => clearTimeout(timer);
-    }
-  }, [loading, ayahs, targetScrollAyah]);
-
-  // --- AUDIO LOGIC ---
-  const safePlayAudio = async (audioUrl: string) => {
-    if (!audioRef.current) return;
-    
-    try {
-      if (audioRef.current.src !== audioUrl) {
-        audioRef.current.src = audioUrl;
-        audioRef.current.load();
-      }
-      audioRef.current.playbackRate = audioState.speed;
-      await audioRef.current.play();
-    } catch (error: any) {
-      if (error.name === 'AbortError') {
-        console.warn("Audio play was safely interrupted.");
-      } else {
-        console.error("Audio playback failed:", error);
-      }
-    }
-  };
-
-  const handleAudioEnded = () => {
-    setAudioState(prev => {
-      // 1. Repeat Current Ayah Logic
-      const shouldRepeat = prev.repeatAyahCount === 'infinite' || prev.currentRepeatLoop < (prev.repeatAyahCount as number);
-      
-      if (shouldRepeat) {
-        if (audioRef.current) {
-          audioRef.current.currentTime = 0;
-          audioRef.current.play().catch(e => console.warn("Retry failed:", e));
-        }
-        return { ...prev, currentRepeatLoop: prev.currentRepeatLoop + 1 };
-      }
-
-      // 2. Tahfidz Range Loop Logic
-      if (prev.loopRange.isActive && prev.loopRange.start && prev.loopRange.end) {
-        const startAyah = parseInt(prev.loopRange.start);
-        const endAyah = parseInt(prev.loopRange.end);
-        
-        if (prev.playingAyah !== null && prev.playingAyah >= endAyah) {
-          setTimeout(() => playNextAyah(startAyah), 500);
-          return { ...prev, playingAyah: startAyah, currentRepeatLoop: 1 };
-        }
-      }
-
-      // 3. Auto Next Logic
-      if (prev.autoNextAyah) {
-        const nextAyahNum = (prev.playingAyah || 0) + 1;
-        const totalAyahs = selectedSurah?.jumlahAyat || 0;
-
-        if (nextAyahNum <= totalAyahs) {
-          setTimeout(() => playNextAyah(nextAyahNum), 500);
-          return { ...prev, playingAyah: nextAyahNum, currentRepeatLoop: 1 };
-        } else if (prev.repeatSurah) {
-          // Loop Surah back to start
-          setTimeout(() => playNextAyah(1), 1000);
-          return { ...prev, playingAyah: 1, currentRepeatLoop: 1 };
-        }
-      }
-
-      return { ...prev, playingAyah: null, isPlaying: false, currentRepeatLoop: 1 };
-    });
-  };
-
-  const playNextAyah = (num: number) => {
-    const targetAyah = ayahs.find(a => a.nomorAyat === num);
-    if (targetAyah) {
-      toggleAudio(num, targetAyah.audio);
-    }
-  };
-
-  const toggleAudio = (num: number, url: string) => {
-    if (audioState.playingAyah === num) {
-      if (audioState.isPlaying) {
-        audioRef.current?.pause();
-        setAudioState(prev => ({ ...prev, isPlaying: false }));
-      } else {
-        audioRef.current?.play().catch(e => console.warn("Interrupted play:", e));
-        setAudioState(prev => ({ ...prev, isPlaying: true }));
-      }
-    } else {
-      if (audioRef.current) {
-        audioRef.current.pause();
-      }
-      const audio = audioRef.current || new Audio();
-      audio.onended = handleAudioEnded;
-      audioRef.current = audio;
-      
-      safePlayAudio(url);
-      setAudioState(prev => ({ ...prev, playingAyah: num, isPlaying: true, currentRepeatLoop: 1 }));
-    }
-  };
-
-  // --- API Handlers ---
-  const fetchSurahList = async () => {
-    setLoading(true);
-    try {
-      const res = await fetch('https://equran.id/api/v2/surat');
-      const data = await res.json();
-      if (data.code === 200) setSurahs(data.data);
-    } catch (err) {
-      toast({ title: "Error", description: "Connection failed.", variant: "destructive" });
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const openSurah = async (surahNum: number, targetAyahNum?: number) => {
-    const surah = surahs.find(s => s.nomor === surahNum);
-    if (!surah) return;
 
     setLoading(true);
     setView('reader');
     setSelectedSurah(surah);
     
-    if (targetAyahNum) {
-      setTargetScrollAyah(targetAyahNum);
+    if (ayahNumber) {
+      setTargetScrollAyah(ayahNumber);
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     try {
       const translationEdition = EDITION_MAP[lang] || 'en.sahih';
-      const res = await fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/editions/quran-uthmani,${translationEdition},en.transliteration,ar.alafasy`);
+      const res = await fetch(`https://api.alquran.cloud/v1/surah/${surahNumber}/editions/quran-uthmani,${translationEdition},en.transliteration,ar.alafasy`);
       const cloudData = await res.json();
 
       if (cloudData.code === 200) {
@@ -616,6 +496,136 @@ export default function QuranPage() {
     }
   };
 
+  // Sync Speed with Audio Reference
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.playbackRate = audioState.speed;
+    }
+  }, [audioState.speed]);
+
+  // Handle Scroll to Ayah (Robust Polling Method)
+  useEffect(() => {
+    if (!loading && ayahs.length > 0 && targetScrollAyah) {
+      let attempts = 0;
+      const maxAttempts = 20;
+
+      const findAndScroll = setInterval(() => {
+        const element = document.getElementById(`ayah-${targetScrollAyah}`);
+        if (element) {
+          clearInterval(findAndScroll);
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          element.classList.add('bg-primary/5', 'dark:bg-primary/10');
+          setTimeout(() => element.classList.remove('bg-primary/5', 'dark:bg-primary/10'), 2500);
+          setTargetScrollAyah(null);
+        } else {
+          attempts++;
+          if (attempts >= maxAttempts) {
+            clearInterval(findAndScroll);
+            setTargetScrollAyah(null);
+          }
+        }
+      }, 100);
+      return () => clearInterval(findAndScroll);
+    }
+  }, [loading, ayahs, targetScrollAyah]);
+
+  // --- AUDIO LOGIC ---
+  const safePlayAudio = async (audioUrl: string) => {
+    if (!audioRef.current) return;
+    
+    try {
+      if (audioRef.current.src !== audioUrl) {
+        audioRef.current.src = audioUrl;
+        audioRef.current.load();
+      }
+      audioRef.current.playbackRate = audioState.speed;
+      await audioRef.current.play();
+    } catch (error: any) {
+      if (error.name !== 'AbortError') {
+        console.error("Audio playback failed:", error);
+      }
+    }
+  };
+
+  const handleAudioEnded = () => {
+    setAudioState(prev => {
+      const shouldRepeat = prev.repeatAyahCount === 'infinite' || prev.currentRepeatLoop < (prev.repeatAyahCount as number);
+      
+      if (shouldRepeat) {
+        if (audioRef.current) {
+          audioRef.current.currentTime = 0;
+          audioRef.current.play().catch(() => {});
+        }
+        return { ...prev, currentRepeatLoop: prev.currentRepeatLoop + 1 };
+      }
+
+      if (prev.loopRange.isActive && prev.loopRange.start && prev.loopRange.end) {
+        const startAyah = parseInt(prev.loopRange.start);
+        const endAyah = parseInt(prev.loopRange.end);
+        
+        if (prev.playingAyah !== null && prev.playingAyah >= endAyah) {
+          setTimeout(() => playNextAyah(startAyah), 500);
+          return { ...prev, playingAyah: startAyah, currentRepeatLoop: 1 };
+        }
+      }
+
+      if (prev.autoNextAyah) {
+        const nextAyahNum = (prev.playingAyah || 0) + 1;
+        const totalAyahs = selectedSurah?.jumlahAyat || 0;
+
+        if (nextAyahNum <= totalAyahs) {
+          setTimeout(() => playNextAyah(nextAyahNum), 500);
+          return { ...prev, playingAyah: nextAyahNum, currentRepeatLoop: 1 };
+        } else if (prev.repeatSurah) {
+          setTimeout(() => playNextAyah(1), 1000);
+          return { ...prev, playingAyah: 1, currentRepeatLoop: 1 };
+        }
+      }
+
+      return { ...prev, playingAyah: null, isPlaying: false, currentRepeatLoop: 1 };
+    });
+  };
+
+  const playNextAyah = (num: number) => {
+    const targetAyah = ayahs.find(a => a.nomorAyat === num);
+    if (targetAyah) {
+      toggleAudio(num, targetAyah.audio);
+    }
+  };
+
+  const toggleAudio = (num: number, url: string) => {
+    if (audioState.playingAyah === num) {
+      if (audioState.isPlaying) {
+        audioRef.current?.pause();
+        setAudioState(prev => ({ ...prev, isPlaying: false }));
+      } else {
+        audioRef.current?.play().catch(() => {});
+        setAudioState(prev => ({ ...prev, isPlaying: true }));
+      }
+    } else {
+      if (audioRef.current) audioRef.current.pause();
+      const audio = audioRef.current || new Audio();
+      audio.onended = handleAudioEnded;
+      audioRef.current = audio;
+      
+      safePlayAudio(url);
+      setAudioState(prev => ({ ...prev, playingAyah: num, isPlaying: true, currentRepeatLoop: 1 }));
+    }
+  };
+
+  const fetchSurahList = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch('https://equran.id/api/v2/surat');
+      const data = await res.json();
+      if (data.code === 200) setSurahs(data.data);
+    } catch (err) {
+      toast({ title: "Error", description: "Connection failed.", variant: "destructive" });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const filteredSurahs = useMemo(() => {
     return surahs.filter(s => 
       s.namaLatin.toLowerCase().includes(search.toLowerCase()) || 
@@ -631,10 +641,6 @@ export default function QuranPage() {
       timestamp: Date.now()
     });
     toast({ title: t('last_read') + " Updated", description: `${surahName} : ${ayahNum}` });
-  };
-
-  const handleBookmarkClick = (bookmark: BookmarkItem) => {
-    openSurah(bookmark.surahNumber, bookmark.ayahNumber);
   };
 
   const handleCreateFolder = () => {
@@ -654,7 +660,9 @@ export default function QuranPage() {
     const newBookmark: BookmarkItem = {
       id: crypto.randomUUID(),
       folderId,
-      ...activeAyah,
+      surahNumber: activeAyah.surahNum,
+      surahName: activeAyah.surahName,
+      ayahNumber: activeAyah.ayahNum,
       timestamp: new Date().toLocaleString(lang === 'id' ? 'id-ID' : 'en-US', {
         day: '2-digit',
         month: 'short',
@@ -723,7 +731,6 @@ export default function QuranPage() {
         <div className="fixed bottom-0 left-0 w-full bg-card/95 backdrop-blur-xl border-t-2 border-primary/10 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.2)] z-50 p-4 transition-all animate-in slide-in-from-bottom duration-500">
           <div className="container mx-auto space-y-4">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              {/* Left: Metadata */}
               <div className="flex items-center gap-4 w-full md:w-1/3">
                 <div className="p-3 bg-primary rounded-2xl text-white shadow-lg shadow-primary/20">
                   <Volume2 className="h-5 w-5" />
@@ -734,7 +741,6 @@ export default function QuranPage() {
                 </div>
               </div>
 
-              {/* Center: Controls */}
               <div className="flex items-center gap-6">
                 <Button 
                   variant="ghost" 
@@ -764,12 +770,8 @@ export default function QuranPage() {
                 </Button>
               </div>
 
-              {/* Right: Settings */}
               <div className="flex items-center gap-2 w-full md:w-1/3 justify-end">
-                <Select 
-                  value={audioState.speed.toString()} 
-                  onValueChange={(val) => setAudioState(prev => ({ ...prev, speed: parseFloat(val) }))}
-                >
+                <Select value={audioState.speed.toString()} onValueChange={(val) => setAudioState(prev => ({ ...prev, speed: parseFloat(val) }))}>
                   <SelectTrigger className="w-20 h-9 rounded-xl border-2 font-bold text-[10px] uppercase">
                     <SelectValue placeholder="1x" />
                   </SelectTrigger>
@@ -780,10 +782,7 @@ export default function QuranPage() {
                   </SelectContent>
                 </Select>
 
-                <Select 
-                  value={audioState.repeatAyahCount.toString()} 
-                  onValueChange={(val) => setAudioState(prev => ({ ...prev, repeatAyahCount: val === 'infinite' ? 'infinite' : parseInt(val) }))}
-                >
+                <Select value={audioState.repeatAyahCount.toString()} onValueChange={(val) => setAudioState(prev => ({ ...prev, repeatAyahCount: val === 'infinite' ? 'infinite' : parseInt(val) }))}>
                   <SelectTrigger className="w-24 h-9 rounded-xl border-2 font-bold text-[10px] uppercase">
                     <Repeat1 className="h-3 w-3 mr-1" />
                     <SelectValue placeholder="1x" />
@@ -805,35 +804,22 @@ export default function QuranPage() {
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
                         <Label className="text-[10px] font-black uppercase tracking-widest">{t('auto_next')}</Label>
-                        <Switch 
-                          checked={audioState.autoNextAyah} 
-                          onCheckedChange={(v) => setAudioState(prev => ({ ...prev, autoNextAyah: v }))} 
-                        />
+                        <Switch checked={audioState.autoNextAyah} onCheckedChange={(v) => setAudioState(prev => ({ ...prev, autoNextAyah: v }))} />
                       </div>
                       <div className="flex items-center justify-between">
                         <Label className="text-[10px] font-black uppercase tracking-widest">{t('loop_surah')}</Label>
-                        <Switch 
-                          checked={audioState.repeatSurah} 
-                          onCheckedChange={(v) => setAudioState(prev => ({ ...prev, repeatSurah: v }))} 
-                        />
+                        <Switch checked={audioState.repeatSurah} onCheckedChange={(v) => setAudioState(prev => ({ ...prev, repeatSurah: v }))} />
                       </div>
-                      <Button 
-                        variant="destructive" 
-                        className="w-full h-10 font-black uppercase tracking-widest text-[9px] rounded-xl mt-2"
-                        onClick={() => {
-                          if (audioRef.current) audioRef.current.pause();
-                          setAudioState(prev => ({ ...prev, playingAyah: null, isPlaying: false }));
-                        }}
-                      >
-                        Stop & Close
-                      </Button>
+                      <Button variant="destructive" className="w-full h-10 font-black uppercase tracking-widest text-[9px] rounded-xl mt-2" onClick={() => {
+                        if (audioRef.current) audioRef.current.pause();
+                        setAudioState(prev => ({ ...prev, playingAyah: null, isPlaying: false }));
+                      }}>Stop & Close</Button>
                     </div>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
             </div>
 
-            {/* Tahfidz Mode: Range Controls */}
             <div className="pt-2 border-t border-dashed border-primary/10">
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <div className="flex items-center gap-2">
@@ -842,32 +828,15 @@ export default function QuranPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Label className="text-[8px] font-black uppercase">{t('start_ayah')}</Label>
-                  <Input 
-                    type="number" 
-                    min="1" 
-                    max={selectedSurah?.jumlahAyat}
-                    value={audioState.loopRange.start}
-                    onChange={(e) => setAudioState(prev => ({ ...prev, loopRange: { ...prev.loopRange, start: e.target.value } }))}
-                    className="w-14 h-8 text-center text-xs font-bold rounded-lg"
-                  />
+                  <Input type="number" min="1" max={selectedSurah?.jumlahAyat} value={audioState.loopRange.start} onChange={(e) => setAudioState(prev => ({ ...prev, loopRange: { ...prev.loopRange, start: e.target.value } }))} className="w-14 h-8 text-center text-xs font-bold rounded-lg" />
                 </div>
                 <div className="flex items-center gap-2">
                   <Label className="text-[8px] font-black uppercase">{t('end_ayah')}</Label>
-                  <Input 
-                    type="number" 
-                    min="1" 
-                    max={selectedSurah?.jumlahAyat}
-                    value={audioState.loopRange.end}
-                    onChange={(e) => setAudioState(prev => ({ ...prev, loopRange: { ...prev.loopRange, end: e.target.value } }))}
-                    className="w-14 h-8 text-center text-xs font-bold rounded-lg"
-                  />
+                  <Input type="number" min="1" max={selectedSurah?.jumlahAyat} value={audioState.loopRange.end} onChange={(e) => setAudioState(prev => ({ ...prev, loopRange: { ...prev.loopRange, end: e.target.value } }))} className="w-14 h-8 text-center text-xs font-bold rounded-lg" />
                 </div>
                 <div className="flex items-center gap-2">
                   <Label className="text-[8px] font-black uppercase tracking-tighter">{t('loop_range')}</Label>
-                  <Switch 
-                    checked={audioState.loopRange.isActive}
-                    onCheckedChange={(v) => setAudioState(prev => ({ ...prev, loopRange: { ...prev.loopRange, isActive: v } }))}
-                  />
+                  <Switch checked={audioState.loopRange.isActive} onCheckedChange={(v) => setAudioState(prev => ({ ...prev, loopRange: { ...prev.loopRange, isActive: v } }))} />
                 </div>
               </div>
             </div>
@@ -876,7 +845,7 @@ export default function QuranPage() {
       )}
 
       {/* Settings FAB */}
-      <div className="fixed bottom-24 right-8 z-40 md:bottom-8">
+      <div className="fixed bottom-8 right-8 z-50">
         <Dialog>
           <DialogTrigger asChild>
             <Button size="icon" className="h-14 w-14 rounded-full shadow-2xl bg-primary text-white hover:scale-110 transition-transform">
@@ -927,7 +896,7 @@ export default function QuranPage() {
                   </div>
                 </div>
                 <Button 
-                  onClick={() => openSurah(lastRead.surahNumber, lastRead.ayahNumber)}
+                  onClick={() => jumpToAyah(lastRead.surahNumber, lastRead.ayahNumber)}
                   className="bg-white text-primary hover:bg-white/90 font-black uppercase tracking-widest px-8 h-14 rounded-2xl shadow-xl transition-transform group-hover:scale-105"
                 >
                   {t('resume')} <ArrowRight className="ml-2 h-5 w-5" />
@@ -960,7 +929,7 @@ export default function QuranPage() {
                 <Card 
                   key={surah.nomor} 
                   className="group border-2 hover:border-primary/20 transition-all duration-300 rounded-[2rem] overflow-hidden flex bg-card shadow-sm hover:shadow-2xl cursor-pointer"
-                  onClick={() => openSurah(surah.nomor)}
+                  onClick={() => jumpToAyah(surah.nomor)}
                 >
                   <div className="w-16 bg-muted/30 flex items-center justify-center border-r-2 group-hover:bg-primary transition-colors">
                     <span className="font-black text-xl text-muted-foreground group-hover:text-white">{surah.nomor}</span>
@@ -1093,7 +1062,7 @@ export default function QuranPage() {
                         ) : (
                           folderBookmarks.map(b => (
                             <div key={b.id} className="flex items-center justify-between p-4 bg-muted/30 rounded-2xl border-2 border-transparent hover:border-primary/20 transition-all group">
-                              <button onClick={() => handleBookmarkClick(b)} className="flex-1 text-left flex items-center gap-4">
+                              <button onClick={() => jumpToAyah(b.surahNumber, b.ayahNumber)} className="flex-1 text-left flex items-center gap-4">
                                 <div className="h-8 w-8 rounded-full bg-white flex items-center justify-center font-black text-xs shadow-sm">{b.ayahNumber}</div>
                                 <div>
                                   <span className="font-black uppercase tracking-tight text-sm block">{b.surahName}</span>
