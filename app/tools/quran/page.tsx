@@ -32,7 +32,8 @@ import {
   Pause,
   Repeat,
   Repeat1,
-  RotateCcw
+  RotateCcw,
+  Zap
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -125,6 +126,11 @@ interface AudioState {
   currentRepeatLoop: number;
   autoNextAyah: boolean;
   repeatSurah: boolean;
+  loopRange: {
+    start: string;
+    end: string;
+    isActive: boolean;
+  };
 }
 
 const UI_TEXT: Record<string, any> = {
@@ -158,7 +164,11 @@ const UI_TEXT: Record<string, any> = {
     speed: "Speed",
     repeat: "Repeat Ayah",
     auto_next: "Auto Next",
-    loop_surah: "Loop Surah"
+    loop_surah: "Loop Surah",
+    tahfidz_mode: "Tahfidz Range Mode",
+    loop_range: "Loop Range",
+    start_ayah: "Start Ayah",
+    end_ayah: "End Ayah"
   },
   id: {
     title: "Al-Quran Digital",
@@ -190,7 +200,11 @@ const UI_TEXT: Record<string, any> = {
     speed: "Kecepatan",
     repeat: "Ulang Ayat",
     auto_next: "Otomatis Lanjut",
-    loop_surah: "Ulang Surah"
+    loop_surah: "Ulang Surah",
+    tahfidz_mode: "Mode Hafalan (Range)",
+    loop_range: "Ulang Jarak",
+    start_ayah: "Ayat Mulai",
+    end_ayah: "Ayat Akhir"
   }
 };
 
@@ -391,7 +405,12 @@ export default function QuranPage() {
     repeatAyahCount: 1,
     currentRepeatLoop: 1,
     autoNextAyah: true,
-    repeatSurah: false
+    repeatSurah: false,
+    loopRange: {
+      start: '',
+      end: '',
+      isActive: false
+    }
   });
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -449,20 +468,50 @@ export default function QuranPage() {
   }, [loading, ayahs, targetScrollAyah]);
 
   // --- AUDIO LOGIC ---
+  const safePlayAudio = async (audioUrl: string) => {
+    if (!audioRef.current) return;
+    
+    try {
+      if (audioRef.current.src !== audioUrl) {
+        audioRef.current.src = audioUrl;
+        audioRef.current.load();
+      }
+      audioRef.current.playbackRate = audioState.speed;
+      await audioRef.current.play();
+    } catch (error: any) {
+      if (error.name === 'AbortError') {
+        console.warn("Audio play was safely interrupted.");
+      } else {
+        console.error("Audio playback failed:", error);
+      }
+    }
+  };
+
   const handleAudioEnded = () => {
     setAudioState(prev => {
-      // 1. Repeat Ayah Logic
+      // 1. Repeat Current Ayah Logic
       const shouldRepeat = prev.repeatAyahCount === 'infinite' || prev.currentRepeatLoop < (prev.repeatAyahCount as number);
       
       if (shouldRepeat) {
         if (audioRef.current) {
           audioRef.current.currentTime = 0;
-          audioRef.current.play();
+          audioRef.current.play().catch(e => console.warn("Retry failed:", e));
         }
         return { ...prev, currentRepeatLoop: prev.currentRepeatLoop + 1 };
       }
 
-      // 2. Auto Next logic
+      // 2. Tahfidz Range Loop Logic
+      if (prev.loopRange.isActive && prev.loopRange.start && prev.loopRange.end) {
+        const startAyah = parseInt(prev.loopRange.start);
+        const endAyah = parseInt(prev.loopRange.end);
+        
+        if (prev.playingAyah !== null && prev.playingAyah >= endAyah) {
+          setTimeout(() => playNextAyah(startAyah), 500);
+          return { ...prev, playingAyah: startAyah, currentRepeatLoop: 1 };
+        }
+      }
+
+      // 3. Auto Next Logic
       if (prev.autoNextAyah) {
         const nextAyahNum = (prev.playingAyah || 0) + 1;
         const totalAyahs = selectedSurah?.jumlahAyat || 0;
@@ -471,7 +520,7 @@ export default function QuranPage() {
           setTimeout(() => playNextAyah(nextAyahNum), 500);
           return { ...prev, playingAyah: nextAyahNum, currentRepeatLoop: 1 };
         } else if (prev.repeatSurah) {
-          // Loop Surah
+          // Loop Surah back to start
           setTimeout(() => playNextAyah(1), 1000);
           return { ...prev, playingAyah: 1, currentRepeatLoop: 1 };
         }
@@ -494,20 +543,18 @@ export default function QuranPage() {
         audioRef.current?.pause();
         setAudioState(prev => ({ ...prev, isPlaying: false }));
       } else {
-        audioRef.current?.play();
+        audioRef.current?.play().catch(e => console.warn("Interrupted play:", e));
         setAudioState(prev => ({ ...prev, isPlaying: true }));
       }
     } else {
       if (audioRef.current) {
         audioRef.current.pause();
       }
-      const audio = new Audio(url);
-      audio.playbackRate = audioState.speed;
+      const audio = audioRef.current || new Audio();
       audio.onended = handleAudioEnded;
       audioRef.current = audio;
-      audio.play().catch(() => {
-        toast({ title: "Audio Error", description: "Could not play murottal.", variant: "destructive" });
-      });
+      
+      safePlayAudio(url);
       setAudioState(prev => ({ ...prev, playingAyah: num, isPlaying: true, currentRepeatLoop: 1 }));
     }
   };
@@ -637,7 +684,7 @@ export default function QuranPage() {
   if (!mounted) return null;
 
   return (
-    <div className={cn("flex flex-col items-center p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-8", audioState.playingAyah && "pb-32")}>
+    <div className={cn("flex flex-col items-center p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-8", audioState.playingAyah && "pb-48")}>
       
       <style jsx global>{`
         .font-arabic { font-family: 'Amiri', serif; }
@@ -674,114 +721,155 @@ export default function QuranPage() {
       {/* Floating Audio Player */}
       {audioState.playingAyah !== null && (
         <div className="fixed bottom-0 left-0 w-full bg-card/95 backdrop-blur-xl border-t-2 border-primary/10 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.2)] z-50 p-4 transition-all animate-in slide-in-from-bottom duration-500">
-          <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-            {/* Left: Metadata */}
-            <div className="flex items-center gap-4 w-full md:w-1/3">
-              <div className="p-3 bg-primary rounded-2xl text-white shadow-lg shadow-primary/20">
-                <Volume2 className="h-5 w-5" />
+          <div className="container mx-auto space-y-4">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              {/* Left: Metadata */}
+              <div className="flex items-center gap-4 w-full md:w-1/3">
+                <div className="p-3 bg-primary rounded-2xl text-white shadow-lg shadow-primary/20">
+                  <Volume2 className="h-5 w-5" />
+                </div>
+                <div className="overflow-hidden">
+                  <h4 className="font-black uppercase tracking-tight text-sm truncate">{selectedSurah?.namaLatin}</h4>
+                  <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Ayah {audioState.playingAyah} of {selectedSurah?.jumlahAyat}</p>
+                </div>
               </div>
-              <div className="overflow-hidden">
-                <h4 className="font-black uppercase tracking-tight text-sm truncate">{selectedSurah?.namaLatin}</h4>
-                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Ayah {audioState.playingAyah} of {selectedSurah?.jumlahAyat}</p>
+
+              {/* Center: Controls */}
+              <div className="flex items-center gap-6">
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  onClick={() => playNextAyah(audioState.playingAyah! - 1)}
+                  disabled={audioState.playingAyah === 1}
+                  className="rounded-full hover:bg-primary/5"
+                >
+                  <SkipBack className="h-6 w-6" />
+                </Button>
+                
+                <Button 
+                  onClick={() => toggleAudio(audioState.playingAyah!, '')}
+                  className="h-14 w-14 rounded-full bg-primary text-white shadow-xl hover:scale-105 active:scale-95 transition-all"
+                >
+                  {audioState.isPlaying ? <Pause className="h-6 w-6" /> : <Play className="h-6 w-6 ml-1" />}
+                </Button>
+
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  onClick={() => playNextAyah(audioState.playingAyah! + 1)}
+                  disabled={audioState.playingAyah === selectedSurah?.jumlahAyat}
+                  className="rounded-full hover:bg-primary/5"
+                >
+                  <SkipForward className="h-6 w-6" />
+                </Button>
               </div>
-            </div>
 
-            {/* Center: Controls */}
-            <div className="flex items-center gap-6">
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                onClick={() => playNextAyah(audioState.playingAyah! - 1)}
-                disabled={audioState.playingAyah === 1}
-                className="rounded-full hover:bg-primary/5"
-              >
-                <SkipBack className="h-6 w-6" />
-              </Button>
-              
-              <Button 
-                onClick={() => toggleAudio(audioState.playingAyah!, '')}
-                className="h-14 w-14 rounded-full bg-primary text-white shadow-xl hover:scale-105 active:scale-95 transition-all"
-              >
-                {audioState.isPlaying ? <Pause className="h-6 w-6" /> : <Play className="h-6 w-6 ml-1" />}
-              </Button>
+              {/* Right: Settings */}
+              <div className="flex items-center gap-2 w-full md:w-1/3 justify-end">
+                <Select 
+                  value={audioState.speed.toString()} 
+                  onValueChange={(val) => setAudioState(prev => ({ ...prev, speed: parseFloat(val) }))}
+                >
+                  <SelectTrigger className="w-20 h-9 rounded-xl border-2 font-bold text-[10px] uppercase">
+                    <SelectValue placeholder="1x" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {[0.5, 0.75, 1, 1.25, 1.5, 2].map(s => (
+                      <SelectItem key={s} value={s.toString()} className="font-bold text-[10px]">{s}x</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
 
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                onClick={() => playNextAyah(audioState.playingAyah! + 1)}
-                disabled={audioState.playingAyah === selectedSurah?.jumlahAyat}
-                className="rounded-full hover:bg-primary/5"
-              >
-                <SkipForward className="h-6 w-6" />
-              </Button>
-            </div>
+                <Select 
+                  value={audioState.repeatAyahCount.toString()} 
+                  onValueChange={(val) => setAudioState(prev => ({ ...prev, repeatAyahCount: val === 'infinite' ? 'infinite' : parseInt(val) }))}
+                >
+                  <SelectTrigger className="w-24 h-9 rounded-xl border-2 font-bold text-[10px] uppercase">
+                    <Repeat1 className="h-3 w-3 mr-1" />
+                    <SelectValue placeholder="1x" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {[1, 3, 5, 10, 'infinite'].map(r => (
+                      <SelectItem key={r} value={r.toString()} className="font-bold text-[10px]">{r === 'infinite' ? '∞' : `${r}x`}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
 
-            {/* Right: Settings */}
-            <div className="flex items-center gap-2 w-full md:w-1/3 justify-end">
-              <Select 
-                value={audioState.speed.toString()} 
-                onValueChange={(val) => setAudioState(prev => ({ ...prev, speed: parseFloat(val) }))}
-              >
-                <SelectTrigger className="w-20 h-9 rounded-xl border-2 font-bold text-[10px] uppercase">
-                  <SelectValue placeholder="1x" />
-                </SelectTrigger>
-                <SelectContent>
-                  {[0.5, 0.75, 1, 1.25, 1.5, 2].map(s => (
-                    <SelectItem key={s} value={s.toString()} className="font-bold text-[10px]">{s}x</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-
-              <Select 
-                value={audioState.repeatAyahCount.toString()} 
-                onValueChange={(val) => setAudioState(prev => ({ ...prev, repeatAyahCount: val === 'infinite' ? 'infinite' : parseInt(val) }))}
-              >
-                <SelectTrigger className="w-24 h-9 rounded-xl border-2 font-bold text-[10px] uppercase">
-                  <Repeat1 className="h-3 w-3 mr-1" />
-                  <SelectValue placeholder="1x" />
-                </SelectTrigger>
-                <SelectContent>
-                  {[1, 3, 5, 10, 'infinite'].map(r => (
-                    <SelectItem key={r} value={r.toString()} className="font-bold text-[10px]">{r === 'infinite' ? '∞' : `${r}x`}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline" size="icon" className="h-9 w-9 rounded-xl border-2">
-                    <Settings2 className="h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56 p-4 rounded-2xl shadow-2xl border-2">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <Label className="text-[10px] font-black uppercase tracking-widest">{t('auto_next')}</Label>
-                      <Switch 
-                        checked={audioState.autoNextAyah} 
-                        onCheckedChange={(v) => setAudioState(prev => ({ ...prev, autoNextAyah: v }))} 
-                      />
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <Label className="text-[10px] font-black uppercase tracking-widest">{t('loop_surah')}</Label>
-                      <Switch 
-                        checked={audioState.repeatSurah} 
-                        onCheckedChange={(v) => setAudioState(prev => ({ ...prev, repeatSurah: v }))} 
-                      />
-                    </div>
-                    <Button 
-                      variant="destructive" 
-                      className="w-full h-10 font-black uppercase tracking-widest text-[9px] rounded-xl mt-2"
-                      onClick={() => {
-                        if (audioRef.current) audioRef.current.pause();
-                        setAudioState(prev => ({ ...prev, playingAyah: null, isPlaying: false }));
-                      }}
-                    >
-                      Stop & Close
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" size="icon" className="h-9 w-9 rounded-xl border-2">
+                      <Settings2 className="h-4 w-4" />
                     </Button>
-                  </div>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-56 p-4 rounded-2xl shadow-2xl border-2">
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <Label className="text-[10px] font-black uppercase tracking-widest">{t('auto_next')}</Label>
+                        <Switch 
+                          checked={audioState.autoNextAyah} 
+                          onCheckedChange={(v) => setAudioState(prev => ({ ...prev, autoNextAyah: v }))} 
+                        />
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <Label className="text-[10px] font-black uppercase tracking-widest">{t('loop_surah')}</Label>
+                        <Switch 
+                          checked={audioState.repeatSurah} 
+                          onCheckedChange={(v) => setAudioState(prev => ({ ...prev, repeatSurah: v }))} 
+                        />
+                      </div>
+                      <Button 
+                        variant="destructive" 
+                        className="w-full h-10 font-black uppercase tracking-widest text-[9px] rounded-xl mt-2"
+                        onClick={() => {
+                          if (audioRef.current) audioRef.current.pause();
+                          setAudioState(prev => ({ ...prev, playingAyah: null, isPlaying: false }));
+                        }}
+                      >
+                        Stop & Close
+                      </Button>
+                    </div>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            </div>
+
+            {/* Tahfidz Mode: Range Controls */}
+            <div className="pt-2 border-t border-dashed border-primary/10">
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                <div className="flex items-center gap-2">
+                  <Zap className="h-4 w-4 text-accent" />
+                  <span className="text-[9px] font-black uppercase tracking-widest opacity-60">{t('tahfidz_mode')}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Label className="text-[8px] font-black uppercase">{t('start_ayah')}</Label>
+                  <Input 
+                    type="number" 
+                    min="1" 
+                    max={selectedSurah?.jumlahAyat}
+                    value={audioState.loopRange.start}
+                    onChange={(e) => setAudioState(prev => ({ ...prev, loopRange: { ...prev.loopRange, start: e.target.value } }))}
+                    className="w-14 h-8 text-center text-xs font-bold rounded-lg"
+                  />
+                </div>
+                <div className="flex items-center gap-2">
+                  <Label className="text-[8px] font-black uppercase">{t('end_ayah')}</Label>
+                  <Input 
+                    type="number" 
+                    min="1" 
+                    max={selectedSurah?.jumlahAyat}
+                    value={audioState.loopRange.end}
+                    onChange={(e) => setAudioState(prev => ({ ...prev, loopRange: { ...prev.loopRange, end: e.target.value } }))}
+                    className="w-14 h-8 text-center text-xs font-bold rounded-lg"
+                  />
+                </div>
+                <div className="flex items-center gap-2">
+                  <Label className="text-[8px] font-black uppercase tracking-tighter">{t('loop_range')}</Label>
+                  <Switch 
+                    checked={audioState.loopRange.isActive}
+                    onCheckedChange={(v) => setAudioState(prev => ({ ...prev, loopRange: { ...prev.loopRange, isActive: v } }))}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
