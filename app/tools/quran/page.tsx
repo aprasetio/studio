@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 import { useLang } from '@/components/Providers';
 import { 
@@ -22,7 +22,10 @@ import {
   Folder,
   History,
   ArrowRight,
-  Info
+  Info,
+  PlayCircle,
+  PauseCircle,
+  Volume2
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -68,6 +71,7 @@ interface Ayah {
   teksArab: string;
   teksLatin: string;
   teksTranslation: string;
+  audio: Record<string, string>;
 }
 
 interface UserSettings {
@@ -168,7 +172,7 @@ const EDITION_MAP: Record<string, string> = {
   it: 'it.piccardo'
 };
 
-// --- Sub-Component: Ayah Card (Handles Hybrid Lazy Tafsir Fetch) ---
+// --- Sub-Component: Ayah Card (Handles Hybrid Lazy Tafsir Fetch & Audio) ---
 interface AyahCardProps {
   ayah: Ayah;
   surahNum: number;
@@ -177,11 +181,25 @@ interface AyahCardProps {
   settings: UserSettings;
   bookmarks: BookmarkItem[];
   lastRead: LastRead | null;
+  playingAyah: number | null;
+  onToggleAudio: (num: number, url: string) => void;
   onMarkLastRead: (sn: number, name: string, an: number) => void;
   onBookmark: (data: { surahNum: number; surahName: string; ayahNum: number }) => void;
 }
 
-function AyahCard({ ayah, surahNum, surahName, lang, settings, bookmarks, lastRead, onMarkLastRead, onBookmark }: AyahCardProps) {
+function AyahCard({ 
+  ayah, 
+  surahNum, 
+  surahName, 
+  lang, 
+  settings, 
+  bookmarks, 
+  lastRead, 
+  playingAyah, 
+  onToggleAudio, 
+  onMarkLastRead, 
+  onBookmark 
+}: AyahCardProps) {
   const [tafsirData, setTafsirData] = useState<string | null>(null);
   const [isLoadingTafsir, setIsLoadingTafsir] = useState(false);
   
@@ -212,6 +230,7 @@ function AyahCard({ ayah, surahNum, surahName, lang, settings, bookmarks, lastRe
 
   const isBookmarked = bookmarks.some(b => b.surahNumber === surahNum && b.ayahNumber === ayah.nomorAyat);
   const isPinned = lastRead?.surahNumber === surahNum && lastRead?.ayahNumber === ayah.nomorAyat;
+  const isPlaying = playingAyah === ayah.nomorAyat;
 
   const renderTafsirContent = () => {
     if (!tafsirData) return null;
@@ -240,72 +259,82 @@ function AyahCard({ ayah, surahNum, surahName, lang, settings, bookmarks, lastRe
   };
 
   return (
-    <Card 
-      id={`ayah-${ayah.nomorAyat}`} 
-      className="border-none bg-transparent shadow-none space-y-8 p-6 rounded-3xl transition-all"
-    >
-      <div className="flex items-start justify-between border-b pb-4">
-        <div className="flex items-center gap-2">
-          <div className="h-10 w-10 rounded-full bg-primary/10 border-2 border-primary/20 flex items-center justify-center font-black text-sm text-primary">{ayah.nomorAyat}</div>
-          
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={() => onBookmark({ surahNum, surahName, ayahNum: ayah.nomorAyat })}
-            className={cn("rounded-full", isBookmarked ? "text-rose-500" : "text-muted-foreground")}
-          >
-            <Star className={cn("h-5 w-5", isBookmarked && "fill-current")} />
-          </Button>
+    <div id={`ayah-${ayah.nomorAyat}`} className="scroll-mt-24 rounded-[2rem] transition-all duration-700">
+      <Card 
+        className="border-none bg-transparent shadow-none space-y-8 p-6 rounded-3xl transition-all"
+      >
+        <div className="flex items-start justify-between border-b pb-4">
+          <div className="flex items-center gap-2">
+            <div className="h-10 w-10 rounded-full bg-primary/10 border-2 border-primary/20 flex items-center justify-center font-black text-sm text-primary">{ayah.nomorAyat}</div>
+            
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => onToggleAudio(ayah.nomorAyat, ayah.audio['05'] || ayah.audio['01'])}
+              className={cn("rounded-full", isPlaying ? "text-primary animate-pulse" : "text-muted-foreground")}
+            >
+              {isPlaying ? <PauseCircle className="h-6 w-6" /> : <PlayCircle className="h-6 w-6" />}
+            </Button>
 
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={() => onMarkLastRead(surahNum, surahName, ayah.nomorAyat)}
-            className={cn("rounded-full", isPinned ? "text-primary" : "text-muted-foreground")}
-          >
-            <Pin className={cn("h-5 w-5", isPinned && "fill-current")} />
-          </Button>
-        </div>
-        <Button variant="ghost" size="icon" className="text-muted-foreground h-10 w-10"><Share2 className="h-4 w-4" /></Button>
-      </div>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => onBookmark({ surahNum, surahName, ayahNum: ayah.nomorAyat })}
+              className={cn("rounded-full", isBookmarked ? "text-rose-500" : "text-muted-foreground")}
+            >
+              <Star className={cn("h-5 w-5", isBookmarked && "fill-current")} />
+            </Button>
 
-      <div className="space-y-10">
-        <div 
-          className="font-arabic leading-[2.5] text-right text-foreground tracking-wide" 
-          style={{ fontSize: `${settings.arabicFontSize}px` }} 
-        >
-          {ayah.teksArab}
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => onMarkLastRead(surahNum, surahName, ayah.nomorAyat)}
+              className={cn("rounded-full", isPinned ? "text-primary" : "text-muted-foreground")}
+            >
+              <Pin className={cn("h-5 w-5", isPinned && "fill-current")} />
+            </Button>
+          </div>
+          <Button variant="ghost" size="icon" className="text-muted-foreground h-10 w-10"><Share2 className="h-4 w-4" /></Button>
         </div>
-        <div className="space-y-6">
-          {settings.showLatin && <p className="text-sm font-bold text-primary italic leading-relaxed">{ayah.teksLatin}</p>}
-          {settings.showTranslation && <p className="text-base font-medium text-muted-foreground leading-relaxed">{ayah.teksTranslation}</p>}
-          
-          {settings.showTafsir && (
-            <div className="mt-4">
-              <Accordion type="single" collapsible className="w-full" onValueChange={(val) => val === 'tafsir' && handleFetchTafsir()}>
-                <AccordionItem value="tafsir" className="border-none">
-                  <AccordionTrigger className="font-black uppercase text-[10px] tracking-widest text-muted-foreground/60 py-2 hover:no-underline hover:text-primary">
-                    <span className="flex items-center gap-2"><BookOpen className="h-3.5 w-3.5" />{t('tafsir_btn')}</span>
-                  </AccordionTrigger>
-                  <AccordionContent className="text-sm font-medium text-foreground bg-muted/30 p-6 md:p-10 rounded-[2.5rem] mt-4 shadow-inner border">
-                    {isLoadingTafsir ? (
-                      <div className="flex flex-col items-center justify-center gap-3 py-10">
-                        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-                        <span className="text-[10px] font-black uppercase tracking-[0.2em] opacity-40">
-                          {lang === 'id' ? 'Menyusun Paragraf...' : 'Loading Tafsir...'}
-                        </span>
-                      </div>
-                    ) : (
-                      renderTafsirContent()
-                    )}
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            </div>
-          )}
+
+        <div className="space-y-10">
+          <div 
+            className="font-arabic leading-[2.5] text-right text-foreground tracking-wide" 
+            style={{ fontSize: `${settings.arabicFontSize}px` }} 
+          >
+            {ayah.teksArab}
+          </div>
+          <div className="space-y-6">
+            {settings.showLatin && <p className="text-sm font-bold text-primary italic leading-relaxed">{ayah.teksLatin}</p>}
+            {settings.showTranslation && <p className="text-base font-medium text-muted-foreground leading-relaxed">{ayah.teksTranslation}</p>}
+            
+            {settings.showTafsir && (
+              <div className="mt-4">
+                <Accordion type="single" collapsible className="w-full" onValueChange={(val) => val === 'tafsir' && handleFetchTafsir()}>
+                  <AccordionItem value="tafsir" className="border-none">
+                    <AccordionTrigger className="font-black uppercase text-[10px] tracking-widest text-muted-foreground/60 py-2 hover:no-underline hover:text-primary">
+                      <span className="flex items-center gap-2"><BookOpen className="h-3.5 w-3.5" />{t('tafsir_btn')}</span>
+                    </AccordionTrigger>
+                    <AccordionContent className="text-sm font-medium text-foreground bg-muted/30 p-6 md:p-10 rounded-[2.5rem] mt-4 shadow-inner border">
+                      {isLoadingTafsir ? (
+                        <div className="flex flex-col items-center justify-center gap-3 py-10">
+                          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                          <span className="text-[10px] font-black uppercase tracking-[0.2em] opacity-40">
+                            {lang === 'id' ? 'Menyusun Paragraf...' : 'Loading Tafsir...'}
+                          </span>
+                        </div>
+                      ) : (
+                        renderTafsirContent()
+                      )}
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-    </Card>
+      </Card>
+    </div>
   );
 }
 
@@ -323,6 +352,10 @@ export default function QuranPage() {
   const [loading, setLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [targetScrollAyah, setTargetScrollAyah] = useState<number | null>(null);
+
+  // --- Audio States ---
+  const [playingAyah, setPlayingAyah] = useState<number | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // --- Local Storage States ---
   const [settings, setSettings] = useLocalStorage<UserSettings>('vk-quran-settings-multilingual-v2', {
@@ -346,33 +379,48 @@ export default function QuranPage() {
   useEffect(() => {
     setMounted(true);
     fetchSurahList();
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
   }, []);
 
-  // --- BULLETPROOF SCROLL LOGIC ---
+  // --- BULLETPROOF POLLING SCROLL LOGIC ---
   useEffect(() => {
     if (!loading && ayahs.length > 0 && targetScrollAyah) {
-      // requestAnimationFrame ensures the browser has painted the list
-      requestAnimationFrame(() => {
-        // Tiny buffer to allow React to finalize the DOM nodes
-        const timer = setTimeout(() => {
-          const element = document.getElementById(`ayah-${targetScrollAyah}`);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // Visual Highlight Effect
-            element.style.transition = 'background-color 0.5s ease';
-            element.style.backgroundColor = 'rgba(59, 130, 246, 0.15)';
-            setTimeout(() => {
-              element.style.backgroundColor = '';
-            }, 2500);
-            
-            setTargetScrollAyah(null); // Reset scroll target
-          } else {
-            console.warn(`Element with ID ayah-${targetScrollAyah} not found in DOM.`);
+      let attempts = 0;
+      const maxAttempts = 20; // Try for 2 seconds (20 * 100ms)
+
+      const findAndScroll = setInterval(() => {
+        const element = document.getElementById(`ayah-${targetScrollAyah}`);
+        
+        if (element) {
+          clearInterval(findAndScroll); // Stop searching, we found it!
+          
+          // Scroll into view
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          
+          // Visual Highlight Effect
+          element.classList.add('bg-blue-50', 'dark:bg-blue-900/30', 'transition-colors', 'duration-700');
+          setTimeout(() => {
+            element.classList.remove('bg-blue-50', 'dark:bg-blue-900/30');
+          }, 2500);
+
+          setTargetScrollAyah(null); // Reset state
+        } else {
+          attempts++;
+          if (attempts >= maxAttempts) {
+            clearInterval(findAndScroll);
+            console.error(`Failed to find element with ID ayah-${targetScrollAyah} after 2 seconds.`);
+            setTargetScrollAyah(null);
           }
-        }, 150);
-        return () => clearTimeout(timer);
-      });
+        }
+      }, 100);
+
+      // Cleanup interval on unmount or dependency change
+      return () => clearInterval(findAndScroll);
     }
   }, [loading, ayahs, targetScrollAyah]);
 
@@ -394,6 +442,12 @@ export default function QuranPage() {
     const surah = surahs.find(s => s.nomor === surahNum);
     if (!surah) return;
 
+    // Reset audio when switching surah
+    if (audioRef.current) {
+      audioRef.current.pause();
+      setPlayingAyah(null);
+    }
+
     setLoading(true);
     setView('reader');
     setSelectedSurah(surah);
@@ -405,20 +459,17 @@ export default function QuranPage() {
     }
 
     try {
-      const translationEdition = EDITION_MAP[lang] || 'en.sahih';
-      const res = await fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/editions/quran-uthmani,${translationEdition},en.transliteration`);
-      const cloudData = await res.json();
+      // Use equran.id to get the specific audio object and robust transliteration
+      const res = await fetch(`https://equran.id/api/v2/surat/${surahNum}`);
+      const data = await res.json();
 
-      if (cloudData.code === 200) {
-        const arabicAyahs = cloudData.data[0].ayahs;
-        const translationAyahs = cloudData.data[1].ayahs;
-        const transliterationAyahs = cloudData.data[2].ayahs;
-
-        const mergedAyahs: Ayah[] = arabicAyahs.map((a: any, i: number) => ({
-          nomorAyat: a.numberInSurah,
-          teksArab: a.text,
-          teksTranslation: translationAyahs[i].text,
-          teksLatin: transliterationAyahs[i].text
+      if (data.code === 200) {
+        const mergedAyahs: Ayah[] = data.data.ayat.map((a: any) => ({
+          nomorAyat: a.nomorAyat,
+          teksArab: a.teksArab,
+          teksTranslation: a.teksIndonesia, 
+          teksLatin: a.teksLatin,
+          audio: a.audio
         }));
         
         setAyahs(mergedAyahs);
@@ -428,6 +479,26 @@ export default function QuranPage() {
       toast({ title: "Error", description: "Failed to load Surah data.", variant: "destructive" });
     } finally {
       setLoading(false);
+    }
+  };
+
+  const toggleAudio = (ayahNumber: number, audioUrl: string) => {
+    if (playingAyah === ayahNumber) {
+      audioRef.current?.pause();
+      setPlayingAyah(null);
+    } else {
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+      audioRef.current = new Audio(audioUrl);
+      audioRef.current.play().catch(err => {
+        console.error("Audio play error:", err);
+        toast({ title: "Playback Error", description: "Could not play murottal.", variant: "destructive" });
+      });
+      setPlayingAyah(ayahNumber);
+      audioRef.current.onended = () => {
+        setPlayingAyah(null);
+      };
     }
   };
 
@@ -679,6 +750,8 @@ export default function QuranPage() {
                   settings={settings}
                   bookmarks={bookmarks}
                   lastRead={lastRead}
+                  playingAyah={playingAyah}
+                  onToggleAudio={toggleAudio}
                   onMarkLastRead={handleMarkLastRead}
                   onBookmark={(data) => {
                     setActiveAyah(data);
