@@ -25,7 +25,14 @@ import {
   Info,
   PlayCircle,
   PauseCircle,
-  Volume2
+  Volume2,
+  SkipBack,
+  SkipForward,
+  Play,
+  Pause,
+  Repeat,
+  Repeat1,
+  RotateCcw
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -48,6 +55,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import TrustBadges from '@/components/ui/TrustBadges';
@@ -71,7 +85,7 @@ interface Ayah {
   teksArab: string;
   teksLatin: string;
   teksTranslation: string;
-  audio: Record<string, string>;
+  audio: string;
 }
 
 interface UserSettings {
@@ -103,6 +117,16 @@ interface BookmarkItem {
   timestamp: string;
 }
 
+interface AudioState {
+  playingAyah: number | null;
+  isPlaying: boolean;
+  speed: number;
+  repeatAyahCount: number | 'infinite';
+  currentRepeatLoop: number;
+  autoNextAyah: boolean;
+  repeatSurah: boolean;
+}
+
 const UI_TEXT: Record<string, any> = {
   en: {
     title: "Digital Quran",
@@ -130,7 +154,11 @@ const UI_TEXT: Record<string, any> = {
     cancel: "Cancel",
     rename: "Rename",
     delete: "Delete",
-    default_folder: "Favorites"
+    default_folder: "Favorites",
+    speed: "Speed",
+    repeat: "Repeat Ayah",
+    auto_next: "Auto Next",
+    loop_surah: "Loop Surah"
   },
   id: {
     title: "Al-Quran Digital",
@@ -158,7 +186,11 @@ const UI_TEXT: Record<string, any> = {
     cancel: "Batal",
     rename: "Ubah Nama",
     delete: "Hapus",
-    default_folder: "Favorit"
+    default_folder: "Favorit",
+    speed: "Kecepatan",
+    repeat: "Ulang Ayat",
+    auto_next: "Otomatis Lanjut",
+    loop_surah: "Ulang Surah"
   }
 };
 
@@ -172,7 +204,7 @@ const EDITION_MAP: Record<string, string> = {
   it: 'it.piccardo'
 };
 
-// --- Sub-Component: Ayah Card (Handles Hybrid Lazy Tafsir Fetch & Audio) ---
+// --- Sub-Component: Ayah Card ---
 interface AyahCardProps {
   ayah: Ayah;
   surahNum: number;
@@ -181,7 +213,7 @@ interface AyahCardProps {
   settings: UserSettings;
   bookmarks: BookmarkItem[];
   lastRead: LastRead | null;
-  playingAyah: number | null;
+  audioState: AudioState;
   onToggleAudio: (num: number, url: string) => void;
   onMarkLastRead: (sn: number, name: string, an: number) => void;
   onBookmark: (data: { surahNum: number; surahName: string; ayahNum: number }) => void;
@@ -195,7 +227,7 @@ function AyahCard({
   settings, 
   bookmarks, 
   lastRead, 
-  playingAyah, 
+  audioState, 
   onToggleAudio, 
   onMarkLastRead, 
   onBookmark 
@@ -230,7 +262,7 @@ function AyahCard({
 
   const isBookmarked = bookmarks.some(b => b.surahNumber === surahNum && b.ayahNumber === ayah.nomorAyat);
   const isPinned = lastRead?.surahNumber === surahNum && lastRead?.ayahNumber === ayah.nomorAyat;
-  const isPlaying = playingAyah === ayah.nomorAyat;
+  const isPlaying = audioState.playingAyah === ayah.nomorAyat && audioState.isPlaying;
 
   const renderTafsirContent = () => {
     if (!tafsirData) return null;
@@ -260,9 +292,7 @@ function AyahCard({
 
   return (
     <div id={`ayah-${ayah.nomorAyat}`} className="scroll-mt-24 rounded-[2rem] transition-all duration-700">
-      <Card 
-        className="border-none bg-transparent shadow-none space-y-8 p-6 rounded-3xl transition-all"
-      >
+      <Card className="border-none bg-transparent shadow-none space-y-8 p-6 rounded-3xl transition-all">
         <div className="flex items-start justify-between border-b pb-4">
           <div className="flex items-center gap-2">
             <div className="h-10 w-10 rounded-full bg-primary/10 border-2 border-primary/20 flex items-center justify-center font-black text-sm text-primary">{ayah.nomorAyat}</div>
@@ -270,7 +300,7 @@ function AyahCard({
             <Button 
               variant="ghost" 
               size="icon" 
-              onClick={() => onToggleAudio(ayah.nomorAyat, ayah.audio['05'] || ayah.audio['01'])}
+              onClick={() => onToggleAudio(ayah.nomorAyat, ayah.audio)}
               className={cn("rounded-full", isPlaying ? "text-primary animate-pulse" : "text-muted-foreground")}
             >
               {isPlaying ? <PauseCircle className="h-6 w-6" /> : <PlayCircle className="h-6 w-6" />}
@@ -353,8 +383,16 @@ export default function QuranPage() {
   const [mounted, setMounted] = useState(false);
   const [targetScrollAyah, setTargetScrollAyah] = useState<number | null>(null);
 
-  // --- Audio States ---
-  const [playingAyah, setPlayingAyah] = useState<number | null>(null);
+  // --- Advanced Audio States ---
+  const [audioState, setAudioState] = useState<AudioState>({
+    playingAyah: null,
+    isPlaying: false,
+    speed: 1,
+    repeatAyahCount: 1,
+    currentRepeatLoop: 1,
+    autoNextAyah: true,
+    repeatSurah: false
+  });
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // --- Local Storage States ---
@@ -387,42 +425,92 @@ export default function QuranPage() {
     };
   }, []);
 
-  // --- BULLETPROOF POLLING SCROLL LOGIC ---
+  // Sync Speed with Audio Reference
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.playbackRate = audioState.speed;
+    }
+  }, [audioState.speed]);
+
+  // Handle Scroll to Ayah
   useEffect(() => {
     if (!loading && ayahs.length > 0 && targetScrollAyah) {
-      let attempts = 0;
-      const maxAttempts = 20; // Try for 2 seconds (20 * 100ms)
-
-      const findAndScroll = setInterval(() => {
+      const timer = setTimeout(() => {
         const element = document.getElementById(`ayah-${targetScrollAyah}`);
-        
         if (element) {
-          clearInterval(findAndScroll); // Stop searching, we found it!
-          
-          // Scroll into view
           element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          
-          // Visual Highlight Effect
-          element.classList.add('bg-blue-50', 'dark:bg-blue-900/30', 'transition-colors', 'duration-700');
-          setTimeout(() => {
-            element.classList.remove('bg-blue-50', 'dark:bg-blue-900/30');
-          }, 2500);
-
-          setTargetScrollAyah(null); // Reset state
-        } else {
-          attempts++;
-          if (attempts >= maxAttempts) {
-            clearInterval(findAndScroll);
-            console.error(`Failed to find element with ID ayah-${targetScrollAyah} after 2 seconds.`);
-            setTargetScrollAyah(null);
-          }
+          element.classList.add('bg-primary/5', 'dark:bg-primary/10');
+          setTimeout(() => element.classList.remove('bg-primary/5', 'dark:bg-primary/10'), 2000);
+          setTargetScrollAyah(null);
         }
-      }, 100);
-
-      // Cleanup interval on unmount or dependency change
-      return () => clearInterval(findAndScroll);
+      }, 500);
+      return () => clearTimeout(timer);
     }
   }, [loading, ayahs, targetScrollAyah]);
+
+  // --- AUDIO LOGIC ---
+  const handleAudioEnded = () => {
+    setAudioState(prev => {
+      // 1. Repeat Ayah Logic
+      const shouldRepeat = prev.repeatAyahCount === 'infinite' || prev.currentRepeatLoop < (prev.repeatAyahCount as number);
+      
+      if (shouldRepeat) {
+        if (audioRef.current) {
+          audioRef.current.currentTime = 0;
+          audioRef.current.play();
+        }
+        return { ...prev, currentRepeatLoop: prev.currentRepeatLoop + 1 };
+      }
+
+      // 2. Auto Next logic
+      if (prev.autoNextAyah) {
+        const nextAyahNum = (prev.playingAyah || 0) + 1;
+        const totalAyahs = selectedSurah?.jumlahAyat || 0;
+
+        if (nextAyahNum <= totalAyahs) {
+          setTimeout(() => playNextAyah(nextAyahNum), 500);
+          return { ...prev, playingAyah: nextAyahNum, currentRepeatLoop: 1 };
+        } else if (prev.repeatSurah) {
+          // Loop Surah
+          setTimeout(() => playNextAyah(1), 1000);
+          return { ...prev, playingAyah: 1, currentRepeatLoop: 1 };
+        }
+      }
+
+      return { ...prev, playingAyah: null, isPlaying: false, currentRepeatLoop: 1 };
+    });
+  };
+
+  const playNextAyah = (num: number) => {
+    const targetAyah = ayahs.find(a => a.nomorAyat === num);
+    if (targetAyah) {
+      toggleAudio(num, targetAyah.audio);
+    }
+  };
+
+  const toggleAudio = (num: number, url: string) => {
+    if (audioState.playingAyah === num) {
+      if (audioState.isPlaying) {
+        audioRef.current?.pause();
+        setAudioState(prev => ({ ...prev, isPlaying: false }));
+      } else {
+        audioRef.current?.play();
+        setAudioState(prev => ({ ...prev, isPlaying: true }));
+      }
+    } else {
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+      const audio = new Audio(url);
+      audio.playbackRate = audioState.speed;
+      audio.onended = handleAudioEnded;
+      audioRef.current = audio;
+      audio.play().catch(() => {
+        toast({ title: "Audio Error", description: "Could not play murottal.", variant: "destructive" });
+      });
+      setAudioState(prev => ({ ...prev, playingAyah: num, isPlaying: true, currentRepeatLoop: 1 }));
+    }
+  };
 
   // --- API Handlers ---
   const fetchSurahList = async () => {
@@ -442,12 +530,6 @@ export default function QuranPage() {
     const surah = surahs.find(s => s.nomor === surahNum);
     if (!surah) return;
 
-    // Reset audio when switching surah
-    if (audioRef.current) {
-      audioRef.current.pause();
-      setPlayingAyah(null);
-    }
-
     setLoading(true);
     setView('reader');
     setSelectedSurah(surah);
@@ -459,17 +541,22 @@ export default function QuranPage() {
     }
 
     try {
-      // Use equran.id to get the specific audio object and robust transliteration
-      const res = await fetch(`https://equran.id/api/v2/surat/${surahNum}`);
-      const data = await res.json();
+      const translationEdition = EDITION_MAP[lang] || 'en.sahih';
+      const res = await fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/editions/quran-uthmani,${translationEdition},en.transliteration,ar.alafasy`);
+      const cloudData = await res.json();
 
-      if (data.code === 200) {
-        const mergedAyahs: Ayah[] = data.data.ayat.map((a: any) => ({
-          nomorAyat: a.nomorAyat,
-          teksArab: a.teksArab,
-          teksTranslation: a.teksIndonesia, 
-          teksLatin: a.teksLatin,
-          audio: a.audio
+      if (cloudData.code === 200) {
+        const arabicAyahs = cloudData.data[0].ayahs;
+        const translationAyahs = cloudData.data[1].ayahs;
+        const transliterationAyahs = cloudData.data[2].ayahs;
+        const audioAyahs = cloudData.data[3].ayahs;
+
+        const mergedAyahs: Ayah[] = arabicAyahs.map((a: any, i: number) => ({
+          nomorAyat: a.numberInSurah,
+          teksArab: a.text,
+          teksTranslation: translationAyahs[i].text,
+          teksLatin: transliterationAyahs[i].text,
+          audio: audioAyahs[i].audio
         }));
         
         setAyahs(mergedAyahs);
@@ -479,26 +566,6 @@ export default function QuranPage() {
       toast({ title: "Error", description: "Failed to load Surah data.", variant: "destructive" });
     } finally {
       setLoading(false);
-    }
-  };
-
-  const toggleAudio = (ayahNumber: number, audioUrl: string) => {
-    if (playingAyah === ayahNumber) {
-      audioRef.current?.pause();
-      setPlayingAyah(null);
-    } else {
-      if (audioRef.current) {
-        audioRef.current.pause();
-      }
-      audioRef.current = new Audio(audioUrl);
-      audioRef.current.play().catch(err => {
-        console.error("Audio play error:", err);
-        toast({ title: "Playback Error", description: "Could not play murottal.", variant: "destructive" });
-      });
-      setPlayingAyah(ayahNumber);
-      audioRef.current.onended = () => {
-        setPlayingAyah(null);
-      };
     }
   };
 
@@ -570,7 +637,7 @@ export default function QuranPage() {
   if (!mounted) return null;
 
   return (
-    <div className="flex flex-col items-center p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-8">
+    <div className={cn("flex flex-col items-center p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-8", audioState.playingAyah && "pb-32")}>
       
       <style jsx global>{`
         .font-arabic { font-family: 'Amiri', serif; }
@@ -604,8 +671,124 @@ export default function QuranPage() {
         </div>
       </div>
 
+      {/* Floating Audio Player */}
+      {audioState.playingAyah !== null && (
+        <div className="fixed bottom-0 left-0 w-full bg-card/95 backdrop-blur-xl border-t-2 border-primary/10 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.2)] z-50 p-4 transition-all animate-in slide-in-from-bottom duration-500">
+          <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            {/* Left: Metadata */}
+            <div className="flex items-center gap-4 w-full md:w-1/3">
+              <div className="p-3 bg-primary rounded-2xl text-white shadow-lg shadow-primary/20">
+                <Volume2 className="h-5 w-5" />
+              </div>
+              <div className="overflow-hidden">
+                <h4 className="font-black uppercase tracking-tight text-sm truncate">{selectedSurah?.namaLatin}</h4>
+                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Ayah {audioState.playingAyah} of {selectedSurah?.jumlahAyat}</p>
+              </div>
+            </div>
+
+            {/* Center: Controls */}
+            <div className="flex items-center gap-6">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={() => playNextAyah(audioState.playingAyah! - 1)}
+                disabled={audioState.playingAyah === 1}
+                className="rounded-full hover:bg-primary/5"
+              >
+                <SkipBack className="h-6 w-6" />
+              </Button>
+              
+              <Button 
+                onClick={() => toggleAudio(audioState.playingAyah!, '')}
+                className="h-14 w-14 rounded-full bg-primary text-white shadow-xl hover:scale-105 active:scale-95 transition-all"
+              >
+                {audioState.isPlaying ? <Pause className="h-6 w-6" /> : <Play className="h-6 w-6 ml-1" />}
+              </Button>
+
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={() => playNextAyah(audioState.playingAyah! + 1)}
+                disabled={audioState.playingAyah === selectedSurah?.jumlahAyat}
+                className="rounded-full hover:bg-primary/5"
+              >
+                <SkipForward className="h-6 w-6" />
+              </Button>
+            </div>
+
+            {/* Right: Settings */}
+            <div className="flex items-center gap-2 w-full md:w-1/3 justify-end">
+              <Select 
+                value={audioState.speed.toString()} 
+                onValueChange={(val) => setAudioState(prev => ({ ...prev, speed: parseFloat(val) }))}
+              >
+                <SelectTrigger className="w-20 h-9 rounded-xl border-2 font-bold text-[10px] uppercase">
+                  <SelectValue placeholder="1x" />
+                </SelectTrigger>
+                <SelectContent>
+                  {[0.5, 0.75, 1, 1.25, 1.5, 2].map(s => (
+                    <SelectItem key={s} value={s.toString()} className="font-bold text-[10px]">{s}x</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+
+              <Select 
+                value={audioState.repeatAyahCount.toString()} 
+                onValueChange={(val) => setAudioState(prev => ({ ...prev, repeatAyahCount: val === 'infinite' ? 'infinite' : parseInt(val) }))}
+              >
+                <SelectTrigger className="w-24 h-9 rounded-xl border-2 font-bold text-[10px] uppercase">
+                  <Repeat1 className="h-3 w-3 mr-1" />
+                  <SelectValue placeholder="1x" />
+                </SelectTrigger>
+                <SelectContent>
+                  {[1, 3, 5, 10, 'infinite'].map(r => (
+                    <SelectItem key={r} value={r.toString()} className="font-bold text-[10px]">{r === 'infinite' ? '∞' : `${r}x`}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="icon" className="h-9 w-9 rounded-xl border-2">
+                    <Settings2 className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56 p-4 rounded-2xl shadow-2xl border-2">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <Label className="text-[10px] font-black uppercase tracking-widest">{t('auto_next')}</Label>
+                      <Switch 
+                        checked={audioState.autoNextAyah} 
+                        onCheckedChange={(v) => setAudioState(prev => ({ ...prev, autoNextAyah: v }))} 
+                      />
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <Label className="text-[10px] font-black uppercase tracking-widest">{t('loop_surah')}</Label>
+                      <Switch 
+                        checked={audioState.repeatSurah} 
+                        onCheckedChange={(v) => setAudioState(prev => ({ ...prev, repeatSurah: v }))} 
+                      />
+                    </div>
+                    <Button 
+                      variant="destructive" 
+                      className="w-full h-10 font-black uppercase tracking-widest text-[9px] rounded-xl mt-2"
+                      onClick={() => {
+                        if (audioRef.current) audioRef.current.pause();
+                        setAudioState(prev => ({ ...prev, playingAyah: null, isPlaying: false }));
+                      }}
+                    >
+                      Stop & Close
+                    </Button>
+                  </div>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Settings FAB */}
-      <div className="fixed bottom-8 right-8 z-50">
+      <div className="fixed bottom-24 right-8 z-40 md:bottom-8">
         <Dialog>
           <DialogTrigger asChild>
             <Button size="icon" className="h-14 w-14 rounded-full shadow-2xl bg-primary text-white hover:scale-110 transition-transform">
@@ -750,7 +933,7 @@ export default function QuranPage() {
                   settings={settings}
                   bookmarks={bookmarks}
                   lastRead={lastRead}
-                  playingAyah={playingAyah}
+                  audioState={audioState}
                   onToggleAudio={toggleAudio}
                   onMarkLastRead={handleMarkLastRead}
                   onBookmark={(data) => {
