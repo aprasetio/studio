@@ -190,7 +190,6 @@ export default function DebtTrackerPage() {
       });
 
       // 3. Apply extra budget + any leftover minimums from paid off debts
-      // (Simplified logic: apply extraBudget to top priority active debt)
       const target = sortedDebts.find(d => d.currentBalance > 0);
       if (target && monthlyAvailable > 0) {
         const actualDebt = currentDebts.find(d => d.id === target.id)!;
@@ -239,10 +238,9 @@ export default function DebtTrackerPage() {
 
   const totalStartingBalance = debts.reduce((sum, d) => sum + d.balance, 0);
   const totalRemainingBalance = payoffAnalysis.schedule.length > 0 ? payoffAnalysis.schedule[0].totalRemaining : totalStartingBalance;
-  const overallProgress = totalStartingBalance > 0 ? ((totalStartingBalance - totalRemainingBalance) / totalStartingBalance) * 100 : 0;
 
   return (
-    <div className="flex flex-col items-center p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-8 bg-slate-50/50 dark:bg-transparent min-h-screen">
+    <div className="flex flex-col items-center p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-12 bg-slate-50/50 dark:bg-transparent min-h-screen">
       <div className="text-center space-y-2">
         <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-foreground flex items-center justify-center gap-3">
           <TrendingDown className="h-10 w-10 text-emerald-600" />
@@ -253,7 +251,7 @@ export default function DebtTrackerPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full">
         {/* SIDEBAR: DATA ENTRY */}
-        <div className="lg:col-span-4 space-y-6">
+        <div className="lg:col-span-4 flex flex-col gap-6">
           <Card className="shadow-2xl border-2 rounded-[2.5rem] overflow-hidden bg-card">
             <CardHeader className="bg-emerald-600 p-6 text-white">
               <CardTitle className="text-lg font-black uppercase tracking-widest flex items-center gap-2">
@@ -345,8 +343,7 @@ export default function DebtTrackerPage() {
             </CardContent>
           </Card>
 
-          {/* ASSET LIST */}
-          <div className="space-y-3">
+          <div className="flex flex-col gap-3">
             {debts.map((debt, idx) => (
               <Card key={debt.id} className="border-2 rounded-2xl group hover:border-emerald-500/30 transition-all bg-card overflow-hidden">
                 <div className="h-1 w-full" style={{ backgroundColor: CHART_COLORS[idx % CHART_COLORS.length] }} />
@@ -377,7 +374,7 @@ export default function DebtTrackerPage() {
         </div>
 
         {/* MAIN DASHBOARD: VISUALS */}
-        <div className="lg:col-span-8 space-y-8">
+        <div className="lg:col-span-8 flex flex-col gap-8">
           {debts.length === 0 ? (
             <Card className="h-full border-4 border-dashed flex flex-col items-center justify-center py-32 text-center opacity-40 rounded-[3rem] bg-card">
               <TrendingDown className="h-20 w-20 mb-6 text-emerald-600 animate-pulse" />
@@ -523,7 +520,7 @@ export default function DebtTrackerPage() {
                               <div className="w-full h-1 bg-muted rounded-full mt-2 overflow-hidden">
                                  <div 
                                   className="h-full bg-emerald-500" 
-                                  style={{ width: `${Math.max(0, 100 - (m.totalRemaining / totalStartingBalance * 100))}%` }} 
+                                  style={{ width: `${Math.max(0, 100 - (m.totalRemaining / (totalStartingBalance || 1) * 100))}%` }} 
                                  />
                               </div>
                             </td>
@@ -559,19 +556,4 @@ export default function DebtTrackerPage() {
       <SeoContent toolId="debt-tracker" />
     </div>
   );
-}
-
-function MatchCard({ 
-  match, players, onSaveScore, onEditScore, onDelete, onSwapPlayer, allPlayersInSlot 
-}: { 
-  match: any; 
-  players: any[]; 
-  onSaveScore: (id: any, s1: number, s2: number) => void;
-  onEditScore: (id: any) => void;
-  onDelete: (id: any) => void;
-  onSwapPlayer: (id: any, team: any, idx: number, pid: string) => void;
-  allPlayersInSlot: Set<string>;
-}) {
-  // Sub-component left as placeholder or for local context if needed
-  return null;
 }
