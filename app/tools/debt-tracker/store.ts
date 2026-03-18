@@ -36,7 +36,7 @@ export const useDebtTrackerStore = create<DebtTrackerState>()(
       strategy: 'snowball',
 
       addDebt: (debt) => set((state) => ({
-        debts: [...state.debts, { ...debt, id: crypto.randomUUID() }]
+        debts: [...state.debts, { ...debt, id: typeof crypto !== 'undefined' ? crypto.randomUUID() : Math.random().toString(36).slice(2) }]
       })),
 
       removeDebt: (id) => set((state) => ({
@@ -53,10 +53,14 @@ export const useDebtTrackerStore = create<DebtTrackerState>()(
 
       resetAll: () => set({ debts: [], extraBudget: 0, strategy: 'snowball' }),
 
-      restoreData: (data) => set({ ...data })
+      restoreData: (data) => set({ 
+        debts: data.debts || [], 
+        extraBudget: data.extraBudget || 0, 
+        strategy: data.strategy || 'snowball' 
+      })
     }),
     {
-      name: 'versokit-debt-tracker-v1',
+      name: 'versokit-debt-tracker-v2', // Incremented version
       storage: createJSONStorage(() => localStorage),
     }
   )
