@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
   Plus, 
   Trash2, 
@@ -18,8 +19,12 @@ import {
   Wallet,
   PieChart as PieIcon,
   LineChart as LineIcon,
-  Info,
-  ArrowRight
+  ArrowRight,
+  Receipt,
+  CircleDollarSign,
+  ArrowUpRight,
+  ArrowDownRight,
+  BadgeAlert
 } from 'lucide-react';
 import { 
   AreaChart, 
@@ -34,7 +39,7 @@ import {
   Cell,
   Legend
 } from 'recharts';
-import { useDebtTrackerStore, type Debt, type PayoffStrategy } from './store';
+import { useDebtTrackerStore, type Debt, type PayoffStrategy, type DebtCategory } from './store';
 import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { ArticleSection } from '@/components/ArticleSection';
@@ -43,7 +48,13 @@ import { SmartAd } from '@/components/smart-ad';
 import TrustBadges from '@/components/ui/TrustBadges';
 import { DataPersistence } from '@/components/DataPersistence';
 import { addMonths, format } from 'date-fns';
-import { Progress } from '@/components/ui/progress';
+import { 
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const CURRENCY_CONFIG: Record<string, { locale: string; currency: string }> = {
   id: { locale: 'id-ID', currency: 'IDR' },
@@ -55,74 +66,101 @@ const CURRENCY_CONFIG: Record<string, { locale: string; currency: string }> = {
   es: { locale: 'es-ES', currency: 'EUR' }
 };
 
-const CHART_COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
+const CATEGORY_COLORS: Record<DebtCategory, string> = {
+  'Credit Card': '#ef4444',
+  'Paylater': '#f59e0b',
+  'Mortgage': '#3b82f6',
+  'Vehicle': '#8b5cf6',
+  'Personal Loan': '#ec4899',
+  'Friends/Family': '#10b981',
+  'Other': '#64748b'
+};
 
 const UI_TEXT: Record<string, any> = {
   en: {
-    title: "Debt Payoff Dashboard",
+    title: "Debt Payoff Tracker Pro",
+    tab_cashflow: "1. Cash Flow",
+    tab_debts: "2. Liabilities",
+    tab_simulation: "3. Simulation",
+    income: "Monthly Income",
+    side_hustle: "Side Hustle",
+    needs: "Basic Needs",
+    subscriptions: "Subscriptions",
+    surplus: "Monthly Surplus",
+    available_for_debt: "Total for Debt",
+    accelerator: "Payoff Booster",
     add_debt: "New Liability",
     name: "Debt Name",
     balance: "Balance",
     interest: "APR (%)",
     min_payment: "Min Payment",
-    extra_budget: "Extra Monthly",
+    due_date: "Due Date",
+    category: "Category",
     strategy: "Strategy",
     snowball: "Snowball (Lowest Balance)",
     avalanche: "Avalanche (Highest Rate)",
-    summary: "Financial Summary",
-    payoff_date: "Debt-Free Date",
+    summary: "Financial Roadmap",
+    payoff_date: "Freedom Date",
     total_interest: "Total Interest",
-    total_paid: "Total Outlay",
-    schedule: "Payoff Projection",
+    total_paid: "Total Cost",
+    schedule: "Payment Schedule",
     month: "Month",
-    principal: "Principal",
-    remaining: "Balance",
     no_debts: "Add your liabilities to generate a visual roadmap.",
     hint: "100% Private: All financial calculations are processed locally in your browser.",
-    chart_trend: "Payoff Progress Trend",
-    chart_breakdown: "Debt Composition",
-    current_progress: "Total Paid Progress",
-    strategy_info: "Snowball provides psychological wins. Avalanche saves the most money."
+    chart_trend: "Payoff Trend",
+    chart_breakdown: "Debt by Category"
   },
   id: {
-    title: "Dasbor Pelunasan Hutang",
+    title: "Pelacak Pelunasan Hutang Pro",
+    tab_cashflow: "1. Arus Kas",
+    tab_debts: "2. Daftar Hutang",
+    tab_simulation: "3. Simulasi",
+    income: "Penghasilan Tetap",
+    side_hustle: "Penghasilan Tambahan",
+    needs: "Kebutuhan Pokok",
+    subscriptions: "Langganan/Hiburan",
+    surplus: "Sisa Saldo Bulanan",
+    available_for_debt: "Total Alokasi Hutang",
+    accelerator: "Booster Pelunasan",
     add_debt: "Hutang Baru",
     name: "Nama Hutang",
     balance: "Saldo",
-    interest: "Bunga Pertahun (%)",
+    interest: "Bunga Tahunan (%)",
     min_payment: "Bayar Minimum",
-    extra_budget: "Tambahan Bulanan",
+    due_date: "Tgl Jatuh Tempo",
+    category: "Kategori",
     strategy: "Strategi",
-    snowball: "Snowball (Saldo Terendah)",
+    snowball: "Snowball (Saldo Terkecil)",
     avalanche: "Avalanche (Bunga Tertinggi)",
-    summary: "Ringkasan Keuangan",
+    summary: "Peta Jalan Keuangan",
     payoff_date: "Tanggal Bebas Hutang",
     total_interest: "Total Bunga",
     total_paid: "Total Pengeluaran",
-    schedule: "Proyeksi Pelunasan",
+    schedule: "Jadwal Pembayaran",
     month: "Bulan",
-    principal: "Pokok",
-    remaining: "Sisa Saldo",
     no_debts: "Tambah hutang Anda untuk melihat peta jalan pelunasan.",
     hint: "100% Privat: Semua perhitungan diproses secara lokal di browser Anda.",
-    chart_trend: "Tren Penurunan Hutang",
-    chart_breakdown: "Komposisi Hutang",
-    current_progress: "Progress Pelunasan Total",
-    strategy_info: "Snowball memberi motivasi cepat. Avalanche paling hemat bunga."
+    chart_trend: "Tren Penurunan",
+    chart_breakdown: "Hutang per Kategori"
   }
 };
+
+const CATEGORIES: DebtCategory[] = ['Credit Card', 'Paylater', 'Mortgage', 'Vehicle', 'Personal Loan', 'Friends/Family', 'Other'];
 
 export default function DebtTrackerPage() {
   const { lang } = useLang();
   const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
   
   const { 
-    debts, extraBudget, strategy, 
-    addDebt, removeDebt, updateDebt, setExtraBudget, setStrategy, resetAll, restoreData 
+    debts, strategy, income, sideHustle, needs, subscriptions,
+    addDebt, removeDebt, updateDebt, setStrategy, setCashFlow, resetAll, restoreData 
   } = useDebtTrackerStore();
 
   const [mounted, setMounted] = useState(false);
-  const [newDebt, setNewDebt] = useState({ name: '', balance: 0, interestRate: 0, minPayment: 0 });
+  const [activeTab, setActiveTab] = useState('cashflow');
+  const [newDebt, setNewDebt] = useState<Omit<Debt, 'id'>>({ 
+    name: '', balance: 0, interestRate: 0, minPayment: 0, category: 'Credit Card', dueDate: 1 
+  });
 
   useEffect(() => { setMounted(true); }, []);
 
@@ -136,10 +174,14 @@ export default function DebtTrackerPage() {
     }).format(amount);
   };
 
+  const totalMinPayments = debts.reduce((sum, d) => sum + d.minPayment, 0);
+  const totalCashFlow = (income + sideHustle) - (needs + subscriptions);
+  const extraAvailableForDebt = Math.max(0, totalCashFlow - totalMinPayments);
+
   const payoffAnalysis = useMemo(() => {
     if (debts.length === 0) return { schedule: [], totalInterest: 0, totalPaid: 0, chartData: [], pieData: [] };
 
-    let currentDebts = debts.map(d => ({ ...d, currentBalance: d.balance, originalBalance: d.balance }));
+    let currentDebts = debts.map(d => ({ ...d, currentBalance: d.balance }));
     const schedule = [];
     const chartData = [];
     let totalInterest = 0;
@@ -147,14 +189,7 @@ export default function DebtTrackerPage() {
     let monthCount = 0;
     const maxMonths = 600;
 
-    // Pie Chart Data
-    const pieData = debts.map((d, i) => ({
-      name: d.name,
-      value: d.balance,
-      color: CHART_COLORS[i % CHART_COLORS.length]
-    }));
-
-    // Initial state for chart
+    // Initial state
     chartData.push({
       name: format(new Date(), 'MMM yy'),
       balance: currentDebts.reduce((sum, d) => sum + d.currentBalance, 0)
@@ -162,21 +197,21 @@ export default function DebtTrackerPage() {
 
     while (currentDebts.some(d => d.currentBalance > 0) && monthCount < maxMonths) {
       monthCount++;
-      let monthlyAvailable = extraBudget;
+      let monthlyAccelerator = extraAvailableForDebt;
       const monthDetails: any[] = [];
 
-      // 1. Sort based on strategy
+      // Sort by strategy
       const sortedDebts = [...currentDebts].sort((a, b) => {
         if (strategy === 'snowball') return a.currentBalance - b.currentBalance;
         return b.interestRate - a.interestRate;
       });
 
-      // 2. Pay minimums and calculate interest
+      // Apply interest and pay minimums
       currentDebts = currentDebts.map(d => {
         if (d.currentBalance <= 0) return d;
 
-        const monthlyInterestRate = (d.interestRate / 100) / 12;
-        const interest = d.currentBalance * monthlyInterestRate;
+        const monthlyRate = (d.interestRate / 100) / 12;
+        const interest = d.currentBalance * monthlyRate;
         let payment = Math.min(d.minPayment, d.currentBalance + interest);
         
         const principalPaid = payment - interest;
@@ -185,15 +220,15 @@ export default function DebtTrackerPage() {
         totalInterest += interest;
         totalPaid += payment;
 
-        monthDetails.push({ name: d.name, interest, principalPaid, newBalance });
+        monthDetails.push({ name: d.name, interest, principalPaid, newBalance, category: d.category });
         return { ...d, currentBalance: newBalance };
       });
 
-      // 3. Apply extra budget + any leftover minimums from paid off debts
+      // Apply accelerator budget
       const target = sortedDebts.find(d => d.currentBalance > 0);
-      if (target && monthlyAvailable > 0) {
+      if (target && monthlyAccelerator > 0) {
         const actualDebt = currentDebts.find(d => d.id === target.id)!;
-        const extraPayment = Math.min(monthlyAvailable, actualDebt.currentBalance);
+        const extraPayment = Math.min(monthlyAccelerator, actualDebt.currentBalance);
         actualDebt.currentBalance -= extraPayment;
         totalPaid += extraPayment;
         
@@ -221,26 +256,35 @@ export default function DebtTrackerPage() {
       }
     }
 
-    return { schedule, totalInterest, totalPaid, chartData, pieData, monthCount };
-  }, [debts, extraBudget, strategy]);
+    // Pie Chart Data (Grouped by Category)
+    const categoryTotals = debts.reduce((acc, d) => {
+      acc[d.category] = (acc[d.category] || 0) + d.balance;
+      return acc;
+    }, {} as Record<string, number>);
 
-  const handleAdd = () => {
+    const pieData = Object.entries(categoryTotals).map(([cat, val]) => ({
+      name: cat,
+      value: val,
+      color: CATEGORY_COLORS[cat as DebtCategory]
+    }));
+
+    return { schedule, totalInterest, totalPaid, chartData, pieData, monthCount };
+  }, [debts, extraAvailableForDebt, strategy]);
+
+  const handleAddDebt = () => {
     if (!newDebt.name || newDebt.balance <= 0) {
-      toast({ title: "Input Required", description: "Please enter a name and balance.", variant: "destructive" });
+      toast({ title: "Validation Error", description: "Debt name and balance are required.", variant: "destructive" });
       return;
     }
     addDebt(newDebt);
-    setNewDebt({ name: '', balance: 0, interestRate: 0, minPayment: 0 });
-    toast({ title: "Liability Added" });
+    setNewDebt({ name: '', balance: 0, interestRate: 0, minPayment: 0, category: 'Credit Card', dueDate: 1 });
+    toast({ title: "Debt added successfully" });
   };
 
   if (!mounted) return null;
 
-  const totalStartingBalance = debts.reduce((sum, d) => sum + d.balance, 0);
-  const totalRemainingBalance = payoffAnalysis.schedule.length > 0 ? payoffAnalysis.schedule[0].totalRemaining : totalStartingBalance;
-
   return (
-    <div className="flex flex-col items-center p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-12 bg-slate-50/50 dark:bg-transparent min-h-screen">
+    <div className="flex flex-col items-center p-4 md:p-8 lg:p-12 max-w-7xl mx-auto w-full gap-8 bg-slate-50/50 dark:bg-transparent min-h-screen">
       <div className="text-center space-y-2">
         <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-foreground flex items-center justify-center gap-3">
           <TrendingDown className="h-10 w-10 text-emerald-600" />
@@ -249,132 +293,180 @@ export default function DebtTrackerPage() {
         <TrustBadges />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full">
-        {/* SIDEBAR: DATA ENTRY */}
-        <div className="lg:col-span-4 flex flex-col gap-6">
-          <Card className="shadow-2xl border-2 rounded-[2.5rem] overflow-hidden bg-card">
-            <CardHeader className="bg-emerald-600 p-6 text-white">
-              <CardTitle className="text-lg font-black uppercase tracking-widest flex items-center gap-2">
-                <Wallet className="h-5 w-5" /> {t('add_debt')}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-6 space-y-4">
-              <div className="grid gap-4">
-                <div className="space-y-2">
-                  <Label className="text-[10px] font-black uppercase opacity-60 ml-1">{t('name')}</Label>
-                  <Input 
-                    value={newDebt.name} 
-                    onChange={e => setNewDebt({...newDebt, name: e.target.value.toUpperCase()})}
-                    placeholder="E.G. PLATINUM CARD"
-                    className="font-bold border-2 focus-visible:ring-emerald-500 h-12 rounded-xl"
-                  />
-                </div>
-                <div className="grid grid-cols-2 gap-4">
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <TabsList className="grid w-full grid-cols-3 h-16 bg-white dark:bg-slate-900 border-2 rounded-2xl p-2 shadow-sm">
+          <TabsTrigger value="cashflow" className="font-black uppercase text-[10px] tracking-widest rounded-xl data-[state=active]:bg-emerald-600 data-[state=active]:text-white">
+            <Wallet className="h-4 w-4 mr-2 hidden sm:inline" /> {t('tab_cashflow')}
+          </TabsTrigger>
+          <TabsTrigger value="debts" className="font-black uppercase text-[10px] tracking-widest rounded-xl data-[state=active]:bg-emerald-600 data-[state=active]:text-white">
+            <Receipt className="h-4 w-4 mr-2 hidden sm:inline" /> {t('tab_debts')}
+          </TabsTrigger>
+          <TabsTrigger value="simulation" className="font-black uppercase text-[10px] tracking-widest rounded-xl data-[state=active]:bg-emerald-600 data-[state=active]:text-white">
+            <LineIcon className="h-4 w-4 mr-2 hidden sm:inline" /> {t('tab_simulation')}
+          </TabsTrigger>
+        </TabsList>
+
+        {/* TAB 1: CASH FLOW */}
+        <TabsContent value="cashflow" className="mt-8 space-y-8 animate-in fade-in slide-in-from-left-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <Card className="shadow-xl border-2 rounded-[2.5rem] overflow-hidden">
+              <CardHeader className="bg-emerald-600 p-6 text-white">
+                <CardTitle className="text-lg font-black uppercase tracking-widest flex items-center gap-2">
+                  <ArrowUpRight className="h-5 w-5" /> Income Sources
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-8 space-y-6">
+                <div className="space-y-4">
                   <div className="space-y-2">
-                    <Label className="text-[10px] font-black uppercase opacity-60 ml-1">{t('balance')}</Label>
-                    <Input 
-                      type="number" 
-                      value={newDebt.balance || ''} 
-                      onChange={e => setNewDebt({...newDebt, balance: parseFloat(e.target.value) || 0})}
-                      className="font-bold border-2 h-12 rounded-xl"
-                    />
+                    <Label className="text-[10px] font-black uppercase opacity-60 ml-1">{t('income')}</Label>
+                    <Input type="number" value={income || ''} onChange={e => setCashFlow({ income: parseFloat(e.target.value) || 0 })} className="h-12 font-bold border-2" />
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-[10px] font-black uppercase opacity-60 ml-1">{t('interest')}</Label>
-                    <Input 
-                      type="number" 
-                      value={newDebt.interestRate || ''} 
-                      onChange={e => setNewDebt({...newDebt, interestRate: parseFloat(e.target.value) || 0})}
-                      className="font-bold border-2 h-12 rounded-xl"
-                    />
+                    <Label className="text-[10px] font-black uppercase opacity-60 ml-1">{t('side_hustle')}</Label>
+                    <Input type="number" value={sideHustle || ''} onChange={e => setCashFlow({ sideHustle: parseFloat(e.target.value) || 0 })} className="h-12 font-bold border-2" />
                   </div>
                 </div>
-                <div className="space-y-2">
-                  <Label className="text-[10px] font-black uppercase opacity-60 ml-1">{t('min_payment')}</Label>
-                  <Input 
-                    type="number" 
-                    value={newDebt.minPayment || ''} 
-                    onChange={e => setNewDebt({...newDebt, minPayment: parseFloat(e.target.value) || 0})}
-                    className="font-bold border-2 h-12 rounded-xl"
-                  />
-                </div>
-                <Button onClick={handleAdd} className="w-full h-14 font-black uppercase tracking-widest bg-emerald-600 hover:bg-emerald-700 shadow-lg rounded-xl">
-                  <Plus className="mr-2 h-5 w-5" /> {t('add_debt')}
-                </Button>
-              </div>
+              </CardContent>
+            </Card>
 
-              <div className="pt-6 border-t border-dashed space-y-6">
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center px-1">
-                    <Label className="text-[10px] font-black uppercase text-emerald-600">{t('extra_budget')}</Label>
-                    <span className="text-[10px] font-bold text-muted-foreground">{formatCurrency(extraBudget)}</span>
+            <Card className="shadow-xl border-2 rounded-[2.5rem] overflow-hidden">
+              <CardHeader className="bg-red-600 p-6 text-white">
+                <CardTitle className="text-lg font-black uppercase tracking-widest flex items-center gap-2">
+                  <ArrowDownRight className="h-5 w-5" /> Lifestyle Expenses
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-8 space-y-6">
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <Label className="text-[10px] font-black uppercase opacity-60 ml-1">{t('needs')}</Label>
+                    <Input type="number" value={needs || ''} onChange={e => setCashFlow({ needs: parseFloat(e.target.value) || 0 })} className="h-12 font-bold border-2" />
                   </div>
-                  <Input 
-                    type="number" 
-                    value={extraBudget || ''} 
-                    onChange={e => setExtraBudget(parseFloat(e.target.value) || 0)}
-                    className="h-14 text-2xl font-black border-2 border-emerald-100 focus-visible:ring-emerald-500 rounded-xl"
-                  />
+                  <div className="space-y-2">
+                    <Label className="text-[10px] font-black uppercase opacity-60 ml-1">{t('subscriptions')}</Label>
+                    <Input type="number" value={subscriptions || ''} onChange={e => setCashFlow({ subscriptions: parseFloat(e.target.value) || 0 })} className="h-12 font-bold border-2" />
+                  </div>
                 </div>
-
-                <div className="space-y-3">
-                  <Label className="text-[10px] font-black uppercase opacity-60 ml-1">{t('strategy')}</Label>
-                  <div className="grid grid-cols-2 gap-2 p-1.5 bg-muted rounded-2xl">
-                    <Button 
-                      variant={strategy === 'snowball' ? 'default' : 'ghost'} 
-                      onClick={() => setStrategy('snowball')}
-                      className={cn("text-[10px] font-black uppercase rounded-xl h-10 transition-all", strategy === 'snowball' && "bg-emerald-600 shadow-md")}
-                    >
-                      Snowball
-                    </Button>
-                    <Button 
-                      variant={strategy === 'avalanche' ? 'default' : 'ghost'} 
-                      onClick={() => setStrategy('avalanche')}
-                      className={cn("text-[10px] font-black uppercase rounded-xl h-10 transition-all", strategy === 'avalanche' && "bg-emerald-600 shadow-md")}
-                    >
-                      Avalanche
-                    </Button>
-                  </div>
-                  <p className="text-[9px] font-bold text-muted-foreground uppercase leading-relaxed text-center px-2">
-                    {t('strategy_info')}
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <div className="flex flex-col gap-3">
-            {debts.map((debt, idx) => (
-              <Card key={debt.id} className="border-2 rounded-2xl group hover:border-emerald-500/30 transition-all bg-card overflow-hidden">
-                <div className="h-1 w-full" style={{ backgroundColor: CHART_COLORS[idx % CHART_COLORS.length] }} />
-                <CardContent className="p-4 flex items-center justify-between">
-                  <div className="flex-1 overflow-hidden">
-                    <h4 className="font-black uppercase text-sm truncate tracking-tight">{debt.name}</h4>
-                    <div className="flex gap-3 text-[9px] font-bold text-muted-foreground uppercase tracking-widest mt-1">
-                      <span>{formatCurrency(debt.balance)}</span>
-                      <span className="opacity-30">•</span>
-                      <span className="text-emerald-600">{debt.interestRate}% APR</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="text-right hidden sm:block">
-                      <p className="text-[8px] font-black text-muted-foreground uppercase">Monthly</p>
-                      <p className="font-black text-xs">{formatCurrency(debt.minPayment)}</p>
-                    </div>
-                    <Button variant="ghost" size="icon" onClick={() => removeDebt(debt.id)} className="text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg">
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+              </CardContent>
+            </Card>
           </div>
 
-          <DataPersistence data={{ debts, extraBudget, strategy }} onRestore={restoreData} fileNamePrefix="versokit-debt-advanced" />
-        </div>
+          <Card className="bg-emerald-50 dark:bg-emerald-950/20 border-emerald-200 border-2 rounded-[2.5rem] p-8">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="text-center md:text-left space-y-1">
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-700/60">{t('surplus')}</p>
+                <h3 className="text-4xl font-black text-emerald-700">{formatCurrency(totalCashFlow)}</h3>
+              </div>
+              <div className="h-12 w-px bg-emerald-200 hidden md:block" />
+              <div className="text-center md:text-left space-y-1">
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-700/60">Min Debt Obligations</p>
+                <h3 className="text-4xl font-black text-blue-700">{formatCurrency(totalMinPayments)}</h3>
+              </div>
+              <Button onClick={() => setActiveTab('debts')} className="bg-emerald-600 h-16 px-10 rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl transition-all hover:scale-105">
+                Setup Debts <ArrowRight className="ml-2" />
+              </Button>
+            </div>
+          </Card>
+        </TabsContent>
 
-        {/* MAIN DASHBOARD: VISUALS */}
-        <div className="lg:col-span-8 flex flex-col gap-8">
+        {/* TAB 2: DEBTS */}
+        <TabsContent value="debts" className="mt-8 space-y-8 animate-in fade-in slide-in-from-right-4">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div className="lg:col-span-5">
+              <Card className="shadow-xl border-2 rounded-[2.5rem] overflow-hidden sticky top-24">
+                <CardHeader className="bg-primary p-6 text-white">
+                  <CardTitle className="text-lg font-black uppercase tracking-widest flex items-center gap-2">
+                    <Receipt className="h-5 w-5" /> {t('add_debt')}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-6 space-y-4">
+                  <div className="space-y-2">
+                    <Label className="text-[10px] font-black uppercase opacity-60">{t('name')}</Label>
+                    <Input value={newDebt.name} onChange={e => setNewDebt({...newDebt, name: e.target.value.toUpperCase()})} placeholder="E.G. BANK BCA" className="font-bold border-2 h-12 rounded-xl" />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label className="text-[10px] font-black uppercase opacity-60">{t('category')}</Label>
+                      <Select value={newDebt.category} onValueChange={(val: any) => setNewDebt({...newDebt, category: val})}>
+                        <SelectTrigger className="h-12 font-bold"><SelectValue /></SelectTrigger>
+                        <SelectContent>
+                          {CATEGORIES.map(cat => <SelectItem key={cat} value={cat}>{cat}</SelectItem>)}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="space-y-2">
+                      <Label className="text-[10px] font-black uppercase opacity-60">{t('due_date')}</Label>
+                      <Input type="number" min="1" max="31" value={newDebt.dueDate} onChange={e => setNewDebt({...newDebt, dueDate: parseInt(e.target.value) || 1})} className="font-bold h-12" />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label className="text-[10px] font-black uppercase opacity-60">{t('balance')}</Label>
+                      <Input type="number" value={newDebt.balance || ''} onChange={e => setNewDebt({...newDebt, balance: parseFloat(e.target.value) || 0})} className="font-bold h-12" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label className="text-[10px] font-black uppercase opacity-60">{t('interest')}</Label>
+                      <Input type="number" value={newDebt.interestRate || ''} onChange={e => setNewDebt({...newDebt, interestRate: parseFloat(e.target.value) || 0})} className="font-bold h-12" />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label className="text-[10px] font-black uppercase opacity-60">{t('min_payment')}</Label>
+                    <Input type="number" value={newDebt.minPayment || ''} onChange={e => setNewDebt({...newDebt, minPayment: parseFloat(e.target.value) || 0})} className="font-bold h-12" />
+                  </div>
+                  <Button onClick={handleAddDebt} className="w-full h-14 font-black uppercase tracking-widest bg-emerald-600 hover:bg-emerald-700 shadow-lg rounded-xl">
+                    <Plus className="mr-2 h-5 w-5" /> Add Liability
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="lg:col-span-7 space-y-4">
+              {debts.length === 0 ? (
+                <div className="h-64 border-4 border-dashed rounded-[3rem] flex flex-col items-center justify-center opacity-20">
+                  <Receipt className="h-16 w-16 mb-4" />
+                  <p className="font-black uppercase tracking-widest">{t('no_debts')}</p>
+                </div>
+              ) : (
+                debts.map((debt) => (
+                  <Card key={debt.id} className="border-2 rounded-3xl group hover:border-emerald-500/30 transition-all bg-card overflow-hidden">
+                    <div className="h-1 w-full" style={{ backgroundColor: CATEGORY_COLORS[debt.category] }} />
+                    <CardContent className="p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                      <div className="flex-1 space-y-1">
+                        <div className="flex items-center gap-2">
+                          <Badge variant="outline" className="text-[8px] font-black uppercase h-4" style={{ borderColor: CATEGORY_COLORS[debt.category], color: CATEGORY_COLORS[debt.category] }}>{debt.category}</Badge>
+                          <h4 className="font-black uppercase text-sm tracking-tight">{debt.name}</h4>
+                        </div>
+                        <div className="flex gap-4 text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
+                          <span>{formatCurrency(debt.balance)}</span>
+                          <span className="opacity-30">•</span>
+                          <span className="text-emerald-600">{debt.interestRate}% APR</span>
+                          <span className="opacity-30">•</span>
+                          <span>Due: Day {debt.dueDate}</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-6">
+                        <div className="text-right">
+                          <p className="text-[8px] font-black text-muted-foreground uppercase">Monthly Min</p>
+                          <p className="font-black text-xs">{formatCurrency(debt.minPayment)}</p>
+                        </div>
+                        <Button variant="ghost" size="icon" onClick={() => removeDebt(debt.id)} className="text-red-400 hover:text-red-600 hover:bg-red-50 rounded-full h-10 w-10">
+                          <Trash2 className="h-5 w-5" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))
+              )}
+              {debts.length > 0 && (
+                <Button onClick={() => setActiveTab('simulation')} className="w-full h-16 bg-primary text-white font-black uppercase tracking-widest text-xs rounded-[2rem] shadow-xl mt-4">
+                  Go to Simulation <ArrowRight className="ml-2" />
+                </Button>
+              )}
+            </div>
+          </div>
+        </TabsContent>
+
+        {/* TAB 3: SIMULATION */}
+        <TabsContent value="simulation" className="mt-8 space-y-8 animate-in zoom-in-95 duration-500">
           {debts.length === 0 ? (
             <Card className="h-full border-4 border-dashed flex flex-col items-center justify-center py-32 text-center opacity-40 rounded-[3rem] bg-card">
               <TrendingDown className="h-20 w-20 mb-6 text-emerald-600 animate-pulse" />
@@ -382,48 +474,77 @@ export default function DebtTrackerPage() {
             </Card>
           ) : (
             <>
-              {/* TOP SUMMARY */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Card className="border-2 rounded-[2.5rem] bg-emerald-50 dark:bg-emerald-950/20 text-center p-6 shadow-sm border-emerald-100">
-                  <div className="p-3 bg-white dark:bg-slate-900 rounded-2xl w-fit mx-auto mb-3 shadow-sm border border-emerald-100">
-                    <CalendarDays className="h-6 w-6 text-emerald-600" />
+              {/* ACCELERATOR WARNING */}
+              {extraAvailableForDebt <= 0 && (
+                <div className="bg-orange-50 border-2 border-orange-200 p-6 rounded-3xl flex items-center gap-4 text-orange-800">
+                  <BadgeAlert className="h-8 w-8 shrink-0" />
+                  <div className="space-y-1">
+                    <p className="font-black uppercase text-xs">Insufficient Cash Flow Surplus</p>
+                    <p className="text-xs font-medium leading-relaxed opacity-80">You don't have enough surplus to accelerate payoff. Your schedule is based on minimum payments only. Consider increasing income or reducing expenses.</p>
                   </div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-700/60 mb-1">{t('payoff_date')}</p>
-                  <p className="text-2xl font-black text-emerald-700 tracking-tighter">
+                </div>
+              )}
+
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                {/* STRATEGY CARD */}
+                <Card className="shadow-xl border-2 rounded-[2.5rem] bg-card overflow-hidden">
+                  <CardHeader className="bg-slate-900 text-white p-6">
+                    <CardTitle className="text-sm font-black uppercase tracking-widest">{t('strategy')}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-6 space-y-6">
+                    <div className="grid grid-cols-1 gap-2 p-1.5 bg-muted rounded-2xl">
+                      <Button variant={strategy === 'snowball' ? 'default' : 'ghost'} onClick={() => setStrategy('snowball')} className={cn("text-[10px] font-black uppercase rounded-xl h-12 transition-all", strategy === 'snowball' && "bg-emerald-600 shadow-md")}>Snowball</Button>
+                      <Button variant={strategy === 'avalanche' ? 'default' : 'ghost'} onClick={() => setStrategy('avalanche')} className={cn("text-[10px] font-black uppercase rounded-xl h-12 transition-all", strategy === 'avalanche' && "bg-emerald-600 shadow-md")}>Avalanche</Button>
+                    </div>
+                    
+                    <div className="flex items-center justify-between p-4 bg-emerald-50 rounded-2xl border-2 border-emerald-100">
+                      <div className="space-y-1">
+                        <p className="text-[8px] font-black uppercase text-emerald-600">{t('accelerator')}</p>
+                        <p className="text-xl font-black text-emerald-700">{formatCurrency(extraAvailableForDebt)}</p>
+                      </div>
+                      <PiggyBank className="h-8 w-8 text-emerald-600 opacity-40" />
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* SUMMARY STATS */}
+                <Card className="shadow-xl border-2 rounded-[2.5rem] bg-emerald-600 text-white p-8 flex flex-col justify-center items-center text-center gap-2">
+                  <CalendarDays className="h-8 w-8 mb-2 opacity-40" />
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] opacity-60">{t('payoff_date')}</p>
+                  <h3 className="text-5xl font-black tracking-tighter">
                     {payoffAnalysis.schedule.length > 0 ? format(payoffAnalysis.schedule[payoffAnalysis.schedule.length - 1].date, 'MMM yyyy').toUpperCase() : 'N/A'}
-                  </p>
+                  </h3>
+                  <Badge className="bg-white/20 text-[10px] font-black uppercase mt-2">{payoffAnalysis.monthCount} Months to Freedom</Badge>
                 </Card>
 
-                <Card className="border-2 rounded-[2.5rem] bg-orange-50 dark:bg-orange-950/20 text-center p-6 shadow-sm border-orange-100">
-                  <div className="p-3 bg-white dark:bg-slate-900 rounded-2xl w-fit mx-auto mb-3 shadow-sm border border-orange-100">
-                    <TrendingDown className="h-6 w-6 text-orange-600" />
+                <Card className="shadow-xl border-2 rounded-[2.5rem] bg-white p-8 space-y-6">
+                  <div className="space-y-4">
+                    <div>
+                      <p className="text-[9px] font-black uppercase text-muted-foreground mb-1">{t('total_interest')}</p>
+                      <p className="text-2xl font-black text-orange-600">{formatCurrency(payoffAnalysis.totalInterest)}</p>
+                    </div>
+                    <div className="h-px bg-muted" />
+                    <div>
+                      <p className="text-[9px] font-black uppercase text-muted-foreground mb-1">{t('total_paid')}</p>
+                      <p className="text-2xl font-black text-slate-900">{formatCurrency(payoffAnalysis.totalPaid)}</p>
+                    </div>
                   </div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-orange-700/60 mb-1">{t('total_interest')}</p>
-                  <p className="text-2xl font-black text-orange-700 tracking-tighter">{formatCurrency(payoffAnalysis.totalInterest)}</p>
-                </Card>
-
-                <Card className="border-2 rounded-[2.5rem] bg-blue-50 dark:bg-blue-950/20 text-center p-6 shadow-sm border-blue-100">
-                  <div className="p-3 bg-white dark:bg-slate-900 rounded-2xl w-fit mx-auto mb-3 shadow-sm border border-blue-100">
-                    <PiggyBank className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-700/60 mb-1">{t('total_paid')}</p>
-                  <p className="text-2xl font-black text-blue-700 tracking-tighter">{formatCurrency(payoffAnalysis.totalPaid)}</p>
                 </Card>
               </div>
 
-              {/* CHARTS ROW */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Card className="border-2 rounded-[2.5rem] shadow-xl bg-card overflow-hidden">
-                  <CardHeader className="p-6 pb-2">
+              {/* CHARTS */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <Card className="shadow-2xl border-2 rounded-[3rem] overflow-hidden bg-white">
+                  <CardHeader className="p-8 border-b bg-muted/10">
                     <CardTitle className="text-xs font-black uppercase tracking-widest flex items-center gap-2">
                       <LineIcon className="h-4 w-4 text-emerald-600" /> {t('chart_trend')}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="p-6 h-[250px]">
+                  <CardContent className="p-8 h-[300px]">
                     <ResponsiveContainer width="100%" height="100%">
                       <AreaChart data={payoffAnalysis.chartData}>
                         <defs>
-                          <linearGradient id="colorBal" x1="0" y1="0" x2="0" y2="1">
+                          <linearGradient id="colorPremium" x1="0" y1="0" x2="0" y2="1">
                             <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
                             <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
                           </linearGradient>
@@ -431,37 +552,26 @@ export default function DebtTrackerPage() {
                         <CartesianGrid strokeDasharray="3 3" vertical={false} strokeOpacity={0.1} />
                         <XAxis dataKey="name" fontSize={9} fontWeight="bold" axisLine={false} tickLine={false} dy={10} />
                         <YAxis hide />
-                        <Tooltip 
-                          contentStyle={{ borderRadius: '16px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)', fontWeight: 'bold' }}
-                          formatter={(val: number) => [formatCurrency(val), 'Remaining']}
-                        />
-                        <Area type="monotone" dataKey="balance" stroke="#10b981" strokeWidth={4} fillOpacity={1} fill="url(#colorBal)" />
+                        <Tooltip contentStyle={{ borderRadius: '20px', border: 'none', boxShadow: '0 20px 25px -5px rgba(0,0,0,0.1)', fontWeight: 'bold' }} />
+                        <Area type="monotone" dataKey="balance" stroke="#10b981" strokeWidth={4} fillOpacity={1} fill="url(#colorPremium)" />
                       </AreaChart>
                     </ResponsiveContainer>
                   </CardContent>
                 </Card>
 
-                <Card className="border-2 rounded-[2.5rem] shadow-xl bg-card overflow-hidden">
-                  <CardHeader className="p-6 pb-2">
+                <Card className="shadow-2xl border-2 rounded-[3rem] overflow-hidden bg-white">
+                  <CardHeader className="p-8 border-b bg-muted/10">
                     <CardTitle className="text-xs font-black uppercase tracking-widest flex items-center gap-2">
                       <PieIcon className="h-4 w-4 text-emerald-600" /> {t('chart_breakdown')}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="p-6 h-[250px]">
+                  <CardContent className="p-8 h-[300px]">
                     <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
-                        <Pie
-                          data={payoffAnalysis.pieData}
-                          innerRadius={60}
-                          outerRadius={80}
-                          paddingAngle={5}
-                          dataKey="value"
-                        >
-                          {payoffAnalysis.pieData.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={entry.color} />
-                          ))}
+                        <Pie data={payoffAnalysis.pieData} innerRadius={60} outerRadius={100} paddingAngle={5} dataKey="value">
+                          {payoffAnalysis.pieData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.color} />)}
                         </Pie>
-                        <Tooltip contentStyle={{ borderRadius: '16px', fontWeight: 'bold' }} />
+                        <Tooltip contentStyle={{ borderRadius: '20px', fontWeight: 'bold' }} />
                         <Legend wrapperStyle={{ fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase' }} />
                       </PieChart>
                     </ResponsiveContainer>
@@ -469,60 +579,43 @@ export default function DebtTrackerPage() {
                 </Card>
               </div>
 
-              {/* AMORTIZATION TABLE */}
-              <Card className="border-2 rounded-[3rem] overflow-hidden shadow-2xl bg-card">
-                <CardHeader className="bg-muted/30 border-b flex flex-row items-center justify-between p-8">
-                  <div className="space-y-1">
-                    <CardTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-2 text-emerald-700">
-                      <LayoutDashboard className="h-4 w-4" /> {t('schedule')}
-                    </CardTitle>
-                    <CardDescription className="text-[10px] font-bold uppercase tracking-widest">Month-by-month projection</CardDescription>
-                  </div>
-                  <div className="text-right flex items-center gap-2">
-                    <Badge className="bg-emerald-600 text-[10px] font-black uppercase">{payoffAnalysis.monthCount} Months Total</Badge>
-                  </div>
+              {/* AMORTIZATION */}
+              <Card className="shadow-2xl border-2 rounded-[3rem] overflow-hidden bg-white">
+                <CardHeader className="bg-slate-900 text-white p-8">
+                  <CardTitle className="text-sm font-black uppercase tracking-widest">{t('schedule')}</CardTitle>
                 </CardHeader>
                 <CardContent className="p-0">
-                  <div className="max-h-[500px] overflow-auto">
-                    <table className="w-full text-left border-collapse">
+                  <div className="max-h-[600px] overflow-auto">
+                    <table className="w-full text-left">
                       <thead className="bg-muted/50 sticky top-0 z-10 border-b">
                         <tr className="text-[9px] font-black uppercase tracking-widest text-muted-foreground">
                           <th className="p-6">{t('month')}</th>
-                          <th className="p-6">Breakdown</th>
-                          <th className="p-6 text-right">{t('remaining')}</th>
+                          <th className="p-6">Allocation Breakdown</th>
+                          <th className="p-6 text-right">Remaining Total</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y">
-                        {payoffAnalysis.schedule.map((m: any) => (
-                          <tr key={m.month} className="hover:bg-emerald-50/30 transition-colors group">
+                        {payoffAnalysis.schedule.slice(0, 100).map((m: any) => (
+                          <tr key={m.month} className="hover:bg-slate-50 transition-colors">
                             <td className="p-6">
-                              <span className="font-black text-sm block group-hover:text-emerald-600">{format(m.date, 'MMM yyyy').toUpperCase()}</span>
-                              <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest opacity-60">Month #{m.month}</p>
+                              <span className="font-black text-sm block">{format(m.date, 'MMM yyyy').toUpperCase()}</span>
+                              <p className="text-[9px] font-bold text-muted-foreground uppercase opacity-60">Month #{m.month}</p>
                             </td>
                             <td className="p-6">
                               <div className="space-y-2">
                                 {m.details.map((d: any, i: number) => (
                                   <div key={i} className="flex items-center justify-between gap-8">
                                     <div className="flex items-center gap-2">
-                                      <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: CHART_COLORS[i % CHART_COLORS.length] }} />
+                                      <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: CATEGORY_COLORS[d.category as DebtCategory] }} />
                                       <span className="text-[10px] font-black text-muted-foreground uppercase truncate max-w-[120px]">{d.name}</span>
                                     </div>
-                                    <div className="flex items-center gap-3">
-                                      <span className="text-[10px] font-black text-emerald-600">+{formatCurrency(d.principalPaid)}</span>
-                                      <span className="text-[9px] font-medium text-orange-400 opacity-60">-{formatCurrency(d.interest)}i</span>
-                                    </div>
+                                    <span className="text-[10px] font-black text-emerald-600">+{formatCurrency(d.principalPaid)}</span>
                                   </div>
                                 ))}
                               </div>
                             </td>
                             <td className="p-6 text-right">
-                              <span className="font-black text-lg tracking-tighter tabular-nums">{formatCurrency(m.totalRemaining)}</span>
-                              <div className="w-full h-1 bg-muted rounded-full mt-2 overflow-hidden">
-                                 <div 
-                                  className="h-full bg-emerald-500" 
-                                  style={{ width: `${Math.max(0, 100 - (m.totalRemaining / (totalStartingBalance || 1) * 100))}%` }} 
-                                 />
-                              </div>
+                              <span className="font-black text-lg tabular-nums">{formatCurrency(m.totalRemaining)}</span>
                             </td>
                           </tr>
                         ))}
@@ -533,22 +626,26 @@ export default function DebtTrackerPage() {
               </Card>
             </>
           )}
+        </TabsContent>
+      </Tabs>
 
-          {/* FOOTER HINT */}
-          <Card className="shadow-md border-2 bg-emerald-50 dark:bg-emerald-950/20 p-8 rounded-[3rem] border-emerald-100">
-            <div className="flex gap-4">
-              <div className="p-3 bg-white dark:bg-slate-900 rounded-2xl shadow-sm h-fit">
-                <ShieldCheck className="h-6 w-6 text-emerald-600" />
-              </div>
-              <div>
-                <h4 className="font-black uppercase tracking-tight text-sm text-emerald-800 dark:text-emerald-400 mb-1">Local Privacy First</h4>
-                <p className="text-[10px] font-bold text-emerald-700/60 dark:text-emerald-500/60 uppercase leading-relaxed tracking-wider">
-                  {t('hint')} No financial data is sent to our servers. Your balance history remains entirely on your device.
-                </p>
-              </div>
-            </div>
-          </Card>
-        </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full mt-12">
+        <DataPersistence 
+          data={{ debts, income, sideHustle, needs, subscriptions, strategy }} 
+          onRestore={restoreData} 
+          fileNamePrefix="versokit-debt-pro" 
+        />
+        <Card className="shadow-md border-2 bg-emerald-50 dark:bg-emerald-950/20 p-8 rounded-[3rem] border-emerald-100 flex items-center gap-6">
+          <div className="p-4 bg-white dark:bg-slate-900 rounded-3xl shadow-sm border border-emerald-100 shrink-0">
+            <ShieldCheck className="h-8 w-8 text-emerald-600" />
+          </div>
+          <div className="space-y-1">
+            <h4 className="font-black uppercase tracking-tight text-sm text-emerald-800 dark:text-emerald-400">Local Privacy First</h4>
+            <p className="text-[10px] font-bold text-emerald-700/60 dark:text-emerald-500/60 uppercase leading-relaxed tracking-wider">
+              {t('hint')} No financial data is sent to our servers.
+            </p>
+          </div>
+        </Card>
       </div>
 
       <ArticleSection toolId="debt-tracker" />

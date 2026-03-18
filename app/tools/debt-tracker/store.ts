@@ -4,6 +4,7 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
 export type PayoffStrategy = 'snowball' | 'avalanche';
+export type DebtCategory = 'Credit Card' | 'Paylater' | 'Mortgage' | 'Vehicle' | 'Personal Loan' | 'Friends/Family' | 'Other';
 
 export interface Debt {
   id: string;
@@ -11,18 +12,26 @@ export interface Debt {
   balance: number;
   interestRate: number;
   minPayment: number;
+  category: DebtCategory;
+  dueDate: number; // 1-31
 }
 
 interface DebtTrackerState {
+  // Cash Flow
+  income: number;
+  sideHustle: number;
+  needs: number;
+  subscriptions: number;
+  
+  // Debts
   debts: Debt[];
-  extraBudget: number;
   strategy: PayoffStrategy;
   
   // Actions
+  setCashFlow: (data: Partial<Pick<DebtTrackerState, 'income' | 'sideHustle' | 'needs' | 'subscriptions'>>) => void;
   addDebt: (debt: Omit<Debt, 'id'>) => void;
   removeDebt: (id: string) => void;
   updateDebt: (id: string, updates: Partial<Debt>) => void;
-  setExtraBudget: (amount: number) => void;
   setStrategy: (strategy: PayoffStrategy) => void;
   resetAll: () => void;
   restoreData: (data: any) => void;
@@ -31,9 +40,14 @@ interface DebtTrackerState {
 export const useDebtTrackerStore = create<DebtTrackerState>()(
   persist(
     (set) => ({
+      income: 0,
+      sideHustle: 0,
+      needs: 0,
+      subscriptions: 0,
       debts: [],
-      extraBudget: 0,
       strategy: 'snowball',
+
+      setCashFlow: (data) => set((state) => ({ ...state, ...data })),
 
       addDebt: (debt) => set((state) => ({
         debts: [...state.debts, { ...debt, id: typeof crypto !== 'undefined' ? crypto.randomUUID() : Math.random().toString(36).slice(2) }]
@@ -46,21 +60,29 @@ export const useDebtTrackerStore = create<DebtTrackerState>()(
       updateDebt: (id, updates) => set((state) => ({
         debts: state.debts.map(d => d.id === id ? { ...d, ...updates } : d)
       })),
-
-      setExtraBudget: (amount) => set({ extraBudget: amount }),
       
       setStrategy: (strategy) => set({ strategy }),
 
-      resetAll: () => set({ debts: [], extraBudget: 0, strategy: 'snowball' }),
+      resetAll: () => set({ 
+        debts: [], 
+        income: 0, 
+        sideHustle: 0, 
+        needs: 0, 
+        subscriptions: 0, 
+        strategy: 'snowball' 
+      }),
 
       restoreData: (data) => set({ 
         debts: data.debts || [], 
-        extraBudget: data.extraBudget || 0, 
+        income: data.income || 0,
+        sideHustle: data.sideHustle || 0,
+        needs: data.needs || 0,
+        subscriptions: data.subscriptions || 0,
         strategy: data.strategy || 'snowball' 
       })
     }),
     {
-      name: 'versokit-debt-tracker-v2', // Incremented version
+      name: 'versokit-debt-premium-v1',
       storage: createJSONStorage(() => localStorage),
     }
   )
