@@ -25,7 +25,9 @@ import {
   Lightbulb,
   Star,
   Sparkles,
-  BookOpen
+  BookOpen,
+  TrendingDown,
+  BarChart3
 } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -52,7 +54,6 @@ const TOOLS_DATA: Tool[] = [
     id: "quran",
     icon: BookOpen,
     category: "religious",
-    isNew: true,
     href: "/tools/quran",
     name: { en: "Digital Quran Reader", id: "Al-Quran Digital", de: "Digitaler Koran", es: "Corán Digital", pt: "Alcorão Digital", fr: "Coran Digital", it: "Corano Digitale" },
     desc: { en: "Read Quran with tajweed, translation, and Indonesian tafsir per verse.", id: "Baca Al-Quran dengan tajwid, terjemahan, dan tafsir per ayat.", de: "Koran lesen mit Tajwid und Übersetzung.", es: "Lee el Corán con tajwid y traducción.", pt: "Leia o Alcorão com tajweed e tradução.", fr: "Lisez le Coran dengan tajwid et traduction.", it: "Leggi il Corano con tajwid e traduzione." }
@@ -61,10 +62,27 @@ const TOOLS_DATA: Tool[] = [
     id: "prayer-times",
     icon: Navigation,
     category: "religious",
-    isNew: true,
     href: "/tools/prayer-times",
     name: { en: "Prayer Times & Qibla", id: "Jadwal Sholat & Kiblat", de: "Gebetszeiten & Qibla", es: "Horarios de Oración", pt: "Horários de Oração", fr: "Heures de Prière", it: "Orari Preghiera" },
-    desc: { en: "Accurate local prayer times and real-time compass for Qibla direction.", id: "Jadwal sholat akurat dan kompas arah kiblat real-time.", de: "Genaue Gebetszeiten und Qibla-Kompass.", es: "Horarios de oración y brújula de Qibla en tiempo real.", pt: "Horários de oração e bússola Qibla em tempo real.", fr: "Heures de prière et boussole Qibla en temps réel.", it: "Orari di preghiera e bussola Qibla in tempo reale." }
+    desc: { en: "Accurate local prayer times and real-time compass for Qibla direction.", id: "Jadwal sholat akurat dan kompas arah kiblat real-time.", de: "Genaue Gebetszeiten und Qibla-Kompass.", es: "Horarios de oración dan brújula de Qibla en tiempo real.", pt: "Horários de oração e bússola Qibla em tempo real.", fr: "Heures de prière et boussole Qibla en temps réel.", it: "Orari di preghiera e bussola Qibla in tempo reale." }
+  },
+  // --- FINANCE ---
+  {
+    id: "debt-tracker",
+    icon: TrendingDown,
+    category: "finance",
+    isNew: true,
+    href: "/tools/debt-tracker",
+    name: { en: "Debt Payoff Tracker", id: "Pelacak Pelunasan Hutang", de: "Schulden-Tracker", es: "Rastreador de Deudas", pt: "Calculadora de Dívidas", fr: "Suivi de Dettes", it: "Tracker Debiti" },
+    desc: { en: "Calculate your debt-free date using Snowball or Avalanche methods.", id: "Hitung tanggal lunas hutang dengan metode Snowball atau Avalanche.", de: "Berechnen Sie Ihr schuldenfreies Datum.", es: "Calcula tu fecha de desendeudamiento.", pt: "Calcule sua data livre de dívidas.", fr: "Calculez votre date de libération de dettes.", it: "Calcola la tua data di libertà dai debiti." }
+  },
+  {
+    id: "budget",
+    icon: Calculator,
+    category: "finance",
+    href: "/tools/budget-planner",
+    name: { en: "Budget Planner", id: "Perencana Anggaran", de: "Budgetplaner", es: "Presupuesto", pt: "Orçamento", fr: "Budget", it: "Budget" },
+    desc: { en: "Zero-based budgeting. Track every dollar.", id: "Anggaran berbasis nol. Lacak tiap rupiah.", de: "Nullbasiertes Budgetieren. Jeden Euro verfolgen.", es: "Presupuesto base cero. Controla cada euro.", pt: "Orçamento base zero. Rastreie cada centavo.", fr: "Budget base zero. Suivez chaque euro.", it: "Budget base zero. Traccia setiap euro." }
   },
   // --- BUSINESS ---
   {
@@ -72,16 +90,14 @@ const TOOLS_DATA: Tool[] = [
     icon: Lightbulb,
     category: "business",
     href: "/tools/idea-tracker",
-    isNew: true,
     name: { en: "Idea Tracker", id: "Pelacak Ide", de: "Ideen-Tracker", es: "Rastreador de Ideas", pt: "Rastreador de Ideias", fr: "Suivi d'Idées", it: "Tracker di Idee" },
     desc: { en: "Capture and organize brainstorming ideas locally with voice dictation.", id: "Catat dan kelola ide brainstorming secara lokal dengan dikte suara.", de: "Ideen lokal erfassen und organisieren.", es: "Captura y organiza ideas localmente.", pt: "Capture e organize ideias localmente.", fr: "Capturez et organisez vos idées localement.", it: "Cattura e organizza le idee localmente." }
   },
-  // --- PRODUCTIVITY (NEW) ---
+  // --- PRODUCTIVITY ---
   {
     id: "pdf-watermark",
     icon: FileBadge,
     category: "productivity",
-    isNew: true,
     href: "/tools/pdf-watermark",
     name: { en: "PDF Watermark", id: "Watermark PDF", de: "PDF-Wasserzeichen", es: "Marca PDF", pt: "Marca d'água PDF", fr: "Filigrane PDF", it: "Filigrana PDF" },
     desc: { en: "Securely add text watermarks to PDF files locally.", id: "Tambah watermark teks ke file PDF lokal dengan aman.", de: "Sicher Text-Wasserzeichen zu PDF-Dateien hinzufügen.", es: "Añade marcas de agua de teks a PDF localmente.", pt: "Adicione marcas d'água de texto a PDFs localmente.", fr: "Ajoutez des filigranes texte aux PDF localement.", it: "Aggiungi filigrana teks ai PDF localmente." }
@@ -90,10 +106,9 @@ const TOOLS_DATA: Tool[] = [
     id: "image-watermark",
     icon: Stamp,
     category: "productivity",
-    isNew: true,
     href: "/tools/image-watermark",
     name: { en: "Image Watermark", id: "Watermark Foto", de: "Bild-Wasserzeichen", es: "Marca de Agua", pt: "Marca d'água", fr: "Filigrane Image", it: "Filigrana" },
-    desc: { en: "Add text or logo patterns to protect images locally.", id: "Tambah teks atau logo untuk melindungi foto secara lokal.", de: "Text atau Logos zum Schutz von Bildern hinzufügen.", es: "Añade teks o logos para proteger imágenes.", pt: "Adicione teks atau logotipos para proteger imagens.", fr: "Ajoutez teks atau logo untuk protéger vos images.", it: "Aggiungi testo atau loghi per prottegere immagini." }
+    desc: { en: "Add text or logo patterns to protect images locally.", id: "Tambah teks atau logo untuk melindungi foto secara lokal.", de: "Text oder Logos zum Schutz von Bildern hinzufügen.", es: "Añade teks o logos para proteger imágenes.", pt: "Adicione teks atau logotipos para proteger imagens.", fr: "Ajoutez teks atau logo untuk protéger vos images.", it: "Aggiungi testo atau loghi per prottegere immagini." }
   },
   // --- SPORTS ---
   {
@@ -155,14 +170,6 @@ const TOOLS_DATA: Tool[] = [
   },
   // --- FINANCE ---
   {
-    id: "budget",
-    icon: Calculator,
-    category: "finance",
-    href: "/tools/budget-planner",
-    name: { en: "Budget Planner", id: "Perencana Anggaran", de: "Budgetplaner", es: "Presupuesto", pt: "Orçamento", fr: "Budget", it: "Budget" },
-    desc: { en: "Zero-based budgeting. Track every dollar.", id: "Anggaran berbasis nol. Lacak tiap rupiah.", de: "Nullbasiertes Budgetieren. Jeden Euro verfolgen.", es: "Presupuesto base cero. Controla cada euro.", pt: "Orçamento base zero. Rastreie cada centavo.", fr: "Budget base zero. Suivez chaque euro.", it: "Budget base zero. Traccia setiap euro." }
-  },
-  {
     id: "split-bill",
     icon: Calculator,
     category: "finance",
@@ -208,13 +215,13 @@ const UI_LABELS: Record<string, Record<string, string>> = {
     it: "VersoKit: Strumenti Quotidiani"
   },
   search_placeholder: {
-    en: "Search for a tool (e.g., Quran, Invoice, Watermark)...",
-    id: "Cari alat (misal: Quran, Invoice, Watermark)...",
-    de: "Suche nach einem Werkzeug (z. B. Koran, Rechnung)...",
-    es: "Buscar una herramienta (ej. Corán, Factura)...",
-    pt: "Procurar ferramenta (ex: Alcorão, Fatura)...",
-    fr: "Rechercher un outil (ex: Coran, Facture)...",
-    it: "Cerca uno strumento (es. Corano, Fattura)..."
+    en: "Search for a tool (e.g., Quran, Debt, Budget)...",
+    id: "Cari alat (misal: Quran, Hutang, Anggaran)...",
+    de: "Suche nach einem Werkzeug (z. B. Koran, Schulden)...",
+    es: "Buscar una herramienta (ej. Corán, Deuda)...",
+    pt: "Procurar ferramenta (ex: Alcorão, Dívida)...",
+    fr: "Rechercher un outil (ex: Coran, Dette)...",
+    it: "Cerca uno strumento (es. Corano, Debito)..."
   },
   no_results: {
     en: "No tools found matching",
@@ -245,7 +252,7 @@ const UI_LABELS: Record<string, Record<string, string>> = {
 };
 
 const BADGE_TEXT = {
-  privacy: { en: "Privacy-first", id: "Privasi Utama", de: "Datenschutz", es: "Privacidad", pt: "Privacidade", fr: "Confidentialité", it: "Privacy" },
+  privacy: { en: "Privacy-first", id: "Privasi Utama", de: "Datenschutz", es: "Privacidad", pt: "Privacidad", fr: "Confidentialité", it: "Privacy" },
   offline: { en: "Offline-ready", id: "Bisa Offline", de: "Offline-bereit", es: "Modo Offline", pt: "Modo Offline", fr: "Hors ligne", it: "Offline" },
   free: { en: "Free forever", id: "Gratis Selamanya", de: "Kostenlos", es: "Gratis", pt: "Grátis", fr: "Gratuit", it: "Gratis" }
 };

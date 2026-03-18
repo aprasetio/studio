@@ -18,6 +18,22 @@ export interface SeoCollection {
 }
 
 export const SEO_DATA: SeoCollection = {
+  "debt-tracker": {
+    en: {
+      title: "Debt Payoff Calculator",
+      description: "Accelerate your journey to zero debt. Compare Snowball vs. Avalanche strategies and see your exact debt-free date.",
+      steps: ["Add all your debts (Balance, Interest, Min Payment).", "Input your monthly extra budget.", "Choose between Snowball or Avalanche strategy.", "View your month-by-month payoff schedule."],
+      article: "Strategic debt management is the foundation of wealth building. Our Debt Payoff Tracker allows you to input multiple liabilities and simulates various repayment scenarios. The Snowball method focuses on behavior by paying off small balances first, while the Avalanche method targets high-interest debt to save you the most money.",
+      faq: [{ q: "What is the Snowball Method?", a: "It is a strategy where you pay off debts in order of smallest balance first, regardless of interest rate." }, { q: "What is the Avalanche Method?", a: "This targets the debt with the highest interest rate first, mathematically saving you the most money over time." }]
+    },
+    id: {
+      title: "Kalkulator Pelunasan Hutang",
+      description: "Percepat perjalanan Anda menuju bebas hutang. Bandingkan strategi Snowball vs. Avalanche dan lihat tanggal pasti lunas Anda.",
+      steps: ["Tambah semua hutang (Saldo, Bunga, Bayar Minimum).", "Masukkan anggaran tambahan bulanan.", "Pilih strategi Snowball atau Avalanche.", "Lihat jadwal pelunasan bulan demi bulan."],
+      article: "Manajemen hutang yang strategis adalah pondasi pembangunan kekayaan. Pelacak Pelunasan Hutang kami memungkinkan Anda memasukkan berbagai kewajiban dan mensimulasikan berbagai skenario pembayaran. Metode Snowball berfokus pada perilaku dengan melunasi saldo terkecil terlebih dahulu, sedangkan metode Avalanche menargetkan hutang berbunga tinggi untuk menghemat uang paling banyak.",
+      faq: [{ q: "Apa itu Metode Snowball?", a: "Strategi di mana Anda melunasi hutang mulai dari saldo terkecil, tanpa mempedulikan suku bunga." }, { q: "Apa itu Metode Avalanche?", a: "Metode ini menargetkan hutang dengan bunga tertinggi terlebih dahulu, secara matematis menghemat uang paling banyak." }]
+    }
+  },
   "quran": {
     en: {
       title: "Digital Quran Reader",

@@ -18,6 +18,35 @@ export interface ArticleCollection {
   };
 }
 
+const DEBT_CONTENT: { [lang: string]: ToolArticle } = {
+  id: {
+    title: `Strategi Pelunasan Hutang: Snowball vs Avalanche`,
+    sections: [
+      {
+        title: `Metode Snowball: Kemenangan Psikologis`,
+        content: `<p>Metode Snowball berfokus pada melunasi hutang dengan saldo terkecil terlebih dahulu. Secara psikologis, ini memberikan kepuasan cepat yang membantu Anda tetap termotivasi dalam jangka panjang.</p>`
+      },
+      {
+        title: `Metode Avalanche: Efisiensi Matematika`,
+        content: `<p>Metode Avalanche menargetkan hutang dengan bunga tertinggi. Ini adalah cara tercepat secara matematis untuk keluar dari hutang karena meminimalkan total bunga yang harus Anda bayar ke bank.</p>`
+      }
+    ]
+  },
+  en: {
+    title: `Debt Payoff Strategies: Snowball vs Avalanche Explained`,
+    sections: [
+      {
+        title: `The Snowball Method: Psychological Momentum`,
+        content: `<p>The Debt Snowball focuses on human behavior. By paying off your smallest balance first, you gain a sense of accomplishment that fuels your motivation to tackle larger debts later.</p>`
+      },
+      {
+        title: `The Avalanche Method: Mathematical Efficiency`,
+        content: `<p>The Debt Avalanche targets interest rates. By paying off the most expensive debt first, you reduce the total amount of money leaving your pocket in the form of interest payments.</p>`
+      }
+    ]
+  }
+};
+
 const QURAN_CONTENT: { [lang: string]: ToolArticle } = {
   id: {
     title: `Al-Quran Digital Indonesia: Panduan Lengkap dengan Folder Bookmark & Tafsir`,
@@ -261,6 +290,7 @@ const INVOICE_CONTENT: { [lang: string]: ToolArticle } = {
 };
 
 export const TOOL_ARTICLES: ArticleCollection = {
+  "debt-tracker": DEBT_CONTENT,
   quran: QURAN_CONTENT,
   "pdf-watermark": PDF_WATERMARK_CONTENT,
   "image-watermark": WATERMARK_CONTENT,

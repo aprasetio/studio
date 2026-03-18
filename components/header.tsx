@@ -22,7 +22,8 @@ import {
   Stamp,
   FileBadge,
   Lightbulb,
-  BookOpen
+  BookOpen,
+  TrendingDown
 } from 'lucide-react';
 
 const MENU_TEXT: Record<string, any> = {
@@ -30,6 +31,7 @@ const MENU_TEXT: Record<string, any> = {
   cat_business: { en: "Business", id: "Bisnis", de: "Geschäft", es: "Negocios", pt: "Negócios", fr: "Affaires", it: "Business" },
   cat_utilities: { en: "Utilities", id: "Utilitas", de: "Dienstprogramme", es: "Utilidades", pt: "Utilitários", fr: "Utilitaires", it: "Utilità" },
   cat_religious: { en: "Religious", id: "Ibadah", de: "Religiös", es: "Religioso", pt: "Religioso", fr: "Religieux", it: "Religioso" },
+  cat_finance: { en: "Finance", id: "Keuangan", de: "Finanzen", es: "Finanzas", pt: "Finanças", fr: "Finances", it: "Finanza" },
 
   quran: { en: "Digital Quran", id: "Al-Quran Digital", de: "Koran Digital", es: "Corán Digital", pt: "Alcorão Digital", fr: "Coran Digital", it: "Corano Digitale" },
   prayer_times: { en: "Prayer Times & Qibla", id: "Jadwal Sholat & Kiblat", de: "Gebetszeiten", es: "Horarios Oración", pt: "Horários Oração", fr: "Prière & Qibla", it: "Preghiera" },
@@ -41,6 +43,7 @@ const MENU_TEXT: Record<string, any> = {
   scoreboard: { en: "Universal Scoreboard", id: "Papan Skor", de: "Anzeigetafel", es: "Marcador", pt: "Placar", fr: "Tableau de Score", it: "Tabellone" },
   
   idea_tracker: { en: "Idea Tracker", id: "Pelacak Ide", de: "Ideen-Tracker", es: "Rastreador de Ideas", pt: "Rastreador de Ideias", fr: "Suivi d'Idées", it: "Idea Tracker" },
+  debt_tracker: { en: "Debt Tracker", id: "Pelacak Hutang", de: "Schulden-Tracker", es: "Deudas", pt: "Dívidas", fr: "Dettes", it: "Debiti" },
   budget: { en: "Budget Planner", id: "Perencana Anggaran", de: "Budgetplaner", es: "Presupuesto", pt: "Orçamento", fr: "Budget", it: "Pianificatore Budget" },
   invoice: { en: "Invoice Maker", id: "Pembuat Invoice", de: "Rechnungsersteller", es: "Facturas", pt: "Faturas", fr: "Factures", it: "Fatturazione" },
   shift: { en: "Shift Roster", id: "Jadwal Shift", de: "Schichtplan", es: "Turnos", pt: "Turnos", fr: "Planning", it: "Turni" },
@@ -72,6 +75,15 @@ export default function Header() {
       ]
     },
     {
+      label: MENU_TEXT.cat_finance[lang] || MENU_TEXT.cat_finance['en'],
+      icon: <TrendingDown className="h-4 w-4 mr-2" />,
+      items: [
+        { href: '/tools/debt-tracker', label: MENU_TEXT.debt_tracker[lang] || MENU_TEXT.debt_tracker['en'] },
+        { href: '/tools/budget-planner', label: MENU_TEXT.budget[lang] || MENU_TEXT.budget['en'] },
+        { href: '/tools/split-bill', label: MENU_TEXT.split_bill[lang] || MENU_TEXT.split_bill['en'] },
+      ]
+    },
+    {
       label: MENU_TEXT.cat_sports[lang] || MENU_TEXT.cat_sports['en'],
       icon: <Trophy className="h-4 w-4 mr-2" />,
       items: [
@@ -88,7 +100,6 @@ export default function Header() {
       icon: <Briefcase className="h-4 w-4 mr-2" />,
       items: [
         { href: '/tools/idea-tracker', label: MENU_TEXT.idea_tracker[lang] || MENU_TEXT.idea_tracker['en'] },
-        { href: '/tools/budget-planner', label: MENU_TEXT.budget[lang] || MENU_TEXT.budget['en'] },
         { href: '/tools/invoice', label: MENU_TEXT.invoice[lang] || MENU_TEXT.invoice['en'] },
         { href: '/tools/shift', label: MENU_TEXT.shift[lang] || MENU_TEXT.shift['en'] },
         { href: '/tools/inventory', label: MENU_TEXT.inventory[lang] || MENU_TEXT.inventory['en'] },
@@ -108,7 +119,6 @@ export default function Header() {
         { href: '/tools/image-to-pdf', label: MENU_TEXT.image_to_pdf[lang] || MENU_TEXT.image_to_pdf['en'] },
         { href: '/tools/calculator', label: MENU_TEXT.calculator[lang] || MENU_TEXT.calculator['en'] },
         { href: '/tools/csv-helper', label: MENU_TEXT.csv_helper[lang] || MENU_TEXT.csv_helper['en'] },
-        { href: '/tools/split-bill', label: MENU_TEXT.split_bill[lang] || MENU_TEXT.split_bill['en'] },
       ]
     }
   ];
