@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -12,9 +13,10 @@ import { SEO_DATA } from '@/lib/seo-content';
 
 interface SeoContentProps {
   toolId: string;
+  hidePrivacy?: boolean;
 }
 
-export function SeoContent({ toolId }: SeoContentProps) {
+export function SeoContent({ toolId, hidePrivacy = false }: SeoContentProps) {
   const { lang } = useLang();
   
   const content = SEO_DATA[toolId]?.[lang] || SEO_DATA[toolId]?.['en'];
@@ -27,7 +29,7 @@ export function SeoContent({ toolId }: SeoContentProps) {
     en: "🔒 **Privacy Guaranteed:** Your data is processed 100% locally on your device. No files are sent to our servers.",
     id: "🔒 **Jaminan Privasi:** Data Anda diproses 100% secara lokal di perangkat. Tidak ada file yang dikirim ke server.",
     es: "🔒 **Privacidad Garantizada:** Sus datos se procesan 100% localmente. No se envían archivos al servidor.",
-    pt: "🔒 **Privacidade Garantida:** Seus dados são processados 100% localmente. Nenhum arquivo é enviado ao servidor.",
+    pt: "🔒 **Privacidade Garantida:** Seus datos são processados 100% localmente. Nenhum arquivo é enviado al servidor.",
     de: "🔒 **Privatsphäre Garantiert:** Ihre Daten werden zu 100% lokal verarbeitet. Keine Dateien werden an Server gesendet.",
     fr: "🔒 **Confidentialité Garantie:** Vos données sont traitées 100% localement. Aucun fichier envoyé au serveur.",
     it: "🔒 **Privacy Garantita:** I tuoi dati vengono elaborati al 100% localmente. Nessun file inviato al server."
@@ -50,12 +52,14 @@ export function SeoContent({ toolId }: SeoContentProps) {
   return (
     <section className="w-full max-w-5xl mx-auto mt-20 mb-10 space-y-12 animate-in fade-in duration-700">
       {/* Privacy Assurance Box */}
-      <div className="bg-green-50 border-2 border-green-200 p-6 rounded-[2rem] flex items-center gap-4 shadow-sm">
-        <ShieldCheck className="h-8 w-8 text-green-600 shrink-0" />
-        <div className="text-sm font-bold text-green-800">
-          <p>{currentPrivacyText.replace(/🔒 \*\*|\*\*/g, '')}</p>
+      {!hidePrivacy && (
+        <div className="bg-green-50 border-2 border-green-200 p-6 rounded-[2rem] flex items-center gap-4 shadow-sm">
+          <ShieldCheck className="h-8 w-8 text-green-600 shrink-0" />
+          <div className="text-sm font-bold text-green-800">
+            <p>{currentPrivacyText.replace(/🔒 \*\*|\*\*/g, '')}</p>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Intro & Guide Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

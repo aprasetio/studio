@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useMemo, useEffect } from 'react';
@@ -106,7 +107,7 @@ const UI_TEXT: Record<string, any> = {
     schedule: "Payment Schedule",
     month: "Month",
     no_debts: "Add your liabilities to generate a visual roadmap.",
-    hint: "100% Private: All financial calculations are processed locally in your browser.",
+    hint: "Privacy Guaranteed: All calculations are processed locally. No financial data is sent to our servers.",
     chart_trend: "Payoff Trend",
     chart_breakdown: "Debt by Category"
   },
@@ -139,7 +140,7 @@ const UI_TEXT: Record<string, any> = {
     schedule: "Jadwal Pembayaran",
     month: "Bulan",
     no_debts: "Tambah hutang Anda untuk melihat peta jalan pelunasan.",
-    hint: "100% Privat: Semua perhitungan diproses secara lokal di browser Anda.",
+    hint: "Privasi Terjamin: Semua perhitungan diproses secara lokal. Tidak ada data finansial yang dikirim ke server kami.",
     chart_trend: "Tren Penurunan",
     chart_breakdown: "Hutang per Kategori"
   }
@@ -291,6 +292,18 @@ export default function DebtTrackerPage() {
           {t('title')}
         </h1>
         <TrustBadges />
+      </div>
+
+      {/* Refined Top Privacy Banner */}
+      <div className="w-full max-w-2xl bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-800/50 rounded-2xl py-3 px-6 flex items-center gap-3 animate-in fade-in slide-in-from-top-4 duration-700 delay-300">
+        <ShieldCheck className="h-5 w-5 text-emerald-600 shrink-0" />
+        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+          <span className="text-[10px] font-black uppercase text-emerald-800 dark:text-emerald-400 whitespace-nowrap">Local Privacy First</span>
+          <span className="hidden sm:inline text-emerald-300">|</span>
+          <p className="text-[10px] font-bold text-emerald-700/70 dark:text-emerald-500/70 uppercase leading-relaxed tracking-wider">
+            {t('hint')}
+          </p>
+        </div>
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -629,28 +642,17 @@ export default function DebtTrackerPage() {
         </TabsContent>
       </Tabs>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full mt-12">
+      <div className="w-full max-w-xl mx-auto mt-12">
         <DataPersistence 
           data={{ debts, income, sideHustle, needs, subscriptions, strategy }} 
           onRestore={restoreData} 
           fileNamePrefix="versokit-debt-pro" 
         />
-        <Card className="shadow-md border-2 bg-emerald-50 dark:bg-emerald-950/20 p-8 rounded-[3rem] border-emerald-100 flex items-center gap-6">
-          <div className="p-4 bg-white dark:bg-slate-900 rounded-3xl shadow-sm border border-emerald-100 shrink-0">
-            <ShieldCheck className="h-8 w-8 text-emerald-600" />
-          </div>
-          <div className="space-y-1">
-            <h4 className="font-black uppercase tracking-tight text-sm text-emerald-800 dark:text-emerald-400">Local Privacy First</h4>
-            <p className="text-[10px] font-bold text-emerald-700/60 dark:text-emerald-500/60 uppercase leading-relaxed tracking-wider">
-              {t('hint')} No financial data is sent to our servers.
-            </p>
-          </div>
-        </Card>
       </div>
 
       <ArticleSection toolId="debt-tracker" />
       <SmartAd />
-      <SeoContent toolId="debt-tracker" />
+      <SeoContent toolId="debt-tracker" hidePrivacy={true} />
     </div>
   );
 }
