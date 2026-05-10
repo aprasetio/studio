@@ -8,16 +8,17 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { 
-  Trophy, 
-  Plus, 
-  Trash2, 
-  Play, 
-  RotateCcw, 
-  Download, 
-  LayoutDashboard, 
+import {
+  Trophy,
+  Plus,
+  Trash2,
+  Play,
+  RotateCcw,
+  Download,
+  LayoutDashboard,
   CalendarDays,
-  UserPlus
+  UserPlus,
+  Loader2
 } from 'lucide-react';
 import { useLang } from '@/components/Providers';
 import { toast } from '@/hooks/use-toast';
@@ -53,6 +54,7 @@ export default function TournamentManagerPage() {
   const [fixtures, setFixtures] = useLocalStorage<Match[]>('versokit-tournament-fixtures', []);
   const [view, setView] = useLocalStorage<'setup' | 'play'>('versokit-tournament-view', 'setup');
   const [newTeam, setNewTeam] = useState('');
+  const [isExporting, setIsExporting] = useState(false);
   const standingsRef = useRef<HTMLDivElement>(null);
 
   const addTeam = (e: React.FormEvent) => {
@@ -170,11 +172,18 @@ export default function TournamentManagerPage() {
 
   const downloadStandings = async () => {
     if (!standingsRef.current) return;
-    const canvas = await html2canvas(standingsRef.current, { backgroundColor: '#ffffff' });
-    const link = document.createElement('a');
-    link.download = `klasemen-${Date.now()}.png`;
-    link.href = canvas.toDataURL();
-    link.click();
+    setIsExporting(true);
+    try {
+      const canvas = await html2canvas(standingsRef.current, { backgroundColor: '#ffffff' });
+      const link = document.createElement('a');
+      link.download = `klasemen-${Date.now()}.png`;
+      link.href = canvas.toDataURL();
+      link.click();
+    } catch {
+      toast({ title: "Gagal mengunduh gambar", variant: "destructive" });
+    } finally {
+      setIsExporting(false);
+    }
   };
 
   return (
@@ -334,8 +343,11 @@ export default function TournamentManagerPage() {
                  </Table>
               </div>
               
-              <Button onClick={downloadStandings} className="w-full h-14 bg-green-600 hover:bg-green-700 text-white font-black uppercase tracking-widest rounded-2xl shadow-xl">
-                 <Download className="mr-2 h-5 w-5" /> Download Gambar Klasemen
+              <Button onClick={downloadStandings} disabled={isExporting} className="w-full h-14 bg-green-600 hover:bg-green-700 text-white font-black uppercase tracking-widest rounded-2xl shadow-xl">
+                {isExporting
+                  ? <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  : <Download className="mr-2 h-5 w-5" />}
+                {isExporting ? 'Mengunduh...' : 'Download Gambar Klasemen'}
               </Button>
             </TabsContent>
           </Tabs>

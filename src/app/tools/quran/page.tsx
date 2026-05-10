@@ -47,7 +47,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { toast } from '@/hooks/use-toast';
-import { cn } from '@/lib/utils';
+import { cn, sanitizeHtml } from '@/lib/utils';
 import TrustBadges from '@/components/ui/TrustBadges';
 import { SmartAd } from '@/components/smart-ad';
 import { SeoContent } from '@/components/SeoContent';
@@ -235,7 +235,7 @@ function AyahCard({ ayah, surahNum, surahName, lang, settings, bookmarks, lastRe
     return (
       <div 
         className="prose prose-sm md:prose-base dark:prose-invert max-w-none font-medium text-foreground leading-relaxed text-justify"
-        dangerouslySetInnerHTML={{ __html: tafsirData }} 
+        dangerouslySetInnerHTML={{ __html: sanitizeHtml(tafsirData) }}
       />
     );
   };
@@ -480,7 +480,9 @@ export default function QuranPage() {
     const newBookmark: BookmarkItem = {
       id: crypto.randomUUID(),
       folderId,
-      ...activeAyah,
+      surahNumber: activeAyah.surahNum,
+      surahName: activeAyah.surahName,
+      ayahNumber: activeAyah.ayahNum,
       timestamp: new Date().toLocaleString(lang === 'id' ? 'id-ID' : 'en-US', {
         day: '2-digit',
         month: 'short',

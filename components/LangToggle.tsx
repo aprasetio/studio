@@ -18,12 +18,13 @@ export function LangToggle() {
   ];
 
   return (
-    <div className="flex items-center gap-2 bg-muted/50 px-3 py-1 rounded-full border">
-      <Globe className="h-3.5 w-3.5 text-muted-foreground" />
-      <select 
-        value={lang} 
+    <div className="flex items-center gap-2 bg-muted/50 px-3 py-1.5 rounded-full border min-h-[44px]">
+      <Globe className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
+      <select
+        value={lang}
         onChange={(e) => setLang(e.target.value as any)}
-        className="bg-transparent text-[11px] font-bold uppercase tracking-wider focus:outline-none cursor-pointer appearance-none pr-1"
+        aria-label="Select language"
+        className="bg-transparent text-[11px] font-bold uppercase tracking-wider focus-visible:outline-2 focus-visible:outline-primary cursor-pointer appearance-none pr-1"
       >
         {languages.map((l) => (
           <option key={l.code} value={l.code} className="text-foreground bg-background">

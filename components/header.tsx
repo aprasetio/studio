@@ -63,11 +63,11 @@ const MENU_TEXT: Record<string, any> = {
 };
 
 export default function Header() {
-  const { lang } = useLang();
+  const { lang, t } = useLang();
 
   const categories = [
     {
-      label: MENU_TEXT.cat_religious[lang] || MENU_TEXT.cat_religious['en'],
+      label: t('cat_religious'),
       icon: <Navigation className="h-4 w-4 mr-2" />,
       items: [
         { href: '/tools/quran', label: MENU_TEXT.quran[lang] || MENU_TEXT.quran['en'] },
@@ -75,7 +75,7 @@ export default function Header() {
       ]
     },
     {
-      label: MENU_TEXT.cat_finance[lang] || MENU_TEXT.cat_finance['en'],
+      label: t('cat_finance'),
       icon: <TrendingDown className="h-4 w-4 mr-2" />,
       items: [
         { href: '/tools/debt-tracker', label: MENU_TEXT.debt_tracker[lang] || MENU_TEXT.debt_tracker['en'] },
@@ -84,7 +84,7 @@ export default function Header() {
       ]
     },
     {
-      label: MENU_TEXT.cat_sports[lang] || MENU_TEXT.cat_sports['en'],
+      label: t('cat_sports'),
       icon: <Trophy className="h-4 w-4 mr-2" />,
       items: [
         { href: '/tools/americano', label: MENU_TEXT.americano[lang] || MENU_TEXT.americano['en'] },
@@ -96,7 +96,7 @@ export default function Header() {
       ]
     },
     {
-      label: MENU_TEXT.cat_business[lang] || MENU_TEXT.cat_business['en'],
+      label: t('cat_business'),
       icon: <Briefcase className="h-4 w-4 mr-2" />,
       items: [
         { href: '/tools/idea-tracker', label: MENU_TEXT.idea_tracker[lang] || MENU_TEXT.idea_tracker['en'] },
@@ -107,7 +107,7 @@ export default function Header() {
       ]
     },
     {
-      label: MENU_TEXT.cat_utilities[lang] || MENU_TEXT.cat_utilities['en'],
+      label: t('cat_utilities'),
       icon: <Wrench className="h-4 w-4 mr-2" />,
       items: [
         { href: '/tools/pdf-watermark', label: MENU_TEXT.pdf_watermark[lang] || MENU_TEXT.pdf_watermark['en'] },
@@ -126,8 +126,8 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/" className="flex items-center space-x-2 transition-transform hover:scale-105">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="h-8 w-8 text-primary">
+        <Link href="/" className="flex items-center space-x-2 transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg" aria-label="VersoKit home">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="h-8 w-8 text-primary" aria-hidden="true" focusable="false">
             <rect width="256" height="256" fill="none" />
             <path d="M32,96v64a8,8,0,0,0,8,8H216a8,8,0,0,0,8-8V96" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16" />
             <path d="M168,168V64a40,40,0,0,0-80,0v96" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16" />
@@ -135,20 +135,23 @@ export default function Header() {
           <span className="text-xl font-black tracking-tighter uppercase">VersoKit</span>
         </Link>
         
-        <nav className="hidden lg:flex items-center space-x-4">
+        <nav className="hidden lg:flex items-center space-x-4" aria-label="Main navigation">
           {categories.map((cat, idx) => (
             <DropdownMenu key={idx}>
-              <DropdownMenuTrigger className="flex items-center px-3 py-2 text-sm font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors outline-none">
+              <DropdownMenuTrigger
+                aria-label={`${cat.label} menu`}
+                className="flex items-center px-3 py-2 min-h-[44px] text-sm font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
+              >
                 {cat.icon}
                 {cat.label}
-                <ChevronDown className="ml-1 h-3 w-3" />
+                <ChevronDown className="ml-1 h-3 w-3" aria-hidden="true" />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-56 rounded-xl shadow-xl border-2">
                 <DropdownMenuLabel className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/60">{cat.label}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 {cat.items.map((item) => (
                   <DropdownMenuItem key={item.href} asChild>
-                    <Link href={item.href} className="w-full cursor-pointer font-bold uppercase text-[11px] py-3 hover:bg-primary/5">
+                    <Link href={item.href} className="w-full cursor-pointer font-bold uppercase text-[11px] py-3.5 hover:bg-primary/5">
                       {item.label}
                     </Link>
                   </DropdownMenuItem>
@@ -163,11 +166,14 @@ export default function Header() {
           <LangToggle />
           
           <DropdownMenu>
-            <DropdownMenuTrigger className="lg:hidden p-2 hover:bg-muted rounded-full outline-none">
-              <LayoutGrid className="h-6 w-6" />
+            <DropdownMenuTrigger
+              aria-label="Open navigation menu"
+              className="lg:hidden p-2.5 min-h-[44px] min-w-[44px] hover:bg-muted rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary flex items-center justify-center"
+            >
+              <LayoutGrid className="h-6 w-6" aria-hidden="true" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent 
-              align="end" 
+            <DropdownMenuContent
+              align="end"
               className="w-64 rounded-2xl shadow-2xl border-2 max-h-[80vh] overflow-y-auto overscroll-contain scrollbar-thin"
             >
               {categories.map((cat, idx) => (
@@ -178,7 +184,7 @@ export default function Header() {
                   </DropdownMenuLabel>
                   {cat.items.map((item) => (
                     <DropdownMenuItem key={item.href} asChild>
-                      <Link href={item.href} className="w-full px-8 py-3 font-bold uppercase text-[10px]">
+                      <Link href={item.href} className="w-full px-8 py-3.5 font-bold uppercase text-[11px] min-h-[44px] flex items-center">
                         {item.label}
                       </Link>
                     </DropdownMenuItem>

@@ -6,7 +6,7 @@ import { useLang } from '@/components/Providers';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Plus, Trash2, CalendarDays, UserPlus, Image as ImageIcon, Download, ShieldCheck, Shuffle } from 'lucide-react';
+import { Plus, Trash2, CalendarDays, UserPlus, Image as ImageIcon, Download, ShieldCheck, Shuffle, Loader2 } from 'lucide-react';
 import { SeoContent } from '@/components/SeoContent';
 import { DataPersistence } from '@/components/DataPersistence';
 import { ArticleSection } from '@/components/ArticleSection';
@@ -69,6 +69,7 @@ export default function ShiftRosterPage() {
   const [employees, setEmployees] = useLocalStorage<EmployeeShift[]>('versokit-shift-data', []);
   const [newName, setNewName] = useState('');
   const [mounted, setMounted] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
   const scheduleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -129,7 +130,7 @@ export default function ShiftRosterPage() {
 
   const handleDownloadImage = async () => {
     if (!scheduleRef.current) return;
-
+    setIsExporting(true);
     try {
       const canvas = await html2canvas(scheduleRef.current, {
         scale: 2,
@@ -137,16 +138,16 @@ export default function ShiftRosterPage() {
         logging: false,
         useCORS: true,
       });
-
       const data = canvas.toDataURL('image/png');
       const link = document.createElement('a');
       link.download = `versokit-shift-roster-${new Date().toISOString().split('T')[0]}.png`;
       link.href = data;
       link.click();
-      
       toast({ title: "Success!", description: "Schedule image downloaded." });
-    } catch (error) {
+    } catch {
       toast({ title: "Error!", description: "Failed to download image.", variant: "destructive" });
+    } finally {
+      setIsExporting(false);
     }
   };
 
@@ -163,8 +164,11 @@ export default function ShiftRosterPage() {
           <Button variant="outline" onClick={randomizeAll} className="font-bold border-2">
             <Shuffle className="mr-2 h-4 w-4" /> {t('randomize')}
           </Button>
-          <Button variant="outline" onClick={handleDownloadImage} className="font-bold border-2">
-            <ImageIcon className="mr-2 h-4 w-4" /> {t('download')}
+          <Button variant="outline" onClick={handleDownloadImage} disabled={isExporting} className="font-bold border-2">
+            {isExporting
+              ? <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              : <ImageIcon className="mr-2 h-4 w-4" />}
+            {isExporting ? '...' : t('download')}
           </Button>
           <DataPersistence data={employees} onRestore={handleRestore} fileNamePrefix="versokit-shift" />
         </div>

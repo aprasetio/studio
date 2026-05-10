@@ -13,9 +13,20 @@ const TAGLINE: Record<string, string> = {
   it: "Privacy al primo posto • Funziona Offline • Gratis per sempre"
 };
 
+const BUILT_WITH: Record<string, string> = {
+  en: "Built with",
+  id: "Dibuat dengan",
+  de: "Erstellt mit",
+  es: "Creado con",
+  pt: "Criado com",
+  fr: "Créé avec",
+  it: "Creato con",
+};
+
 export default function FooterTagline() {
   const { lang } = useLang();
   const tagline = TAGLINE[lang] || TAGLINE['en'];
+  const builtWith = BUILT_WITH[lang] || BUILT_WITH['en'];
   const year = new Date().getFullYear();
 
   return (
@@ -24,7 +35,7 @@ export default function FooterTagline() {
         © {year} <span className="text-foreground">VersoKit</span> | {tagline}
       </p>
       <p className="text-[9px] text-muted-foreground/50 font-medium uppercase tracking-[0.2em]">
-        Built with <span className="text-primary font-bold">Project IDX</span>
+        {builtWith} <span className="text-primary font-bold">Project IDX</span>
       </p>
     </div>
   );

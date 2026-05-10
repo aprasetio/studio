@@ -7,15 +7,16 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { 
-  Download, 
-  Plus, 
-  Trash2, 
-  UserPlus, 
-  Settings2, 
+import {
+  Download,
+  Plus,
+  Trash2,
+  UserPlus,
+  Settings2,
   Palette,
   Maximize2,
-  RotateCcw
+  RotateCcw,
+  Loader2
 } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
@@ -95,6 +96,7 @@ export default function LineupBuilderPage() {
   const t = (key: string) => UI_TEXT[lang]?.[key] || UI_TEXT['en'][key];
 
   const [hasMounted, setHasMounted] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
   const [players, setPlayers] = useLocalStorage<Player[]>('versokit-lineup-players', [
     { id: '1', name: 'PLAYER 1', number: '1', x: 50, y: 90, color: '#eab308' },
     { id: '2', name: 'PLAYER 2', number: '4', x: 50, y: 70, color: '#3b82f6' },
@@ -175,20 +177,21 @@ export default function LineupBuilderPage() {
 
   const downloadLineup = async () => {
     if (!pitchRef.current) return;
-    
+    setIsExporting(true);
     try {
       const canvas = await html2canvas(pitchRef.current, {
         backgroundColor: '#15803d',
         scale: 2,
       });
-      
       const link = document.createElement('a');
       link.download = `versokit-lineup-${Date.now()}.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
       toast({ title: "Success!", description: t('success_msg') });
-    } catch (err) {
+    } catch {
       toast({ title: "Error!", description: t('fail_msg'), variant: "destructive" });
+    } finally {
+      setIsExporting(false);
     }
   };
 
@@ -256,9 +259,11 @@ export default function LineupBuilderPage() {
           </div>
 
           <div className="flex gap-2">
-            <Button onClick={downloadLineup} className="flex-1 h-14 bg-accent hover:bg-accent/90 text-xl font-black uppercase tracking-widest shadow-xl">
-              <Download className="mr-2 h-6 w-6" />
-              {t('download')}
+            <Button onClick={downloadLineup} disabled={isExporting} className="flex-1 h-14 bg-accent hover:bg-accent/90 text-xl font-black uppercase tracking-widest shadow-xl">
+              {isExporting
+                ? <Loader2 className="mr-2 h-6 w-6 animate-spin" />
+                : <Download className="mr-2 h-6 w-6" />}
+              {isExporting ? '...' : t('download')}
             </Button>
             <Button onClick={resetLineup} variant="outline" className="h-14 px-6 border-2 font-bold uppercase tracking-widest text-xs">
               <RotateCcw className="mr-2 h-4 w-4" /> {t('reset')}

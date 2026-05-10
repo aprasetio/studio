@@ -5,6 +5,7 @@ import { Providers } from '@/components/Providers';
 import { Analytics } from '@vercel/analytics/next';
 import FooterLinks from '@/components/footer-links';
 import FooterTagline from '@/components/footer-tagline';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -45,11 +46,19 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased flex min-h-screen flex-col bg-background text-foreground">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-xl focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-primary-foreground focus:shadow-lg"
+        >
+          Skip to main content
+        </a>
         <Providers>
           <Header />
 
-          <main className="flex-1 w-full">
-            {children}
+          <main id="main-content" className="flex-1 w-full">
+            <ErrorBoundary>
+              {children}
+            </ErrorBoundary>
           </main>
 
           <footer className="border-t bg-card py-12 mt-auto">

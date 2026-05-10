@@ -214,12 +214,16 @@ export const SEO_DATA: SeoCollection = {
     en: {
       title: "Image Compressor",
       description: "Reduce file size without losing quality using browser-based compression.",
-      steps: ["Select image.", "Adjust quality slider.", "Click Compress.", "Save result."]
+      steps: ["Select image.", "Adjust quality slider.", "Click Compress.", "Save result."],
+      article: "Compress images directly in your browser with no upload required. Supports JPEG and PNG with adjustable quality.",
+      faq: [{ q: "Will it lose quality?", a: "Compression is lossy for JPEG but you can control the quality slider to minimize visible degradation." }]
     },
     id: {
       title: "Kompres Gambar",
       description: "Kecilkan ukuran file foto tanpa mengurangi kualitas secara signifikan.",
-      steps: ["Pilih gambar.", "Atur kualitas.", "Klik Kompres.", "Simpan hasil."]
+      steps: ["Pilih gambar.", "Atur kualitas.", "Klik Kompres.", "Simpan hasil."],
+      article: "Kompres gambar langsung di browser tanpa perlu upload ke server. Mendukung JPEG dan PNG dengan slider kualitas yang bisa diatur.",
+      faq: [{ q: "Apakah kualitas berkurang?", a: "Kompresi bersifat lossy untuk JPEG, namun Anda bisa mengatur slider kualitas untuk meminimalkan penurunan visual." }]
     }
   }
 };

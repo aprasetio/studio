@@ -4,7 +4,7 @@ import { useRef, useState, useCallback } from 'react';
 import html2canvas from 'html2canvas';
 import { Button } from '@/components/ui/button';
 import { FootballPitch, type Player } from '@/components/football-pitch';
-import { Download } from 'lucide-react';
+import { Download, Loader2 } from 'lucide-react';
 import {
   Select,
   SelectContent,
@@ -60,6 +60,7 @@ export function LineupBuilder() {
   const canvasRef = useRef<HTMLDivElement>(null);
   const [formation, setFormation] = useState('4-4-2');
   const [players, setPlayers] = useState<Player[]>(formations[formation]);
+  const [isExporting, setIsExporting] = useState(false);
 
   const handleFormationChange = (newFormation: string) => {
     setFormation(newFormation);
@@ -74,24 +75,29 @@ export function LineupBuilder() {
     );
   }, []);
 
-  const downloadImage = () => {
-    if (canvasRef.current) {
-      const pitchElement = canvasRef.current.querySelector<HTMLElement>('[data-pitch="true"]');
-      if (!pitchElement) return;
+  const downloadImage = async () => {
+    if (!canvasRef.current) return;
+    const pitchElement = canvasRef.current.querySelector<HTMLElement>('[data-pitch="true"]');
+    if (!pitchElement) return;
 
-      html2canvas(pitchElement, {
-        backgroundColor: null, 
+    setIsExporting(true);
+    try {
+      const canvas = await html2canvas(pitchElement, {
+        backgroundColor: null,
         useCORS: true,
         onclone: (document) => {
           const labels = document.querySelectorAll('[data-player-role]');
           labels.forEach(label => ((label as HTMLElement).style.visibility = 'hidden'));
-        }
-      }).then((canvas) => {
-        const link = document.createElement('a');
-        link.download = `lineup-${formation}.png`;
-        link.href = canvas.toDataURL('image/png');
-        link.click();
+        },
       });
+      const link = document.createElement('a');
+      link.download = `lineup-${formation}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    } catch {
+      // silent — nothing to show without a toast dependency here
+    } finally {
+      setIsExporting(false);
     }
   };
 
@@ -111,9 +117,11 @@ export function LineupBuilder() {
                 </SelectContent>
             </Select>
         </div>
-        <Button onClick={downloadImage} className="bg-accent hover:bg-accent/90 text-accent-foreground">
-          <Download className="mr-2 h-4 w-4" />
-          Unduh sebagai Gambar
+        <Button onClick={downloadImage} disabled={isExporting} className="bg-accent hover:bg-accent/90 text-accent-foreground">
+          {isExporting
+            ? <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            : <Download className="mr-2 h-4 w-4" />}
+          {isExporting ? 'Mengunduh...' : 'Unduh sebagai Gambar'}
         </Button>
       </div>
 

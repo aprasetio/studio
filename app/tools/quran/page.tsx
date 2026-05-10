@@ -64,7 +64,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from '@/hooks/use-toast';
-import { cn } from '@/lib/utils';
+import { cn, sanitizeHtml } from '@/lib/utils';
 import TrustBadges from '@/components/ui/TrustBadges';
 import { SmartAd } from '@/components/smart-ad';
 import { SeoContent } from '@/components/SeoContent';
@@ -299,7 +299,7 @@ function AyahCard({
     return (
       <div 
         className="prose prose-sm md:prose-base dark:prose-invert max-w-none font-medium text-foreground leading-relaxed text-justify"
-        dangerouslySetInnerHTML={{ __html: tafsirData }} 
+        dangerouslySetInnerHTML={{ __html: sanitizeHtml(tafsirData) }} 
       />
     );
   };
