@@ -29,7 +29,7 @@ export function SeoContent({ toolId, hidePrivacy = false }: SeoContentProps) {
     en: "🔒 **Privacy Guaranteed:** Your data is processed 100% locally on your device. No files are sent to our servers.",
     id: "🔒 **Jaminan Privasi:** Data Anda diproses 100% secara lokal di perangkat. Tidak ada file yang dikirim ke server.",
     es: "🔒 **Privacidad Garantizada:** Sus datos se procesan 100% localmente. No se envían archivos al servidor.",
-    pt: "🔒 **Privacidade Garantida:** Seus datos são processados 100% localmente. Nenhum arquivo é enviado al servidor.",
+    pt: "🔒 **Privacidade Garantida:** Seus dados são processados 100% localmente. Nenhum arquivo é enviado ao servidor.",
     de: "🔒 **Privatsphäre Garantiert:** Ihre Daten werden zu 100% lokal verarbeitet. Keine Dateien werden an Server gesendet.",
     fr: "🔒 **Confidentialité Garantie:** Vos données sont traitées 100% localement. Aucun fichier envoyé au serveur.",
     it: "🔒 **Privacy Garantita:** I tuoi dati vengono elaborati al 100% localmente. Nessun file inviato al server."
