@@ -5,6 +5,7 @@ import { Providers } from '@/components/Providers';
 import { Analytics } from '@vercel/analytics/next';
 import FooterLinks from '@/components/footer-links';
 import FooterTagline from '@/components/footer-tagline';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -49,7 +50,9 @@ export default function RootLayout({
           <Header />
 
           <main className="flex-1 w-full">
-            {children}
+            <ErrorBoundary>
+              {children}
+            </ErrorBoundary>
           </main>
 
           <footer className="border-t bg-card py-12 mt-auto">

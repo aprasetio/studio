@@ -3,10 +3,15 @@
 
 import React, { useRef } from 'react';
 import Papa from 'papaparse';
+import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Download, Upload, FileJson } from 'lucide-react';
 import { useLang } from '@/components/Providers';
 import { toast } from '@/hooks/use-toast';
+
+const MAX_CSV_FILE_SIZE = 2 * 1024 * 1024; // 2 MB
+const MAX_CSV_ROWS = 10_000;
+const csvRow = z.record(z.union([z.string(), z.number(), z.boolean(), z.null()]));
 
 interface DataControlProps {
   storageKey: string;
@@ -45,22 +50,32 @@ export function DataControl({ storageKey, type }: DataControlProps) {
     const file = event.target.files?.[0];
     if (!file) return;
 
+    if (file.size > MAX_CSV_FILE_SIZE) {
+      toast({ title: "File too large (max 2 MB)", variant: "destructive" });
+      return;
+    }
+
     Papa.parse(file, {
       header: true,
       dynamicTyping: true,
       complete: (results) => {
         try {
-          let dataToSave;
-          if (type === 'array') {
-            dataToSave = results.data;
-          } else {
-            dataToSave = results.data[0];
+          if (results.data.length > MAX_CSV_ROWS) {
+            toast({ title: `Import failed: too many rows (max ${MAX_CSV_ROWS})`, variant: "destructive" });
+            return;
           }
-          
+
+          const validated = z.array(csvRow).safeParse(results.data);
+          if (!validated.success) {
+            toast({ title: "Import failed: Invalid CSV structure", variant: "destructive" });
+            return;
+          }
+
+          const dataToSave = type === 'array' ? validated.data : validated.data[0];
           localStorage.setItem(storageKey, JSON.stringify(dataToSave));
           toast({ title: "Import successful" });
           window.location.reload();
-        } catch (e) {
+        } catch {
           toast({ title: "Import failed: Invalid format", variant: "destructive" });
         }
       }

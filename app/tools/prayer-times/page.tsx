@@ -245,10 +245,11 @@ export default function PrayerTimesPage() {
   };
 
   const initOrientationListeners = () => {
+    const eventTarget = window as unknown as EventTarget;
     if ('ondeviceorientationabsolute' in window) {
-      window.addEventListener('deviceorientationabsolute', handleOrientation, true);
+      eventTarget.addEventListener('deviceorientationabsolute', handleOrientation as EventListener, true);
     } else {
-      window.addEventListener('deviceorientation', handleOrientation, true);
+      eventTarget.addEventListener('deviceorientation', handleOrientation as EventListener, true);
     }
     setIsCompassActive(true);
   };

@@ -1,11 +1,15 @@
 'use client';
 
 import React, { useRef } from 'react';
+import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Download, Upload, ShieldCheck, FileJson, AlertCircle } from 'lucide-react';
 import { useLang } from '@/components/Providers';
 import { toast } from '@/hooks/use-toast';
 import { format } from 'date-fns';
+
+const MAX_JSON_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
+const validJsonBackup = z.record(z.unknown()).or(z.array(z.unknown()));
 
 const UI_TEXT: Record<string, any> = {
   en: {
@@ -117,6 +121,12 @@ export function DataPersistence({ data, onRestore, fileNamePrefix }: DataPersist
     const file = e.target.files?.[0];
     if (!file) return;
 
+    if (file.size > MAX_JSON_FILE_SIZE) {
+      toast({ title: "File too large (max 5 MB)", variant: "destructive" });
+      if (fileInputRef.current) fileInputRef.current.value = '';
+      return;
+    }
+
     if (!window.confirm(t('confirm'))) {
       if (fileInputRef.current) fileInputRef.current.value = '';
       return;
@@ -125,15 +135,23 @@ export function DataPersistence({ data, onRestore, fileNamePrefix }: DataPersist
     const reader = new FileReader();
     reader.onload = (event) => {
       try {
-        const json = JSON.parse(event.target?.result as string);
-        onRestore(json);
+        const raw = JSON.parse(event.target?.result as string);
+        const result = validJsonBackup.safeParse(raw);
+        if (!result.success) {
+          toast({
+            title: t('error_invalid'),
+            description: "File structure is not a valid JSON object or array.",
+            variant: "destructive"
+          });
+          return;
+        }
+        onRestore(result.data);
         toast({ title: t('success') });
-        // Give time for toast before potentially reloading if needed by parent
-      } catch (error) {
-        toast({ 
-          title: t('error_invalid'), 
+      } catch {
+        toast({
+          title: t('error_invalid'),
           description: "JSON parsing failed.",
-          variant: "destructive" 
+          variant: "destructive"
         });
       }
     };
@@ -141,8 +159,7 @@ export function DataPersistence({ data, onRestore, fileNamePrefix }: DataPersist
       toast({ title: t('error_read'), variant: "destructive" });
     };
     reader.readAsText(file);
-    
-    // Reset input so the same file can be picked again if needed
+
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 

@@ -4,6 +4,7 @@ import React from 'react';
 import { useLang } from '@/components/Providers';
 import { TOOL_ARTICLES } from '@/lib/tool-articles';
 import { ChevronDown, BookOpen } from 'lucide-react';
+import { sanitizeHtml } from '@/lib/utils';
 
 interface ArticleSectionProps {
   toolId: string;
@@ -49,7 +50,7 @@ export function ArticleSection({ toolId }: ArticleSectionProps) {
                 <article className="prose prose-sm md:prose-base dark:prose-invert max-w-none prose-headings:font-bold prose-headings:text-slate-700 dark:prose-headings:text-slate-200 prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-li:text-slate-600 dark:prose-li:text-slate-400">
                   <div 
                     className="leading-relaxed font-medium"
-                    dangerouslySetInnerHTML={{ __html: section.content }} 
+                    dangerouslySetInnerHTML={{ __html: sanitizeHtml(section.content) }}
                   />
                 </article>
               </div>

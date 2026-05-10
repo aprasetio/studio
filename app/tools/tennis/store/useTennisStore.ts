@@ -156,8 +156,8 @@ export const useTennisStore = create<TennisState>()(
           team2: [p3, p4],
           score1: null,
           score2: null,
-          type: 'manual',
-          status: 'scheduled'
+          type: 'manual' as const,
+          status: 'scheduled' as const
         }].sort((a, b) => a.round - b.round || a.court - b.court)
       })),
 

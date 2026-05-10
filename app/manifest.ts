@@ -15,13 +15,25 @@ export default function manifest(): MetadataRoute.Manifest {
         src: 'https://placehold.co/192x192/1e3a8a/ffffff/png?text=VK',
         sizes: '192x192',
         type: 'image/png',
-        purpose: 'any maskable',
+        purpose: 'any',
+      },
+      {
+        src: 'https://placehold.co/192x192/1e3a8a/ffffff/png?text=VK',
+        sizes: '192x192',
+        type: 'image/png',
+        purpose: 'maskable',
       },
       {
         src: 'https://placehold.co/512x512/1e3a8a/ffffff/png?text=VersoKit',
         sizes: '512x512',
         type: 'image/png',
-        purpose: 'any maskable',
+        purpose: 'any',
+      },
+      {
+        src: 'https://placehold.co/512x512/1e3a8a/ffffff/png?text=VersoKit',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'maskable',
       },
     ],
   };
