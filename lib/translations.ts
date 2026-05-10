@@ -15,9 +15,12 @@ export type TranslationKey =
   | 'split_bill' | 'pdf_merge' | 'image_to_pdf'
   | 'export' | 'import' | 'reset' | 'add' | 'delete'
   | 'status' | 'todo' | 'progress' | 'done'
-  | 'cat_sports' | 'cat_business' | 'cat_utilities' | 'cat_finance'
+  | 'cat_sports' | 'cat_business' | 'cat_utilities' | 'cat_finance' | 'cat_religious'
   | 'save' | 'cancel' | 'close' | 'search' | 'loading' | 'error' | 'success'
-  | 'confirm' | 'back' | 'next' | 'submit' | 'edit' | 'view' | 'download';
+  | 'confirm' | 'back' | 'next' | 'submit' | 'edit' | 'view' | 'download'
+  | 'backup_data' | 'restore_data' | 'backup_confirm' | 'backup_success'
+  | 'backup_error_invalid' | 'backup_error_read' | 'privacy_local'
+  | 'nav_open' | 'nav_home';
 
 export const TRANSLATIONS: Record<Language, Record<TranslationKey, string>> = {
   en: {
@@ -54,6 +57,7 @@ export const TRANSLATIONS: Record<Language, Record<TranslationKey, string>> = {
     cat_business: "Business",
     cat_utilities: "Utilities",
     cat_finance: "Finance",
+    cat_religious: "Religious",
     save: "Save",
     cancel: "Cancel",
     close: "Close",
@@ -68,6 +72,15 @@ export const TRANSLATIONS: Record<Language, Record<TranslationKey, string>> = {
     edit: "Edit",
     view: "View",
     download: "Download",
+    backup_data: "Backup Data (JSON)",
+    restore_data: "Restore Data",
+    backup_confirm: "⚠️ Warning: This will overwrite your current data. Continue?",
+    backup_success: "Data restored successfully!",
+    backup_error_invalid: "Invalid backup file!",
+    backup_error_read: "Error reading file!",
+    privacy_local: "100% Private: Data is processed locally on your device.",
+    nav_open: "Open navigation menu",
+    nav_home: "VersoKit home",
   },
   id: {
     title: "VersoKit",
@@ -103,6 +116,7 @@ export const TRANSLATIONS: Record<Language, Record<TranslationKey, string>> = {
     cat_business: "Bisnis",
     cat_utilities: "Alat Bantu",
     cat_finance: "Keuangan",
+    cat_religious: "Ibadah",
     save: "Simpan",
     cancel: "Batal",
     close: "Tutup",
@@ -117,6 +131,15 @@ export const TRANSLATIONS: Record<Language, Record<TranslationKey, string>> = {
     edit: "Edit",
     view: "Lihat",
     download: "Unduh",
+    backup_data: "Simpan Data (JSON)",
+    restore_data: "Pulihkan Data",
+    backup_confirm: "⚠️ Peringatan: Ini akan menimpa data Anda saat ini. Lanjutkan?",
+    backup_success: "Data berhasil dipulihkan!",
+    backup_error_invalid: "File backup tidak valid!",
+    backup_error_read: "Gagal membaca file!",
+    privacy_local: "100% Privat: Data diproses secara lokal di perangkat Anda.",
+    nav_open: "Buka menu navigasi",
+    nav_home: "Beranda VersoKit",
   },
   es: {
     title: "VersoKit",
@@ -166,6 +189,16 @@ export const TRANSLATIONS: Record<Language, Record<TranslationKey, string>> = {
     edit: "Editar",
     view: "Ver",
     download: "Descargar",
+    cat_religious: "Religioso",
+    backup_data: "Respaldar Datos (JSON)",
+    restore_data: "Restaurar Datos",
+    backup_confirm: "⚠️ Advertencia: Esto sobrescribirá sus datos actuales. ¿Continuar?",
+    backup_success: "¡Datos restaurados con éxito!",
+    backup_error_invalid: "¡Archivo de respaldo no válido!",
+    backup_error_read: "¡Error al leer el archivo!",
+    privacy_local: "100% Privado: Los datos se procesan localmente.",
+    nav_open: "Abrir menú de navegación",
+    nav_home: "Inicio de VersoKit",
   },
   pt: {
     title: "VersoKit",
@@ -215,6 +248,16 @@ export const TRANSLATIONS: Record<Language, Record<TranslationKey, string>> = {
     edit: "Editar",
     view: "Ver",
     download: "Baixar",
+    cat_religious: "Religioso",
+    backup_data: "Backup de Dados (JSON)",
+    restore_data: "Restaurar Dados",
+    backup_confirm: "⚠️ Aviso: Isso irá sobrescrever seus dados atuais. Continuar?",
+    backup_success: "Dados restaurados com sucesso!",
+    backup_error_invalid: "Arquivo de backup inválido!",
+    backup_error_read: "Erro ao ler o arquivo!",
+    privacy_local: "100% Privado: Os dados são processados localmente.",
+    nav_open: "Abrir menu de navegação",
+    nav_home: "Início do VersoKit",
   },
   de: {
     title: "VersoKit",
@@ -264,6 +307,16 @@ export const TRANSLATIONS: Record<Language, Record<TranslationKey, string>> = {
     edit: "Bearbeiten",
     view: "Ansehen",
     download: "Herunterladen",
+    cat_religious: "Religiös",
+    backup_data: "Daten sichern (JSON)",
+    restore_data: "Daten wiederherstellen",
+    backup_confirm: "⚠️ Warnung: Dies wird Ihre aktuellen Daten überschreiben. Fortfahren?",
+    backup_success: "Daten erfolgreich wiederhergestellt!",
+    backup_error_invalid: "Ungültige Sicherungsdatei!",
+    backup_error_read: "Fehler beim Lesen der Datei!",
+    privacy_local: "100 % Privat: Die Daten werden lokal verarbeitet.",
+    nav_open: "Navigationsmenü öffnen",
+    nav_home: "VersoKit Startseite",
   },
   fr: {
     title: "VersoKit",
@@ -313,6 +366,16 @@ export const TRANSLATIONS: Record<Language, Record<TranslationKey, string>> = {
     edit: "Modifier",
     view: "Voir",
     download: "Télécharger",
+    cat_religious: "Religieux",
+    backup_data: "Sauvegarder (JSON)",
+    restore_data: "Restaurer les données",
+    backup_confirm: "⚠️ Attention : cela écrasera vos données actuelles. Continuer ?",
+    backup_success: "Données restaurées avec succès !",
+    backup_error_invalid: "Fichier de sauvegarde invalide !",
+    backup_error_read: "Erreur lors de la lecture du fichier !",
+    privacy_local: "100% Privé : Les données sont traitées localement.",
+    nav_open: "Ouvrir le menu de navigation",
+    nav_home: "Accueil VersoKit",
   },
   it: {
     title: "VersoKit",
@@ -362,5 +425,15 @@ export const TRANSLATIONS: Record<Language, Record<TranslationKey, string>> = {
     edit: "Modifica",
     view: "Visualizza",
     download: "Scarica",
+    cat_religious: "Religioso",
+    backup_data: "Backup Dati (JSON)",
+    restore_data: "Ripristina Dati",
+    backup_confirm: "⚠️ Attenzione: questo sovrascriverà i tuoi dati attuali. Continuare?",
+    backup_success: "Dati ripristinati con successo!",
+    backup_error_invalid: "File di backup non valido!",
+    backup_error_read: "Errore durante la lettura del file!",
+    privacy_local: "100% Privato: i dati vengono elaborati localmente.",
+    nav_open: "Apri il menu di navigazione",
+    nav_home: "Home di VersoKit",
   },
 };
