@@ -1,7 +1,7 @@
 import {
   Trophy, Activity, Clock, Minimize, Users, FileText, Box,
   Calculator, Scaling, Scissors, Navigation, Stamp, FileBadge,
-  Lightbulb, BookOpen, TrendingDown,
+  Lightbulb, BookOpen, TrendingDown, QrCode,
 } from 'lucide-react';
 
 export type Category =
@@ -173,6 +173,15 @@ export const TOOLS_DATA: Tool[] = [
     href: '/tools/image-cropper',
     name: { en: 'Image Cropper', id: 'Potong Foto', de: 'Bild zuschneiden', es: 'Recortar Imagen', pt: 'Cortar Imagem', fr: 'Rogner Image', it: 'Ritaglia' },
     desc: { en: 'Crop to 1:1, 16:9 or custom ratio.', id: 'Potong ke 1:1, 16:9 atau rasio bebas.', de: 'Auf 1:1, 16:9 oder benutzerdefiniert.', es: 'Recorta a 1:1, 16:9 o personalizado.', pt: 'Corte em 1:1, 16:9 ou personalizado.', fr: 'Rognez en 1:1, 16:9 ou personnalisé.', it: 'Ritaglia in 1:1, 16:9 o personalizzato.' },
+  },
+  {
+    id: 'qr-generator',
+    icon: QrCode,
+    category: 'productivity',
+    isNew: true,
+    href: '/tools/qr-generator',
+    name: { en: 'QR Code Generator', id: 'Pembuat Kode QR', de: 'QR-Code Generator', es: 'Generador de QR', pt: 'Gerador de QR Code', fr: 'Générateur QR Code', it: 'Generatore QR Code' },
+    desc: { en: 'Generate QR codes for URLs, WiFi, or contacts. Download PNG or SVG.', id: 'Buat kode QR untuk URL, WiFi, atau kontak. Unduh PNG atau SVG.', de: 'QR-Codes für URLs, WLAN oder Kontakte. PNG oder SVG herunterladen.', es: 'Crea QR codes para URLs, WiFi o contactos. Descarga PNG o SVG.', pt: 'Crie QR codes para URLs, WiFi ou contatos. Baixe PNG ou SVG.', fr: 'Générez des QR codes pour URLs, WiFi ou contacts. Téléchargez PNG ou SVG.', it: 'Genera QR code per URL, WiFi o contatti. Scarica PNG o SVG.' },
   },
 ];
 

@@ -225,5 +225,43 @@ export const SEO_DATA: SeoCollection = {
       article: "Kompres gambar langsung di browser tanpa perlu upload ke server. Mendukung JPEG dan PNG dengan slider kualitas yang bisa diatur.",
       faq: [{ q: "Apakah kualitas berkurang?", a: "Kompresi bersifat lossy untuk JPEG, namun Anda bisa mengatur slider kualitas untuk meminimalkan penurunan visual." }]
     }
+  },
+  "qr-generator": {
+    en: {
+      title: "QR Code Generator",
+      description: "Free QR code generator for URLs, WiFi credentials, and contacts. Customize colors, download as PNG or SVG. 100% offline, no data sent.",
+      steps: [
+        "Choose an input type: URL/Text, WiFi, or Contact (vCard).",
+        "Fill in the relevant fields for your chosen type.",
+        "Optionally customize the QR foreground and background colors.",
+        "Preview the QR code updating in real time.",
+        "Click Download PNG or Download SVG to save."
+      ],
+      article: "QR codes are two-dimensional barcodes readable by any smartphone camera. This generator supports three use cases: sharing a URL or plain text, embedding WiFi credentials so guests can connect without typing a password, and encoding a vCard contact card that can be saved directly to a phone's address book.\n\nAll QR codes are generated entirely in your browser using the Web Crypto API — no data leaves your device. The SVG format is ideal for print because it scales without pixelation, while PNG is better for digital sharing (messaging apps, email).",
+      faq: [
+        { q: "What QR types are supported?", a: "URL/plain text, WiFi (WPA/WPA2, WEP, and open networks), and vCard contacts (name, phone, email)." },
+        { q: "Is my data sent to a server?", a: "No. QR codes are generated entirely in your browser. Nothing is uploaded or stored." },
+        { q: "What is the difference between PNG and SVG?", a: "PNG is a raster format — best for sharing digitally. SVG is vector-based and scales perfectly for printing at any size." },
+        { q: "How do I scan the QR code?", a: "Open your phone's camera app and point it at the code. Most modern smartphones recognize QR codes without a separate app." }
+      ]
+    },
+    id: {
+      title: "Pembuat Kode QR",
+      description: "Generator kode QR gratis untuk URL, WiFi, dan kontak. Kustomisasi warna, unduh PNG atau SVG. 100% offline, tanpa kirim data.",
+      steps: [
+        "Pilih jenis input: URL/Teks, WiFi, atau Kontak (vCard).",
+        "Isi kolom yang sesuai dengan jenis yang dipilih.",
+        "Opsional: kustomisasi warna QR dan latar belakang.",
+        "Pratinjau kode QR langsung diperbarui secara real-time.",
+        "Klik Unduh PNG atau Unduh SVG untuk menyimpan."
+      ],
+      article: "Kode QR adalah barcode dua dimensi yang bisa dibaca oleh kamera smartphone mana pun. Generator ini mendukung tiga kasus penggunaan: berbagi URL atau teks biasa, menyematkan kredensial WiFi agar tamu bisa terhubung tanpa mengetik kata sandi, dan mengenkode kartu kontak vCard yang langsung bisa disimpan ke buku alamat ponsel.\n\nSemua kode QR dibuat sepenuhnya di browser Anda — tidak ada data yang meninggalkan perangkat Anda. Format SVG ideal untuk cetak karena bisa diperbesar tanpa pikselasi, sedangkan PNG lebih cocok untuk berbagi digital.",
+      faq: [
+        { q: "Apa saja jenis QR yang didukung?", a: "URL/teks biasa, WiFi (WPA/WPA2, WEP, dan jaringan terbuka), dan kontak vCard (nama, telepon, email)." },
+        { q: "Apakah data saya dikirim ke server?", a: "Tidak. Kode QR dibuat sepenuhnya di browser Anda. Tidak ada yang diunggah atau disimpan." },
+        { q: "Apa perbedaan PNG dan SVG?", a: "PNG adalah format raster — terbaik untuk berbagi secara digital. SVG berbasis vektor dan bisa dicetak di ukuran berapa pun tanpa pecah." },
+        { q: "Bagaimana cara memindai kode QR?", a: "Buka aplikasi kamera di ponsel dan arahkan ke kode. Sebagian besar smartphone modern langsung mengenali kode QR tanpa aplikasi tambahan." }
+      ]
+    }
   }
 };
