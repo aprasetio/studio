@@ -373,10 +373,24 @@ export default function QrGeneratorPage() {
   const value = qrValue();
   const hasValue = value.length > 0;
 
+  // Build an SVG string that includes a proper quiet zone margin around the QR code.
+  // react-qr-code v2 has no marginSize prop, so we wrap the inner SVG content manually.
+  const buildExportSvg = (svgEl: SVGSVGElement): string => {
+    const qrSize = parseInt(svgEl.getAttribute('width') || '220', 10);
+    const margin = Math.max(16, Math.round(qrSize * 0.1)); // ≥10% quiet zone
+    const total = qrSize + margin * 2;
+    return (
+      `<svg xmlns="http://www.w3.org/2000/svg" width="${total}" height="${total}" viewBox="0 0 ${total} ${total}">` +
+      `<rect width="${total}" height="${total}" fill="${bgColor}"/>` +
+      `<g transform="translate(${margin},${margin})">${svgEl.innerHTML}</g>` +
+      `</svg>`
+    );
+  };
+
   const handleDownloadSVG = () => {
     const svgEl = qrWrapRef.current?.querySelector('svg');
     if (!svgEl || !hasValue) return;
-    const svgStr = new XMLSerializer().serializeToString(svgEl);
+    const svgStr = buildExportSvg(svgEl);
     const blob = new Blob([svgStr], { type: 'image/svg+xml' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -392,18 +406,19 @@ export default function QrGeneratorPage() {
   const handleDownloadPNG = () => {
     const svgEl = qrWrapRef.current?.querySelector('svg');
     if (!svgEl || !hasValue) return;
-    const size = 512;
+    const outputSize = 512;
     const canvas = document.createElement('canvas');
-    canvas.width = size;
-    canvas.height = size;
+    canvas.width = outputSize;
+    canvas.height = outputSize;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-    const svgStr = new XMLSerializer().serializeToString(svgEl);
+    // Use SVG with quiet zone baked in, then scale to outputSize
+    const svgStr = buildExportSvg(svgEl);
     const svgBlob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
     const url = URL.createObjectURL(svgBlob);
     const img = new Image();
     img.onload = () => {
-      ctx.drawImage(img, 0, 0, size, size);
+      ctx.drawImage(img, 0, 0, outputSize, outputSize);
       URL.revokeObjectURL(url);
       canvas.toBlob(blob => {
         if (!blob) return;
@@ -576,18 +591,14 @@ export default function QrGeneratorPage() {
             <CardTitle className="text-[11px] font-black uppercase tracking-[0.2em] text-muted-foreground">{t('qr_preview')}</CardTitle>
           </CardHeader>
           <CardContent className="p-6 flex flex-col items-center gap-6">
-            <div ref={qrWrapRef} className="w-full flex items-center justify-center p-6 rounded-2xl border-2 border-dashed bg-muted/20 min-h-[260px]">
+            <div className="w-full flex items-center justify-center p-4 rounded-2xl border-2 border-dashed bg-muted/20 min-h-[260px]">
               {hasValue ? (
-                <QRCode
-                  value={value}
-                  size={220}
-                  fgColor={fgColor}
-                  bgColor={bgColor}
-                  level="M"
-                  style={{ width: '100%', maxWidth: '220px', height: 'auto' }}
-                />
+                /* bgColor fill + 16px padding = quiet zone baked into the preview */
+                <div ref={qrWrapRef} style={{ backgroundColor: bgColor, padding: '16px', display: 'inline-block', borderRadius: '8px' }}>
+                  <QRCode value={value} size={200} fgColor={fgColor} bgColor={bgColor} level="M" />
+                </div>
               ) : (
-                <div className="flex flex-col items-center gap-3 text-muted-foreground/50">
+                <div ref={qrWrapRef} className="flex flex-col items-center gap-3 text-muted-foreground/50">
                   <QrCode className="h-16 w-16" />
                   <p className="text-[11px] font-bold uppercase tracking-widest text-center">{t('qr_empty')}</p>
                 </div>
