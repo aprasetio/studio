@@ -60,6 +60,7 @@ const MENU_TEXT: Record<string, any> = {
   calculator: { en: "Material Calc", id: "Kalkulator", de: "Baurechner", es: "Calculadora", pt: "Calculadora", fr: "Calculateur", it: "Calcolatore" },
   csv_helper: { en: "CSV Cleaner", id: "Pembersih CSV", de: "CSV-Reiniger", es: "Limpiador CSV", pt: "Limpeza CSV", fr: "Nettoyeur CSV", it: "Pulitore CSV" },
   split_bill: { en: "Split Bill", id: "Bagi Tagihan", de: "Rechnung teilen", es: "Dividir Cuenta", pt: "Dividir Conta", fr: "Partager l'Addition", it: "Dividi Conto" },
+  qr_generator: { en: "QR Code Generator", id: "Pembuat Kode QR", de: "QR-Code Generator", es: "Generador de QR", pt: "Gerador de QR Code", fr: "Générateur QR Code", it: "Generatore QR Code" },
 };
 
 export default function Header() {
@@ -119,6 +120,7 @@ export default function Header() {
         { href: '/tools/image-to-pdf', label: MENU_TEXT.image_to_pdf[lang] || MENU_TEXT.image_to_pdf['en'] },
         { href: '/tools/calculator', label: MENU_TEXT.calculator[lang] || MENU_TEXT.calculator['en'] },
         { href: '/tools/csv-helper', label: MENU_TEXT.csv_helper[lang] || MENU_TEXT.csv_helper['en'] },
+        { href: '/tools/qr-generator', label: MENU_TEXT.qr_generator[lang] || MENU_TEXT.qr_generator['en'] },
       ]
     }
   ];
