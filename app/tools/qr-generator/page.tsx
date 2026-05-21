@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Download, QrCode, Wifi, Contact, Link } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import { SeoContent } from '@/components/SeoContent';
@@ -29,11 +30,20 @@ const UI_TEXT: Record<string, any> = {
     enc_wpa: 'WPA/WPA2',
     enc_wep: 'WEP',
     enc_none: 'None (Open)',
-    label_name: 'Full Name',
+    vc_hint: 'Check the fields you want to include',
+    label_name: 'Name',
     placeholder_name: 'John Doe',
-    label_phone: 'Phone Number',
+    label_job_title: 'Job Title',
+    placeholder_job_title: 'Marketing Manager',
+    label_phone: 'Mobile Phone',
     placeholder_phone: '+1234567890',
-    label_email: 'Email Address',
+    label_company: 'Company',
+    placeholder_company: 'Acme Corp',
+    label_address: 'Address',
+    placeholder_address: '123 Main St, New York',
+    label_work_phone: 'Office Phone',
+    placeholder_work_phone: '+1800123456',
+    label_email: 'Email',
     placeholder_email: 'john@example.com',
     label_fg: 'QR Color',
     label_bg: 'Background',
@@ -59,11 +69,20 @@ const UI_TEXT: Record<string, any> = {
     enc_wpa: 'WPA/WPA2',
     enc_wep: 'WEP',
     enc_none: 'Tanpa Enkripsi',
-    label_name: 'Nama Lengkap',
+    vc_hint: 'Centang field yang ingin dimasukkan',
+    label_name: 'Nama',
     placeholder_name: 'Budi Santoso',
-    label_phone: 'Nomor Telepon',
+    label_job_title: 'Jabatan',
+    placeholder_job_title: 'Manajer Marketing',
+    label_phone: 'Nomor HP',
     placeholder_phone: '+628123456789',
-    label_email: 'Alamat Email',
+    label_company: 'Perusahaan',
+    placeholder_company: 'PT Contoh Maju',
+    label_address: 'Alamat',
+    placeholder_address: 'Jl. Sudirman No. 1, Jakarta',
+    label_work_phone: 'No Telp Kantor',
+    placeholder_work_phone: '+62211234567',
+    label_email: 'E-mail',
     placeholder_email: 'budi@email.com',
     label_fg: 'Warna QR',
     label_bg: 'Warna Latar',
@@ -89,11 +108,20 @@ const UI_TEXT: Record<string, any> = {
     enc_wpa: 'WPA/WPA2',
     enc_wep: 'WEP',
     enc_none: 'Keine (Offen)',
-    label_name: 'Vollständiger Name',
+    vc_hint: 'Felder auswählen, die eingeschlossen werden sollen',
+    label_name: 'Name',
     placeholder_name: 'Max Mustermann',
-    label_phone: 'Telefonnummer',
+    label_job_title: 'Berufsbezeichnung',
+    placeholder_job_title: 'Marketing Manager',
+    label_phone: 'Mobiltelefon',
     placeholder_phone: '+491234567890',
-    label_email: 'E-Mail-Adresse',
+    label_company: 'Unternehmen',
+    placeholder_company: 'Muster GmbH',
+    label_address: 'Adresse',
+    placeholder_address: 'Musterstraße 1, Berlin',
+    label_work_phone: 'Bürotelefon',
+    placeholder_work_phone: '+493012345678',
+    label_email: 'E-Mail',
     placeholder_email: 'max@beispiel.de',
     label_fg: 'QR-Farbe',
     label_bg: 'Hintergrund',
@@ -119,10 +147,19 @@ const UI_TEXT: Record<string, any> = {
     enc_wpa: 'WPA/WPA2',
     enc_wep: 'WEP',
     enc_none: 'Ninguno (Abierto)',
-    label_name: 'Nombre Completo',
+    vc_hint: 'Selecciona los campos que deseas incluir',
+    label_name: 'Nombre',
     placeholder_name: 'Juan García',
-    label_phone: 'Número de Teléfono',
+    label_job_title: 'Cargo',
+    placeholder_job_title: 'Gerente de Marketing',
+    label_phone: 'Teléfono Móvil',
     placeholder_phone: '+34612345678',
+    label_company: 'Empresa',
+    placeholder_company: 'Empresa Ejemplo S.A.',
+    label_address: 'Dirección',
+    placeholder_address: 'Calle Mayor 1, Madrid',
+    label_work_phone: 'Teléfono Oficina',
+    placeholder_work_phone: '+34912345678',
     label_email: 'Correo Electrónico',
     placeholder_email: 'juan@ejemplo.com',
     label_fg: 'Color QR',
@@ -149,11 +186,20 @@ const UI_TEXT: Record<string, any> = {
     enc_wpa: 'WPA/WPA2',
     enc_wep: 'WEP',
     enc_none: 'Nenhuma (Aberta)',
-    label_name: 'Nome Completo',
+    vc_hint: 'Selecione os campos que deseja incluir',
+    label_name: 'Nome',
     placeholder_name: 'João Silva',
-    label_phone: 'Número de Telefone',
+    label_job_title: 'Cargo',
+    placeholder_job_title: 'Gerente de Marketing',
+    label_phone: 'Celular',
     placeholder_phone: '+5511987654321',
-    label_email: 'Endereço de Email',
+    label_company: 'Empresa',
+    placeholder_company: 'Empresa Exemplo Ltda',
+    label_address: 'Endereço',
+    placeholder_address: 'Av. Paulista 1000, São Paulo',
+    label_work_phone: 'Telefone do Escritório',
+    placeholder_work_phone: '+551132345678',
+    label_email: 'E-mail',
     placeholder_email: 'joao@exemplo.com',
     label_fg: 'Cor do QR',
     label_bg: 'Fundo',
@@ -170,7 +216,7 @@ const UI_TEXT: Record<string, any> = {
     tab_wifi: 'WiFi',
     tab_vcard: 'Contact',
     label_text: 'URL ou Texte',
-    placeholder_text: 'https://exemple.fr ou n\'importe quel texte...',
+    placeholder_text: "https://exemple.fr ou n'importe quel texte...",
     label_ssid: 'Nom du Réseau (SSID)',
     placeholder_ssid: 'MonWifiMaison',
     label_password: 'Mot de passe',
@@ -179,11 +225,20 @@ const UI_TEXT: Record<string, any> = {
     enc_wpa: 'WPA/WPA2',
     enc_wep: 'WEP',
     enc_none: 'Aucun (Ouvert)',
-    label_name: 'Nom Complet',
+    vc_hint: 'Cochez les champs à inclure',
+    label_name: 'Nom',
     placeholder_name: 'Jean Dupont',
-    label_phone: 'Numéro de Téléphone',
+    label_job_title: 'Poste',
+    placeholder_job_title: 'Responsable Marketing',
+    label_phone: 'Téléphone Mobile',
     placeholder_phone: '+33612345678',
-    label_email: 'Adresse Email',
+    label_company: 'Entreprise',
+    placeholder_company: 'Entreprise Exemple SAS',
+    label_address: 'Adresse',
+    placeholder_address: '1 Rue de la Paix, Paris',
+    label_work_phone: 'Téléphone Bureau',
+    placeholder_work_phone: '+33112345678',
+    label_email: 'Email',
     placeholder_email: 'jean@exemple.fr',
     label_fg: 'Couleur QR',
     label_bg: 'Arrière-plan',
@@ -192,7 +247,7 @@ const UI_TEXT: Record<string, any> = {
     qr_empty: 'Votre QR code apparaîtra ici',
     qr_preview: 'Aperçu QR',
     customize: 'Personnaliser',
-    tip: 'Scannez avec l\'appareil photo',
+    tip: "Scannez avec l'appareil photo",
   },
   it: {
     title: 'Generatore QR Code',
@@ -209,11 +264,20 @@ const UI_TEXT: Record<string, any> = {
     enc_wpa: 'WPA/WPA2',
     enc_wep: 'WEP',
     enc_none: 'Nessuna (Aperta)',
-    label_name: 'Nome Completo',
+    vc_hint: 'Seleziona i campi da includere',
+    label_name: 'Nome',
     placeholder_name: 'Mario Rossi',
-    label_phone: 'Numero di Telefono',
+    label_job_title: 'Qualifica',
+    placeholder_job_title: 'Responsabile Marketing',
+    label_phone: 'Cellulare',
     placeholder_phone: '+39312345678',
-    label_email: 'Indirizzo Email',
+    label_company: 'Azienda',
+    placeholder_company: 'Azienda Esempio Srl',
+    label_address: 'Indirizzo',
+    placeholder_address: 'Via Roma 1, Milano',
+    label_work_phone: 'Telefono Ufficio',
+    placeholder_work_phone: '+390212345678',
+    label_email: 'Email',
     placeholder_email: 'mario@esempio.it',
     label_fg: 'Colore QR',
     label_bg: 'Sfondo',
@@ -228,6 +292,38 @@ const UI_TEXT: Record<string, any> = {
 
 type EncryptionType = 'WPA' | 'WEP' | 'nopass';
 
+type VcardKey = 'name' | 'jobTitle' | 'phone' | 'company' | 'address' | 'workPhone' | 'email';
+
+interface VcardFieldDef {
+  key: VcardKey;
+  labelKey: string;
+  placeholderKey: string;
+  inputType: string;
+  toVcard: (v: string) => string;
+}
+
+const VCARD_FIELD_DEFS: VcardFieldDef[] = [
+  { key: 'name',      labelKey: 'label_name',       placeholderKey: 'placeholder_name',       inputType: 'text',  toVcard: v => `FN:${v}` },
+  { key: 'jobTitle',  labelKey: 'label_job_title',   placeholderKey: 'placeholder_job_title',  inputType: 'text',  toVcard: v => `TITLE:${v}` },
+  { key: 'phone',     labelKey: 'label_phone',       placeholderKey: 'placeholder_phone',      inputType: 'tel',   toVcard: v => `TEL;TYPE=CELL:${v}` },
+  { key: 'company',   labelKey: 'label_company',     placeholderKey: 'placeholder_company',    inputType: 'text',  toVcard: v => `ORG:${v}` },
+  { key: 'address',   labelKey: 'label_address',     placeholderKey: 'placeholder_address',    inputType: 'text',  toVcard: v => `ADR:;;${v};;;;` },
+  { key: 'workPhone', labelKey: 'label_work_phone',  placeholderKey: 'placeholder_work_phone', inputType: 'tel',   toVcard: v => `TEL;TYPE=WORK:${v}` },
+  { key: 'email',     labelKey: 'label_email',       placeholderKey: 'placeholder_email',      inputType: 'email', toVcard: v => `EMAIL:${v}` },
+];
+
+type VcardState = Record<VcardKey, { enabled: boolean; value: string }>;
+
+const initialVcard: VcardState = {
+  name:      { enabled: true,  value: '' },
+  jobTitle:  { enabled: false, value: '' },
+  phone:     { enabled: false, value: '' },
+  company:   { enabled: false, value: '' },
+  address:   { enabled: false, value: '' },
+  workPhone: { enabled: false, value: '' },
+  email:     { enabled: false, value: '' },
+};
+
 export default function QrGeneratorPage() {
   const { lang } = useLang();
   const t = (key: string) => UI_TEXT[lang]?.[key] ?? UI_TEXT['en'][key];
@@ -239,36 +335,40 @@ export default function QrGeneratorPage() {
   const [ssid, setSsid] = useState('');
   const [wifiPassword, setWifiPassword] = useState('');
   const [encryption, setEncryption] = useState<EncryptionType>('WPA');
-  const [vcName, setVcName] = useState('');
-  const [vcPhone, setVcPhone] = useState('');
-  const [vcEmail, setVcEmail] = useState('');
+  const [vcardFields, setVcardFields] = useState<VcardState>(initialVcard);
   const [fgColor, setFgColor] = useState('#000000');
   const [bgColor, setBgColor] = useState('#ffffff');
 
+  const toggleVcField = (key: VcardKey) =>
+    setVcardFields(prev => ({ ...prev, [key]: { ...prev[key], enabled: !prev[key].enabled } }));
+
+  const setVcValue = (key: VcardKey, value: string) =>
+    setVcardFields(prev => ({ ...prev, [key]: { ...prev[key], value } }));
+
   const qrValue = useCallback((): string => {
-    if (activeTab === 'url') {
-      return urlText.trim();
-    }
+    if (activeTab === 'url') return urlText.trim();
+
     if (activeTab === 'wifi') {
       if (!ssid.trim()) return '';
-      const enc = encryption === 'WPA' ? 'WPA' : encryption === 'WEP' ? 'WEP' : 'nopass';
       const escapedSsid = ssid.replace(/[\\;,":]/g, c => '\\' + c);
       const escapedPwd = wifiPassword.replace(/[\\;,":]/g, c => '\\' + c);
-      return `WIFI:T:${enc};S:${escapedSsid};P:${escapedPwd};;`;
+      return `WIFI:T:${encryption};S:${escapedSsid};P:${escapedPwd};;`;
     }
+
     if (activeTab === 'vcard') {
-      if (!vcName.trim() && !vcPhone.trim() && !vcEmail.trim()) return '';
-      return [
-        'BEGIN:VCARD',
-        'VERSION:3.0',
-        `FN:${vcName}`,
-        vcPhone ? `TEL:${vcPhone}` : '',
-        vcEmail ? `EMAIL:${vcEmail}` : '',
-        'END:VCARD',
-      ].filter(Boolean).join('\n');
+      const anyFilled = VCARD_FIELD_DEFS.some(f => vcardFields[f.key].enabled && vcardFields[f.key].value.trim());
+      if (!anyFilled) return '';
+      const lines = ['BEGIN:VCARD', 'VERSION:3.0'];
+      VCARD_FIELD_DEFS.forEach(f => {
+        const field = vcardFields[f.key];
+        if (field.enabled && field.value.trim()) lines.push(f.toVcard(field.value.trim()));
+      });
+      lines.push('END:VCARD');
+      return lines.join('\n');
     }
+
     return '';
-  }, [activeTab, urlText, ssid, wifiPassword, encryption, vcName, vcPhone, vcEmail]);
+  }, [activeTab, urlText, ssid, wifiPassword, encryption, vcardFields]);
 
   const value = qrValue();
   const hasValue = value.length > 0;
@@ -276,8 +376,7 @@ export default function QrGeneratorPage() {
   const handleDownloadSVG = () => {
     const svgEl = qrWrapRef.current?.querySelector('svg');
     if (!svgEl || !hasValue) return;
-    const serializer = new XMLSerializer();
-    const svgStr = serializer.serializeToString(svgEl);
+    const svgStr = new XMLSerializer().serializeToString(svgEl);
     const blob = new Blob([svgStr], { type: 'image/svg+xml' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -299,9 +398,7 @@ export default function QrGeneratorPage() {
     canvas.height = size;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-
-    const serializer = new XMLSerializer();
-    const svgStr = serializer.serializeToString(svgEl);
+    const svgStr = new XMLSerializer().serializeToString(svgEl);
     const svgBlob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
     const url = URL.createObjectURL(svgBlob);
     const img = new Image();
@@ -354,6 +451,7 @@ export default function QrGeneratorPage() {
                 </TabsTrigger>
               </TabsList>
 
+              {/* URL / Text tab */}
               <TabsContent value="url" className="space-y-3 mt-4">
                 <div className="space-y-2">
                   <Label className="text-[11px] font-black uppercase tracking-widest">{t('label_text')}</Label>
@@ -366,6 +464,7 @@ export default function QrGeneratorPage() {
                 </div>
               </TabsContent>
 
+              {/* WiFi tab */}
               <TabsContent value="wifi" className="space-y-3 mt-4">
                 <div className="space-y-2">
                   <Label className="text-[11px] font-black uppercase tracking-widest">{t('label_ssid')}</Label>
@@ -395,18 +494,43 @@ export default function QrGeneratorPage() {
                 </div>
               </TabsContent>
 
-              <TabsContent value="vcard" className="space-y-3 mt-4">
+              {/* vCard tab — checkbox-based field picker */}
+              <TabsContent value="vcard" className="mt-4 space-y-1">
+                <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground mb-3">
+                  {t('vc_hint')}
+                </p>
                 <div className="space-y-2">
-                  <Label className="text-[11px] font-black uppercase tracking-widest">{t('label_name')}</Label>
-                  <Input value={vcName} onChange={e => setVcName(e.target.value)} placeholder={t('placeholder_name')} className="rounded-xl border-2" />
-                </div>
-                <div className="space-y-2">
-                  <Label className="text-[11px] font-black uppercase tracking-widest">{t('label_phone')}</Label>
-                  <Input type="tel" value={vcPhone} onChange={e => setVcPhone(e.target.value)} placeholder={t('placeholder_phone')} className="rounded-xl border-2" />
-                </div>
-                <div className="space-y-2">
-                  <Label className="text-[11px] font-black uppercase tracking-widest">{t('label_email')}</Label>
-                  <Input type="email" value={vcEmail} onChange={e => setVcEmail(e.target.value)} placeholder={t('placeholder_email')} className="rounded-xl border-2" />
+                  {VCARD_FIELD_DEFS.map(field => {
+                    const state = vcardFields[field.key];
+                    return (
+                      <div key={field.key} className="rounded-xl border-2 transition-colors overflow-hidden" style={{ borderColor: state.enabled ? 'hsl(var(--primary) / 0.4)' : 'hsl(var(--border))' }}>
+                        {/* Checkbox row */}
+                        <label className="flex items-center gap-3 px-4 py-3 cursor-pointer select-none hover:bg-muted/40 transition-colors">
+                          <Checkbox
+                            id={`vc-${field.key}`}
+                            checked={state.enabled}
+                            onCheckedChange={() => toggleVcField(field.key)}
+                          />
+                          <span className="text-[11px] font-black uppercase tracking-widest">
+                            {t(field.labelKey)}
+                          </span>
+                        </label>
+                        {/* Input — shown when checked */}
+                        {state.enabled && (
+                          <div className="px-4 pb-3">
+                            <Input
+                              type={field.inputType}
+                              value={state.value}
+                              onChange={e => setVcValue(field.key, e.target.value)}
+                              placeholder={t(field.placeholderKey)}
+                              className="rounded-lg border-2 h-9 text-sm"
+                              autoFocus={field.key !== 'name'}
+                            />
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </TabsContent>
             </Tabs>
