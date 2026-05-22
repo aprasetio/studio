@@ -373,19 +373,22 @@ export default function QrGeneratorPage() {
   const value = qrValue();
   const hasValue = value.length > 0;
 
-  // Build an export SVG with quiet zone margin.
-  // targetSize: if provided, the SVG width/height are set to that value while viewBox
-  // preserves the proportions — this forces correct scaling when drawn to canvas.
+  // Build an export SVG with a proper quiet zone.
+  // react-qr-code uses a module-based viewBox (e.g. "0 0 29 29"), not pixels.
+  // We must read that viewBox and extend it by the quiet zone in module units,
+  // then set width/height to the desired output size.
   const buildExportSvg = (svgEl: SVGSVGElement, targetSize?: number): string => {
-    const qrSize = parseInt(svgEl.getAttribute('width') || '200', 10);
-    const margin = Math.max(16, Math.round(qrSize * 0.1)); // ≥10% quiet zone
-    const total = qrSize + margin * 2;
-    const w = targetSize ?? total;
-    const h = targetSize ?? total;
+    const origVB = svgEl.getAttribute('viewBox') ?? `0 0 ${svgEl.getAttribute('width')} ${svgEl.getAttribute('height')}`;
+    const [, , vbW, vbH] = origVB.split(' ').map(Number);
+    const quietModules = 4; // QR spec minimum quiet zone
+    const totalW = vbW + quietModules * 2;
+    const totalH = vbH + quietModules * 2;
+    // For SVG download use a sensible default px size; for PNG use targetSize
+    const px = targetSize ?? Math.round(totalW * 10);
     return (
-      `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${total} ${total}">` +
-      `<rect width="${total}" height="${total}" fill="${bgColor}"/>` +
-      `<g transform="translate(${margin},${margin})">${svgEl.innerHTML}</g>` +
+      `<svg xmlns="http://www.w3.org/2000/svg" width="${px}" height="${px}" viewBox="0 0 ${totalW} ${totalH}">` +
+      `<rect width="${totalW}" height="${totalH}" fill="${bgColor}"/>` +
+      `<g transform="translate(${quietModules},${quietModules})">${svgEl.innerHTML}</g>` +
       `</svg>`
     );
   };
