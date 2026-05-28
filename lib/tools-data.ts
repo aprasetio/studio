@@ -1,7 +1,7 @@
 import {
   Trophy, Activity, Clock, Minimize, Users, FileText, Box,
   Calculator, Scaling, Scissors, Navigation, Stamp, FileBadge,
-  Lightbulb, BookOpen, TrendingDown, QrCode,
+  Lightbulb, BookOpen, TrendingDown, QrCode, Flame,
 } from 'lucide-react';
 
 export type Category =
@@ -173,6 +173,15 @@ export const TOOLS_DATA: Tool[] = [
     href: '/tools/image-cropper',
     name: { en: 'Image Cropper', id: 'Potong Foto', de: 'Bild zuschneiden', es: 'Recortar Imagen', pt: 'Cortar Imagem', fr: 'Rogner Image', it: 'Ritaglia' },
     desc: { en: 'Crop to 1:1, 16:9 or custom ratio.', id: 'Potong ke 1:1, 16:9 atau rasio bebas.', de: 'Auf 1:1, 16:9 oder benutzerdefiniert.', es: 'Recorta a 1:1, 16:9 o personalizado.', pt: 'Corte em 1:1, 16:9 ou personalizado.', fr: 'Rognez en 1:1, 16:9 ou personnalisé.', it: 'Ritaglia in 1:1, 16:9 o personalizzato.' },
+  },
+  {
+    id: 'habit-tracker',
+    icon: Flame,
+    category: 'productivity',
+    isNew: true,
+    href: '/tools/habit-tracker',
+    name: { en: 'Habit Tracker', id: 'Pelacak Habit', de: 'Gewohnheits-Tracker', es: 'Rastreador de Hábitos', pt: 'Rastreador de Hábitos', fr: 'Suivi d\'Habitudes', it: 'Tracker Abitudini' },
+    desc: { en: 'Build streaks, earn XP & coins, unlock badges. 100% local, no account needed.', id: 'Bangun streak, kumpulkan XP & koin, buka lencana. 100% lokal, tanpa akun.', de: 'Serien aufbauen, XP & Münzen verdienen, Abzeichen freischalten. 100% lokal.', es: 'Construye rachas, gana XP y monedas, desbloquea logros. 100% local.', pt: 'Construa sequências, ganhe XP e moedas, desbloqueie conquistas. 100% local.', fr: 'Créez des séries, gagnez XP et pièces, débloquez des badges. 100% local.', it: 'Costruisci sequenze, guadagna XP e monete, sblocca badge. 100% locale.' },
   },
   {
     id: 'qr-generator',

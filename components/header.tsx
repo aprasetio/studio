@@ -12,10 +12,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { 
-  Trophy, 
-  Briefcase, 
-  Wrench, 
+import {
+  Trophy,
+  Briefcase,
+  Wrench,
   ChevronDown,
   LayoutGrid,
   Navigation,
@@ -23,7 +23,8 @@ import {
   FileBadge,
   Lightbulb,
   BookOpen,
-  TrendingDown
+  TrendingDown,
+  Flame,
 } from 'lucide-react';
 
 const MENU_TEXT: Record<string, any> = {
@@ -61,6 +62,7 @@ const MENU_TEXT: Record<string, any> = {
   csv_helper: { en: "CSV Cleaner", id: "Pembersih CSV", de: "CSV-Reiniger", es: "Limpiador CSV", pt: "Limpeza CSV", fr: "Nettoyeur CSV", it: "Pulitore CSV" },
   split_bill: { en: "Split Bill", id: "Bagi Tagihan", de: "Rechnung teilen", es: "Dividir Cuenta", pt: "Dividir Conta", fr: "Partager l'Addition", it: "Dividi Conto" },
   qr_generator: { en: "QR Code Generator", id: "Pembuat Kode QR", de: "QR-Code Generator", es: "Generador de QR", pt: "Gerador de QR Code", fr: "Générateur QR Code", it: "Generatore QR Code" },
+  habit_tracker: { en: "Habit Tracker", id: "Pelacak Habit", de: "Gewohnheits-Tracker", es: "Rastreador de Hábitos", pt: "Rastreador de Hábitos", fr: "Suivi d'Habitudes", it: "Tracker Abitudini" },
 };
 
 export default function Header() {
@@ -121,6 +123,7 @@ export default function Header() {
         { href: '/tools/calculator', label: MENU_TEXT.calculator[lang] || MENU_TEXT.calculator['en'] },
         { href: '/tools/csv-helper', label: MENU_TEXT.csv_helper[lang] || MENU_TEXT.csv_helper['en'] },
         { href: '/tools/qr-generator', label: MENU_TEXT.qr_generator[lang] || MENU_TEXT.qr_generator['en'] },
+        { href: '/tools/habit-tracker', label: MENU_TEXT.habit_tracker[lang] || MENU_TEXT.habit_tracker['en'] },
       ]
     }
   ];

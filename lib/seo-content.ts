@@ -263,5 +263,43 @@ export const SEO_DATA: SeoCollection = {
         { q: "Bagaimana cara memindai kode QR?", a: "Buka aplikasi kamera di ponsel dan arahkan ke kode. Sebagian besar smartphone modern langsung mengenali kode QR tanpa aplikasi tambahan." }
       ]
     }
+  },
+  "habit-tracker": {
+    en: {
+      title: "Habit Tracker",
+      description: "Free local-first habit tracker with streaks, XP, coins, and achievements. Build daily habits with gamification. No account, no server, 100% private.",
+      steps: [
+        "Go to the Habits tab and tap 'Add Habit' to create your first habit.",
+        "Choose an emoji, color, category, and optional reminder time.",
+        "Return to the Today tab each day to mark habits as Done or Skip.",
+        "Watch your streaks grow and earn XP and coins for every action.",
+        "Visit the Shop to buy Streak Shields, and Achievements to unlock badges."
+      ],
+      article: "Building habits is hard — this tracker makes it easier by turning your daily routine into a game. Every time you complete a habit you earn XP and coins. XP feeds a level progression system with 8 levels, and coins can be spent in the Shop on Streak Shields that prevent your streak from resetting if you miss a day.\n\nAll data is stored exclusively in your browser using localStorage — nothing is sent to any server. You can export a JSON backup at any time from the Habits tab, and restore it later on any device.",
+      faq: [
+        { q: "Is my data stored on a server?", a: "No. All habit data, streaks, XP, coins, and achievements are stored only in your browser's localStorage. Nothing is uploaded." },
+        { q: "What happens if I miss a day?", a: "Your streak resets to zero — unless you have a Streak Shield, which auto-activates to protect it." },
+        { q: "What is a Streak Shield?", a: "A purchasable item (50 coins) that protects your streak when you miss a day. You can hold up to 3 shields at once." },
+        { q: "How do I earn coins?", a: "You earn 1 coin per 10 XP. Completing a habit gives 10 XP (1 coin), skipping gives 3 XP, and the Mystery Chest rewards 5–20 coins." }
+      ]
+    },
+    id: {
+      title: "Pelacak Habit",
+      description: "Pelacak habit lokal gratis dengan streak, XP, koin, dan lencana. Bangun kebiasaan harian dengan gamifikasi. Tanpa akun, tanpa server, 100% privat.",
+      steps: [
+        "Buka tab Habit dan ketuk 'Tambah Habit' untuk membuat habit pertama.",
+        "Pilih emoji, warna, kategori, dan waktu pengingat opsional.",
+        "Kembali ke tab Hari Ini setiap hari untuk menandai habit sebagai Selesai atau Lewati.",
+        "Pantau streak-mu tumbuh dan kumpulkan XP serta koin untuk setiap tindakan.",
+        "Kunjungi Toko untuk membeli Pelindung Streak, dan Lencana untuk membuka badge."
+      ],
+      article: "Membangun kebiasaan itu sulit — pelacak ini membuatnya lebih mudah dengan mengubah rutinitas harianmu menjadi permainan. Setiap kali kamu menyelesaikan habit, kamu mendapatkan XP dan koin. XP mengisi sistem level dengan 8 tingkatan, dan koin bisa dibelanjakan di Toko untuk Pelindung Streak yang mencegah streak-mu reset jika melewatkan satu hari.\n\nSemua data disimpan eksklusif di browser menggunakan localStorage — tidak ada yang dikirim ke server mana pun. Kamu bisa mengekspor backup JSON kapan saja dari tab Habit, dan memulihkannya nanti di perangkat mana pun.",
+      faq: [
+        { q: "Apakah data saya disimpan di server?", a: "Tidak. Semua data habit, streak, XP, koin, dan lencana hanya disimpan di localStorage browser Anda. Tidak ada yang diunggah." },
+        { q: "Apa yang terjadi jika saya melewatkan satu hari?", a: "Streak Anda akan reset ke nol — kecuali jika Anda memiliki Pelindung Streak yang akan aktif otomatis untuk melindunginya." },
+        { q: "Apa itu Pelindung Streak?", a: "Item yang bisa dibeli (50 koin) untuk melindungi streak ketika Anda melewatkan satu hari. Anda bisa menyimpan hingga 3 pelindung sekaligus." },
+        { q: "Bagaimana cara mendapatkan koin?", a: "Anda mendapatkan 1 koin per 10 XP. Menyelesaikan habit memberikan 10 XP (1 koin), melewati memberikan 3 XP, dan Peti Misteri memberikan 5–20 koin." }
+      ]
+    }
   }
 };
