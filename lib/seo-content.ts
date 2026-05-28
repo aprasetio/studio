@@ -263,5 +263,81 @@ export const SEO_DATA: SeoCollection = {
         { q: "Bagaimana cara memindai kode QR?", a: "Buka aplikasi kamera di ponsel dan arahkan ke kode. Sebagian besar smartphone modern langsung mengenali kode QR tanpa aplikasi tambahan." }
       ]
     }
+  },
+  "ibadah-tracker": {
+    en: {
+      title: "Ibadah Tracker",
+      description: "Free Islamic daily worship tracker for obligatory prayers, sunnah acts, Quran recitation, dzikir, fasting, and sadaqah. Muhasabah reports, amal points, and qadha reminders. 100% offline.",
+      steps: [
+        "Open the Today tab to see your daily ibadah checklist.",
+        "Tap Done to log a completed ibadah, or Jamaah for congregational prayers (+bonus AP).",
+        "Use the settings panel to enable optional sunnah acts you want to track.",
+        "Visit Muhasabah weekly to review your fardhu completion rate and qadha reminders.",
+        "Check the Badges tab to track Islamic milestones and achievements."
+      ],
+      article: "This tracker covers the full spectrum of daily Islamic worship — from the five obligatory prayers (salah) to a wide range of sunnah acts recommended by the Prophet ﷺ. Obligatory prayers earn Amal Points (AP) with a bonus for congregation (jamaah), reflecting the hadith that congregational prayer is 25–27 times more rewarding.\n\nThe Muhasabah tab provides weekly self-accounting (محاسبة), a core Islamic practice of reviewing one's deeds before the Day of Reckoning. Missed fardhu prayers trigger a gentle qadha reminder with a relevant Quranic verse — not a punitive system, but a compassionate nudge to repent and make up.\n\nAll data stays in your browser — no account, no server, fully private.",
+      faq: [
+        { q: "What is the difference between Fardhu and Sunnah ibadah?", a: "Fardhu (obligatory) ibadah such as the five daily prayers are compulsory for every Muslim. Sunnah acts are voluntary but highly recommended, carrying additional rewards." },
+        { q: "What are Amal Points (AP)?", a: "AP is a local gamification metric to track your worship consistency. It doesn't represent actual divine reward — that's with Allah. It simply motivates daily consistency." },
+        { q: "What is the Jamaah bonus?", a: "Praying in congregation (jamaah) earns bonus AP, reflecting the hadith that congregational prayer is 25–27 times more rewarding than praying alone (HR. Bukhari & Muslim)." },
+        { q: "Is my data stored on a server?", a: "No. All ibadah logs and points are stored only in your browser's localStorage. Nothing is uploaded." }
+      ]
+    },
+    id: {
+      title: "Pelacak Ibadah",
+      description: "Aplikasi pelacak ibadah Islam harian: sholat 5 waktu, sunnah, tilawah Quran, dzikir, puasa, sedekah. Muhasabah mingguan, amal points, dan pengingat qadha. 100% offline.",
+      steps: [
+        "Buka tab Hari Ini untuk melihat daftar ibadah harian.",
+        "Ketuk Selesai untuk mencatat ibadah yang telah dilakukan, atau Jamaah untuk sholat berjamaah (+bonus AP).",
+        "Gunakan panel pengaturan untuk mengaktifkan ibadah sunnah yang ingin dilacak.",
+        "Kunjungi Muhasabah secara mingguan untuk meninjau tingkat sholat fardhu dan pengingat qadha.",
+        "Cek tab Lencana untuk melihat pencapaian ibadah yang diraih."
+      ],
+      article: "Pelacak ini mencakup spektrum penuh ibadah Islam harian — dari sholat lima waktu (fardhu) hingga berbagai amalan sunnah yang dicontohkan oleh Nabi ﷺ. Sholat fardhu mendapatkan Amal Points (AP) dengan bonus untuk sholat berjamaah, mencerminkan hadits bahwa sholat berjamaah 25–27 kali lebih baik dari sholat sendirian.\n\nTab Muhasabah menyediakan evaluasi diri mingguan (محاسبة), praktik Islam inti sebelum hari kiamat. Sholat fardhu yang terlewat memunculkan pengingat qadha lembut dengan ayat Al-Quran — bukan sistem hukuman, melainkan dorongan penuh kasih untuk bertaubat dan mengqadha.\n\nSemua data tersimpan di browser Anda — tanpa akun, tanpa server, sepenuhnya privat.",
+      faq: [
+        { q: "Apa perbedaan ibadah Fardhu dan Sunnah?", a: "Ibadah fardhu seperti sholat lima waktu wajib dilakukan setiap Muslim. Amalan sunnah bersifat sukarela namun sangat dianjurkan dan membawa pahala tambahan." },
+        { q: "Apa itu Amal Points (AP)?", a: "AP adalah metrik gamifikasi lokal untuk melacak konsistensi ibadah. Ini bukan representasi pahala ilahi — pahala sesungguhnya ada di sisi Allah. AP hanya untuk memotivasi istiqomah." },
+        { q: "Apa itu bonus Jamaah?", a: "Sholat berjamaah mendapatkan bonus AP, mencerminkan hadits bahwa sholat berjamaah 25–27 kali lebih utama dari sholat sendirian (HR. Bukhari & Muslim)." },
+        { q: "Apakah data saya disimpan di server?", a: "Tidak. Semua log ibadah dan poin hanya tersimpan di localStorage browser Anda. Tidak ada yang diunggah." }
+      ]
+    }
+  },
+  "habit-tracker": {
+    en: {
+      title: "Habit Tracker",
+      description: "Free local-first habit tracker with streaks, XP, coins, and achievements. Build daily habits with gamification. No account, no server, 100% private.",
+      steps: [
+        "Go to the Habits tab and tap 'Add Habit' to create your first habit.",
+        "Choose an emoji, color, category, and optional reminder time.",
+        "Return to the Today tab each day to mark habits as Done or Skip.",
+        "Watch your streaks grow and earn XP and coins for every action.",
+        "Visit the Shop to buy Streak Shields, and Achievements to unlock badges."
+      ],
+      article: "Building habits is hard — this tracker makes it easier by turning your daily routine into a game. Every time you complete a habit you earn XP and coins. XP feeds a level progression system with 8 levels, and coins can be spent in the Shop on Streak Shields that prevent your streak from resetting if you miss a day.\n\nAll data is stored exclusively in your browser using localStorage — nothing is sent to any server. You can export a JSON backup at any time from the Habits tab, and restore it later on any device.",
+      faq: [
+        { q: "Is my data stored on a server?", a: "No. All habit data, streaks, XP, coins, and achievements are stored only in your browser's localStorage. Nothing is uploaded." },
+        { q: "What happens if I miss a day?", a: "Your streak resets to zero — unless you have a Streak Shield, which auto-activates to protect it." },
+        { q: "What is a Streak Shield?", a: "A purchasable item (50 coins) that protects your streak when you miss a day. You can hold up to 3 shields at once." },
+        { q: "How do I earn coins?", a: "You earn 1 coin per 10 XP. Completing a habit gives 10 XP (1 coin), skipping gives 3 XP, and the Mystery Chest rewards 5–20 coins." }
+      ]
+    },
+    id: {
+      title: "Pelacak Habit",
+      description: "Pelacak habit lokal gratis dengan streak, XP, koin, dan lencana. Bangun kebiasaan harian dengan gamifikasi. Tanpa akun, tanpa server, 100% privat.",
+      steps: [
+        "Buka tab Habit dan ketuk 'Tambah Habit' untuk membuat habit pertama.",
+        "Pilih emoji, warna, kategori, dan waktu pengingat opsional.",
+        "Kembali ke tab Hari Ini setiap hari untuk menandai habit sebagai Selesai atau Lewati.",
+        "Pantau streak-mu tumbuh dan kumpulkan XP serta koin untuk setiap tindakan.",
+        "Kunjungi Toko untuk membeli Pelindung Streak, dan Lencana untuk membuka badge."
+      ],
+      article: "Membangun kebiasaan itu sulit — pelacak ini membuatnya lebih mudah dengan mengubah rutinitas harianmu menjadi permainan. Setiap kali kamu menyelesaikan habit, kamu mendapatkan XP dan koin. XP mengisi sistem level dengan 8 tingkatan, dan koin bisa dibelanjakan di Toko untuk Pelindung Streak yang mencegah streak-mu reset jika melewatkan satu hari.\n\nSemua data disimpan eksklusif di browser menggunakan localStorage — tidak ada yang dikirim ke server mana pun. Kamu bisa mengekspor backup JSON kapan saja dari tab Habit, dan memulihkannya nanti di perangkat mana pun.",
+      faq: [
+        { q: "Apakah data saya disimpan di server?", a: "Tidak. Semua data habit, streak, XP, koin, dan lencana hanya disimpan di localStorage browser Anda. Tidak ada yang diunggah." },
+        { q: "Apa yang terjadi jika saya melewatkan satu hari?", a: "Streak Anda akan reset ke nol — kecuali jika Anda memiliki Pelindung Streak yang akan aktif otomatis untuk melindunginya." },
+        { q: "Apa itu Pelindung Streak?", a: "Item yang bisa dibeli (50 koin) untuk melindungi streak ketika Anda melewatkan satu hari. Anda bisa menyimpan hingga 3 pelindung sekaligus." },
+        { q: "Bagaimana cara mendapatkan koin?", a: "Anda mendapatkan 1 koin per 10 XP. Menyelesaikan habit memberikan 10 XP (1 koin), melewati memberikan 3 XP, dan Peti Misteri memberikan 5–20 koin." }
+      ]
+    }
   }
 };

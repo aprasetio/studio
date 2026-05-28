@@ -12,10 +12,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { 
-  Trophy, 
-  Briefcase, 
-  Wrench, 
+import {
+  Trophy,
+  Briefcase,
+  Wrench,
   ChevronDown,
   LayoutGrid,
   Navigation,
@@ -23,7 +23,8 @@ import {
   FileBadge,
   Lightbulb,
   BookOpen,
-  TrendingDown
+  TrendingDown,
+  Flame,
 } from 'lucide-react';
 
 const MENU_TEXT: Record<string, any> = {
@@ -33,6 +34,7 @@ const MENU_TEXT: Record<string, any> = {
   cat_religious: { en: "Religious", id: "Ibadah", de: "Religiös", es: "Religioso", pt: "Religioso", fr: "Religieux", it: "Religioso" },
   cat_finance: { en: "Finance", id: "Keuangan", de: "Finanzen", es: "Finanzas", pt: "Finanças", fr: "Finances", it: "Finanza" },
 
+  ibadah_tracker: { en: "Ibadah Tracker", id: "Pelacak Ibadah", de: "Ibadah-Tracker", es: "Rastreador Ibadah", pt: "Rastreador Ibadah", fr: "Suivi Ibadah", it: "Tracker Ibadah" },
   quran: { en: "Digital Quran", id: "Al-Quran Digital", de: "Koran Digital", es: "Corán Digital", pt: "Alcorão Digital", fr: "Coran Digital", it: "Corano Digitale" },
   prayer_times: { en: "Prayer Times & Qibla", id: "Jadwal Sholat & Kiblat", de: "Gebetszeiten", es: "Horarios Oración", pt: "Horários Oração", fr: "Prière & Qibla", it: "Preghiera" },
   americano: { en: "Americano Generator", id: "Generator Americano", de: "Americano Generator", es: "Generador Americano", pt: "Gerador Americano", fr: "Générateur Americano", it: "Generatore Americano" },
@@ -61,6 +63,7 @@ const MENU_TEXT: Record<string, any> = {
   csv_helper: { en: "CSV Cleaner", id: "Pembersih CSV", de: "CSV-Reiniger", es: "Limpiador CSV", pt: "Limpeza CSV", fr: "Nettoyeur CSV", it: "Pulitore CSV" },
   split_bill: { en: "Split Bill", id: "Bagi Tagihan", de: "Rechnung teilen", es: "Dividir Cuenta", pt: "Dividir Conta", fr: "Partager l'Addition", it: "Dividi Conto" },
   qr_generator: { en: "QR Code Generator", id: "Pembuat Kode QR", de: "QR-Code Generator", es: "Generador de QR", pt: "Gerador de QR Code", fr: "Générateur QR Code", it: "Generatore QR Code" },
+  habit_tracker: { en: "Habit Tracker", id: "Pelacak Habit", de: "Gewohnheits-Tracker", es: "Rastreador de Hábitos", pt: "Rastreador de Hábitos", fr: "Suivi d'Habitudes", it: "Tracker Abitudini" },
 };
 
 export default function Header() {
@@ -73,6 +76,7 @@ export default function Header() {
       items: [
         { href: '/tools/quran', label: MENU_TEXT.quran[lang] || MENU_TEXT.quran['en'] },
         { href: '/tools/prayer-times', label: MENU_TEXT.prayer_times[lang] || MENU_TEXT.prayer_times['en'] },
+        { href: '/tools/ibadah-tracker', label: MENU_TEXT.ibadah_tracker[lang] || MENU_TEXT.ibadah_tracker['en'] },
       ]
     },
     {
@@ -121,6 +125,7 @@ export default function Header() {
         { href: '/tools/calculator', label: MENU_TEXT.calculator[lang] || MENU_TEXT.calculator['en'] },
         { href: '/tools/csv-helper', label: MENU_TEXT.csv_helper[lang] || MENU_TEXT.csv_helper['en'] },
         { href: '/tools/qr-generator', label: MENU_TEXT.qr_generator[lang] || MENU_TEXT.qr_generator['en'] },
+        { href: '/tools/habit-tracker', label: MENU_TEXT.habit_tracker[lang] || MENU_TEXT.habit_tracker['en'] },
       ]
     }
   ];
