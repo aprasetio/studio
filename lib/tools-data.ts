@@ -26,6 +26,15 @@ export interface Tool {
 export const TOOLS_DATA: Tool[] = [
   // --- RELIGIOUS ---
   {
+    id: 'ibadah-tracker',
+    icon: Flame,
+    category: 'religious',
+    isNew: true,
+    href: '/tools/ibadah-tracker',
+    name: { en: 'Ibadah Tracker', id: 'Pelacak Ibadah', de: 'Ibadah-Tracker', es: 'Rastreador de Ibadah', pt: 'Rastreador de Ibadah', fr: 'Suivi Ibadah', it: 'Tracker Ibadah' },
+    desc: { en: 'Track daily Islamic worship: fardhu prayers, sunnah, Quran, dzikir, fasting. Muhasabah & amal points. 100% offline.', id: 'Lacak ibadah harian Islam: sholat fardhu, sunnah, tilawah, dzikir, puasa. Muhasabah & amal points. 100% offline.', de: 'Tägliche islamische Gottesdienste verfolgen: Pflichtgebete, Sunnah, Koran, Dhikr, Fasten. Muhasabah & Amal-Punkte.', es: 'Rastrea la adoración islámica diaria: oraciones fardhu, sunnah, Quran, dzikir, ayuno. 100% offline.', pt: 'Rastreie adoração islâmica diária: orações fardhu, sunnah, Quran, dzikir, jejum. 100% offline.', fr: 'Suivez le culte islamique quotidien: prières fardhu, sunnah, Coran, dhikr, jeûne. 100% hors ligne.', it: 'Traccia il culto islamico quotidiano: preghiere fardhu, sunnah, Corano, dhikr, digiuno. 100% offline.' },
+  },
+  {
     id: 'quran',
     icon: BookOpen,
     category: 'religious',

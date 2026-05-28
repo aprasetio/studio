@@ -264,6 +264,44 @@ export const SEO_DATA: SeoCollection = {
       ]
     }
   },
+  "ibadah-tracker": {
+    en: {
+      title: "Ibadah Tracker",
+      description: "Free Islamic daily worship tracker for obligatory prayers, sunnah acts, Quran recitation, dzikir, fasting, and sadaqah. Muhasabah reports, amal points, and qadha reminders. 100% offline.",
+      steps: [
+        "Open the Today tab to see your daily ibadah checklist.",
+        "Tap Done to log a completed ibadah, or Jamaah for congregational prayers (+bonus AP).",
+        "Use the settings panel to enable optional sunnah acts you want to track.",
+        "Visit Muhasabah weekly to review your fardhu completion rate and qadha reminders.",
+        "Check the Badges tab to track Islamic milestones and achievements."
+      ],
+      article: "This tracker covers the full spectrum of daily Islamic worship — from the five obligatory prayers (salah) to a wide range of sunnah acts recommended by the Prophet ﷺ. Obligatory prayers earn Amal Points (AP) with a bonus for congregation (jamaah), reflecting the hadith that congregational prayer is 25–27 times more rewarding.\n\nThe Muhasabah tab provides weekly self-accounting (محاسبة), a core Islamic practice of reviewing one's deeds before the Day of Reckoning. Missed fardhu prayers trigger a gentle qadha reminder with a relevant Quranic verse — not a punitive system, but a compassionate nudge to repent and make up.\n\nAll data stays in your browser — no account, no server, fully private.",
+      faq: [
+        { q: "What is the difference between Fardhu and Sunnah ibadah?", a: "Fardhu (obligatory) ibadah such as the five daily prayers are compulsory for every Muslim. Sunnah acts are voluntary but highly recommended, carrying additional rewards." },
+        { q: "What are Amal Points (AP)?", a: "AP is a local gamification metric to track your worship consistency. It doesn't represent actual divine reward — that's with Allah. It simply motivates daily consistency." },
+        { q: "What is the Jamaah bonus?", a: "Praying in congregation (jamaah) earns bonus AP, reflecting the hadith that congregational prayer is 25–27 times more rewarding than praying alone (HR. Bukhari & Muslim)." },
+        { q: "Is my data stored on a server?", a: "No. All ibadah logs and points are stored only in your browser's localStorage. Nothing is uploaded." }
+      ]
+    },
+    id: {
+      title: "Pelacak Ibadah",
+      description: "Aplikasi pelacak ibadah Islam harian: sholat 5 waktu, sunnah, tilawah Quran, dzikir, puasa, sedekah. Muhasabah mingguan, amal points, dan pengingat qadha. 100% offline.",
+      steps: [
+        "Buka tab Hari Ini untuk melihat daftar ibadah harian.",
+        "Ketuk Selesai untuk mencatat ibadah yang telah dilakukan, atau Jamaah untuk sholat berjamaah (+bonus AP).",
+        "Gunakan panel pengaturan untuk mengaktifkan ibadah sunnah yang ingin dilacak.",
+        "Kunjungi Muhasabah secara mingguan untuk meninjau tingkat sholat fardhu dan pengingat qadha.",
+        "Cek tab Lencana untuk melihat pencapaian ibadah yang diraih."
+      ],
+      article: "Pelacak ini mencakup spektrum penuh ibadah Islam harian — dari sholat lima waktu (fardhu) hingga berbagai amalan sunnah yang dicontohkan oleh Nabi ﷺ. Sholat fardhu mendapatkan Amal Points (AP) dengan bonus untuk sholat berjamaah, mencerminkan hadits bahwa sholat berjamaah 25–27 kali lebih baik dari sholat sendirian.\n\nTab Muhasabah menyediakan evaluasi diri mingguan (محاسبة), praktik Islam inti sebelum hari kiamat. Sholat fardhu yang terlewat memunculkan pengingat qadha lembut dengan ayat Al-Quran — bukan sistem hukuman, melainkan dorongan penuh kasih untuk bertaubat dan mengqadha.\n\nSemua data tersimpan di browser Anda — tanpa akun, tanpa server, sepenuhnya privat.",
+      faq: [
+        { q: "Apa perbedaan ibadah Fardhu dan Sunnah?", a: "Ibadah fardhu seperti sholat lima waktu wajib dilakukan setiap Muslim. Amalan sunnah bersifat sukarela namun sangat dianjurkan dan membawa pahala tambahan." },
+        { q: "Apa itu Amal Points (AP)?", a: "AP adalah metrik gamifikasi lokal untuk melacak konsistensi ibadah. Ini bukan representasi pahala ilahi — pahala sesungguhnya ada di sisi Allah. AP hanya untuk memotivasi istiqomah." },
+        { q: "Apa itu bonus Jamaah?", a: "Sholat berjamaah mendapatkan bonus AP, mencerminkan hadits bahwa sholat berjamaah 25–27 kali lebih utama dari sholat sendirian (HR. Bukhari & Muslim)." },
+        { q: "Apakah data saya disimpan di server?", a: "Tidak. Semua log ibadah dan poin hanya tersimpan di localStorage browser Anda. Tidak ada yang diunggah." }
+      ]
+    }
+  },
   "habit-tracker": {
     en: {
       title: "Habit Tracker",

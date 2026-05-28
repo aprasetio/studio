@@ -34,6 +34,7 @@ const MENU_TEXT: Record<string, any> = {
   cat_religious: { en: "Religious", id: "Ibadah", de: "Religiös", es: "Religioso", pt: "Religioso", fr: "Religieux", it: "Religioso" },
   cat_finance: { en: "Finance", id: "Keuangan", de: "Finanzen", es: "Finanzas", pt: "Finanças", fr: "Finances", it: "Finanza" },
 
+  ibadah_tracker: { en: "Ibadah Tracker", id: "Pelacak Ibadah", de: "Ibadah-Tracker", es: "Rastreador Ibadah", pt: "Rastreador Ibadah", fr: "Suivi Ibadah", it: "Tracker Ibadah" },
   quran: { en: "Digital Quran", id: "Al-Quran Digital", de: "Koran Digital", es: "Corán Digital", pt: "Alcorão Digital", fr: "Coran Digital", it: "Corano Digitale" },
   prayer_times: { en: "Prayer Times & Qibla", id: "Jadwal Sholat & Kiblat", de: "Gebetszeiten", es: "Horarios Oración", pt: "Horários Oração", fr: "Prière & Qibla", it: "Preghiera" },
   americano: { en: "Americano Generator", id: "Generator Americano", de: "Americano Generator", es: "Generador Americano", pt: "Gerador Americano", fr: "Générateur Americano", it: "Generatore Americano" },
@@ -75,6 +76,7 @@ export default function Header() {
       items: [
         { href: '/tools/quran', label: MENU_TEXT.quran[lang] || MENU_TEXT.quran['en'] },
         { href: '/tools/prayer-times', label: MENU_TEXT.prayer_times[lang] || MENU_TEXT.prayer_times['en'] },
+        { href: '/tools/ibadah-tracker', label: MENU_TEXT.ibadah_tracker[lang] || MENU_TEXT.ibadah_tracker['en'] },
       ]
     },
     {
