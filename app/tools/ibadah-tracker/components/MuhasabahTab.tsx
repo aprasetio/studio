@@ -2,8 +2,13 @@
 
 import React from 'react';
 import { format, subDays } from 'date-fns';
-import { AlertTriangle, CheckCircle2, BookOpen, Heart } from 'lucide-react';
-import { useIbadahStore, IBADAH_CATALOG, FARDHU_IDS, logKey, getFardhuStreak, getDailyFardhuRate } from '../store/useIbadahStore';
+import { AlertTriangle, CheckCircle2, BookOpen, Heart, TrendingUp, Lock } from 'lucide-react';
+import { Progress } from '@/components/ui/progress';
+import {
+  useIbadahStore, IBADAH_CATALOG, FARDHU_IDS, logKey,
+  getFardhuStreak, getDailyFardhuRate, getLevelInfo,
+  LEVEL_NAMES, SUNNAH_REQUIREMENTS,
+} from '../store/useIbadahStore';
 
 interface MuhasabahTabProps {
   t: (k: string) => string;
@@ -17,10 +22,14 @@ const MOTIVATIONAL_QUOTES = [
 ];
 
 export function MuhasabahTab({ t }: MuhasabahTabProps) {
-  const { logs } = useIbadahStore();
+  const { logs, amalPoints, sunnahPoints } = useIbadahStore();
   const todayQuote = MOTIVATIONAL_QUOTES[new Date().getDate() % MOTIVATIONAL_QUOTES.length];
   const fardhuStreak = getFardhuStreak(logs);
   const weeklyRate = getDailyFardhuRate(logs, 7);
+
+  const { level, name: levelName, desc: levelDesc, nextSunnah, sunnahPct, limitedBySunnah } = getLevelInfo(amalPoints, sunnahPoints);
+  const nextLevelName = LEVEL_NAMES[level + 1] ?? null;
+  const nextLevelSunnahReq = SUNNAH_REQUIREMENTS[level + 1] ?? null;
 
   // Last 7 days fardhu analysis
   const weekDays = Array.from({ length: 7 }, (_, i) => {
@@ -87,6 +96,51 @@ export function MuhasabahTab({ t }: MuhasabahTabProps) {
             <p className="text-[10px] font-bold uppercase text-muted-foreground">{t('weekly_ap')}</p>
           </div>
         </div>
+      </div>
+
+      {/* Level progress panel — dual-axis */}
+      <div className="bg-card border-2 rounded-2xl p-5 space-y-4">
+        <div className="flex items-center gap-2">
+          <TrendingUp className="h-5 w-5 text-primary" />
+          <p className="font-black uppercase tracking-tight text-sm">{t('sunnah_level_title')}</p>
+        </div>
+
+        {/* Current level */}
+        <div className="flex items-center gap-3">
+          <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+            <span className="text-xl font-black text-primary">{level}</span>
+          </div>
+          <div>
+            <p className="font-black text-base">{levelName}</p>
+            <p className="text-[10px] text-muted-foreground">{levelDesc}</p>
+          </div>
+        </div>
+
+        {/* Sunnah AP bar */}
+        {nextLevelName && nextLevelSunnahReq !== null && (
+          <div className="space-y-2">
+            <div className="flex justify-between text-[10px] font-black uppercase tracking-wide text-muted-foreground">
+              <span className="flex items-center gap-1">
+                {limitedBySunnah && <Lock className="h-3 w-3 text-amber-500" />}
+                {t('sunnah_needed')} → {nextLevelName}
+              </span>
+              <span className="text-amber-600">{sunnahPoints} / {nextSunnah} SP</span>
+            </div>
+            <Progress value={sunnahPct} className="h-2.5" />
+            {limitedBySunnah && (
+              <p className="text-[10px] font-bold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg px-3 py-2">
+                {t('limited_by_sunnah_desc')}
+              </p>
+            )}
+          </div>
+        )}
+
+        {/* Max level */}
+        {!nextLevelName && (
+          <p className="text-[11px] font-bold text-emerald-600 text-center">
+            ✨ {t('max_level_reached')}
+          </p>
+        )}
       </div>
 
       {/* 7-day grid */}

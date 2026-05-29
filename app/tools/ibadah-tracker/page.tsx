@@ -79,6 +79,23 @@ const UI_TEXT: Record<string, Record<string, string>> = {
   cat_puasa:         { en: 'Fasting', id: 'Puasa Sunnah', de: 'Fasten', es: 'Ayuno', pt: 'Jejum', fr: 'Jeûne', it: 'Digiuno' },
   cat_sedekah:       { en: 'Charity', id: 'Sedekah', de: 'Almosen', es: 'Caridad', pt: 'Caridade', fr: 'Charité', it: 'Carità' },
   cat_amal:          { en: 'Good Deeds', id: 'Amal Sholeh', de: 'Gute Taten', es: 'Buenas Obras', pt: 'Boas Ações', fr: 'Bonnes Œuvres', it: 'Buone Opere' },
+  cat_insidental:    { en: 'Occasional Deeds', id: 'Ibadah Insidental', de: 'Gelegenheitswerke', es: 'Actos Ocasionales', pt: 'Atos Ocasionais', fr: 'Actes Occasionnels', it: 'Atti Occasionali' },
+
+  // Quantity picker (Tahajud rakaat)
+  pick_rakaat: { en: 'Select rakaat count', id: 'Pilih jumlah rakaat', de: 'Rakaat-Anzahl wählen', es: 'Seleccionar rakaat', pt: 'Selecionar rakaat', fr: 'Choisir rakaat', it: 'Seleziona rakaat' },
+
+  // Stats tab — sunnah AP card & level
+  sunnah_ap:           { en: 'Sunnah Points', id: 'Poin Sunnah', de: 'Sunnah-Punkte', es: 'Puntos Sunnah', pt: 'Pontos Sunnah', fr: 'Points Sunnah', it: 'Punti Sunnah' },
+  current_level:       { en: 'Current Level', id: 'Level Saat Ini', de: 'Aktuelles Level', es: 'Nivel Actual', pt: 'Nível Atual', fr: 'Niveau Actuel', it: 'Livello Attuale' },
+  add_sunnah_to_advance: { en: 'Do sunnah to level up', id: 'Tambah sunnah untuk naik level', de: 'Sunnah für Level-Aufstieg', es: 'Añade sunnah para subir', pt: 'Adicione sunnah para avançar', fr: 'Ajoutez sunnah pour progresser', it: 'Aggiungi sunnah per avanzare' },
+
+  // Muhasabah — sunnah level panel
+  sunnah_level_title:      { en: 'Level Progression', id: 'Syarat Naik Level', de: 'Level-Aufstieg', es: 'Progresión de Nivel', pt: 'Progressão de Nível', fr: 'Progression de Niveau', it: 'Progressione Livello' },
+  sunnah_needed:           { en: 'Sunnah needed', id: 'Sunnah dibutuhkan', de: 'Sunnah benötigt', es: 'Sunnah necesario', pt: 'Sunnah necessário', fr: 'Sunnah requis', it: 'Sunnah necessario' },
+  limited_by_sunnah:       { en: 'Sunnah gate', id: 'Syarat sunnah', de: 'Sunnah-Bedingung', es: 'Requisito sunnah', pt: 'Requisito sunnah', fr: 'Condition sunnah', it: 'Requisito sunnah' },
+  limited_by_sunnah_desc:  { en: 'Your total AP is enough to advance, but you need more sunnah worship to unlock the next level.', id: 'AP kamu sudah cukup untuk naik level, namun kamu butuh lebih banyak ibadah sunnah untuk membuka level berikutnya.', de: 'Dein Gesamt-AP reicht für den Aufstieg, aber du benötigst mehr Sunnah-Gottesdienste.', es: 'Tu AP total es suficiente, pero necesitas más adoración sunnah para el siguiente nivel.', pt: 'Seu AP total é suficiente, mas precisa de mais adoração sunnah para o próximo nível.', fr: "Votre AP total suffit, mais vous avez besoin de plus d'adoration sunnah pour le niveau suivant.", it: 'Il tuo AP totale è sufficiente, ma hai bisogno di più adorazione sunnah per il prossimo livello.' },
+  sunnah_gate_hint:        { en: 'Keep doing sunnah ibadah to unlock the next level!', id: 'Tambah ibadah sunnah untuk membuka level berikutnya!', de: 'Mehr Sunnah für den nächsten Level!', es: '¡Haz más sunnah para desbloquear el siguiente nivel!', pt: 'Faça mais sunnah para desbloquear o próximo nível!', fr: 'Faites plus de sunnah pour débloquer le niveau suivant!', it: 'Fai più sunnah per sbloccare il livello successivo!' },
+  max_level_reached:       { en: 'Maximum level reached — may Allah keep you steadfast!', id: 'Level tertinggi tercapai — semoga Allah istiqomahkan!', de: 'Höchstes Level erreicht!', es: '¡Nivel máximo alcanzado!', pt: 'Nível máximo atingido!', fr: 'Niveau maximum atteint!', it: 'Livello massimo raggiunto!' },
 };
 
 // ─── Component ───────────────────────────────────────────────────────────────

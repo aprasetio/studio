@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { format, getDay } from 'date-fns';
-import { Sparkles, Settings, ChevronDown, ChevronUp } from 'lucide-react';
+import { Sparkles, Settings, ChevronDown, ChevronUp, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
@@ -23,6 +23,7 @@ const CATEGORY_LABELS: Record<IbadahCategory, string> = {
   puasa:         '🌙 Puasa Sunnah',
   sedekah:       '💝 Sedekah',
   amal:          '🤝 Amal Sholeh',
+  insidental:    '🌸 Ibadah Insidental',
 };
 
 interface TodayTabProps {
@@ -30,7 +31,7 @@ interface TodayTabProps {
 }
 
 export function TodayTab({ t }: TodayTabProps) {
-  const { enabledIds, logs, amalPoints, toggleIbadah, logIbadah, undoLog } = useIbadahStore();
+  const { enabledIds, logs, amalPoints, sunnahPoints, toggleIbadah, logIbadah, undoLog } = useIbadahStore();
   const [now, setNow] = useState(Date.now());
   const [showSettings, setShowSettings] = useState(false);
 
@@ -48,9 +49,11 @@ export function TodayTab({ t }: TodayTabProps) {
   const allFardhuDone = fardhuDone === 5;
 
   // Today's AP
-  const todayAP = Object.values(logs).filter(l => l.date === todayStr && l.status === 'done').reduce((acc, l) => acc + l.ap, 0);
+  const todayAP = Object.values(logs)
+    .filter(l => l.date === todayStr && l.status === 'done')
+    .reduce((acc, l) => acc + l.ap, 0);
 
-  const { level, name: levelName, pct: apPct, next: apNext } = getLevelInfo(amalPoints);
+  const { level, name: levelName, apPct, nextAP, limitedBySunnah } = getLevelInfo(amalPoints, sunnahPoints);
 
   const canUndo = (ibadahId: string): boolean => {
     const log = logs[logKey(ibadahId, todayStr)];
@@ -72,7 +75,10 @@ export function TodayTab({ t }: TodayTabProps) {
     byCategory[def.category]!.push(def);
   }
 
-  const categoryOrder: IbadahCategory[] = ['sholat_fardhu', 'sholat_sunnah', 'quran', 'dzikir', 'puasa', 'sedekah', 'amal'];
+  const categoryOrder: IbadahCategory[] = [
+    'sholat_fardhu', 'sholat_sunnah', 'quran', 'dzikir',
+    'puasa', 'sedekah', 'amal', 'insidental',
+  ];
 
   // Sunnah items for settings panel
   const sunnahDefs = IBADAH_CATALOG.filter(d => !d.isFardhu);
@@ -107,8 +113,15 @@ export function TodayTab({ t }: TodayTabProps) {
         {/* AP + Level bar */}
         <div className="space-y-1">
           <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-muted-foreground">
-            <span>{levelName} (Lv.{level})</span>
-            <span>{amalPoints} / {apNext} AP</span>
+            <span className="flex items-center gap-1">
+              {levelName} (Lv.{level})
+              {limitedBySunnah && (
+                <Badge variant="outline" className="text-[8px] font-black px-1 py-0 border-amber-400 text-amber-600">
+                  {t('limited_by_sunnah')}
+                </Badge>
+              )}
+            </span>
+            <span>{amalPoints} / {nextAP} AP</span>
           </div>
           <Progress value={apPct} className="h-2" />
         </div>
@@ -118,6 +131,14 @@ export function TodayTab({ t }: TodayTabProps) {
           <p className="text-[11px] font-black text-emerald-600 dark:text-emerald-400 text-center">
             +{todayAP} AP {t('earned_today')} ✨
           </p>
+        )}
+
+        {/* Sunnah gate warning */}
+        {limitedBySunnah && (
+          <div className="flex items-center gap-2 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-xl px-3 py-2">
+            <AlertCircle className="h-3.5 w-3.5 text-amber-600 flex-shrink-0" />
+            <p className="text-[10px] font-bold text-amber-700 dark:text-amber-400">{t('sunnah_gate_hint')}</p>
+          </div>
         )}
       </div>
 
@@ -142,7 +163,9 @@ export function TodayTab({ t }: TodayTabProps) {
                 key={def.id}
                 def={def}
                 log={logs[logKey(def.id, todayStr)]}
-                onDone={(isJamaah) => logIbadah(def.id, todayStr, 'done', isJamaah)}
+                onDone={(isJamaah, detail, overrideAP) =>
+                  logIbadah(def.id, todayStr, 'done', { isJamaah, detail, overrideAP })
+                }
                 onMissed={def.isFardhu ? () => logIbadah(def.id, todayStr, 'missed') : undefined}
                 onUndo={() => undoLog(def.id, todayStr)}
                 canUndo={canUndo(def.id)}

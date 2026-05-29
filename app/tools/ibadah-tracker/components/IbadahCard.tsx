@@ -9,17 +9,18 @@ import { IbadahDef, DailyLog } from '../store/useIbadahStore';
 interface IbadahCardProps {
   def: IbadahDef;
   log: DailyLog | undefined;
-  onDone: (isJamaah: boolean) => void;
+  onDone: (isJamaah: boolean, detail?: string, overrideAP?: number) => void;
   onMissed?: () => void;
   onUndo: () => void;
   canUndo: boolean;
-  isMissedPast?: boolean; // day is past and fardhu not logged
+  isMissedPast?: boolean;
   t: (k: string) => string;
 }
 
 export function IbadahCard({ def, log, onDone, onMissed, onUndo, canUndo, isMissedPast, t }: IbadahCardProps) {
   const isDone = log?.status === 'done';
   const isMissed = log?.status === 'missed' || (isMissedPast && !log);
+  const hasQuantityPicker = !!def.quantityOptions && !isDone && !isMissed;
 
   return (
     <div
@@ -73,6 +74,11 @@ export function IbadahCard({ def, log, onDone, onMissed, onUndo, canUndo, isMiss
                 <Users className="h-2.5 w-2.5 mr-1" />JAMAAH +{def.jamaahBonusAP}
               </Badge>
             )}
+            {isDone && log?.detail && (
+              <Badge variant="outline" className="text-[9px] font-black uppercase px-1.5 py-0">
+                {log.detail}
+              </Badge>
+            )}
             {isDone && (
               <Badge variant="secondary" className="text-[9px] font-black uppercase px-1.5 py-0">
                 +{log.ap} AP
@@ -88,18 +94,20 @@ export function IbadahCard({ def, log, onDone, onMissed, onUndo, canUndo, isMiss
           )}
         </div>
 
-        {/* Actions */}
+        {/* Actions — Done button hidden when quantity picker is active */}
         <div className="flex flex-col gap-1.5 flex-shrink-0">
           {!isDone && !isMissed && (
             <>
-              <Button
-                size="sm"
-                onClick={() => onDone(false)}
-                className="h-9 px-3 text-xs font-black uppercase bg-emerald-600 hover:bg-emerald-700 text-white"
-              >
-                <Check className="h-3.5 w-3.5 mr-1" />
-                {t('done')}
-              </Button>
+              {!def.quantityOptions && (
+                <Button
+                  size="sm"
+                  onClick={() => onDone(false)}
+                  className="h-9 px-3 text-xs font-black uppercase bg-emerald-600 hover:bg-emerald-700 text-white"
+                >
+                  <Check className="h-3.5 w-3.5 mr-1" />
+                  {t('done')}
+                </Button>
+              )}
               {def.isFardhu && (
                 <Button
                   size="sm"
@@ -135,6 +143,26 @@ export function IbadahCard({ def, log, onDone, onMissed, onUndo, canUndo, isMiss
           )}
         </div>
       </div>
+
+      {/* Rakaat quantity picker — shown below the main row */}
+      {hasQuantityPicker && (
+        <div className="mt-3 pt-3 border-t border-border/50">
+          <p className="text-[10px] font-black uppercase tracking-[0.15em] text-muted-foreground mb-2">
+            {t('pick_rakaat')}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {def.quantityOptions!.map(opt => (
+              <button
+                key={opt.detail}
+                onClick={() => onDone(false, opt.detail, opt.ap)}
+                className="px-3 py-1.5 text-[11px] font-black uppercase rounded-xl border-2 border-primary/30 bg-primary/5 hover:bg-emerald-600 hover:text-white hover:border-emerald-600 transition-all"
+              >
+                {opt.label} <span className="opacity-70">+{opt.ap}AP</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
