@@ -6,8 +6,12 @@ import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer,
   AreaChart, Area, PieChart, Pie, Cell, Legend,
 } from 'recharts';
-import { useIbadahStore, IBADAH_CATALOG, FARDHU_IDS, logKey, getFardhuStreak } from '../store/useIbadahStore';
+import {
+  useIbadahStore, IBADAH_CATALOG, FARDHU_IDS, logKey,
+  getFardhuStreak, getLevelInfo, LEVEL_NAMES,
+} from '../store/useIbadahStore';
 import { Flame, Trophy, Star, TrendingUp } from 'lucide-react';
+import { Progress } from '@/components/ui/progress';
 
 interface StatsTabProps {
   t: (k: string) => string;
@@ -21,10 +25,14 @@ const CATEGORY_COLORS: Record<string, string> = {
   puasa:         '#14b8a6',
   sedekah:       '#ec4899',
   amal:          '#6366f1',
+  insidental:    '#f97316',
 };
 
 export function StatsTab({ t }: StatsTabProps) {
-  const { logs, amalPoints, level } = useIbadahStore();
+  const { logs, amalPoints, sunnahPoints } = useIbadahStore();
+
+  const { level, name: levelName, apPct, nextAP, sunnahPct, nextSunnah, limitedBySunnah } = getLevelInfo(amalPoints, sunnahPoints);
+  const nextLevelName = LEVEL_NAMES[level + 1] ?? null;
 
   // Weekly fardhu bar chart
   const weeklyData = Array.from({ length: 7 }, (_, i) => {
@@ -59,13 +67,12 @@ export function StatsTab({ t }: StatsTabProps) {
 
   const streak = getFardhuStreak(logs);
   const totalDone = Object.values(logs).filter(l => l.status === 'done').length;
-  const totalJamaah = Object.values(logs).filter(l => l.isJamaah && l.status === 'done').length;
 
   const summaryCards = [
-    { icon: Flame,     value: streak,     label: t('fardhu_streak'), color: 'text-orange-500', bg: 'bg-orange-50 dark:bg-orange-950/30' },
-    { icon: Trophy,    value: totalDone,  label: t('total_ibadah'),  color: 'text-emerald-600', bg: 'bg-emerald-50 dark:bg-emerald-950/30' },
-    { icon: TrendingUp,value: amalPoints, label: t('total_ap'),      color: 'text-purple-600',  bg: 'bg-purple-50 dark:bg-purple-950/30' },
-    { icon: Star,      value: totalJamaah,label: t('total_jamaah'),  color: 'text-blue-600',    bg: 'bg-blue-50 dark:bg-blue-950/30' },
+    { icon: Flame,      value: streak,       label: t('fardhu_streak'), color: 'text-orange-500', bg: 'bg-orange-50 dark:bg-orange-950/30' },
+    { icon: Trophy,     value: totalDone,    label: t('total_ibadah'),  color: 'text-emerald-600', bg: 'bg-emerald-50 dark:bg-emerald-950/30' },
+    { icon: TrendingUp, value: amalPoints,   label: t('total_ap'),      color: 'text-purple-600',  bg: 'bg-purple-50 dark:bg-purple-950/30' },
+    { icon: Star,       value: sunnahPoints, label: t('sunnah_ap'),     color: 'text-blue-600',    bg: 'bg-blue-50 dark:bg-blue-950/30' },
   ];
 
   if (Object.keys(logs).length === 0) {
@@ -87,6 +94,42 @@ export function StatsTab({ t }: StatsTabProps) {
             <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">{label}</p>
           </div>
         ))}
+      </div>
+
+      {/* Level progress card */}
+      <div className="bg-card border-2 rounded-2xl p-5 space-y-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-[10px] font-black uppercase tracking-[0.15em] text-muted-foreground">{t('current_level')}</p>
+            <p className="text-xl font-black">{levelName} <span className="text-sm text-muted-foreground font-bold">Lv.{level}</span></p>
+          </div>
+          {limitedBySunnah && nextLevelName && (
+            <div className="text-right">
+              <p className="text-[9px] font-black uppercase text-amber-600">{t('limited_by_sunnah')}</p>
+              <p className="text-[10px] text-muted-foreground">{t('add_sunnah_to_advance')}</p>
+            </div>
+          )}
+        </div>
+
+        {/* AP bar */}
+        <div className="space-y-1">
+          <div className="flex justify-between text-[9px] font-black uppercase text-muted-foreground">
+            <span>{t('total_ap')}</span>
+            <span>{amalPoints} / {nextAP} AP</span>
+          </div>
+          <Progress value={apPct} className="h-2" />
+        </div>
+
+        {/* Sunnah bar */}
+        {nextLevelName && (
+          <div className="space-y-1">
+            <div className="flex justify-between text-[9px] font-black uppercase text-muted-foreground">
+              <span>{t('sunnah_ap')} → {nextLevelName}</span>
+              <span className={limitedBySunnah ? 'text-amber-600' : ''}>{sunnahPoints} / {nextSunnah} SP</span>
+            </div>
+            <Progress value={sunnahPct} className={`h-2 ${limitedBySunnah ? '[&>div]:bg-amber-500' : ''}`} />
+          </div>
+        )}
       </div>
 
       {/* Fardhu + Jamaah bar chart */}
