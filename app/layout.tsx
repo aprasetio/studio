@@ -6,6 +6,7 @@ import { Analytics } from '@vercel/analytics/next';
 import FooterLinks from '@/components/footer-links';
 import FooterTagline from '@/components/footer-tagline';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { ExitIntentModal } from '@/components/ExitIntentModal';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -79,6 +80,7 @@ export default function RootLayout({
               <FooterTagline />
             </div>
           </footer>
+          <ExitIntentModal />
           <Toaster />
           <Analytics />
         </Providers>
