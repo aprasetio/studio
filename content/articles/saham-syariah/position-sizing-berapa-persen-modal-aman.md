@@ -76,11 +76,11 @@ Berikut ilustrasi nyata dengan modal Rp 100 juta, risiko 1% per trade (Rp 1.000.
 | ADRO (Volatil) | 2.800 | 120 | 2.656 | 144 (1.2×ATR) | ~69 lot | ~Rp 19,3 jt |
 | PGEO (Moderat) | 8.500 | 210 | 8.185 | 315 (1.5×ATR) | ~31 lot | ~Rp 26,4 jt |
 | TLKM (Defensif) | 3.200 | 28 | 3.144 | 56 (2.0×ATR) | ~89 lot | ~Rp 28,5 jt |
-| BBCA (Defensif) | 9.100 | 72 | 8.956 | 144 (2.0×ATR) | ~69 lot | ~Rp 62,8 jt |
+| BRIS (Defensif) | 1.850 | 25 | 1.800 | 50 (2.0×ATR) | ~200 lot | ~Rp 37 jt |
 
 *Risiko aktual di semua baris = Rp 1.000.000 (1% modal). Yang berbeda hanya jumlah lot dan modal terpakai.*
 
-**Perhatikan BBCA:** meski modal terpakai sangat besar (62%), risiko tetap Rp 1 juta. Ini karena ATR-nya kecil. Jika ini terasa terlalu besar, turunkan risiko per trade ke 0.5% → modal terpakai jadi ~Rp 31 juta.
+**Perhatikan BRIS:** meski harga per saham rendah (Rp 1.850), jumlah lot menjadi sangat banyak (~200 lot) karena ATR-nya kecil. Modal terpakai 37% masih di atas batas ideal 25%. Turunkan risiko ke 0.5% → lot jadi ~100, modal ~Rp 18,5 jt.
 
 ## Aturan Konsentrasi: Jangan Biarkan Satu Saham Mendominasi Portofolio
 
