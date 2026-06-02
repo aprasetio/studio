@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { ArticleCard } from './ArticleCard';
-import { CATEGORY_META, ARTICLE_CATEGORIES, type ArticleMeta, type ArticleCategory } from '@/lib/articles';
+import { CATEGORY_META, ARTICLE_CATEGORIES, type ArticleMeta, type ArticleCategory } from '@/lib/articles-config';
 
 interface Props {
   articles: ArticleMeta[];

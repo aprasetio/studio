@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Clock, Calendar } from 'lucide-react';
 import { CategoryBadge } from './CategoryBadge';
-import { formatDate, type ArticleMeta } from '@/lib/articles';
+import { formatDate, type ArticleMeta } from '@/lib/articles-config';
 
 export function ArticleCard({ article }: { article: ArticleMeta }) {
   const href = `/article/${article.category}/${article.slug}`;

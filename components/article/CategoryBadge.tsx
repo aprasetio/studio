@@ -1,5 +1,5 @@
 import React from 'react';
-import { CATEGORY_META, type ArticleCategory } from '@/lib/articles';
+import { CATEGORY_META, type ArticleCategory } from '@/lib/articles-config';
 
 const COLOR_MAP: Record<string, string> = {
   emerald: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400',

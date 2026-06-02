@@ -1,3 +1,5 @@
+// Server-only — uses Node.js fs. Do NOT import in client components.
+// Import types/constants from lib/articles-config.ts instead.
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -5,48 +7,19 @@ import { remark } from 'remark';
 import remarkHtml from 'remark-html';
 import readingTime from 'reading-time';
 
+export {
+  ARTICLE_CATEGORIES,
+  CATEGORY_META,
+  formatDate,
+  type ArticleCategory,
+  type ArticleFrontmatter,
+  type ArticleMeta,
+  type Article,
+} from './articles-config';
+
+import { ARTICLE_CATEGORIES, type ArticleCategory, type ArticleFrontmatter, type ArticleMeta, type Article } from './articles-config';
+
 const ARTICLES_DIR = path.join(process.cwd(), 'content/articles');
-
-export const ARTICLE_CATEGORIES = [
-  'olahraga',
-  'keuangan',
-  'produktivitas',
-  'ibadah',
-  'saham-syariah',
-  'tips',
-] as const;
-
-export type ArticleCategory = (typeof ARTICLE_CATEGORIES)[number];
-
-export const CATEGORY_META: Record<ArticleCategory, { label: string; emoji: string; color: string }> = {
-  olahraga:       { label: 'Olahraga',       emoji: '⚽', color: 'emerald' },
-  keuangan:       { label: 'Keuangan',       emoji: '💰', color: 'blue' },
-  produktivitas:  { label: 'Produktivitas',  emoji: '🎯', color: 'purple' },
-  ibadah:         { label: 'Ibadah',         emoji: '🕌', color: 'teal' },
-  'saham-syariah':{ label: 'Saham Syariah',  emoji: '📈', color: 'amber' },
-  tips:           { label: 'Tips & Trik',    emoji: '💡', color: 'rose' },
-};
-
-export interface ArticleFrontmatter {
-  title: string;
-  description: string;
-  category: ArticleCategory;
-  publishedAt: string;
-  tags?: string[];
-  relatedTool?: string;   // tool ID from TOOLS_DATA (e.g. "budget", "futsal")
-  crossPromo?: boolean;   // show SmartScreener widget
-  lang?: string;
-  author?: string;
-}
-
-export interface ArticleMeta extends ArticleFrontmatter {
-  slug: string;
-  readingTime: string;
-}
-
-export interface Article extends ArticleMeta {
-  contentHtml: string;
-}
 
 function ensureDir(): boolean {
   return fs.existsSync(ARTICLES_DIR);
@@ -134,9 +107,4 @@ export function getAllArticleSlugs(): { category: string; slug: string }[] {
     files.forEach(file => result.push({ category, slug: file.replace(/\.md$/, '') }));
   }
   return result;
-}
-
-export function formatDate(dateStr: string): string {
-  const d = new Date(dateStr);
-  return d.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
 }
