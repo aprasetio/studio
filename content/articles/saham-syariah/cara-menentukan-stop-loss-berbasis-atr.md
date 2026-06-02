@@ -23,7 +23,7 @@ ATR bukan tentang arah harga (naik atau turun). ATR hanya mengukur **seberapa ja
 
 Kenapa ini penting untuk stop loss? Karena setiap saham punya "napas" yang berbeda:
 
-- **BBCA** (bank besar, likuid tinggi): bergerak ±1% per hari secara normal
+- **BRIS** (bank syariah, likuid tinggi): bergerak ±1% per hari secara normal
 - **ADRO** (komoditas): bisa bergerak ±3–4% per hari di musim volatil
 - **Saham lapis tiga**: bisa swing ±8–10% dalam sehari
 
@@ -43,7 +43,7 @@ Dari ATR%, tentukan level volatilitas saham, lalu terapkan multiplier sesuai kat
 |---|---|---|---|
 | Volatil Tinggi (Komoditas, lapis 2–3) | > 3% | 1,2 × ATR | 2,5 × ATR |
 | Moderat (Blue chip sektoral) | 1%–3% | 1,5 × ATR | 3,0 × ATR |
-| Defensif (BBCA, TLKM, konsumer besar) | < 1% | 2,0 × ATR | 3,5 × ATR |
+| Defensif (BRIS, TLKM, konsumer besar) | < 1% | 2,0 × ATR | 3,5 × ATR |
 
 *Risk/Reward minimum selalu 1:2 untuk semua kategori. ATR dihitung 14 periode.*
 
@@ -67,7 +67,7 @@ Ini zona paling umum untuk saham IDX menengah-atas. Multiplier seimbang antara p
 
 ### Kategori 3 — Saham Defensif (ATR% < 1%)
 
-Contoh tipikal: BBCA, TLKM, saham konsumer besar.
+Contoh tipikal: BRIS, TLKM, saham konsumer besar.
 
 **Stop Loss   = Entry − (2,0 × ATR)**  
 **Take Profit = Entry + (3,5 × ATR)**
