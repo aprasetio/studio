@@ -143,6 +143,12 @@ export default function Header() {
         </Link>
         
         <nav className="hidden lg:flex items-center space-x-4" aria-label="Main navigation">
+          <Link
+            href="/article"
+            className="flex items-center px-3 py-2 min-h-[44px] text-sm font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
+          >
+            📄 {lang === 'id' ? 'Artikel' : 'Articles'}
+          </Link>
           {categories.map((cat, idx) => (
             <DropdownMenu key={idx}>
               <DropdownMenuTrigger
@@ -183,6 +189,12 @@ export default function Header() {
               align="end"
               className="w-64 rounded-2xl shadow-2xl border-2 max-h-[80vh] overflow-y-auto overscroll-contain scrollbar-thin"
             >
+              <DropdownMenuItem asChild>
+                <Link href="/article" className="w-full px-4 py-3.5 font-black uppercase text-[11px] min-h-[44px] flex items-center gap-2">
+                  📄 {lang === 'id' ? 'Artikel' : 'Articles'}
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
               {categories.map((cat, idx) => (
                 <div key={idx}>
                   <DropdownMenuLabel className="flex items-center text-[10px] font-black uppercase tracking-[0.2em] px-4 py-3 bg-muted/30">
