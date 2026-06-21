@@ -147,7 +147,7 @@ export default function Header() {
             href="/article"
             className="flex items-center px-3 py-2 min-h-[44px] text-sm font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
           >
-            📄 {lang === 'id' ? 'Artikel' : 'Articles'}
+            📄 {t('articles')}
           </Link>
           {categories.map((cat, idx) => (
             <DropdownMenu key={idx}>
@@ -191,7 +191,7 @@ export default function Header() {
             >
               <DropdownMenuItem asChild>
                 <Link href="/article" className="w-full px-4 py-3.5 font-black uppercase text-[11px] min-h-[44px] flex items-center gap-2">
-                  📄 {lang === 'id' ? 'Artikel' : 'Articles'}
+                  📄 {t('articles')}
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />

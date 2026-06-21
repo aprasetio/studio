@@ -1,10 +1,14 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { Clock, Calendar } from 'lucide-react';
 import { CategoryBadge } from './CategoryBadge';
 import { formatDate, type ArticleMeta } from '@/lib/articles-config';
+import { useLang } from '@/components/Providers';
 
 export function ArticleCard({ article }: { article: ArticleMeta }) {
+  const { lang } = useLang();
   const href = `/article/${article.category}/${article.slug}`;
 
   return (
@@ -29,7 +33,7 @@ export function ArticleCard({ article }: { article: ArticleMeta }) {
             </span>
             <span className="flex items-center gap-1">
               <Calendar className="h-3 w-3" />
-              {formatDate(article.publishedAt)}
+              {formatDate(article.publishedAt, lang)}
             </span>
           </div>
         </div>

@@ -1,5 +1,7 @@
 // Safe for client components — no fs/server-only imports
 
+import type { TranslationKey } from '@/lib/translations';
+
 export const ARTICLE_CATEGORIES = [
   'olahraga',
   'keuangan',
@@ -11,13 +13,13 @@ export const ARTICLE_CATEGORIES = [
 
 export type ArticleCategory = (typeof ARTICLE_CATEGORIES)[number];
 
-export const CATEGORY_META: Record<ArticleCategory, { label: string; emoji: string; color: string }> = {
-  olahraga:        { label: 'Olahraga',      emoji: '⚽', color: 'emerald' },
-  keuangan:        { label: 'Keuangan',      emoji: '💰', color: 'blue' },
-  produktivitas:   { label: 'Produktivitas', emoji: '🎯', color: 'purple' },
-  ibadah:          { label: 'Ibadah',        emoji: '🕌', color: 'teal' },
-  'saham-syariah': { label: 'Saham Syariah', emoji: '📈', color: 'amber' },
-  tips:            { label: 'Tips & Trik',   emoji: '💡', color: 'rose' },
+export const CATEGORY_META: Record<ArticleCategory, { labelKey: TranslationKey; emoji: string; color: string }> = {
+  olahraga:        { labelKey: 'cat_olahraga',      emoji: '⚽', color: 'emerald' },
+  keuangan:        { labelKey: 'cat_keuangan',      emoji: '💰', color: 'blue' },
+  produktivitas:   { labelKey: 'cat_produktivitas', emoji: '🎯', color: 'purple' },
+  ibadah:          { labelKey: 'cat_ibadah',        emoji: '🕌', color: 'teal' },
+  'saham-syariah': { labelKey: 'cat_saham_syariah', emoji: '📈', color: 'amber' },
+  tips:            { labelKey: 'cat_tips',          emoji: '💡', color: 'rose' },
 };
 
 export interface ArticleFrontmatter {
@@ -41,7 +43,18 @@ export interface Article extends ArticleMeta {
   contentHtml: string;
 }
 
-export function formatDate(dateStr: string): string {
+const DATE_LOCALES: Record<string, string> = {
+  id: 'id-ID',
+  en: 'en-US',
+  es: 'es-ES',
+  pt: 'pt-BR',
+  de: 'de-DE',
+  fr: 'fr-FR',
+  it: 'it-IT',
+};
+
+export function formatDate(dateStr: string, lang = 'id'): string {
   const d = new Date(dateStr);
-  return d.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
+  const locale = DATE_LOCALES[lang] ?? 'en-US';
+  return d.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' });
 }
