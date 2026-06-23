@@ -18,9 +18,9 @@ export function ArticleDetailClient({ article }: { article: Article }) {
       <nav className="flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.15em] text-muted-foreground mb-6 flex-wrap">
         <Link href="/" className="hover:text-primary transition-colors">Home</Link>
         <ChevronRight className="h-3 w-3" />
-        <Link href="/article" className="hover:text-primary transition-colors">{t('articles')}</Link>
+        <Link href={`/${lang}/article`} className="hover:text-primary transition-colors">{t('articles')}</Link>
         <ChevronRight className="h-3 w-3" />
-        <Link href={`/article/${article.category}`} className="hover:text-primary transition-colors">
+        <Link href={`/${lang}/article/${article.category}`} className="hover:text-primary transition-colors">
           {catMeta ? t(catMeta.labelKey) : article.category}
         </Link>
         <ChevronRight className="h-3 w-3" />
@@ -64,7 +64,7 @@ export function ArticleDetailClient({ article }: { article: Article }) {
 
       <div className="mt-10 pt-6 border-t">
         <Link
-          href="/article"
+          href={`/${lang}/article`}
           className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-wide text-muted-foreground hover:text-primary transition-colors"
         >
           <ArrowLeft className="h-3.5 w-3.5" />

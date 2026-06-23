@@ -19,7 +19,7 @@ export default function FooterLinks() {
 
   return (
     <nav className="flex flex-wrap items-center justify-center gap-6 text-xs font-bold uppercase tracking-[0.15em] text-muted-foreground">
-      <Link href="/article" className="hover:text-primary transition-colors">{t.article}</Link>
+      <Link href={`/${lang}/article`} className="hover:text-primary transition-colors">{t.article}</Link>
       <Link href="/legal/about" className="hover:text-primary transition-colors">{t.about}</Link>
       <Link href="/legal/privacy" className="hover:text-primary transition-colors">{t.privacy}</Link>
       <Link href="/legal/terms" className="hover:text-primary transition-colors">{t.terms}</Link>

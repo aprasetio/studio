@@ -2,6 +2,9 @@
 
 import type { TranslationKey } from '@/lib/translations';
 
+export const ARTICLE_LANGS = ['id', 'en', 'es', 'pt'] as const;
+export type ArticleLang = (typeof ARTICLE_LANGS)[number];
+
 export const ARTICLE_CATEGORIES = [
   'olahraga',
   'keuangan',
