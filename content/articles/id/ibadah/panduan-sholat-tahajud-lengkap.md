@@ -7,6 +7,9 @@ tags: ["tahajud", "sholat malam", "qiyamul lail", "ibadah sunnah", "doa"]
 relatedTool: "ibadah-tracker"
 lang: "id"
 author: "VersoKit"
+canonicalId: panduan-sholat-tahajud-lengkap
+translations:
+  en: complete-guide-to-tahajud-prayer
 ---
 
 ## Apa Itu Sholat Tahajud?

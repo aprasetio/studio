@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["al quran digital online", "baca quran online", "quran dengan tajwid", "quran terjemahan Indonesia", "tafsir quran per ayat", "tilawah digital"]
 relatedTool: "quran"
 lang: "id"
+canonicalId: cara-baca-quran-digital-online
+translations:
+  en: how-to-read-quran-digitally-online
 ---
 
 Mushaf fisik adalah yang terbaik untuk tilawah — tapi tidak selalu ada di jangkauan. Saat perjalanan, menunggu, atau belajar artinya ayat demi ayat, Al-Quran digital menjadi solusi yang sangat praktis. Lebih dari sekadar teks, Al-Quran digital yang baik menyertakan tajwid, terjemahan, dan tafsir — semua dalam satu tampilan.

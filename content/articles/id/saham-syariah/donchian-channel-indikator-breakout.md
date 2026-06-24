@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["donchian channel", "channel breakout saham", "analisis teknikal", "breakout", "CMF", "EMA200", "swing trading", "saham syariah"]
 crossPromo: true
 lang: "id"
+canonicalId: donchian-channel-indikator-breakout
+translations:
+  en: donchian-channel-breakout-indicator
 ---
 
 Kamu pernah lihat saham tiba-tiba naik 10–15% dalam dua atau tiga hari, padahal sebelumnya tidak ada berita apa pun? Banyak trader menyebutnya "tiba-tiba" — padahal sinyal breakout-nya sudah ada, hanya tidak terbaca karena menggunakan indikator yang salah.

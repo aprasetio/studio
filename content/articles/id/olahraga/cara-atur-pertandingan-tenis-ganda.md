@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["cara atur pertandingan tenis ganda", "tenis ganda sosial", "format tenis klub sosial", "pasangan tenis seimbang", "doubles tennis rotation", "tenis komunitas"]
 relatedTool: "tennis"
 lang: "id"
+canonicalId: cara-atur-pertandingan-tenis-ganda
+translations:
+  en: how-to-organize-tennis-doubles-match
 ---
 
 Sesi tenis komunitas yang paling cepat kehilangan anggota adalah yang membuat pemain tertentu terus bermain melawan lawan yang jauh lebih kuat — atau sebaliknya, selalu mendapat pasangan yang terlalu lemah sehingga permainannya tidak menantang. Hasilnya: yang kalah terus merasa frustrasi, yang menang terus merasa bosan, dan satu per satu tidak datang lagi.

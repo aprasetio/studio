@@ -6,6 +6,9 @@ publishedAt: "2025-06-03"
 tags: ["strategi kontrarian saham", "beli saat berita buruk", "contrarian investing IDX", "panic selling peluang beli", "overreaction pasar"]
 crossPromo: true
 lang: "id"
+canonicalId: strategi-kontrarian-beli-saat-berita-buruk
+translations:
+  en: contrarian-strategy-buy-on-bad-news
 ---
 
 Semua orang panik menjual. Chart merah. Kolom berita penuh headline negatif. Grup saham ramai dengan prediksi "masih akan turun lagi". Dan kamu — justru sedang mempertimbangkan untuk membeli.

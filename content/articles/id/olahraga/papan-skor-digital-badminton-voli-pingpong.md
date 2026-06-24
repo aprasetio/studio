@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["papan skor digital", "papan skor badminton", "scoreboard badminton online", "papan skor voli digital", "scorekeeper olahraga", "skor pingpong digital"]
 relatedTool: "scoreboard"
 lang: "id"
+canonicalId: papan-skor-digital-badminton-voli-pingpong
+translations:
+  en: digital-scoreboard-badminton-volleyball-pingpong
 ---
 
 Pertandingan badminton seru tapi semua orang ribut soal skornya karena tidak ada yang mencatat dengan benar. Wasit harus teriak-teriak angka dari pinggir lapangan. Penonton tidak tahu berapa skor tanpa bertanya. Situasi seperti ini bisa dihindari sepenuhnya dengan papan skor digital yang ditampilkan di layar — mudah dilihat semua orang, selalu akurat, dan tidak perlu diinstal.

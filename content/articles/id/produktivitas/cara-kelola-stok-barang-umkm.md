@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["cara kelola stok barang", "manajemen stok UMKM", "aplikasi stok barang gratis", "inventaris toko", "stok masuk keluar", "kelola inventaris"]
 relatedTool: "inventory"
 lang: "id"
+canonicalId: cara-kelola-stok-barang-umkm
+translations:
+  en: how-to-manage-inventory-for-small-business
 ---
 
 Pernah dapat pesanan tapi stok ternyata sudah habis tanpa kamu sadari? Atau sebaliknya — terlalu banyak beli stok barang yang akhirnya tidak laku dan mengendap berbulan-bulan? Kedua masalah ini sangat umum di UMKM dan toko kecil yang mengelola stok "dari kepala" atau dengan catatan manual yang mudah terlewat.

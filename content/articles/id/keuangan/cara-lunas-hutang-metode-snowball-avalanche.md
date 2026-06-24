@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["cara lunas hutang", "metode snowball hutang", "metode avalanche hutang", "cara cepat lunas hutang", "pelunasan hutang sistematis", "manajemen hutang"]
 relatedTool: "debt-tracker"
 lang: "id"
+canonicalId: cara-lunas-hutang-metode-snowball-avalanche
+translations:
+  en: debt-repayment-snowball-vs-avalanche
 ---
 
 Punya tiga hutang sekaligus — cicilan motor, kartu kredit, dan pinjaman ke koperasi. Setiap bulan kamu bayar minimum masing-masing, tapi ujung-ujungnya tidak ada yang berkurang signifikan. Bertahun-tahun berlalu, total hutang tidak jauh berbeda dari awal.

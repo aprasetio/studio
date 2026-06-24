@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["cara ubah ukuran foto", "resize foto online", "ubah resolusi foto", "resize gambar pixel", "ubah dimensi foto gratis"]
 relatedTool: "resizer"
 lang: "id"
+canonicalId: cara-ubah-ukuran-foto-online
+translations:
+  en: how-to-resize-photos-online
 ---
 
 Platform yang berbeda punya syarat ukuran foto yang berbeda. LinkedIn minta foto profil 400×400 px. Banner YouTube idealnya 2560×1440 px. Foto produk Tokopedia optimal di 1200×1200 px. WhatsApp Business butuh foto profil 640×640 px. Upload foto ukuran sembarangan ke platform manapun — hasilnya akan di-crop atau di-stretch otomatis oleh sistem, dan hasilnya sering kali tidak seperti yang kamu inginkan.

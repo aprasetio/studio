@@ -7,6 +7,9 @@ tags: ["anggaran", "keuangan pribadi", "menabung", "tips keuangan"]
 relatedTool: "budget"
 lang: "id"
 author: "VersoKit"
+canonicalId: cara-membuat-anggaran-bulanan-yang-realistis
+translations:
+  en: how-to-create-realistic-monthly-budget
 ---
 
 ## Mengapa Anggaran Bulanan Itu Penting?

@@ -6,6 +6,9 @@ publishedAt: "2025-06-01"
 tags: ["WFH", "work from home", "fokus", "produktivitas", "tips kerja"]
 lang: "id"
 author: "VersoKit"
+canonicalId: cara-kerja-lebih-fokus-dari-rumah
+translations:
+  en: how-to-work-more-focused-from-home
 ---
 
 ## Tantangan Nyata WFH

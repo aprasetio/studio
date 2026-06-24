@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["cara crop foto", "potong foto online", "crop gambar online", "crop foto rasio 1:1", "crop foto gratis"]
 relatedTool: "cropper"
 lang: "id"
+canonicalId: cara-crop-foto-online-gratis
+translations:
+  en: how-to-crop-photos-online-for-free
 ---
 
 Foto bagus tapi subject-nya tidak di tengah. Background terlalu banyak. Mau posting di Instagram tapi fotonya landscape sementara feed kamu butuh format square. Crop foto adalah salah satu editing paling dasar — tapi kalau rasio tidak sesuai, hasil akhirnya tetap terlihat salah di platform yang kamu tuju.

@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["cara hitung patungan makan", "split bill restoran", "hitung tagihan restoran", "patungan dengan pajak service", "cara bagi tagihan grup", "dutch treat"]
 relatedTool: "split-bill"
 lang: "id"
+canonicalId: cara-hitung-patungan-makan-restoran
+translations:
+  en: how-to-split-restaurant-bill
 ---
 
 Makan bersama 8 orang di restoran, total tagihan Rp 487.000 sudah termasuk pajak dan service. Siapa yang harus bayar berapa? Jika dibagi rata Rp 60.875 per orang, tapi ada yang pesan cuma minum dan ada yang pesan steak mahal. Situasi ini familiar — dan sering berakhir dengan awkward silence atau ada yang diam-diam merasa tidak adil.

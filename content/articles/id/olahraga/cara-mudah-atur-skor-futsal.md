@@ -7,6 +7,9 @@ tags: ["futsal", "papan skor", "timer futsal", "olahraga"]
 relatedTool: "futsal"
 lang: "id"
 author: "VersoKit"
+canonicalId: cara-mudah-atur-skor-futsal
+translations:
+  en: how-to-manage-futsal-score
 ---
 
 ## Masalah Umum Saat Mengatur Skor Futsal

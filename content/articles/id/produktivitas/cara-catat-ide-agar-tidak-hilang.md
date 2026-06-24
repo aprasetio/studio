@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["cara catat ide", "aplikasi catat ide", "tangkap ide brainstorming", "idea journal digital", "dikte suara", "kelola ide bisnis"]
 relatedTool: "idea-tracker"
 lang: "id"
+canonicalId: cara-catat-ide-agar-tidak-hilang
+translations:
+  en: how-to-capture-ideas-before-they-disappear
 ---
 
 Ide terbaik datang di waktu yang paling tidak terduga — saat mandi, di perjalanan, atau tepat sebelum tidur. Saat itu kamu pikir "ini bagus banget, pasti ingat." Tapi dua jam kemudian, ide itu sudah hilang. Otak manusia sangat buruk dalam menyimpan ide secara akurat — ia dirancang untuk berpikir, bukan menyimpan.

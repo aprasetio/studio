@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["position sizing", "manajemen risiko saham", "manajemen portofolio", "stop loss", "ATR", "swing trading", "saham syariah"]
 crossPromo: true
 lang: "id"
+canonicalId: position-sizing-berapa-persen-modal-aman
+translations:
+  en: position-sizing-how-much-capital-to-risk
 ---
 
 Pernah tidak kamu taruh 30–40% modal di satu saham karena "yakin banget" analisisnya benar, lalu sahamnya justru turun 20%? Kehilangan 6–8% dari total portofolio hanya dari satu keputusan salah bukan hal kecil — butuh waktu berbulan-bulan untuk recovery.

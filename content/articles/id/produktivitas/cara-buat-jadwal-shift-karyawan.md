@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["cara buat jadwal shift karyawan", "jadwal shift kerja", "template jadwal shift", "atur shift karyawan pagi malam", "aplikasi jadwal shift gratis"]
 relatedTool: "shift"
 lang: "id"
+canonicalId: cara-buat-jadwal-shift-karyawan
+translations:
+  en: how-to-create-employee-shift-schedule
 ---
 
 Membuat jadwal shift karyawan terdengar sederhana, tapi dalam praktiknya sering menjadi sumber konflik. Karyawan merasa jadwalnya tidak adil — selalu dapat shift malam, jarang libur akhir pekan, atau tidak ada cukup waktu istirahat antar shift. Manajer pusing karena request cuti dan pergantian shift yang tidak terkelola dengan baik.

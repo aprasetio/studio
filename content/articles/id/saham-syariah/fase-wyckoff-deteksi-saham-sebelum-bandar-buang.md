@@ -6,6 +6,9 @@ publishedAt: "2025-06-03"
 tags: ["fase wyckoff saham", "siklus akumulasi distribusi", "wyckoff indonesia IDX", "akumulasi distribusi markup markdown", "analisis teknikal wyckoff"]
 crossPromo: true
 lang: "id"
+canonicalId: fase-wyckoff-deteksi-saham-sebelum-bandar-buang
+translations:
+  en: wyckoff-phases-detect-stocks-before-dump
 ---
 
 Kamu pernah beli saham saat harganya sedang tinggi, ramai dibicarakan, semua orang optimis — lalu sebulan kemudian harga anjlok dan kamu baru sadar bahwa saat kamu masuk, institusi besar justru sedang keluar?

@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["divergence RSI saham", "reversal saham", "RSI", "analisis teknikal", "swing trading", "pembalikan arah", "saham syariah"]
 crossPromo: true
 lang: "id"
+canonicalId: rsi-divergence-deteksi-pembalikan-arah
+translations:
+  en: rsi-divergence-detect-trend-reversal
 ---
 
 Saham terus mencetak harga tertinggi baru. Chart terlihat bullish. Semua orang bilang "tahan". Tapi dua minggu kemudian harga tiba-tiba anjlok 20% dan kamu baru sadar sinyalnya sudah ada jauh sebelumnya — kamu hanya tidak tahu cara membacanya.

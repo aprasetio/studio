@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["cara buat QR code", "buat QR code gratis online", "QR code untuk link", "QR code WiFi", "QR code kontak", "generator QR code"]
 relatedTool: "qr-generator"
 lang: "id"
+canonicalId: cara-buat-qr-code-gratis
+translations:
+  en: how-to-create-qr-code-for-free
 ---
 
 QR code sudah menjadi bagian kehidupan sehari-hari — dari menu restoran, struk belanja, kartu nama digital, hingga papan informasi di pameran. Tapi banyak orang masih bingung cara membuat QR code sendiri, atau mengira perlu aplikasi berbayar dan berlangganan untuk membuatnya.

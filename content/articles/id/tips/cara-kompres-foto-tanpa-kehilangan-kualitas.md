@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["cara kompres foto", "kompres gambar online", "kecilkan ukuran foto", "reduce file size foto", "kompres foto gratis"]
 relatedTool: "compressor"
 lang: "id"
+canonicalId: cara-kompres-foto-tanpa-kehilangan-kualitas
+translations:
+  en: how-to-compress-photos-without-losing-quality
 ---
 
 Foto dari kamera DSLR atau smartphone modern bisa berukuran 4–8 MB per foto. Upload 10 foto produk ke marketplace? Sudah 40–80 MB hanya untuk satu listing. Upload lebih lambat, loading halaman lebih berat, dan kuota internet lebih boros — padahal kualitas tampilan yang dilihat pembeli tidak berbeda jauh dengan foto berukuran 500 KB.

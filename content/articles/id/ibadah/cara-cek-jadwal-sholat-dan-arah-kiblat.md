@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["jadwal sholat", "cara cek jadwal sholat", "jadwal sholat hari ini", "arah kiblat", "kompas kiblat online", "waktu sholat akurat", "qibla direction"]
 relatedTool: "prayer-times"
 lang: "id"
+canonicalId: cara-cek-jadwal-sholat-dan-arah-kiblat
+translations:
+  en: how-to-check-prayer-times-and-qibla-direction
 ---
 
 Waktu sholat adalah ibadah yang terikat waktu — tidak boleh terlambat karena tidak tahu kapan waktunya masuk. Di luar kota, di tempat baru, atau bahkan di rumah sendiri saat cuaca mendung dan tidak bisa melihat posisi matahari, mengetahui waktu sholat yang tepat dan arah kiblat yang akurat adalah kebutuhan dasar setiap Muslim.

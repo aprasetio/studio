@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["sinyal beli saham", "analisis teknikal saham", "STRONG BUY", "screener saham syariah", "Wyckoff", "CMF", "KNN", "saham syariah"]
 crossPromo: true
 lang: "id"
+canonicalId: sinyal-strong-buy-vs-buy
+translations:
+  en: strong-buy-vs-buy-signal-explained
 ---
 
 Dua saham sama-sama berwarna hijau di screener, sama-sama bertuliskan "BUY". Kamu beli keduanya. Satu naik 12% dalam seminggu, yang lain malah turun 8%. Apa yang berbeda?

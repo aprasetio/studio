@@ -6,6 +6,9 @@ publishedAt: "2025-06-03"
 tags: ["piotroski f score", "analisis fundamental saham", "f score saham IDX", "kualitas bisnis saham", "filter fundamental investasi"]
 crossPromo: true
 lang: "id"
+canonicalId: piotroski-fscore-nilai-kualitas-bisnis
+translations:
+  en: piotroski-fscore-evaluate-business-quality
 ---
 
 Membaca laporan keuangan perusahaan secara lengkap butuh waktu berjam-jam — dan bagi kebanyakan investor ritel, ini menjadi hambatan untuk melakukan analisis fundamental dengan benar. Akibatnya banyak yang skip sama sekali dan hanya mengandalkan analisis teknikal.

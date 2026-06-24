@@ -7,6 +7,9 @@ tags: ["stop loss saham", "cara hitung stop loss", "ATR", "manajemen risiko", "s
 crossPromo: true
 lang: "id"
 author: "VersoKit"
+canonicalId: cara-menentukan-stop-loss-berbasis-atr
+translations:
+  en: how-to-set-stop-loss-with-atr
 ---
 
 Sudah pasang stop loss di -5%, tapi saham malah mental balik naik tepat setelah kena cut loss? Atau sebaliknya — tidak pasang stop loss sama sekali karena "yakin fundamentalnya bagus", lalu nyangkut berbulan-bulan?

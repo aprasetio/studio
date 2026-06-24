@@ -6,6 +6,9 @@ publishedAt: "2025-06-03"
 tags: ["saham syariah terbaik", "cara pilih saham syariah", "JII JII70 ISSI", "filter saham syariah", "DES OJK saham halal"]
 crossPromo: true
 lang: "id"
+canonicalId: cara-pilih-saham-syariah-bukan-sekadar-daftar-jii
+translations:
+  en: how-to-choose-syariah-stocks-beyond-jii-list
 ---
 
 Banyak investor Muslim yang berpikir cara pilih saham syariah itu sederhana: buka daftar JII atau JII70, pilih yang kelihatan bagus, lalu beli. Selesai. Tapi benarkah sesederhana itu?

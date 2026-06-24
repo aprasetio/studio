@@ -6,6 +6,9 @@ publishedAt: "2025-06-03"
 tags: ["window dressing saham", "desember saham naik", "pola musiman saham IDX", "window dressing BEI", "strategi musiman saham"]
 crossPromo: true
 lang: "id"
+canonicalId: window-dressing-desember-mitos-atau-fakta
+translations:
+  en: window-dressing-december-myth-or-fact
 ---
 
 Setiap November-Desember, topik window dressing selalu kembali ramai di forum saham. Sebagian trader meyakini ini sebagai "rumus pasti" untuk profit akhir tahun. Sebagian lain menyebutnya mitos belaka.

@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["cara buat invoice", "invoice PDF gratis", "template invoice freelancer", "faktur PDF", "invoice profesional", "cara membuat faktur"]
 relatedTool: "invoice"
 lang: "id"
+canonicalId: cara-buat-invoice-pdf-profesional
+translations:
+  en: how-to-create-professional-pdf-invoice
 ---
 
 Klien minta invoice sebelum transfer. Kamu buka laptop, bingung mau pakai apa. Google Docs terlalu manual, software akuntansi berbayar terlalu kompleks, dan tools online kebanyakan mengharuskan daftar akun dulu atau menyimpan data kamu di server mereka.

@@ -6,6 +6,9 @@ publishedAt: "2025-06-03"
 tags: ["CMF saham", "chaikin money flow", "aliran dana institusi", "tekanan akumulasi saham", "indikator volume saham"]
 crossPromo: true
 lang: "id"
+canonicalId: cmf-chaikin-money-flow-cara-baca-aliran-dana
+translations:
+  en: cmf-chaikin-money-flow-reading-fund-flow
 ---
 
 Harga saham bisa dimanipulasi jangka pendek — tapi volume dan aliran dana sulit untuk dibohongi dalam waktu lama. Inilah prinsip di balik CMF (Chaikin Money Flow), indikator yang mengukur apakah uang nyata sedang masuk atau keluar dari sebuah saham.

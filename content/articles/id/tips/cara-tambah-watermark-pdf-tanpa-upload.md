@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["cara tambah watermark PDF", "watermark PDF online gratis", "watermark dokumen PDF", "proteksi PDF", "privasi dokumen"]
 relatedTool: "pdf-watermark"
 lang: "id"
+canonicalId: cara-tambah-watermark-pdf-tanpa-upload
+translations:
+  en: how-to-add-pdf-watermark-without-uploading
 ---
 
 Punya dokumen PDF penting — laporan keuangan, kontrak, proposal — yang perlu diberi watermark sebelum dibagikan? Masalahnya, sebagian besar tools watermark PDF di internet mengharuskan kamu **upload file ke server mereka** terlebih dahulu. Artinya dokumen sensitif kamu melewati komputer orang lain, tersimpan entah di mana, dan berpotensi diakses pihak yang tidak berwenang.

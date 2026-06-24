@@ -7,6 +7,9 @@ tags: ["kebiasaan", "produktivitas", "self-improvement", "psikologi"]
 relatedTool: "habit-tracker"
 lang: "id"
 author: "VersoKit"
+canonicalId: 5-cara-membangun-kebiasaan-baik
+translations:
+  en: 5-ways-to-build-good-habits
 ---
 
 ## Kenapa Kebanyakan Kebiasaan Baru Gagal?

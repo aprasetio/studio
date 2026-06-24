@@ -7,6 +7,9 @@ tags: ["saham syariah", "investasi", "pasar modal", "halal", "pemula"]
 crossPromo: true
 lang: "id"
 author: "VersoKit"
+canonicalId: mengenal-saham-syariah-panduan-pemula
+translations:
+  en: introduction-to-syariah-stocks-beginners-guide
 ---
 
 ## Apa Itu Saham Syariah?

@@ -6,6 +6,9 @@ publishedAt: "2025-06-03"
 tags: ["analisis top-down saham", "makro ekonomi saham IDX", "rotasi sektor IDX", "top down investing", "analisis makro sebelum pilih saham"]
 crossPromo: true
 lang: "id"
+canonicalId: top-down-analysis-makro-sebelum-pilih-saham
+translations:
+  en: top-down-analysis-macro-before-picking-stocks
 ---
 
 Kamu sudah melakukan analisis teknikal yang teliti — RSI bagus, CMF positif, skor screener STRONG BUY. Lalu tiba-tiba Fed menaikkan suku bunga agresif, IHSG turun 8% dalam dua minggu, dan hampir semua saham ikut turun termasuk yang kamu pilih dengan cermat itu.

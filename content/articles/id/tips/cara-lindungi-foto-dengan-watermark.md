@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["cara watermark foto", "watermark foto gratis", "lindungi foto watermark", "watermark foto online", "proteksi foto"]
 relatedTool: "image-watermark"
 lang: "id"
+canonicalId: cara-lindungi-foto-dengan-watermark
+translations:
+  en: how-to-protect-photos-with-watermark
 ---
 
 Foto produk yang kamu buat dengan susah payah tiba-tiba dipakai toko lain tanpa izin. Portofolio fotografi yang kamu unggah di media sosial didownload dan diklaim orang lain. Ini bukan cerita langka — ini terjadi setiap hari di internet Indonesia.

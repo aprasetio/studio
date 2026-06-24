@@ -6,6 +6,9 @@ publishedAt: "2025-06-02"
 tags: ["format americano padel", "cara atur turnamen americano", "americano pickleball", "rotasi pasangan padel", "turnamen padel format", "americano tournament"]
 relatedTool: "americano"
 lang: "id"
+canonicalId: format-americano-padel-pickleball
+translations:
+  en: americano-format-padel-pickleball
 ---
 
 Punya 8–16 orang yang mau main Padel atau Pickleball tapi bingung mengatur siapa lawan siapa? Format turnamen biasa (knock-out atau round robin) sering meninggalkan masalah: beberapa orang hanya main sekali lalu duduk nonton, pasangan tidak seimbang, dan yang skill-nya paling rendah tidak pernah menang satu game pun.

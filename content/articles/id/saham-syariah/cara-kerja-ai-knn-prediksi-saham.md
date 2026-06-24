@@ -6,6 +6,9 @@ publishedAt: "2025-06-03"
 tags: ["AI prediksi saham", "machine learning saham", "KNN saham", "screener saham AI", "probabilitas KNN"]
 crossPromo: true
 lang: "id"
+canonicalId: cara-kerja-ai-knn-prediksi-saham
+translations:
+  en: how-ai-knn-predicts-stocks
 ---
 
 Ketika pertama kali melihat kata "AI" di sebuah screener saham, reaksi orang biasanya terbagi dua: sebagian langsung percaya buta, sebagian langsung skeptis total. Keduanya keliru karena keduanya tidak memahami apa yang sebenarnya dilakukan AI tersebut.
