@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import React from 'react';
 import { TRANSLATIONS, type Language } from '@/lib/translations';
-import { CATEGORY_META } from '@/lib/articles-config';
+import { ARTICLE_LANGS } from '@/lib/articles-config';
 
 export async function generateMetadata({
   params,
@@ -10,9 +10,19 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params;
   const t = TRANSLATIONS[(lang as Language)] ?? TRANSLATIONS['en'];
+
+  const languages: Record<string, string> = { 'x-default': '/id/article' };
+  for (const l of ARTICLE_LANGS) {
+    languages[l] = `/${l}/article`;
+  }
+
   return {
     title: { template: `%s | VersoKit`, default: t.articles_title },
     description: t.articles_subtitle,
+    alternates: {
+      canonical: `/${lang}/article`,
+      languages,
+    },
   };
 }
 

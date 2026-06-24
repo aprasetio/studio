@@ -104,7 +104,9 @@ export async function getArticleBySlug(
 }
 
 export function getAllArticleSlugs(lang = 'id'): { category: string; slug: string }[] {
-  const baseDir = getLangDir(lang);
+  // Strict — no fallback. Only returns slugs for actual files in this lang folder.
+  const baseDir = path.join(ARTICLES_DIR, lang);
+  if (!fs.existsSync(baseDir)) return [];
   const result: { category: string; slug: string }[] = [];
   for (const category of ARTICLE_CATEGORIES) {
     const categoryPath = path.join(baseDir, category);

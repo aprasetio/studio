@@ -10,6 +10,7 @@ import { ExitIntentModal } from '@/components/ExitIntentModal';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://versokit.com'),
   title: {
     template: '%s | VersoKit',
     default: 'VersoKit - Free Online Tools for Sports, Business & Productivity',

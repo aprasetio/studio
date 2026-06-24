@@ -22,9 +22,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!meta) return {};
   const t = TRANSLATIONS[(lang as Language)] ?? TRANSLATIONS['en'];
   const label = t[meta.labelKey];
+
+  const languages: Record<string, string> = { 'x-default': `/id/article/${category}` };
+  for (const l of ARTICLE_LANGS) {
+    languages[l] = `/${l}/article/${category}`;
+  }
+
   return {
     title: `${meta.emoji} ${label}`,
     description: t.articles_subtitle,
+    alternates: {
+      canonical: `/${lang}/article/${category}`,
+      languages,
+    },
   };
 }
 

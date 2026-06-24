@@ -19,10 +19,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang, category, slug } = await params;
   const article = await getArticleBySlug(category, slug, lang);
   if (!article) return {};
+
+  // Build hreflang alternates from article's translations frontmatter
+  const languages: Record<string, string> = {
+    [lang]: `/${lang}/article/${category}/${slug}`,
+    'x-default': `/id/article/${category}/${article.canonicalId ?? slug}`,
+  };
+  if (article.translations) {
+    for (const [tLang, tSlug] of Object.entries(article.translations)) {
+      languages[tLang] = `/${tLang}/article/${category}/${tSlug}`;
+    }
+  }
+
   return {
     title: article.title,
     description: article.description,
     keywords: article.tags,
+    alternates: {
+      canonical: `/${lang}/article/${category}/${slug}`,
+      languages,
+    },
     openGraph: {
       title: article.title,
       description: article.description,
