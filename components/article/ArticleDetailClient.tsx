@@ -1,17 +1,29 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { ChevronRight, Clock, Calendar, ArrowLeft } from 'lucide-react';
 import { CATEGORY_META, formatDate, type Article, type ArticleCategory } from '@/lib/articles-config';
 import { CategoryBadge } from '@/components/article/CategoryBadge';
 import { ToolCTA } from '@/components/article/ToolCTA';
 import { CrossPromoWidget } from '@/components/article/CrossPromoWidget';
-import { useLang } from '@/components/Providers';
+import { useLang, useArticleNav } from '@/components/Providers';
 
 export function ArticleDetailClient({ article }: { article: Article }) {
   const { lang, t } = useLang();
+  const { setArticleNav } = useArticleNav();
   const catMeta = CATEGORY_META[article.category as ArticleCategory];
+
+  // Register article translations so LangToggle can navigate to the correct
+  // language version of this article when the user switches language.
+  useEffect(() => {
+    const allTranslations: Record<string, string> = {
+      [article.lang]: article.slug,
+      ...article.translations,
+    };
+    setArticleNav({ category: article.category, translations: allTranslations });
+    return () => setArticleNav(null);
+  }, [article.lang, article.slug, article.category, article.translations, setArticleNav]);
 
   return (
     <div className="container mx-auto px-4 py-10 max-w-3xl">
