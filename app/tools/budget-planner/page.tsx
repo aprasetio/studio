@@ -716,7 +716,18 @@ export default function BudgetPlannerPage() {
 
       {/* Cloud Sync Dialog */}
       <Dialog open={isSyncOpen} onOpenChange={setIsSyncOpen}>
-        <DialogContent className="rounded-[2rem] max-w-sm overflow-hidden">
+        <DialogContent
+          className="rounded-[2rem] overflow-hidden"
+          style={{
+            left: '1rem',
+            right: '1rem',
+            width: 'auto',
+            maxWidth: '24rem',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            transform: 'translateY(-50%)',
+          }}
+        >
           <DialogHeader>
             <DialogTitle className="text-lg font-black uppercase tracking-tighter leading-tight">
               <Cloud className="inline h-5 w-5 mr-1.5 text-primary align-middle" />
