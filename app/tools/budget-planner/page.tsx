@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { useLang } from '@/components/Providers';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -714,92 +715,93 @@ export default function BudgetPlannerPage() {
         </div>
       </div>
 
-      {/* Cloud Sync Dialog */}
-      <Dialog open={isSyncOpen} onOpenChange={setIsSyncOpen}>
-        <DialogContent
-          className="rounded-[2rem] overflow-hidden"
-          style={{
-            left: '1rem',
-            right: '1rem',
-            width: 'auto',
-            maxWidth: '24rem',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            transform: 'translateY(-50%)',
-          }}
+      {/* Cloud Sync Modal — custom portal, avoids fixed-positioning bugs on mobile */}
+      {isSyncOpen && createPortal(
+        <div
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+          onClick={() => setIsSyncOpen(false)}
         >
-          <DialogHeader>
-            <DialogTitle className="text-lg font-black uppercase tracking-tighter leading-tight">
-              <Cloud className="inline h-5 w-5 mr-1.5 text-primary align-middle" />
+          <div className="absolute inset-0 bg-black/80" />
+          <div
+            className="relative z-10 w-full bg-background rounded-[2rem] border-2 shadow-2xl p-6"
+            style={{ maxWidth: '20rem' }}
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Close */}
+            <button
+              onClick={() => setIsSyncOpen(false)}
+              className="absolute right-4 top-4 rounded-sm opacity-60 hover:opacity-100 transition-opacity"
+            >
+              <X className="h-4 w-4" />
+            </button>
+
+            {/* Header */}
+            <h2 className="text-base font-black uppercase tracking-tighter leading-tight pr-6 mb-1">
+              <Cloud className="inline h-4 w-4 mr-1.5 text-primary align-middle" />
               {t('sync_title')}
-            </DialogTitle>
-            <p className="text-[11px] text-muted-foreground leading-relaxed mt-1">{t('sync_subtitle')}</p>
-          </DialogHeader>
+            </h2>
+            <p className="text-[10px] text-muted-foreground leading-relaxed mb-5">{t('sync_subtitle')}</p>
 
-          <div className="space-y-6 py-2">
-            {/* SAVE SECTION */}
-            <div className="space-y-3">
-              <button
-                onClick={handleSaveToCloud}
-                disabled={syncStatus === 'saving'}
-                className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-primary text-white font-black uppercase tracking-widest text-[10px] hover:bg-primary/90 disabled:opacity-60 transition-colors"
-              >
-                <CloudUpload size={18} />
-                {syncStatus === 'saving' ? t('sync_saving') : t('sync_save')}
-              </button>
+            {/* Save */}
+            <button
+              onClick={handleSaveToCloud}
+              disabled={syncStatus === 'saving'}
+              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-primary text-white font-black uppercase tracking-widest text-[10px] hover:bg-primary/90 disabled:opacity-60 transition-colors"
+            >
+              <CloudUpload size={16} />
+              {syncStatus === 'saving' ? t('sync_saving') : t('sync_save')}
+            </button>
 
-              {syncStatus === 'saved' && syncCode && (
-                <div className="rounded-2xl border-2 border-primary/30 bg-primary/5 p-4 space-y-2">
-                  <p className="text-[9px] font-black uppercase tracking-widest text-muted-foreground">{t('sync_your_code')}</p>
-                  <div className="flex items-center gap-2">
-                    <span className="text-3xl font-black tracking-[0.3em] text-primary flex-1 text-center">{syncCode}</span>
-                    <button
-                      onClick={handleCopySyncCode}
-                      className="p-2 rounded-xl bg-primary/10 hover:bg-primary/20 transition-colors"
-                      title={t('sync_copy')}
-                    >
-                      {syncCopied ? <Check size={16} className="text-green-500" /> : <Copy size={16} className="text-primary" />}
-                    </button>
-                  </div>
-                  <p className="text-[9px] text-muted-foreground text-center">{t('sync_expires')}</p>
+            {syncStatus === 'saved' && syncCode && (
+              <div className="mt-3 rounded-2xl border-2 border-primary/30 bg-primary/5 p-3 space-y-2">
+                <p className="text-[9px] font-black uppercase tracking-widest text-muted-foreground">{t('sync_your_code')}</p>
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl font-black tracking-[0.25em] text-primary flex-1 text-center min-w-0">{syncCode}</span>
+                  <button
+                    onClick={handleCopySyncCode}
+                    className="p-2 rounded-xl bg-primary/10 hover:bg-primary/20 transition-colors shrink-0"
+                  >
+                    {syncCopied ? <Check size={14} className="text-green-500" /> : <Copy size={14} className="text-primary" />}
+                  </button>
                 </div>
-              )}
-            </div>
+                <p className="text-[9px] text-muted-foreground text-center">{t('sync_expires')}</p>
+              </div>
+            )}
 
-            <div className="flex items-center gap-3">
+            {/* Divider */}
+            <div className="flex items-center gap-3 my-4">
               <div className="flex-1 h-px bg-border" />
               <span className="text-[9px] font-black uppercase tracking-widest text-muted-foreground">or</span>
               <div className="flex-1 h-px bg-border" />
             </div>
 
-            {/* LOAD SECTION */}
-            <div className="space-y-3">
-              <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">{t('sync_enter_code')}</p>
-              <div className="flex gap-2">
-                <input
-                  value={syncInputCode}
-                  onChange={e => setSyncInputCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 8))}
-                  placeholder="XXXXXXXX"
-                  className="min-w-0 flex-1 text-center text-xl font-black tracking-[0.2em] bg-muted/30 border-2 rounded-xl px-3 py-3 focus:outline-none focus:border-primary uppercase"
-                />
-                <button
-                  onClick={handleLoadFromCloud}
-                  disabled={syncInputCode.length < 8 || syncStatus === 'loading'}
-                  className="px-4 rounded-xl bg-muted hover:bg-muted/70 disabled:opacity-40 transition-colors"
-                >
-                  {syncStatus === 'loading'
-                    ? <Cloud size={20} className="animate-pulse text-primary" />
-                    : <CloudDownload size={20} className="text-primary" />}
-                </button>
-              </div>
+            {/* Load */}
+            <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">{t('sync_enter_code')}</p>
+            <div className="flex gap-2">
+              <input
+                value={syncInputCode}
+                onChange={e => setSyncInputCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 8))}
+                placeholder="XXXXXXXX"
+                className="min-w-0 flex-1 text-center text-lg font-black tracking-[0.2em] bg-muted/30 border-2 rounded-xl px-2 py-3 focus:outline-none focus:border-primary uppercase"
+              />
+              <button
+                onClick={handleLoadFromCloud}
+                disabled={syncInputCode.length < 8 || syncStatus === 'loading'}
+                className="px-3 rounded-xl bg-muted hover:bg-muted/70 disabled:opacity-40 transition-colors shrink-0"
+              >
+                {syncStatus === 'loading'
+                  ? <Cloud size={18} className="animate-pulse text-primary" />
+                  : <CloudDownload size={18} className="text-primary" />}
+              </button>
             </div>
 
             {syncStatus === 'error' && (
-              <p className="text-[10px] font-bold text-destructive text-center">{syncError}</p>
+              <p className="text-[10px] font-bold text-destructive text-center mt-3">{syncError}</p>
             )}
           </div>
-        </DialogContent>
-      </Dialog>
+        </div>,
+        document.body
+      )}
 
       {/* Quick Start Dialog */}
       <Dialog open={isQuickStartOpen} onOpenChange={setIsQuickStartOpen}>
