@@ -41,6 +41,7 @@ interface BudgetState {
   moveMoney: (fromId: string, toId: string, amount: number) => void;
   resetMonth: () => void;
   restoreData: (data: Partial<BudgetState>) => void;
+  loadTemplate: (income: number, templateCats: Array<{ name: string; type: CategoryType; pct: number }>) => void;
 }
 
 export const useBudgetStore = create<BudgetState>()(
@@ -171,6 +172,18 @@ export const useBudgetStore = create<BudgetState>()(
         ], 
         transactions: [] 
       }),
+
+      loadTemplate: (income, templateCats) => {
+        const cats = templateCats.map(cat => ({
+          id: typeof crypto !== 'undefined' ? crypto.randomUUID() : Math.random().toString(36).slice(2),
+          name: cat.name,
+          type: cat.type,
+          assigned: Math.round(income * cat.pct),
+          activity: 0,
+        }));
+        const totalAssigned = cats.reduce((acc, c) => acc + c.assigned, 0);
+        set({ income, categories: cats, transactions: [], toBeBudgeted: income - totalAssigned });
+      },
 
       restoreData: (data) => {
         const income = data.income ?? 0;

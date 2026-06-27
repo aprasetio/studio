@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLang } from '@/components/Providers';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { 
-  Plus, 
-  Trash2, 
+import {
+  Plus,
+  Trash2,
   History,
   Receipt,
   Wallet,
@@ -20,7 +20,9 @@ import {
   ArrowRightLeft,
   Upload,
   Settings,
-  FileSpreadsheet
+  FileSpreadsheet,
+  Sparkles,
+  ChevronRight,
 } from 'lucide-react';
 import { 
   Dialog, 
@@ -45,6 +47,7 @@ import { SeoContent } from '@/components/SeoContent';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { useBudgetStore, type TransactionType, type Category } from './store';
+import { BUDGET_TEMPLATES } from './templates';
 import TrustBadges from '@/components/ui/TrustBadges';
 import { DataPersistence } from '@/components/DataPersistence';
 import Papa from 'papaparse';
@@ -140,7 +143,20 @@ const UI_TEXT: Record<string, any> = {
   cover_title: { en: "Cover Overspending", id: "Tutup Overspending", de: "Mehrausgaben decken", es: "Cubrir sobregasto", pt: "Cubrir gastos excessivos", fr: "Couvrir les dépassements", it: "Copri spesa eccessiva" },
   move_from: { en: "Cover from:", id: "Ambil dana dari:", de: "Decken von:", es: "Cubrir desde:", pt: "Cubrir de:", fr: "Couvrir depuis :", it: "Copri da:" },
   move_btn: { en: "Move Money", id: "Pindahkan Dana", de: "Geld bewegen", es: "Mover dinero", pt: "Mover dinheiro", fr: "Déplacer l'argent", it: "Sposta denaro" },
-  select_funding: { en: "Select funding source", id: "Pilih sumber dana", de: "Finanzierungsquelle wählen", es: "Seleccionar fuente", pt: "Seleccionar fonte", fr: "Choisir la source", it: "Seleziona fonte" }
+  select_funding: { en: "Select funding source", id: "Pilih sumber dana", de: "Finanzierungsquelle wählen", es: "Seleccionar fuente", pt: "Seleccionar fonte", fr: "Choisir la source", it: "Seleziona fonte" },
+
+  // --- Quick Start ---
+  qs_btn: { en: "Quick Start", id: "Mulai Cepat", de: "Schnellstart", es: "Inicio Rápido", pt: "Início Rápido", fr: "Démarrage Rapide", it: "Avvio Rapido" },
+  qs_title: { en: "Quick Start — Budget Templates", id: "Mulai Cepat — Template Anggaran", de: "Schnellstart — Budgetvorlagen", es: "Inicio Rápido — Plantillas", pt: "Início Rápido — Modelos", fr: "Démarrage — Modèles Budget", it: "Avvio Rapido — Modelli" },
+  qs_subtitle: { en: "Choose a life-stage template and enter your income. Buckets are auto-filled using best practices.", id: "Pilih template sesuai tahap hidupmu dan masukkan pendapatan. Kantung diisi otomatis sesuai best practices.", de: "Wählen Sie eine Vorlage und geben Sie Ihr Einkommen ein.", es: "Elige una plantilla y escribe tus ingresos. Las categorías se rellenan automáticamente.", pt: "Escolha um modelo e insira sua renda. As categorias são preenchidas automaticamente.", fr: "Choisissez un modèle et entrez votre revenu. Les catégories sont remplies automatiquement.", it: "Scegli un modello e inserisci il tuo reddito. Le categorie vengono riempite automaticamente." },
+  qs_income_label: { en: "Your Monthly Income", id: "Pendapatan Bulanan Anda", de: "Ihr monatliches Einkommen", es: "Tu Ingreso Mensual", pt: "Sua Renda Mensal", fr: "Votre Revenu Mensuel", it: "Il Tuo Reddito Mensile" },
+  qs_preview: { en: "Budget Preview", id: "Pratinjau Anggaran", de: "Budget-Vorschau", es: "Vista Previa del Presupuesto", pt: "Prévia do Orçamento", fr: "Aperçu du Budget", it: "Anteprima Budget" },
+  qs_apply: { en: "Apply Template", id: "Terapkan Template", de: "Vorlage anwenden", es: "Aplicar Plantilla", pt: "Aplicar Modelo", fr: "Appliquer le Modèle", it: "Applica Modello" },
+  qs_skip: { en: "Start with blank slate", id: "Mulai dari nol", de: "Leere Vorlage starten", es: "Empezar desde cero", pt: "Começar do zero", fr: "Commencer vide", it: "Inizia da zero" },
+  qs_applied: { en: "Template applied!", id: "Template diterapkan!", de: "Vorlage angewendet!", es: "¡Plantilla aplicada!", pt: "Modelo aplicado!", fr: "Modèle appliqué !", it: "Modello applicato!" },
+  qs_needs: { en: "Needs", id: "Kebutuhan", de: "Bedürfnisse", es: "Necesidades", pt: "Necessidades", fr: "Besoins", it: "Bisogni" },
+  qs_wants: { en: "Wants", id: "Keinginan", de: "Wünsche", es: "Deseos", pt: "Desejos", fr: "Envies", it: "Desideri" },
+  qs_savings: { en: "Savings", id: "Tabungan", de: "Ersparnisse", es: "Ahorro", pt: "Poupança", fr: "Épargne", it: "Risparmio" },
 };
 
 const LOCALES: Record<string, string> = { 
@@ -155,9 +171,9 @@ export default function BudgetPlannerPage() {
   const t = (key: string) => UI_TEXT[key]?.[lang] || UI_TEXT[key]?.['en'] || key;
 
   const [mounted, setMounted] = useState(false);
-  const { 
-    income, toBeBudgeted, categories, transactions, 
-    setIncome, addCategory, deleteCategory, updateCategoryAssignment, addTransaction, deleteTransaction, resetMonth, moveMoney, restoreData
+  const {
+    income, toBeBudgeted, categories, transactions,
+    setIncome, addCategory, deleteCategory, updateCategoryAssignment, addTransaction, deleteTransaction, resetMonth, moveMoney, restoreData, loadTemplate
   } = useBudgetStore();
 
   const [isTxOpen, setIsTxOpen] = useState(false);
@@ -173,7 +189,21 @@ export default function BudgetPlannerPage() {
   const [coveringCategory, setCoveringCategory] = useState<Category | null>(null);
   const [sourceCategoryId, setSourceCategoryId] = useState<string>('');
 
+  const [isQuickStartOpen, setIsQuickStartOpen] = useState(false);
+  const [selectedTemplateId, setSelectedTemplateId] = useState<string>('');
+  const [quickIncome, setQuickIncome] = useState<number>(0);
+  const autoShownRef = useRef(false);
+
   useEffect(() => { setMounted(true); }, []);
+
+  useEffect(() => {
+    if (mounted && !autoShownRef.current) {
+      autoShownRef.current = true;
+      if (income === 0 && transactions.length === 0) {
+        setIsQuickStartOpen(true);
+      }
+    }
+  }, [mounted]);
 
   const formatValue = (val: number) => {
     return new Intl.NumberFormat(LOCALES[lang] || 'en-US', {
@@ -216,6 +246,30 @@ export default function BudgetPlannerPage() {
       toast({ title: t('all_done') });
     }
   };
+
+  const handleApplyTemplate = () => {
+    const template = BUDGET_TEMPLATES.find(t => t.id === selectedTemplateId);
+    if (!template || quickIncome <= 0) return;
+    loadTemplate(
+      quickIncome,
+      template.cats.map(cat => ({
+        name: cat.name[lang] || cat.name['en'],
+        type: cat.type,
+        pct: cat.pct,
+      }))
+    );
+    setIsQuickStartOpen(false);
+    setSelectedTemplateId('');
+    setQuickIncome(0);
+    toast({ title: t('qs_applied') });
+  };
+
+  const selectedTemplate = BUDGET_TEMPLATES.find(t => t.id === selectedTemplateId);
+  const previewGroups = selectedTemplate ? {
+    needs: selectedTemplate.cats.filter(c => c.type === 'needs'),
+    wants: selectedTemplate.cats.filter(c => c.type === 'wants'),
+    savings: selectedTemplate.cats.filter(c => c.type === 'savings'),
+  } : null;
 
   if (!mounted) return null;
 
@@ -270,7 +324,14 @@ export default function BudgetPlannerPage() {
           </p>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap justify-center">
+          <Button
+            variant="outline"
+            onClick={() => setIsQuickStartOpen(true)}
+            className="h-14 px-6 font-black uppercase tracking-widest rounded-2xl border-2 border-primary/30 hover:border-primary hover:bg-primary/5"
+          >
+            <Sparkles className="mr-2 h-5 w-5 text-primary" /> {t('qs_btn')}
+          </Button>
           <Dialog open={isTxOpen} onOpenChange={setIsTxOpen}>
             <DialogTrigger asChild>
               <Button className="h-14 px-8 bg-accent hover:bg-accent/90 text-white font-black uppercase tracking-widest rounded-2xl shadow-xl">
@@ -568,6 +629,120 @@ export default function BudgetPlannerPage() {
           </Card>
         </div>
       </div>
+
+      {/* Quick Start Dialog */}
+      <Dialog open={isQuickStartOpen} onOpenChange={setIsQuickStartOpen}>
+        <DialogContent className="rounded-[2rem] max-w-2xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-black uppercase tracking-tighter flex items-center gap-2">
+              <Sparkles className="h-6 w-6 text-primary" />
+              {t('qs_title')}
+            </DialogTitle>
+            <p className="text-[11px] text-muted-foreground leading-relaxed mt-1">{t('qs_subtitle')}</p>
+          </DialogHeader>
+
+          {/* Template Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
+            {BUDGET_TEMPLATES.map(template => (
+              <button
+                key={template.id}
+                onClick={() => setSelectedTemplateId(template.id)}
+                className={cn(
+                  'p-4 rounded-2xl border-2 text-left transition-all',
+                  selectedTemplateId === template.id
+                    ? 'border-primary bg-primary/5 shadow-md'
+                    : 'border-muted hover:border-primary/40 hover:bg-muted/20'
+                )}
+              >
+                <div className="text-3xl mb-2 leading-none">{template.emoji}</div>
+                <div className="font-black text-sm uppercase tracking-tight leading-tight">
+                  {template.name[lang] || template.name['en']}
+                </div>
+                <div className="inline-block mt-1 px-2 py-0.5 bg-primary/10 text-primary text-[9px] font-black uppercase tracking-widest rounded-full">
+                  {template.method}
+                </div>
+                <div className="text-[10px] mt-2 text-muted-foreground leading-relaxed">
+                  {template.desc[lang] || template.desc['en']}
+                </div>
+              </button>
+            ))}
+          </div>
+
+          {/* Income Input */}
+          {selectedTemplateId && (
+            <div className="mt-4 space-y-2">
+              <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">
+                {t('qs_income_label')}
+              </label>
+              <div className="flex items-center gap-2 bg-muted/30 rounded-2xl border-2 px-4 py-3">
+                <span className="text-xl font-black text-muted-foreground/50">{getCurrencyCode()}</span>
+                <input
+                  type="number"
+                  value={quickIncome || ''}
+                  onChange={e => setQuickIncome(parseFloat(e.target.value) || 0)}
+                  placeholder="0"
+                  className="flex-1 text-2xl font-black bg-transparent border-none focus:outline-none tabular-nums"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Preview */}
+          {previewGroups && quickIncome > 0 && (
+            <div className="mt-4 rounded-2xl border-2 overflow-hidden">
+              <div className="px-4 py-2 bg-muted/30 border-b">
+                <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">{t('qs_preview')}</span>
+              </div>
+              {(
+                [
+                  { key: 'needs', label: t('qs_needs'), cats: previewGroups.needs, color: 'text-emerald-600', bg: 'bg-emerald-50 dark:bg-emerald-950/30' },
+                  { key: 'wants', label: t('qs_wants'), cats: previewGroups.wants, color: 'text-blue-600', bg: 'bg-blue-50 dark:bg-blue-950/30' },
+                  { key: 'savings', label: t('qs_savings'), cats: previewGroups.savings, color: 'text-violet-600', bg: 'bg-violet-50 dark:bg-violet-950/30' },
+                ] as const
+              ).map(group => {
+                const groupPct = group.cats.reduce((s, c) => s + c.pct, 0);
+                const groupTotal = Math.round(quickIncome * groupPct);
+                return (
+                  <div key={group.key}>
+                    <div className={cn('flex justify-between items-center px-4 py-2', group.bg)}>
+                      <span className={cn('text-[10px] font-black uppercase tracking-widest', group.color)}>
+                        {group.label} — {Math.round(groupPct * 100)}%
+                      </span>
+                      <span className={cn('text-xs font-black tabular-nums', group.color)}>{formatValue(groupTotal)}</span>
+                    </div>
+                    {group.cats.map(cat => (
+                      <div key={cat.name['en']} className="flex justify-between items-center px-6 py-1.5 border-t border-dashed border-muted">
+                        <span className="text-[10px] font-bold text-muted-foreground">
+                          {cat.name[lang] || cat.name['en']}
+                        </span>
+                        <span className="text-[10px] font-black tabular-nums">{formatValue(Math.round(quickIncome * cat.pct))}</span>
+                      </div>
+                    ))}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Action Buttons */}
+          <DialogFooter className="flex flex-col sm:flex-row gap-2 mt-4">
+            <button
+              onClick={() => setIsQuickStartOpen(false)}
+              className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors py-2"
+            >
+              {t('qs_skip')}
+            </button>
+            <Button
+              onClick={handleApplyTemplate}
+              disabled={!selectedTemplateId || quickIncome <= 0}
+              className="flex-1 h-12 font-black uppercase tracking-widest rounded-xl"
+            >
+              <ChevronRight className="mr-1 h-4 w-4" />
+              {t('qs_apply')}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       {/* Cover Overspending Dialog */}
       <Dialog open={!!coveringCategory} onOpenChange={(open) => !open && setCoveringCategory(null)}>
