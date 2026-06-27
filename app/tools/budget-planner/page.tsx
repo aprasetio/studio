@@ -23,6 +23,11 @@ import {
   FileSpreadsheet,
   Sparkles,
   ChevronRight,
+  Cloud,
+  CloudUpload,
+  CloudDownload,
+  Copy,
+  Check,
 } from 'lucide-react';
 import { 
   Dialog, 
@@ -157,6 +162,24 @@ const UI_TEXT: Record<string, any> = {
   qs_needs: { en: "Needs", id: "Kebutuhan", de: "Bedürfnisse", es: "Necesidades", pt: "Necessidades", fr: "Besoins", it: "Bisogni" },
   qs_wants: { en: "Wants", id: "Keinginan", de: "Wünsche", es: "Deseos", pt: "Desejos", fr: "Envies", it: "Desideri" },
   qs_savings: { en: "Savings", id: "Tabungan", de: "Ersparnisse", es: "Ahorro", pt: "Poupança", fr: "Épargne", it: "Risparmio" },
+
+  // --- Cloud Sync ---
+  sync_btn: { en: "Cloud Sync", id: "Sinkron Cloud", de: "Cloud-Sync", es: "Sincronización", pt: "Sincronização", fr: "Sync Cloud", it: "Sync Cloud" },
+  sync_title: { en: "Sync Across Devices", id: "Sinkron Antar Perangkat", de: "Geräteübergreifend synchronisieren", es: "Sincronizar entre dispositivos", pt: "Sincronizar entre dispositivos", fr: "Synchroniser les appareils", it: "Sincronizza i dispositivi" },
+  sync_subtitle: { en: "Save your data to the cloud and load it on any device using a sync code. Code expires after 30 days of inactivity.", id: "Simpan data ke cloud dan muat di perangkat lain menggunakan kode sinkron. Kode kedaluwarsa setelah 30 hari tidak aktif.", de: "Daten in der Cloud speichern und auf jedem Gerät laden. Code läuft nach 30 Tagen ab.", es: "Guarda tus datos en la nube y cárgalos en cualquier dispositivo con un código. Caduca a los 30 días.", pt: "Salve seus dados na nuvem e carregue em qualquer dispositivo com um código. Expira após 30 dias.", fr: "Sauvegardez vos données dans le cloud et chargez-les sur n'importe quel appareil avec un code. Expire après 30 jours.", it: "Salva i dati nel cloud e caricali su qualsiasi dispositivo con un codice. Scade dopo 30 giorni." },
+  sync_save: { en: "Save to Cloud", id: "Simpan ke Cloud", de: "In Cloud speichern", es: "Guardar en la nube", pt: "Salvar na nuvem", fr: "Sauvegarder", it: "Salva nel cloud" },
+  sync_load: { en: "Load from Cloud", id: "Muat dari Cloud", de: "Aus Cloud laden", es: "Cargar desde la nube", pt: "Carregar da nuvem", fr: "Charger depuis le cloud", it: "Carica dal cloud" },
+  sync_your_code: { en: "Your Sync Code", id: "Kode Sinkron Anda", de: "Ihr Sync-Code", es: "Tu código de sincronización", pt: "Seu código de sincronização", fr: "Votre code de synchronisation", it: "Il tuo codice di sincronizzazione" },
+  sync_enter_code: { en: "Enter Sync Code", id: "Masukkan Kode Sinkron", de: "Sync-Code eingeben", es: "Ingresa el código de sincronización", pt: "Digite o código de sincronização", fr: "Entrez le code de synchronisation", it: "Inserisci il codice di sincronizzazione" },
+  sync_copy: { en: "Copy", id: "Salin", de: "Kopieren", es: "Copiar", pt: "Copiar", fr: "Copier", it: "Copia" },
+  sync_copied: { en: "Copied!", id: "Tersalin!", de: "Kopiert!", es: "¡Copiado!", pt: "Copiado!", fr: "Copié !", it: "Copiato!" },
+  sync_saving: { en: "Saving…", id: "Menyimpan…", de: "Speichern…", es: "Guardando…", pt: "Salvando…", fr: "Sauvegarde…", it: "Salvataggio…" },
+  sync_loading: { en: "Loading…", id: "Memuat…", de: "Laden…", es: "Cargando…", pt: "Carregando…", fr: "Chargement…", it: "Caricamento…" },
+  sync_success_save: { en: "Data saved! Share the code below with your other device.", id: "Data tersimpan! Bagikan kode di bawah ke perangkat lain.", de: "Daten gespeichert! Teilen Sie den Code mit Ihrem anderen Gerät.", es: "¡Datos guardados! Comparte el código con tu otro dispositivo.", pt: "Dados salvos! Compartilhe o código com seu outro dispositivo.", fr: "Données sauvegardées ! Partagez le code avec votre autre appareil.", it: "Dati salvati! Condividi il codice con il tuo altro dispositivo." },
+  sync_success_load: { en: "Data loaded successfully!", id: "Data berhasil dimuat!", de: "Daten erfolgreich geladen!", es: "¡Datos cargados correctamente!", pt: "Dados carregados com sucesso!", fr: "Données chargées avec succès !", it: "Dati caricati con successo!" },
+  sync_err_not_found: { en: "Code not found or expired.", id: "Kode tidak ditemukan atau kedaluwarsa.", de: "Code nicht gefunden oder abgelaufen.", es: "Código no encontrado o expirado.", pt: "Código não encontrado ou expirado.", fr: "Code introuvable ou expiré.", it: "Codice non trovato o scaduto." },
+  sync_err_generic: { en: "Sync failed. Try again.", id: "Sinkron gagal. Coba lagi.", de: "Synchronisierung fehlgeschlagen.", es: "Sincronización fallida. Intente de nuevo.", pt: "Falha na sincronização. Tente novamente.", fr: "Échec de la synchronisation.", it: "Sincronizzazione fallita." },
+  sync_expires: { en: "Expires after 30 days of inactivity", id: "Kedaluwarsa setelah 30 hari tidak aktif", de: "Läuft nach 30 Tagen Inaktivität ab", es: "Caduca después de 30 días de inactividad", pt: "Expira após 30 dias sem atividade", fr: "Expire après 30 jours d'inactivité", it: "Scade dopo 30 giorni di inattività" },
 };
 
 const LOCALES: Record<string, string> = { 
@@ -193,6 +216,13 @@ export default function BudgetPlannerPage() {
   const [selectedTemplateId, setSelectedTemplateId] = useState<string>('');
   const [quickIncome, setQuickIncome] = useState<number>(0);
   const autoShownRef = useRef(false);
+
+  const [isSyncOpen, setIsSyncOpen] = useState(false);
+  const [syncCode, setSyncCode] = useState('');
+  const [syncInputCode, setSyncInputCode] = useState('');
+  const [syncStatus, setSyncStatus] = useState<'idle' | 'saving' | 'loading' | 'saved' | 'loaded' | 'error'>('idle');
+  const [syncError, setSyncError] = useState('');
+  const [syncCopied, setSyncCopied] = useState(false);
 
   useEffect(() => { setMounted(true); }, []);
 
@@ -245,6 +275,51 @@ export default function BudgetPlannerPage() {
       setSourceCategoryId('');
       toast({ title: t('all_done') });
     }
+  };
+
+  const handleSaveToCloud = async () => {
+    setSyncStatus('saving');
+    setSyncError('');
+    try {
+      const res = await fetch('/api/sync', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ income, categories, transactions }),
+      });
+      if (!res.ok) throw new Error();
+      const json = await res.json();
+      setSyncCode(json.code);
+      setSyncStatus('saved');
+    } catch {
+      setSyncStatus('error');
+      setSyncError(t('sync_err_generic'));
+    }
+  };
+
+  const handleLoadFromCloud = async () => {
+    const code = syncInputCode.trim().toUpperCase();
+    if (code.length < 8) return;
+    setSyncStatus('loading');
+    setSyncError('');
+    try {
+      const res = await fetch(`/api/sync?code=${code}`);
+      if (res.status === 404) { setSyncStatus('error'); setSyncError(t('sync_err_not_found')); return; }
+      if (!res.ok) throw new Error();
+      const json = await res.json();
+      restoreData(json.data);
+      setSyncStatus('loaded');
+      setIsSyncOpen(false);
+      toast({ title: t('sync_success_load') });
+    } catch {
+      setSyncStatus('error');
+      setSyncError(t('sync_err_generic'));
+    }
+  };
+
+  const handleCopySyncCode = () => {
+    navigator.clipboard.writeText(syncCode);
+    setSyncCopied(true);
+    setTimeout(() => setSyncCopied(false), 2000);
   };
 
   const handleApplyTemplate = () => {
@@ -586,6 +661,15 @@ export default function BudgetPlannerPage() {
               <h3 className="font-black uppercase tracking-tight text-sm">{t('system')}</h3>
             </div>
             <div className="flex flex-col gap-3">
+              {/* 0. Cloud Sync Button */}
+              <button
+                onClick={() => { setSyncStatus('idle'); setSyncCode(''); setSyncInputCode(''); setSyncError(''); setIsSyncOpen(true); }}
+                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-primary/10 border border-primary/30 text-primary font-bold uppercase tracking-widest text-[10px] hover:bg-primary/20 transition-colors"
+              >
+                <Cloud size={18} />
+                {t('sync_btn')}
+              </button>
+
               {/* 1. Export CSV Button */}
               <button 
                 onClick={handleExportCSV}
@@ -629,6 +713,82 @@ export default function BudgetPlannerPage() {
           </Card>
         </div>
       </div>
+
+      {/* Cloud Sync Dialog */}
+      <Dialog open={isSyncOpen} onOpenChange={setIsSyncOpen}>
+        <DialogContent className="rounded-[2rem] max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-black uppercase tracking-tighter flex items-center gap-2">
+              <Cloud className="h-6 w-6 text-primary" />
+              {t('sync_title')}
+            </DialogTitle>
+            <p className="text-[11px] text-muted-foreground leading-relaxed mt-1">{t('sync_subtitle')}</p>
+          </DialogHeader>
+
+          <div className="space-y-6 py-2">
+            {/* SAVE SECTION */}
+            <div className="space-y-3">
+              <button
+                onClick={handleSaveToCloud}
+                disabled={syncStatus === 'saving'}
+                className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-primary text-white font-black uppercase tracking-widest text-[11px] hover:bg-primary/90 disabled:opacity-60 transition-colors"
+              >
+                <CloudUpload size={18} />
+                {syncStatus === 'saving' ? t('sync_saving') : t('sync_save')}
+              </button>
+
+              {syncStatus === 'saved' && syncCode && (
+                <div className="rounded-2xl border-2 border-primary/30 bg-primary/5 p-4 space-y-2">
+                  <p className="text-[9px] font-black uppercase tracking-widest text-muted-foreground">{t('sync_your_code')}</p>
+                  <div className="flex items-center gap-2">
+                    <span className="text-3xl font-black tracking-[0.3em] text-primary flex-1 text-center">{syncCode}</span>
+                    <button
+                      onClick={handleCopySyncCode}
+                      className="p-2 rounded-xl bg-primary/10 hover:bg-primary/20 transition-colors"
+                      title={t('sync_copy')}
+                    >
+                      {syncCopied ? <Check size={16} className="text-green-500" /> : <Copy size={16} className="text-primary" />}
+                    </button>
+                  </div>
+                  <p className="text-[9px] text-muted-foreground text-center">{t('sync_expires')}</p>
+                </div>
+              )}
+            </div>
+
+            <div className="flex items-center gap-3">
+              <div className="flex-1 h-px bg-border" />
+              <span className="text-[9px] font-black uppercase tracking-widest text-muted-foreground">or</span>
+              <div className="flex-1 h-px bg-border" />
+            </div>
+
+            {/* LOAD SECTION */}
+            <div className="space-y-3">
+              <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">{t('sync_enter_code')}</p>
+              <div className="flex gap-2">
+                <input
+                  value={syncInputCode}
+                  onChange={e => setSyncInputCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 8))}
+                  placeholder="XXXXXXXX"
+                  className="flex-1 text-center text-2xl font-black tracking-[0.3em] bg-muted/30 border-2 rounded-xl px-4 py-3 focus:outline-none focus:border-primary uppercase"
+                />
+                <button
+                  onClick={handleLoadFromCloud}
+                  disabled={syncInputCode.length < 8 || syncStatus === 'loading'}
+                  className="px-4 rounded-xl bg-muted hover:bg-muted/70 disabled:opacity-40 transition-colors"
+                >
+                  {syncStatus === 'loading'
+                    ? <Cloud size={20} className="animate-pulse text-primary" />
+                    : <CloudDownload size={20} className="text-primary" />}
+                </button>
+              </div>
+            </div>
+
+            {syncStatus === 'error' && (
+              <p className="text-[10px] font-bold text-destructive text-center">{syncError}</p>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {/* Quick Start Dialog */}
       <Dialog open={isQuickStartOpen} onOpenChange={setIsQuickStartOpen}>
