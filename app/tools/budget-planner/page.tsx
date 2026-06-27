@@ -716,7 +716,18 @@ export default function BudgetPlannerPage() {
 
       {/* Cloud Sync Dialog */}
       <Dialog open={isSyncOpen} onOpenChange={setIsSyncOpen}>
-        <DialogContent className="rounded-[2rem] w-[calc(100vw-2rem)] max-w-sm">
+        <DialogContent
+          className="rounded-[2rem] overflow-hidden"
+          style={{
+            left: '1rem',
+            right: '1rem',
+            width: 'auto',
+            maxWidth: '24rem',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            transform: 'translateY(-50%)',
+          }}
+        >
           <DialogHeader>
             <DialogTitle className="text-lg font-black uppercase tracking-tighter leading-tight">
               <Cloud className="inline h-5 w-5 mr-1.5 text-primary align-middle" />
@@ -769,7 +780,7 @@ export default function BudgetPlannerPage() {
                   value={syncInputCode}
                   onChange={e => setSyncInputCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 8))}
                   placeholder="XXXXXXXX"
-                  className="flex-1 text-center text-2xl font-black tracking-[0.3em] bg-muted/30 border-2 rounded-xl px-4 py-3 focus:outline-none focus:border-primary uppercase"
+                  className="min-w-0 flex-1 text-center text-xl font-black tracking-[0.2em] bg-muted/30 border-2 rounded-xl px-3 py-3 focus:outline-none focus:border-primary uppercase"
                 />
                 <button
                   onClick={handleLoadFromCloud}
