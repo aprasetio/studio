@@ -399,11 +399,11 @@ export default function BudgetPlannerPage() {
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+        <div className="flex gap-2 flex-wrap justify-center">
           <Button
             variant="outline"
             onClick={() => setIsQuickStartOpen(true)}
-            className="h-14 px-6 font-black uppercase tracking-widest rounded-2xl border-2 border-primary/40 text-primary hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm"
+            className="h-14 px-6 font-black uppercase tracking-widest rounded-2xl border-2 border-primary/30 text-primary hover:bg-primary hover:text-white hover:border-primary transition-all"
           >
             <Sparkles className="mr-2 h-4 w-4" /> {t('qs_btn')}
           </Button>
@@ -664,36 +664,27 @@ export default function BudgetPlannerPage() {
               {/* 0. Cloud Sync — featured */}
               <button
                 onClick={() => { setSyncStatus('idle'); setSyncCode(''); setSyncInputCode(''); setSyncError(''); setIsSyncOpen(true); }}
-                className="flex items-center gap-3 w-full p-3.5 rounded-2xl bg-primary text-primary-foreground hover:bg-primary/90 transition-colors group"
+                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-primary text-primary-foreground font-black uppercase tracking-widest text-[10px] hover:bg-primary/90 transition-colors"
               >
-                <div className="p-1.5 bg-white/20 rounded-lg shrink-0">
-                  <Cloud size={15} />
-                </div>
-                <span className="text-[10px] font-black uppercase tracking-widest flex-1 text-left">{t('sync_btn')}</span>
-                <ChevronRight size={14} className="opacity-50 group-hover:opacity-100 transition-opacity" />
+                <Cloud size={16} />
+                {t('sync_btn')}
               </button>
 
               {/* 1. Export CSV */}
               <button
                 onClick={handleExportCSV}
-                className="flex items-center gap-3 w-full p-3.5 rounded-2xl bg-muted/50 hover:bg-muted transition-colors group"
+                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-muted/60 border border-border/60 text-foreground/70 font-bold uppercase tracking-widest text-[10px] hover:bg-muted transition-colors"
               >
-                <div className="p-1.5 bg-emerald-100 dark:bg-emerald-950/50 rounded-lg text-emerald-600 shrink-0">
-                  <FileSpreadsheet size={15} />
-                </div>
-                <span className="text-[10px] font-black uppercase tracking-widest flex-1 text-left text-foreground/80">{t('btn_excel')}</span>
-                <ChevronRight size={14} className="text-muted-foreground/30 group-hover:text-muted-foreground transition-colors" />
+                <FileSpreadsheet size={16} className="text-emerald-500" />
+                {t('btn_excel')}
               </button>
 
               {/* 2. Data Management (JSON) */}
               <Dialog>
                 <DialogTrigger asChild>
-                  <button className="flex items-center gap-3 w-full p-3.5 rounded-2xl bg-muted/50 hover:bg-muted transition-colors group">
-                    <div className="p-1.5 bg-blue-100 dark:bg-blue-950/50 rounded-lg text-blue-600 shrink-0">
-                      <Database size={15} />
-                    </div>
-                    <span className="text-[10px] font-black uppercase tracking-widest flex-1 text-left text-foreground/80">{t('btn_data_mgmt')}</span>
-                    <ChevronRight size={14} className="text-muted-foreground/30 group-hover:text-muted-foreground transition-colors" />
+                  <button className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-muted/60 border border-border/60 text-foreground/70 font-bold uppercase tracking-widest text-[10px] hover:bg-muted transition-colors">
+                    <Database size={16} className="text-blue-500" />
+                    {t('btn_data_mgmt')}
                   </button>
                 </DialogTrigger>
                 <DialogContent className="rounded-[2rem]">
@@ -713,12 +704,10 @@ export default function BudgetPlannerPage() {
               {/* 3. Reset Data */}
               <button
                 onClick={() => { if(confirm(globalT('reset') + '?')) resetMonth() }}
-                className="flex items-center gap-3 w-full p-3.5 rounded-2xl border border-red-200 dark:border-red-900/40 hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors group"
+                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/30 text-red-600 dark:text-red-400 font-bold uppercase tracking-widest text-[10px] hover:bg-red-100 dark:hover:bg-red-950/30 transition-colors"
               >
-                <div className="p-1.5 bg-red-100 dark:bg-red-950/50 rounded-lg text-red-500 shrink-0">
-                  <Trash2 size={15} />
-                </div>
-                <span className="text-[10px] font-black uppercase tracking-widest flex-1 text-left text-red-600 dark:text-red-400">{t('reset_data')}</span>
+                <Trash2 size={16} />
+                {t('reset_data')}
               </button>
             </div>
           </Card>
@@ -727,7 +716,7 @@ export default function BudgetPlannerPage() {
 
       {/* Cloud Sync Dialog */}
       <Dialog open={isSyncOpen} onOpenChange={setIsSyncOpen}>
-        <DialogContent className="rounded-[2rem] max-w-md">
+        <DialogContent className="rounded-[2rem] max-w-sm w-[calc(100%-2rem)] overflow-hidden">
           <DialogHeader>
             <DialogTitle className="text-2xl font-black uppercase tracking-tighter flex items-center gap-2">
               <Cloud className="h-6 w-6 text-primary" />
@@ -742,7 +731,7 @@ export default function BudgetPlannerPage() {
               <button
                 onClick={handleSaveToCloud}
                 disabled={syncStatus === 'saving'}
-                className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-primary text-white font-black uppercase tracking-widest text-[11px] hover:bg-primary/90 disabled:opacity-60 transition-colors"
+                className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-primary text-white font-black uppercase tracking-widest text-[10px] hover:bg-primary/90 disabled:opacity-60 transition-colors"
               >
                 <CloudUpload size={18} />
                 {syncStatus === 'saving' ? t('sync_saving') : t('sync_save')}
