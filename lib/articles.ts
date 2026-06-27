@@ -22,16 +22,30 @@ import { ARTICLE_CATEGORIES, type ArticleCategory, type ArticleFrontmatter, type
 
 const ARTICLES_DIR = path.join(process.cwd(), 'content/articles');
 
-function ensureDir(): boolean {
-  return fs.existsSync(ARTICLES_DIR);
+function getLangDir(lang: string): string {
+  const p = path.join(ARTICLES_DIR, lang);
+  // Fall back to 'id' if requested lang folder doesn't exist yet
+  return fs.existsSync(p) ? p : path.join(ARTICLES_DIR, 'id');
 }
 
-export function getAllArticles(): ArticleMeta[] {
-  if (!ensureDir()) return [];
+function parseMeta(data: Record<string, any>, content: string, category: ArticleCategory, slug: string, lang: string): ArticleMeta {
+  const stats = readingTime(content);
+  return {
+    ...(data as ArticleFrontmatter),
+    category,
+    slug,
+    lang: (data.lang as string) ?? lang,
+    readingTime: stats.text,
+    canonicalId: (data.canonicalId as string) ?? slug,
+  };
+}
+
+export function getAllArticles(lang = 'id'): ArticleMeta[] {
+  const baseDir = getLangDir(lang);
   const articles: ArticleMeta[] = [];
 
   for (const category of ARTICLE_CATEGORIES) {
-    const categoryPath = path.join(ARTICLES_DIR, category);
+    const categoryPath = path.join(baseDir, category);
     if (!fs.existsSync(categoryPath)) continue;
 
     const files = fs.readdirSync(categoryPath).filter(f => f.endsWith('.md'));
@@ -39,13 +53,7 @@ export function getAllArticles(): ArticleMeta[] {
       const slug = file.replace(/\.md$/, '');
       const raw = fs.readFileSync(path.join(categoryPath, file), 'utf-8');
       const { data, content } = matter(raw);
-      const stats = readingTime(content);
-      articles.push({
-        ...(data as ArticleFrontmatter),
-        category: category as ArticleCategory,
-        slug,
-        readingTime: stats.text,
-      });
+      articles.push(parseMeta(data, content, category as ArticleCategory, slug, lang));
     }
   }
 
@@ -54,32 +62,28 @@ export function getAllArticles(): ArticleMeta[] {
   );
 }
 
-export function getArticlesByCategory(category: ArticleCategory): ArticleMeta[] {
-  const categoryPath = path.join(ARTICLES_DIR, category);
+export function getArticlesByCategory(category: ArticleCategory, lang = 'id'): ArticleMeta[] {
+  const categoryPath = path.join(getLangDir(lang), category);
   if (!fs.existsSync(categoryPath)) return [];
 
-  const files = fs.readdirSync(categoryPath).filter(f => f.endsWith('.md'));
-  return files
+  return fs
+    .readdirSync(categoryPath)
+    .filter(f => f.endsWith('.md'))
     .map(file => {
       const slug = file.replace(/\.md$/, '');
       const raw = fs.readFileSync(path.join(categoryPath, file), 'utf-8');
       const { data, content } = matter(raw);
-      const stats = readingTime(content);
-      return {
-        ...(data as ArticleFrontmatter),
-        category,
-        slug,
-        readingTime: stats.text,
-      };
+      return parseMeta(data, content, category, slug, lang);
     })
     .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 }
 
 export async function getArticleBySlug(
   category: string,
-  slug: string
+  slug: string,
+  lang = 'id'
 ): Promise<Article | null> {
-  const filePath = path.join(ARTICLES_DIR, category, `${slug}.md`);
+  const filePath = path.join(getLangDir(lang), category, `${slug}.md`);
   if (!fs.existsSync(filePath)) return null;
 
   const raw = fs.readFileSync(filePath, 'utf-8');
@@ -87,25 +91,29 @@ export async function getArticleBySlug(
   const stats = readingTime(content);
 
   const processed = await remark().use(remarkGfm).use(remarkHtml, { sanitize: false }).process(content);
-  const contentHtml = processed.toString();
 
   return {
     ...(data as ArticleFrontmatter),
     category: category as ArticleCategory,
     slug,
+    lang: (data.lang as string) ?? lang,
     readingTime: stats.text,
-    contentHtml,
+    canonicalId: (data.canonicalId as string) ?? slug,
+    contentHtml: processed.toString(),
   };
 }
 
-export function getAllArticleSlugs(): { category: string; slug: string }[] {
-  if (!ensureDir()) return [];
+export function getAllArticleSlugs(lang = 'id'): { category: string; slug: string }[] {
+  // Strict — no fallback. Only returns slugs for actual files in this lang folder.
+  const baseDir = path.join(ARTICLES_DIR, lang);
+  if (!fs.existsSync(baseDir)) return [];
   const result: { category: string; slug: string }[] = [];
   for (const category of ARTICLE_CATEGORIES) {
-    const categoryPath = path.join(ARTICLES_DIR, category);
+    const categoryPath = path.join(baseDir, category);
     if (!fs.existsSync(categoryPath)) continue;
-    const files = fs.readdirSync(categoryPath).filter(f => f.endsWith('.md'));
-    files.forEach(file => result.push({ category, slug: file.replace(/\.md$/, '') }));
+    fs.readdirSync(categoryPath)
+      .filter(f => f.endsWith('.md'))
+      .forEach(file => result.push({ category, slug: file.replace(/\.md$/, '') }));
   }
   return result;
 }

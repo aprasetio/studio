@@ -9,7 +9,7 @@ import { useLang } from '@/components/Providers';
 
 export function ArticleCard({ article }: { article: ArticleMeta }) {
   const { lang } = useLang();
-  const href = `/article/${article.category}/${article.slug}`;
+  const href = `/${lang}/article/${article.category}/${article.slug}`;
 
   return (
     <Link href={href} className="group block">

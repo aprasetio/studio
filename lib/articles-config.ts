@@ -2,6 +2,9 @@
 
 import type { TranslationKey } from '@/lib/translations';
 
+export const ARTICLE_LANGS = ['id', 'en', 'es', 'pt'] as const;
+export type ArticleLang = (typeof ARTICLE_LANGS)[number];
+
 export const ARTICLE_CATEGORIES = [
   'olahraga',
   'keuangan',
@@ -30,12 +33,14 @@ export interface ArticleFrontmatter {
   tags?: string[];
   relatedTool?: string;
   crossPromo?: boolean;
-  lang?: string;
   author?: string;
+  canonicalId?: string;                    // links translations of the same article
+  translations?: Record<string, string>;   // { en: 'english-slug', es: 'spanish-slug' }
 }
 
 export interface ArticleMeta extends ArticleFrontmatter {
   slug: string;
+  lang: string;
   readingTime: string;
 }
 
