@@ -359,7 +359,7 @@ export default function BudgetPlannerPage() {
       </div>
 
       {/* Header Summary */}
-      <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 bg-card p-6 rounded-[2.5rem] shadow-xl border-2">
+      <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-6 bg-card p-6 rounded-[2.5rem] shadow-xl border-2">
         {/* Fixed Overlap Container */}
         <div className="flex items-center gap-4 bg-muted/30 p-5 rounded-3xl border-2 border-dashed w-full md:w-auto min-w-[300px]">
           <div className="p-4 bg-primary/10 rounded-2xl text-primary shrink-0">
@@ -716,10 +716,10 @@ export default function BudgetPlannerPage() {
 
       {/* Cloud Sync Dialog */}
       <Dialog open={isSyncOpen} onOpenChange={setIsSyncOpen}>
-        <DialogContent className="rounded-[2rem] max-w-sm w-[calc(100%-2rem)] overflow-hidden">
+        <DialogContent className="rounded-[2rem] w-[calc(100vw-2rem)] max-w-sm">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-black uppercase tracking-tighter flex items-center gap-2">
-              <Cloud className="h-6 w-6 text-primary" />
+            <DialogTitle className="text-lg font-black uppercase tracking-tighter leading-tight">
+              <Cloud className="inline h-5 w-5 mr-1.5 text-primary align-middle" />
               {t('sync_title')}
             </DialogTitle>
             <p className="text-[11px] text-muted-foreground leading-relaxed mt-1">{t('sync_subtitle')}</p>
