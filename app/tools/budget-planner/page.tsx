@@ -399,13 +399,13 @@ export default function BudgetPlannerPage() {
           </p>
         </div>
 
-        <div className="flex gap-2 flex-wrap justify-center">
+        <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
           <Button
             variant="outline"
             onClick={() => setIsQuickStartOpen(true)}
-            className="h-14 px-6 font-black uppercase tracking-widest rounded-2xl border-2 border-primary/30 hover:border-primary hover:bg-primary/5"
+            className="h-14 px-6 font-black uppercase tracking-widest rounded-2xl border-2 border-primary/40 text-primary hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm"
           >
-            <Sparkles className="mr-2 h-5 w-5 text-primary" /> {t('qs_btn')}
+            <Sparkles className="mr-2 h-4 w-4" /> {t('qs_btn')}
           </Button>
           <Dialog open={isTxOpen} onOpenChange={setIsTxOpen}>
             <DialogTrigger asChild>
@@ -660,31 +660,40 @@ export default function BudgetPlannerPage() {
               <Settings className="h-5 w-5 text-primary" />
               <h3 className="font-black uppercase tracking-tight text-sm">{t('system')}</h3>
             </div>
-            <div className="flex flex-col gap-3">
-              {/* 0. Cloud Sync Button */}
+            <div className="flex flex-col gap-2">
+              {/* 0. Cloud Sync — featured */}
               <button
                 onClick={() => { setSyncStatus('idle'); setSyncCode(''); setSyncInputCode(''); setSyncError(''); setIsSyncOpen(true); }}
-                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-primary/10 border border-primary/30 text-primary font-bold uppercase tracking-widest text-[10px] hover:bg-primary/20 transition-colors"
+                className="flex items-center gap-3 w-full p-3.5 rounded-2xl bg-primary text-primary-foreground hover:bg-primary/90 transition-colors group"
               >
-                <Cloud size={18} />
-                {t('sync_btn')}
+                <div className="p-1.5 bg-white/20 rounded-lg shrink-0">
+                  <Cloud size={15} />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-widest flex-1 text-left">{t('sync_btn')}</span>
+                <ChevronRight size={14} className="opacity-50 group-hover:opacity-100 transition-opacity" />
               </button>
 
-              {/* 1. Export CSV Button */}
-              <button 
+              {/* 1. Export CSV */}
+              <button
                 onClick={handleExportCSV}
-                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold uppercase tracking-widest text-[10px] hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+                className="flex items-center gap-3 w-full p-3.5 rounded-2xl bg-muted/50 hover:bg-muted transition-colors group"
               >
-                <FileSpreadsheet size={18} className="text-emerald-500" />
-                {t('btn_excel')}
+                <div className="p-1.5 bg-emerald-100 dark:bg-emerald-950/50 rounded-lg text-emerald-600 shrink-0">
+                  <FileSpreadsheet size={15} />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-widest flex-1 text-left text-foreground/80">{t('btn_excel')}</span>
+                <ChevronRight size={14} className="text-muted-foreground/30 group-hover:text-muted-foreground transition-colors" />
               </button>
 
-              {/* 2. Data Management (JSON) Button */}
+              {/* 2. Data Management (JSON) */}
               <Dialog>
                 <DialogTrigger asChild>
-                  <button className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold uppercase tracking-widest text-[10px] hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
-                    <Database size={18} className="text-blue-500" />
-                    {t('btn_data_mgmt')}
+                  <button className="flex items-center gap-3 w-full p-3.5 rounded-2xl bg-muted/50 hover:bg-muted transition-colors group">
+                    <div className="p-1.5 bg-blue-100 dark:bg-blue-950/50 rounded-lg text-blue-600 shrink-0">
+                      <Database size={15} />
+                    </div>
+                    <span className="text-[10px] font-black uppercase tracking-widest flex-1 text-left text-foreground/80">{t('btn_data_mgmt')}</span>
+                    <ChevronRight size={14} className="text-muted-foreground/30 group-hover:text-muted-foreground transition-colors" />
                   </button>
                 </DialogTrigger>
                 <DialogContent className="rounded-[2rem]">
@@ -701,13 +710,15 @@ export default function BudgetPlannerPage() {
                 </DialogContent>
               </Dialog>
 
-              {/* 3. Reset Data Button */}
-              <button 
+              {/* 3. Reset Data */}
+              <button
                 onClick={() => { if(confirm(globalT('reset') + '?')) resetMonth() }}
-                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30 text-red-600 dark:text-red-400 font-bold uppercase tracking-widest text-[10px] hover:bg-red-100 dark:hover:bg-red-900/20 transition-colors"
+                className="flex items-center gap-3 w-full p-3.5 rounded-2xl border border-red-200 dark:border-red-900/40 hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors group"
               >
-                <Trash2 size={18} />
-                {t('reset_data')}
+                <div className="p-1.5 bg-red-100 dark:bg-red-950/50 rounded-lg text-red-500 shrink-0">
+                  <Trash2 size={15} />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-widest flex-1 text-left text-red-600 dark:text-red-400">{t('reset_data')}</span>
               </button>
             </div>
           </Card>
