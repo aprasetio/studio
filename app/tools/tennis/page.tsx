@@ -72,6 +72,7 @@ interface MatchTeam {
 interface Match {
   id: number | string;
   type: 'Auto' | 'Manual';
+  court: number;
   timeStart: number;
   timeEnd: number;
   team1: MatchTeam;
@@ -81,6 +82,7 @@ interface Match {
 
 interface Config {
   numPlayers: number;
+  courts: number;
   durationMinutes: number;
   matchDuration: number;
 }
@@ -100,6 +102,7 @@ export default function TennisGeneratorPage() {
   const [step, setStep] = useState(1);
   const [config, setConfig] = useState<Config>({
     numPlayers: 8,
+    courts: 1,
     durationMinutes: 120,
     matchDuration: 30,
   });
@@ -113,7 +116,7 @@ export default function TennisGeneratorPage() {
   const [showCustomMatchModal, setShowCustomMatchModal] = useState(false);
   
   // Custom Match Form State
-  const [customMatch, setCustomMatch] = useState({ p1: '', p2: '', p3: '', p4: '' });
+  const [customMatch, setCustomMatch] = useState({ p1: '', p2: '', p3: '', p4: '', court: 1 });
 
   const jsonInputRef = useRef<HTMLInputElement>(null);
   const excelInputRef = useRef<HTMLInputElement>(null);
@@ -147,32 +150,44 @@ export default function TennisGeneratorPage() {
 
     while (time < config.durationMinutes) {
       const stats = getPlayerStatsInSchedule([...tempSchedule, ...newMatches]);
-      
-      const candidates = [...players].sort(() => Math.random() - 0.5).sort((a, b) => {
-        const totalA = stats[a.id].played + stats[a.id].scheduled;
-        const totalB = stats[b.id].played + stats[b.id].scheduled;
-        if (totalA !== totalB) return totalA - totalB;
-        return b.level - a.level;
-      });
+      const usedInSlot = new Set<string>();
+      let anyCourtFilled = false;
 
-      if (candidates.length < 4) break;
+      for (let court = 1; court <= config.courts; court++) {
+        const candidates = [...players]
+          .filter(p => !usedInSlot.has(p.id))
+          .sort(() => Math.random() - 0.5)
+          .sort((a, b) => {
+            const totalA = stats[a.id].played + stats[a.id].scheduled;
+            const totalB = stats[b.id].played + stats[b.id].scheduled;
+            if (totalA !== totalB) return totalA - totalB;
+            return b.level - a.level;
+          });
 
-      const selected = candidates.slice(0, 4);
-      selected.sort((a, b) => b.level - a.level);
+        if (candidates.length < 4) break;
 
-      // Balanced Pairing: 1+4 vs 2+3
-      const t1 = [selected[0], selected[3]].sort((a, b) => a.name.localeCompare(b.name));
-      const t2 = [selected[1], selected[2]].sort((a, b) => a.name.localeCompare(b.name));
+        const selected = candidates.slice(0, 4);
+        selected.sort((a, b) => b.level - a.level);
+        selected.forEach(p => usedInSlot.add(p.id));
 
-      newMatches.push({
-        id: idCounter++,
-        type: 'Auto',
-        timeStart: time,
-        timeEnd: time + config.matchDuration,
-        status: 'Scheduled',
-        team1: { players: t1, score: null },
-        team2: { players: t2, score: null }
-      });
+        // Balanced Pairing: 1+4 vs 2+3
+        const t1 = [selected[0], selected[3]].sort((a, b) => a.name.localeCompare(b.name));
+        const t2 = [selected[1], selected[2]].sort((a, b) => a.name.localeCompare(b.name));
+
+        newMatches.push({
+          id: idCounter++,
+          type: 'Auto',
+          court,
+          timeStart: time,
+          timeEnd: time + config.matchDuration,
+          status: 'Scheduled',
+          team1: { players: t1, score: null },
+          team2: { players: t2, score: null }
+        });
+        anyCourtFilled = true;
+      }
+
+      if (!anyCourtFilled) break;
       time += config.matchDuration;
     }
     return newMatches;
@@ -252,6 +267,7 @@ export default function TennisGeneratorPage() {
     setSchedule(prev => [...prev, {
       id: nid,
       type: 'Manual',
+      court: customMatch.court,
       timeStart: 0,
       timeEnd: 0,
       status: 'Scheduled',
@@ -259,7 +275,7 @@ export default function TennisGeneratorPage() {
       team2: { players: [sel[2], sel[3]], score: null }
     }]);
     setShowCustomMatchModal(false);
-    setCustomMatch({ p1: '', p2: '', p3: '', p4: '' });
+    setCustomMatch({ p1: '', p2: '', p3: '', p4: '', court: 1 });
   };
 
   // --- DATA PERSISTENCE ---
@@ -307,7 +323,7 @@ export default function TennisGeneratorPage() {
           const importedMatches: Match[] = mData.map(m => {
             const findP = (name: string) => players.find(p => p.name === name) || { id: name, name, skill: 'Newbie' as SkillLevel, level: 1 };
             return {
-              id: m.ID, type: m.Type, status: m.Status, timeStart: 0, timeEnd: 0,
+              id: m.ID, type: m.Type, status: m.Status, court: m.Court || 1, timeStart: 0, timeEnd: 0,
               team1: { players: [findP(m.T1_P1), findP(m.T1_P2)], score: m.T1_Score },
               team2: { players: [findP(m.T2_P1), findP(m.T2_P2)], score: m.T2_Score }
             };
@@ -415,9 +431,16 @@ export default function TennisGeneratorPage() {
                 <Input type="number" value={config.matchDuration} onChange={e => setConfig({...config, matchDuration: Number(e.target.value)})} className="h-12 font-bold" />
               </div>
             </div>
-            <div className="space-y-2">
-              <Label className="text-[10px] font-black uppercase opacity-60">Player Count</Label>
-              <Input type="number" min="4" value={config.numPlayers} onChange={e => setConfig({...config, numPlayers: Math.max(4, Number(e.target.value))})} className="h-12 font-bold" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <Label className="text-[10px] font-black uppercase opacity-60">Player Count</Label>
+                <Input type="number" min="4" value={config.numPlayers} onChange={e => setConfig({...config, numPlayers: Math.max(4, Number(e.target.value))})} className="h-12 font-bold" />
+              </div>
+              <div className="space-y-2">
+                <Label className="text-[10px] font-black uppercase opacity-60">Number of Courts</Label>
+                <Input type="number" min="1" max="10" value={config.courts} onChange={e => setConfig({...config, courts: Math.max(1, Math.min(10, Number(e.target.value)))})} className="h-12 font-bold" />
+                <p className="text-[9px] text-muted-foreground">Min 4 pemain per lapangan. {config.courts} lapangan = min {config.courts * 4} pemain aktif.</p>
+              </div>
             </div>
             <Button onClick={() => {
               const pCount = config.numPlayers;
@@ -499,19 +522,48 @@ export default function TennisGeneratorPage() {
               </div>
             </div>
 
-            <div className="grid gap-6">
-              {schedule.map((match, idx) => (
-                <MatchCard 
-                  key={match.id} 
-                  match={match} 
-                  players={players} 
-                  onSaveScore={handleSaveScore} 
-                  onEditScore={handleEditScore}
-                  onDelete={handleDeleteMatch}
-                  onSwapPlayer={handleSwapPlayer}
-                  allPlayersInSlot={new Set(schedule.filter(m => m.timeStart === match.timeStart).flatMap(m => [...m.team1.players, ...m.team2.players].map(p => p.id)))}
-                />
-              ))}
+            <div className="space-y-8">
+              {(() => {
+                // Group matches by timeStart, preserve insertion order for manual (timeStart=0)
+                const groups = new Map<string, Match[]>();
+                schedule.forEach(m => {
+                  const key = m.timeStart === 0 && m.type === 'Manual' ? `manual-${m.id}` : String(m.timeStart);
+                  if (!groups.has(key)) groups.set(key, []);
+                  groups.get(key)!.push(m);
+                });
+                let roundNum = 0;
+                return Array.from(groups.entries()).map(([key, matches]) => {
+                  const isTimedSlot = !key.startsWith('manual-');
+                  if (isTimedSlot) roundNum++;
+                  const tStart = matches[0].timeStart;
+                  const tEnd = matches[0].timeEnd;
+                  const fmtMin = (m: number) => `${Math.floor(m/60).toString().padStart(2,'0')}:${(m%60).toString().padStart(2,'0')}`;
+                  return (
+                    <div key={key} className="space-y-3">
+                      {isTimedSlot && (
+                        <div className="flex items-center gap-3 px-1">
+                          <span className="text-[11px] font-black uppercase tracking-widest text-primary">Ronde {roundNum}</span>
+                          <span className="text-[10px] text-muted-foreground font-bold">{fmtMin(tStart)} – {fmtMin(tEnd)}</span>
+                          <div className="flex-1 h-px bg-border" />
+                          <span className="text-[9px] text-muted-foreground">{matches.length} lapangan aktif</span>
+                        </div>
+                      )}
+                      {matches.map(match => (
+                        <MatchCard
+                          key={match.id}
+                          match={match}
+                          players={players}
+                          onSaveScore={handleSaveScore}
+                          onEditScore={handleEditScore}
+                          onDelete={handleDeleteMatch}
+                          onSwapPlayer={handleSwapPlayer}
+                          allPlayersInSlot={new Set(schedule.filter(m => m.timeStart === match.timeStart && !key.startsWith('manual-')).flatMap(m => [...m.team1.players, ...m.team2.players].map(p => p.id)))}
+                        />
+                      ))}
+                    </div>
+                  );
+                });
+              })()}
             </div>
           </div>
 
@@ -608,6 +660,19 @@ export default function TennisGeneratorPage() {
         <DialogContent className="rounded-3xl max-w-lg">
           <DialogHeader><DialogTitle className="uppercase font-black">Tambah Match Manual</DialogTitle></DialogHeader>
           <div className="space-y-4 py-4">
+            <div className="space-y-2">
+              <Label className="text-[10px] font-black uppercase opacity-60">Lapangan</Label>
+              <Select value={String(customMatch.court)} onValueChange={v => setCustomMatch({...customMatch, court: Number(v)})}>
+                <SelectTrigger className="font-bold text-sm h-10">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {Array.from({ length: config.courts }, (_, i) => i + 1).map(c => (
+                    <SelectItem key={c} value={String(c)} className="font-bold">Lapangan {c}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
             <div className="bg-blue-50/50 p-4 rounded-2xl border-2 border-blue-100">
               <p className="font-black text-blue-800 text-[10px] mb-3 uppercase tracking-widest">TIM A</p>
               <div className="grid grid-cols-2 gap-2">
@@ -687,8 +752,13 @@ function MatchCard({
     <Card className={cn("overflow-hidden border-2 rounded-[2rem] shadow-lg transition-all", isDone ? "border-emerald-500/20" : "border-primary/5")}>
       <div className="bg-muted/30 px-6 py-2 border-b flex justify-between items-center">
         <div className="flex items-center gap-2">
-          {match.type === 'Manual' ? <Badge className="bg-purple-600 text-[8px] uppercase font-black">Manual</Badge> : <span className="text-[10px] font-black uppercase opacity-40">Match {match.id}</span>}
-          {match.timeStart > 0 && <span className="text-[9px] font-bold text-muted-foreground">{Math.floor(match.timeStart/60).toString().padStart(2,'0')}:{(match.timeStart%60).toString().padStart(2,'0')}</span>}
+          {match.type === 'Manual'
+            ? <Badge className="bg-purple-600 text-[8px] uppercase font-black">Manual</Badge>
+            : <span className="text-[10px] font-black uppercase opacity-40">Match {match.id}</span>
+          }
+          <Badge variant="outline" className="text-[8px] font-black uppercase border-primary/30 text-primary">
+            Lapangan {match.court}
+          </Badge>
         </div>
         <Button variant="ghost" size="icon" onClick={() => onDelete(match.id)} className="h-6 w-6 text-muted-foreground hover:text-red-500"><Trash2 className="h-3.5 w-3.5" /></Button>
       </div>
