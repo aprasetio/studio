@@ -177,12 +177,21 @@ function scoreFrame(lm: Array<{ x: number; y: number; z: number }>): number[] {
   const shoulderWidth = Math.abs(get(LM.LShoulder).x - get(LM.RShoulder).x);
   const rotation = shoulderWidth > 0 ? clamp01(hipWidth / shoulderWidth) : 0.5;
 
-  // 4. Contact / Elbow Extension: right arm elbow angle (ideal ~165°)
-  const elbowAngle = angle(get(LM.RShoulder), get(LM.RElbow), get(LM.RWrist));
+  // 4 & 5: detect dominant arm — use whichever wrist is higher (lower y) to handle
+  // both right-handed and left-handed players, and cameras from either side
+  const rWristY = get(LM.RWrist).y;
+  const lWristY = get(LM.LWrist).y;
+  const [domShoulder, domElbow, domWrist] =
+    rWristY <= lWristY
+      ? [get(LM.RShoulder), get(LM.RElbow), get(LM.RWrist)]
+      : [get(LM.LShoulder), get(LM.LElbow), get(LM.LWrist)];
+
+  // 4. Contact / Elbow Extension: dominant arm elbow angle (ideal ~165°)
+  const elbowAngle = angle(domShoulder, domElbow, domWrist);
   const contact = clamp01(1 - Math.abs(elbowAngle - 165) / 40);
 
-  // 5. Follow-Through: wrist height above shoulder
-  const wristAbove = get(LM.RShoulder).y - get(LM.RWrist).y;
+  // 5. Follow-Through: dominant wrist height above its shoulder
+  const wristAbove = domShoulder.y - domWrist.y;
   const followThrough = clamp01(wristAbove / 0.25);
 
   return [stance, coil, rotation, contact, followThrough];
@@ -191,9 +200,15 @@ function scoreFrame(lm: Array<{ x: number; y: number; z: number }>): number[] {
 function computeAnalysis(allScores: number[][]): AnalysisResult {
   const dims = 5;
   const src = allScores.length > 0 ? allScores : [[0.6, 0.55, 0.6, 0.65, 0.5]];
+
+  // Stance: average — should be consistent throughout the swing
+  // Coil, Rotation, Contact, Follow-Through: max — capture the peak of each phase,
+  // not dragged down by frames where that dimension is irrelevant (e.g. follow-through
+  // is ~0 in preparation frames but should reflect the best moment achieved)
   const avg = Array.from({ length: dims }, (_, i) => {
     const vals = src.map(s => s[i]);
-    return vals.reduce((a, b) => a + b, 0) / vals.length;
+    if (i === 0) return vals.reduce((a, b) => a + b, 0) / vals.length; // stance: average
+    return Math.max(...vals); // others: peak
   });
 
   const DEFS = [
