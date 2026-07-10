@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { Upload, RotateCcw, ChevronRight, Activity, Zap, AlertCircle } from 'lucide-react';
+import React, { useState, useRef, useCallback } from 'react';
+import { Upload, RotateCcw, ChevronRight, Activity, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -44,13 +44,17 @@ interface AnalysisResult {
 
 const SAMPLE_FRAMES = 24;
 
+const MP_BUNDLE = 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/vision_bundle.mjs';
+const MP_WASM   = 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/wasm';
+const MP_MODEL  = 'https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task';
+
 const PHASES: PhaseData[] = [
-  { name: 'Preparation', nameId: 'Persiapan', desc: 'Ready position, weight centered', descId: 'Posisi siap, berat seimbang', icon: '🎾' },
-  { name: 'Backswing', nameId: 'Backswing', desc: 'Racket drawn back, shoulder turn', descId: 'Raket ditarik, putaran bahu', icon: '↩️' },
-  { name: 'Loading', nameId: 'Loading', desc: 'Weight transfer, coil complete', descId: 'Transfer berat, koil selesai', icon: '⚡' },
-  { name: 'Impact', nameId: 'Dampak', desc: 'Ball contact, arm extended', descId: 'Kontak bola, lengan memanjang', icon: '💥' },
-  { name: 'Follow-Through', nameId: 'Lanjutan', desc: 'Racket completes arc upward', descId: 'Raket menyelesaikan busur ke atas', icon: '🌀' },
-  { name: 'Finish', nameId: 'Selesai', desc: 'Recovery to ready position', descId: 'Kembali ke posisi siap', icon: '✅' },
+  { name: 'Preparation',   nameId: 'Persiapan',  desc: 'Ready position, weight centered',     descId: 'Posisi siap, berat seimbang',      icon: '🎾' },
+  { name: 'Backswing',     nameId: 'Backswing',   desc: 'Racket drawn back, shoulder turn',    descId: 'Raket ditarik, putaran bahu',       icon: '↩️' },
+  { name: 'Loading',       nameId: 'Loading',     desc: 'Weight transfer, coil complete',      descId: 'Transfer berat, koil selesai',      icon: '⚡' },
+  { name: 'Impact',        nameId: 'Dampak',      desc: 'Ball contact, arm extended',          descId: 'Kontak bola, lengan memanjang',     icon: '💥' },
+  { name: 'Follow-Through',nameId: 'Lanjutan',    desc: 'Racket completes arc upward',         descId: 'Raket menyelesaikan busur ke atas', icon: '🌀' },
+  { name: 'Finish',        nameId: 'Selesai',     desc: 'Recovery to ready position',          descId: 'Kembali ke posisi siap',            icon: '✅' },
 ];
 
 const UI = {
@@ -70,8 +74,6 @@ const UI = {
     errorTitle: 'Analysis Failed',
     errorSub: 'Could not process this video. Try a clearer, well-lit clip.',
     retry: 'Try Again',
-    tip: 'Tip',
-    score: 'Score',
     overall: 'Overall',
     privacy: '100% local · no upload · no account needed',
   },
@@ -91,40 +93,44 @@ const UI = {
     errorTitle: 'Analisis Gagal',
     errorSub: 'Tidak dapat memproses video ini. Coba klip yang lebih jelas dan terang.',
     retry: 'Coba Lagi',
-    tip: 'Tips',
-    score: 'Skor',
     overall: 'Keseluruhan',
     privacy: '100% lokal · tidak ada upload · tidak perlu akun',
   },
 };
 
-// ── Geometry helpers ────────────────────────────────────────────────────────
+// ── Cached module ───────────────────────────────────────────────────────────
 
-declare global {
-  interface Window {
-    __mpReady?: boolean;
-    __mpLoadError?: boolean;
-    __mp?: {
-      PoseLandmarker: {
-        createFromOptions: (
-          vision: unknown,
-          opts: unknown
-        ) => Promise<{
-          detectForVideo: (
-            video: HTMLVideoElement,
-            ts: number
-          ) => { landmarks: Array<Array<{ x: number; y: number; z: number }>> };
-          close: () => void;
-        }>;
-      };
-      FilesetResolver: {
-        forVisionTasks: (url: string) => Promise<unknown>;
-      };
-    };
-  }
+interface MPModule {
+  PoseLandmarker: {
+    createFromOptions: (vision: unknown, opts: unknown) => Promise<{
+      detect: (image: HTMLCanvasElement) => { landmarks: Array<Array<{ x: number; y: number; z: number }>> };
+      close: () => void;
+    }>;
+  };
+  FilesetResolver: {
+    forVisionTasks: (url: string) => Promise<unknown>;
+  };
 }
 
-function angle(a: { x: number; y: number }, b: { x: number; y: number }, c: { x: number; y: number }): number {
+let mpCache: MPModule | null = null;
+
+async function loadMediaPipe(): Promise<MPModule> {
+  if (mpCache) return mpCache;
+  // webpackIgnore + vite-ignore prevent bundlers from trying to resolve the external URL
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const mod = await import(/* webpackIgnore: true */ /* @vite-ignore */ MP_BUNDLE);
+  mpCache = mod as MPModule;
+  return mpCache;
+}
+
+// ── Geometry helpers ────────────────────────────────────────────────────────
+
+function angle(
+  a: { x: number; y: number },
+  b: { x: number; y: number },
+  c: { x: number; y: number }
+): number {
   const ab = { x: a.x - b.x, y: a.y - b.y };
   const cb = { x: c.x - b.x, y: c.y - b.y };
   const dot = ab.x * cb.x + ab.y * cb.y;
@@ -136,7 +142,6 @@ function clamp01(v: number): number {
   return Math.max(0, Math.min(1, v));
 }
 
-// BlazePose landmark indices
 const LM = {
   LShoulder: 11, RShoulder: 12,
   LElbow: 13,    RElbow: 14,
@@ -167,16 +172,16 @@ function scoreFrame(lm: Array<{ x: number; y: number; z: number }>): number[] {
   const xFactor = Math.abs(shoulderAngle - hipAngle);
   const coil = clamp01(xFactor / 30);
 
-  // 3. Body Rotation: horizontal hip width ratio
+  // 3. Body Rotation: horizontal hip vs shoulder width
   const hipWidth = Math.abs(get(LM.LHip).x - get(LM.RHip).x);
   const shoulderWidth = Math.abs(get(LM.LShoulder).x - get(LM.RShoulder).x);
   const rotation = shoulderWidth > 0 ? clamp01(hipWidth / shoulderWidth) : 0.5;
 
-  // 4. Contact / Elbow Extension: right arm elbow angle (ideal 155–175°)
+  // 4. Contact / Elbow Extension: right arm elbow angle (ideal ~165°)
   const elbowAngle = angle(get(LM.RShoulder), get(LM.RElbow), get(LM.RWrist));
   const contact = clamp01(1 - Math.abs(elbowAngle - 165) / 40);
 
-  // 5. Follow-Through: wrist height relative to shoulder
+  // 5. Follow-Through: wrist height above shoulder
   const wristAbove = get(LM.RShoulder).y - get(LM.RWrist).y;
   const followThrough = clamp01(wristAbove / 0.25);
 
@@ -184,78 +189,58 @@ function scoreFrame(lm: Array<{ x: number; y: number; z: number }>): number[] {
 }
 
 function computeAnalysis(allScores: number[][]): AnalysisResult {
-  if (allScores.length === 0) {
-    const fallback = [0.6, 0.55, 0.6, 0.65, 0.5];
-    return buildResult(fallback, allScores.length);
-  }
-
   const dims = 5;
+  const src = allScores.length > 0 ? allScores : [[0.6, 0.55, 0.6, 0.65, 0.5]];
   const avg = Array.from({ length: dims }, (_, i) => {
-    const vals = allScores.map(s => s[i]);
+    const vals = src.map(s => s[i]);
     return vals.reduce((a, b) => a + b, 0) / vals.length;
   });
 
-  return buildResult(avg, allScores.length);
-}
-
-function buildResult(avg: number[], frameCount: number): AnalysisResult {
-  const SCORE_DEFS = [
+  const DEFS = [
     {
-      label: 'Stance & Footwork',
-      labelId: 'Stance & Footwork',
+      label: 'Stance & Footwork', labelId: 'Stance & Footwork',
       tips: [
-        { en: 'Bend knees more — aim for ~145–165° knee angle for explosive movement.', id: 'Tekuk lutut lebih — targetkan sudut ~145–165° untuk gerakan eksplosif.' },
+        { en: 'Bend knees more — aim for ~145–165° for explosive movement.', id: 'Tekuk lutut lebih — targetkan ~145–165° untuk gerakan eksplosif.' },
         { en: 'Great base! Keep that athletic ready position.', id: 'Posisi bagus! Pertahankan posisi siap atletis itu.' },
       ],
     },
     {
-      label: 'Body Coil (X-Factor)',
-      labelId: 'Koil Tubuh (X-Factor)',
+      label: 'Body Coil (X-Factor)', labelId: 'Koil Tubuh (X-Factor)',
       tips: [
-        { en: 'Increase shoulder turn separation from hips to load more power.', id: 'Tingkatkan pemisahan putaran bahu dari pinggul untuk muat lebih banyak daya.' },
-        { en: 'Excellent X-factor! Your shoulder-hip separation creates great power.', id: 'X-factor luar biasa! Pemisahan bahu-pinggul Anda menghasilkan daya hebat.' },
+        { en: 'Increase shoulder turn separation from hips to load more power.', id: 'Tingkatkan pemisahan putaran bahu dari pinggul untuk daya lebih.' },
+        { en: 'Excellent X-factor! Your shoulder-hip separation creates great power.', id: 'X-factor luar biasa! Pemisahan bahu-pinggul menghasilkan daya hebat.' },
       ],
     },
     {
-      label: 'Body Rotation',
-      labelId: 'Rotasi Tubuh',
+      label: 'Body Rotation', labelId: 'Rotasi Tubuh',
       tips: [
         { en: 'Drive hips through the shot more aggressively for power transfer.', id: 'Dorong pinggul lebih agresif saat memukul untuk transfer daya.' },
-        { en: 'Strong hip drive — power is transferring efficiently.', id: 'Dorongan pinggul kuat — daya berpindah dengan efisien.' },
+        { en: 'Strong hip drive — power is transferring efficiently.', id: 'Dorongan pinggul kuat — daya berpindah efisien.' },
       ],
     },
     {
-      label: 'Contact Point & Arm Extension',
-      labelId: 'Titik Kontak & Ekstensi Lengan',
+      label: 'Contact Point & Arm Extension', labelId: 'Titik Kontak & Ekstensi Lengan',
       tips: [
-        { en: 'Extend arm more at contact — aim for ~165° elbow angle.', id: 'Perpanjang lengan lebih saat kontak — targetkan sudut siku ~165°.' },
+        { en: 'Extend arm more at contact — aim for ~165° elbow angle.', id: 'Perpanjang lengan saat kontak — targetkan sudut siku ~165°.' },
         { en: 'Excellent arm extension at contact for maximum power.', id: 'Ekstensi lengan luar biasa saat kontak untuk daya maksimum.' },
       ],
     },
     {
-      label: 'Follow-Through',
-      labelId: 'Follow-Through',
+      label: 'Follow-Through', labelId: 'Follow-Through',
       tips: [
-        { en: 'Complete your follow-through — racket should finish above shoulder level.', id: 'Selesaikan follow-through Anda — raket harus berakhir di atas level bahu.' },
+        { en: 'Complete your follow-through — racket should finish above shoulder.', id: 'Selesaikan follow-through — raket harus berakhir di atas bahu.' },
         { en: 'Beautiful follow-through — racket finishing high for topspin.', id: 'Follow-through indah — raket berakhir tinggi untuk topspin.' },
       ],
     },
   ];
 
   const scores: ScoreItem[] = avg.map((v, i) => {
-    const def = SCORE_DEFS[i];
-    const tipIdx = v >= 0.65 ? 1 : 0;
-    return {
-      label: def.label,
-      labelId: def.labelId,
-      score: Math.round(v * 100),
-      tip: def.tips[tipIdx].en,
-      tipId: def.tips[tipIdx].id,
-    };
+    const d = DEFS[i];
+    const tip = d.tips[v >= 0.65 ? 1 : 0];
+    return { label: d.label, labelId: d.labelId, score: Math.round(v * 100), tip: tip.en, tipId: tip.id };
   });
 
   const avgScore = Math.round(scores.reduce((a, b) => a + b.score, 0) / scores.length);
-
   let ntrp = '1.5–2.0';
   if (avgScore >= 80) ntrp = '4.5–5.0';
   else if (avgScore >= 70) ntrp = '4.0–4.5';
@@ -264,57 +249,18 @@ function buildResult(avg: number[], frameCount: number): AnalysisResult {
   else if (avgScore >= 40) ntrp = '2.5–3.0';
   else if (avgScore >= 30) ntrp = '2.0–2.5';
 
-  return { scores, ntrp, avgScore, phases: PHASES, frameCount };
+  return { scores, ntrp, avgScore, phases: PHASES, frameCount: allScores.length };
 }
 
-// ── MediaPipe loader ────────────────────────────────────────────────────────
+// ── Score colour helpers ────────────────────────────────────────────────────
 
-const MP_CDN = 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14';
-
-function loadMediaPipe(): Promise<void> {
-  return new Promise((resolve, reject) => {
-    if (window.__mpReady) { resolve(); return; }
-    if (window.__mpLoadError) { reject(new Error('MediaPipe failed to load')); return; }
-
-    const id = 'mp-tasks-vision-loader';
-    if (document.getElementById(id)) {
-      const poll = setInterval(() => {
-        if (window.__mpReady) { clearInterval(poll); resolve(); }
-        if (window.__mpLoadError) { clearInterval(poll); reject(new Error('MediaPipe failed')); }
-      }, 200);
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.id = id;
-    script.type = 'module';
-    script.textContent = `
-      import { PoseLandmarker, FilesetResolver } from '${MP_CDN}/index.js';
-      window.__mp = { PoseLandmarker, FilesetResolver };
-      window.__mpReady = true;
-    `;
-    script.onerror = () => { window.__mpLoadError = true; reject(new Error('Script load error')); };
-    document.head.appendChild(script);
-
-    const timeout = setTimeout(() => {
-      if (!window.__mpReady) { window.__mpLoadError = true; reject(new Error('Timeout')); }
-    }, 30000);
-
-    const poll = setInterval(() => {
-      if (window.__mpReady) { clearInterval(poll); clearTimeout(timeout); resolve(); }
-    }, 200);
-  });
-}
-
-// ── Score colour helper ─────────────────────────────────────────────────────
-
-function scoreColor(s: number): string {
+function scoreColor(s: number) {
   if (s >= 75) return 'text-emerald-500';
   if (s >= 55) return 'text-amber-500';
   return 'text-rose-500';
 }
 
-function scoreBg(s: number): string {
+function scoreBg(s: number) {
   if (s >= 75) return 'bg-emerald-500';
   if (s >= 55) return 'bg-amber-500';
   return 'bg-rose-500';
@@ -354,10 +300,12 @@ export default function TennisAIPage() {
     setStage('loadingModel');
     setProgress(5);
 
+    let mp: MPModule;
     try {
-      await loadMediaPipe();
-    } catch {
-      setErrorMsg('Could not load AI model. Check your internet connection.');
+      mp = await loadMediaPipe();
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      setErrorMsg(`Could not load AI model: ${msg}`);
       setStage('error');
       return;
     }
@@ -365,23 +313,21 @@ export default function TennisAIPage() {
     setStage('extracting');
     setProgress(20);
 
-    const mp = window.__mp!;
-    const { FilesetResolver, PoseLandmarker } = mp;
-
-    let landmarker: Awaited<ReturnType<typeof PoseLandmarker.createFromOptions>> | null = null;
+    let landmarker: Awaited<ReturnType<MPModule['PoseLandmarker']['createFromOptions']>> | null = null;
 
     try {
-      const vision = await FilesetResolver.forVisionTasks(`${MP_CDN}/wasm`);
-      landmarker = await PoseLandmarker.createFromOptions(vision, {
+      const vision = await mp.FilesetResolver.forVisionTasks(MP_WASM);
+      landmarker = await mp.PoseLandmarker.createFromOptions(vision, {
         baseOptions: {
-          modelAssetPath: `${MP_CDN}/models/pose_landmarker_lite.task`,
+          modelAssetPath: MP_MODEL,
           delegate: 'GPU',
         },
-        runningMode: 'VIDEO',
+        runningMode: 'IMAGE',
         numPoses: 1,
       });
-    } catch {
-      setErrorMsg('Failed to initialize pose model.');
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      setErrorMsg(`Failed to initialize pose model: ${msg}`);
       setStage('error');
       return;
     }
@@ -389,37 +335,45 @@ export default function TennisAIPage() {
     setProgress(40);
 
     const video = videoRef.current!;
+    const canvas = canvasRef.current!;
     const url = URL.createObjectURL(file);
-    video.src = url;
-    await new Promise<void>((res, rej) => {
-      video.onloadedmetadata = () => res();
-      video.onerror = () => rej(new Error('Video load error'));
-    });
+
+    try {
+      video.src = url;
+      await new Promise<void>((res, rej) => {
+        video.onloadedmetadata = () => res();
+        video.onerror = () => rej(new Error('Video failed to load — try a different file.'));
+        setTimeout(() => rej(new Error('Video load timeout')), 15000);
+      });
+    } catch (e) {
+      URL.revokeObjectURL(url);
+      landmarker.close();
+      setErrorMsg(e instanceof Error ? e.message : 'Video error');
+      setStage('error');
+      return;
+    }
 
     const duration = video.duration;
     const allFrameScores: number[][] = [];
 
     for (let i = 0; i < SAMPLE_FRAMES; i++) {
-      const t = (i / (SAMPLE_FRAMES - 1)) * duration;
-      video.currentTime = t;
+      video.currentTime = (i / (SAMPLE_FRAMES - 1)) * duration;
       await new Promise<void>(res => {
         const h = () => { video.removeEventListener('seeked', h); res(); };
         video.addEventListener('seeked', h);
       });
 
-      const canvas = canvasRef.current!;
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      const ctx = canvas.getContext('2d')!;
-      ctx.drawImage(video, 0, 0);
-
-      try {
-        const res = landmarker.detectForVideo(video, performance.now());
-        if (res.landmarks?.[0]) {
-          allFrameScores.push(scoreFrame(res.landmarks[0]));
+      canvas.width = video.videoWidth || 640;
+      canvas.height = video.videoHeight || 360;
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.drawImage(video, 0, 0);
+        try {
+          const det = landmarker!.detect(canvas);
+          if (det.landmarks?.[0]) allFrameScores.push(scoreFrame(det.landmarks[0]));
+        } catch {
+          // skip frame silently
         }
-      } catch {
-        // skip frame on error
       }
 
       setProgress(40 + Math.round((i / SAMPLE_FRAMES) * 50));
@@ -429,52 +383,30 @@ export default function TennisAIPage() {
     URL.revokeObjectURL(url);
     video.src = '';
 
-    setProgress(95);
-
-    const analysis = computeAnalysis(allFrameScores);
-    setResult(analysis);
     setProgress(100);
+    setResult(computeAnalysis(allFrameScores));
     setStage('result');
   }, []);
 
-  const handleFile = useCallback((file: File) => {
-    analyzeVideo(file);
-  }, [analyzeVideo]);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) handleFile(file);
-  };
-
-  const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    setDragOver(false);
-    const file = e.dataTransfer.files[0];
-    if (file) handleFile(file);
-  };
+  const handleFile = useCallback((file: File) => { analyzeVideo(file); }, [analyzeVideo]);
 
   return (
     <div className="min-h-screen bg-background">
-      {/* hidden elements for video processing */}
       <video ref={videoRef} muted playsInline className="hidden" crossOrigin="anonymous" />
       <canvas ref={canvasRef} className="hidden" />
 
       <div className="max-w-2xl mx-auto px-4 py-6 space-y-4">
         {/* Header */}
         <div className="text-center space-y-1">
-          <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">
-            🎾 AI · Biomechanics
-          </p>
-          <h1 className="text-3xl font-black uppercase tracking-tighter leading-none">
-            {t.title}
-          </h1>
+          <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">🎾 AI · Biomechanics</p>
+          <h1 className="text-3xl font-black uppercase tracking-tighter leading-none">{t.title}</h1>
           <p className="text-sm text-muted-foreground font-medium">{t.subtitle}</p>
           <p className="text-[10px] text-muted-foreground/60">{t.privacy}</p>
         </div>
 
         <TrustBadges />
 
-        {/* Upload Stage */}
+        {/* Upload */}
         {stage === 'upload' && (
           <Card className="border-2 rounded-[2rem] shadow-xl">
             <CardContent className="p-6">
@@ -487,7 +419,7 @@ export default function TennisAIPage() {
                 onClick={() => fileInputRef.current?.click()}
                 onDragOver={e => { e.preventDefault(); setDragOver(true); }}
                 onDragLeave={() => setDragOver(false)}
-                onDrop={handleDrop}
+                onDrop={e => { e.preventDefault(); setDragOver(false); const f = e.dataTransfer.files[0]; if (f) handleFile(f); }}
               >
                 <Upload className="mx-auto mb-3 h-10 w-10 text-muted-foreground/50" />
                 <p className="text-sm font-bold text-foreground mb-1">{t.uploadPrompt}</p>
@@ -501,13 +433,13 @@ export default function TennisAIPage() {
                 type="file"
                 accept="video/*"
                 className="hidden"
-                onChange={handleInputChange}
+                onChange={e => { const f = e.target.files?.[0]; if (f) handleFile(f); }}
               />
             </CardContent>
           </Card>
         )}
 
-        {/* Loading / Extracting Stage */}
+        {/* Loading */}
         {(stage === 'loadingModel' || stage === 'extracting') && (
           <Card className="border-2 rounded-[2rem] shadow-xl">
             <CardContent className="p-8 space-y-5 text-center">
@@ -518,14 +450,12 @@ export default function TennisAIPage() {
                 </span>
               </div>
               <Progress value={progress} className="h-2 rounded-full" />
-              <p className="text-[10px] text-muted-foreground">
-                {t.analyzing}
-              </p>
+              <p className="text-[10px] text-muted-foreground">{t.analyzing}</p>
             </CardContent>
           </Card>
         )}
 
-        {/* Error Stage */}
+        {/* Error */}
         {stage === 'error' && (
           <Card className="border-2 border-rose-500/30 rounded-[2rem] shadow-xl">
             <CardContent className="p-8 text-center space-y-4">
@@ -541,19 +471,15 @@ export default function TennisAIPage() {
           </Card>
         )}
 
-        {/* Result Stage */}
+        {/* Result */}
         {stage === 'result' && result && (
           <div className="space-y-4">
-            {/* Overall Score */}
+            {/* Overall */}
             <Card className="border-2 rounded-[2rem] shadow-xl overflow-hidden">
               <CardContent className="p-0">
                 <div className="bg-primary/10 px-6 pt-6 pb-4 text-center">
-                  <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-1">
-                    {t.overall}
-                  </p>
-                  <div className={`text-6xl font-black leading-none ${scoreColor(result.avgScore)}`}>
-                    {result.avgScore}
-                  </div>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-1">{t.overall}</p>
+                  <div className={`text-6xl font-black leading-none ${scoreColor(result.avgScore)}`}>{result.avgScore}</div>
                   <div className="text-[10px] text-muted-foreground mt-1">/ 100</div>
                 </div>
                 <div className="px-6 py-4 border-t-2 flex items-center justify-between">
@@ -568,21 +494,15 @@ export default function TennisAIPage() {
               </CardContent>
             </Card>
 
-            {/* Score Breakdown */}
+            {/* Score breakdown */}
             <Card className="border-2 rounded-[2rem] shadow-xl">
               <CardContent className="p-5 space-y-4">
-                <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">
-                  {t.score} Breakdown
-                </p>
+                <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Score Breakdown</p>
                 {result.scores.map((item, idx) => (
                   <div key={idx} className="space-y-1.5">
                     <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-bold">
-                        {lang === 'id' ? item.labelId : item.label}
-                      </span>
-                      <span className={`text-sm font-black ${scoreColor(item.score)}`}>
-                        {item.score}
-                      </span>
+                      <span className="text-[11px] font-bold">{lang === 'id' ? item.labelId : item.label}</span>
+                      <span className={`text-sm font-black ${scoreColor(item.score)}`}>{item.score}</span>
                     </div>
                     <div className="h-2 rounded-full bg-muted overflow-hidden">
                       <div
@@ -601,26 +521,17 @@ export default function TennisAIPage() {
               </CardContent>
             </Card>
 
-            {/* Swing Phases */}
+            {/* Phases */}
             <Card className="border-2 rounded-[2rem] shadow-xl">
               <CardContent className="p-5 space-y-3">
-                <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">
-                  {t.phaseTitle}
-                </p>
+                <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">{t.phaseTitle}</p>
                 <div className="grid grid-cols-2 gap-2">
                   {result.phases.map((phase, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-start gap-2 p-2.5 rounded-xl bg-muted/30 border border-border/40"
-                    >
+                    <div key={idx} className="flex items-start gap-2 p-2.5 rounded-xl bg-muted/30 border border-border/40">
                       <span className="text-lg leading-none mt-0.5">{phase.icon}</span>
                       <div>
-                        <p className="text-[10px] font-black">
-                          {lang === 'id' ? phase.nameId : phase.name}
-                        </p>
-                        <p className="text-[9px] text-muted-foreground leading-tight">
-                          {lang === 'id' ? phase.descId : phase.desc}
-                        </p>
+                        <p className="text-[10px] font-black">{lang === 'id' ? phase.nameId : phase.name}</p>
+                        <p className="text-[9px] text-muted-foreground leading-tight">{lang === 'id' ? phase.descId : phase.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -628,12 +539,7 @@ export default function TennisAIPage() {
               </CardContent>
             </Card>
 
-            {/* Reset */}
-            <Button
-              onClick={reset}
-              variant="outline"
-              className="w-full font-black uppercase tracking-widest text-[11px] h-12 rounded-2xl border-2"
-            >
+            <Button onClick={reset} variant="outline" className="w-full font-black uppercase tracking-widest text-[11px] h-12 rounded-2xl border-2">
               <RotateCcw className="mr-2 h-4 w-4" />
               {t.reset}
             </Button>
