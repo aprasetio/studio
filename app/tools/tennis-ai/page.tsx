@@ -186,11 +186,18 @@ function scoreFrame(lm: Array<{ x: number; y: number; z: number }>): number[] {
     clamp01(1 - Math.abs(lElbow - 165) / 40)
   );
 
-  // 5. Follow-Through: whichever wrist is highest above its own shoulder
-  // Threshold 0.15 (not 0.25) — wrist 15% of frame height above shoulder = full score
-  const rWristAbove = get(LM.RShoulder).y - get(LM.RWrist).y;
-  const lWristAbove = get(LM.LShoulder).y - get(LM.LWrist).y;
-  const followThrough = clamp01(Math.max(rWristAbove, lWristAbove) / 0.15);
+  // 5. Follow-Through: scale from hip to above-head so flat-drive finish (~shoulder height)
+  // scores ~50 and a full topspin/high finish scores 100. Uses hip as 0-baseline.
+  // hipY - wristY in MediaPipe coords (y=0 top, y=1 bottom):
+  //   0   = wrist at hip level
+  //   1.0 = wrist 1 body-unit above hip (≈ shoulder level)
+  //   2.0 = wrist 2 body-units above hip (≈ above head) → clamped to 100
+  const hipY = (get(LM.LHip).y + get(LM.RHip).y) / 2;
+  const topShoulderY = Math.min(get(LM.LShoulder).y, get(LM.RShoulder).y);
+  const hipToShoulder = Math.max(hipY - topShoulderY, 0.05); // body unit height
+  const bestWristY = Math.min(get(LM.RWrist).y, get(LM.LWrist).y); // highest wrist on screen
+  const wristUnits = (hipY - bestWristY) / hipToShoulder; // 0=hip, 1=shoulder, 2=above head
+  const followThrough = clamp01(wristUnits / 2); // shoulder-level = 0.5 = 50/100
 
   return [stance, coil, rotation, contact, followThrough];
 }
@@ -241,8 +248,8 @@ function computeAnalysis(allScores: number[][]): AnalysisResult {
     {
       label: 'Follow-Through', labelId: 'Follow-Through',
       tips: [
-        { en: 'Complete your follow-through — racket should finish above shoulder.', id: 'Selesaikan follow-through — raket harus berakhir di atas bahu.' },
-        { en: 'Beautiful follow-through — racket finishing high for topspin.', id: 'Follow-through indah — raket berakhir tinggi untuk topspin.' },
+        { en: 'Finish the swing higher — racket should end above opposite shoulder for topspin or at shoulder level for flat drives.', id: 'Selesaikan ayunan lebih tinggi — raket sebaiknya berakhir di atas bahu berlawanan untuk topspin, atau setinggi bahu untuk flat drive.' },
+        { en: 'Great follow-through! Racket finishing high creates topspin and control.', id: 'Follow-through bagus! Raket berakhir tinggi menciptakan topspin dan kontrol.' },
       ],
     },
   ];
