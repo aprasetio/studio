@@ -304,4 +304,5 @@ export const TOOL_ARTICLES: ArticleCollection = {
   americano: { en: { title: "Americano Generator", sections: [] }, id: { title: "Generator Americano", sections: [] } },
   futsal: { en: { title: "Futsal Scoreboard", sections: [] }, id: { title: "Skor Futsal", sections: [] } },
   tennis: { en: { title: "Tennis Generator", sections: [] }, id: { title: "Generator Tenis", sections: [] } },
+  "tennis-ai": { en: { title: "Tennis AI Analyzer", sections: [] }, id: { title: "Analisis Tenis AI", sections: [] } },
 };

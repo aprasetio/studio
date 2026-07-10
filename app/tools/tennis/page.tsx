@@ -438,7 +438,17 @@ export default function TennisGeneratorPage() {
               </div>
               <div className="space-y-2">
                 <Label className="text-[10px] font-black uppercase opacity-60">Number of Courts</Label>
-                <Input type="number" min="1" max="10" value={config.courts} onChange={e => setConfig({...config, courts: Math.max(1, Math.min(10, Number(e.target.value)))})} className="h-12 font-bold" />
+                <Input
+                  type="number"
+                  min="1"
+                  max="10"
+                  defaultValue={config.courts}
+                  onBlur={e => {
+                    const n = parseInt(e.target.value);
+                    setConfig({...config, courts: Math.max(1, Math.min(10, isNaN(n) ? 1 : n))});
+                  }}
+                  className="h-12 font-bold"
+                />
                 <p className="text-[9px] text-muted-foreground">Min 4 pemain per lapangan. {config.courts} lapangan = min {config.courts * 4} pemain aktif.</p>
               </div>
             </div>

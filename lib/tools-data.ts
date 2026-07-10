@@ -127,6 +127,15 @@ export const TOOLS_DATA: Tool[] = [
     desc: { en: 'Create fair doubles matches for social clubs with skill balancing.', id: 'Buat pertandingan ganda yang adil untuk klub dengan penyeimbang skill.', de: 'Erstellen Sie faire Doppelspiele für Clubs.', es: 'Crea partidos de dobles justos para clubes.', pt: 'Crie jogos de duplas justos para clubes.', fr: 'Créez des doubles équitables pour les clubs.', it: 'Crea doppi equilibrati per i club.' },
   },
   {
+    id: 'tennis-ai',
+    icon: Activity,
+    category: 'sports',
+    isNew: true,
+    href: '/tools/tennis-ai',
+    name: { en: 'Tennis AI Analyzer', id: 'Analisis Tenis AI', de: 'Tennis-KI-Analyse', es: 'Análisis Tenis IA', pt: 'Analisador Tênis IA', fr: 'Analyste Tennis IA', it: 'Analizzatore Tennis IA' },
+    desc: { en: 'Analyze your tennis swing biomechanics with AI. Upload a video for instant pose feedback.', id: 'Analisis biomekanik ayunan tenis Anda dengan AI. Upload video untuk umpan balik pose instan.', de: 'Analysieren Sie Ihre Tennis-Schwungbiomechanik mit KI.', es: 'Analiza la biomecánica de tu swing de tenis con IA.', pt: 'Analise a biomecânica do seu swing de tênis com IA.', fr: 'Analysez la biomécanique de votre swing de tennis avec IA.', it: 'Analizza la biomeccanica del tuo swing di tennis con IA.' },
+  },
+  {
     id: 'futsal',
     icon: Clock,
     category: 'sports',
