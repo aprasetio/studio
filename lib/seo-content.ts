@@ -146,6 +146,30 @@ export const SEO_DATA: SeoCollection = {
       faq: [{ q: "Bagaimana cara kerjanya?", a: "Algoritma memprioritaskan pemain yang paling sedikit bermain untuk masuk ke babak berikutnya." }]
     }
   },
+  "tennis-ai": {
+    en: {
+      title: "Tennis AI Swing Analyzer",
+      description: "Upload a tennis video and get instant AI biomechanical feedback on your swing technique. 100% private — processed locally in your browser.",
+      steps: ["Upload a tennis swing video (MP4, MOV, WebM).", "Wait for AI pose extraction (24 frames analyzed).", "Review your scores across 5 biomechanical dimensions.", "Read personalized tips to improve each area."],
+      article: "Tennis AI uses MediaPipe BlazePose to track 33 body landmarks across your swing video. It measures knee angle for stance, shoulder-hip X-factor for coil, elbow extension at contact, and wrist height for follow-through. All processing is 100% local — your video never leaves your device.",
+      faq: [
+        { q: "Does it upload my video?", a: "No. All processing is done in your browser using WebAssembly. Your video stays on your device." },
+        { q: "What is NTRP?", a: "NTRP (National Tennis Rating Program) is a 1.0–7.0 scale rating system for tennis skill levels." },
+        { q: "Which shot types work best?", a: "Forehand and backhand groundstrokes filmed from the side work best. Make sure the full body is visible." }
+      ]
+    },
+    id: {
+      title: "Analisis Ayunan Tenis AI",
+      description: "Upload video tenis dan dapatkan umpan balik biomekanik AI instan tentang teknik ayunan Anda. 100% privat — diproses lokal di browser.",
+      steps: ["Upload video ayunan tenis (MP4, MOV, WebM).", "Tunggu ekstraksi pose AI (24 frame dianalisis).", "Tinjau skor Anda di 5 dimensi biomekanik.", "Baca tips personal untuk meningkatkan setiap area."],
+      article: "Tennis AI menggunakan MediaPipe BlazePose untuk melacak 33 landmark tubuh di video ayunan Anda. Mengukur sudut lutut untuk stance, X-factor bahu-pinggul untuk koil, ekstensi siku saat kontak, dan tinggi pergelangan untuk follow-through. Semua pemrosesan 100% lokal — video Anda tidak pernah meninggalkan perangkat.",
+      faq: [
+        { q: "Apakah video saya diunggah?", a: "Tidak. Semua pemrosesan dilakukan di browser menggunakan WebAssembly. Video Anda tetap di perangkat Anda." },
+        { q: "Apa itu NTRP?", a: "NTRP (National Tennis Rating Program) adalah sistem penilaian 1.0–7.0 untuk tingkat keterampilan tenis." },
+        { q: "Jenis pukulan apa yang paling cocok?", a: "Forehand dan backhand groundstroke yang difilmkan dari samping paling cocok. Pastikan seluruh tubuh terlihat." }
+      ]
+    }
+  },
   "budget-planner": {
     en: {
       title: "Zero-Based Budget Planner",
