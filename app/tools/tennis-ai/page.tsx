@@ -42,7 +42,7 @@ interface AnalysisResult {
 
 // ── Constants ──────────────────────────────────────────────────────────────
 
-const SAMPLE_FRAMES = 24;
+const SAMPLE_FRAMES = 36;
 
 const MP_BUNDLE = 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/vision_bundle.mjs';
 const MP_WASM   = 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/wasm';
@@ -177,22 +177,20 @@ function scoreFrame(lm: Array<{ x: number; y: number; z: number }>): number[] {
   const shoulderWidth = Math.abs(get(LM.LShoulder).x - get(LM.RShoulder).x);
   const rotation = shoulderWidth > 0 ? clamp01(hipWidth / shoulderWidth) : 0.5;
 
-  // 4 & 5: detect dominant arm — use whichever wrist is higher (lower y) to handle
-  // both right-handed and left-handed players, and cameras from either side
-  const rWristY = get(LM.RWrist).y;
-  const lWristY = get(LM.LWrist).y;
-  const [domShoulder, domElbow, domWrist] =
-    rWristY <= lWristY
-      ? [get(LM.RShoulder), get(LM.RElbow), get(LM.RWrist)]
-      : [get(LM.LShoulder), get(LM.LElbow), get(LM.LWrist)];
+  // 4. Contact / Elbow Extension: use whichever arm is more fully extended (closer to 165°)
+  // This handles right-handed, left-handed, and ambiguous camera angles
+  const rElbow = angle(get(LM.RShoulder), get(LM.RElbow), get(LM.RWrist));
+  const lElbow = angle(get(LM.LShoulder), get(LM.LElbow), get(LM.LWrist));
+  const contact = Math.max(
+    clamp01(1 - Math.abs(rElbow - 165) / 40),
+    clamp01(1 - Math.abs(lElbow - 165) / 40)
+  );
 
-  // 4. Contact / Elbow Extension: dominant arm elbow angle (ideal ~165°)
-  const elbowAngle = angle(domShoulder, domElbow, domWrist);
-  const contact = clamp01(1 - Math.abs(elbowAngle - 165) / 40);
-
-  // 5. Follow-Through: dominant wrist height above its shoulder
-  const wristAbove = domShoulder.y - domWrist.y;
-  const followThrough = clamp01(wristAbove / 0.25);
+  // 5. Follow-Through: whichever wrist is highest above its own shoulder
+  // Threshold 0.15 (not 0.25) — wrist 15% of frame height above shoulder = full score
+  const rWristAbove = get(LM.RShoulder).y - get(LM.RWrist).y;
+  const lWristAbove = get(LM.LShoulder).y - get(LM.LWrist).y;
+  const followThrough = clamp01(Math.max(rWristAbove, lWristAbove) / 0.15);
 
   return [stance, coil, rotation, contact, followThrough];
 }
