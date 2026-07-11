@@ -233,11 +233,14 @@ function computeAnalysis(allScores: number[][]): AnalysisResult {
 
   const avg = Array.from({ length: dims }, (_, i) => {
     const vals = src.map(s => s[i]);
-    if (i === 0) return vals.reduce((a, b) => a + b, 0) / vals.length; // stance: average
     if (i === 1 || i === 2) {
       // Coil / Rotation: 80th-percentile from front-view frames only
-      // Prevents single noisy back-view frame from spiking to 100
       return pct(coilRotSrc.map(s => s[i]), 0.80);
+    }
+    if (i === 0) {
+      // Stance: 80th-percentile — captures best knee-bend moment,
+      // not dragged down by upright recovery frames after the shot
+      return pct(vals, 0.80);
     }
     return Math.max(...vals); // contact + follow-through: peak
   });
