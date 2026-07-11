@@ -38,6 +38,8 @@ interface AnalysisResult {
   avgScore: number;
   phases: PhaseData[];
   frameCount: number;
+  qualityWarning?: string;
+  qualityWarningId?: string;
 }
 
 // ── Constants ──────────────────────────────────────────────────────────────
@@ -100,10 +102,12 @@ const UI = {
 
 // ── Cached module ───────────────────────────────────────────────────────────
 
+type Lm = { x: number; y: number; z: number; visibility?: number };
+
 interface MPModule {
   PoseLandmarker: {
     createFromOptions: (vision: unknown, opts: unknown) => Promise<{
-      detect: (image: HTMLCanvasElement) => { landmarks: Array<Array<{ x: number; y: number; z: number }>> };
+      detect: (image: HTMLCanvasElement) => { landmarks: Array<Array<Lm>> };
       close: () => void;
     }>;
   };
@@ -151,8 +155,15 @@ const LM = {
   LAnkle: 27,    RAnkle: 28,
 };
 
-function scoreFrame(lm: Array<{ x: number; y: number; z: number }>): number[] {
-  const get = (i: number) => lm[i] ?? { x: 0.5, y: 0.5, z: 0 };
+// Returns [stance, coil, rotation, contact, followThrough, isBackView(0|1)]
+function scoreFrame(lm: Array<Lm>): number[] {
+  const get = (i: number): Lm => lm[i] ?? { x: 0.5, y: 0.5, z: 0, visibility: 1 };
+
+  // Detect if player is facing away from camera.
+  // MediaPipe nose landmark (0) has low visibility when facing away.
+  // Also check: if both ears are visible but nose isn't, it's a back-view.
+  const noseVis = lm[0]?.visibility ?? 1;
+  const isBackView = noseVis < 0.35 ? 1 : 0;
 
   // 1. Stance: knee flexion (ideal 145–165°)
   const lKneeAngle = angle(get(LM.LHip), get(LM.LKnee), get(LM.LAnkle));
@@ -199,21 +210,36 @@ function scoreFrame(lm: Array<{ x: number; y: number; z: number }>): number[] {
   const wristUnits = (hipY - bestWristY) / hipToShoulder; // 0=hip, 1=shoulder, 2=above head
   const followThrough = clamp01(wristUnits / 2); // shoulder-level = 0.5 = 50/100
 
-  return [stance, coil, rotation, contact, followThrough];
+  return [stance, coil, rotation, contact, followThrough, isBackView];
+}
+
+function pct(arr: number[], p: number): number {
+  const sorted = [...arr].sort((a, b) => a - b);
+  return sorted[Math.min(Math.floor(sorted.length * p), sorted.length - 1)];
 }
 
 function computeAnalysis(allScores: number[][]): AnalysisResult {
   const dims = 5;
-  const src = allScores.length > 0 ? allScores : [[0.6, 0.55, 0.6, 0.65, 0.5]];
+  const fallback = [[0.6, 0.55, 0.6, 0.65, 0.5, 0]];
+  const src = allScores.length > 0 ? allScores : fallback;
 
-  // Stance: average — should be consistent throughout the swing
-  // Coil, Rotation, Contact, Follow-Through: max — capture the peak of each phase,
-  // not dragged down by frames where that dimension is irrelevant (e.g. follow-through
-  // is ~0 in preparation frames but should reflect the best moment achieved)
+  // Detect back-view: if >40% of frames have isBackView=1 (index 5), warn the user
+  const backViewRatio = src.filter(s => s[5] >= 1).length / src.length;
+  const isBackViewVideo = backViewRatio > 0.4;
+
+  // For Coil & Rotation: use only front/side-view frames; fall back to all if none available
+  const frontFrames = src.filter(s => s[5] < 1);
+  const coilRotSrc = frontFrames.length >= 3 ? frontFrames : src;
+
   const avg = Array.from({ length: dims }, (_, i) => {
     const vals = src.map(s => s[i]);
     if (i === 0) return vals.reduce((a, b) => a + b, 0) / vals.length; // stance: average
-    return Math.max(...vals); // others: peak
+    if (i === 1 || i === 2) {
+      // Coil / Rotation: 80th-percentile from front-view frames only
+      // Prevents single noisy back-view frame from spiking to 100
+      return pct(coilRotSrc.map(s => s[i]), 0.80);
+    }
+    return Math.max(...vals); // contact + follow-through: peak
   });
 
   const DEFS = [
@@ -269,7 +295,14 @@ function computeAnalysis(allScores: number[][]): AnalysisResult {
   else if (avgScore >= 40) ntrp = '2.5–3.0';
   else if (avgScore >= 30) ntrp = '2.0–2.5';
 
-  return { scores, ntrp, avgScore, phases: PHASES, frameCount: allScores.length };
+  const qualityWarning = isBackViewVideo
+    ? 'Back-view detected: scores for Coil & Rotation may be inaccurate. Film from the side for best results.'
+    : undefined;
+  const qualityWarningId = isBackViewVideo
+    ? 'Kamera dari belakang terdeteksi: skor Koil & Rotasi mungkin tidak akurat. Film dari samping untuk hasil terbaik.'
+    : undefined;
+
+  return { scores, ntrp, avgScore, phases: PHASES, frameCount: allScores.length, qualityWarning, qualityWarningId };
 }
 
 // ── Score colour helpers ────────────────────────────────────────────────────
@@ -455,6 +488,28 @@ export default function TennisAIPage() {
                 className="hidden"
                 onChange={e => { const f = e.target.files?.[0]; if (f) handleFile(f); }}
               />
+              {/* Filming tips */}
+              <div className="mt-4 pt-4 border-t border-border/40 grid grid-cols-2 gap-2">
+                {(lang === 'id' ? [
+                  ['📐', 'Dari samping', 'Kamera tegak lurus arah pukulan'],
+                  ['☀️', 'Pencahayaan cukup', 'Hindari baju gelap di latar gelap'],
+                  ['🧍', 'Satu pemain', 'Pemain lain di latar bisa ganggu AI'],
+                  ['🔲', 'Isi frame', 'Seluruh tubuh harus terlihat jelas'],
+                ] : [
+                  ['📐', 'Side view', 'Camera perpendicular to swing direction'],
+                  ['☀️', 'Good lighting', 'Avoid dark clothing on dark background'],
+                  ['🧍', 'One player', 'Background players confuse the AI'],
+                  ['🔲', 'Fill the frame', 'Full body should be clearly visible'],
+                ]).map(([icon, label, desc], i) => (
+                  <div key={i} className="flex items-start gap-1.5 p-2 rounded-xl bg-muted/30">
+                    <span className="text-base leading-none mt-0.5">{icon}</span>
+                    <div>
+                      <p className="text-[10px] font-black">{label}</p>
+                      <p className="text-[9px] text-muted-foreground leading-tight">{desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </CardContent>
           </Card>
         )}
@@ -494,6 +549,18 @@ export default function TennisAIPage() {
         {/* Result */}
         {stage === 'result' && result && (
           <div className="space-y-4">
+            {/* Quality warning */}
+            {result.qualityWarning && (
+              <Card className="border-2 border-amber-500/40 rounded-[2rem] shadow-xl">
+                <CardContent className="p-4 flex items-start gap-3">
+                  <AlertCircle className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
+                  <p className="text-[11px] text-muted-foreground leading-relaxed">
+                    {lang === 'id' ? result.qualityWarningId : result.qualityWarning}
+                  </p>
+                </CardContent>
+              </Card>
+            )}
+
             {/* Overall */}
             <Card className="border-2 rounded-[2rem] shadow-xl overflow-hidden">
               <CardContent className="p-0">
