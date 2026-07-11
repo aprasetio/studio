@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useCallback } from 'react';
-import { Upload, RotateCcw, ChevronRight, Activity, AlertCircle } from 'lucide-react';
+import { Upload, RotateCcw, ChevronRight, ChevronLeft, Activity, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -32,12 +32,25 @@ interface PhaseData {
   icon: string;
 }
 
+interface CapturedFrame {
+  dataUrl: string;
+  idx: number;
+  hasLandmarks: boolean;
+}
+
+interface NtrpBar {
+  level: string;
+  pct: number;
+}
+
 interface AnalysisResult {
   scores: ScoreItem[];
   ntrp: string;
   avgScore: number;
   phases: PhaseData[];
   frameCount: number;
+  frames: CapturedFrame[];
+  ntrpDist: NtrpBar[];
   qualityWarning?: string;
   qualityWarningId?: string;
 }
@@ -58,6 +71,43 @@ const PHASES: PhaseData[] = [
   { name: 'Follow-Through',nameId: 'Lanjutan',    desc: 'Racket completes arc upward',         descId: 'Raket menyelesaikan busur ke atas', icon: '🌀' },
   { name: 'Finish',        nameId: 'Selesai',     desc: 'Recovery to ready position',          descId: 'Kembali ke posisi siap',            icon: '✅' },
 ];
+
+// BlazePose 33-landmark connections (hardcoded — stable across MediaPipe versions)
+const POSE_CONNS: [number, number][] = [
+  [0,1],[1,2],[2,3],[3,7],[0,4],[4,5],[5,6],[6,8],[9,10],
+  [11,12],[11,13],[13,15],[15,17],[15,19],[15,21],[17,19],
+  [12,14],[14,16],[16,18],[16,20],[16,22],[18,20],
+  [11,23],[12,24],[23,24],
+  [23,25],[24,26],[25,27],[26,28],[27,29],[28,30],[29,31],[30,32],[27,31],[28,32],
+];
+const LEFT_LMS  = new Set([11,13,15,17,19,21,23,25,27,29,31]);
+const RIGHT_LMS = new Set([12,14,16,18,20,22,24,26,28,30,32]);
+
+function drawSkeleton(ctx: CanvasRenderingContext2D, lms: Lm[], w: number, h: number) {
+  // Connections
+  ctx.lineWidth = Math.max(1, w * 0.005);
+  for (const [s, e] of POSE_CONNS) {
+    const a = lms[s], b = lms[e];
+    if (!a || !b) continue;
+    const vis = Math.min(a.visibility ?? 1, b.visibility ?? 1);
+    if (vis < 0.3) continue;
+    ctx.strokeStyle = `rgba(255,255,255,${0.5 + vis * 0.4})`;
+    ctx.beginPath();
+    ctx.moveTo(a.x * w, a.y * h);
+    ctx.lineTo(b.x * w, b.y * h);
+    ctx.stroke();
+  }
+  // Dots
+  const r = Math.max(2, w * 0.012);
+  for (let i = 0; i < lms.length; i++) {
+    const lm = lms[i];
+    if (!lm || (lm.visibility ?? 1) < 0.3) continue;
+    ctx.fillStyle = LEFT_LMS.has(i) ? '#06B6D4' : RIGHT_LMS.has(i) ? '#EC4899' : '#FBBF24';
+    ctx.beginPath();
+    ctx.arc(lm.x * w, lm.y * h, r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
 
 const UI = {
   en: {
@@ -213,6 +263,15 @@ function scoreFrame(lm: Array<Lm>): number[] {
   return [stance, coil, rotation, contact, followThrough, isBackView];
 }
 
+function computeNtrpDist(avgScore: number): NtrpBar[] {
+  const center = 2.0 + (avgScore / 100) * 3.0; // 0→2.0, 100→5.0
+  const sigma = 0.55;
+  const levels = [2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0];
+  const raw = levels.map(l => Math.exp(-0.5 * ((l - center) / sigma) ** 2));
+  const total = raw.reduce((a, b) => a + b, 0);
+  return levels.map((l, i) => ({ level: l.toFixed(1), pct: Math.round((raw[i] / total) * 100) }));
+}
+
 function pct(arr: number[], p: number): number {
   const sorted = [...arr].sort((a, b) => a - b);
   return sorted[Math.min(Math.floor(sorted.length * p), sorted.length - 1)];
@@ -305,7 +364,13 @@ function computeAnalysis(allScores: number[][]): AnalysisResult {
     ? 'Kamera dari belakang terdeteksi: skor Koil & Rotasi mungkin tidak akurat. Film dari samping untuk hasil terbaik.'
     : undefined;
 
-  return { scores, ntrp, avgScore, phases: PHASES, frameCount: allScores.length, qualityWarning, qualityWarningId };
+  return {
+    scores, ntrp, avgScore, phases: PHASES,
+    frameCount: allScores.length,
+    frames: [], // filled in by analyzeVideo after analysis
+    ntrpDist: computeNtrpDist(avgScore),
+    qualityWarning, qualityWarningId,
+  };
 }
 
 // ── Score colour helpers ────────────────────────────────────────────────────
@@ -333,6 +398,7 @@ export default function TennisAIPage() {
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [errorMsg, setErrorMsg] = useState('');
   const [dragOver, setDragOver] = useState(false);
+  const [selectedFrame, setSelectedFrame] = useState(0);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -343,6 +409,7 @@ export default function TennisAIPage() {
     setProgress(0);
     setResult(null);
     setErrorMsg('');
+    setSelectedFrame(0);
     if (fileInputRef.current) fileInputRef.current.value = '';
   }, []);
 
@@ -411,6 +478,10 @@ export default function TennisAIPage() {
 
     const duration = video.duration;
     const allFrameScores: number[][] = [];
+    const capturedFrames: CapturedFrame[] = [];
+
+    // Capture ~9 evenly spaced frames for the frame viewer
+    const CAPTURE_STEP = Math.max(1, Math.floor(SAMPLE_FRAMES / 9));
 
     for (let i = 0; i < SAMPLE_FRAMES; i++) {
       video.currentTime = (i / (SAMPLE_FRAMES - 1)) * duration;
@@ -419,17 +490,39 @@ export default function TennisAIPage() {
         video.addEventListener('seeked', h);
       });
 
-      canvas.width = video.videoWidth || 640;
-      canvas.height = video.videoHeight || 360;
+      const vw = video.videoWidth || 640;
+      const vh = video.videoHeight || 360;
+      canvas.width = vw;
+      canvas.height = vh;
       const ctx = canvas.getContext('2d');
+      let detected: Lm[] | null = null;
+
       if (ctx) {
         ctx.drawImage(video, 0, 0);
         try {
           const det = landmarker!.detect(canvas);
-          if (det.landmarks?.[0]) allFrameScores.push(scoreFrame(det.landmarks[0]));
-        } catch {
-          // skip frame silently
-        }
+          if (det.landmarks?.[0]) {
+            detected = det.landmarks[0];
+            allFrameScores.push(scoreFrame(detected));
+          }
+        } catch { /* skip */ }
+      }
+
+      // Capture thumbnail with skeleton overlay for every CAPTURE_STEP frames
+      if (i % CAPTURE_STEP === 0 && ctx) {
+        const TW = 360;
+        const TH = Math.round(vh * TW / vw);
+        const thumb = document.createElement('canvas');
+        thumb.width = TW;
+        thumb.height = TH;
+        const tc = thumb.getContext('2d')!;
+        tc.drawImage(canvas, 0, 0, TW, TH);
+        if (detected) drawSkeleton(tc, detected, TW, TH);
+        capturedFrames.push({
+          dataUrl: thumb.toDataURL('image/jpeg', 0.65),
+          idx: i,
+          hasLandmarks: !!detected,
+        });
       }
 
       setProgress(40 + Math.round((i / SAMPLE_FRAMES) * 50));
@@ -440,7 +533,9 @@ export default function TennisAIPage() {
     video.src = '';
 
     setProgress(100);
-    setResult(computeAnalysis(allFrameScores));
+    const analysis = computeAnalysis(allFrameScores);
+    analysis.frames = capturedFrames;
+    setResult(analysis);
     setStage('result');
   }, []);
 
@@ -581,6 +676,98 @@ export default function TennisAIPage() {
                     {result.frameCount} frames
                   </Badge>
                 </div>
+              </CardContent>
+            </Card>
+
+            {/* Frame viewer with pose skeleton */}
+            {result.frames.length > 0 && (
+              <Card className="border-2 rounded-[2rem] shadow-xl overflow-hidden">
+                <CardContent className="p-0">
+                  {/* Main frame */}
+                  <div className="relative bg-black">
+                    <img
+                      src={result.frames[selectedFrame]?.dataUrl}
+                      alt={`Frame ${selectedFrame + 1}`}
+                      className="w-full object-contain max-h-[60vw]"
+                    />
+                    {/* Nav overlay */}
+                    <button
+                      onClick={() => setSelectedFrame(f => Math.max(0, f - 1))}
+                      disabled={selectedFrame === 0}
+                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 rounded-full p-1 disabled:opacity-20"
+                    >
+                      <ChevronLeft className="h-5 w-5 text-white" />
+                    </button>
+                    <button
+                      onClick={() => setSelectedFrame(f => Math.min(result.frames.length - 1, f + 1))}
+                      disabled={selectedFrame === result.frames.length - 1}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 rounded-full p-1 disabled:opacity-20"
+                    >
+                      <ChevronRight className="h-5 w-5 text-white" />
+                    </button>
+                    {/* Frame counter */}
+                    <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/60 rounded-full px-3 py-1">
+                      <span className="text-[10px] font-black text-white tracking-wider">
+                        {selectedFrame + 1}/{result.frames.length}
+                      </span>
+                    </div>
+                    {/* Skeleton legend */}
+                    <div className="absolute top-2 left-2 bg-black/60 rounded-xl px-2 py-1.5 space-y-0.5">
+                      {[['#06B6D4','Left'],['#EC4899','Right'],['#FBBF24','Center']].map(([c,l]) => (
+                        <div key={l} className="flex items-center gap-1.5">
+                          <div className="h-2 w-2 rounded-full" style={{ background: c }} />
+                          <span className="text-[9px] text-white">{l}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  {/* Thumbnail strip */}
+                  <div className="flex gap-1.5 overflow-x-auto p-3 bg-black/5">
+                    {result.frames.map((f, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setSelectedFrame(i)}
+                        className={`shrink-0 rounded-lg overflow-hidden border-2 transition-all ${
+                          i === selectedFrame ? 'border-primary scale-105' : 'border-transparent opacity-60'
+                        }`}
+                      >
+                        <img src={f.dataUrl} alt={`f${i}`} className="h-14 w-auto object-cover" />
+                      </button>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* NTRP distribution */}
+            <Card className="border-2 rounded-[2rem] shadow-xl">
+              <CardContent className="p-5 space-y-3">
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">
+                    {lang === 'id' ? 'Distribusi Level NTRP' : 'NTRP Level Distribution'}
+                  </p>
+                  <p className="text-[9px] text-muted-foreground/70 mt-0.5">
+                    {lang === 'id'
+                      ? 'Probabilitas berdasarkan biomekanik yang terdeteksi'
+                      : 'Probability based on detected biomechanics'}
+                  </p>
+                </div>
+                {result.ntrpDist.map(({ level, pct: p }) => (
+                  <div key={level} className="flex items-center gap-2">
+                    <span className="text-[11px] font-black w-7 shrink-0">{level}</span>
+                    <div className="flex-1 h-5 bg-muted rounded-full overflow-hidden">
+                      <div
+                        className={`h-full rounded-full transition-all duration-700 ${
+                          p >= 30 ? 'bg-primary' : p >= 15 ? 'bg-primary/60' : 'bg-primary/30'
+                        }`}
+                        style={{ width: `${p}%` }}
+                      />
+                    </div>
+                    <span className={`text-[11px] font-black w-7 text-right ${p >= 30 ? 'text-primary' : 'text-muted-foreground'}`}>
+                      {p}%
+                    </span>
+                  </div>
+                ))}
               </CardContent>
             </Card>
 
