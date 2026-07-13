@@ -146,6 +146,30 @@ export const SEO_DATA: SeoCollection = {
       faq: [{ q: "Bagaimana cara kerjanya?", a: "Algoritma memprioritaskan pemain yang paling sedikit bermain untuk masuk ke babak berikutnya." }]
     }
   },
+  "pdf-compressor": {
+    en: {
+      title: "Free PDF Compressor",
+      description: "Compress PDF files online without uploading to any server. Choose quality level, compare size reduction, download instantly. 100% private.",
+      steps: ["Upload your PDF file (click or drag & drop).", "Select compression quality: Maximum, Balanced, or High Quality.", "Click 'Compress PDF' and wait for page-by-page processing.", "Download the compressed PDF."],
+      article: "VersoKit PDF Compressor re-renders each PDF page at your chosen DPI and JPEG quality, then rebuilds the document client-side. No data is ever sent to a server. Maximum mode (72 DPI) achieves the smallest file size, while High Quality mode (150 DPI) preserves most visual detail.",
+      faq: [
+        { q: "Is my PDF uploaded to a server?", a: "No. All processing happens entirely in your browser using PDF.js and pdf-lib. Your file never leaves your device." },
+        { q: "How much can it compress?", a: "Typical PDFs with images compress by 50–85%. Text-only PDFs see less reduction since there are no images to re-encode." },
+        { q: "Will the text still be selectable?", a: "The compression converts pages to images to achieve maximum reduction, so text selection is removed in the output." }
+      ]
+    },
+    id: {
+      title: "Kompres PDF Gratis",
+      description: "Kompres file PDF online tanpa upload ke server manapun. Pilih kualitas, bandingkan ukuran, unduh langsung. 100% privat.",
+      steps: ["Upload file PDF Anda (klik atau seret & jatuhkan).", "Pilih kualitas kompresi: Maksimal, Seimbang, atau Kualitas Tinggi.", "Klik 'Kompres PDF' dan tunggu pemrosesan per halaman.", "Unduh PDF yang sudah dikompres."],
+      article: "Kompres PDF VersoKit me-render ulang setiap halaman PDF pada DPI dan kualitas JPEG yang dipilih, lalu membangun kembali dokumen di sisi klien. Tidak ada data yang pernah dikirim ke server. Mode Maksimal (72 DPI) menghasilkan ukuran file terkecil, sedangkan Mode Kualitas Tinggi (150 DPI) mempertahankan sebagian besar detail visual.",
+      faq: [
+        { q: "Apakah PDF saya diunggah ke server?", a: "Tidak. Semua pemrosesan terjadi sepenuhnya di browser Anda menggunakan PDF.js dan pdf-lib. File Anda tidak pernah meninggalkan perangkat." },
+        { q: "Seberapa banyak bisa dikompres?", a: "PDF dengan banyak gambar biasanya terkompres 50–85%. PDF berisi teks saja hasilnya lebih kecil karena tidak ada gambar yang di-encode ulang." },
+        { q: "Apakah teks masih bisa dipilih?", a: "Kompresi mengonversi halaman menjadi gambar untuk hasil maksimal, sehingga teks tidak bisa dipilih di output." }
+      ]
+    }
+  },
   "tennis-ai": {
     en: {
       title: "Tennis AI Swing Analyzer",

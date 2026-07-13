@@ -301,6 +301,34 @@ export const TOOL_ARTICLES: ArticleCollection = {
   tournament: TOURNAMENT_CONTENT,
   shift: SHIFT_CONTENT,
   invoice: INVOICE_CONTENT,
+  "pdf-compressor": {
+    id: {
+      title: `Kompres PDF Online Gratis: Perkecil File PDF Tanpa Upload ke Server`,
+      sections: [
+        {
+          title: `Kenapa PDF Harus Dikompres?`,
+          content: `<p>File PDF berukuran besar sering menjadi masalah saat dikirim via email, WhatsApp, atau diupload ke portal yang membatasi ukuran file. <strong>Kompres PDF</strong> dari VersoKit memproses file Anda langsung di browser — tanpa upload ke server manapun.</p>`
+        },
+        {
+          title: `Tiga Mode Kualitas untuk Setiap Kebutuhan`,
+          content: `<p>Gunakan mode <strong>Maksimal (72 DPI)</strong> untuk dokumen yang hanya perlu dibaca, <strong>Seimbang (100 DPI)</strong> untuk keseimbangan kualitas dan ukuran, atau <strong>Kualitas Tinggi (150 DPI)</strong> saat detail visual penting.</p>`
+        }
+      ]
+    },
+    en: {
+      title: `Free Online PDF Compressor: Reduce PDF Size Without Server Upload`,
+      sections: [
+        {
+          title: `Why Compress Your PDF?`,
+          content: `<p>Large PDF files cause problems when emailing or uploading to portals with size limits. <strong>VersoKit PDF Compressor</strong> processes your file entirely in the browser — never uploaded to any server.</p>`
+        },
+        {
+          title: `Three Quality Modes for Every Need`,
+          content: `<p>Use <strong>Maximum (72 DPI)</strong> for read-only documents, <strong>Balanced (100 DPI)</strong> for the best size-to-quality ratio, or <strong>High Quality (150 DPI)</strong> when visual details matter.</p>`
+        }
+      ]
+    }
+  },
   americano: { en: { title: "Americano Generator", sections: [] }, id: { title: "Generator Americano", sections: [] } },
   futsal: { en: { title: "Futsal Scoreboard", sections: [] }, id: { title: "Skor Futsal", sections: [] } },
   tennis: { en: { title: "Tennis Generator", sections: [] }, id: { title: "Generator Tenis", sections: [] } },

@@ -1,7 +1,7 @@
 import {
   Trophy, Activity, Clock, Minimize, Users, FileText, Box,
   Calculator, Scaling, Scissors, Navigation, Stamp, FileBadge,
-  Lightbulb, BookOpen, TrendingDown, QrCode, Flame,
+  Lightbulb, BookOpen, TrendingDown, QrCode, Flame, FileDown,
 } from 'lucide-react';
 
 export type Category =
@@ -152,6 +152,15 @@ export const TOOLS_DATA: Tool[] = [
     desc: { en: 'For Badminton, Volleyball, Ping Pong. Simple & Offline.', id: 'Untuk Badminton, Voli, Pingpong. Simpel & Offline.', de: 'Für Badminton, Volleyball. Einfach & Offline.', es: 'Para Bádminton, Voleibol. Simple y Offline.', pt: 'Para Badminton, Vôlei. Simples e Offline.', fr: 'Pour Badminton, Volley. Simple et Hors ligne.', it: 'Per Badminton, Pallavolo. Semplice e Offline.' },
   },
   // --- PRODUCTIVITY ---
+  {
+    id: 'pdf-compressor',
+    icon: FileDown,
+    category: 'productivity',
+    isNew: true,
+    href: '/tools/pdf-compressor',
+    name: { en: 'PDF Compressor', id: 'Kompres PDF', de: 'PDF-Kompressor', es: 'Comprimir PDF', pt: 'Compressor PDF', fr: 'Compresser PDF', it: 'Compressore PDF' },
+    desc: { en: 'Reduce PDF file size locally. No upload, 100% private.', id: 'Perkecil ukuran PDF secara lokal. Tanpa upload, 100% privat.', de: 'PDF-Größe lokal reduzieren. Kein Upload, 100% privat.', es: 'Reduce el tamaño de PDF localmente. Sin subida.', pt: 'Reduza o tamanho de PDF localmente. Sem upload.', fr: 'Réduisez la taille PDF localement. Sans upload.', it: 'Riduci dimensione PDF localmente. Senza upload.' },
+  },
   {
     id: 'pdf-watermark',
     icon: FileBadge,
