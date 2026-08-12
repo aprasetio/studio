@@ -143,6 +143,7 @@ export default function TennisGeneratorPage() {
 
   // --- SCHEDULING ALGORITHM ---
   function generateUpcomingMatches(existingSchedule: Match[], startTime: number) {
+    if (config.matchDuration <= 0) return [];
     const tempSchedule = [...existingSchedule];
     let time = startTime;
     let idCounter = tempSchedule.length > 0 ? Math.max(...tempSchedule.map(m => Number(m.id) || 0)) + 1 : 1;
@@ -246,8 +247,17 @@ export default function TennisGeneratorPage() {
     const newPlayer = players.find(p => p.id === newPlayerId);
     if (!newPlayer) return;
 
-    const newSchedule = [...schedule];
-    newSchedule[matchIndex][team].players[idx] = newPlayer;
+    // Immutable update — avoid mutating nested state objects
+    const newSchedule = schedule.map((m, i) => {
+      if (i !== matchIndex) return m;
+      return {
+        ...m,
+        [team]: {
+          ...m[team],
+          players: m[team].players.map((p, j) => (j === idx ? newPlayer : p)),
+        },
+      };
+    });
     setSchedule(newSchedule);
 
     if (match.type === 'Auto' && match.status === 'Scheduled') {
@@ -307,21 +317,23 @@ export default function TennisGeneratorPage() {
         
         // Import Players
         const pSheet = workbook.Sheets["Players"];
+        let importedPlayers: Player[] = [];
         if (pSheet) {
           const pData = XLSX.utils.sheet_to_json(pSheet) as any[];
-          setPlayers(pData.map(p => ({
+          importedPlayers = pData.map(p => ({
             ...p,
             level: SKILL_CONFIG[p.skill as SkillLevel]?.level || 1
-          })));
-          setConfig(prev => ({ ...prev, numPlayers: pData.length }));
+          }));
+          setPlayers(importedPlayers);
+          setConfig(prev => ({ ...prev, numPlayers: importedPlayers.length }));
         }
 
-        // Import Matches
+        // Import Matches — use locally-extracted importedPlayers (not stale state closure)
         const mSheet = workbook.Sheets["Matches"];
         if (mSheet) {
           const mData = XLSX.utils.sheet_to_json(mSheet) as any[];
           const importedMatches: Match[] = mData.map(m => {
-            const findP = (name: string) => players.find(p => p.name === name) || { id: name, name, skill: 'Newbie' as SkillLevel, level: 1 };
+            const findP = (name: string) => importedPlayers.find(p => p.name === name) || { id: name, name, skill: 'Newbie' as SkillLevel, level: 1 };
             return {
               id: m.ID, type: m.Type, status: m.Status, court: m.Court || 1, timeStart: 0, timeEnd: 0,
               team1: { players: [findP(m.T1_P1), findP(m.T1_P2)], score: m.T1_Score },
@@ -428,7 +440,7 @@ export default function TennisGeneratorPage() {
               </div>
               <div className="space-y-2">
                 <Label className="text-[10px] font-black uppercase opacity-60">Match Duration (Mins)</Label>
-                <Input type="number" value={config.matchDuration} onChange={e => setConfig({...config, matchDuration: Number(e.target.value)})} className="h-12 font-bold" />
+                <Input type="number" min="1" value={config.matchDuration} onChange={e => setConfig({...config, matchDuration: Math.max(1, Number(e.target.value))})} className="h-12 font-bold" />
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
