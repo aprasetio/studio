@@ -52,6 +52,7 @@ import { SeoContent } from '@/components/SeoContent';
 import { SmartAd } from '@/components/smart-ad';
 import { cn } from '@/lib/utils';
 import { toast } from '@/hooks/use-toast';
+import { useLang } from '@/components/Providers';
 import * as XLSX from 'xlsx';
 
 // --- INTERFACES ---
@@ -98,6 +99,7 @@ const SKILL_CONFIG: Record<SkillLevel, { level: number; color: string }> = {
 };
 
 export default function TennisGeneratorPage() {
+  const { lang } = useLang();
   // --- STATE ---
   const [step, setStep] = useState(1);
   const [config, setConfig] = useState<Config>({
@@ -426,7 +428,8 @@ export default function TennisGeneratorPage() {
       </div>
 
       {step === 1 && (
-        <Card className="w-full max-w-xl shadow-xl border-2 rounded-[2.5rem] overflow-hidden animate-in fade-in slide-in-from-bottom-4">
+        <div className="w-full max-w-xl flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4">
+        <Card className="shadow-xl border-2 rounded-[2.5rem] overflow-hidden">
           <CardHeader className="bg-primary p-8 text-white">
             <CardTitle className="text-2xl font-black uppercase tracking-tight flex items-center gap-3">
               <Settings2 className="h-6 w-6 text-accent" /> Tournament Setup
@@ -474,6 +477,8 @@ export default function TennisGeneratorPage() {
             </Button>
           </CardContent>
         </Card>
+        <HowToUseCard lang={lang} />
+        </div>
       )}
 
       {step === 2 && (
@@ -484,6 +489,30 @@ export default function TennisGeneratorPage() {
             </CardTitle>
           </CardHeader>
           <CardContent className="p-8">
+            {/* Skill balance hint */}
+            <div className="mb-5 rounded-2xl border-2 border-primary/10 bg-primary/5 p-4 flex gap-3 items-start">
+              <AlertCircle className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+              <div className="space-y-1">
+                <p className="text-[10px] font-black uppercase tracking-widest text-primary">
+                  {lang === 'id' ? 'Cara Kerja Penyeimbang Tim' : 'How Team Balancing Works'}
+                </p>
+                <p className="text-[11px] text-muted-foreground leading-relaxed">
+                  {lang === 'id'
+                    ? 'Dari 4 pemain terpilih, sistem urutkan berdasarkan level: Tim A = Rank#1 + Rank#4, Tim B = Rank#2 + Rank#3. Hasilnya tim yang seimbang antara pemain kuat dan lemah.'
+                    : 'From 4 selected players sorted by level: Team A = Rank#1 + Rank#4, Team B = Rank#2 + Rank#3. This creates balanced teams pairing strong and weaker players together.'}
+                </p>
+                <div className="flex items-center gap-1.5 flex-wrap mt-2">
+                  {(['Pro','Advance','Intermediate','Beginner'] as SkillLevel[]).map((s, i) => (
+                    <span key={s} className={`text-[9px] font-black px-2 py-0.5 rounded-full border ${SKILL_CONFIG[s].color}`}>
+                      #{i+1} {s}
+                    </span>
+                  ))}
+                  <span className="text-[10px] text-muted-foreground">→</span>
+                  <span className="text-[9px] font-black bg-blue-100 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full">A: #1+#4</span>
+                  <span className="text-[9px] font-black bg-red-100 text-red-700 border border-red-200 px-2 py-0.5 rounded-full">B: #2+#3</span>
+                </div>
+              </div>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[500px] overflow-y-auto pr-2">
               {players.map((p, i) => (
                 <div key={p.id} className="flex items-center gap-3 p-4 bg-muted/20 rounded-2xl border-2 hover:border-primary/20 transition-all">
@@ -531,16 +560,23 @@ export default function TennisGeneratorPage() {
                 <CalendarDays className="h-5 w-5 text-primary" />
                 <span className="font-black uppercase text-sm tracking-widest">Schedule: <b>{schedule.length}</b> Matches</span>
               </div>
-              <div className="flex gap-2">
-                <Button variant="outline" size="sm" onClick={() => setShowRegenModal(true)} className="bg-orange-50 text-orange-700 hover:bg-orange-100 font-bold uppercase text-[10px] border-orange-200">
-                  <RefreshCw className="h-3 w-3 mr-1" /> Acak Ulang
-                </Button>
-                <Button variant="outline" size="sm" onClick={() => setShowEditPlayersModal(true)} className="bg-indigo-50 text-indigo-700 hover:bg-indigo-100 font-bold uppercase text-[10px] border-indigo-200">
-                  <Edit3 className="h-3 w-3 mr-1" /> Edit Pemain
-                </Button>
-                <Button variant="outline" size="sm" onClick={() => setShowCustomMatchModal(true)} className="bg-purple-50 text-purple-700 hover:bg-purple-100 font-bold uppercase text-[10px] border-purple-200">
-                  <Plus className="h-3 w-3 mr-1" /> Custom Match
-                </Button>
+              <div className="flex flex-col gap-1.5 items-end">
+                <div className="flex gap-2">
+                  <Button variant="outline" size="sm" onClick={() => setShowRegenModal(true)} className="bg-orange-50 text-orange-700 hover:bg-orange-100 font-bold uppercase text-[10px] border-orange-200">
+                    <RefreshCw className="h-3 w-3 mr-1" /> Acak Ulang
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={() => setShowEditPlayersModal(true)} className="bg-indigo-50 text-indigo-700 hover:bg-indigo-100 font-bold uppercase text-[10px] border-indigo-200">
+                    <Edit3 className="h-3 w-3 mr-1" /> Edit Pemain
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={() => setShowCustomMatchModal(true)} className="bg-purple-50 text-purple-700 hover:bg-purple-100 font-bold uppercase text-[10px] border-purple-200">
+                    <Plus className="h-3 w-3 mr-1" /> Custom Match
+                  </Button>
+                </div>
+                <p className="text-[9px] text-muted-foreground/60 font-medium">
+                  {lang === 'id'
+                    ? 'Acak Ulang: jadwal baru, skor aman · Edit Pemain: ubah nama/level · Custom Match: tambah manual'
+                    : 'Reshuffle: new schedule, scores safe · Edit Players: change name/level · Custom Match: add manually'}
+                </p>
               </div>
             </div>
 
@@ -731,6 +767,130 @@ export default function TennisGeneratorPage() {
       <SmartAd />
       <SeoContent toolId="tennis" />
     </div>
+  );
+}
+
+// ── How To Use Card ───────────────────────────────────────────────
+function HowToUseCard({ lang }: { lang: string }) {
+  const [open, setOpen] = useState(true);
+  const isId = lang === 'id';
+
+  const steps = [
+    {
+      num: '1',
+      title: isId ? 'Setup Turnamen' : 'Tournament Setup',
+      icon: Settings2,
+      accent: 'border-purple-200 bg-purple-50/50',
+      numBg: 'bg-purple-600',
+      items: isId ? [
+        { label: 'Total Durasi', desc: 'Lama sesi bermain keseluruhan (cth: 120 menit untuk 2 jam)' },
+        { label: 'Durasi per Match', desc: 'Lama tiap pertandingan (cth: 30 menit). Menentukan jumlah ronde' },
+        { label: 'Jumlah Pemain', desc: 'Total peserta, minimal 4 orang (kelipatan 4 untuk hasil terbaik)' },
+        { label: 'Jumlah Lapangan', desc: 'Lebih banyak lapangan = lebih banyak yang bermain serentak. Butuh min 4 pemain per lapangan' },
+      ] : [
+        { label: 'Total Duration', desc: 'Length of the whole session (e.g., 120 min for 2 hours)' },
+        { label: 'Match Duration', desc: 'How long each match lasts (e.g., 30 min). Determines number of rounds' },
+        { label: 'Player Count', desc: 'Total participants, minimum 4 (multiples of 4 for best results)' },
+        { label: 'Number of Courts', desc: 'More courts = more simultaneous matches. Needs min 4 players per court' },
+      ],
+    },
+    {
+      num: '2',
+      title: isId ? 'Isi Roster Pemain' : 'Fill Player Roster',
+      icon: UserPlus,
+      accent: 'border-blue-200 bg-blue-50/50',
+      numBg: 'bg-blue-600',
+      items: isId ? [
+        { label: 'Nama Pemain', desc: 'Ketik nama, otomatis jadi huruf kapital. Pastikan semua nama terisi sebelum generate' },
+        { label: 'Level Skill', desc: 'Pilih dari Newbie (pemula) hingga Pro (ahli). Sistem menyeimbangkan tim berdasarkan ini' },
+        { label: 'Sistem Penyeimbang', desc: 'Tim A = Rank 1 + Rank 4, Tim B = Rank 2 + Rank 3 dari 4 pemain terpilih' },
+        { label: 'Import Excel', desc: 'Punya data sebelumnya? Klik Import di bagian atas untuk memuat dari file .xlsx' },
+      ] : [
+        { label: 'Player Names', desc: 'Type names, they are auto-capitalized. All names must be filled before generating' },
+        { label: 'Skill Level', desc: 'Select from Newbie (beginner) to Pro (expert). System balances teams based on this' },
+        { label: 'Balancing System', desc: 'Team A = Rank 1 + Rank 4, Team B = Rank 2 + Rank 3 from 4 selected players' },
+        { label: 'Import Excel', desc: 'Have previous data? Click Import at the top to load from an .xlsx file' },
+      ],
+    },
+    {
+      num: '3',
+      title: isId ? 'Kelola Dashboard' : 'Manage Dashboard',
+      icon: Trophy,
+      accent: 'border-amber-200 bg-amber-50/50',
+      numBg: 'bg-amber-500',
+      items: isId ? [
+        { label: 'Isi Skor', desc: 'Masukkan skor Tim A dan Tim B di kotak tengah, klik OK untuk simpan. Standings terupdate otomatis' },
+        { label: 'Tukar Pemain (↔)', desc: 'Klik ikon ↔ di nama pemain untuk menggantinya dengan pemain lain di luar ronde tersebut' },
+        { label: 'Acak Ulang', desc: 'Buat ulang jadwal yang belum dimainkan tanpa menghapus skor yang sudah tersimpan' },
+        { label: 'Custom Match', desc: 'Tambahkan pertandingan manual di luar jadwal otomatis, misalnya untuk final atau consolation' },
+        { label: 'Edit Pemain', desc: 'Ubah nama atau level skill pemain kapan saja. Jadwal mendatang akan menyesuaikan' },
+        { label: 'Export Excel', desc: 'Simpan semua data dan jadwal ke file .xlsx sebagai backup atau laporan turnamen' },
+      ] : [
+        { label: 'Enter Scores', desc: 'Type Team A and Team B scores in the center box, click OK to save. Standings update automatically' },
+        { label: 'Swap Player (↔)', desc: 'Click the ↔ icon on a player name to replace them with a bench player outside that round' },
+        { label: 'Reshuffle', desc: 'Regenerate unplayed future matches without losing already-saved scores' },
+        { label: 'Custom Match', desc: 'Add a manual match outside the auto schedule — great for finals or consolation rounds' },
+        { label: 'Edit Players', desc: 'Change player names or skill levels at any time. Future rounds will adjust accordingly' },
+        { label: 'Export Excel', desc: 'Save all data and schedule to an .xlsx file for backup or tournament records' },
+      ],
+    },
+  ];
+
+  const standingsInfo = isId
+    ? 'Poin: Menang = 3 pts · Seri = 1 pt · Kalah = 0 pt. Urutan: Poin → Kemenangan → Level skill'
+    : 'Points: Win = 3 pts · Draw = 1 pt · Loss = 0 pts. Order: Points → Wins → Skill level';
+
+  return (
+    <Card className="w-full max-w-xl border-2 rounded-[2.5rem] overflow-hidden shadow-md">
+      <button
+        className="w-full flex items-center justify-between p-6 text-left hover:bg-muted/30 transition-colors"
+        onClick={() => setOpen(o => !o)}
+      >
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+            <AlertCircle className="h-4 w-4 text-primary" />
+          </div>
+          <span className="font-black uppercase tracking-widest text-sm">
+            {isId ? 'Panduan Penggunaan' : 'How to Use'}
+          </span>
+        </div>
+        <ChevronRight className={`h-5 w-5 text-muted-foreground transition-transform duration-200 ${open ? 'rotate-90' : ''}`} />
+      </button>
+
+      {open && (
+        <div className="border-t px-6 pb-6 space-y-5 animate-in fade-in slide-in-from-top-2 duration-200">
+          {steps.map((step) => (
+            <div key={step.num} className={`rounded-2xl border-2 ${step.accent} p-4 space-y-3`}>
+              <div className="flex items-center gap-3">
+                <span className={`w-6 h-6 rounded-full ${step.numBg} text-white text-[11px] font-black flex items-center justify-center shrink-0`}>
+                  {step.num}
+                </span>
+                <step.icon className="h-4 w-4 text-muted-foreground" />
+                <span className="font-black uppercase tracking-widest text-xs">{step.title}</span>
+              </div>
+              <div className="space-y-2">
+                {step.items.map((item) => (
+                  <div key={item.label} className="flex gap-2.5">
+                    <span className="font-black text-[10px] text-primary shrink-0 mt-0.5 min-w-[90px]">{item.label}</span>
+                    <span className="text-[11px] text-muted-foreground leading-relaxed">{item.desc}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          <div className="rounded-2xl border-2 border-green-200 bg-green-50/50 p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <Medal className="h-4 w-4 text-green-600" />
+              <span className="font-black uppercase tracking-widest text-xs text-green-700">
+                {isId ? 'Sistem Standings' : 'Standings System'}
+              </span>
+            </div>
+            <p className="text-[11px] text-muted-foreground">{standingsInfo}</p>
+          </div>
+        </div>
+      )}
+    </Card>
   );
 }
 
