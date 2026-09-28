@@ -180,6 +180,7 @@ const UI_TEXT: Record<string, any> = {
   sync_success_load: { en: "Data loaded successfully!", id: "Data berhasil dimuat!", de: "Daten erfolgreich geladen!", es: "¡Datos cargados correctamente!", pt: "Dados carregados com sucesso!", fr: "Données chargées avec succès !", it: "Dati caricati con successo!" },
   sync_err_not_found: { en: "Code not found or expired.", id: "Kode tidak ditemukan atau kedaluwarsa.", de: "Code nicht gefunden oder abgelaufen.", es: "Código no encontrado o expirado.", pt: "Código não encontrado ou expirado.", fr: "Code introuvable ou expiré.", it: "Codice non trovato o scaduto." },
   sync_err_generic: { en: "Sync failed. Try again.", id: "Sinkron gagal. Coba lagi.", de: "Synchronisierung fehlgeschlagen.", es: "Sincronización fallida. Intente de nuevo.", pt: "Falha na sincronização. Tente novamente.", fr: "Échec de la synchronisation.", it: "Sincronizzazione fallita." },
+  sync_err_unavailable: { en: "Cloud sync is unavailable. Please configure UPSTASH credentials.", id: "Cloud sync belum dikonfigurasi. Hubungi administrator.", de: "Cloud-Sync nicht verfügbar.", es: "Cloud sync no disponible.", pt: "Cloud sync indisponível.", fr: "Cloud sync indisponible.", it: "Cloud sync non disponibile." },
   sync_expires: { en: "Expires after 30 days of inactivity", id: "Kedaluwarsa setelah 30 hari tidak aktif", de: "Läuft nach 30 Tagen Inaktivität ab", es: "Caduca después de 30 días de inactividad", pt: "Expira após 30 dias sem atividade", fr: "Expire après 30 jours d'inactivité", it: "Scade dopo 30 giorni di inattività" },
 };
 
@@ -287,6 +288,7 @@ export default function BudgetPlannerPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ income, categories, transactions }),
       });
+      if (res.status === 503) { setSyncStatus('error'); setSyncError(t('sync_err_unavailable')); return; }
       if (!res.ok) throw new Error();
       const json = await res.json();
       setSyncCode(json.code);
@@ -305,6 +307,7 @@ export default function BudgetPlannerPage() {
     try {
       const res = await fetch(`/api/sync?code=${code}`);
       if (res.status === 404) { setSyncStatus('error'); setSyncError(t('sync_err_not_found')); return; }
+      if (res.status === 503) { setSyncStatus('error'); setSyncError(t('sync_err_unavailable')); return; }
       if (!res.ok) throw new Error();
       const json = await res.json();
       restoreData(json.data);
