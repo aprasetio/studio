@@ -79,6 +79,7 @@ interface Match {
   team1: MatchTeam;
   team2: MatchTeam;
   status: 'Scheduled' | 'Completed';
+  round?: number; // set for Mexicano-generated matches
 }
 
 interface Config {
@@ -86,6 +87,7 @@ interface Config {
   courts: number;
   durationMinutes: number;
   matchDuration: number;
+  mode: 'americano' | 'mexicano';
 }
 
 // --- CONSTANTS ---
@@ -107,6 +109,7 @@ export default function TennisGeneratorPage() {
     courts: 1,
     durationMinutes: 120,
     matchDuration: 30,
+    mode: 'americano',
   });
   const [players, setPlayers] = useState<Player[]>([]);
   const [schedule, setSchedule] = useState<Match[]>([]);
@@ -116,6 +119,8 @@ export default function TennisGeneratorPage() {
   const [showRegenModal, setShowRegenModal] = useState(false);
   const [showEditPlayersModal, setShowEditPlayersModal] = useState(false);
   const [showCustomMatchModal, setShowCustomMatchModal] = useState(false);
+  const [showImportModeDialog, setShowImportModeDialog] = useState(false);
+  const [pendingImportData, setPendingImportData] = useState<{ players: Player[]; mData: any[] } | null>(null);
   
   // Custom Match Form State
   const [customMatch, setCustomMatch] = useState({ p1: '', p2: '', p3: '', p4: '', court: 1 });
@@ -196,13 +201,94 @@ export default function TennisGeneratorPage() {
     return newMatches;
   }
 
+  // --- MEXICANO CORE ---
+  function computeStandingsFromSchedule(scheduleArray: Match[]) {
+    const pts: Record<string, { points: number; wins: number }> = {};
+    players.forEach(p => { pts[p.id] = { points: 0, wins: 0 }; });
+    scheduleArray.filter(m => m.status === 'Completed').forEach(m => {
+      const s1 = m.team1.score ?? 0;
+      const s2 = m.team2.score ?? 0;
+      const t1wins = s1 > s2;
+      const draw = s1 === s2;
+      m.team1.players.forEach(p => {
+        if (!pts[p.id]) return;
+        if (t1wins) { pts[p.id].wins++; pts[p.id].points += 3; }
+        else if (draw) { pts[p.id].points += 1; }
+      });
+      m.team2.players.forEach(p => {
+        if (!pts[p.id]) return;
+        if (!t1wins && !draw) { pts[p.id].wins++; pts[p.id].points += 3; }
+        else if (draw) { pts[p.id].points += 1; }
+      });
+    });
+    return pts;
+  }
+
+  function generateMexicanoRound(existingSchedule: Match[], roundNum: number): Match[] {
+    const standings = computeStandingsFromSchedule(existingSchedule);
+    const sorted = [...players].sort((a, b) => {
+      const sa = standings[a.id] ?? { points: 0, wins: 0 };
+      const sb = standings[b.id] ?? { points: 0, wins: 0 };
+      if (sb.points !== sa.points) return sb.points - sa.points;
+      if (sb.wins !== sa.wins) return sb.wins - sa.wins;
+      return b.level - a.level;
+    });
+
+    const used = new Set<string>();
+    const newMatches: Match[] = [];
+    let idCounter = existingSchedule.length > 0
+      ? Math.max(...existingSchedule.map(m => Number(m.id) || 0)) + 1
+      : 1;
+    const tStart = (roundNum - 1) * config.matchDuration;
+    const tEnd = roundNum * config.matchDuration;
+
+    for (let court = 1; court <= config.courts; court++) {
+      const candidates = sorted.filter(p => !used.has(p.id));
+      if (candidates.length < 4) break;
+      const sel = candidates.slice(0, 4);
+      sel.forEach(p => used.add(p.id));
+      const t1 = [sel[0], sel[3]].sort((a, b) => a.name.localeCompare(b.name));
+      const t2 = [sel[1], sel[2]].sort((a, b) => a.name.localeCompare(b.name));
+      newMatches.push({
+        id: idCounter++,
+        type: 'Auto',
+        court,
+        timeStart: tStart,
+        timeEnd: tEnd,
+        round: roundNum,
+        status: 'Scheduled',
+        team1: { players: t1, score: null },
+        team2: { players: t2, score: null },
+      });
+    }
+    return newMatches;
+  }
+
+  const handleNextMexicanoRound = () => {
+    const completedRounds = schedule.filter(m => m.round != null).map(m => m.round!);
+    const currentRound = completedRounds.length > 0 ? Math.max(...completedRounds) : 0;
+    const currentRoundMatches = schedule.filter(m => m.round === currentRound);
+    if (currentRoundMatches.some(m => m.status !== 'Completed')) return;
+    const next = generateMexicanoRound(schedule, currentRound + 1);
+    if (next.length === 0) {
+      toast({ title: "Tidak cukup pemain untuk ronde berikutnya.", variant: "destructive" });
+      return;
+    }
+    setSchedule(prev => [...prev, ...next]);
+  };
+
   const handleGenerateSchedule = () => {
     if (players.some(p => !p.name.trim())) {
       toast({ title: "Validation Error", description: "All player names must be filled.", variant: "destructive" });
       return;
     }
-    const newSchedule = generateUpcomingMatches([], 0);
-    setSchedule(newSchedule);
+    if (config.mode === 'mexicano') {
+      const firstRound = generateMexicanoRound([], 1);
+      setSchedule(firstRound);
+    } else {
+      const newSchedule = generateUpcomingMatches([], 0);
+      setSchedule(newSchedule);
+    }
     setStep(3);
   };
 
@@ -298,7 +384,8 @@ export default function TennisGeneratorPage() {
     XLSX.utils.book_append_sheet(wb, pWS, "Players");
     
     const mData = schedule.map(m => ({
-      ID: m.id, Type: m.type, Status: m.status,
+      ID: m.id, Type: m.type, Status: m.status, Court: m.court,
+      ...(m.round != null ? { Round: m.round } : {}),
       T1_P1: m.team1.players[0].name, T1_P2: m.team1.players[1].name,
       T1_Score: m.team1.score, T2_P1: m.team2.players[0].name, T2_P2: m.team2.players[1].name, T2_Score: m.team2.score
     }));
@@ -306,6 +393,26 @@ export default function TennisGeneratorPage() {
     XLSX.utils.book_append_sheet(wb, mWS, "Matches");
     
     XLSX.writeFile(wb, `Tennis_Tournament_${new Date().toISOString().slice(0,10)}.xlsx`);
+  };
+
+  const applyImport = (importedPlayers: Player[], mData: any[], mode: 'americano' | 'mexicano') => {
+    const importedMatches: Match[] = mData.map(m => {
+      const findP = (name: string) => importedPlayers.find(p => p.name === name) || { id: name, name, skill: 'Newbie' as SkillLevel, level: 1 };
+      const roundNum = m.Round != null ? Number(m.Round) : undefined;
+      const tStart = roundNum != null ? (roundNum - 1) * (config.matchDuration || 30) : 0;
+      const tEnd = roundNum != null ? roundNum * (config.matchDuration || 30) : 0;
+      return {
+        id: m.ID, type: m.Type, status: m.Status, court: m.Court || 1,
+        timeStart: tStart, timeEnd: tEnd,
+        ...(roundNum != null ? { round: roundNum } : {}),
+        team1: { players: [findP(m.T1_P1), findP(m.T1_P2)], score: m.T1_Score },
+        team2: { players: [findP(m.T2_P1), findP(m.T2_P2)], score: m.T2_Score }
+      };
+    });
+    setSchedule(importedMatches);
+    setConfig(prev => ({ ...prev, mode }));
+    setStep(3);
+    toast({ title: "Import Successful" });
   };
 
   const importFromExcel = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -316,7 +423,7 @@ export default function TennisGeneratorPage() {
       try {
         const data = new Uint8Array(event.target?.result as ArrayBuffer);
         const workbook = XLSX.read(data, { type: 'array' });
-        
+
         // Import Players
         const pSheet = workbook.Sheets["Players"];
         let importedPlayers: Player[] = [];
@@ -330,22 +437,18 @@ export default function TennisGeneratorPage() {
           setConfig(prev => ({ ...prev, numPlayers: importedPlayers.length }));
         }
 
-        // Import Matches — use locally-extracted importedPlayers (not stale state closure)
+        // Import Matches — if file has Round column, ask user for mode first
         const mSheet = workbook.Sheets["Matches"];
         if (mSheet) {
           const mData = XLSX.utils.sheet_to_json(mSheet) as any[];
-          const importedMatches: Match[] = mData.map(m => {
-            const findP = (name: string) => importedPlayers.find(p => p.name === name) || { id: name, name, skill: 'Newbie' as SkillLevel, level: 1 };
-            return {
-              id: m.ID, type: m.Type, status: m.Status, court: m.Court || 1, timeStart: 0, timeEnd: 0,
-              team1: { players: [findP(m.T1_P1), findP(m.T1_P2)], score: m.T1_Score },
-              team2: { players: [findP(m.T2_P1), findP(m.T2_P2)], score: m.T2_Score }
-            };
-          });
-          setSchedule(importedMatches);
-          setStep(3);
+          const hasRoundCol = mData.some((m: any) => m.Round != null);
+          if (hasRoundCol) {
+            setPendingImportData({ players: importedPlayers, mData });
+            setShowImportModeDialog(true);
+          } else {
+            applyImport(importedPlayers, mData, 'americano');
+          }
         }
-        toast({ title: "Import Successful" });
       } catch (err) {
         toast({ title: "Import Failed", variant: "destructive" });
       }
@@ -436,11 +539,38 @@ export default function TennisGeneratorPage() {
             </CardTitle>
           </CardHeader>
           <CardContent className="p-8 space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <Label className="text-[10px] font-black uppercase opacity-60">Total Duration (Mins)</Label>
-                <Input type="number" value={config.durationMinutes} onChange={e => setConfig({...config, durationMinutes: Number(e.target.value)})} className="h-12 font-bold" />
+            {/* Mode Selector */}
+            <div className="space-y-2">
+              <Label className="text-[10px] font-black uppercase opacity-60">Format Pertandingan</Label>
+              <div className="grid grid-cols-2 gap-2">
+                {(['americano', 'mexicano'] as const).map(m => (
+                  <button
+                    key={m}
+                    onClick={() => setConfig({ ...config, mode: m })}
+                    className={`py-3 px-4 rounded-2xl border-2 font-black uppercase tracking-widest text-[10px] transition-all ${
+                      config.mode === m
+                        ? 'bg-primary text-white border-primary shadow-lg'
+                        : 'bg-muted/30 text-muted-foreground border-transparent hover:border-primary/20'
+                    }`}
+                  >
+                    {m === 'americano' ? '🎾 Americano' : '🇲🇽 Mexicano'}
+                  </button>
+                ))}
               </div>
+              <p className="text-[10px] text-muted-foreground leading-relaxed">
+                {config.mode === 'americano'
+                  ? 'Jadwal lengkap dibuat di awal. Pairing berdasarkan level & kerataan giliran bermain.'
+                  : 'Pairing berdasarkan standings. Ronde berikutnya dibuat setelah semua skor ronde ini diisi.'}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {config.mode === 'americano' && (
+                <div className="space-y-2">
+                  <Label className="text-[10px] font-black uppercase opacity-60">Total Duration (Mins)</Label>
+                  <Input type="number" value={config.durationMinutes} onChange={e => setConfig({...config, durationMinutes: Number(e.target.value)})} className="h-12 font-bold" />
+                </div>
+              )}
               <div className="space-y-2">
                 <Label className="text-[10px] font-black uppercase opacity-60">Match Duration (Mins)</Label>
                 <Input type="number" min="1" value={config.matchDuration} onChange={e => setConfig({...config, matchDuration: Math.max(1, Number(e.target.value))})} className="h-12 font-bold" />
@@ -555,53 +685,100 @@ export default function TennisGeneratorPage() {
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 animate-in fade-in zoom-in-95">
           {/* DASHBOARD LEFT */}
           <div className="lg:col-span-8 space-y-6">
-            <div className="bg-card p-4 rounded-3xl border-2 shadow-sm flex flex-wrap gap-3 items-center justify-between">
-              <div className="flex items-center gap-3 pl-2">
-                <CalendarDays className="h-5 w-5 text-primary" />
-                <span className="font-black uppercase text-sm tracking-widest">Schedule: <b>{schedule.length}</b> Matches</span>
-              </div>
-              <div className="flex flex-col gap-1.5 items-end">
-                <div className="flex gap-2">
-                  <Button variant="outline" size="sm" onClick={() => setShowRegenModal(true)} className="bg-orange-50 text-orange-700 hover:bg-orange-100 font-bold uppercase text-[10px] border-orange-200">
-                    <RefreshCw className="h-3 w-3 mr-1" /> Acak Ulang
-                  </Button>
-                  <Button variant="outline" size="sm" onClick={() => setShowEditPlayersModal(true)} className="bg-indigo-50 text-indigo-700 hover:bg-indigo-100 font-bold uppercase text-[10px] border-indigo-200">
-                    <Edit3 className="h-3 w-3 mr-1" /> Edit Pemain
-                  </Button>
-                  <Button variant="outline" size="sm" onClick={() => setShowCustomMatchModal(true)} className="bg-purple-50 text-purple-700 hover:bg-purple-100 font-bold uppercase text-[10px] border-purple-200">
-                    <Plus className="h-3 w-3 mr-1" /> Custom Match
-                  </Button>
+            {(() => {
+              const mexRounds = schedule.filter(m => m.round != null).map(m => m.round!);
+              const curRound = mexRounds.length > 0 ? Math.max(...mexRounds) : 0;
+              const curRoundMatches = schedule.filter(m => m.round === curRound);
+              const allCurDone = curRound > 0 && curRoundMatches.length > 0 && curRoundMatches.every(m => m.status === 'Completed');
+              const isMex = config.mode === 'mexicano';
+              return (
+                <div className="bg-card p-4 rounded-3xl border-2 shadow-sm flex flex-wrap gap-3 items-center justify-between">
+                  <div className="flex items-center gap-3 pl-2">
+                    <CalendarDays className="h-5 w-5 text-primary" />
+                    <span className="font-black uppercase text-sm tracking-widest">
+                      {isMex ? `Mexicano · Ronde ${curRound}` : `Schedule: ${schedule.length} Matches`}
+                    </span>
+                    {isMex && (
+                      <span className="text-[9px] font-black px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 border border-amber-200 uppercase tracking-widest">
+                        🇲🇽
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex flex-col gap-1.5 items-end">
+                    <div className="flex gap-2 flex-wrap justify-end">
+                      {isMex ? (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={handleNextMexicanoRound}
+                          disabled={!allCurDone}
+                          className={`font-bold uppercase text-[10px] border-2 ${allCurDone ? 'bg-green-50 text-green-700 hover:bg-green-100 border-green-300' : 'opacity-40'}`}
+                        >
+                          <RefreshCw className="h-3 w-3 mr-1" /> Ronde Berikutnya
+                        </Button>
+                      ) : (
+                        <Button variant="outline" size="sm" onClick={() => setShowRegenModal(true)} className="bg-orange-50 text-orange-700 hover:bg-orange-100 font-bold uppercase text-[10px] border-orange-200">
+                          <RefreshCw className="h-3 w-3 mr-1" /> Acak Ulang
+                        </Button>
+                      )}
+                      <Button variant="outline" size="sm" onClick={() => setShowEditPlayersModal(true)} className="bg-indigo-50 text-indigo-700 hover:bg-indigo-100 font-bold uppercase text-[10px] border-indigo-200">
+                        <Edit3 className="h-3 w-3 mr-1" /> Edit Pemain
+                      </Button>
+                      <Button variant="outline" size="sm" onClick={() => setShowCustomMatchModal(true)} className="bg-purple-50 text-purple-700 hover:bg-purple-100 font-bold uppercase text-[10px] border-purple-200">
+                        <Plus className="h-3 w-3 mr-1" /> Custom Match
+                      </Button>
+                    </div>
+                    <p className="text-[9px] text-muted-foreground/60 font-medium">
+                      {isMex
+                        ? (allCurDone
+                          ? (lang === 'id' ? 'Semua skor ronde ini sudah diisi — siap ke ronde berikutnya!' : 'All scores entered — ready for next round!')
+                          : (lang === 'id' ? 'Isi semua skor ronde ini untuk lanjut ke ronde berikutnya' : 'Enter all scores in this round to proceed'))
+                        : (lang === 'id'
+                          ? 'Acak Ulang: jadwal baru, skor aman · Edit Pemain: ubah nama/level · Custom Match: tambah manual'
+                          : 'Reshuffle: new schedule, scores safe · Edit Players: change name/level · Custom Match: add manually')}
+                    </p>
+                  </div>
                 </div>
-                <p className="text-[9px] text-muted-foreground/60 font-medium">
-                  {lang === 'id'
-                    ? 'Acak Ulang: jadwal baru, skor aman · Edit Pemain: ubah nama/level · Custom Match: tambah manual'
-                    : 'Reshuffle: new schedule, scores safe · Edit Players: change name/level · Custom Match: add manually'}
-                </p>
-              </div>
-            </div>
+              );
+            })()}
 
             <div className="space-y-8">
               {(() => {
-                // Group matches by timeStart, preserve insertion order for manual (timeStart=0)
+                // Group matches: Mexicano uses round field, Americano uses timeStart
+                const isMexMode = config.mode === 'mexicano';
                 const groups = new Map<string, Match[]>();
                 schedule.forEach(m => {
-                  const key = m.timeStart === 0 && m.type === 'Manual' ? `manual-${m.id}` : String(m.timeStart);
+                  let key: string;
+                  if (m.round != null) key = `round-${m.round}`;
+                  else if (m.timeStart === 0 && m.type === 'Manual') key = `manual-${m.id}`;
+                  else key = String(m.timeStart);
                   if (!groups.has(key)) groups.set(key, []);
                   groups.get(key)!.push(m);
                 });
                 let roundNum = 0;
                 return Array.from(groups.entries()).map(([key, matches]) => {
-                  const isTimedSlot = !key.startsWith('manual-');
-                  if (isTimedSlot) roundNum++;
+                  const isMexRound = key.startsWith('round-');
+                  const isTimedSlot = isMexRound || (!key.startsWith('manual-'));
+                  if (isTimedSlot && !isMexRound) roundNum++;
+                  const displayRound = isMexRound ? matches[0].round! : roundNum;
                   const tStart = matches[0].timeStart;
                   const tEnd = matches[0].timeEnd;
                   const fmtMin = (m: number) => `${Math.floor(m/60).toString().padStart(2,'0')}:${(m%60).toString().padStart(2,'0')}`;
+                  const allDone = matches.every(m => m.status === 'Completed');
                   return (
                     <div key={key} className="space-y-3">
                       {isTimedSlot && (
                         <div className="flex items-center gap-3 px-1">
-                          <span className="text-[11px] font-black uppercase tracking-widest text-primary">Ronde {roundNum}</span>
-                          <span className="text-[10px] text-muted-foreground font-bold">{fmtMin(tStart)} – {fmtMin(tEnd)}</span>
+                          <span className="text-[11px] font-black uppercase tracking-widest text-primary">
+                            Ronde {displayRound}
+                          </span>
+                          {isMexRound ? (
+                            <span className={`text-[9px] font-black px-2 py-0.5 rounded-full border ${allDone ? 'bg-green-100 text-green-700 border-green-200' : 'bg-amber-50 text-amber-700 border-amber-200'}`}>
+                              {allDone ? '✓ Selesai' : 'Berlangsung'}
+                            </span>
+                          ) : (
+                            <span className="text-[10px] text-muted-foreground font-bold">{fmtMin(tStart)} – {fmtMin(tEnd)}</span>
+                          )}
                           <div className="flex-1 h-px bg-border" />
                           <span className="text-[9px] text-muted-foreground">{matches.length} lapangan aktif</span>
                         </div>
@@ -615,7 +792,9 @@ export default function TennisGeneratorPage() {
                           onEditScore={handleEditScore}
                           onDelete={handleDeleteMatch}
                           onSwapPlayer={handleSwapPlayer}
-                          allPlayersInSlot={new Set(schedule.filter(m => m.timeStart === match.timeStart && !key.startsWith('manual-')).flatMap(m => [...m.team1.players, ...m.team2.players].map(p => p.id)))}
+                          allPlayersInSlot={new Set(schedule.filter(m =>
+                            isMexRound ? m.round === match.round : (m.timeStart === match.timeStart && !key.startsWith('manual-'))
+                          ).flatMap(m => [...m.team1.players, ...m.team2.players].map(p => p.id)))}
                         />
                       ))}
                     </div>
@@ -760,6 +939,36 @@ export default function TennisGeneratorPage() {
             </div>
           </div>
           <DialogFooter><Button className="w-full bg-purple-600" onClick={handleSaveCustomMatch}>Buat Match</Button></DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={showImportModeDialog} onOpenChange={setShowImportModeDialog}>
+        <DialogContent className="rounded-3xl max-w-sm">
+          <DialogHeader>
+            <DialogTitle className="uppercase font-black text-center">Pilih Format Import</DialogTitle>
+            <p className="text-[11px] text-muted-foreground text-center pt-1">
+              File ini memiliki data ronde. Pilih format yang ingin digunakan.
+            </p>
+          </DialogHeader>
+          <div className="grid grid-cols-2 gap-3 py-4">
+            {(['americano', 'mexicano'] as const).map(m => (
+              <button
+                key={m}
+                onClick={() => {
+                  if (pendingImportData) applyImport(pendingImportData.players, pendingImportData.mData, m);
+                  setShowImportModeDialog(false);
+                  setPendingImportData(null);
+                }}
+                className="flex flex-col items-center gap-2 py-5 px-3 rounded-2xl border-2 font-black uppercase tracking-widest text-[10px] transition-all border-muted hover:border-primary hover:bg-primary/5"
+              >
+                <span className="text-2xl">{m === 'americano' ? '🎾' : '🇲🇽'}</span>
+                <span>{m}</span>
+                <span className="text-[9px] font-normal normal-case text-muted-foreground leading-tight text-center">
+                  {m === 'americano' ? 'Jadwal sudah fix' : 'Pasangan dinamis per ronde'}
+                </span>
+              </button>
+            ))}
+          </div>
         </DialogContent>
       </Dialog>
 
