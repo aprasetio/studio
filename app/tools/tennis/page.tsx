@@ -125,15 +125,18 @@ export default function TennisGeneratorPage() {
   // Custom Match Form State
   const [customMatch, setCustomMatch] = useState({ p1: '', p2: '', p3: '', p4: '', court: 1 });
 
+  // Edit Players Draft (modal works on this copy, not live state)
+  const [editDraftPlayers, setEditDraftPlayers] = useState<Player[]>([]);
+
   const jsonInputRef = useRef<HTMLInputElement>(null);
   const excelInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => { setMounted(true); }, []);
 
   // --- CORE LOGIC: STATS ---
-  function getPlayerStatsInSchedule(scheduleArray: Match[]) {
+  function getPlayerStatsInSchedule(scheduleArray: Match[], playerList: Player[] = players) {
     const stats: Record<string, { played: number; scheduled: number }> = {};
-    players.forEach(p => stats[p.id] = { played: 0, scheduled: 0 });
+    playerList.forEach(p => stats[p.id] = { played: 0, scheduled: 0 });
     
     scheduleArray.forEach(m => {
       const allP = [...m.team1.players, ...m.team2.players];
@@ -149,7 +152,7 @@ export default function TennisGeneratorPage() {
   }
 
   // --- SCHEDULING ALGORITHM ---
-  function generateUpcomingMatches(existingSchedule: Match[], startTime: number) {
+  function generateUpcomingMatches(existingSchedule: Match[], startTime: number, playerList: Player[] = players) {
     if (config.matchDuration <= 0) return [];
     const tempSchedule = [...existingSchedule];
     let time = startTime;
@@ -157,12 +160,12 @@ export default function TennisGeneratorPage() {
     const newMatches: Match[] = [];
 
     while (time < config.durationMinutes) {
-      const stats = getPlayerStatsInSchedule([...tempSchedule, ...newMatches]);
+      const stats = getPlayerStatsInSchedule([...tempSchedule, ...newMatches], playerList);
       const usedInSlot = new Set<string>();
       let anyCourtFilled = false;
 
       for (let court = 1; court <= config.courts; court++) {
-        const candidates = [...players]
+        const candidates = [...playerList]
           .filter(p => !usedInSlot.has(p.id))
           .sort(() => Math.random() - 0.5)
           .sort((a, b) => {
@@ -202,9 +205,9 @@ export default function TennisGeneratorPage() {
   }
 
   // --- MEXICANO CORE ---
-  function computeStandingsFromSchedule(scheduleArray: Match[]) {
+  function computeStandingsFromSchedule(scheduleArray: Match[], playerList: Player[] = players) {
     const pts: Record<string, { points: number; wins: number }> = {};
-    players.forEach(p => { pts[p.id] = { points: 0, wins: 0 }; });
+    playerList.forEach(p => { pts[p.id] = { points: 0, wins: 0 }; });
     scheduleArray.filter(m => m.status === 'Completed').forEach(m => {
       const s1 = m.team1.score ?? 0;
       const s2 = m.team2.score ?? 0;
@@ -224,9 +227,9 @@ export default function TennisGeneratorPage() {
     return pts;
   }
 
-  function generateMexicanoRound(existingSchedule: Match[], roundNum: number): Match[] {
-    const standings = computeStandingsFromSchedule(existingSchedule);
-    const sorted = [...players].sort((a, b) => {
+  function generateMexicanoRound(existingSchedule: Match[], roundNum: number, playerList: Player[] = players): Match[] {
+    const standings = computeStandingsFromSchedule(existingSchedule, playerList);
+    const sorted = [...playerList].sort((a, b) => {
       const sa = standings[a.id] ?? { points: 0, wins: 0 };
       const sb = standings[b.id] ?? { points: 0, wins: 0 };
       if (sb.points !== sa.points) return sb.points - sa.points;
@@ -277,16 +280,16 @@ export default function TennisGeneratorPage() {
     setSchedule(prev => [...prev, ...next]);
   };
 
-  const handleGenerateSchedule = () => {
-    if (players.some(p => !p.name.trim())) {
+  const handleGenerateSchedule = (playerList: Player[] = players) => {
+    if (playerList.some(p => !p.name.trim())) {
       toast({ title: "Validation Error", description: "All player names must be filled.", variant: "destructive" });
       return;
     }
     if (config.mode === 'mexicano') {
-      const firstRound = generateMexicanoRound([], 1);
+      const firstRound = generateMexicanoRound([], 1, playerList);
       setSchedule(firstRound);
     } else {
-      const newSchedule = generateUpcomingMatches([], 0);
+      const newSchedule = generateUpcomingMatches([], 0, playerList);
       setSchedule(newSchedule);
     }
     setStep(3);
@@ -721,7 +724,7 @@ export default function TennisGeneratorPage() {
                           <RefreshCw className="h-3 w-3 mr-1" /> Acak Ulang
                         </Button>
                       )}
-                      <Button variant="outline" size="sm" onClick={() => setShowEditPlayersModal(true)} className="bg-indigo-50 text-indigo-700 hover:bg-indigo-100 font-bold uppercase text-[10px] border-indigo-200">
+                      <Button variant="outline" size="sm" onClick={() => { setEditDraftPlayers(players.map(p => ({ ...p }))); setShowEditPlayersModal(true); }} className="bg-indigo-50 text-indigo-700 hover:bg-indigo-100 font-bold uppercase text-[10px] border-indigo-200">
                         <Edit3 className="h-3 w-3 mr-1" /> Edit Pemain
                       </Button>
                       <Button variant="outline" size="sm" onClick={() => setShowCustomMatchModal(true)} className="bg-purple-50 text-purple-700 hover:bg-purple-100 font-bold uppercase text-[10px] border-purple-200">
@@ -863,32 +866,68 @@ export default function TennisGeneratorPage() {
 
       <Dialog open={showEditPlayersModal} onOpenChange={setShowEditPlayersModal}>
         <DialogContent className="rounded-3xl max-w-xl max-h-[90vh] overflow-y-auto">
-          <DialogHeader><DialogTitle className="uppercase font-black">Edit Data Pemain</DialogTitle></DialogHeader>
-          <div className="space-y-3 py-4">
-            {players.map((p, i) => (
+          <DialogHeader>
+            <DialogTitle className="uppercase font-black">Edit Data Pemain</DialogTitle>
+            <p className="text-[11px] text-muted-foreground pt-1">{editDraftPlayers.length} pemain terdaftar</p>
+          </DialogHeader>
+          <div className="space-y-2 py-4">
+            {editDraftPlayers.map((p, i) => (
               <div key={p.id} className="flex items-center gap-2 border-b pb-2">
-                <span className="text-[10px] font-bold w-6 text-muted-foreground">#{i+1}</span>
+                <span className="text-[10px] font-bold w-5 text-muted-foreground shrink-0">#{i+1}</span>
                 <Input value={p.name} onChange={e => {
-                  const updated = [...players];
-                  updated[i].name = e.target.value.toUpperCase();
-                  setPlayers(updated);
+                  const updated = [...editDraftPlayers];
+                  updated[i] = { ...updated[i], name: e.target.value.toUpperCase() };
+                  setEditDraftPlayers(updated);
                 }} className="h-9 font-bold" />
                 <Select value={p.skill} onValueChange={(val: SkillLevel) => {
-                  const updated = [...players];
-                  updated[i].skill = val;
-                  updated[i].level = SKILL_CONFIG[val].level;
-                  setPlayers(updated);
+                  const updated = [...editDraftPlayers];
+                  updated[i] = { ...updated[i], skill: val, level: SKILL_CONFIG[val].level };
+                  setEditDraftPlayers(updated);
                 }}>
-                  <SelectTrigger className="w-32 h-9 font-bold text-[10px] uppercase"><SelectValue /></SelectTrigger>
+                  <SelectTrigger className="w-32 h-9 font-bold text-[10px] uppercase shrink-0"><SelectValue /></SelectTrigger>
                   <SelectContent>
                     {Object.keys(SKILL_CONFIG).map(s => <SelectItem key={s} value={s} className="font-bold uppercase text-[10px]">{s}</SelectItem>)}
                   </SelectContent>
                 </Select>
+                <button
+                  onClick={() => setEditDraftPlayers(editDraftPlayers.filter((_, idx) => idx !== i))}
+                  className="shrink-0 p-1 rounded-lg text-red-400 hover:bg-red-50 hover:text-red-600 transition-colors"
+                  title="Hapus pemain"
+                >
+                  <X className="h-4 w-4" />
+                </button>
               </div>
             ))}
+            <button
+              onClick={() => setEditDraftPlayers([...editDraftPlayers, {
+                id: `p-${Date.now()}`,
+                name: '',
+                skill: 'Beginner',
+                level: SKILL_CONFIG['Beginner'].level
+              }])}
+              className="w-full mt-2 py-2 rounded-2xl border-2 border-dashed border-primary/30 text-primary/60 hover:border-primary hover:text-primary font-black text-[10px] uppercase tracking-widest transition-colors flex items-center justify-center gap-1"
+            >
+              <Plus className="h-3 w-3" /> Tambah Pemain
+            </button>
           </div>
-          <DialogFooter>
-            <Button className="w-full bg-primary" onClick={() => setShowEditPlayersModal(false)}>Simpan Perubahan</Button>
+          {editDraftPlayers.length !== players.length && (
+            <p className="text-[10px] text-amber-600 bg-amber-50 rounded-xl px-3 py-2 mb-2">
+              ⚠️ Jumlah pemain berubah ({players.length} → {editDraftPlayers.length}). Disarankan acak ulang jadwal.
+            </p>
+          )}
+          <DialogFooter className="gap-2 flex-col sm:flex-row">
+            <Button variant="outline" className="flex-1" onClick={() => {
+              setPlayers(editDraftPlayers);
+              setConfig(prev => ({ ...prev, numPlayers: editDraftPlayers.length }));
+              setShowEditPlayersModal(false);
+              toast({ title: "Pemain diperbarui" });
+            }}>Simpan Saja</Button>
+            <Button className="flex-1 bg-orange-500 hover:bg-orange-600 text-white" onClick={() => {
+              setPlayers(editDraftPlayers);
+              setConfig(prev => ({ ...prev, numPlayers: editDraftPlayers.length }));
+              setShowEditPlayersModal(false);
+              handleGenerateSchedule(editDraftPlayers);
+            }}>Simpan & Acak Ulang</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
