@@ -119,6 +119,8 @@ export default function TennisGeneratorPage() {
   const [showRegenModal, setShowRegenModal] = useState(false);
   const [showEditPlayersModal, setShowEditPlayersModal] = useState(false);
   const [showCustomMatchModal, setShowCustomMatchModal] = useState(false);
+  const [showImportModeDialog, setShowImportModeDialog] = useState(false);
+  const [pendingImportData, setPendingImportData] = useState<{ players: Player[]; mData: any[] } | null>(null);
   
   // Custom Match Form State
   const [customMatch, setCustomMatch] = useState({ p1: '', p2: '', p3: '', p4: '', court: 1 });
@@ -393,6 +395,26 @@ export default function TennisGeneratorPage() {
     XLSX.writeFile(wb, `Tennis_Tournament_${new Date().toISOString().slice(0,10)}.xlsx`);
   };
 
+  const applyImport = (importedPlayers: Player[], mData: any[], mode: 'americano' | 'mexicano') => {
+    const importedMatches: Match[] = mData.map(m => {
+      const findP = (name: string) => importedPlayers.find(p => p.name === name) || { id: name, name, skill: 'Newbie' as SkillLevel, level: 1 };
+      const roundNum = m.Round != null ? Number(m.Round) : undefined;
+      const tStart = roundNum != null ? (roundNum - 1) * (config.matchDuration || 30) : 0;
+      const tEnd = roundNum != null ? roundNum * (config.matchDuration || 30) : 0;
+      return {
+        id: m.ID, type: m.Type, status: m.Status, court: m.Court || 1,
+        timeStart: tStart, timeEnd: tEnd,
+        ...(roundNum != null ? { round: roundNum } : {}),
+        team1: { players: [findP(m.T1_P1), findP(m.T1_P2)], score: m.T1_Score },
+        team2: { players: [findP(m.T2_P1), findP(m.T2_P2)], score: m.T2_Score }
+      };
+    });
+    setSchedule(importedMatches);
+    setConfig(prev => ({ ...prev, mode }));
+    setStep(3);
+    toast({ title: "Import Successful" });
+  };
+
   const importFromExcel = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -401,7 +423,7 @@ export default function TennisGeneratorPage() {
       try {
         const data = new Uint8Array(event.target?.result as ArrayBuffer);
         const workbook = XLSX.read(data, { type: 'array' });
-        
+
         // Import Players
         const pSheet = workbook.Sheets["Players"];
         let importedPlayers: Player[] = [];
@@ -415,30 +437,18 @@ export default function TennisGeneratorPage() {
           setConfig(prev => ({ ...prev, numPlayers: importedPlayers.length }));
         }
 
-        // Import Matches — use locally-extracted importedPlayers (not stale state closure)
+        // Import Matches — if file has Round column, ask user for mode first
         const mSheet = workbook.Sheets["Matches"];
         if (mSheet) {
           const mData = XLSX.utils.sheet_to_json(mSheet) as any[];
-          const importedMatches: Match[] = mData.map(m => {
-            const findP = (name: string) => importedPlayers.find(p => p.name === name) || { id: name, name, skill: 'Newbie' as SkillLevel, level: 1 };
-            const roundNum = m.Round != null ? Number(m.Round) : undefined;
-            const tStart = roundNum != null ? (roundNum - 1) * (config.matchDuration || 30) : 0;
-            const tEnd = roundNum != null ? roundNum * (config.matchDuration || 30) : 0;
-            return {
-              id: m.ID, type: m.Type, status: m.Status, court: m.Court || 1,
-              timeStart: tStart, timeEnd: tEnd,
-              ...(roundNum != null ? { round: roundNum } : {}),
-              team1: { players: [findP(m.T1_P1), findP(m.T1_P2)], score: m.T1_Score },
-              team2: { players: [findP(m.T2_P1), findP(m.T2_P2)], score: m.T2_Score }
-            };
-          });
-          setSchedule(importedMatches);
-          // Auto-detect mode: if any match has a Round column, switch to Mexicano
-          const hasMexicano = mData.some((m: any) => m.Round != null);
-          if (hasMexicano) setConfig(prev => ({ ...prev, mode: 'mexicano' }));
-          setStep(3);
+          const hasRoundCol = mData.some((m: any) => m.Round != null);
+          if (hasRoundCol) {
+            setPendingImportData({ players: importedPlayers, mData });
+            setShowImportModeDialog(true);
+          } else {
+            applyImport(importedPlayers, mData, 'americano');
+          }
         }
-        toast({ title: "Import Successful" });
       } catch (err) {
         toast({ title: "Import Failed", variant: "destructive" });
       }
@@ -929,6 +939,36 @@ export default function TennisGeneratorPage() {
             </div>
           </div>
           <DialogFooter><Button className="w-full bg-purple-600" onClick={handleSaveCustomMatch}>Buat Match</Button></DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={showImportModeDialog} onOpenChange={setShowImportModeDialog}>
+        <DialogContent className="rounded-3xl max-w-sm">
+          <DialogHeader>
+            <DialogTitle className="uppercase font-black text-center">Pilih Format Import</DialogTitle>
+            <p className="text-[11px] text-muted-foreground text-center pt-1">
+              File ini memiliki data ronde. Pilih format yang ingin digunakan.
+            </p>
+          </DialogHeader>
+          <div className="grid grid-cols-2 gap-3 py-4">
+            {(['americano', 'mexicano'] as const).map(m => (
+              <button
+                key={m}
+                onClick={() => {
+                  if (pendingImportData) applyImport(pendingImportData.players, pendingImportData.mData, m);
+                  setShowImportModeDialog(false);
+                  setPendingImportData(null);
+                }}
+                className="flex flex-col items-center gap-2 py-5 px-3 rounded-2xl border-2 font-black uppercase tracking-widest text-[10px] transition-all border-muted hover:border-primary hover:bg-primary/5"
+              >
+                <span className="text-2xl">{m === 'americano' ? '🎾' : '🇲🇽'}</span>
+                <span>{m}</span>
+                <span className="text-[9px] font-normal normal-case text-muted-foreground leading-tight text-center">
+                  {m === 'americano' ? 'Jadwal sudah fix' : 'Pasangan dinamis per ronde'}
+                </span>
+              </button>
+            ))}
+          </div>
         </DialogContent>
       </Dialog>
 
