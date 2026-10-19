@@ -81,20 +81,19 @@ export default function BgRemoverPage() {
     setStage('loading_model');
 
     try {
+      // No publicPath = use default IMG.LY CDN (staticimgly.com)
+      // Image never leaves the browser; only AI model weights are fetched from CDN
       const blob = await removeBackground(file, {
-        // Load WASM + model from CDN — image itself never leaves browser
-        publicPath: `https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.7.0/dist/`,
+        model: 'isnet_quint8', // ~40 MB quantized model — fastest first load
         progress: (key, current, total) => {
-          if (key === 'compute:inference') {
-            setStage('processing');
-          }
+          if (key.startsWith('compute:')) setStage('processing');
           if (total > 0) setProgress(Math.round((current / total) * 100));
         },
       });
       setResultUrl(URL.createObjectURL(blob));
       setStage('done');
     } catch (err) {
-      console.error(err);
+      console.error('[bg-remover]', err);
       setStage('error');
       toast({ title: t(lang, 'error'), variant: 'destructive' });
     }
