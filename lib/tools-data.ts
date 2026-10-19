@@ -1,7 +1,7 @@
 import {
   Trophy, Activity, Clock, Minimize, Users, FileText, Box,
   Calculator, Scaling, Scissors, Navigation, Stamp, FileBadge,
-  Lightbulb, BookOpen, TrendingDown, QrCode, Flame, FileDown,
+  Lightbulb, BookOpen, TrendingDown, QrCode, Flame, FileDown, Wand2,
 } from 'lucide-react';
 
 export type Category =
@@ -168,6 +168,15 @@ export const TOOLS_DATA: Tool[] = [
     href: '/tools/pdf-watermark',
     name: { en: 'PDF Watermark', id: 'Watermark PDF', de: 'PDF-Wasserzeichen', es: 'Marca PDF', pt: "Marca d'água PDF", fr: 'Filigrane PDF', it: 'Filigrana PDF' },
     desc: { en: 'Securely add text watermarks to PDF files locally.', id: 'Tambah watermark teks ke file PDF lokal dengan aman.', de: 'Sicher Text-Wasserzeichen zu PDF-Dateien hinzufügen.', es: 'Añade marcas de agua de texto a PDF localmente.', pt: "Adicione marcas d'água de texto a PDFs localmente.", fr: 'Ajoutez des filigranes texte aux PDF localement.', it: 'Aggiungi filigrana testo ai PDF localmente.' },
+  },
+  {
+    id: 'bg-remover',
+    icon: Wand2,
+    category: 'productivity',
+    isNew: true,
+    href: '/tools/bg-remover',
+    name: { en: 'Background Remover', id: 'Hapus Background', de: 'Hintergrund entfernen', es: 'Quitar Fondo', pt: 'Remover Fundo', fr: 'Supprimer Fond', it: 'Rimuovi Sfondo' },
+    desc: { en: 'Remove image background with AI, fully offline.', id: 'Hapus background foto dengan AI, sepenuhnya offline.', de: 'Hintergrund per KI entfernen, vollständig offline.', es: 'Quita fondos con IA, sin subir nada.', pt: 'Remova fundos com IA, totalmente offline.', fr: "Supprimez l'arrière-plan par IA, hors ligne.", it: 'Rimuovi sfondi con AI, completamente offline.' },
   },
   {
     id: 'image-watermark',
