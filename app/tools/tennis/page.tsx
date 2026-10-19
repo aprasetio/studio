@@ -676,7 +676,7 @@ export default function TennisGeneratorPage() {
             </div>
             <div className="mt-8 flex gap-4">
               <Button variant="outline" onClick={() => setStep(1)} className="h-16 px-8 font-black uppercase rounded-2xl border-2">Back</Button>
-              <Button onClick={handleGenerateSchedule} className="flex-1 h-16 bg-primary text-white font-black uppercase tracking-widest rounded-2xl shadow-xl">
+              <Button onClick={() => handleGenerateSchedule()} className="flex-1 h-16 bg-primary text-white font-black uppercase tracking-widest rounded-2xl shadow-xl">
                 Generate Schedule <Trophy className="ml-2 h-6 w-6" />
               </Button>
             </div>
