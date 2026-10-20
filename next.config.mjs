@@ -5,6 +5,8 @@ const withPWA = withPWAInit({
   register: true,
   skipWaiting: true,
   disable: process.env.NODE_ENV === 'development',
+  publicExcludes: ['!bg-data/**/*'],
+  buildExcludes: [/bg-data/],
 });
 
 /** @type {import('next').NextConfig} */
