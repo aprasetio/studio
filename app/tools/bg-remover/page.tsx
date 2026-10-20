@@ -26,8 +26,8 @@ const UI_TEXT: Record<string, Record<string, string>> = {
     reset: 'New Image',
     privacy_title: 'Your image never leaves your device',
     privacy_body:
-      'All processing happens in your browser using WebAssembly. The AI model weights are fetched once from a public CDN — your photo is never uploaded anywhere.',
-    note_model: 'First run downloads ~40 MB AI model (cached afterwards)',
+      'All processing happens in your browser using WebAssembly. The AI model is served from this site itself, with no third-party requests — your photo is never uploaded anywhere.',
+    note_model: 'First run downloads ~50 MB AI model from this site (cached afterwards)',
     error: 'Processing failed. Try a smaller image or refresh.',
   },
   id: {
@@ -43,8 +43,8 @@ const UI_TEXT: Record<string, Record<string, string>> = {
     reset: 'Foto Baru',
     privacy_title: 'Foto Anda tidak pernah diunggah',
     privacy_body:
-      'Semua proses terjadi di browser menggunakan WebAssembly. Bobot model AI diunduh sekali dari CDN publik — foto Anda tidak pernah keluar dari perangkat.',
-    note_model: 'Pertama kali mengunduh ~40 MB model AI (tersimpan cache setelahnya)',
+      'Semua proses terjadi di browser menggunakan WebAssembly. Model AI disajikan dari situs ini sendiri tanpa request pihak ketiga — foto Anda tidak pernah keluar dari perangkat.',
+    note_model: 'Pertama kali mengunduh ~50 MB model AI dari situs ini (tersimpan cache)',
     error: 'Gagal memproses. Coba gambar lebih kecil atau refresh.',
   },
 };
@@ -81,11 +81,10 @@ export default function BgRemoverPage() {
     setStage('loading_model');
 
     try {
-      // No publicPath = use default IMG.LY CDN (staticimgly.com)
-      // Image never leaves the browser; only AI model weights are fetched from CDN
+      // Model + WASM are served from our own origin (/bg-data), no third-party requests
       const blob = await removeBackground(file, {
-        model: 'isnet_quint8', // ~40 MB quantized model — fastest first load
-        debug: process.env.NODE_ENV !== 'production',
+        publicPath: `${window.location.origin}/bg-data/`,
+        model: 'small',
         progress: (key, current, total) => {
           if (key.startsWith('compute:')) setStage('processing');
           if (total > 0) setProgress(Math.round((current / total) * 100));
@@ -96,7 +95,8 @@ export default function BgRemoverPage() {
     } catch (err) {
       console.error('[bg-remover]', err);
       setStage('error');
-      toast({ title: t(lang, 'error'), variant: 'destructive' });
+      const detail = err instanceof Error ? err.message : String(err);
+      toast({ title: t(lang, 'error'), description: detail.slice(0, 200), variant: 'destructive' });
     }
   }, [lang, originalUrl, resultUrl]);
 
