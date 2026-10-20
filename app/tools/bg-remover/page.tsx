@@ -85,6 +85,7 @@ export default function BgRemoverPage() {
       // Image never leaves the browser; only AI model weights are fetched from CDN
       const blob = await removeBackground(file, {
         model: 'isnet_quint8', // ~40 MB quantized model — fastest first load
+        debug: process.env.NODE_ENV !== 'production',
         progress: (key, current, total) => {
           if (key.startsWith('compute:')) setStage('processing');
           if (total > 0) setProgress(Math.round((current / total) * 100));
